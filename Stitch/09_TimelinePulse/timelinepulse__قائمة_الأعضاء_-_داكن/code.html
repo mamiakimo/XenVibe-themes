@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TimelinePulse: قائمة الأعضاء</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#0f4bc4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622", // Matches provided example darker bg
+                        "card-dark": "#1b2537", // Slightly lighter than background for cards
+                        "border-dark": "#232f48",
+                        "text-muted": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ['"Plus Jakarta Sans"', '"Noto Sans"', "sans-serif"],
+                        "body": ['"Plus Jakarta Sans"', '"Noto Sans"', "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+        }
+        /* Custom Timeline Styles */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 50%; /* Center line for RTL */
+            width: 2px;
+            background: linear-gradient(to bottom, #135bec 0%, #232f48 100%);
+            transform: translateX(50%);
+            z-index: 0;
+        }
+        .timeline-node {
+            z-index: 10;
+            box-shadow: 0 0 0 4px #101622; /* Gap effect */
+        }
+        .timeline-card-left {
+            margin-left: auto;
+            margin-right: 50%;
+            padding-right: 2rem;
+            text-align: left; /* Align content inside card for visual balance if needed, or keep right for Arabic */
+        }
+        .timeline-card-right {
+            margin-right: auto;
+            margin-left: 50%;
+            padding-left: 2rem;
+        }
+        /* Pulse Animation */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.33); opacity: 1; }
+            80%, 100% { opacity: 0; }
+        }
+        .pulse-circle::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: -6px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #135bec;
+            opacity: 0.4;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col overflow-x-hidden text-white">
+<!-- TopNavBar -->
+<header class="relative z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark bg-[#111722] px-6 py-3 lg:px-10">
+<div class="flex items-center gap-4 lg:gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">timeline</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] hidden sm:block">TimelinePulse</h2>
+</div>
+<div class="hidden md:flex items-center gap-6 lg:gap-9">
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">المنتديات</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary pb-1" href="#">الأعضاء</a>
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">المساعدة</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 lg:gap-8 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-[#232f48] focus-within:ring-2 ring-primary/50 transition-all">
+<div class="text-text-muted flex items-center justify-center pl-4 pr-3">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full bg-transparent border-none text-white placeholder:text-text-muted focus:ring-0 text-sm h-full px-2" placeholder="بحث عن عضو..."/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg size-10 bg-[#232f48] text-white hover:bg-[#2f3e5e] transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-[#232f48]"></span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-10 bg-[#232f48] text-white hover:bg-[#2f3e5e] transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-[#232f48]" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBpGtOZ2AUe5GTfeZ77FusPZOIXlAXtn2_LYAZb063sTdY1QXn7Lr4L6TD5AjDCsv5Gj2HxmCW-gaRW7iPNKUWIPiaz0DFBqXStgGAndgVDUODXz74R5Ro0Pgk1rUarRqAInt1FgIVmPtF_gUDGCPmPiWaVpa86k-olNbqP_QZSmxq5RAZjuCt_P7pNGZcVoGTtuxugxc79seaBVKQM6jDsbGNAB5weRSlRp_kn47RSFruGzfqeadutzyITDZA9cd1ge56Dc9RdzP4");'></div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center w-full px-4 py-6 md:px-8 lg:px-0">
+<div class="w-full max-w-[960px] flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 text-sm">
+<a class="text-text-muted hover:text-white transition-colors" href="#">الرئيسية</a>
+<span class="text-text-muted">/</span>
+<span class="text-white font-medium">الأعضاء</span>
+</div>
+<!-- Page Heading & Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4 border-b border-border-dark">
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-3xl md:text-4xl font-black tracking-tight">الجدول الزمني للأعضاء</h1>
+<p class="text-text-muted text-base">تابع أحدث انضمامات ونشاطات المجتمع في الوقت الفعلي</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 h-10 px-4 bg-primary hover:bg-primary-hover text-white text-sm font-bold rounded-lg transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span>دعوة صديق</span>
+</button>
+<button class="flex items-center justify-center size-10 bg-[#232f48] hover:bg-[#2f3e5e] text-white rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex overflow-x-auto border-b border-border-dark no-scrollbar">
+<button class="relative px-6 py-4 text-sm font-bold text-white transition-colors hover:text-primary">
+                    المنضمين حديثاً
+                    <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-primary shadow-[0_-2px_10px_rgba(19,91,236,0.5)]"></div>
+</button>
+<button class="px-6 py-4 text-sm font-bold text-text-muted transition-colors hover:text-white">
+                    آخر نشاط
+                </button>
+<button class="px-6 py-4 text-sm font-bold text-text-muted transition-colors hover:text-white">
+                    الأكثر تفاعلاً
+                </button>
+<button class="px-6 py-4 text-sm font-bold text-text-muted transition-colors hover:text-white">
+                    الطاقم الإداري
+                </button>
+</div>
+<!-- Timeline Filters (Sub-bar) -->
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-2 bg-[#1b2537] rounded-full px-3 py-1.5 border border-border-dark">
+<span class="text-xs text-text-muted font-medium">عرض:</span>
+<select class="bg-transparent border-none text-white text-xs font-bold p-0 pr-1 focus:ring-0 cursor-pointer">
+<option>الكل</option>
+<option>أعضاء موثقين</option>
+<option>جدد</option>
+</select>
+</div>
+<div class="flex items-center gap-2 text-text-muted text-xs">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>آخر تحديث: منذ لحظات</span>
+</div>
+</div>
+<!-- TIMELINE CONTENT -->
+<div class="relative py-8 timeline-line px-4 md:px-0">
+<!-- Date Marker: Today -->
+<div class="relative z-10 flex justify-center mb-10">
+<div class="bg-[#1b2537] border border-border-dark text-white px-4 py-1.5 rounded-full text-sm font-bold shadow-xl flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">calendar_today</span>
+                        اليوم، 24 أكتوبر
+                    </div>
+</div>
+<!-- Item 1 (Right) -->
+<div class="relative w-full flex items-center justify-between mb-8 group">
+<div class="hidden md:block w-1/2"></div> <!-- Spacer for desktop alignment -->
+<!-- Node -->
+<div class="absolute right-0 md:right-1/2 translate-x-[50%] flex items-center justify-center size-3 bg-[#101622] rounded-full timeline-node pulse-circle">
+<div class="size-3 bg-primary rounded-full"></div>
+</div>
+<!-- Card -->
+<div class="w-full md:w-1/2 md:pr-10 pl-0 md:pl-0 pr-6"> <!-- Mobile: space on right for line, Desktop: space on right for line -->
+<div class="bg-[#1b2537] border border-border-dark p-4 rounded-xl shadow-lg hover:border-primary/50 transition-colors group-hover:translate-x-[-4px] duration-300">
+<div class="flex items-start gap-4">
+<div class="relative shrink-0">
+<div class="size-12 rounded-full bg-cover bg-center border-2 border-primary" data-alt="Portrait of a young man smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOKXUKWO10QLHMTLHA2BZLIncgpY3goXXfoZle_8hr7SstebcBBEF-JlHVwXBnXz_Sltnp3AJ5kvQvfeq4qpunEqmY_eZm02nCNZWrmYfN1w05WG1ui7yzR7Rf-dsvVS6ZV56KNUXtjPEASqVEBa5cWCpRFeWkmEuIg7heo3nPWDZ1OCaJ0XDofOoJxVTY6ctJAUtBkSniGpVSDqisM9CmrQEIEQscbKiuu7fRk7djDcAUCAYDX3WV-cGa3qS-tsFTO0VP_GtHVF4");'></div>
+<div class="absolute -bottom-1 -right-1 bg-green-500 size-3 rounded-full border-2 border-[#1b2537]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-white font-bold text-base truncate flex items-center gap-1">
+                                                كريم محمد
+                                                <span class="material-symbols-outlined text-blue-400 text-[14px]" title="Verified">verified</span>
+</h3>
+<p class="text-text-muted text-xs mt-0.5">مصمم جرافيك • القاهرة</p>
+</div>
+<span class="text-text-muted text-xs whitespace-nowrap bg-[#232f48] px-2 py-0.5 rounded">10:42 ص</span>
+</div>
+<div class="mt-3 flex items-center gap-2 p-2 rounded bg-[#232f48]/50 border border-dashed border-[#232f48]">
+<span class="material-symbols-outlined text-green-400 text-[18px]">person_add</span>
+<span class="text-sm text-gray-300">انضم إلى المجتمع حديثاً</span>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-1.5 rounded transition-colors">متابعة</button>
+<button class="size-8 flex items-center justify-center bg-[#232f48] hover:bg-[#2f3e5e] text-white rounded transition-colors">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 (Left) -->
+<div class="relative w-full flex flex-row-reverse md:flex-row items-center justify-between mb-8 group">
+<div class="w-full md:w-1/2 md:pl-10 pr-6 md:pr-0 pl-0">
+<div class="bg-[#1b2537] border border-border-dark p-4 rounded-xl shadow-lg hover:border-primary/50 transition-colors group-hover:translate-x-[4px] duration-300">
+<div class="flex items-start gap-4">
+<div class="relative shrink-0">
+<div class="size-12 rounded-full bg-cover bg-center border-2 border-[#374151]" data-alt="Portrait of a woman with glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPOa-KCExgLihz2XyASKKX5d-McujAeWjWBUOF42fT7xlKRyWEWTFPaDVqOsgIbY06lM6kmQ97aJEoz_Q7ikrtZjdmjo7OZarSVCo6RlfGwrO_xEpq8DxohuZ4c2E1Fyi__qOYRiaxdeS5KefUIJbg0705K7YKkTtFFn8vbBbNdAW2OXouhxU4fFHoXmfB6jkC3VB7OElbi9z-rJ3u26yFQ9l7k0Qr0rCQ5voGe20Ci__Bix4Fg6lx8SnorPtharYRhYpyIGlVoKg");'></div>
+<div class="absolute -bottom-1 -right-1 bg-gray-500 size-3 rounded-full border-2 border-[#1b2537]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-white font-bold text-base truncate flex items-center gap-1">
+                                                سارة أحمد
+                                            </h3>
+<p class="text-text-muted text-xs mt-0.5">كاتبة محتوى • الرياض</p>
+</div>
+<span class="text-text-muted text-xs whitespace-nowrap bg-[#232f48] px-2 py-0.5 rounded">09:15 ص</span>
+</div>
+<div class="mt-3 flex flex-col gap-1 p-2 rounded bg-[#232f48]/50 border border-[#232f48]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-400 text-[18px]">military_tech</span>
+<span class="text-sm text-gray-300">حصلت على وسام <span class="text-white font-bold">كاتب مميز</span></span>
+</div>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-[#232f48] hover:bg-[#2f3e5e] text-white text-xs font-bold py-1.5 rounded transition-colors">الملف الشخصي</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Node -->
+<div class="absolute right-0 md:right-1/2 translate-x-[50%] flex items-center justify-center size-3 bg-[#101622] rounded-full timeline-node">
+<div class="size-2 bg-gray-500 rounded-full"></div>
+</div>
+<div class="hidden md:block w-1/2"></div>
+</div>
+<!-- Item 3 (Right) -->
+<div class="relative w-full flex items-center justify-between mb-8 group">
+<div class="hidden md:block w-1/2"></div>
+<!-- Node -->
+<div class="absolute right-0 md:right-1/2 translate-x-[50%] flex items-center justify-center size-3 bg-[#101622] rounded-full timeline-node">
+<div class="size-2 bg-gray-500 rounded-full"></div>
+</div>
+<!-- Card -->
+<div class="w-full md:w-1/2 md:pr-10 pl-0 md:pl-0 pr-6">
+<div class="bg-[#1b2537] border border-border-dark p-4 rounded-xl shadow-lg hover:border-primary/50 transition-colors group-hover:translate-x-[-4px] duration-300">
+<div class="flex items-start gap-4">
+<div class="relative shrink-0">
+<div class="size-12 rounded-full bg-cover bg-center border-2 border-[#374151]" data-alt="Abstract avatar with geometric shapes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCcxje-72mdoJApe2wlPGG8PeAYVu931hR_qs0jaC-YDb8b3iRFiuc1qqaSz39VFUjfP8OXkF9um0UT-iGK7xniJMVVcHrsQzYcH3TSqTw5P_eDrgaxyVNENUY9Nq05_dBbgJWuJkDHfKOSb_ypVM9B3qMCjbexZ04byXRs3D8Kf8-gmYjtTTUbeRDXn2Z3t7KFDss6IVWdkswOeT8Bi5AzGHCOP28mtYC-3ajhU_KGn41ggci8hHM5Kw_D-ENNcuTB89x2c_9DC_s");'></div>
+<div class="absolute -bottom-1 -right-1 bg-green-500 size-3 rounded-full border-2 border-[#1b2537]"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-white font-bold text-base truncate flex items-center gap-1">
+                                                يوسف العلي
+                                                <span class="bg-primary/20 text-primary text-[10px] px-1.5 py-0.5 rounded font-bold">مشرف</span>
+</h3>
+<p class="text-text-muted text-xs mt-0.5">مطور ويب • دبي</p>
+</div>
+<span class="text-text-muted text-xs whitespace-nowrap bg-[#232f48] px-2 py-0.5 rounded">08:30 ص</span>
+</div>
+<div class="mt-3 flex items-center gap-2 p-2 rounded bg-[#232f48]/50 border border-dashed border-[#232f48]">
+<span class="material-symbols-outlined text-purple-400 text-[18px]">forum</span>
+<span class="text-sm text-gray-300">أنشأ موضوعاً جديداً في <a class="text-primary hover:underline" href="#">قسم البرمجة</a></span>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold py-1.5 rounded transition-colors">متابعة</button>
+<button class="size-8 flex items-center justify-center bg-[#232f48] hover:bg-[#2f3e5e] text-white rounded transition-colors">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Date Marker: Yesterday -->
+<div class="relative z-10 flex justify-center mb-10 mt-12">
+<div class="bg-[#1b2537] border border-border-dark text-text-muted px-4 py-1.5 rounded-full text-sm font-medium shadow-xl flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-[18px]">history</span>
+                        أمس، 23 أكتوبر
+                    </div>
+</div>
+<!-- Item 4 (Left) -->
+<div class="relative w-full flex flex-row-reverse md:flex-row items-center justify-between mb-8 group opacity-75 hover:opacity-100 transition-opacity">
+<div class="w-full md:w-1/2 md:pl-10 pr-6 md:pr-0 pl-0">
+<div class="bg-[#1b2537] border border-border-dark p-4 rounded-xl shadow-lg hover:border-primary/50 transition-colors">
+<div class="flex items-start gap-4">
+<div class="relative shrink-0">
+<div class="size-12 rounded-full bg-cover bg-center border-2 border-[#374151]" data-alt="Portrait of smiling older man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC4hvhN6Ldhm8EHSp8cZUTo9hANwmn7k0U-y-MbHyyJTH5pR6zZMyzi4Z9tB1Q6S2NjpVJlUd5URB6YP7h3oWBOWmVv3iVpwwee-qnHmT7UAjNaQUl43ueOYPf8btiq4SnMWXrxJJLPad5Awlb0jAKQbux5BtuD4xV_Kqy2jvlDccFmMI-i2UJx-eyy6NUuNOcm3rww4NVOzzirg9aHkxpeWiEj-hfb5KVApVxcIC7j0M-IcMpDwtaNfDiTEP-96JCVmpr7ZPbqrKg");'></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-white font-bold text-base truncate flex items-center gap-1">
+                                                عمر خليل
+                                            </h3>
+<p class="text-text-muted text-xs mt-0.5">مهتم بالتقنية</p>
+</div>
+<span class="text-text-muted text-xs whitespace-nowrap bg-[#232f48] px-2 py-0.5 rounded">11:50 م</span>
+</div>
+<div class="mt-3 flex items-center gap-2 p-2 rounded bg-[#232f48]/50 border border-dashed border-[#232f48]">
+<span class="material-symbols-outlined text-orange-400 text-[18px]">thumb_up</span>
+<span class="text-sm text-gray-300">أعجب بمنشور في <a class="text-primary hover:underline" href="#">أخبار التقنية</a></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Node -->
+<div class="absolute right-0 md:right-1/2 translate-x-[50%] flex items-center justify-center size-3 bg-[#101622] rounded-full timeline-node">
+<div class="size-2 bg-gray-600 rounded-full"></div>
+</div>
+<div class="hidden md:block w-1/2"></div>
+</div>
+</div>
+<!-- Load More -->
+<div class="flex justify-center py-6">
+<button class="group flex flex-col items-center gap-2 text-text-muted hover:text-white transition-colors">
+<div class="size-10 rounded-full bg-[#1b2537] border border-border-dark flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined group-hover:translate-y-0.5 transition-transform">expand_more</span>
+</div>
+<span class="text-sm font-medium">عرض المزيد</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

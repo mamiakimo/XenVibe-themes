@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>الرسائل الخاصة - مجتمع زينفورو</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                        "surface": "#161e2c",
+                        "surface-highlight": "#232f48",
+                        "text-muted": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', 'Noto Sans', sans-serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4c6b; 
+        }
+
+        /* Hide number input spinners */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#232f48] bg-[#111722] px-6 py-3 shrink-0 z-20">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-4xl">diversity_2</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">مجتمع زينفورو</h2>
+</div>
+<!-- Global Navigation Links -->
+<div class="hidden md:flex items-center gap-6 mr-4">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">الرئيسية</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">المنتديات</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">الجديد</a>
+<a class="text-primary text-sm font-bold leading-normal relative" href="#">
+                    الرسائل
+                    <span class="absolute -top-2 -left-3 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white">3</span>
+</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#92a4c9] flex border-none bg-[#232f48] items-center justify-center pl-4 rounded-r-xl border-l-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#232f48] focus:border-none h-full placeholder:text-[#92a4c9] px-4 rounded-r-none border-r-0 pr-2 text-sm font-normal leading-normal" placeholder="بحث عام..." value=""/>
+</div>
+</label>
+<div class="flex items-center gap-3">
+<button class="bg-[#232f48] hover:bg-[#324160] text-white rounded-full size-10 flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-[#232f48]" data-alt="User Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbSAflKlVLBkVUzzcyzCt-0d7cB4tSbtri2jPqhO4uMcoA2aeKkpX47vSvkXy3kvU5nJFXaoNLbpfpB3lY9XMs4cr0i8l8209G8tt9UCH1soifSP5hc13VH4MeM_G6EE_vXB841A_BYT3bf34tqcndyVouGFymk_lIJ_8Ob873yy38iVnkm9YKY92Y-l_NLeHGiTOnFmlMUg9Yhm7l-XZzs6FnzPKJovLP5znoHty1Kk-xPnMEs5COrjO6kuzSSoItUCsUjBvfZYI");'></div>
+</div>
+</div>
+</header>
+<!-- Main Layout Grid (3 Columns) -->
+<div class="flex flex-1 overflow-hidden relative">
+<!-- Column 1: Conversation List (Right Side in RTL) -->
+<aside class="w-full md:w-[350px] flex flex-col border-l border-[#232f48] bg-surface z-10">
+<!-- Header Actions -->
+<div class="p-4 flex flex-col gap-3 border-b border-[#232f48]">
+<div class="flex items-center justify-between mb-2">
+<h1 class="text-xl font-bold text-white">المحادثات</h1>
+<button class="text-primary hover:bg-primary/10 rounded-full p-2 transition-colors" title="إعدادات">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<!-- New Message Button -->
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary hover:bg-primary/90 transition-colors text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>محادثة جديدة</span>
+</button>
+<!-- Search Conversations -->
+<div class="relative w-full h-10">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-[#92a4c9]">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="bg-[#232f48] border-none text-white text-sm rounded-xl focus:ring-1 focus:ring-primary block w-full pr-10 pl-3 py-2.5 placeholder-[#92a4c9]" placeholder="بحث في الرسائل..." type="text"/>
+</div>
+</div>
+<!-- List Items -->
+<div class="flex-1 overflow-y-auto p-2 space-y-1">
+<!-- Active Conversation -->
+<button class="w-full flex items-center gap-3 bg-[#232f48] rounded-xl p-3 hover:bg-[#2c3b59] transition-colors border-r-4 border-primary text-right group">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Avatar Ahmed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuABHOD7z9duU5YhUhWKAUVEW3wHFEA3S90e9b1Y7wyS5AvuK35sGaGaLubQFcz0QpBBRaolxfGYsb3h2sdGv1u1HQGVn54rAZ-Ut6fr_KUYqbLFrOAkeXKgbZ1gskpbfJdgm-PI1HmBbSQP_I1a3q3B8fth5RyVDK5JX90nII7TcHrWQP1TW3vDBc0c3hg5QmPRdiANrQPyQZYsWajmjG-NjEjoO9PbrYKH0rcacAcwSUEk3TRpmz8UaZvftgreG1kfcRNLUktVrW4");'></div>
+<span class="absolute bottom-0 left-0 size-3 bg-green-500 border-2 border-[#232f48] rounded-full"></span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<span class="text-white text-sm font-bold truncate">أحمد (مسؤول)</span>
+<span class="text-[#92a4c9] text-xs">09:41 ص</span>
+</div>
+<p class="text-white text-sm truncate opacity-90">مرحباً، هل راجعت التحديث الأخير للمنصة؟</p>
+</div>
+</button>
+<!-- Unread Conversation -->
+<button class="w-full flex items-center gap-3 rounded-xl p-3 hover:bg-[#232f48] transition-colors text-right group">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Avatar Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9M24w5nlp5PZxC3HPQx5f2ghT5RaxAalwfDAl4VCzcZQETMNzupSL9riRgxBlDxImuEIqwfVzoLw1VgbaIGCOmbUkWevos4FsFyd0TvS0qF0kS1zfTAVjhYIAYbFOapVs545Hdqmm0eQ0qZhEqBcaqy2_Dde704p-Bu_v2GVYlysxmzWDUiyrvBLTV49HSTWQT0--aX9NE5_S0JOnaGDxhUH50qEOX61A-RHFdSvM_-NYG20ir5AHKWpd4CEE-mVYj5Gniu3nX3A");'></div>
+<span class="absolute bottom-0 left-0 size-3 bg-gray-400 border-2 border-[#161e2c] group-hover:border-[#232f48] rounded-full"></span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<span class="text-white text-sm font-medium truncate">سارة محمد</span>
+<span class="text-primary text-xs font-bold">أمس</span>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-[#92a4c9] text-sm truncate font-medium">تم إرسال الملف المطلوب ✅</p>
+<span class="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] text-white font-bold">2</span>
+</div>
+</div>
+</button>
+<!-- Normal Conversation -->
+<button class="w-full flex items-center gap-3 rounded-xl p-3 hover:bg-[#232f48] transition-colors text-right group">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Avatar Tech Team" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOdak8int-8F9-EwBHNmESgLIrFFKyZC2kzGf7KO1L1o_5oXP7VzB1o-_77YrMz1A-M2wNk7PkO7vwtW3rlszMyGzveZoiO53M4GnRZMoDpRq9vn4m1GV-4jFYkt6ATRFoBAH7Z3zQ4FivrcA84Ujpz1CKYIYFZiZtIX5ODZ53KF7pBN1qp8f5Rauy-4xETe4a8KKDDsWkYmShN3bmhMgMj3xs2dlvBb1fM5KYqOn3NkmEYjwIL53Cg6ZDdKoszeNM7bDYWiM0bSM");'></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<span class="text-white text-sm font-medium truncate">فريق الدعم الفني</span>
+<span class="text-[#92a4c9] text-xs">الثلاثاء</span>
+</div>
+<p class="text-[#92a4c9] text-sm truncate">سيتم جدولة الصيانة الأسبوع القادم.</p>
+</div>
+</button>
+<!-- Normal Conversation -->
+<button class="w-full flex items-center gap-3 rounded-xl p-3 hover:bg-[#232f48] transition-colors text-right group">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Avatar User" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD0YdKXBZPTqOyX61A1id9cUIiF5VA1JCFsKInkHb081FyVvGraRRhbPgHYVj7bPwpehb7ADmBoIUCfjm9unCCVH9uh0-DtsmnWzqEwODcvmIZOtDzQSP_20IT_wwWFqGZfdJqMtk1wWsqwPO6tebbN9dqNZz7FeYn7ir5O8s4k_OTjExLvE4EVKCuDVWhwqqGeJplP3OPZ6XGtMwkIYAYzFWWcl3SlYOv6Tu5OHh6nknfqrZSHI4fFU1jLDze4ESOcJZDmG4TcXZE");'></div>
+<span class="absolute bottom-0 left-0 size-3 bg-green-500 border-2 border-[#161e2c] group-hover:border-[#232f48] rounded-full"></span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<span class="text-white text-sm font-medium truncate">خالد عمر</span>
+<span class="text-[#92a4c9] text-xs">الأسبوع الماضي</span>
+</div>
+<p class="text-[#92a4c9] text-sm truncate">شكراً لك، سأقوم بالتجربة.</p>
+</div>
+</button>
+</div>
+</aside>
+<!-- Column 2: Main Chat Area (Center) -->
+<main class="flex-1 flex flex-col bg-background-dark min-w-0">
+<!-- Chat Header -->
+<div class="h-16 border-b border-[#232f48] flex items-center justify-between px-6 bg-surface/50 backdrop-blur-md sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<div class="md:hidden text-white cursor-pointer">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Avatar Ahmed Header" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC6tsmewp31qyidJBjhFWy0neIX0Vv2Ngz9ncljJIKe3QVYkOYgEjeGCychdhqS-mEnkxLYwgQabeUZmU70WQJ-u-q5ijrAciAEEmOE30pYFpzhD5Fx6IVrnpfSu0xL_CnKMaO1mz_-IWHWc7uuNq6zYqJQSkmWiiSjpdurEL436PJeHWh7jKgwIeA7u8g-iHF-MfEBBygwG478M2UUgofGPTaNCLlNeBEMy5jdUT9ObQ-2tLeXMK3kVIU-pV2lnQfY5MQiSht-5EY");'></div>
+<div>
+<h3 class="text-white font-bold text-sm">أحمد (مسؤول)</h3>
+<div class="flex items-center gap-1.5">
+<span class="size-2 rounded-full bg-green-500"></span>
+<span class="text-[#92a4c9] text-xs">متصل الآن</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-[#92a4c9]">
+<button class="p-2 hover:bg-[#232f48] rounded-lg transition-colors" title="مكالمة صوتية">
+<span class="material-symbols-outlined">call</span>
+</button>
+<button class="p-2 hover:bg-[#232f48] rounded-lg transition-colors" title="مكالمة فيديو">
+<span class="material-symbols-outlined">videocam</span>
+</button>
+<div class="h-6 w-px bg-[#232f48] mx-2"></div>
+<button class="p-2 hover:bg-[#232f48] rounded-lg transition-colors" title="بحث في المحادثة">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 hover:bg-[#232f48] rounded-lg transition-colors xl:hidden" title="معلومات">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</div>
+<!-- Messages Stream -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<!-- Date Divider -->
+<div class="flex justify-center">
+<span class="bg-[#232f48] text-[#92a4c9] text-xs px-3 py-1 rounded-full">أمس</span>
+</div>
+<!-- Message Received -->
+<div class="flex gap-4 max-w-[80%]">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shrink-0 self-end" data-alt="Avatar Sender" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUsuMlA8adLrUQin2aQ5d3Se8PV3nygBz99BvPUy0dBvGC4jfWBZ7sFIpZ9OnZsTwZIoa8ElA2MnFPbmbfe5I8eWrjYwHKbBzGyz1lgNVd6h8rJjbvUeQ7GO4oM7QDZd_hFJUTs6FIev5QPGzxrCDSJSFwUobW9jw-kqqSAtUjYbGEgyOfHaj-Rr8ZlKlqN5jjsPX1r6VXIRaDHL0HbwAma_qdHGE-RkcY3JHLd_BYQ6PVFzCtVby3o-Meq5w8bMnJ6yMh3zwpG9U");'></div>
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<span class="text-white text-xs font-bold">أحمد (مسؤول)</span>
+<span class="text-[#92a4c9] text-[10px]">10:30 م</span>
+</div>
+<div class="bg-[#232f48] p-3 rounded-2xl rounded-tr-none text-white text-sm leading-relaxed">
+<p>مرحباً! لاحظت أنك قمت بتقديم طلب للترقية إلى عضوية VIP.</p>
+</div>
+</div>
+</div>
+<!-- Message Sent (Me) -->
+<!-- RTL: "Me" messages are on the left, "Other" on right. -->
+<div class="flex gap-4 max-w-[80%] flex-row-reverse self-end">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shrink-0 self-end" data-alt="My Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCcVE6Agw4vDYjPYkg72HPGTxHKW_LeVwyUioWjjH3Z5z419cp-l0ZKH1HGCDFIpUCKTiUXH3Ar3jmwzAVGEkC9Z2cMoogGZE-3mWBQccfJeeHIhnInkYoB--KfMw8RrLcIvjYnRsjraLhGpI4Nl8toE6VJ0UkAtl5tIa3fjW4C6Qhol930eaOc2hHqfF93Gfna7-ILXm3hzB4El04UrUu-Q1ZV_6g7176AYEw6igaBjkBllesmFywQrijkJHSPmKzbTNHsYXFJMew");'></div>
+<div class="flex flex-col gap-1 items-end">
+<div class="flex items-baseline gap-2 flex-row-reverse">
+<span class="text-white text-xs font-bold">أنا</span>
+<span class="text-[#92a4c9] text-[10px]">10:32 م</span>
+</div>
+<div class="bg-primary p-3 rounded-2xl rounded-tl-none text-white text-sm leading-relaxed text-right">
+<p>أهلاً أحمد، نعم صحيح. هل هناك أي مستندات إضافية مطلوبة؟</p>
+</div>
+<div class="text-[#92a4c9] text-[10px] flex items-center gap-1">
+<span>تمت القراءة</span>
+<span class="material-symbols-outlined text-[12px] text-primary">done_all</span>
+</div>
+</div>
+</div>
+<!-- Message Received with Attachment -->
+<div class="flex gap-4 max-w-[80%]">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shrink-0 self-end" data-alt="Avatar Sender" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuMTGzXhVwBDuY5M4fm9n_vn4hh-bxNkmBtzgNXsbcRLvvkmnxT_U82j8k1pTUnXUZvlq0FffcJgagBZB6cXXMM7ms_B-I5VOfOXvwqUp9_xYogW13Rx57NTmwNUaqWcelyHK8QXK59n3OPEFAnLuQ6nT8wbRIxrtClNyhrQDEkPmkAebmh9dLQ3fZB3QD9IzEmTOUUcySFTFI6LEg0QMBrCyKU_cTaT9WzkEnF_75zW7Gg8RshL6ILAhZwbRvhfQQ0bUYIKDIG1o");'></div>
+<div class="flex flex-col gap-1">
+<div class="bg-[#232f48] p-3 rounded-2xl rounded-tr-none text-white text-sm leading-relaxed">
+<p class="mb-3">نعم، يرجى ملء هذا النموذج وإعادة إرساله.</p>
+<!-- Attachment Card -->
+<div class="flex items-center gap-3 bg-[#161e2c] p-2 rounded-lg border border-[#324160] hover:bg-[#1f2937] transition-colors cursor-pointer">
+<div class="size-10 bg-red-500/20 rounded-lg flex items-center justify-center text-red-500 shrink-0">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-sm font-medium truncate">نموذج_الترقية_v2.pdf</span>
+<span class="text-xs text-[#92a4c9]">2.4 MB</span>
+</div>
+<span class="material-symbols-outlined text-[#92a4c9] mr-auto">download</span>
+</div>
+</div>
+<span class="text-[#92a4c9] text-[10px]">10:35 م</span>
+</div>
+</div>
+<!-- Date Divider -->
+<div class="flex justify-center mt-4">
+<span class="bg-[#232f48] text-[#92a4c9] text-xs px-3 py-1 rounded-full">اليوم</span>
+</div>
+<!-- Message Sent (Me) -->
+<div class="flex gap-4 max-w-[80%] flex-row-reverse self-end">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shrink-0 self-end" data-alt="My Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBO1L0r-ZoYuvZf9W0XIKZC9y9z1BCQinkrp8IY8sKmRQmxuesZTdj6nYZni_Pq33SpL4JGl4V8WyBmfk523TAqqbfJlTdRvGyjfq1TJXUYv4NyVwKFoGNk6TsmauMgotmh0BfiXhdDJ3ZzkkC-vUeD0F2cuJofCNBt2AHbgZMInFKG6RJPQ_aoO0BIeFVSOyu2c4wGsOoldPF4G2qw-FOsmV1J5t7Rxc5x_X9ClU0iATvlaP_a462XVSuxQT78yKEsmxyYN9TFf-U");'></div>
+<div class="flex flex-col gap-1 items-end">
+<div class="bg-primary p-3 rounded-2xl rounded-tl-none text-white text-sm leading-relaxed text-right">
+<p>جاري التحميل... سأقوم بإرساله خلال لحظات 👍</p>
+</div>
+<span class="text-[#92a4c9] text-[10px]">09:41 ص</span>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-surface border-t border-[#232f48]">
+<div class="bg-[#232f48] rounded-xl flex flex-col border border-[#324160] focus-within:border-primary/50 transition-colors">
+<!-- Toolbar -->
+<div class="flex items-center gap-1 p-2 border-b border-[#324160]/50">
+<button class="p-1.5 text-[#92a4c9] hover:text-white hover:bg-[#324160] rounded transition-colors" title="غامق">
+<span class="material-symbols-outlined text-[18px]">format_bold</span>
+</button>
+<button class="p-1.5 text-[#92a4c9] hover:text-white hover:bg-[#324160] rounded transition-colors" title="مائل">
+<span class="material-symbols-outlined text-[18px]">format_italic</span>
+</button>
+<button class="p-1.5 text-[#92a4c9] hover:text-white hover:bg-[#324160] rounded transition-colors" title="قائمة">
+<span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+</button>
+<div class="w-px h-4 bg-[#324160] mx-1"></div>
+<button class="p-1.5 text-[#92a4c9] hover:text-white hover:bg-[#324160] rounded transition-colors" title="إرفاق ملف">
+<span class="material-symbols-outlined text-[18px]">attach_file</span>
+</button>
+<button class="p-1.5 text-[#92a4c9] hover:text-white hover:bg-[#324160] rounded transition-colors" title="إدراج صورة">
+<span class="material-symbols-outlined text-[18px]">image</span>
+</button>
+</div>
+<!-- Textarea -->
+<div class="flex items-end gap-2 p-2">
+<textarea class="w-full bg-transparent border-none text-white placeholder-[#92a4c9] focus:ring-0 resize-none h-10 max-h-32 text-sm leading-relaxed" placeholder="اكتب رسالتك هنا..."></textarea>
+<button class="p-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors shadow-lg shadow-primary/20 mb-0.5">
+<span class="material-symbols-outlined text-[20px] block" style="transform: scaleX(-1);">send</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-center mt-2 px-1">
+<p class="text-[10px] text-[#92a4c9]">اضغط Enter للإرسال، Shift+Enter لسطر جديد</p>
+</div>
+</div>
+</main>
+<!-- Column 3: Context Panel (Left Side in RTL) -->
+<aside class="w-[280px] hidden xl:flex flex-col border-r border-[#232f48] bg-surface overflow-y-auto">
+<div class="p-6 flex flex-col items-center border-b border-[#232f48]">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-24 mb-4 ring-4 ring-[#232f48]" data-alt="Profile Large" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDahgiIl-JkhnaBxSQ8wJiw7poRTgIQEI0feOSy2jxZvWeeTAI9nh-gZVS2rzBPtD3laH0NwRgRWkBKFDHfDWx71C7JqgfyFkQbjASGR-EGtUo9xi1I0SRiBvTpYY4UVOcc_j7clSYci71B_5d8HbWdiPKCpHDgd50olB-XsEY9cquqYW9K63YYAZMGT7cQkKeDWl7uXPtKHbA3g1repskuHFJXX5GA-TTy5VuQzk3GJ-zdV_SlgOaSONWKRcPvqCRyHNAlJmt0Vdc");'></div>
+<h2 class="text-lg font-bold text-white mb-1">أحمد (مسؤول)</h2>
+<p class="text-primary text-sm font-medium mb-4">مدير المنتدى العام</p>
+<div class="flex gap-2 w-full">
+<button class="flex-1 bg-[#232f48] hover:bg-[#324160] text-white py-2 rounded-lg text-sm font-medium transition-colors">الملف الشخصي</button>
+<button class="flex-1 bg-[#232f48] hover:bg-[#324160] text-white py-2 rounded-lg text-sm font-medium transition-colors">تجاهل</button>
+</div>
+</div>
+<!-- Stats -->
+<div class="p-4 grid grid-cols-2 gap-2 border-b border-[#232f48]">
+<div class="bg-[#111722] p-3 rounded-xl flex flex-col items-center">
+<span class="text-[#92a4c9] text-xs">المشاركات</span>
+<span class="text-white font-bold text-lg">5,402</span>
+</div>
+<div class="bg-[#111722] p-3 rounded-xl flex flex-col items-center">
+<span class="text-[#92a4c9] text-xs">التفاعلات</span>
+<span class="text-white font-bold text-lg">12K</span>
+</div>
+</div>
+<!-- Shared Media -->
+<div class="p-4 border-b border-[#232f48]">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-white text-sm font-bold">الوسائط المشتركة</h3>
+<a class="text-primary text-xs hover:underline" href="#">عرض الكل</a>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="aspect-square bg-[#232f48] rounded-lg bg-center bg-cover cursor-pointer hover:opacity-80 transition-opacity" data-alt="Shared Image 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADx31ofB3aA93jYRS4l3jr2baLeKNmTryf2zDJR7tXLuQ4X-pylCkol7aqfoNIOmGW1ZLQ7ri-shZK6pMuJKWzsU4dTozGfqIGLWrHvE9fqbsggDhv2RIIRFR6aY0dV5MApZQNNEr_pNgKay43f-OF9hi28hzrL71xHNOb54k3q1ezci2WtOnniGv18l2l1StvWgD5d1F6riqPH2via_CY0VKbHpplcZe5SBBH4irDt7WWdY9IEaeceJWg054I-FSLrDVSlF_2-_w");'></div>
+<div class="aspect-square bg-[#232f48] rounded-lg bg-center bg-cover cursor-pointer hover:opacity-80 transition-opacity" data-alt="Shared Image 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAstkv1DHkuihIdiwzNsxL9Ol5BI5O5h0Yitu_Nowxx6oSRLIkiOvnN9HQmnBSUwEzAm1mS8x1L9MpGWkW_KvxbPRJ6vUDx77M3akGeeMyUSnjm5ywsio3eouDJPklVTlCUpLA6v5o4J0OU3EAoLme_IPfSg4zF5Cu4FnM9ew5TZOo79Z4ieAHLzQiz90a1_ny1k6SsWVNM8mJ8yovNbFlky_L_6rDUJvvRIyVUgbKjoEa2v1iC64G22AGv1hubMvikYF1mGFc-BFA");'></div>
+<div class="aspect-square bg-[#232f48] rounded-lg bg-center bg-cover cursor-pointer hover:opacity-80 transition-opacity" data-alt="Shared Image 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNInhgioOZ_x_GUI6gF9zTak2Hq6-Wueb64GADvLOIfU8NY59aTzTk5UIHITPpWCN9v1gN41NPJYEUbOqfRKGP8GYNeYI_eJCl3rx2HmV1bG6zR3Cdo6v_BOlb9DlrpMEw70-5Q5IvaP0eTfpPQu3XrcCoP6CqoKV35pU8l8DsrPgrbJv_-AJ8u-IFhyoYeqJud4CEtj_ZESOR1aBjrV104xuhebtF1y_CpXNoSEsvibiozjVJW9ZYAhNblXN77E4i8d5jNNmIzTo");'></div>
+<div class="aspect-square bg-[#232f48] rounded-lg flex items-center justify-center text-[#92a4c9] cursor-pointer hover:bg-[#324160] transition-colors">
+<span class="text-xs font-bold">+12</span>
+</div>
+</div>
+</div>
+<!-- Options -->
+<div class="p-4">
+<h3 class="text-white text-sm font-bold mb-3">خيارات المحادثة</h3>
+<div class="flex flex-col gap-1">
+<button class="flex items-center gap-3 p-2 hover:bg-[#232f48] rounded-lg text-[#92a4c9] hover:text-white transition-colors text-right">
+<span class="material-symbols-outlined text-[20px]">star</span>
+<span class="text-sm">تفضيل المحادثة</span>
+</button>
+<button class="flex items-center gap-3 p-2 hover:bg-[#232f48] rounded-lg text-[#92a4c9] hover:text-white transition-colors text-right">
+<span class="material-symbols-outlined text-[20px]">notifications_off</span>
+<span class="text-sm">كتم الإشعارات</span>
+</button>
+<button class="flex items-center gap-3 p-2 hover:bg-[#232f48] rounded-lg text-[#92a4c9] hover:text-white transition-colors text-right">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span class="text-sm">تنزيل المحادثة</span>
+</button>
+<div class="h-px bg-[#232f48] my-2"></div>
+<button class="flex items-center gap-3 p-2 hover:bg-red-500/10 rounded-lg text-red-500 transition-colors text-right">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="text-sm">مغادرة المحادثة</span>
+</button>
+<button class="flex items-center gap-3 p-2 hover:bg-red-500/10 rounded-lg text-red-500 transition-colors text-right">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+<span class="text-sm">إبلاغ</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

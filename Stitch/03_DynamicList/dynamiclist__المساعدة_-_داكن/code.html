@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DynamicList: المساعدة - داكن</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622", // Deep charcoal/black
+                        "surface-dark": "#192233",    // Slightly lighter for cards
+                        "border-dark": "#324467",     // Muted blue-grey border
+                        "text-secondary": "#92a4c9",  // Muted text
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark text-white font-display antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+<!-- Main Container -->
+<div class="min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-border-dark bg-[#111722]/95 backdrop-blur">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between gap-4">
+<!-- Logo & Search Area -->
+<div class="flex items-center gap-8 flex-1">
+<a class="flex items-center gap-3 text-white hover:opacity-80 transition-opacity" href="#">
+<div class="size-8 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">dns</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight hidden md:block">DynamicList</h2>
+</a>
+<!-- Search Bar (Desktop) -->
+<div class="hidden md:flex max-w-md w-full">
+<label class="relative w-full">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-text-secondary">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-full rounded-xl border border-border-dark bg-surface-dark py-2 pr-10 pl-4 text-sm text-white placeholder-text-secondary focus:border-primary focus:bg-[#1e293b] focus:ring-1 focus:ring-primary transition-all" placeholder="ابحث في المنتديات..." type="text"/>
+</label>
+</div>
+</div>
+<!-- Navigation Links & Actions -->
+<div class="flex items-center gap-2 md:gap-6">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-sm font-medium text-text-secondary hover:text-white transition-colors" href="#">الرئيسية</a>
+<a class="text-sm font-medium text-text-secondary hover:text-white transition-colors" href="#">المنتديات</a>
+<a class="text-sm font-medium text-text-secondary hover:text-white transition-colors" href="#">الأعضاء</a>
+<a class="text-sm font-medium text-white" href="#">المساعدة</a>
+</nav>
+<div class="h-6 w-px bg-border-dark hidden lg:block"></div>
+<div class="flex gap-3">
+<button class="hidden sm:flex h-9 items-center justify-center rounded-lg px-4 text-sm font-bold text-white hover:bg-white/5 transition-colors border border-transparent hover:border-border-dark">
+                                تسجيل الدخول
+                            </button>
+<button class="flex h-9 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold text-white shadow-lg shadow-primary/20 hover:bg-blue-600 transition-all">
+                                تسجيل جديد
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Breadcrumbs -->
+<div class="border-b border-border-dark bg-[#141b29]">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-3">
+<nav class="flex items-center text-sm font-medium text-text-secondary">
+<a class="hover:text-white transition-colors" href="#">الرئيسية</a>
+<span class="mx-2 text-border-dark">/</span>
+<span class="text-white">مركز المساعدة</span>
+</nav>
+</div>
+</div>
+<!-- Hero Search Section -->
+<div class="relative bg-[#111722] py-12 sm:py-16 lg:py-20 border-b border-border-dark">
+<!-- Background Decoration -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-[20%] -right-[10%] w-[50%] h-[80%] rounded-full bg-primary/5 blur-3xl"></div>
+<div class="absolute top-[40%] -left-[10%] w-[40%] h-[60%] rounded-full bg-purple-500/5 blur-3xl"></div>
+</div>
+<div class="relative max-w-[960px] mx-auto px-4 text-center">
+<div class="mb-2 inline-flex items-center gap-2 rounded-full border border-border-dark bg-surface-dark/50 px-3 py-1 backdrop-blur-sm">
+<span class="flex h-2 w-2 rounded-full bg-green-500"></span>
+<span class="text-xs font-medium text-text-secondary">نظام المساعدة نشط ومحدث</span>
+</div>
+<h1 class="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl mb-4">
+                    كيف يمكننا <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-primary">مساعدتك</span> اليوم؟
+                </h1>
+<p class="mx-auto max-w-2xl text-lg text-text-secondary mb-10">
+                    ابحث في قاعدة المعرفة الشاملة لدينا للعثور على إجابات فورية، أو تصفح الأقسام أدناه للحصول على تفاصيل حول القوانين والخصوصية.
+                </p>
+<!-- Search Large -->
+<div class="mx-auto max-w-2xl">
+<label class="relative flex items-center group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none z-10">
+<span class="material-symbols-outlined text-text-secondary group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full h-14 rounded-2xl border border-border-dark bg-surface-dark pr-12 pl-36 text-white placeholder-text-secondary shadow-2xl shadow-black/50 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-lg" placeholder="ابحث عن سؤال، موضوع، أو كلمة مفتاحية..." type="text"/>
+<div class="absolute inset-y-1.5 left-1.5 flex">
+<button class="h-full rounded-xl bg-primary px-6 text-sm font-bold text-white hover:bg-blue-600 transition-colors shadow-lg shadow-blue-900/20">
+                                بحث
+                            </button>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="flex-grow bg-background-dark">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+<!-- Sidebar (Sticky Navigation) -->
+<aside class="w-full lg:w-72 flex-shrink-0">
+<div class="sticky top-24 space-y-8">
+<!-- Categories Navigation -->
+<div>
+<h3 class="text-sm font-bold text-text-secondary uppercase tracking-wider mb-4 px-2">الأقسام الرئيسية</h3>
+<nav class="space-y-1">
+<a class="group flex items-center justify-between rounded-xl bg-primary/10 px-4 py-3 text-white border border-primary/20 shadow-sm" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">verified</span>
+<span class="font-medium">الأساسيات</span>
+</div>
+</a>
+<a class="group flex items-center justify-between rounded-xl px-4 py-3 text-text-secondary hover:bg-surface-dark hover:text-white transition-all border border-transparent hover:border-border-dark" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">manage_accounts</span>
+<span class="font-medium">الحساب والأمان</span>
+</div>
+</a>
+<a class="group flex items-center justify-between rounded-xl px-4 py-3 text-text-secondary hover:bg-surface-dark hover:text-white transition-all border border-transparent hover:border-border-dark" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-medium">قوانين المنتدى</span>
+</div>
+</a>
+<a class="group flex items-center justify-between rounded-xl px-4 py-3 text-text-secondary hover:bg-surface-dark hover:text-white transition-all border border-transparent hover:border-border-dark" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">lock</span>
+<span class="font-medium">الخصوصية</span>
+</div>
+</a>
+</nav>
+</div>
+<!-- Quick Support Card -->
+<div class="rounded-2xl border border-border-dark bg-surface-dark p-6 text-center">
+<div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500/10 text-primary">
+<span class="material-symbols-outlined text-[28px]">support_agent</span>
+</div>
+<h4 class="mb-2 font-bold text-white">لم تجد إجابة؟</h4>
+<p class="mb-6 text-sm text-text-secondary">فريق الدعم لدينا متاح لمساعدتك في أي وقت.</p>
+<button class="w-full rounded-xl border border-border-dark bg-[#111722] py-2.5 text-sm font-bold text-white hover:bg-border-dark/50 transition-colors">
+                                    تواصل معنا
+                                </button>
+</div>
+</div>
+</aside>
+<!-- Main List Content -->
+<div class="flex-1 min-w-0">
+<!-- Section Header -->
+<div class="mb-6 flex items-end justify-between border-b border-border-dark pb-4">
+<div>
+<h2 class="text-2xl font-bold text-white">الأساسيات &amp; البداية</h2>
+<p class="mt-1 text-text-secondary">كل ما تحتاج لمعرفته حول استخدام المنتدى للمرة الأولى.</p>
+</div>
+<span class="hidden sm:inline-block rounded-lg bg-surface-dark px-3 py-1 text-xs font-medium text-text-secondary border border-border-dark">
+                                6 مقالات
+                            </span>
+</div>
+<!-- FAQ Accordion List -->
+<div class="space-y-4">
+<!-- Item 1 -->
+<details class="group rounded-2xl border border-border-dark bg-surface-dark overflow-hidden [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-5 transition hover:bg-[#1e293b]">
+<div class="flex items-center gap-4">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-background-dark border border-border-dark text-text-secondary group-open:text-primary group-open:border-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</div>
+<div>
+<h3 class="font-bold text-white group-open:text-primary transition-colors">كيف يمكنني تغيير كلمة المرور؟</h3>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary transition group-open:-rotate-180">expand_more</span>
+</summary>
+<div class="border-t border-border-dark bg-[#111722]/50 px-5 pb-6 pt-4">
+<p class="text-text-secondary leading-relaxed">
+                                        لتغيير كلمة المرور الخاصة بك، انتقل إلى إعدادات الحساب &gt; الأمان. ستحتاج إلى إدخال كلمة المرور الحالية لتأكيد التغيير. نوصي باستخدام كلمة مرور قوية تتكون من 8 أحرف على الأقل.
+                                    </p>
+<div class="mt-4 flex gap-3">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline" href="#">
+<span>الذهاب للإعدادات</span>
+<span class="material-symbols-outlined text-[14px] rtl:rotate-180">arrow_forward</span>
+</a>
+</div>
+</div>
+</details>
+<!-- Item 2 -->
+<details class="group rounded-2xl border border-border-dark bg-surface-dark overflow-hidden [&amp;_summary::-webkit-details-marker]:hidden" open="">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-5 transition hover:bg-[#1e293b]">
+<div class="flex items-center gap-4">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-background-dark border border-border-dark text-text-secondary group-open:text-primary group-open:border-primary transition-colors">
+<span class="material-symbols-outlined">military_tech</span>
+</div>
+<div>
+<h3 class="font-bold text-white group-open:text-primary transition-colors">ما هي شروط الترقية للعضوية الذهبية؟</h3>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary transition group-open:-rotate-180">expand_more</span>
+</summary>
+<div class="border-t border-border-dark bg-[#111722]/50 px-5 pb-6 pt-4">
+<p class="text-text-secondary leading-relaxed mb-3">
+                                        العضوية الذهبية تمنح للأعضاء الذين يساهمون بشكل فعال في المجتمع. للحصول عليها تلقائياً، يجب عليك تحقيق الشروط التالية:
+                                    </p>
+<ul class="list-disc list-inside space-y-1 text-sm text-text-secondary marker:text-primary">
+<li>نشر 100 مشاركة مفيدة على الأقل.</li>
+<li>مرور 60 يوماً على التسجيل.</li>
+<li>عدم الحصول على أي مخالفات خلال الـ 30 يوماً الماضية.</li>
+</ul>
+</div>
+</details>
+<!-- Item 3 -->
+<details class="group rounded-2xl border border-border-dark bg-surface-dark overflow-hidden [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-5 transition hover:bg-[#1e293b]">
+<div class="flex items-center gap-4">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-background-dark border border-border-dark text-text-secondary group-open:text-primary group-open:border-primary transition-colors">
+<span class="material-symbols-outlined">remove_circle</span>
+</div>
+<div>
+<h3 class="font-bold text-white group-open:text-primary transition-colors">لماذا تم حذف موضوعي أو مشاركتي؟</h3>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary transition group-open:-rotate-180">expand_more</span>
+</summary>
+<div class="border-t border-border-dark bg-[#111722]/50 px-5 pb-6 pt-4">
+<p class="text-text-secondary leading-relaxed">
+                                        نقوم بحذف المحتوى الذي يخالف <a class="text-primary hover:underline" href="#">قوانين المنتدى</a>. الأسباب الشائعة تشمل: المحتوى العشوائي (Spam)، الإساءة للأعضاء الآخرين، أو نشر محتوى ليس له علاقة بالقسم المخصص. يرجى مراجعة رسائلك الخاصة حيث نقوم عادة بإرسال سبب الحذف.
+                                    </p>
+</div>
+</details>
+<!-- Item 4 -->
+<details class="group rounded-2xl border border-border-dark bg-surface-dark overflow-hidden [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-5 transition hover:bg-[#1e293b]">
+<div class="flex items-center gap-4">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-background-dark border border-border-dark text-text-secondary group-open:text-primary group-open:border-primary transition-colors">
+<span class="material-symbols-outlined">flag</span>
+</div>
+<div>
+<h3 class="font-bold text-white group-open:text-primary transition-colors">كيف أبلغ عن محتوى مسيء؟</h3>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary transition group-open:-rotate-180">expand_more</span>
+</summary>
+<div class="border-t border-border-dark bg-[#111722]/50 px-5 pb-6 pt-4">
+<p class="text-text-secondary leading-relaxed">
+                                        يوجد زر "إبلاغ" أسفل كل مشاركة. اضغط عليه، اختر سبب الإبلاغ، وسيقوم فريق الإشراف بمراجعة المحتوى في أقرب وقت ممكن.
+                                    </p>
+</div>
+</details>
+<!-- Item 5 -->
+<details class="group rounded-2xl border border-border-dark bg-surface-dark overflow-hidden [&amp;_summary::-webkit-details-marker]:hidden">
+<summary class="flex cursor-pointer items-center justify-between gap-4 p-5 transition hover:bg-[#1e293b]">
+<div class="flex items-center gap-4">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-background-dark border border-border-dark text-text-secondary group-open:text-primary group-open:border-primary transition-colors">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<div>
+<h3 class="font-bold text-white group-open:text-primary transition-colors">هل يمكنني تغيير مظهر المنتدى؟</h3>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary transition group-open:-rotate-180">expand_more</span>
+</summary>
+<div class="border-t border-border-dark bg-[#111722]/50 px-5 pb-6 pt-4">
+<p class="text-text-secondary leading-relaxed">
+                                        نعم، يدعم المنتدى الوضع النهاري والوضع الليلي. يمكنك التبديل بينهما من خلال الأيقونة الموجودة في أسفل الصفحة (تذييل الموقع) أو من إعدادات التفضيلات في لوحة التحكم الخاصة بك.
+                                    </p>
+</div>
+</details>
+</div>
+<!-- Pagination/Show More -->
+<div class="mt-8 flex justify-center">
+<button class="flex items-center gap-2 rounded-xl bg-surface-dark px-6 py-3 text-sm font-bold text-white hover:bg-border-dark transition-colors border border-border-dark">
+<span>عرض المزيد من الأسئلة</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-dark bg-[#0d121c] py-8">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-text-secondary">© 2023 DynamicList Forum. جميع الحقوق محفوظة.</p>
+<div class="flex items-center gap-6 text-sm font-medium text-text-secondary">
+<a class="hover:text-white transition-colors" href="#">الشروط والقوانين</a>
+<a class="hover:text-white transition-colors" href="#">سياسة الخصوصية</a>
+<a class="hover:text-white transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[16px]">language</span>
+                        العربية
+                    </a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

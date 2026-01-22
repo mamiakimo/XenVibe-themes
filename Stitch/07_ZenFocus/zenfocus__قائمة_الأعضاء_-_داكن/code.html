@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus: Members List</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                        "surface-dark": "#1a2230", // Slightly lighter for cards/lists
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #324467; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased min-h-screen flex flex-col">
+<!-- Main Wrapper -->
+<div class="relative flex flex-col w-full h-full grow overflow-x-hidden">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-solid border-border-dark bg-background-dark/95 backdrop-blur-sm px-6 py-3 lg:px-10">
+<div class="flex items-center gap-4 text-white">
+<div class="flex items-center justify-center size-8 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-[20px]">spa</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">ZenFocus</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-6 lg:gap-9">
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Forums</a>
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">What's New</a>
+<a class="text-white text-sm font-medium leading-normal" href="#">Members</a>
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Help</a>
+</nav>
+<div class="flex gap-3">
+<button class="group flex items-center justify-center size-10 rounded-full hover:bg-border-dark transition-colors text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="group flex items-center justify-center size-10 rounded-full hover:bg-border-dark transition-colors text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border border-border-dark cursor-pointer ml-2" data-alt="User profile avatar showing a generic gradient or silhouette" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3crMAxwC3rkdkDOHXyjtdH2qB23hn6Vi5vlaQ0e2p1aygkl2EqWq45LLaCtLnU15wOMMlgpujPoWQGCHRBUH_jvZekwvsJuuctPbMdEK7vkcTC3Fro_u-2yJ7rNw5CboDDfoeoy9sMV5TaVG3pjxmzc-zhDBSMxwYya5AlMLnRs9J3P7eMFqthy6I8cT-fP7aDqO8H33UURTexnAYymZ1aHXJtXvISJ2HbnVMHm4qbf_gCm0UYYSiKCIWT2-YoyQEvUledbSW6u8");'></div>
+</div>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden flex items-center justify-center size-10 text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex justify-center py-8 px-4 sm:px-6 md:px-10 lg:px-40">
+<div class="flex flex-col w-full max-w-[960px] gap-6">
+<!-- Page Heading & Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-border-dark/50">
+<div class="flex flex-col gap-1">
+<h1 class="text-white tracking-tight text-3xl font-bold">Members Directory</h1>
+<p class="text-text-secondary text-sm font-normal">Browsing 1,240 active community members</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center gap-2 h-9 px-4 rounded-lg bg-primary hover:bg-primary/90 text-white text-sm font-medium transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>Invite Friend</span>
+</button>
+</div>
+</div>
+<!-- Filters & Search Container -->
+<div class="flex flex-col gap-4">
+<!-- Tabs -->
+<div class="flex flex-wrap items-center justify-between gap-4 border-b border-border-dark pb-0.5">
+<div class="flex gap-6 overflow-x-auto no-scrollbar">
+<a class="relative pb-3 text-white text-sm font-medium after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary transition-colors" href="#">
+                                All Members
+                            </a>
+<a class="relative pb-3 text-text-secondary hover:text-white text-sm font-medium after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-border-dark after:transition-all transition-colors" href="#">
+                                Staff
+                            </a>
+<a class="relative pb-3 text-text-secondary hover:text-white text-sm font-medium after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-border-dark after:transition-all transition-colors" href="#">
+                                Most Active
+                            </a>
+<a class="relative pb-3 text-text-secondary hover:text-white text-sm font-medium after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-border-dark after:transition-all transition-colors" href="#">
+                                Newest
+                            </a>
+</div>
+<!-- Inline Search -->
+<div class="hidden sm:flex relative group w-64 mb-2">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-primary transition-colors material-symbols-outlined text-[20px]">search</span>
+<input class="w-full bg-surface-dark border border-border-dark rounded-full py-1.5 pl-10 pr-4 text-sm text-white placeholder-text-secondary focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all" placeholder="Find member..." type="text"/>
+</div>
+</div>
+<!-- Mobile Search (Visible only on small screens) -->
+<div class="sm:hidden relative w-full">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary material-symbols-outlined text-[20px]">search</span>
+<input class="w-full bg-surface-dark border border-border-dark rounded-lg py-2.5 pl-10 pr-4 text-sm text-white placeholder-text-secondary focus:outline-none focus:border-primary/50" placeholder="Find a member by name..." type="text"/>
+</div>
+</div>
+<!-- Alphabetical Quick Jump (Optional but Zen-like) -->
+<div class="flex flex-wrap gap-1 md:gap-2 justify-center py-2">
+<button class="text-[10px] md:text-xs font-medium text-primary px-1.5 md:px-2 py-1 rounded bg-primary/10">#</button>
+<button class="text-[10px] md:text-xs font-medium text-text-secondary hover:text-white hover:bg-border-dark px-1.5 md:px-2 py-1 rounded transition-colors">A</button>
+<button class="text-[10px] md:text-xs font-medium text-text-secondary hover:text-white hover:bg-border-dark px-1.5 md:px-2 py-1 rounded transition-colors">B</button>
+<button class="text-[10px] md:text-xs font-medium text-text-secondary hover:text-white hover:bg-border-dark px-1.5 md:px-2 py-1 rounded transition-colors">C</button>
+<button class="text-[10px] md:text-xs font-medium text-text-secondary hover:text-white hover:bg-border-dark px-1.5 md:px-2 py-1 rounded transition-colors">D</button>
+<!-- ... truncated for brevity ... -->
+<button class="text-[10px] md:text-xs font-medium text-text-secondary hover:text-white hover:bg-border-dark px-1.5 md:px-2 py-1 rounded transition-colors">Z</button>
+</div>
+<!-- Members List -->
+<div class="flex flex-col bg-surface-dark rounded-xl overflow-hidden shadow-sm border border-border-dark/50">
+<!-- List Header Row (Desktop) -->
+<div class="hidden md:grid grid-cols-12 gap-4 px-6 py-3 bg-background-dark/50 border-b border-border-dark text-xs font-semibold text-text-secondary uppercase tracking-wider">
+<div class="col-span-5">User</div>
+<div class="col-span-3">Role</div>
+<div class="col-span-2 text-right">Messages</div>
+<div class="col-span-2 text-right">Last Active</div>
+</div>
+<!-- List Item 1 -->
+<div class="group flex flex-col md:grid md:grid-cols-12 gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 items-center border-b border-border-dark hover:bg-white/[0.02] transition-colors">
+<div class="w-full md:col-span-5 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 md:size-9 shadow-sm shrink-0" data-alt="Profile picture of Sarah Jenkins" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAT8_qvtDc4GAW1WMPAbvFyQHV7bSQvqw9_yB-in7FbyqymmDHZJ_Mka1wyLomyJayefY251Y4n04i9uh2Bm-lYlpFfMB8zzgHsQczgjF5ejgOY8iJ02fQ3wNWImTSgPthMvS5g-VGyRvo2p_6sBC67C2VJFHcdSVpgUkz3hWvrCL8dbZO0sZMdP-HCr5i6gjzjPuM3d7GLNrJho-xpnh1_v6QTuYqg8qK3wcXjnZYfkfS946rvmhp9P76xA_jqd_GhiZ2nvdEXHmM");'></div>
+<div class="flex flex-col">
+<a class="text-white text-sm md:text-base font-medium group-hover:text-primary transition-colors line-clamp-1" href="#">Sarah Jenkins</a>
+<span class="md:hidden text-xs text-text-secondary">Administrator</span>
+</div>
+</div>
+<div class="hidden md:flex md:col-span-3 items-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">
+                                Administrator
+                            </span>
+</div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary font-mono">
+                            15.4k
+                        </div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary">
+                            2m ago
+                        </div>
+</div>
+<!-- List Item 2 -->
+<div class="group flex flex-col md:grid md:grid-cols-12 gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 items-center border-b border-border-dark hover:bg-white/[0.02] transition-colors">
+<div class="w-full md:col-span-5 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 md:size-9 shadow-sm shrink-0" data-alt="Profile picture of Michael Chen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPScby1P4ES2b4NN0MXDWBVoWBxlTfngrCSW9OIRB6JIjDqRmHvu_WTBgCXjAiMgHQKV_8gqpHEIJYhWV-w6FK92fzHKhVEVspn2xhbb2kn7eBSqzwnr2n9V_d29JUU_GMroYV4Vif8VBmXfCKb1VRu2ToPUdqa4TfjyrAhxY9ivqxlkKmF4-sRCWFUDqc-weinUKC4Y3mlGcfJkQSwsj8v8XJ2ap1JnT8_VAxP3oV-luVsasLOmsf6DZbFqzafaHCIXwcEZ7mOp4");'></div>
+<div class="flex flex-col">
+<a class="text-white text-sm md:text-base font-medium group-hover:text-primary transition-colors line-clamp-1" href="#">Michael Chen</a>
+<span class="md:hidden text-xs text-text-secondary">Moderator</span>
+</div>
+</div>
+<div class="hidden md:flex md:col-span-3 items-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">
+                                Moderator
+                            </span>
+</div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary font-mono">
+                            8.2k
+                        </div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary">
+                            1h ago
+                        </div>
+</div>
+<!-- List Item 3 -->
+<div class="group flex flex-col md:grid md:grid-cols-12 gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 items-center border-b border-border-dark hover:bg-white/[0.02] transition-colors">
+<div class="w-full md:col-span-5 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 md:size-9 shadow-sm shrink-0 grayscale opacity-80" data-alt="Profile picture of Alex Morgan" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfk_guhGalTCy1m1FfGHdWGwwutoCkzg8edpa809z2CT0oD-jpSmQ3-3gpzUb2BvJOnbz0CuPmrZpc3RTRvIbSV6mrTIQc2osgrCl2zjTYeq_LUd8uEN8WuDVplVrzYWtLd75o_yjTbLK_RxhLECvzHyoS_vslFr8_NswnO9sniMc9pltiWlxPxkhtVIgWCQz0hZo8bBN1ZDY3d309BHn1NeD2Zk_QkuRVgYfHi_K_5aVwQurcU942uNi8_nWauPDnkcULvroR-Ec");'></div>
+<div class="flex flex-col">
+<a class="text-white text-sm md:text-base font-medium group-hover:text-primary transition-colors line-clamp-1" href="#">Alex Morgan</a>
+<span class="md:hidden text-xs text-text-secondary">Premium Member</span>
+</div>
+</div>
+<div class="hidden md:flex md:col-span-3 items-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary border border-primary/20">
+                                Premium Member
+                            </span>
+</div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary font-mono">
+                            342
+                        </div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary">
+                            1d ago
+                        </div>
+</div>
+<!-- List Item 4 -->
+<div class="group flex flex-col md:grid md:grid-cols-12 gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 items-center border-b border-border-dark hover:bg-white/[0.02] transition-colors">
+<div class="w-full md:col-span-5 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 md:size-9 shadow-sm shrink-0" data-alt="Profile picture of Jessica Wu" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBIZm5uva6sf2Zy6vmOom7zgbUTTSoCmdgj7xyNzHCpkFJr-M7WyEs_LlWFuFKwfqQIvUp4HQrXkj-I2HnMbR-mR2U0iHP7Ni7nm5x4g7kRw1CbcoO9YWWsXgCJC8ejZC1siTgBszmuOsc1BDNK1eSL7BfREznCIXT7prrAkLbceUiYP7eW8LE2_39MeSkQ8yrcvgFMCm_zF81OPQtHzOALAz1SVpeu-IU8i7SM80Ut__rmQOA23Uqhb8js29JKmEZ0vYbnFFR81fw");'></div>
+<div class="flex flex-col">
+<a class="text-white text-sm md:text-base font-medium group-hover:text-primary transition-colors line-clamp-1" href="#">Jessica Wu</a>
+<span class="md:hidden text-xs text-text-secondary">Well-Known Member</span>
+</div>
+</div>
+<div class="hidden md:flex md:col-span-3 items-center">
+<span class="text-sm text-text-secondary">Well-Known Member</span>
+</div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary font-mono">
+                            1.2k
+                        </div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary">
+                            3d ago
+                        </div>
+</div>
+<!-- List Item 5 -->
+<div class="group flex flex-col md:grid md:grid-cols-12 gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 items-center border-b border-border-dark hover:bg-white/[0.02] transition-colors">
+<div class="w-full md:col-span-5 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 md:size-9 shadow-sm shrink-0" data-alt="Profile picture of David Ross" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBUhgeA9QNafjwWkA2jc7oTyMB9UJcqALNKGyLNsZjPLXh_3tjaKAy1huvHxo30FcECZ8q0sSJhy7x8KLwoaTVqqHG691cV_LAvDePWqwtoMvs7kUJZHQsx5MoB0_juGP6wgiRkQkochsqL2zZ53rGoO4hbn9bSigZXFsat7bAoqQEkS6x6fP-161aTT4BVcD4JBz5v1IAmc56Zmv-N86z53b4trnUP2Ce8PVLeeKbC_06EPwePwcF3q2DrJTpU5o4hvCgLBahfBLQ");'></div>
+<div class="flex flex-col">
+<a class="text-white text-sm md:text-base font-medium group-hover:text-primary transition-colors line-clamp-1" href="#">David Ross</a>
+<span class="md:hidden text-xs text-text-secondary">New Member</span>
+</div>
+</div>
+<div class="hidden md:flex md:col-span-3 items-center">
+<span class="text-sm text-text-secondary">New Member</span>
+</div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary font-mono">
+                            12
+                        </div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary">
+                            5d ago
+                        </div>
+</div>
+<!-- List Item 6 -->
+<div class="group flex flex-col md:grid md:grid-cols-12 gap-3 md:gap-4 px-4 md:px-6 py-3 md:py-4 items-center hover:bg-white/[0.02] transition-colors">
+<div class="w-full md:col-span-5 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 md:size-9 shadow-sm shrink-0 opacity-70" data-alt="Profile picture of Liam Neeson (placeholder)" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbcy54qdmSVBk1vEJx20FrF2dGckJlpotDofNc8lxah8E54lH4wxEgeyDP0FeYmleglKnyKqyWeBZvZ9TXWvKSmRCCu3xrFrovytS_BVh6RajNSG8gOMZwl4bndkyWgLzkS-vXpjEXIMB7MHTisPfCIqt1mTt6bFeBzzjkPleL1HM6nvV4C8uSylHU5bTo4YEBJx7OsHPkFkyLCm87R54vJMI5WoFaRAd0oQyPkksvgRIuVinhDncz6MrKw5hJKrCm9NiqTqUBewk");'></div>
+<div class="flex flex-col">
+<a class="text-white text-sm md:text-base font-medium group-hover:text-primary transition-colors line-clamp-1" href="#">Liam N.</a>
+<span class="md:hidden text-xs text-text-secondary">Member</span>
+</div>
+</div>
+<div class="hidden md:flex md:col-span-3 items-center">
+<span class="text-sm text-text-secondary">Member</span>
+</div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary font-mono">
+                            45
+                        </div>
+<div class="hidden md:flex md:col-span-2 items-center justify-end text-sm text-text-secondary">
+                            1w ago
+                        </div>
+</div>
+</div>
+<!-- Simple Pagination -->
+<div class="flex items-center justify-between pt-4">
+<p class="text-xs text-text-secondary">Showing 1 to 20 of 1,240</p>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-8 rounded-lg bg-surface-dark border border-border-dark text-text-secondary opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded-lg bg-surface-dark border border-border-dark text-white hover:bg-border-dark transition-colors">
+<span class="text-xs font-medium">1</span>
+</button>
+<button class="hidden sm:flex items-center justify-center size-8 rounded-lg bg-transparent text-text-secondary hover:text-white transition-colors">
+<span class="text-xs font-medium">2</span>
+</button>
+<button class="hidden sm:flex items-center justify-center size-8 rounded-lg bg-transparent text-text-secondary hover:text-white transition-colors">
+<span class="text-xs font-medium">3</span>
+</button>
+<span class="text-text-secondary text-xs">...</span>
+<button class="hidden sm:flex items-center justify-center size-8 rounded-lg bg-transparent text-text-secondary hover:text-white transition-colors">
+<span class="text-xs font-medium">62</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded-lg bg-surface-dark border border-border-dark text-white hover:bg-border-dark transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

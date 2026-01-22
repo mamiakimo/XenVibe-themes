@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TimelinePulse: المميز - داكن</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#1a2234",
+                        "card-dark-hover": "#232d42",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568;
+        }
+        
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 50%; /* Centered for the spine */
+            width: 2px;
+            background: linear-gradient(to bottom, #135bec 0%, #2d3748 50%, #2d3748 100%);
+            transform: translateX(50%);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200 antialiased min-h-screen flex flex-col">
+<!-- Navbar -->
+<nav class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0">
+<span class="text-2xl font-bold text-primary tracking-tight">TimelinePulse</span>
+</div>
+<div class="hidden md:block">
+<div class="flex items-baseline space-x-4 space-x-reverse">
+<a class="bg-primary/10 text-primary px-3 py-2 rounded-lg text-sm font-medium" href="#">الرئيسية</a>
+<a class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors" href="#">المنتديات</a>
+<a class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors" href="#">الأعضاء</a>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full text-gray-500 hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-icons">search</span>
+</button>
+<button class="p-2 rounded-full text-gray-500 hover:text-primary dark:hover:text-white transition-colors">
+<span class="material-icons">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-gradient-to-tr from-primary to-purple-500 p-[2px]">
+<img alt="صورة الملف الشخصي" class="h-full w-full rounded-full object-cover border-2 border-background-dark" data-alt="User avatar smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL2m5MMRmyhQZp_Sl9RdEg0zqWrWYyUU_hOtEb_A3E95bFfOiWEOgQbILcOk4tet6c37Yu34gnwt3JMLJZBKc2GeqlYNq-saFmf1aimvNDdC4vOBZKOzknMzmwCMKHWsdR2OunFdRdPyd0raT4ghmz4dhbjeidwEcq_GyAbHfT61jtm_WJKxU8kFfc-FeaPkP-6tkB4RJTYCP_2FqPpYVKGCnDowNc2nEcco6mV2VvCTlhtrxRp3siRbziC3ofsAxbbuTBAQa9xsg"/>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Header Section -->
+<div class="mb-12 text-center relative">
+<div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+<div class="w-64 h-64 bg-primary blur-[100px] rounded-full"></div>
+</div>
+<h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 relative z-10">الخط الزمني المميز</h1>
+<p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto relative z-10">اكتشف أبرز النقاشات والأحداث في مجتمعنا من خلال تجربة تصفح زمنية تفاعلية.</p>
+<!-- Filter Bar -->
+<div class="mt-8 inline-flex bg-white dark:bg-card-dark rounded-full p-1 shadow-lg border border-gray-200 dark:border-gray-700 relative z-10">
+<button class="px-6 py-2 rounded-full bg-primary text-white text-sm font-medium shadow-md transition-all">الكل</button>
+<button class="px-6 py-2 rounded-full text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white text-sm font-medium transition-colors">أخبار</button>
+<button class="px-6 py-2 rounded-full text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white text-sm font-medium transition-colors">نقاشات</button>
+<button class="px-6 py-2 rounded-full text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white text-sm font-medium transition-colors">مقالات</button>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8 relative">
+<!-- Right Sidebar (Sticky Navigation / Minimap) -->
+<aside class="hidden lg:block w-64 flex-shrink-0 order-2 lg:order-1 sticky top-24 h-fit">
+<div class="bg-white dark:bg-card-dark rounded-2xl p-6 border border-gray-200 dark:border-gray-800 shadow-sm">
+<h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">التصفح السريع</h3>
+<ul class="space-y-4 relative border-r-2 border-gray-200 dark:border-gray-700 mr-2 pr-4">
+<li class="relative group">
+<span class="absolute -right-[21px] top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-primary border-2 border-white dark:border-card-dark"></span>
+<a class="block text-primary font-medium text-sm transition-colors" href="#">اليوم</a>
+</li>
+<li class="relative group">
+<span class="absolute -right-[21px] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-primary transition-colors"></span>
+<a class="block text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-white text-sm transition-colors" href="#">الأمس</a>
+</li>
+<li class="relative group">
+<span class="absolute -right-[21px] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-primary transition-colors"></span>
+<a class="block text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-white text-sm transition-colors" href="#">الأسبوع الماضي</a>
+</li>
+<li class="relative group">
+<span class="absolute -right-[21px] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-primary transition-colors"></span>
+<a class="block text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-white text-sm transition-colors" href="#">أكتوبر 2023</a>
+</li>
+</ul>
+</div>
+<div class="mt-6 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl p-6 border border-primary/10">
+<h4 class="text-primary font-bold mb-2">كن متميزاً</h4>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-4">شارك بأفضل ما لديك ليتم تمييز محتواك هنا.</p>
+<button class="w-full py-2 bg-primary hover:bg-blue-700 text-white text-sm rounded-lg transition-colors shadow-lg shadow-primary/30">
+                        ابدأ موضوعاً جديداً
+                    </button>
+</div>
+</aside>
+<!-- Main Timeline Section -->
+<div class="flex-grow relative timeline-line pb-20 order-1 lg:order-2">
+<!-- Timeline Item: Large Featured (Right Aligned in RTL context visually, but structurally we alternate) -->
+<!-- Since it's RTL, "right" is the start. We will alternate items left and right of the spine. -->
+<!-- Date Header -->
+<div class="flex justify-center mb-12 relative z-10">
+<span class="px-4 py-1 rounded-full bg-primary text-white text-xs font-bold shadow-lg shadow-primary/40 uppercase tracking-widest">اليوم</span>
+</div>
+<!-- Item 1 (Right Side) -->
+<div class="relative flex items-center justify-between md:justify-normal w-full mb-12 group">
+<div class="order-1 md:w-5/12"></div> <!-- Spacer for alternating layout -->
+<!-- Node -->
+<div class="z-20 flex items-center order-1 bg-background-light dark:bg-background-dark shadow-xl w-10 h-10 rounded-full border-4 border-primary absolute right-0 md:right-1/2 translate-x-1/2 md:translate-x-1/2">
+<span class="material-icons text-primary text-sm mx-auto">star</span>
+</div>
+<!-- Content Card -->
+<div class="order-1 md:w-5/12 px-4 md:px-0 mr-12 md:mr-[54%] md:ml-0">
+<div class="bg-white dark:bg-card-dark p-0 rounded-2xl shadow-md border border-gray-200 dark:border-gray-800 hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden group-hover:shadow-primary/10">
+<!-- Hero Image -->
+<div class="h-48 w-full bg-gray-200 dark:bg-gray-800 relative">
+<img alt="تكنولوجيا المستقبل" class="w-full h-full object-cover" data-alt="Cyberpunk style abstract technology background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAznbx0EMoASztuuSvgxTR5zwPX6k8-MBPbcx60oe_1D9LgOQjvcpYstks1YV6Ob3B6Nr0_6-ovreq13jFVT5W8vB0fzCZiKmHqtnovoM6iGT-5NLm0LpkxU0RPZvplKMwUUZyMsXcENI7GVejQMt6yVJKy9C5R124YGh3UyBM8AQXR5z9CCh-aKFBZLG9jQJobtN39Btm4WJQEyuF4HqgWm8OxKdPtX_Fc91xVY2FrYiGiESTiKsHtsIJ8J0S3OSJQgnthLxEepIc"/>
+<div class="absolute top-4 right-4 bg-primary/90 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">مقال مميز</div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-3 mb-3">
+<img alt="أحمد محمد" class="w-8 h-8 rounded-full border border-gray-700" data-alt="Male user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-CcniQy5OZ8IT0BbE3smbY_KfOT66-y8-wyC6QD7S3za-SN70L51ExkAF8tG_4DXkU19MEdSmVrLsMEm3fORbW_OEb1ElbYDY-AHOERpHPnoIjjIjimEdujwNYZCaIh8-dwBYWz-twvRfhtoIjn7z7MTDBA0pl5-rBx0yL_QWkM68um1D9M3jqq3FWKK_JBo5PNoEl_pjf2kyalfR7TuymZa72-b9GxVSW-UuWrE_azu0DJ3c4on5HdS7dnhIcze5fR5_dqa7s3g"/>
+<div class="text-xs text-gray-500 dark:text-gray-400">
+<span class="text-gray-900 dark:text-white font-semibold">أحمد محمد</span> • منذ ساعتين
+                                    </div>
+</div>
+<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 leading-tight hover:text-primary cursor-pointer">مستقبل الذكاء الاصطناعي في تطوير الويب: نظرة شاملة</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                                    استكشف كيف تغير أدوات الذكاء الاصطناعي طريقة كتابة الكود وتصميم الواجهات، وماذا يعني ذلك للمطورين في السنوات القادمة.
+                                </p>
+<div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+<div class="flex gap-4">
+<button class="flex items-center gap-1 text-xs text-gray-500 hover:text-primary transition-colors">
+<span class="material-icons text-base">thumb_up</span> 142
+                                        </button>
+<button class="flex items-center gap-1 text-xs text-gray-500 hover:text-primary transition-colors">
+<span class="material-icons text-base">chat_bubble</span> 34
+                                        </button>
+</div>
+<button class="text-primary text-sm font-semibold hover:underline">قراءة المزيد</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 (Left Side) -->
+<div class="relative flex items-center justify-between md:justify-normal w-full mb-12 flex-row-reverse group">
+<div class="order-1 md:w-5/12"></div> <!-- Spacer -->
+<!-- Node -->
+<div class="z-20 flex items-center order-1 bg-card-dark shadow-xl w-3 h-3 rounded-full border-2 border-primary absolute right-0 md:right-1/2 translate-x-1/2 md:translate-x-1/2 bg-white dark:bg-card-dark"></div>
+<!-- Content Card -->
+<div class="order-1 md:w-5/12 px-4 md:px-0 mr-12 md:mr-0 md:ml-[54%]">
+<div class="bg-white dark:bg-card-dark p-6 rounded-2xl shadow-md border border-gray-200 dark:border-gray-800 hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 relative">
+<!-- Badge -->
+<div class="absolute -top-3 -right-3">
+<span class="flex h-6 w-6 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-6 w-6 bg-red-500 items-center justify-center">
+<span class="material-icons text-white text-[10px]">local_fire_department</span>
+</span>
+</span>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<img alt="سارة علي" class="w-8 h-8 rounded-full border border-gray-700" data-alt="Female user avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANuoGtMHNpNuSCF9kz15dBNDL6FhRbLHema8lsOiiQDsVKild0sMZ1bF_BJxVKWiPItcrm2Qg0I9LoX4g-7kBvbGkzkoRfyZcF9ir0ebHCeec51cVSpMQCAF3PZ1mIHMBOkVDwL68R0oEM_EWJ7cTWhffgxAOLdFLWD6TjPGeLmW3KS2RnCPM8ijex_2ANgTgGLgu8Q_i49ZvjMUQpDZIK0cReMoxfajyn4OE98sfPX626TdW87zXt-SNqGAOiPxzZgTXblmGLhVw"/>
+<div class="text-xs text-gray-500 dark:text-gray-400">
+<span class="text-gray-900 dark:text-white font-semibold">سارة علي</span> • منذ 5 ساعات
+                                </div>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 hover:text-primary cursor-pointer">نقاش ساخن: أفضل أطر عمل جافاسكريبت لعام 2024</h3>
+<div class="bg-background-light dark:bg-background-dark p-3 rounded-lg mb-4 border border-gray-200 dark:border-gray-700">
+<p class="text-sm italic text-gray-500 dark:text-gray-400">"أعتقد أن Svelte ستأخذ حصة سوقية أكبر هذا العام بسبب بساطتها..."</p>
+</div>
+<div class="flex items-center gap-4 text-xs text-gray-500">
+<span class="flex items-center gap-1"><span class="material-icons text-base">group</span> 56 مشارك</span>
+<span class="flex items-center gap-1"><span class="material-icons text-base">forum</span> 128 رد</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Date Header -->
+<div class="flex justify-center mb-12 relative z-10">
+<span class="px-4 py-1 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-bold border border-gray-300 dark:border-gray-700">الأمس</span>
+</div>
+<!-- Item 3 (Right Side) -->
+<div class="relative flex items-center justify-between md:justify-normal w-full mb-12 group">
+<div class="order-1 md:w-5/12"></div>
+<div class="z-20 flex items-center order-1 bg-white dark:bg-card-dark shadow-xl w-8 h-8 rounded-full border-2 border-green-500 absolute right-0 md:right-1/2 translate-x-1/2 md:translate-x-1/2 justify-center">
+<span class="material-icons text-green-500 text-xs">check</span>
+</div>
+<div class="order-1 md:w-5/12 px-4 md:px-0 mr-12 md:mr-[54%] md:ml-0">
+<div class="bg-white dark:bg-card-dark p-5 rounded-2xl shadow-md border border-gray-200 dark:border-gray-800 hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-1 flex gap-4">
+<div class="flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden hidden sm:block">
+<img alt="صورة توضيحية للكود" class="w-full h-full object-cover" data-alt="Laptop with code on screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ-I6Fd9lkR1SL3OQAgtMC6k3eKnVnZNtKHmkH97dXy3V8f6RL4k3dG-DARtv31zptONFSbmz0luAG5VrCuJeYtHMOTsjP2ItshbpI612BMnEQWl7L8AoSgIcXglTWyxvAefwkOf1x9Pm7hlEm8JhbbYvdXIVvWOpi6O8DVk1Ktsv_SQi7F5h7IyluSMdWZiXNUtQ_e56iKj7e1Xj1IoWSBgjVavpKvJtVAW63YZyHY0GKAXMGYOzuwCAc-m7GvOEBFDQKQITDDNo"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<img alt="خالد عمر" class="w-6 h-6 rounded-full" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhPNVCFOYCE95ALSAFKNkinucvFoG0rGPxsZDY8VC2xJeQTXGWX0LZ6ZXMpjYkuQDPvnL1h_VPdbKx2gALugEe-7Jme4ylGWbylEFiUDIO2KgE6osqpX-FzvHQIK_Nr1q82_7JlFOdrmIPQmNRdKtQa9hRF-DiBj1-TA7lBNKI5rEl5Oyde6I-YyhPTyoLPnwaTn-UHFd9UKDn1bb_3Psdrk2NC6HtG3YeQYmLRTKzLD3-dfKIEGFSYqhWkI8lbnQH5dAKWAzIYyw"/>
+<span class="text-xs text-gray-500 dark:text-gray-400">خالد عمر</span>
+</div>
+<span class="bg-green-500/10 text-green-500 text-[10px] px-2 py-0.5 rounded font-medium">محلولة</span>
+</div>
+<h3 class="text-base font-bold text-gray-900 dark:text-white mb-1 hover:text-primary cursor-pointer">مشكلة في الاتصال بقاعدة البيانات MongoDB</h3>
+<p class="text-xs text-gray-500 dark:text-gray-400 mb-2">تم حل المشكلة بواسطة فريق الدعم الفني.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 4 (Left Side) - Quote/Status -->
+<div class="relative flex items-center justify-between md:justify-normal w-full mb-12 flex-row-reverse group">
+<div class="order-1 md:w-5/12"></div>
+<div class="z-20 flex items-center order-1 bg-white dark:bg-card-dark shadow-xl w-3 h-3 rounded-full border-2 border-purple-500 absolute right-0 md:right-1/2 translate-x-1/2 md:translate-x-1/2"></div>
+<div class="order-1 md:w-5/12 px-4 md:px-0 mr-12 md:mr-0 md:ml-[54%]">
+<div class="bg-gradient-to-r from-purple-900/40 to-card-dark p-6 rounded-2xl shadow-md border border-purple-500/30 hover:border-purple-500 transition-all duration-300">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-lg">M</div>
+<div>
+<h4 class="text-sm font-bold text-white">إعلان إداري</h4>
+<span class="text-xs text-purple-300">مدير المنتدى</span>
+</div>
+</div>
+<p class="text-gray-200 text-sm leading-relaxed font-medium">
+                                "يسعدنا الإعلان عن تحديثات جديدة لنظام الجوائز في المنتدى. سيتم الآن منح نقاط إضافية للمشاركات التي تحصل على أكثر من 50 إعجاب. شكراً لتفاعلكم الدائم!"
+                             </p>
+<div class="mt-4 flex gap-2">
+<span class="px-2 py-1 rounded bg-purple-500/20 text-purple-300 text-xs">#تحديثات</span>
+<span class="px-2 py-1 rounded bg-purple-500/20 text-purple-300 text-xs">#إدارة</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Loading More -->
+<div class="flex justify-center mt-12 relative z-10">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-card-dark hover:bg-card-dark-hover border border-gray-700 text-gray-300 transition-colors shadow-lg">
+<span class="material-icons animate-spin text-sm">refresh</span>
+                        تحميل المزيد من الأحداث
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-card-dark border-t border-gray-200 dark:border-gray-800 py-8 mt-auto">
+<div class="container mx-auto px-4 text-center">
+<p class="text-gray-500 dark:text-gray-400 text-sm">© 2023 TimelinePulse Forum. جميع الحقوق محفوظة.</p>
+</div>
+</footer>
+<script>
+        // Simple script to toggle dark mode for demonstration if needed, 
+        // though the class="dark" is hardcoded on HTML tag as per instructions.
+        // This is just future-proofing or testing.
+        const html = document.querySelector('html');
+        // html.classList.add('dark'); 
+    </script>
+</body></html>

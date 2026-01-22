@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>الإعدادات - الخصوصية</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d121b] dark:text-white overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 bg-[#f8f9fc] dark:bg-[#1e2736] border-b border-[#e7ebf3] dark:border-[#2d3748] px-4 md:px-10 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<!-- Right Section (Logo & Nav) - In RTL this is the start -->
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-[#0d121b] dark:text-white cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">المنتدى الاجتماعي</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#4c669a] dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">الرئيسية</a>
+<a class="text-[#0d121b] dark:text-white font-semibold text-sm leading-normal" href="#">المجتمعات</a>
+<a class="text-[#4c669a] dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">الرسائل</a>
+</nav>
+</div>
+<!-- Left Section (Search & Profile) - In RTL this is the end -->
+<div class="flex items-center gap-4 md:gap-6">
+<!-- Search Bar -->
+<div class="hidden lg:flex items-center bg-[#e7ebf3] dark:bg-[#2d3748] rounded-xl px-4 h-10 w-64 transition-all focus-within:ring-2 focus-within:ring-primary/20">
+<span class="material-symbols-outlined text-[#4c669a]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-[#0d121b] dark:text-white placeholder-[#4c669a] mr-2" placeholder="بحث..."/>
+</div>
+<!-- Icons -->
+<div class="flex gap-2">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-[#e7ebf3] dark:hover:bg-[#2d3748] transition-colors relative">
+<span class="material-symbols-outlined text-[#4c669a] dark:text-gray-300">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#1e2736]"></span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-[#e7ebf3] dark:hover:bg-[#2d3748] transition-colors">
+<span class="material-symbols-outlined text-[#4c669a] dark:text-gray-300">mail</span>
+</button>
+</div>
+<!-- User Avatar -->
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-white dark:border-[#2d3748] shadow-sm cursor-pointer" data-alt="User profile picture showing a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDGgZ_2jAYvLzZYDJKEEx0OugqtPQ7T4L58PJX90c1A6A4Rc30dFoYDTmB3DgMEX1Sn80IVZ_52Z-6YU6Om-HVi7JDp45CEr5hN_C7JazfOMBdhvVn5zS5JdnNaNZwLVrUUhEm5VEsufnAcDFSZaMW9ksWAIoYqHrd8_R56S2t4L3n3CQj7eSn0yaBcW6PzQST1kA3Bjz3F6foq1FylZfZVMaIa-dV4ZSYC0It6YeZnKWShcm_esfJvhkNOQTCzUNZiZTDfFy_lFd4");'>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 md:px-10 py-8">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-8 text-sm">
+<a class="text-[#4c669a] hover:text-primary transition-colors" href="#">الإعدادات</a>
+<span class="material-symbols-outlined text-[#4c669a] text-xs rotate-180">chevron_right</span>
+<span class="text-[#0d121b] dark:text-white font-medium">الخصوصية</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Side Navigation (Right Column in RTL) -->
+<aside class="lg:col-span-3 flex flex-col gap-6">
+<div class="px-2">
+<h1 class="text-2xl font-bold text-[#0d121b] dark:text-white">الإعدادات</h1>
+<p class="text-[#4c669a] text-sm mt-1">تحكم في تفاصيل حسابك وتفضيلاتك</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4c669a] dark:text-gray-400 hover:bg-white dark:hover:bg-[#1e2736] hover:text-primary dark:hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
+<span class="font-medium text-sm">تفاصيل الحساب</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4c669a] dark:text-gray-400 hover:bg-white dark:hover:bg-[#1e2736] hover:text-primary dark:hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">shield</span>
+<span class="font-medium text-sm">كلمة المرور والأمان</span>
+</a>
+<!-- Active Item -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/25" href="#">
+<span class="material-symbols-outlined filled">lock</span>
+<span class="font-bold text-sm">الخصوصية</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4c669a] dark:text-gray-400 hover:bg-white dark:hover:bg-[#1e2736] hover:text-primary dark:hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">tune</span>
+<span class="font-medium text-sm">التفضيلات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4c669a] dark:text-gray-400 hover:bg-white dark:hover:bg-[#1e2736] hover:text-primary dark:hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">link</span>
+<span class="font-medium text-sm">الحسابات المتصلة</span>
+</a>
+</nav>
+</aside>
+<!-- Main Form Area (Left Column in RTL) -->
+<section class="lg:col-span-9">
+<div class="bg-white dark:bg-[#1e2736] rounded-2xl shadow-sm border border-[#e7ebf3] dark:border-[#2d3748] overflow-hidden">
+<!-- Header -->
+<div class="p-6 md:p-8 border-b border-[#e7ebf3] dark:border-[#2d3748]">
+<h2 class="text-xl font-bold text-[#0d121b] dark:text-white mb-2">الخصوصية والأمان</h2>
+<p class="text-[#4c669a] dark:text-gray-400 text-sm leading-relaxed max-w-2xl">
+                            تحكم في من يمكنه رؤية المحتوى الخاص بك، وكيفية تواصل الآخرين معك، وإدارة بياناتك الشخصية على المنصة.
+                        </p>
+</div>
+<!-- Settings Controls -->
+<div class="p-6 md:p-8 space-y-8">
+<!-- Setting Group 1 -->
+<div class="space-y-6">
+<h3 class="text-sm font-bold text-primary uppercase tracking-wider">الظهور ونشاط المستخدم</h3>
+<div class="flex items-center justify-between group">
+<div class="flex-1 pl-4">
+<label class="font-medium text-[#0d121b] dark:text-white block mb-1">حالة الاتصال</label>
+<p class="text-xs text-[#4c669a]">السماح للآخرين برؤية متى تكون متصلاً.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary rtl:peer-checked:after:-translate-x-full"></div>
+</label>
+</div>
+<hr class="border-[#f0f2f5] dark:border-[#2d3748]"/>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex-1">
+<label class="font-medium text-[#0d121b] dark:text-white block mb-1">من يمكنه رؤية ملفك الشخصي؟</label>
+<p class="text-xs text-[#4c669a]">حدد الجمهور الذي يمكنه الوصول إلى تفاصيل صفحتك.</p>
+</div>
+<div class="w-full md:w-64">
+<div class="relative">
+<select class="block w-full pl-3 pr-10 py-2.5 text-sm border-gray-200 dark:border-gray-600 rounded-lg bg-[#f8f9fc] dark:bg-[#101622] text-[#0d121b] dark:text-white focus:ring-primary focus:border-primary">
+<option>الجميع (الزوار والأعضاء)</option>
+<option selected="">الأعضاء المسجلين فقط</option>
+<option>الأصدقاء فقط</option>
+<option>لا أحد</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Setting Group 2 -->
+<div class="space-y-6 pt-4">
+<h3 class="text-sm font-bold text-primary uppercase tracking-wider">التفاعل والتواصل</h3>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex-1">
+<label class="font-medium text-[#0d121b] dark:text-white block mb-1">بدء المحادثات الخاصة</label>
+<p class="text-xs text-[#4c669a]">من يمكنه إرسال رسائل خاصة إليك؟</p>
+</div>
+<div class="w-full md:w-64">
+<select class="block w-full pl-3 pr-10 py-2.5 text-sm border-gray-200 dark:border-gray-600 rounded-lg bg-[#f8f9fc] dark:bg-[#101622] text-[#0d121b] dark:text-white focus:ring-primary focus:border-primary">
+<option selected="">الأعضاء المسجلين فقط</option>
+<option>الأشخاص الذين أتابعهم فقط</option>
+<option>لا أحد</option>
+</select>
+</div>
+</div>
+<hr class="border-[#f0f2f5] dark:border-[#2d3748]"/>
+<div class="flex items-center justify-between group">
+<div class="flex-1 pl-4">
+<label class="font-medium text-[#0d121b] dark:text-white block mb-1">النشر على الحائط</label>
+<p class="text-xs text-[#4c669a]">السماح للأعضاء الآخرين بكتابة رسائل على صفحتك الشخصية.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary rtl:peer-checked:after:-translate-x-full"></div>
+</label>
+</div>
+<hr class="border-[#f0f2f5] dark:border-[#2d3748]"/>
+<div class="flex items-center justify-between group">
+<div class="flex-1 pl-4">
+<label class="font-medium text-[#0d121b] dark:text-white block mb-1">استلام أخبار المجتمع</label>
+<p class="text-xs text-[#4c669a]">استلام رسائل بريد إلكتروني حول التحديثات المهمة.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary rtl:peer-checked:after:-translate-x-full"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Footer / Actions -->
+<div class="bg-[#f8f9fc] dark:bg-[#161d2a] px-6 md:px-8 py-5 flex items-center justify-end gap-3 border-t border-[#e7ebf3] dark:border-[#2d3748]">
+<button class="px-6 py-2.5 rounded-lg text-sm font-semibold text-[#4c669a] hover:bg-[#e7ebf3] hover:text-[#0d121b] transition-colors">إلغاء</button>
+<button class="px-6 py-2.5 rounded-lg text-sm font-semibold text-white bg-primary hover:bg-blue-700 shadow-md shadow-blue-500/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>حفظ التغييرات</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

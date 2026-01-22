@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RichVisual: Glowing Pagination - XenVibe</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161b26",
+                        "surface-lighter": "#1c2333"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                    boxShadow: {
+                        'glow': '0 0 20px 5px rgba(19, 91, 236, 0.5), 0 0 10px 2px rgba(19, 91, 236, 0.4)',
+                        'glow-sm': '0 0 10px 2px rgba(19, 91, 236, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #344260; 
+        }
+        
+        /* Smooth transitions for glow effects */
+        .pagination-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .pagination-btn:hover:not(.active) {
+            background-color: rgba(19, 91, 236, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(19, 91, 236, 0.2);
+            border-color: rgba(19, 91, 236, 0.5);
+        }
+
+        .active-glow {
+            box-shadow: 0 0 30px 5px rgba(19, 91, 236, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
+            animation: pulse-glow 3s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 25px 5px rgba(19, 91, 236, 0.5); }
+            50% { box-shadow: 0 0 35px 8px rgba(19, 91, 236, 0.7); }
+            100% { box-shadow: 0 0 25px 5px rgba(19, 91, 236, 0.5); }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-[#232f48] bg-[#111722]/90 backdrop-blur-md px-6 py-4">
+<div class="mx-auto max-w-7xl flex items-center justify-between gap-6">
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-3 text-white hover:opacity-80 transition-opacity" href="#">
+<div class="flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-lg">
+<span class="material-symbols-outlined text-2xl text-white">sports_esports</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">XenVibe <span class="text-primary font-normal text-lg opacity-80">System</span></h2>
+</a>
+<nav class="hidden md:flex items-center gap-6 ltr:ml-8 rtl:mr-8 border-r border-[#232f48] pr-6 rtl:border-r-0 rtl:border-l rtl:pr-0 rtl:pl-6">
+<a class="text-white/70 hover:text-primary text-sm font-medium transition-colors" href="#">المكونات</a>
+<a class="text-white/70 hover:text-primary text-sm font-medium transition-colors" href="#">الأنماط</a>
+<a class="text-white hover:text-primary text-sm font-bold transition-colors border-b-2 border-primary pb-0.5" href="#">RichVisual</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<div class="relative hidden sm:block w-full max-w-xs">
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-[#92a4c9]">search</span>
+<input class="w-full h-10 rounded-xl bg-[#232f48] border-none text-white placeholder-[#92a4c9] pr-10 pl-4 focus:ring-2 focus:ring-primary/50 text-sm" placeholder="بحث في النظام..."/>
+</div>
+<button class="hidden sm:flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-bold text-white shadow-lg hover:bg-blue-600 transition-colors">
+                    تحميل
+                </button>
+<div class="size-10 rounded-full bg-[#232f48] flex items-center justify-center cursor-pointer hover:bg-[#2d3b55]">
+<img alt="User Avatar" class="size-10 rounded-full object-cover" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcTlTlOao3K7HnfFQ0tE1ttWyFtRW1NekbeM5ifqONh9t5WgdidvGN9ggOX_eXzRh8YICnSu4RIvHcQen06aqs_IK2RZyPQJAdqwQyMGmmOmgfguXJz8nY_IRVNvkRG6deIeM1ZjXzmUHQmJm5N-bozrJA4wpyajE7jKd3x4qKv4w2tuCua347efz_k6L9kqQUfvLrDWFeI1wTxg2NJpA58DyQmXUWScX6A9lf5VxuYz6sBG0k6B3R-xcC1K3ohkYB71MLmFWtsv0"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col items-center py-10 px-4 md:px-10">
+<div class="w-full max-w-[1024px] flex flex-col gap-10">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-sm">
+<a class="text-[#92a4c9] hover:text-white transition-colors" href="#">XenVibe</a>
+<span class="material-symbols-outlined text-[#92a4c9] text-xs">chevron_left</span>
+<a class="text-[#92a4c9] hover:text-white transition-colors" href="#">RichVisual</a>
+<span class="material-symbols-outlined text-[#92a4c9] text-xs">chevron_left</span>
+<span class="text-white font-medium">ترقيم الصفحات (Pagination)</span>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-[#232f48] pb-8">
+<div class="flex flex-col gap-4 max-w-2xl">
+<h1 class="text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+                        ترقيم متوهج <span class="text-primary block text-2xl md:text-3xl mt-2 font-bold opacity-80">Glowing Pagination</span>
+</h1>
+<p class="text-[#92a4c9] text-lg leading-relaxed">
+                        أدوات تنقل عالية التباين مع تأثيرات توهج نيون غامرة، مصممة خصيصاً لمنتديات الألعاب والمجتمعات ذات النمط الداكن (Dark Mode). يركز التصميم على سهولة النقر والجاذبية البصرية.
+                    </p>
+</div>
+<div class="flex gap-3">
+<span class="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold border border-primary/30">v2.4 Stable</span>
+<span class="px-3 py-1 rounded-full bg-[#232f48] text-[#92a4c9] text-xs font-medium border border-[#344260]">Dark Only</span>
+</div>
+</div>
+<!-- Context Preview Section: Forum List -->
+<section class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">preview</span>
+                        معاينة حية
+                    </h3>
+</div>
+<!-- Forum Container -->
+<div class="w-full rounded-2xl bg-surface-dark border border-[#232f48] overflow-hidden shadow-2xl relative group">
+<!-- Subtle background pattern for gaming vibe -->
+<div class="absolute inset-0 opacity-5 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+<!-- Decorative top gradient -->
+<div class="h-1 w-full bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+<!-- Forum Header -->
+<div class="flex items-center justify-between px-6 py-4 bg-surface-lighter border-b border-[#232f48]">
+<div class="flex items-center gap-2">
+<h4 class="text-white font-bold">آخر المواضيع</h4>
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">جديد</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg hover:bg-[#232f48] text-[#92a4c9] transition-colors"><span class="material-symbols-outlined text-xl">filter_list</span></button>
+<button class="p-2 rounded-lg hover:bg-[#232f48] text-[#92a4c9] transition-colors"><span class="material-symbols-outlined text-xl">grid_view</span></button>
+</div>
+</div>
+<!-- Thread List -->
+<div class="flex flex-col divide-y divide-[#232f48]/50">
+<!-- Item 1 -->
+<div class="flex flex-col md:flex-row md:items-center gap-4 px-6 py-5 hover:bg-[#1c2333] transition-colors cursor-pointer group/item relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary opacity-0 group-hover/item:opacity-100 transition-opacity"></div>
+<div class="flex items-center gap-4 flex-1">
+<div class="relative shrink-0">
+<div class="text-white flex items-center justify-center rounded-xl bg-[#232f48] shrink-0 size-12 shadow-inner group-hover/item:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">campaign</span>
+</div>
+<div class="absolute -top-1 -right-1 size-3 bg-red-500 rounded-full border-2 border-surface-dark animate-pulse"></div>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-lg font-bold leading-tight group-hover/item:text-primary transition-colors line-clamp-1">القوانين والإرشادات الرسمية للسيرفر</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-red-500/10 text-red-400 text-xs px-2 py-0.5 rounded border border-red-500/20">مثبت</span>
+<p class="text-[#92a4c9] text-sm line-clamp-1">بواسطة <span class="text-white font-medium">Admin</span> • منذ ساعتين</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6 text-[#92a4c9] shrink-0 md:border-r md:border-[#232f48] md:pr-6 md:mr-2">
+<div class="flex flex-col items-center">
+<span class="text-white font-bold text-lg">42</span>
+<span class="text-xs">ردود</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-white font-bold text-lg">1.2k</span>
+<span class="text-xs">مشاهدة</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col md:flex-row md:items-center gap-4 px-6 py-5 hover:bg-[#1c2333] transition-colors cursor-pointer group/item relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary opacity-0 group-hover/item:opacity-100 transition-opacity"></div>
+<div class="flex items-center gap-4 flex-1">
+<div class="text-white flex items-center justify-center rounded-xl bg-[#232f48] shrink-0 size-12 shadow-inner group-hover/item:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">videogame_asset</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-lg font-bold leading-tight group-hover/item:text-primary transition-colors line-clamp-1">ملاحظات التحديث v4.0 - خرائط جديدة!</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-blue-500/10 text-blue-400 text-xs px-2 py-0.5 rounded border border-blue-500/20">تحديث</span>
+<p class="text-[#92a4c9] text-sm line-clamp-1">بواسطة <span class="text-white font-medium">DevTeam</span> • منذ 5 ساعات</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6 text-[#92a4c9] shrink-0 md:border-r md:border-[#232f48] md:pr-6 md:mr-2">
+<div class="flex flex-col items-center">
+<span class="text-white font-bold text-lg">128</span>
+<span class="text-xs">ردود</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-white font-bold text-lg">5.4k</span>
+<span class="text-xs">مشاهدة</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col md:flex-row md:items-center gap-4 px-6 py-5 hover:bg-[#1c2333] transition-colors cursor-pointer group/item relative">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary opacity-0 group-hover/item:opacity-100 transition-opacity"></div>
+<div class="flex items-center gap-4 flex-1">
+<div class="text-white flex items-center justify-center rounded-xl bg-[#232f48] shrink-0 size-12 shadow-inner group-hover/item:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">forum</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-lg font-bold leading-tight group-hover/item:text-primary transition-colors line-clamp-1">نقاش عام حول استراتيجيات اللعب الجماعي</p>
+<p class="text-[#92a4c9] text-sm mt-1 line-clamp-1">بواسطة <span class="text-white font-medium">ProGamer99</span> • الأمس</p>
+</div>
+</div>
+<div class="flex items-center gap-6 text-[#92a4c9] shrink-0 md:border-r md:border-[#232f48] md:pr-6 md:mr-2">
+<div class="flex flex-col items-center">
+<span class="text-white font-bold text-lg">85</span>
+<span class="text-xs">ردود</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-white font-bold text-lg">2.1k</span>
+<span class="text-xs">مشاهدة</span>
+</div>
+</div>
+</div>
+</div>
+<!-- THE PAGINATION COMPONENT -->
+<div class="flex items-center justify-center py-10 px-4 bg-[#131924] relative overflow-hidden">
+<!-- Background glow effect behind pagination -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-24 bg-primary/5 blur-[80px] rounded-full pointer-events-none"></div>
+<nav aria-label="Pagination" class="relative z-10 flex items-center gap-3 sm:gap-4 md:gap-6">
+<!-- Previous Button -->
+<a class="pagination-btn group flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-[#2d3b55] bg-[#1c2333] text-white transition-all hover:border-primary/50 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl md:text-3xl group-hover:-translate-x-1 transition-transform rtl:rotate-180">chevron_right</span>
+<span class="sr-only">Previous</span>
+</a>
+<!-- Page Numbers -->
+<div class="flex items-center gap-2 sm:gap-3 md:gap-4">
+<a class="pagination-btn flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-transparent bg-transparent text-lg md:text-xl font-bold text-[#92a4c9] transition-all hover:border-primary/30 hover:bg-[#1c2333] hover:text-white" href="#">
+                                    1
+                                </a>
+<a class="pagination-btn flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-transparent bg-transparent text-lg md:text-xl font-bold text-[#92a4c9] transition-all hover:border-primary/30 hover:bg-[#1c2333] hover:text-white" href="#">
+                                    2
+                                </a>
+<!-- Active Page (Glowing) -->
+<a class="active active-glow flex size-14 md:size-16 items-center justify-center rounded-full bg-primary text-2xl md:text-3xl font-black text-white shadow-glow transform scale-110 z-10 border-4 border-[#1c2333]" href="#">
+                                    3
+                                </a>
+<a class="pagination-btn flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-transparent bg-transparent text-lg md:text-xl font-bold text-[#92a4c9] transition-all hover:border-primary/30 hover:bg-[#1c2333] hover:text-white" href="#">
+                                    4
+                                </a>
+<span class="flex size-12 items-center justify-center text-[#92a4c9] text-xl pb-2">...</span>
+<a class="pagination-btn flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-transparent bg-transparent text-lg md:text-xl font-bold text-[#92a4c9] transition-all hover:border-primary/30 hover:bg-[#1c2333] hover:text-white" href="#">
+                                    24
+                                </a>
+</div>
+<!-- Next Button -->
+<a class="pagination-btn group flex size-12 md:size-14 items-center justify-center rounded-full border-2 border-[#2d3b55] bg-[#1c2333] text-white transition-all hover:border-primary/50 hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl md:text-3xl group-hover:translate-x-1 transition-transform rtl:rotate-180">chevron_left</span>
+<span class="sr-only">Next</span>
+</a>
+</nav>
+</div>
+</div>
+</section>
+<!-- Variants Section -->
+<section class="flex flex-col gap-6 pt-10 border-t border-[#232f48]">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-[#92a4c9]">tune</span>
+                        خصائص المكون (Properties)
+                    </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Color Palette -->
+<div class="bg-surface-dark p-6 rounded-2xl border border-[#232f48]">
+<h4 class="text-white font-bold mb-4">الألوان والتأثيرات</h4>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center gap-2">
+<div class="size-16 rounded-full bg-primary shadow-glow active-glow border-2 border-white/10"></div>
+<span class="text-xs text-[#92a4c9]">Primary Glow</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-14 rounded-full bg-[#1c2333] border-2 border-[#2d3b55]"></div>
+<span class="text-xs text-[#92a4c9]">Inactive</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-14 rounded-full bg-[#1c2333] border-2 border-primary/50 text-primary flex items-center justify-center font-bold">1</div>
+<span class="text-xs text-[#92a4c9]">Hover State</span>
+</div>
+</div>
+</div>
+<!-- Usage Info -->
+<div class="bg-surface-dark p-6 rounded-2xl border border-[#232f48] flex flex-col justify-center">
+<h4 class="text-white font-bold mb-2">استخدام CSS</h4>
+<div class="bg-[#111722] p-4 rounded-lg font-mono text-sm text-green-400 overflow-x-auto">
+<span class="text-purple-400">.active-glow</span> {<br/>
+                              box-shadow: <span class="text-yellow-300">0 0 30px 5px rgba(19, 91, 236, 0.6)</span>;<br/>
+                              animation: <span class="text-blue-300">pulse-glow 3s infinite</span>;<br/>
+                            }
+                        </div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

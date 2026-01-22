@@ -1,0 +1,286 @@
+
+// ===========================================
+// PAGINATION FIX - HORIZONTAL LAYOUT
+// ===========================================
+
+.pageNav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+}
+
+.pageNav-page,
+.pageNav-main {
+    display: inline-flex !important;
+    flex-direction: row !important;
+}
+
+.pageNav-jump {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 0.75rem;
+    background: var(--xv-bg-surface) !important;
+    color: var(--xv-text-primary) !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--xv-border-color) !important;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: var(--xv-bg-elevated) !important;
+        border-color: var(--xv-accent) !important;
+        color: var(--xv-accent) !important;
+    }
+
+    &.pageNav-jump--current {
+        background: var(--xv-accent) !important;
+        color: white !important;
+        border-color: var(--xv-accent) !important;
+        font-weight: 700;
+    }
+}
+
+// ===========================================
+// PROFILE POST ACTIONS FIX
+// ===========================================
+
+.message-actionBar,
+.actionBar {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.actionBar-set {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.actionBar-action {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    color: var(--xv-text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap !important;
+
+    &:hover {
+        background: var(--xv-bg-elevated);
+        color: var(--xv-text-primary);
+    }
+}
+
+// ===========================================
+// PROFILE POST CARD FIX
+// ===========================================
+
+.message--profilePost {
+    background: var(--xv-bg-surface) !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--xv-border-color) !important;
+    margin-bottom: 1rem;
+    overflow: hidden;
+
+    .message-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .message-cell--user {
+        display: flex;
+        flex-direction: row !important;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border-bottom: 1px solid var(--xv-border-color);
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .message-avatar {
+        flex-shrink: 0;
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+    }
+
+    .message-userDetails {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .message-name {
+        font-weight: 700;
+        color: var(--xv-text-primary);
+    }
+
+    .message-attribution {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--xv-text-muted);
+    }
+
+    .message-body {
+        padding: 1rem;
+    }
+
+    .message-footer {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        border-top: 1px solid var(--xv-border-color);
+        background: rgba(0, 0, 0, 0.1);
+    }
+}
+
+// ===========================================
+// REACTIONS BAR FIX
+// ===========================================
+
+.reactionsBar {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.reactionsBar-link {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--xv-bg-elevated);
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    color: var(--xv-text-secondary);
+    white-space: nowrap;
+
+    &:hover {
+        background: var(--xv-accent);
+        color: white;
+    }
+}
+
+// ===========================================
+// PROFILE POST COMMENTS
+// ===========================================
+
+.message-responseRow {
+    padding: 1rem;
+    border-top: 1px solid var(--xv-border-color);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.message-response {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--xv-bg-elevated);
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+}
+
+.message-response-content {
+    flex: 1;
+}
+
+.message-response-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.message-response-user {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--xv-text-primary);
+}
+
+.message-response-text {
+    font-size: 0.875rem;
+    color: var(--xv-text-secondary);
+}
+
+// Comment input
+.message-newComment {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 0.75rem;
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        background: var(--xv-bg-primary);
+        border: 1px solid var(--xv-border-color);
+        border-radius: 9999px;
+        color: var(--xv-text-primary);
+        font-size: 0.875rem;
+
+        &::placeholder {
+            color: var(--xv-text-muted);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--xv-accent);
+        }
+    }
+}
+
+// ===========================================
+// RTL FIX FOR ACTIONS
+// ===========================================
+
+[dir="rtl"] {
+    .pageNav {
+        flex-direction: row-reverse !important;
+    }
+
+    .actionBar,
+    .actionBar-set,
+    .message-actionBar {
+        flex-direction: row-reverse !important;
+    }
+}

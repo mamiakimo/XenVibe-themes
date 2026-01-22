@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DynamicList: Technical Pagination Bar</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161e2c",
+                        "border-dark": "#1f293a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for the technical feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293a; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col text-slate-900 dark:text-slate-100 overflow-hidden">
+<!-- App Header -->
+<header class="flex-none h-16 border-b border-gray-200 dark:border-border-dark bg-white dark:bg-background-dark px-6 flex items-center justify-between z-20 relative">
+<div class="flex items-center gap-3">
+<div class="h-8 w-8 rounded bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<h1 class="text-lg font-semibold tracking-tight">XenVibe <span class="text-slate-400 font-normal">/ Server Logs</span></h1>
+</div>
+<div class="flex items-center gap-4 text-slate-500">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined">search</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<div class="h-8 w-8 rounded-full bg-cover bg-center ring-2 ring-border-dark" data-alt="User profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAFyl4gOfDnveFfj9MjqMZdYECZZq1aWXcJP3gHyMTYXlwkAJ-yaG7gFPk9ma4GdnabQApRI4b0KZs_KrVcgDKNmo5ncB36PNH3tGVp9PsBYKdxzliM9-BF1VNd7iK1__ckm-1O-EUdAYH88ZiiO3oBW4IFLFWSY5XvSLKh9CvBlz-cBkJyqKcJpUvJADiOkK67tatN2cmQYv0Xiy1HraIbUyOmiNm4pcyzL1GwvLAvokrM2TfaM_6dtO99hgw4b9ojiR9JTohNw6Y');"></div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex-1 flex flex-col overflow-hidden relative w-full max-w-[1200px] mx-auto px-4 md:px-8 pt-6 pb-0">
+<!-- List Controls Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-4 flex-none">
+<div class="flex items-center gap-2 text-sm">
+<button class="px-3 py-1.5 rounded-full bg-primary/10 text-primary font-medium hover:bg-primary/20 transition-colors">All Topics</button>
+<button class="px-3 py-1.5 rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-colors">Unread</button>
+<button class="px-3 py-1.5 rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-colors">Starred</button>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative group">
+<span class="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500 material-symbols-outlined text-[18px]">filter_list</span>
+<select class="pl-9 pr-8 py-1.5 bg-surface-dark border border-border-dark rounded text-sm text-slate-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none cursor-pointer">
+<option>Newest First</option>
+<option>Oldest First</option>
+<option>Most Viewed</option>
+</select>
+<span class="absolute right-2 top-1/2 -translate-y-1/2 text-slate-500 material-symbols-outlined text-[18px] pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Scrollable List Area -->
+<div class="flex-1 overflow-y-auto rounded-t-xl border border-border-dark bg-[#111722] relative">
+<!-- List Header Row -->
+<div class="sticky top-0 z-10 grid grid-cols-12 gap-4 border-b border-border-dark bg-[#141b26] px-6 py-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
+<div class="col-span-8 md:col-span-6">Topic / Thread</div>
+<div class="col-span-4 md:col-span-3 text-right md:text-left">Category</div>
+<div class="hidden md:block md:col-span-3 text-right">Last Activity</div>
+</div>
+<!-- List Content -->
+<div class="divide-y divide-border-dark">
+<!-- Item 1 -->
+<div class="group relative flex items-center justify-between gap-4 px-6 py-3 hover:bg-white/[0.02] transition-colors cursor-pointer">
+<div class="flex flex-1 items-center gap-4">
+<div class="h-10 w-10 shrink-0 rounded-full bg-cover bg-center" data-alt="Abstract blue geometric avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwYGFjfKyUB7jSlCKngv35J33uAyoQoX1seJMLFyOEwgPn59En4xbZRPd56zT38HY6KEAJlqFv0Z7bCKifRegNe-7KQgcqA-zx1DfvjL3Oaj6oXQyNAp3683InNGVlrFyILryimTQPLGxS69IJ8ML4vgHC97hU1u51kNNKpnHyd2cQSxAPRDmNHXgBomR0Dq70zt5eFSFTQ_Oc05_iWZTDQMHFfy7Bd7K1H0nV7-3IogcjzHFyktEXdPjMMsg6PuS6n-HoEWASi0E");'></div>
+<div class="min-w-0 flex-1">
+<h3 class="truncate text-sm font-medium text-white group-hover:text-primary transition-colors">Performance optimization for XenForo 2.3</h3>
+<p class="truncate text-xs text-slate-400">Started by <span class="text-slate-300">Admin</span> • 24 replies</p>
+</div>
+</div>
+<div class="hidden md:block w-32 shrink-0 text-sm text-slate-400">Development</div>
+<div class="shrink-0 w-20 md:w-24 text-right text-xs text-slate-500">2m ago</div>
+</div>
+<!-- Item 2 -->
+<div class="group relative flex items-center justify-between gap-4 px-6 py-3 hover:bg-white/[0.02] transition-colors cursor-pointer">
+<div class="flex flex-1 items-center gap-4">
+<div class="h-10 w-10 shrink-0 rounded-full bg-cover bg-center" data-alt="Abstract indigo geometric avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsDhfN8LeFUrOS22dB5-LUyBUEaFsFKX8KoXwnypnLcQqIgwlp0qBDfRchpb4GKSIVzbVRwMokoGjOXijuQPgs9_iY0M-LWmOihr2KYfdV4DCe8OkYETtEx4KFtL0KS0s5I0YsMokewWZ_UMNtn6-NTL2l7d08JyVksvAqmnEmY7B4yOXw_vTQwTK4DA84KJcTYxew2qIVhqwPW6KkrLvJ64WhFlKFR-YaDRrznUSgdKPALDm00n6-ZXC9e-lXZMCp6Dej3_U7cZs");'></div>
+<div class="min-w-0 flex-1">
+<h3 class="truncate text-sm font-medium text-white group-hover:text-primary transition-colors">Customizing the XenVibe dark mode palette</h3>
+<p class="truncate text-xs text-slate-400">Started by <span class="text-slate-300">Designer_Pro</span> • 12 replies</p>
+</div>
+</div>
+<div class="hidden md:block w-32 shrink-0 text-sm text-slate-400">Design</div>
+<div class="shrink-0 w-20 md:w-24 text-right text-xs text-slate-500">15m ago</div>
+</div>
+<!-- Item 3 -->
+<div class="group relative flex items-center justify-between gap-4 px-6 py-3 hover:bg-white/[0.02] transition-colors cursor-pointer">
+<div class="flex flex-1 items-center gap-4">
+<div class="h-10 w-10 shrink-0 rounded-full bg-cover bg-center" data-alt="Abstract pink geometric avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUGVlqWpavt324Tr7ywG27h-a-CWTfHt4lSyDlHmcIGnAHJbzirTqSgwtuDyOazkSJG072MCkdIoqMZXBUjpgBzg9l5OGVMG-4STKY9zzHULyI6rI_XtjJAJwcln7AK03TVbRQmEQ-GaBn-sAp7YvYZDe9zY3RHJTUt2uk8dpws7Mu1QaaJoq5aOjx1bZReA99UEoJ0JXS9Dl5inKwOhGA8oqRZJDscgIIyaDM2ZWr4AjQlJ69M8Bmo8s20PoEGCX5j_ZR-6br-TY");'></div>
+<div class="min-w-0 flex-1">
+<h3 class="truncate text-sm font-medium text-white group-hover:text-primary transition-colors">Integration with third-party payment gateways</h3>
+<p class="truncate text-xs text-slate-400">Started by <span class="text-slate-300">MerchantUser</span> • 56 replies</p>
+</div>
+</div>
+<div class="hidden md:block w-32 shrink-0 text-sm text-slate-400">Commerce</div>
+<div class="shrink-0 w-20 md:w-24 text-right text-xs text-slate-500">1h ago</div>
+</div>
+<!-- Item 4 -->
+<div class="group relative flex items-center justify-between gap-4 px-6 py-3 hover:bg-white/[0.02] transition-colors cursor-pointer">
+<div class="flex flex-1 items-center gap-4">
+<div class="h-10 w-10 shrink-0 rounded-full bg-cover bg-center" data-alt="Abstract green geometric avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQwprFrUssnwMxnXpbKysIRCHJrj7fV2ZFLmoS6_ZRyEFky9cpYezF60LMg1raDS8uVCr6ERITP5w2KGS2eM72awfeAlXs-Y0oLJNTOWUw5J77jDzQx7zH5RviqBnyMpM6opImiDqCigogf-ZTge-3ERQbBO2FHX7t-ETzdgiNWD5EfcWGBWoA3YFF9TUV68Oqc95c1-fv4xpC0uY385GBVM-Y4kHW8gIDcDsI7hXIHr-s0ZtCPm0Zw4eLEUZDYMbAhDgu5LDVk6k");'></div>
+<div class="min-w-0 flex-1">
+<h3 class="truncate text-sm font-medium text-white group-hover:text-primary transition-colors">Server configurations for high traffic nodes</h3>
+<p class="truncate text-xs text-slate-400">Started by <span class="text-slate-300">SysOp</span> • 8 replies</p>
+</div>
+</div>
+<div class="hidden md:block w-32 shrink-0 text-sm text-slate-400">Hosting</div>
+<div class="shrink-0 w-20 md:w-24 text-right text-xs text-slate-500">3h ago</div>
+</div>
+<!-- Item 5 -->
+<div class="group relative flex items-center justify-between gap-4 px-6 py-3 hover:bg-white/[0.02] transition-colors cursor-pointer">
+<div class="flex flex-1 items-center gap-4">
+<div class="h-10 w-10 shrink-0 rounded-full bg-cover bg-center" data-alt="Abstract amber geometric avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCdo3BZZzzE-o1qlnLJfNWsblZRKRxOm6zOh_m0uHkza2H-uALZyxJ2TmNNywiyPyCjRhiVyfhvcFK9MfVZDMLvHKMpDKFvVDrzTduyU_djdE2fl7qqry6t3wVnwytErelgWfAsBie0E-T4vBZhKN-tR9cL0iKXSuAz7LRIBWCpX-rKyFRNx3Afk8_4HizURSnoBMAGY3VTJKhZPOYsN_k4ES96QLLjufyGDc00PYFkta2otRRP6dZYd33XakVemIQy-FtOQ9M7NIY");'></div>
+<div class="min-w-0 flex-1">
+<h3 class="truncate text-sm font-medium text-white group-hover:text-primary transition-colors">Migrating legacy data to new structures</h3>
+<p class="truncate text-xs text-slate-400">Started by <span class="text-slate-300">DataWiz</span> • 41 replies</p>
+</div>
+</div>
+<div class="hidden md:block w-32 shrink-0 text-sm text-slate-400">Database</div>
+<div class="shrink-0 w-20 md:w-24 text-right text-xs text-slate-500">5h ago</div>
+</div>
+<!-- Item 6 (Extra for fill) -->
+<div class="group relative flex items-center justify-between gap-4 px-6 py-3 hover:bg-white/[0.02] transition-colors cursor-pointer">
+<div class="flex flex-1 items-center gap-4">
+<div class="h-10 w-10 shrink-0 rounded-full bg-cover bg-center" data-alt="Abstract purple geometric avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC-ngkMOOfBctvB0ASPwAqWnbuAaUIVzp4-Fqp5bCbxy3JozAr9965a9-E7JHEWytBubWSmePBvU5J_UpiTWRKbk7oA7tNdUrTp8gYHXBUodQtVsvmNfZw3QVSfv676708KKmrnZ5zqtfWrUCYuy2tDX22kbD912skTGMKvfwhFhkkOtDxdU0l5vm2lxG-Sm1CtD71daXn0wd58MzVpd74lk7AzhYy7BY-W0qZFHd4ZfdUJFihCdjJuwjTx4J53LWhTg_0Iun2Qq28");'></div>
+<div class="min-w-0 flex-1">
+<h3 class="truncate text-sm font-medium text-white group-hover:text-primary transition-colors">Feedback on the new mobile navigation</h3>
+<p class="truncate text-xs text-slate-400">Started by <span class="text-slate-300">MobileFirst</span> • 102 replies</p>
+</div>
+</div>
+<div class="hidden md:block w-32 shrink-0 text-sm text-slate-400">UX/UI</div>
+<div class="shrink-0 w-20 md:w-24 text-right text-xs text-slate-500">6h ago</div>
+</div>
+</div>
+<!-- Technical Status Bar / Pagination Footer -->
+<!-- Anchored to bottom of the list container to look like a status bar -->
+<div class="sticky bottom-0 z-20 w-full border-t border-border-dark bg-[#141b26]/95 backdrop-blur-md supports-[backdrop-filter]:bg-[#141b26]/80 text-xs text-slate-400">
+<div class="flex flex-col sm:flex-row items-center justify-between px-4 py-2 gap-3">
+<!-- Left Section: Data Stats -->
+<div class="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-start">
+<div class="flex items-center gap-2" title="Total records in database">
+<span class="material-symbols-outlined text-sm text-primary">dns</span>
+<span class="font-mono font-medium text-slate-300">542</span>
+<span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">Total</span>
+</div>
+<div class="h-3 w-px bg-border-dark hidden sm:block"></div>
+<div class="flex items-center gap-2">
+<span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">Viewing</span>
+<span class="font-mono font-medium text-white">1</span>
+<span class="text-slate-600">-</span>
+<span class="font-mono font-medium text-white">20</span>
+</div>
+<div class="h-3 w-px bg-border-dark hidden sm:block"></div>
+<div class="hidden sm:flex items-center gap-1.5 text-emerald-500">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="text-[10px] uppercase tracking-wider font-bold">Connected</span>
+</div>
+</div>
+<!-- Right Section: Technical Pagination Controls -->
+<div class="flex items-center gap-3 w-full sm:w-auto justify-center sm:justify-end">
+<!-- Navigation Group -->
+<div class="flex items-center rounded-lg bg-[#0f1520] p-0.5 border border-border-dark shadow-sm">
+<!-- Prev Button -->
+<button class="group flex h-7 w-8 items-center justify-center rounded hover:bg-primary/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-sm text-slate-400 group-hover:text-primary transition-colors">code_off</span>
+<!-- Using code_off as a styled '<' arrow alternative or just chevron_left -->
+</button>
+<div class="w-px h-4 bg-border-dark mx-0.5"></div>
+<!-- Page Input -->
+<div class="flex items-center px-2 gap-2">
+<span class="text-[10px] uppercase font-bold text-slate-500">Page</span>
+<div class="relative group/input">
+<input class="h-5 w-8 rounded bg-[#161e2c] border border-border-dark text-center font-mono text-xs text-white focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" type="text" value="1"/>
+</div>
+<span class="text-[10px] text-slate-500 font-mono">/ 28</span>
+</div>
+<div class="w-px h-4 bg-border-dark mx-0.5"></div>
+<!-- Next Button -->
+<button class="group flex h-7 w-8 items-center justify-center rounded hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-sm text-slate-400 group-hover:text-primary transition-colors">code</span>
+<!-- Using code as a styled '>' arrow alternative or just chevron_right -->
+</button>
+</div>
+<!-- Rows per page selector (optional context) -->
+<div class="hidden lg:flex items-center gap-1 ml-2">
+<select class="bg-transparent text-[10px] font-medium text-slate-500 border-none focus:ring-0 cursor-pointer hover:text-white transition-colors">
+<option>20 rows</option>
+<option>50 rows</option>
+<option>100 rows</option>
+</select>
+<span class="material-symbols-outlined text-[14px] text-slate-600">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Progress Line indicating scroll position or loading state -->
+<div class="absolute top-0 left-0 h-[1px] bg-primary w-[5%] shadow-[0_0_10px_rgba(19,91,236,0.5)]"></div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RichVisual: المتصلون الآن - داكن</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;family=Noto+Sans+Arabic:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface": "#1e2736",
+                        "surface-highlight": "#232f48"
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Spline Sans", "Noto Sans Arabic", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Spline Sans", "Noto Sans Arabic", sans-serif;
+        }
+        /* Hide scrollbar for clean horizontal scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full bg-[#111722]/95 backdrop-blur-sm border-b border-[#232f48]">
+<div class="px-4 md:px-8 py-3 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="hidden md:block text-white text-lg font-bold leading-tight tracking-[-0.015em]">RichVisual Forum</h2>
+</div>
+<!-- Nav Links -->
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">الرئيسية</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">المنتديات</a>
+<a class="text-primary text-sm font-medium" href="#">الأعضاء</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">المتجر</a>
+</div>
+</div>
+<div class="flex items-center gap-4 md:gap-8">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-[#232f48] group focus-within:ring-2 ring-primary/50 transition-all">
+<div class="text-[#92a4c9] flex items-center justify-center pr-4 pl-2">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full bg-transparent text-white border-none focus:ring-0 placeholder:text-[#92a4c9] text-sm font-normal" placeholder="ابحث..."/>
+</div>
+</label>
+<div class="flex items-center gap-3">
+<button class="size-10 rounded-full bg-[#232f48] flex items-center justify-center hover:bg-[#2d3b55] transition text-white relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-[#232f48]"></span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-[#232f48]" data-alt="User Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbINWlvegh4xg_DxvZdcvSUifjF9heNUOWvE1hhBUNu3Vaa8J_wcq1rhVrvtt2maRRoKdHqo8-EqRhf_zcFGLX8NqCHbEInefCfbesk12G-uHqCjnYkLPRZdFfG17dyv21sQySgkylTwsRlgPi1O3VIRtUj1Zd6_YXDtDQ0PWuR7gLbhUZgeDbVaSP4GqHFaovYKcjrAfPX4PGmlEtojuTOJFtUdmk2Xicj6n0WozM6AE2eezPaldhAx5W3MGFZ8PNoGWfmxHyOEA");'></div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 layout-container max-w-[1600px] w-full mx-auto">
+<!-- Sidebar (Right) -->
+<aside class="hidden xl:flex w-72 flex-col gap-4 p-4 sticky top-[73px] h-[calc(100vh-73px)] overflow-y-auto no-scrollbar border-l border-[#232f48]">
+<!-- Community Info -->
+<div class="bg-[#1e2736] p-4 rounded-xl flex items-center gap-3 shadow-lg shadow-black/20">
+<div class="bg-center bg-no-repeat bg-cover rounded-lg size-12" data-alt="Community Icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBNPOXUSJAmR0IBy7vcvPpByRBMetc40fb_DPw7nIQYI2qIARynZJLkZcDtWrw-AkSp3HIljz_I929V2KWSB7d95HzKSNjF5-incvg1YXDVIv0xlsP75yYRDvt_gwtI3ukhSyqONsoJ8C1aw1Y9d82Sly36fxE8S6B7FEvExV9TqfabtrV0pFN-sgJDUALYn28sZo4r0qLYQAh7xjE6Gq-HZUVRu9IQ8bYlc-FWueQvIuDfnrhbaP9OE4zmwWmKaXJmdMNy289y39w");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold">مجتمع اللاعبين</h1>
+<p class="text-[#92a4c9] text-xs">RichVisual Network</p>
+</div>
+</div>
+<!-- Navigation Menu -->
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] text-[#92a4c9] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">home</span>
+<span class="text-sm font-medium">الرئيسية</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] text-[#92a4c9] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">forum</span>
+<span class="text-sm font-medium">النقاشات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] text-[#92a4c9] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">sports_esports</span>
+<span class="text-sm font-medium">الألعاب</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#232f48] text-white shadow-md shadow-primary/10 transition-all border border-[#232f48]" href="#">
+<span class="material-symbols-outlined text-primary">group</span>
+<span class="text-sm font-medium">المتصلون الآن</span>
+</a>
+</nav>
+<!-- Trending Widget -->
+<div class="mt-4">
+<h3 class="text-[#92a4c9] text-xs font-bold uppercase tracking-wider mb-3 px-2">رائج الآن</h3>
+<div class="flex flex-col gap-2">
+<div class="bg-[#1e2736]/50 p-3 rounded-xl border border-[#232f48] hover:border-[#354360] cursor-pointer transition-all">
+<div class="flex gap-2 mb-1">
+<span class="text-xs bg-red-500/20 text-red-400 px-2 py-0.5 rounded-md font-medium">ساخن</span>
+</div>
+<p class="text-sm font-medium line-clamp-2">تحديثات ضخمة قادمة للعبة Call of Duty</p>
+<p class="text-xs text-[#92a4c9] mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">comment</span> 243
+                        </p>
+</div>
+<div class="bg-[#1e2736]/50 p-3 rounded-xl border border-[#232f48] hover:border-[#354360] cursor-pointer transition-all">
+<p class="text-sm font-medium line-clamp-2">مشكلة في تسجيل الدخول لسيرفرات Minecraft</p>
+<p class="text-xs text-[#92a4c9] mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">comment</span> 56
+                        </p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content (Left) -->
+<main class="flex-1 flex flex-col min-w-0 p-4 md:p-8 gap-8">
+<!-- Page Header & Stats -->
+<div class="flex flex-col gap-6">
+<div class="flex flex-wrap items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl md:text-4xl font-black text-white tracking-tight mb-2">المتصلون الآن</h1>
+<p class="text-[#92a4c9] text-base font-normal">نظرة حية على نشاط المجتمع في الوقت الفعلي</p>
+</div>
+<!-- Chips Filter -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white pl-4 pr-4 transition shadow-lg shadow-primary/20">
+<span class="text-sm font-medium">الكل</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#232f48] hover:bg-[#2d3b55] text-white pl-4 pr-4 transition border border-transparent hover:border-[#3f4f70]">
+<span class="material-symbols-outlined text-[18px]">shield_person</span>
+<span class="text-sm font-medium">الإدارة</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#232f48] hover:bg-[#2d3b55] text-white pl-4 pr-4 transition border border-transparent hover:border-[#3f4f70]">
+<span class="material-symbols-outlined text-[18px]">sports_esports</span>
+<span class="text-sm font-medium">في لعبة</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#232f48] hover:bg-[#2d3b55] text-white pl-4 pr-4 transition border border-transparent hover:border-[#3f4f70]">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="text-sm font-medium">الأعضاء المميزون</span>
+</button>
+</div>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="bg-gradient-to-br from-[#1e2736] to-[#161d2a] p-5 rounded-2xl border border-[#232f48] relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-transparent opacity-50"></div>
+<div class="flex items-center justify-between mb-3">
+<p class="text-[#92a4c9] text-sm font-medium">إجمالي المتصلين</p>
+<span class="material-symbols-outlined text-[#232f48] group-hover:text-[#2d3b55] transition-colors text-4xl absolute -left-2 -bottom-2 rotate-12">group</span>
+</div>
+<p class="text-3xl font-bold text-white">1,240</p>
+<p class="text-xs text-green-400 mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +12% عن الأمس
+                        </p>
+</div>
+<div class="bg-gradient-to-br from-[#1e2736] to-[#161d2a] p-5 rounded-2xl border border-[#232f48] relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent opacity-50"></div>
+<div class="flex items-center justify-between mb-3">
+<p class="text-[#92a4c9] text-sm font-medium">الأعضاء المسجلين</p>
+<span class="material-symbols-outlined text-[#232f48] group-hover:text-[#2d3b55] transition-colors text-4xl absolute -left-2 -bottom-2 rotate-12">badge</span>
+</div>
+<p class="text-3xl font-bold text-white">350</p>
+<p class="text-xs text-primary mt-1">يمثلون 28% من الإجمالي</p>
+</div>
+<div class="bg-gradient-to-br from-[#1e2736] to-[#161d2a] p-5 rounded-2xl border border-[#232f48] relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-transparent opacity-50"></div>
+<div class="flex items-center justify-between mb-3">
+<p class="text-[#92a4c9] text-sm font-medium">الزوار</p>
+<span class="material-symbols-outlined text-[#232f48] group-hover:text-[#2d3b55] transition-colors text-4xl absolute -left-2 -bottom-2 rotate-12">visibility</span>
+</div>
+<p class="text-3xl font-bold text-white">890</p>
+<p class="text-xs text-[#92a4c9] mt-1">نشطون حالياً</p>
+</div>
+</div>
+</div>
+<!-- Content Blocks -->
+<!-- Section: Staff (Highlighted) -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary">shield_person</span>
+<h2 class="text-xl font-bold text-white">طاقم الإدارة المتواجد</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+<!-- Staff Card 1 -->
+<div class="group relative flex flex-col rounded-2xl bg-[#1e2736] hover:bg-[#232f48] p-1 border border-[#232f48] hover:border-primary/30 transition-all duration-300 shadow-lg">
+<!-- Banner -->
+<div class="h-20 w-full rounded-t-xl bg-cover bg-center opacity-70 group-hover:opacity-100 transition-opacity" data-alt="Abstract blue tech pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDiXL7hYdKgw2_Lnxq0a48RYTZVpD3Xdt_DW-Dfa9q_U38cvIqUQaIvBQb0gEgxArUwRhD-fs3ugbYrmqxcszxses0kRH6oiy_zl0r1japYmN9QR-_vTkvH-kvrtiEAoz-0UZxXgd0moZDii_IbT5QIeKjCtpbrxsVgjD-8G23GBeV7OeOXaHVt-pl6vgt_pkY_I12BIrYG0zeyjVDABpuURdDIXyVO_LXn_fDz6jcbb9eynas9UrN4eg4yF2Lc26R9dy21O_LxG2Y");'></div>
+<!-- Avatar -->
+<div class="absolute top-10 right-4">
+<div class="relative">
+<img class="size-16 rounded-full border-4 border-[#1e2736] group-hover:border-[#232f48] transition-colors object-cover" data-alt="Admin Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWyuo25c9HBzl0DA8iJwZE3hruQypAVW_Nho_d59of0dtpF4VNjrbQWZia-BhwX_vW_Ocl87qF_P4EXM7CvHq57sTBJ13akypOnHVpdcvm-O4pAUG_d_Izgi-xBS2qRJ48skEv3c4Ft5rqDVJRRMxUnq_qrg34Pvn5aAfaEJd52KDeLYpM13PkpuVtq_CQSpfUWKutpbOjB_h4m1qiwLW5x-RMdK8inJWGkxp01TINvaQ2IibpwA11KVrJVqKwqfB6E5KhQdSxTh0"/>
+<div class="absolute bottom-1 right-0 size-4 rounded-full bg-green-500 border-2 border-[#1e2736] group-hover:border-[#232f48]"></div>
+</div>
+</div>
+<!-- Content -->
+<div class="mt-8 px-4 pb-4 flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<h3 class="font-bold text-lg text-white group-hover:text-primary transition-colors">Ahmed Admin</h3>
+<span class="material-symbols-outlined text-blue-400 text-[16px]" title="Verified">verified</span>
+</div>
+<span class="text-xs font-semibold text-red-400 uppercase tracking-wide bg-red-400/10 w-fit px-2 py-0.5 rounded-md">مدير عام</span>
+<div class="mt-3 pt-3 border-t border-[#2d3b55] flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">settings</span>
+<span>يعدل إعدادات المنتدى</span>
+</div>
+</div>
+</div>
+<!-- Staff Card 2 -->
+<div class="group relative flex flex-col rounded-2xl bg-[#1e2736] hover:bg-[#232f48] p-1 border border-[#232f48] hover:border-primary/30 transition-all duration-300 shadow-lg">
+<div class="h-20 w-full rounded-t-xl bg-cover bg-center opacity-70 group-hover:opacity-100 transition-opacity" data-alt="Abstract purple code pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAiPiTcP2YL8fVQhYUWupfoCgKXNEk0faFVeQ1IW1VKB1jD8shW5aZXnjSbR34MgXGv-JED9XMZ-WlxkNWxlotegwxvji13Phd8ARCiMT1_ER2IUr4b3iPuX7IzyNHvLy66M0vL3skNJriwleH5jKLsS-ZmmWFgvCVWYNLe3sVSgxShzhanRnLdn8U2yCrc-VQxE2VT7fHB151vYW2ojLyqu9M-zlukcJQV0JYhI0D05t_g3im64lNhYQAl9KXe5jtVv1IMbrFY_5g");'></div>
+<div class="absolute top-10 right-4">
+<div class="relative">
+<img class="size-16 rounded-full border-4 border-[#1e2736] group-hover:border-[#232f48] transition-colors object-cover" data-alt="Moderator Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbibeQgRm2Smatw-kx4ezQC_q8J8Ab4U6C_z1I1G-ILt5paddg_Mqf7N0ir9PpkaYMmPs6oFOR3vX7ikKsL3cQknC3m7reqxpGpu4PjhZQoq4k4u0jyvJyyMRqqOPifKR9q5EIcv70JnS5VElK3sM5RDTaGLUZbEgKqLADYllQfJnJBBSY38qYUQRoAuKkNgMcuYALlaMW6V19AM6Y5GqLvDA75dGsJ4AHPTSQ4QNk7sFczSswTSGOwB_EIpqpRh1J2_ywadAzOlo"/>
+<div class="absolute bottom-1 right-0 size-4 rounded-full bg-yellow-500 border-2 border-[#1e2736] group-hover:border-[#232f48]"></div>
+</div>
+</div>
+<div class="mt-8 px-4 pb-4 flex flex-col gap-1">
+<h3 class="font-bold text-lg text-white group-hover:text-primary transition-colors">Sarah Mod</h3>
+<span class="text-xs font-semibold text-green-400 uppercase tracking-wide bg-green-400/10 w-fit px-2 py-0.5 rounded-md">مشرفة</span>
+<div class="mt-3 pt-3 border-t border-[#2d3b55] flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">security</span>
+<span>تراجع التقارير</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Gaming Activity (Grouped) -->
+<section class="flex flex-col gap-4 mt-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-purple-500">gamepad</span>
+<h2 class="text-xl font-bold text-white">نشاط الألعاب</h2>
+</div>
+<!-- Game Group: Valorant -->
+<div class="rounded-3xl bg-[#161d2a] border border-[#232f48] overflow-hidden">
+<!-- Header with blurred game art -->
+<div class="relative h-24 w-full overflow-hidden flex items-center px-6">
+<div class="absolute inset-0 bg-cover bg-center blur-sm opacity-50" data-alt="Valorant game art background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFzOrOA4gO471UaYNmWvmIHP2uK5HbC-v0F4RVlReZ73afQXs4wUBea9v2SItmyz8bnlpQCYJnvLPfEymXdQIYd9yaPu9VAiPJp48fCz7gmxlKnGJ7RDlmacVDN26hHCTAeTJ0qXVqFMJTAG5l-SUkwbiyiI9wsDHqPmWhmYaXSUppTWai-Ba2pTOMT2XJ5iMqm3gCoqRsbzWWlLSWgZmuf9YrNrDM9a6wojmASYELRyAEQImdeY-rZbYgUNbtPFNyC4gSc6HZxlA");'></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#161d2a] via-[#161d2a]/80 to-transparent"></div>
+<div class="relative z-10 flex items-center gap-4">
+<img class="size-12 rounded-lg object-cover border border-white/20 shadow-lg" data-alt="Valorant Icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDzt5TFGWaEx3Bohxm1H2J-R1-x-uaekW1WSMxG6buP4Ch7AoVuUdjdYuqSPikLT3LPc_z-q1iNoK51re4c7xjRqXtZuFIF8gZHk8EH9LGWW_Ey-DW8vxctaxO0RZeC8bZ_3gWQXmRvWnRY9yabq0DnkwGmvailCixKhSFYDSOY4BzZuZY_zUN4jed1rR3XrSRBg1Ze78CYOMn8ZtgdfaZ4IkCXlyYu_8wAky2X5G36P9n-lyjEdKeyTILtKntG8VQOFxMWICw00c"/>
+<div>
+<h3 class="text-lg font-bold text-white">Valorant</h3>
+<p class="text-sm text-gray-300">12 لاعب نشط الآن</p>
+</div>
+</div>
+<button class="relative z-10 mr-auto bg-white/10 hover:bg-white/20 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-md transition">انضم للمجموعة</button>
+</div>
+<!-- Players Grid -->
+<div class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Player Card Mini -->
+<div class="flex items-center gap-3 p-3 rounded-xl bg-[#232f48]/50 hover:bg-[#232f48] transition-colors border border-transparent hover:border-purple-500/30">
+<div class="relative shrink-0">
+<img class="size-10 rounded-full" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtb5wcgVa31-59LVOjWDdGVShNi8AK7qbCToByInhX0sDXnN2sNlQULpCJZDFlcEBtJNfiii7tvU48LxWKShNF-ZH2qGNzB2IpPb5KCwsEtLvIniaV4W9xiEteKhmMangJUGai26e36FMc9a5GMcorNhX9MvO0eT940F5dR9Y2VVUv6_2U2jHDvT-ENErFbyuVFU9UCAndPu-Jm1vWEcHKZxVA1C3rAtxBFegPAsGzG8VHoSBFHYdg1vUBCOKn10NwIn8sFUh9wxQ"/>
+<div class="absolute -bottom-1 -right-1 bg-[#161d2a] rounded-full p-0.5">
+<div class="size-3 rounded-full bg-green-500"></div>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="text-sm font-bold text-white truncate">GamerOne</p>
+<p class="text-xs text-purple-400 truncate">Competitive • Ranked</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-[#232f48]/50 hover:bg-[#232f48] transition-colors border border-transparent hover:border-purple-500/30">
+<div class="relative shrink-0">
+<img class="size-10 rounded-full" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzQP9tg0BYxHeCsLSSa-Flz0R-sDu89x7MT8TVZCZM8ErLUZX-tDW_WIeAc9V_kO5_k43njUmLOzJpXOII4kG9aP4TXO0oQ5rqvY0dcTfofOaCsqCbctur4HS2duMA7MFaWUxWxcbE--Cd1mgz1IyODirEPS24KsUZE5VwnX5Lv8o5eERlXW-69jKXuJNldx_PsSZZwIM-9tFCTwMwLIxTh554KmGIXVFKy3ZmywCLwrh3RlIYBppgM-vJcACWyX5uAtk32bms7Es"/>
+<div class="absolute -bottom-1 -right-1 bg-[#161d2a] rounded-full p-0.5">
+<div class="size-3 rounded-full bg-green-500"></div>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="text-sm font-bold text-white truncate">SniperWolf</p>
+<p class="text-xs text-purple-400 truncate">Lobby • Waiting</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-[#232f48]/50 hover:bg-[#232f48] transition-colors border border-transparent hover:border-purple-500/30">
+<div class="relative shrink-0">
+<img class="size-10 rounded-full" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnWOPM8qEWGK9drvjnc-oEDOoZUI-XXwoSwwo7Wd3PuRdOx6q4qOiAQ_a2DHlN5wCu-JIjYBUEKcGbtEUL8pAuua-iuYvk2ayzGzC6ttmRfDYW-Pv2eBB5nD8Fr68dx0GGgFfWOTLZuGiSXQnXBhDXpZoqwT3M1qbxS1m3pHC9sWfs67xxIv-SWrXuNy0Nt2RzX5b00tos5IPkyB7RwNQF7DulRMKFqvVb7vIIFZQQJBUA4FWruzwZ3Y8MJXgH7_lF0aJYMh93PX4"/>
+<div class="absolute -bottom-1 -right-1 bg-[#161d2a] rounded-full p-0.5">
+<div class="size-3 rounded-full bg-green-500"></div>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<p class="text-sm font-bold text-white truncate">NoobMaster</p>
+<p class="text-xs text-purple-400 truncate">Deathmatch</p>
+</div>
+</div>
+<div class="flex items-center justify-center gap-2 p-3 rounded-xl border border-dashed border-[#232f48] text-[#92a4c9] text-xs hover:text-white cursor-pointer transition-colors">
+<span>+9 آخرين</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: All Members (General Grid) -->
+<section class="flex flex-col gap-4 mt-4">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-500">public</span>
+<h2 class="text-xl font-bold text-white">باقي المتصلين</h2>
+</div>
+<!-- View Toggle -->
+<div class="flex bg-[#232f48] rounded-lg p-1">
+<button class="p-1 rounded bg-[#1e2736] text-white shadow"><span class="material-symbols-outlined text-[18px]">grid_view</span></button>
+<button class="p-1 rounded text-[#92a4c9] hover:text-white"><span class="material-symbols-outlined text-[18px]">list</span></button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+<!-- Standard User Card -->
+<div class="bg-[#1e2736] p-4 rounded-xl flex flex-col items-center gap-3 border border-transparent hover:border-[#232f48] hover:shadow-lg transition-all group">
+<div class="relative">
+<img class="size-14 rounded-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1VsOL0EHFYTjV4buqR8ORdXlCLhmXZViYhPwx2IZ83xhi0_hr5XUSDGHyDlgZd8zWGV3azZ5f-rmVp02UPS5mDDdHNoEj5UysoJI2IKoxObP7679GlY_ll1jfvdbjBsnZ5X9vKv1yL3P1Yu63i2I6w38IixwqiHFncpkUOctBx0F3l46kotBcpRn_vWGyixqh0xwW-_sA3YyTx-cAfbKuYAYqgs2-1bnkMzXtavzc-SF9JCgnSy9GhLSnLDrmdzRwDXQQFm0HJck"/>
+<div class="absolute bottom-0 right-0 size-3.5 rounded-full bg-green-500 border-2 border-[#1e2736]"></div>
+</div>
+<div class="text-center w-full">
+<h4 class="text-sm font-bold text-white truncate w-full">TechGuru</h4>
+<p class="text-[10px] text-[#92a4c9] mt-0.5 truncate">يشاهد: قسم البرمجة</p>
+</div>
+</div>
+<div class="bg-[#1e2736] p-4 rounded-xl flex flex-col items-center gap-3 border border-transparent hover:border-[#232f48] hover:shadow-lg transition-all group">
+<div class="relative">
+<img class="size-14 rounded-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3eGq6j8er9h3w3XummiGl3ZgFyyHd_XhWmhG4lC-VjrUuXHlIl21z8498sEmR-s9HG5d9TPs5feB4KEtcsEi2rqvKXjm7XSbcb0GQ3nTzCy4Il7Xw0yLoVfRPtJGLW6GNDv5sEXUhzY87VGu5dLF0D9FSauAAg6sNBUQlxR_F7gtrThfXwhsaapH4UKGvFEXOOM1BNgaoYAnwdv8oXy3RG3iM-_KKUPxLz3RANvG8N-TE-bS3h5E4R9Ttr0sqcfhOeSnM4WumJj4"/>
+<div class="absolute bottom-0 right-0 size-3.5 rounded-full bg-orange-500 border-2 border-[#1e2736]"></div>
+</div>
+<div class="text-center w-full">
+<h4 class="text-sm font-bold text-white truncate w-full">AlexDesign</h4>
+<p class="text-[10px] text-[#92a4c9] mt-0.5 truncate">يكتب رداً...</p>
+</div>
+</div>
+<div class="bg-[#1e2736] p-4 rounded-xl flex flex-col items-center gap-3 border border-transparent hover:border-[#232f48] hover:shadow-lg transition-all group">
+<div class="relative">
+<img class="size-14 rounded-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbkbvUXf69R0vspFAJstH7kYjyAzcpxf2mXiSRtrOginB4HRCfxZEUe61XqKEfF53v4amL2wn11Fpwa5fS05QCJzer4z6sJe-cIGADkXDPJki1OG6Ayw9_pwAFj5m6krQHXN_-WGdKEo194LwoFfLCvx2D6zdxuRuF-SMwMT9uCsCaRbUEetHF1ldr8TCRyrR7Tqk1lLoy9n7kgoIztbhhyTm2RVfj5pqbsBMIoG4t6zkOsNtC3obm8Xpzi7gc3TY7MxtSxTRp-os"/>
+<div class="absolute bottom-0 right-0 size-3.5 rounded-full bg-green-500 border-2 border-[#1e2736]"></div>
+</div>
+<div class="text-center w-full">
+<h4 class="text-sm font-bold text-white truncate w-full">PixelArt</h4>
+<p class="text-[10px] text-[#92a4c9] mt-0.5 truncate">في الرئيسية</p>
+</div>
+</div>
+<div class="bg-[#1e2736] p-4 rounded-xl flex flex-col items-center gap-3 border border-transparent hover:border-[#232f48] hover:shadow-lg transition-all group">
+<div class="relative">
+<div class="size-14 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 flex items-center justify-center text-lg font-bold group-hover:scale-105 transition-transform">MZ</div>
+<div class="absolute bottom-0 right-0 size-3.5 rounded-full bg-gray-400 border-2 border-[#1e2736]"></div>
+</div>
+<div class="text-center w-full">
+<h4 class="text-sm font-bold text-white truncate w-full">Mazen99</h4>
+<p class="text-[10px] text-[#92a4c9] mt-0.5 truncate">خامل منذ 5د</p>
+</div>
+</div>
+<div class="bg-[#1e2736] p-4 rounded-xl flex flex-col items-center gap-3 border border-transparent hover:border-[#232f48] hover:shadow-lg transition-all group">
+<div class="relative">
+<img class="size-14 rounded-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBizZYiaRBdruHqVrU7xTaD21tUVWsEg7mzCR0KR7LRH2rAHC0Cg5OIkTHWtNC1CuP0kjd06iNwV7TuZ2wmjUN8Lfcz17bUP1-GcDV2hiE5peeKzcwXj6-esPDwyU5novSYPzaU0BbtIc9gqk3XoeFafRcO_EI0gQ8x4gfbb4lvUqJbmZBWv-fm9YpfPflvzN8AdTxechYnt6RCFqh54O5peuRg863rDZrTQ02Ew7FttgGXpD2JpNQO_dTJ6RRUUt515FDeE7KQM4A"/>
+<div class="absolute bottom-0 right-0 size-3.5 rounded-full bg-green-500 border-2 border-[#1e2736]"></div>
+</div>
+<div class="text-center w-full">
+<h4 class="text-sm font-bold text-white truncate w-full">CodeWiz</h4>
+<p class="text-[10px] text-[#92a4c9] mt-0.5 truncate">يشاهد: قسم البرمجيات</p>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="flex justify-center mt-8">
+<button class="px-6 py-2 rounded-xl bg-[#232f48] hover:bg-[#2d3b55] text-white text-sm font-medium transition-colors">
+                        تحميل المزيد
+                     </button>
+</div>
+</section>
+</main>
+</div>
+</body></html>

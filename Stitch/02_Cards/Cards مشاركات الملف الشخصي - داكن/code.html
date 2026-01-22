@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Posts - Dark Cards</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#1d6bf3",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#192233",
+                        "card-hover": "#202b40",
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better dark mode look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #324467; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-border-dark bg-[#111722]/95 backdrop-blur-md">
+<div class="px-4 md:px-10 py-3 flex items-center justify-between gap-4">
+<div class="flex items-center gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight hidden md:block">XenForo</h2>
+</div>
+<!-- Nav Links -->
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Home</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Forums</a>
+<a class="text-primary text-sm font-bold bg-primary/10 px-3 py-1.5 rounded-full" href="#">What's New</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Members</a>
+</nav>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-4 flex-1 justify-end">
+<!-- Search -->
+<div class="relative hidden sm:flex max-w-xs w-full group">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-text-secondary group-focus-within:text-primary">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full bg-border-dark text-white text-sm rounded-lg border-none focus:ring-2 focus:ring-primary pl-10 pr-4 py-2 placeholder-text-secondary transition-all" placeholder="Search..." type="text"/>
+</div>
+<!-- Notifications -->
+<button class="relative p-2 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 size-2 bg-red-500 rounded-full border border-[#111722]"></span>
+</button>
+<!-- Messages -->
+<button class="p-2 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<!-- Avatar -->
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 border-2 border-border-dark cursor-pointer hover:border-primary transition-colors" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAD85jJzYPEd6dyPUl1NktJNf61biHH4hyjuc1SlxIYf5eo6YJaqbUIa1q_FfPHlTzefR0Q1xk2cW16i7eQvPKVewe9TFNFZNe2lKWK7k6k7tySGzbtc8mZerW6eSqHFvVsPnLwML1BkwiKU_1S1644XpCah4bMB74BNIydusnkdmgSpD62WCvbnohhHzIdim7SrFY0m9peKVjnix8pZGnQna_HF5462NZ2iP4T8u5AvQIRU_Dn8bfUCeavRUZpxry8X6MafYBBKPw");'></div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Page Header -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl md:text-4xl font-black text-white tracking-tight mb-2">Latest Profile Posts</h1>
+<p class="text-text-secondary text-lg font-medium">See what the community is talking about right now.</p>
+</div>
+<!-- Filters -->
+<div class="flex gap-2 overflow-x-auto pb-1 md:pb-0 no-scrollbar">
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap shadow-lg shadow-primary/25 hover:bg-primary-hover transition-all">
+                    Everyone
+                </button>
+<button class="bg-card-dark border border-border-dark text-text-secondary hover:text-white hover:border-primary/50 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all">
+                    People You Follow
+                </button>
+<button class="bg-card-dark border border-border-dark text-text-secondary hover:text-white hover:border-primary/50 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all">
+                    Staff
+                </button>
+</div>
+</div>
+<!-- Composer Section -->
+<div class="mb-10 max-w-3xl mx-auto">
+<div class="bg-card-dark rounded-xl p-4 border border-border-dark shadow-xl shadow-black/20 focus-within:border-primary/50 transition-colors">
+<div class="flex gap-4">
+<div class="shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 border border-border-dark" data-alt="Current user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGyxtMXJzHA-xr6ZaZsBRmTtEr6zkf5-8I5XyMbkMIDHOHHIkBWGuOA5IHrHTRqDwx_bHt7B6bfTftxwWuAfaiCsrS-05tzLxob5BVdFRPtbf_fhYKT98KN4GgAJ3qqujZmnuWj8tI3JbRlw5T0UvBmRHWfedKWusNXp9agjcJRXzLDIkSSKUIf9z6qtEZV-5mkbaD8xdBR3Zp2lASQKXRmozxqCP9ruiZ-KM_tu3tX5D1LpPa4QmqjVXT2Tn1TyuaTAyzg_TjTc4");'></div>
+</div>
+<div class="flex-1 flex flex-col gap-3">
+<textarea class="w-full bg-transparent border-none text-white placeholder-text-secondary focus:ring-0 p-0 text-base min-h-[50px] resize-none" placeholder="What's on your mind?"></textarea>
+<div class="flex items-center justify-between pt-2 border-t border-border-dark/50">
+<div class="flex items-center gap-1">
+<button class="p-2 text-text-secondary hover:text-primary hover:bg-primary/10 rounded-full transition-colors" title="Add Image">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-2 text-text-secondary hover:text-primary hover:bg-primary/10 rounded-full transition-colors" title="Add Emoji">
+<span class="material-symbols-outlined text-[20px]">sentiment_satisfied</span>
+</button>
+<button class="p-2 text-text-secondary hover:text-primary hover:bg-primary/10 rounded-full transition-colors" title="Mention User">
+<span class="material-symbols-outlined text-[20px]">alternate_email</span>
+</button>
+</div>
+<button class="bg-primary hover:bg-primary-hover text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors">
+                                Post
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Masonry Grid -->
+<div class="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6 pb-12">
+<!-- Card 1: Rich Media -->
+<div class="break-inside-avoid bg-card-dark rounded-xl border border-border-dark overflow-hidden group hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300">
+<div class="relative">
+<div class="w-full aspect-video bg-cover bg-center" data-alt="Modern minimalist workspace setup with dual monitors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAabnR3H7L_moZZ72hMmlBtw0ZI1MklNBl_Ks5CklnWUHScSlEyH2dlQbaIFX9XSXG5hUeZCJjVC10_ALL5sF9RrdXSlxxrgwldqeFLit4Z542qLKH8poKQM8M_2hHf1PSpzjDlo_YE2ghHbOVQLQEDXVb_KoQNgAyt4uCmUBYqDrnSdpnBjYhDlS5N_DamkMQCxmy152KXhrutmSrvxwTKPvyY6XQ-TWvejb6ZvfIQANWymrDpp3j9azgMyblqamXQXJDrnIEK2lc");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+</div>
+<div class="p-5">
+<div class="flex items-center gap-3 mb-3">
+<div class="bg-center bg-cover rounded-full size-10 border border-border-dark" data-alt="Sarah Jenkins avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYTgYSRAVaKsA5vng2C71lVQKEG3bnZaOtTJEWFgCE3ZZ7zT64jDIwMSufHZw6D-RRQyQsRHxr-rCvCKV-sv9xAGEXTrT9msj_-PPJo0Y7ASupLWFtGTV1tbG9BBSFkikIwADbjtzgu6b3TuWbOZ3vLdgbRBhwDFkR9hAlgTFm7ChQaRuQjCcGXeFY0jromBAovRYnS9UC30S3TZK5RUBkQ0zO_JpFVkJaPw1gJcDFIROMVGO7KeMf7JdIyLZ2VqKHyI3JBdCtlp0");'></div>
+<div>
+<h3 class="text-white font-bold leading-tight group-hover:text-primary transition-colors">Sarah Jenkins</h3>
+<p class="text-text-secondary text-xs">2 hours ago</p>
+</div>
+</div>
+<p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Just finished setting up my new workstation! The lighting is finally perfect for late night coding sessions. 🌙✨
+                    </p>
+<div class="flex items-center justify-between pt-4 border-t border-border-dark/50">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 text-text-secondary hover:text-red-500 transition-colors group/btn">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:fill-current">favorite</span>
+<span class="text-xs font-medium">84</span>
+</button>
+<button class="flex items-center gap-1.5 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-xs font-medium">12</span>
+</button>
+</div>
+<button class="text-text-secondary hover:text-white">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Simple Text -->
+<div class="break-inside-avoid bg-card-dark rounded-xl border border-border-dark p-5 group hover:-translate-y-1 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-cover rounded-full size-10 border border-border-dark" data-alt="Alex Chen avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5MC2ajuHZfHo_z5Ywrg-E_LShZBFcj-AjzEGiH6QuZeMOfPTnGFeX2RixpE5-vRb8Tqd8f27ChmYp0FG_9p8pg5VXa-OilzRCHeq7e_9VCZ1pt6L-CJBDEFPFBoSKXO0MUhi0GVZ_4mhHyPTOim34wUYxwbQWfsaLXeej944NMhtifwHmDCWOpgMeB6G4QGsJ8yVnKn-GtrHqXXoFPnDwdffMrbwp7bMl92TwDdNE3jMmqAuA9TQuII1s0zir5pETWm5R0dy4qqg");'></div>
+<div>
+<h3 class="text-white font-bold leading-tight">Alex Chen</h3>
+<p class="text-text-secondary text-xs">15 mins ago</p>
+</div>
+</div>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">Staff</span>
+</div>
+<p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    We will be performing scheduled maintenance on the servers tonight at 02:00 UTC. Expect a downtime of approximately 30 minutes. 🔧
+                </p>
+<div class="flex items-center justify-between pt-4 border-t border-border-dark/50">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 text-text-secondary hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+<span class="text-xs font-medium">128</span>
+</button>
+<button class="flex items-center gap-1.5 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-xs font-medium">45</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Quote/Highlight -->
+<div class="break-inside-avoid bg-gradient-to-br from-primary/20 to-card-dark rounded-xl border border-primary/20 p-5 group hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+<div class="flex items-center gap-3 mb-3">
+<div class="bg-center bg-cover rounded-full size-10 border border-border-dark" data-alt="Marcus Johnson avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtYb9VoqqzMqjpGl584tM57CZoxO_98k42juZTBymCDkWjAbR25Am8JO0rRkYSTW4Iy3vSddNjLISbNjzdCoILHOCb4H02Ol70l_RCJiVCt1VCOvw8sbcZIZTpNxxoNstz5mQC9cSXYdPZZFaFacAPN2y_5RndrmSYhd00ZFNatnfFgxO2DrEFLBnUNSpMaX_bzpWl9zk8Uw25dlQh15wkz1GAQdapfwAA0TSyCxJNQ672_5BAW1ZM2ClCphvYy7BsTnbO0HMsnyQ");'></div>
+<div>
+<h3 class="text-white font-bold leading-tight">Marcus Johnson</h3>
+<p class="text-text-secondary text-xs">45 mins ago</p>
+</div>
+</div>
+<div class="text-xl font-bold text-white mb-3">
+                    "Design is not just what it looks like and feels like. Design is how it works."
+                </div>
+<p class="text-primary text-sm font-medium mb-4">#DesignThinking #Inspiration</p>
+<div class="flex items-center gap-2">
+<div class="flex -space-x-2 overflow-hidden">
+<div class="inline-block size-6 rounded-full ring-2 ring-card-dark bg-cover bg-center" data-alt="Liker 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA39ZG3by_h-yH51JjRU-cHcxFUkSE3VtZs3YPDZ1wD9BxkgQjJySAG4KgKZNqFsTSJoU0Cmc13XKKXXhdAbaUdNzMdHAgdN98ic6f3LBBaiGs48B02PpDZuX5KxZyZf8c6z4ZuX6E62A-N74zy-64LvESj6Vva629aQzfR5EpgcFiMCVInXVHUPKdMCFIZD7rZ95Jh5gFCft9CAQjEY6_APctmoVQVo3wRP2h0_5AfmYHW5OwAcVGkmyMbqZbcTh_N1zrM6eqK0FQ")'></div>
+<div class="inline-block size-6 rounded-full ring-2 ring-card-dark bg-cover bg-center" data-alt="Liker 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbllcCL7pLGM4miFhtkVZMz9uPe4EHYq5th9tr9BWtq9w6SnD6WOEi4msQh6mSZ7K0sbPb9a3_3u6UwuExQTABDAx1bIGo-KpJWx--WONJvDsRZZLI3Mw_Mx2kDue2YwC3Q9W4G3cghKTZqRfqzvZPFZKWK2dsNtIjgvZzZ10wvjqt6wL9gslV5aBvDU-ou70IBba4Bx_iDMl6oG6x8TC7liz0aZGWcLrFYSCjhy-Xk6ENzEPjNUmt3oOJaRWcRj66J5kobCnDCu0")'></div>
+<div class="inline-block size-6 rounded-full ring-2 ring-card-dark bg-cover bg-center" data-alt="Liker 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAyf-8hmjSPKNUpYZ9sgAOu_hVRE5ThMsvKOh_dcSSDI8wkvxKDVXfiPP1HS45sbqzqDAB5RQMBUP6LP4zT8CekDlyoI92aZ31tldseWbJGsF2Cp7IaFSaClhF2iyO-wY4zhAbB06sCZuTGT1isyGk4G5YdGP6MpDniquhKj6UDgfRtO_qKUfHrR0kO8ixZPCi5GSXmcknneubXDgjPi_I8VX4rQs6ESRdgP-568btbrCiBNOcK-2_FBnBd4Js-GcyV9kwxlYE8WvI")'></div>
+</div>
+<span class="text-text-secondary text-xs ml-1">+42 others liked this</span>
+</div>
+</div>
+<!-- Card 4: Long Text -->
+<div class="break-inside-avoid bg-card-dark rounded-xl border border-border-dark p-5 group hover:-translate-y-1 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+<div class="flex items-center gap-3 mb-3">
+<div class="bg-center bg-cover rounded-full size-10 border border-border-dark" data-alt="Elena Rodriguez avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDYgNkiN0VlYj3-OiEF2lAWN-GpzvbOC6NwYQd2IqfByqZHpSDrFEhCHQm69SzSjVz1qkJjg7Prcf2qmNGBm4q6ZdWlOAEiCTj1PyFc2Mlc7lTW3mvRZl44_5N_gXd1HM32kQcGcPbM7cPbDsejVw6Z3R_Tot3AM6fbAClIChSBZik829OHdp0jjgSh8vAUQDTAA1MM-ikipAqQgZYOAV8rPZ_Ruw7zFYP32WypHHPJ8dYBZZfhb3wMItw-3dCuA2PMpVntigKguWA");'></div>
+<div>
+<h3 class="text-white font-bold leading-tight">Elena Rodriguez</h3>
+<p class="text-text-secondary text-xs">5 hours ago</p>
+</div>
+</div>
+<p class="text-gray-300 text-sm leading-relaxed mb-2">
+                    Does anyone have recommendations for a good mechanical keyboard switch for typing? I've been using Cherry MX Reds but I think I want something tactile but not too loud for the office.
+                </p>
+<p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Thinking about trying Browns or maybe Clears. Any thoughts?
+                </p>
+<!-- Comments Preview -->
+<div class="bg-[#111722] rounded-lg p-3 mb-4 space-y-3">
+<div class="flex gap-2">
+<div class="bg-center bg-cover rounded-full size-6 shrink-0" data-alt="Commenter avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfT_DpxhKdNiMOT_wWiJqRZ60ffUhm8WBq2Rf0g2rYiHQwt7f9lOg3tC-h9M2XYT341mdEgwKyRqi9Iho7Q79Vpwewd8-PeOIdMaWJsCZHO2fXnFWoU8sgmKb6R5nrZJcDKddWB4DgtV-5iiOI6HrJfuY6dNweFJanEHKsCuqyWla-uW9WAglj72At3NUXBEPrIYm-TEMDhPgaCEdW5Zx1vn16aMweNd1o_u5pPPw_R9luTp1Seb8foCLi7z7LsRtA7Fae9Ost-hU");'></div>
+<div class="flex-1">
+<p class="text-xs text-white"><span class="font-bold">Tom:</span> Browns are a solid middle ground!</p>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="bg-center bg-cover rounded-full size-6 shrink-0" data-alt="Commenter avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD73gOwVV2m9yxnQ1Gj-FEa9d8pFmerWKuNKX2gPaPvlYYlW2hl-KRx44YPh3i-MCkrw9nzlVDcZvYkz3UnRvGZISYStq1yoPFSKHpu4o7BLLiMLRgsm1SueSdcnZsnxisHgnMwqXeQol-D-g0K-hxrbaLg6O2fACdaidQmVTwKU3bzS5gLKV9jjJBIPFTB6hu1Xzkfg6TBMLsLC_QqQGJsxe8ErIkMezKMtEYgZ9HHWwd24WGQcZk7jRDe2RlvnH4Q-SbcVghiPW0");'></div>
+<div class="flex-1">
+<p class="text-xs text-white"><span class="font-bold">Lisa:</span> Try Topre if you have the budget.</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-border-dark/50">
+<input class="bg-transparent border-none text-sm text-white focus:ring-0 placeholder-text-secondary w-full" placeholder="Write a comment..." type="text"/>
+<button class="text-primary text-xs font-bold uppercase">Post</button>
+</div>
+</div>
+<!-- Card 5: Link Share -->
+<div class="break-inside-avoid bg-card-dark rounded-xl border border-border-dark p-5 group hover:-translate-y-1 hover:shadow-xl hover:border-primary/30 transition-all duration-300">
+<div class="flex items-center gap-3 mb-3">
+<div class="bg-center bg-cover rounded-full size-10 border border-border-dark" data-alt="David Kim avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAhobpS6cIVIHcPwndo2zuMNksv-6Rdfu7PtL9HUC8Z2RJ-H1ndU-NX_ryVtQfInKsA_tVI0f5eZuG9_xLs-2b_wJNCZwyWtbpe3WjmPIFfgGWzdXyLA948tVqq-eCY8o66hyZf6-SZiEWSBhAaa0auS12-D5qMZ84wXROxJFYuzmquwJuPS9vQ-tR31Ewo0yc4WfeVVGhRv4UuWb7ROiIF-IpzwtaOuNmZCJ_p8cCuxAKby9vh7Asyn2LiwXx6-rGjbrHTGm-jMmA");'></div>
+<div>
+<h3 class="text-white font-bold leading-tight">David Kim</h3>
+<p class="text-text-secondary text-xs">Yesterday</p>
+</div>
+</div>
+<p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Finally launched my new portfolio site! Check it out and let me know what you think. 🚀
+                </p>
+<a class="block mb-4 rounded-lg overflow-hidden border border-border-dark group-hover:border-primary/50 transition-colors" href="#">
+<div class="h-32 bg-cover bg-center" data-alt="Website abstract preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARUIM542KeCwuM_nxnVa-fhZuCcFMv-R-JCIxmwsU6IpDK2R94ZpF_seVjB_Y77vsNg7ZHrXjStXTOJyFBnO7WRRwe1O1qZ3zgbDgHM1YOeqjta9EHJfo0N7yRDILUNR4KLAxuLMMsLgEjz5YtFXK67k0RUytKmy4OwIAeJLlCz-8vkwlS87FUiBu2iq6rZFafuHtUB9FYASo3rUQLEn283qijuzr9KtxUa6th2lyjzX7v-lAf6XOjIBu2MUeyRaJp-kzDd16c9xc")'></div>
+<div class="bg-[#111722] p-3">
+<p class="text-xs text-text-secondary uppercase font-bold mb-1">davidkim.dev</p>
+<p class="text-white text-sm font-medium truncate">David Kim - Full Stack Developer Portfolio</p>
+</div>
+</a>
+<div class="flex items-center justify-between pt-2 border-t border-border-dark/50">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 text-text-secondary hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+<span class="text-xs font-medium">56</span>
+</button>
+<button class="flex items-center gap-1.5 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-xs font-medium">9</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 6: Image Gallery -->
+<div class="break-inside-avoid bg-card-dark rounded-xl border border-border-dark overflow-hidden group hover:-translate-y-1 hover:shadow-2xl hover:border-primary/30 transition-all duration-300">
+<div class="p-5 pb-3">
+<div class="flex items-center gap-3 mb-3">
+<div class="bg-center bg-cover rounded-full size-10 border border-border-dark" data-alt="Sophie Turner avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAw0g7EHxsGaNi7xG_SvnnpQthdE41uw5O9QLXH5JbrGfqWHY97mzpBJ78WK4lqmaAGUfIwfwIY4KYvi-FYufWUFybf6U1zAs30Y-Tl6HOAEGB49H6ylIfvN9sYLo_fWVhA0M8OdLefMa5Y3zQMUpfgHKpt33F0A4gsXDdGVvEqR_7rrjDpyvo6dcoNy46X--HK8HP-HcBIuPX8zHoB8fo_8pnyVbdeni-4lI6kV3tp_f6Lc7ZXxGRBGDFR4rmZLrKMdAKMFDY1IW4");'></div>
+<div>
+<h3 class="text-white font-bold leading-tight">Sophie Turner</h3>
+<p class="text-text-secondary text-xs">Yesterday at 5:42 PM</p>
+</div>
+</div>
+<p class="text-gray-300 text-sm leading-relaxed mb-3">
+                        Weekend trip to the mountains was exactly what I needed. 🏔️
+                    </p>
+</div>
+<div class="grid grid-cols-2 gap-0.5 mb-4">
+<div class="aspect-square bg-cover bg-center" data-alt="Mountain landscape with snow" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtARufqmsSX3bI6g-6vx6XXjYFmUmp0OZFpBEsclgVabmwr8AW5vXj03lHthR6Vl2KcLcY5f-0Q2rkpu1R1hTJgJn6Gy0TiHrCFa16LPRJpWba4IUJLB6KKbR5oRbOlCmt1K3yKfMKVEKc7gUB_kvj4IompeKV_TsCPY_yQ1u3LHSoS7Zoahy2qf6AWR8G2nNukibEp-ILxuik8DCzAZLl_tbstU-N0dE5uBrECTNy8s6B-XoA0yRxRNDUTlyX4ON3yV-NiPK98Nk")'></div>
+<div class="aspect-square bg-cover bg-center" data-alt="Person hiking up a trail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCc4gwHCBmwC04X_3fzGsxWLYKFVK2V4JIQrE5fP14q69BeoDWCRue5MmnLs4DmjeI5kK3Rk3BnfAHnOSez8apn84HgsCjau7z4avzGArVVbrC6m1LJ0DB_nPEZlZ10RI9PbIBoZlrC91yXV0wMyg2fo2byTgIOZ6boRdEFn-gITQT7XOqd-a-RsCgup_TIiD35oEHOw5nhIX3V19f6GslqCPOuSJlwUZOZ1C0A6pE-jiu9hEBQBfF46pvjchgEByBGe6ahuqZblTQ")'></div>
+</div>
+<div class="px-5 pb-5">
+<div class="flex items-center justify-between pt-2 border-t border-border-dark/50">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 text-text-secondary hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+<span class="text-xs font-medium">204</span>
+</button>
+<button class="flex items-center gap-1.5 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-xs font-medium">33</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="flex justify-center mt-8 pb-10">
+<button class="group flex items-center gap-2 px-6 py-3 rounded-lg bg-card-dark border border-border-dark text-white hover:border-primary hover:text-primary transition-all shadow-lg">
+<span class="text-sm font-bold">Load More Posts</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-y-0.5 transition-transform">expand_more</span>
+</button>
+</div>
+</main>
+</body></html>

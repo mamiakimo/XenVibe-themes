@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NanoPro: الرئيسية</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                        "surface-dark": "#1e2736",
+                        "surface-highlight": "#2a3649",
+                        "text-primary": "#ffffff",
+                        "text-secondary": "#94a3b8",
+                        "text-tertiary": "#64748b",
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+            background-color: #111722;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-[#232f48] bg-white/80 dark:bg-[#111722]/90 backdrop-blur-md">
+<div class="max-w-[960px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-3 group" href="#">
+<div class="size-8 rounded-lg bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white shadow-lg shadow-primary/20 transition-transform group-hover:scale-105">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<span class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">NanoPro</span>
+</a>
+</div>
+<!-- Search (Hidden on mobile, visible on desktop) -->
+<div class="hidden md:flex flex-1 max-w-md mx-8">
+<div class="relative w-full group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-full rounded-xl border-none bg-gray-100 dark:bg-[#1e2736] py-2 pr-10 pl-4 text-sm text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary transition-all" placeholder="ابحث في المواضيع..." type="text"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">
+<span class="text-xs text-gray-500 border border-gray-600 rounded px-1.5 py-0.5">⌘K</span>
+</div>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-3">
+<button class="relative p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-[#1e2736] rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#111722]"></span>
+</button>
+<div class="h-8 w-[1px] bg-gray-200 dark:bg-[#2d3748] mx-1"></div>
+<button class="flex items-center gap-2 pl-2">
+<div class="size-9 rounded-full bg-cover bg-center ring-2 ring-transparent hover:ring-primary transition-all" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDCHl6eHhq8oTW9IPM59LpYae5rSRWwrPN8xOlMdcc1dxc3h3nTJD-7YJal1e8cJbgw66PNCZfx4xLL6hY471fC6KKaj85znQ_R07ZA-q3JWYFdACShNg0jYMOMuStlvO3vIWYgNHbkufIgsAmPHfWH-UmqqEcFTzTrUbx7R_qCaPuTtMoxKBWOGT-pxgrSUkIkPXUic65-M-01c6ewr4JjcaEDpbKy72DndNBwaHaKEa5JNkBcb3T5-pD9F_-v5PyMr6yBu9EoRSw");'></div>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex-grow w-full max-w-[960px] mx-auto px-4 sm:px-6 py-8">
+<div class="grid grid-cols-1 gap-8">
+<!-- Welcome / Action Panel -->
+<section class="@container">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-6 rounded-2xl bg-white dark:bg-[#1e2736] border border-gray-200 dark:border-[#2d3748] shadow-sm">
+<div class="space-y-2">
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white leading-tight">أهلاً بك، أحمد 👋</h1>
+<p class="text-gray-500 dark:text-[#94a3b8] max-w-lg">
+                            تابع آخر النقاشات التقنية والتحديثات في مجتمع NanoPro. 
+                            <span class="hidden sm:inline">شاركنا خبرتك وابدأ موضوعاً جديداً اليوم.</span>
+</p>
+</div>
+<button class="shrink-0 inline-flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white px-5 py-2.5 rounded-xl font-medium transition-colors shadow-lg shadow-primary/25">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+<span>موضوع جديد</span>
+</button>
+</div>
+</section>
+<!-- Filter Tabs -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold whitespace-nowrap border border-primary/20">الكل</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-white dark:hover:bg-[#1e2736] text-gray-600 dark:text-[#94a3b8] text-sm font-medium whitespace-nowrap transition-colors border border-transparent hover:border-gray-200 dark:hover:border-[#2d3748]">الأكثر نشاطاً</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-white dark:hover:bg-[#1e2736] text-gray-600 dark:text-[#94a3b8] text-sm font-medium whitespace-nowrap transition-colors border border-transparent hover:border-gray-200 dark:hover:border-[#2d3748]">غير مقروءة</button>
+<button class="px-4 py-1.5 rounded-full hover:bg-white dark:hover:bg-[#1e2736] text-gray-600 dark:text-[#94a3b8] text-sm font-medium whitespace-nowrap transition-colors border border-transparent hover:border-gray-200 dark:hover:border-[#2d3748]">متابع</button>
+</div>
+<!-- Feed Section -->
+<div class="space-y-4">
+<div class="flex items-center justify-between pb-2">
+<h2 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">rss_feed</span>
+                        آخر المشاركات
+                    </h2>
+</div>
+<!-- Pinned Thread Card -->
+<article class="group relative flex flex-col sm:flex-row gap-5 p-5 rounded-2xl bg-white dark:bg-[#1e2736] border border-primary/30 shadow-sm hover:shadow-md transition-all hover:bg-gray-50 dark:hover:bg-[#232f48]">
+<div class="absolute top-4 left-4 text-primary">
+<span class="material-symbols-outlined text-[20px]" title="مثبت">push_pin</span>
+</div>
+<!-- Content -->
+<div class="flex-1 flex flex-col gap-3">
+<div class="flex items-center gap-2 text-xs font-medium">
+<span class="px-2 py-0.5 rounded text-emerald-600 bg-emerald-100 dark:text-emerald-400 dark:bg-emerald-400/10">إعلان هام</span>
+<span class="text-gray-400">•</span>
+<span class="text-gray-500 dark:text-[#94a3b8]">منذ ساعة واحدة</span>
+</div>
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white leading-snug group-hover:text-primary transition-colors cursor-pointer">
+                            إطلاق الإصدار الجديد من تصميم NanoPro 2.0 🚀
+                        </h3>
+<p class="text-sm text-gray-600 dark:text-[#94a3b8] line-clamp-2 leading-relaxed">
+                            يسعدنا أن نعلن عن إطلاق النسخة الجديدة من التصميم، والتي تركز بشكل أساسي على تجربة المستخدم وسرعة التصفح في الوضع الداكن...
+                        </p>
+<!-- Footer Meta -->
+<div class="mt-2 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-cover bg-center" data-alt="Admin avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA91P4oIBBbK47lZvmTieF0e2dUlf40f_EBeN0NhlAwnY5Jy1DYfrAaREyqWqxdsNY3BZ8miYJ3bRwVNjo17GWZJ-qCZ2piQsRR3BxHtZVyL8B8VoNn6UB1u8rhaIuATEl_u6ojd2eq6IKpHKU5fx1BVhuOnPCGv74WZJ1zgwWy-Ay_DWM5D1WMB5ko02b7ZOE3OD6ysfkNoIbHqkjx3WpBV-A4Mm3t2WkpQNKDqOtPVZimkkUlssrdRUd4rvWX1IF_EXjsOzmGkvM");'></div>
+<span class="text-sm font-medium text-gray-700 dark:text-gray-300">المشرف العام</span>
+</div>
+<div class="flex items-center gap-4 text-xs text-gray-500 dark:text-[#64748b]">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 1.2k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 45</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Standard Thread Card 1 -->
+<article class="group flex flex-col sm:flex-row gap-5 p-5 rounded-2xl bg-white dark:bg-[#1e2736] border border-gray-200 dark:border-transparent shadow-sm hover:shadow-md transition-all hover:bg-gray-50 dark:hover:bg-[#232f48]">
+<!-- Thread Image (Optional) -->
+<div class="hidden sm:block w-32 h-24 shrink-0 rounded-lg bg-cover bg-center" data-alt="Server room with blue lights" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDUX7z4GuGYq90-Q5BJKd1ocjySZaRudd4HYb1i2q2qN93IBP_oB8Nk5OeqKA4_yYN0OZhMuEqB5ONI9zzEa5H59FByYebuRLI1Z6831_jnlRyU5LrCy59VVleTl4x7M0-vqhrAX-_SccY3ALnh1o48J7VS3x1LftNnHwoFWNhuIH_bgt6TrqA_zlSfym7mAXz0eFuFcNMZaTFyz5ycmkTbEJrkdxKXXv0VQYhcQu7BJ3U_TxPbi3-oupjV3vlR6yxm-leTsAzdD6g");'></div>
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-xs font-medium">
+<span class="text-blue-500 dark:text-blue-400">تطوير الويب</span>
+<span class="text-gray-400">•</span>
+<span class="text-gray-500 dark:text-[#94a3b8]">منذ ساعتين</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white leading-snug group-hover:text-primary transition-colors cursor-pointer">
+                            كيفية تحسين أداء الخوادم في بيئات العمل المزدحمة
+                        </h3>
+<p class="text-sm text-gray-600 dark:text-[#94a3b8] line-clamp-2 leading-relaxed">
+                            في هذا الموضوع سأقوم بشرح الخطوات العملية لضبط إعدادات Nginx و Apache للتعامل مع عدد كبير من الطلبات المتزامنة...
+                        </p>
+<div class="mt-auto pt-3 flex items-center justify-between border-t border-gray-100 dark:border-[#2d3748] mt-2">
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover bg-center" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkZY-AXA4kZJmf1-pt23sniU8rBz7fc3O0gq34q2fbOwtJlY_aHHOFnS88tCecDO1PCaES8KFe8dQ3Vl3RnRS_6oWqGUGOo4ByNP9AADt8BEL0BXv8V6bOX-L5oFCDt_aM1ou0u4LuLDZqDoAQqTZUh6jD8kUhygoi70yRBD3pDJunoljX__QRKwkDpnJN3WsFml6ApDfShlZJU7BM8nt5FyBruw6kMKa8Zb81-u5N6QXHRI-jZdLaDPoWKplGS8E4gxFFPj1HjpQ");'></div>
+<span class="text-xs font-medium text-gray-600 dark:text-gray-400">عبدالله محمد</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1 text-xs font-medium text-gray-500 dark:text-[#64748b] hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">thumb_up</span> 12
+                                </button>
+<button class="flex items-center gap-1 text-xs font-medium text-gray-500 dark:text-[#64748b] hover:text-primary transition-colors bg-gray-100 dark:bg-[#2a3649] px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[16px]">reply</span> 24 رد
+                                </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Standard Thread Card 2 -->
+<article class="group flex flex-col sm:flex-row gap-5 p-5 rounded-2xl bg-white dark:bg-[#1e2736] border border-gray-200 dark:border-transparent shadow-sm hover:shadow-md transition-all hover:bg-gray-50 dark:hover:bg-[#232f48]">
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex items-center gap-2 text-xs font-medium">
+<span class="text-purple-500 dark:text-purple-400">تصميم وجرافيك</span>
+<span class="text-gray-400">•</span>
+<span class="text-gray-500 dark:text-[#94a3b8]">أمس</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white leading-snug group-hover:text-primary transition-colors cursor-pointer">
+                            مشاركة أعمالي الأخيرة في تصميم واجهات المستخدم (Figma)
+                        </h3>
+<p class="text-sm text-gray-600 dark:text-[#94a3b8] line-clamp-2 leading-relaxed">
+                            مرحباً جميعاً، قمت مؤخراً بإعادة تصميم تطبيق لتوصيل الطعام وأحببت أن أشارككم النتائج للحصول على آرائكم وملاحظاتكم البناءة...
+                        </p>
+<div class="mt-auto pt-3 flex items-center justify-between border-t border-gray-100 dark:border-[#2d3748] mt-2">
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover bg-center" data-alt="Designer avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPax8i-TJEKNhuCFOvT6E4n07l2XctA2gyd_L4Ln7_WKVak28nTuil1vFmKc4EZZ5jNbM1V_hrz0yM9cYuQS6S12RDHUVW1VN58SAmE2HfutOA5mCjMJTkdLzGvJPZk1kdRKTuhvsOTd_wSRfJ--mBiz3fwKYxuWiADWqLteILKYvHeG8x_L8YFz5KATUSMy5w8aknHdvgZyCNyIcb42nrZX9jrfyJ3U6jVAc2NoshhjihtApwBfUqapHQ8-x7_Y0E37IfT0xJnjk");'></div>
+<span class="text-xs font-medium text-gray-600 dark:text-gray-400">سارة علي</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1 text-xs font-medium text-gray-500 dark:text-[#64748b] hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">thumb_up</span> 85
+                                </button>
+<button class="flex items-center gap-1 text-xs font-medium text-gray-500 dark:text-[#64748b] hover:text-primary transition-colors bg-gray-100 dark:bg-[#2a3649] px-2 py-1 rounded-md">
+<span class="material-symbols-outlined text-[16px]">reply</span> 12 رد
+                                </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Standard Thread Card 3 (Simple) -->
+<article class="group flex flex-col gap-3 p-5 rounded-2xl bg-white dark:bg-[#1e2736] border border-gray-200 dark:border-transparent shadow-sm hover:shadow-md transition-all hover:bg-gray-50 dark:hover:bg-[#232f48]">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-xs font-medium">
+<span class="text-orange-500 dark:text-orange-400">استفسارات عامة</span>
+<span class="text-gray-400">•</span>
+<span class="text-gray-500 dark:text-[#94a3b8]">منذ 3 أيام</span>
+</div>
+<!-- Example of a minimalist tag/badge -->
+<span class="material-symbols-outlined text-gray-400 text-[18px]">lock</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white leading-snug group-hover:text-primary transition-colors cursor-pointer">
+                        هل يوجد طريقة لتفعيل الوضع الليلي في تطبيق الأندرويد؟
+                    </h3>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center -space-x-2 space-x-reverse overflow-hidden">
+<div class="inline-block size-6 rounded-full ring-2 ring-white dark:ring-[#1e2736] bg-cover bg-center" data-alt="Avatar 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtiMf1UoedLrjl1wPjbbxcWJH3Vt4vqhvitneR5z3t2E6ozItcKl7TWFMFBAg7z50XRaLJrdBGWQFFYEvLDQy4xtrqAN3Omw90vUv8oTKJeOpD3be1OZN4BC9R8PCk2qdBiilrAu2okSS1iYk6DyqiCOAUhl9ysJdJ0laNZDLZhm-ID6EXcDySEhZB2HBTojadhOolUGZzTABSUKa2WzyIa2ExK7WQc-LxbWSoZdzrqFg_wU4L_j-dWFk85IUN_qqw7TWu20GpuiE");'></div>
+<div class="inline-block size-6 rounded-full ring-2 ring-white dark:ring-[#1e2736] bg-cover bg-center" data-alt="Avatar 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBbRjWUOmqtTXcrZ0-l8VDhc_4-G-Mm_ATwOqMS98Sr7UtWF7z1YKVbtK56vp428JW0iVx_Pt-vBWXnxxkfT1EBKQVb9XeEG5tukr01Ku7-YV9T-ERlmmhJho5JDeQY4hATPm8Coyjmi4ojg8gM30KKv5YAnC-qiLP0RMH8tNfCml8p_ZQaWhIhgt6ratLkvUV-QNraVOr3zPCpxRKynYVFSmnS1UFIImHs9vd_6jeGh7C1uZUS1YtJI5w-YfVBkUlMAkg5by-HDE");'></div>
+<div class="inline-block size-6 rounded-full ring-2 ring-white dark:ring-[#1e2736] bg-cover bg-center" data-alt="Avatar 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCv2hmOk82eCwzvYlJMcV6xgDOuaWcriCAib9d6DNTXTkElE5Sp7s18BaziaNt4vFMAz6MN0h79RriBne00D2VGX6gOGR86KWbBvDihQDAv7jtEHcI69irpOU-jPlWZy5YQ323VSDecQ-YiJVhC-2sSKelbnwgxp9pk-D-kg2TVKmgUPPJJgLXRvqvKrl55oFlXgBCIYZkwjbzn14Dr3v5KB9nYSHp_ckpo4Om5lS60BQERa-SVMqTzsOYaRE-kkvHSOulhGbEZEKE");'></div>
+</div>
+<div class="flex items-center gap-2 text-xs text-gray-500">
+<span>3 ردود</span>
+<span class="text-gray-300 dark:text-gray-600">|</span>
+<span class="text-primary font-medium">مغلق</span>
+</div>
+</div>
+</article>
+<!-- Load More -->
+<div class="pt-6 flex justify-center">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-transparent border border-gray-200 dark:border-[#2d3748] text-gray-600 dark:text-[#94a3b8] hover:bg-white dark:hover:bg-[#1e2736] hover:text-primary transition-all text-sm font-bold">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+                        عرض المزيد
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="border-t border-gray-200 dark:border-[#232f48] py-8 mt-8 bg-white dark:bg-[#111722]">
+<div class="max-w-[960px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-gray-500 dark:text-gray-400">© 2023 NanoPro. جميع الحقوق محفوظة.</p>
+<div class="flex gap-6 text-sm font-medium text-gray-500 dark:text-gray-400">
+<a class="hover:text-primary transition-colors" href="#">الشروط والقوانين</a>
+<a class="hover:text-primary transition-colors" href="#">سياسة الخصوصية</a>
+<a class="hover:text-primary transition-colors" href="#">اتصل بنا</a>
+</div>
+</div>
+</footer>
+<!-- Mobile Floating Action Button -->
+<div class="fixed bottom-6 left-6 md:hidden z-40">
+<button class="size-14 bg-primary text-white rounded-full shadow-lg shadow-primary/40 flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+</div>
+</body></html>

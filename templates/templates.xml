@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <template title="xv_home" type="public" addon_id="XenVibe/Core" version_id="1000010" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('xv_home') }}</xf:title>
+<xf:h1>{{ phrase('xv_welcome') }}</xf:h1>
+
+<div class="xv-layout">
+    <!-- Left Sidebar -->
+    <aside class="xv-left-sidebar">
+        <div class="xv-nav-section">
+            <h3 class="xv-nav-title">التصفح</h3>
+            <a class="xv-nav-item active" href="{$xf.options.boardUrl}xenvibe/">
+                <span class="xv-icon">feed</span>
+                <span>الخلاصة الإخبارية</span>
+            </a>
+            <a class="xv-nav-item" href="{$xf.options.boardUrl}whats-new/">
+                <span class="xv-icon">whatshot</span>
+                <span>الأكثر رواجاً</span>
+            </a>
+            <a class="xv-nav-item" href="{$xf.options.boardUrl}watched/threads">
+                <span class="xv-icon">star</span>
+                <span>متابعاتي</span>
+            </a>
+            <a class="xv-nav-item" href="{$xf.options.boardUrl}account/bookmarks">
+                <span class="xv-icon">bookmarks</span>
+                <span>المحفوظات</span>
+            </a>
+        </div>
+
+        <div class="xv-nav-section">
+            <h3 class="xv-nav-title">المجتمعات</h3>
+            <a class="xv-community-item" href="{$xf.options.boardUrl}forums/">
+                <span class="xv-community-dot" style="background: #3b82f6;"></span>
+                <span>التقنية والهواتف</span>
+            </a>
+            <a class="xv-community-item" href="{$xf.options.boardUrl}forums/">
+                <span class="xv-community-dot" style="background: #22c55e;"></span>
+                <span>الرياضة والسيارات</span>
+            </a>
+            <a class="xv-community-item" href="{$xf.options.boardUrl}forums/">
+                <span class="xv-community-dot" style="background: #a855f7;"></span>
+                <span>التصوير الرقمي</span>
+            </a>
+            <a class="xv-community-item" href="{$xf.options.boardUrl}forums/">
+                <span class="xv-community-dot" style="background: #f97316;"></span>
+                <span>السفر والسياحة</span>
+            </a>
+        </div>
+
+        <div class="xv-upgrade-banner">
+            <p class="xv-upgrade-title">انضم للمميزين</p>
+            <p class="xv-upgrade-desc">احصل على شارة التوثيق وميزات حصرية.</p>
+            <a class="xv-upgrade-btn" href="{$xf.options.boardUrl}account/upgrades">ترقية العضوية</a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="xv-main-content">
+        <!-- Welcome & Filters -->
+        <div class="xv-welcome-section">
+            <div class="xv-welcome-text">
+                <xf:if is="$xf.visitor.user_id">
+                    <h2 class="xv-welcome-title">مرحباً، {$xf.visitor.username} 👋</h2>
+                <xf:else />
+                    <h2 class="xv-welcome-title">مرحباً بك 👋</h2>
+                </xf:if>
+                <p class="xv-welcome-subtitle">إليك آخر المستجدات في مجتمعاتك المفضلة.</p>
+            </div>
+            
+            <div class="xv-filter-chips">
+                <button class="xv-chip active">الكل</button>
+                <button class="xv-chip">
+                    <span class="xv-icon">trending_up</span>
+                    الرائج
+                </button>
+                <button class="xv-chip">الصور فقط</button>
+                <button class="xv-chip">الأعلى تقييماً</button>
+            </div>
+        </div>
+
+        <!-- Thread Cards Grid -->
+        <div class="xv-cards-grid">
+            <xf:foreach loop="$threads" value="$thread">
+                <article class="xv-thread-card">
+                    <div class="xv-card-header">
+                        <div class="xv-card-author">
+                            <xf:avatar user="$thread.User" size="s" />
+                            <div class="xv-author-info">
+                                <xf:username user="$thread.User" class="xv-author-name" />
+                                <span class="xv-card-meta">
+                                    <xf:date time="{$thread.post_date}" /> • {$thread.Forum.title}
+                                </span>
+                            </div>
+                        </div>
+                        <button class="xv-card-menu">
+                            <span class="xv-icon">more_horiz</span>
+                        </button>
+                    </div>
+
+                    <div class="xv-card-body">
+                        <a href="{$xf.options.boardUrl}threads/{$thread.thread_id}/" class="xv-card-title">{$thread.title}</a>
+                        <xf:if is="$thread.FirstPost.message">
+                            <p class="xv-card-excerpt">{$thread.FirstPost.message|snippet(150)}</p>
+                        </xf:if>
+                    </div>
+
+                    <div class="xv-card-footer">
+                        <div class="xv-card-stats">
+                            <span class="xv-stat">
+                                <span class="xv-icon">favorite</span>
+                                {$thread.reaction_score|number}
+                            </span>
+                            <span class="xv-stat">
+                                <span class="xv-icon">chat_bubble</span>
+                                {$thread.reply_count|number}
+                            </span>
+                        </div>
+                        <div class="xv-card-views">
+                            <span class="xv-icon">visibility</span>
+                            {$thread.view_count|number}
+                        </div>
+                    </div>
+                </article>
+            </xf:foreach>
+        </div>
+
+        <!-- Load More -->
+        <div class="xv-load-more">
+            <button class="xv-load-more-btn">تحميل المزيد من المنشورات</button>
+        </div>
+    </section>
+
+    <!-- Right Sidebar -->
+    <aside class="xv-right-sidebar">
+        <!-- Trending Tags -->
+        <div class="xv-widget">
+            <div class="xv-widget-header">
+                <h3 class="xv-widget-title">أهم الوسوم</h3>
+                <a class="xv-widget-link" href="#">عرض الكل</a>
+            </div>
+            <div class="xv-trending-list">
+                <a class="xv-trending-item" href="#">
+                    <div class="xv-trending-info">
+                        <span class="xv-trending-tag">#تحديث_آيفون</span>
+                        <span class="xv-trending-count">1.2 ألف موضوع</span>
+                    </div>
+                    <span class="xv-icon xv-trending-arrow">arrow_back_ios_new</span>
+                </a>
+                <a class="xv-trending-item" href="#">
+                    <div class="xv-trending-info">
+                        <span class="xv-trending-tag">#الدوري_السعودي</span>
+                        <span class="xv-trending-count">850 موضوع</span>
+                    </div>
+                    <span class="xv-icon xv-trending-arrow">arrow_back_ios_new</span>
+                </a>
+                <a class="xv-trending-item" href="#">
+                    <div class="xv-trending-info">
+                        <span class="xv-trending-tag">#وظائف_شاغرة</span>
+                        <span class="xv-trending-count">500 موضوع</span>
+                    </div>
+                    <span class="xv-icon xv-trending-arrow">arrow_back_ios_new</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Top Contributors -->
+        <div class="xv-widget">
+            <div class="xv-widget-header">
+                <h3 class="xv-widget-title">أبرز الأعضاء</h3>
+                <span class="xv-widget-subtitle">هذا الأسبوع</span>
+            </div>
+            <div class="xv-contributors-list">
+                <div class="xv-contributor">
+                    <div class="xv-contributor-avatar">
+                        <span class="avatar avatar--s" style="background: #3b82f6; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">س</span>
+                        <span class="xv-contributor-rank" data-rank="1">1</span>
+                    </div>
+                    <div class="xv-contributor-info">
+                        <span class="xv-contributor-name">سامي الجابر</span>
+                        <span class="xv-contributor-stats">540 تفاعل</span>
+                    </div>
+                    <button class="xv-follow-btn">متابعة</button>
+                </div>
+                <div class="xv-contributor">
+                    <div class="xv-contributor-avatar">
+                        <span class="avatar avatar--s" style="background: #a855f7; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">ن</span>
+                        <span class="xv-contributor-rank" data-rank="2">2</span>
+                    </div>
+                    <div class="xv-contributor-info">
+                        <span class="xv-contributor-name">نورة سعد</span>
+                        <span class="xv-contributor-stats">420 تفاعل</span>
+                    </div>
+                    <button class="xv-follow-btn">متابعة</button>
+                </div>
+                <div class="xv-contributor">
+                    <div class="xv-contributor-avatar">
+                        <span class="avatar avatar--s" style="background: #22c55e; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">ك</span>
+                        <span class="xv-contributor-rank" data-rank="3">3</span>
+                    </div>
+                    <div class="xv-contributor-info">
+                        <span class="xv-contributor-name">كريم محمود</span>
+                        <span class="xv-contributor-stats">310 تفاعل</span>
+                    </div>
+                    <button class="xv-follow-btn">تتابع</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promo Banner -->
+        <div class="xv-promo-banner">
+            <span class="xv-promo-badge">إعلان مميز</span>
+            <h3 class="xv-promo-title">استضف موقعك الآن</h3>
+            <p class="xv-promo-desc">خصم 50% على جميع باقات الاستضافة السحابية لهذا الشهر.</p>
+            <button class="xv-promo-btn">احجز الآن</button>
+        </div>
+
+        <!-- Widget Position for XenForo Widgets -->
+        <xf:widgetpos id="xv_home_sidebar" position="sidebar" />
+    </aside>
+</div>
+
+<!-- Mobile Bottom Navigation -->
+<nav class="xv-mobile-nav">
+    <a class="xv-mobile-nav-item active" href="{$xf.options.boardUrl}xenvibe/">
+        <span class="xv-icon">home</span>
+        <span>الرئيسية</span>
+    </a>
+    <a class="xv-mobile-nav-item" href="{$xf.options.boardUrl}whats-new/">
+        <span class="xv-icon">explore</span>
+        <span>اكتشف</span>
+    </a>
+    <div class="xv-mobile-nav-fab">
+        <a class="xv-fab" href="{$xf.options.boardUrl}forums/-/create-thread">
+            <span class="xv-icon">add</span>
+        </a>
+    </div>
+    <a class="xv-mobile-nav-item" href="{$xf.options.boardUrl}conversations/">
+        <span class="xv-icon">chat</span>
+        <span>رسائل</span>
+    </a>
+    <a class="xv-mobile-nav-item" href="{$xf.options.boardUrl}account/">
+        <span class="xv-icon">person</span>
+        <span>حسابي</span>
+    </a>
+</nav>
+]]></template>
+
+    <template title="xv_header" type="public" addon_id="XenVibe/Core" version_id="1000010" version_string="1.0.0"><![CDATA[<xf:macro name="main" arg-navTree="!" arg-selectedNavTab="">
+<!-- XenVibe Custom Header - Currently using default XenForo header with CSS styling -->
+</xf:macro>
+]]></template>
+
+    <template title="xv_footer" type="public" addon_id="XenVibe/Core" version_id="1000010" version_string="1.0.0"><![CDATA[<xf:macro name="main">
+<!-- XenVibe Custom Footer - Currently using default XenForo footer with CSS styling -->
+</xf:macro>
+]]></template>
+
+    <template title="xv_sidebar_widgets" type="public" addon_id="XenVibe/Core" version_id="1000010" version_string="1.0.0"><![CDATA[<xf:macro name="trending">
+<!-- Additional trending macro if needed -->
+</xf:macro>
+
+<xf:macro name="online">
+<!-- Additional online users macro if needed -->
+</xf:macro>
+]]></template>
+</templates>

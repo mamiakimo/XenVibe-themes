@@ -1,0 +1,172 @@
+<!-- XenVibe Cards - Forum View (Thread List) Template -->
+
+<xf:title page="{$page}">{$forum.Node.title}</xf:title>
+<xf:description>{$forum.Node.description|raw}</xf:description>
+
+<xf:css src="structured_list.less" />
+
+<xf:if is="!$forum.isSearchEngineIndexable()">
+	<xf:head option="metaNoindex"><meta name="robots" content="noindex" /></xf:head>
+</xf:if>
+
+<xf:macro id="metadata_macros::canonical_url"
+	arg-canonicalUrl="{{ link('canonical:forums', $forum, $canonicalFilters + {'page': $page}) }}" />
+
+<xf:head option="rss_forum"><link rel="alternate" type="application/rss+xml" title="{{ phrase('rss_feed_for_x', {'title': $forum.title})|for_attr }}" href="{{ link('forums/index.rss', $forum) }}" /></xf:head>
+
+<xf:macro id="forum_macros::forum_page_options" arg-forum="{$forum}" />
+<xf:breadcrumb source="$forum.getBreadcrumbs(false)" />
+
+<xf:if is="$canInlineMod">
+	<xf:js src="xf/inline_mod.js" min="1" />
+</xf:if>
+
+<div class="xv-forum-view">
+	<!-- Page Header -->
+	<div class="xv-page-header">
+		<div class="xv-page-header-content">
+			<h1 class="xv-page-title">{$forum.Node.title}</h1>
+			<xf:if is="$forum.Node.description">
+				<p class="xv-page-subtitle">{$forum.Node.description|raw}</p>
+			</xf:if>
+		</div>
+		<div class="xv-page-actions">
+			<xf:if is="$forum.canCreateThread() OR $forum.canCreateThreadPreReg()">
+				<a href="{{ link('forums/post-thread', $forum) }}" class="xv-btn xv-btn--primary" rel="nofollow">
+					<span class="material-symbols-outlined">edit_square</span>
+					{{ $forum.TypeHandler.getTypeActionPhrase('cta') ?: phrase('post_thread') }}
+				</a>
+			</xf:if>
+		</div>
+	</div>
+
+	<xf:if is="$pendingApproval">
+		<div class="blockMessage blockMessage--important">{{ phrase('content_submitted_displayed_pending_approval') }}</div>
+	</xf:if>
+
+	<!-- Sub-Forums (if any) -->
+	<xf:if is="$nodeTree">
+		<xf:ad position="forum_view_above_node_list" arg-forum="{$forum}" />
+		<div class="xv-sub-forums-section">
+			<xf:macro id="forum_list::node_list"
+				arg-children="{$nodeTree}"
+				arg-extras="{$nodeExtras}"
+				arg-depth="2" />
+		</div>
+		<xf:ad position="forum_view_below_node_list" arg-forum="{$forum}" />
+	</xf:if>
+
+	<xf:ad position="forum_view_above_thread_list" arg-forum="{$forum}" />
+
+	<!-- Filter Chips -->
+	<div class="xv-thread-filters">
+		<div class="xv-filter-chips">
+			<a href="{{ link('forums', $forum) }}" class="xv-filter-chip {{ !$filters ? 'xv-filter-chip--active' : '' }}">
+				<span class="material-symbols-outlined">apps</span>
+				{{ phrase('all_threads') }}
+			</a>
+			<xf:if is="$xf.visitor.user_id">
+				<a href="{{ link('forums', $forum, {'starter_id': $xf.visitor.user_id}) }}"
+				   class="xv-filter-chip {{ $filters.starter_id == $xf.visitor.user_id ? 'xv-filter-chip--active' : '' }}">
+					<span class="material-symbols-outlined">person</span>
+					{{ phrase('yours') }}
+				</a>
+			</xf:if>
+		</div>
+
+		<!-- Actions -->
+		<div class="xv-thread-actions">
+			<xf:if is="$xf.visitor.user_id">
+				<a href="{{ link('forums/mark-read', $forum, {'date': $xf.time}) }}"
+				   class="xv-action-btn" data-xf-click="overlay">
+					<span class="material-symbols-outlined">check_circle</span>
+					{{ phrase('mark_read') }}
+				</a>
+			</xf:if>
+			<xf:if is="$forum.canWatch()">
+				<a href="{{ link('forums/watch', $forum) }}" class="xv-action-btn" data-xf-click="switch-overlay">
+					<span class="material-symbols-outlined">{{ $forum.Watch.{$xf.visitor.user_id} ? 'notifications_active' : 'notifications' }}</span>
+					<xf:if is="{$forum.Watch.{$xf.visitor.user_id}}">{{ phrase('watching') }}<xf:else />{{ phrase('watch') }}</xf:if>
+				</a>
+			</xf:if>
+			<xf:if is="$canInlineMod">
+				<xf:macro id="inline_mod_macros::button" />
+			</xf:if>
+		</div>
+	</div>
+
+	<!-- Thread List -->
+	<div class="xv-threads-container" data-xf-init="{{ $canInlineMod ? 'inline-mod' : '' }}" data-type="thread" data-href="{{ link('inline-mod') }}">
+
+		<!-- Pagination Top -->
+		<xf:if is="$total > $perPage">
+			<div class="xv-pagination-top">
+				<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="forums" data="{$forum}" params="{$filters}" />
+			</div>
+		</xf:if>
+
+		<xf:if is="$stickyThreads is not empty OR $threads is not empty">
+
+			<!-- Sticky Threads -->
+			<xf:if is="$stickyThreads is not empty">
+				<div class="xv-threads-section">
+					<div class="xv-section-label">
+						<span class="material-symbols-outlined">push_pin</span>
+						{{ phrase('sticky_threads') }}
+					</div>
+					<div class="xv-threads-grid">
+						<xf:foreach loop="$stickyThreads" value="$thread">
+							<xf:macro id="thread_list_macros::item"
+								arg-thread="{$thread}"
+								arg-forum="{$forum}" />
+						</xf:foreach>
+					</div>
+				</div>
+				<xf:ad position="forum_view_below_stickies" arg-forum="{$forum}" />
+			</xf:if>
+
+			<!-- Regular Threads -->
+			<div class="xv-threads-grid js-threadList">
+				<xf:if is="$threads is not empty">
+					<xf:foreach loop="$threads" value="$thread">
+						<xf:macro id="thread_list_macros::item"
+							arg-thread="{$thread}"
+							arg-forum="{$forum}" />
+					</xf:foreach>
+				</xf:if>
+			</div>
+
+		<xf:elseif is="$filters" />
+			<div class="xv-empty-state">
+				<span class="material-symbols-outlined">filter_list_off</span>
+				<p>{{ phrase('there_no_threads_matching_your_filters') }}</p>
+				<a href="{{ link('forums', $forum) }}" class="xv-btn xv-btn--secondary">{{ phrase('clear_filters') }}</a>
+			</div>
+
+		<xf:else />
+			<div class="xv-empty-state">
+				<span class="material-symbols-outlined">forum</span>
+				<p>{{ phrase('there_no_threads_in_this_forum') }}</p>
+				<xf:if is="$forum.canCreateThread() OR $forum.canCreateThreadPreReg()">
+					<a href="{{ link('forums/post-thread', $forum) }}" class="xv-btn xv-btn--primary">
+						{{ $forum.TypeHandler.getTypeActionPhrase('cta') ?: phrase('post_thread') }}
+					</a>
+				</xf:if>
+			</div>
+		</xf:if>
+
+		<!-- Pagination Bottom -->
+		<xf:if is="$total > $perPage">
+			<div class="xv-pagination-bottom">
+				<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+					link="forums" data="{$forum}" params="{$filters}" />
+			</div>
+		</xf:if>
+
+	</div>
+
+	<xf:ad position="forum_view_below_thread_list" arg-forum="{$forum}" />
+</div>
+
+<xf:widgetpos id="forum_view_sidebar" context-forum="{$forum}" position="sidebar" />

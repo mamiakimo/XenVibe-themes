@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>قائمة الأعضاء - XenForo</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#1a202c", // Custom darker card bg
+                        "card-hover": "#222a3b",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Scrollbar for dark mode feeling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark text-[#111418] dark:text-white overflow-x-hidden font-display">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e5e7eb] dark:border-b-[#232f48] bg-white/80 dark:bg-[#111722]/90 backdrop-blur-md px-6 py-3 lg:px-10">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-2xl">grid_view</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">XenForo</h2>
+</div>
+<!-- Desktop Nav -->
+<div class="hidden lg:flex flex-1 justify-center gap-8">
+<a class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="text-[#111418] dark:text-white text-sm font-bold border-b-2 border-primary pb-0.5" href="#">المنتديات</a>
+<a class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium hover:text-primary transition-colors" href="#">ما الجديد</a>
+<a class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium hover:text-primary transition-colors" href="#">الأعضاء</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-[#637588] dark:text-[#92a4c9]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-[#637588] dark:text-[#92a4c9]">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-primary/20" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCcVISGaK1_CdsVjMb8haupi5fDp-g8hw-hdI9j0D6trEOPoHkbGI6fiL_YK_mWTxdhiTjTgRRxmkzAr9FvpY9IzfPB7mKmfsun5oEXpmZydf6yGXoL0qgc-xX0i-9m8Pi75T2qbtNJksH_k2xYOCxdtAqYES6bbdftKeJ7FN-MPomg0LNDEL6HTxdKJmcATvs3fHBc7d3vlzf0efyqDvk1pdka5gLKkgtzXniZtWe33e8hNwqJIFUREPx9pbynxnnmADC3dM2XHkc");'></div>
+</div>
+</header>
+<!-- Main Layout -->
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-12 lg:px-40 flex flex-1 justify-center py-8">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<!-- Breadcrumbs -->
+<nav class="flex flex-wrap gap-2 px-2 pb-4">
+<a class="text-[#92a4c9] text-sm font-medium hover:text-white transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">home</span>
+                        الرئيسية
+                    </a>
+<span class="text-[#4f5b72] text-sm font-medium">/</span>
+<a class="text-[#92a4c9] text-sm font-medium hover:text-white transition-colors" href="#">المجتمع</a>
+<span class="text-[#4f5b72] text-sm font-medium">/</span>
+<span class="text-white text-sm font-medium">الأعضاء</span>
+</nav>
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 px-2">
+<div class="flex flex-col gap-2">
+<h1 class="text-[#111418] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">قائمة الأعضاء</h1>
+<p class="text-[#637588] dark:text-[#92a4c9] text-base font-normal">تصفح الأعضاء المسجلين وتواصل معهم بسهولة</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-primary hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+                            دعوة صديق
+                        </button>
+</div>
+</div>
+<!-- Filters & Search Control Card -->
+<div class="bg-white dark:bg-card-dark rounded-2xl p-4 mb-8 shadow-sm border border-[#e5e7eb] dark:border-[#2a3441]">
+<div class="flex flex-col lg:flex-row gap-4 justify-between items-center">
+<!-- Chips -->
+<div class="flex gap-2 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0 no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white pl-4 pr-3 transition-colors shadow-md shadow-primary/10">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<p class="text-sm font-bold leading-normal">الكل</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f2f5] dark:bg-[#232f48] hover:bg-gray-200 dark:hover:bg-[#2d3b55] pl-4 pr-3 transition-colors group">
+<span class="material-symbols-outlined text-[18px] text-gray-500 dark:text-gray-400 group-hover:text-primary">shield_person</span>
+<p class="text-[#111418] dark:text-white text-sm font-medium leading-normal">الطاقم الإداري</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f2f5] dark:bg-[#232f48] hover:bg-gray-200 dark:hover:bg-[#2d3b55] pl-4 pr-3 transition-colors group">
+<span class="material-symbols-outlined text-[18px] text-gray-500 dark:text-gray-400 group-hover:text-primary">trending_up</span>
+<p class="text-[#111418] dark:text-white text-sm font-medium leading-normal">الأكثر مشاركة</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f2f5] dark:bg-[#232f48] hover:bg-gray-200 dark:hover:bg-[#2d3b55] pl-4 pr-3 transition-colors group">
+<span class="material-symbols-outlined text-[18px] text-gray-500 dark:text-gray-400 group-hover:text-primary">military_tech</span>
+<p class="text-[#111418] dark:text-white text-sm font-medium leading-normal">الأعلى نقاطاً</p>
+</button>
+</div>
+<!-- Search -->
+<div class="relative w-full lg:w-96">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+<span class="material-symbols-outlined text-[#92a4c9]">search</span>
+</div>
+<input class="block w-full p-2.5 pr-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary dark:bg-[#232f48] dark:border-[#374151] dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary transition-all" placeholder="ابحث عن عضو بالاسم..." type="text"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-2">
+<button class="p-1 rounded-md text-gray-400 hover:text-white hover:bg-white/10">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1: Admin -->
+<div class="group relative flex flex-col items-center bg-white dark:bg-card-dark rounded-2xl p-6 border border-transparent dark:border-[#2a3441] hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+<div class="absolute top-4 left-4">
+<span class="flex size-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full size-3 bg-green-500"></span>
+</span>
+</div>
+<div class="relative mb-4">
+<div class="size-24 rounded-full p-1 bg-gradient-to-tr from-yellow-400 via-red-500 to-primary">
+<div class="size-full rounded-full bg-cover bg-center border-4 border-white dark:border-card-dark" data-alt="Admin user profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDb40i35vnW6-Ipn4P84I7XN_D8L13fYQnQEs40xOPZHjOUbTH7G8rx5nBs0YhBlCzQvz05qhQPaMWTuKXa6Bbg08okYrDFp7DLus-nRXtmzdNZ-fFVQYqESjbJ9xWW7iIWrEL1LK5mdWE0yItn1wX_4Vw0_B0k0i27WGSgzEwDrTcHDCw2iYtP_Uwn_jha6mID6o-dFyZ5MAaR3y7lFv4wL65odjQdeS8UHuEBlvLAapzpQWlg0UIWcOmQiM1xz7wkSxfw4-S9aKI");'></div>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary text-white rounded-full p-1 border-2 border-white dark:border-card-dark" title="Verified Staff">
+<span class="material-symbols-outlined text-[16px] block">verified</span>
+</div>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors cursor-pointer">أحمد المحمدي</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-red-500/10 text-red-500 text-xs font-bold border border-red-500/20 mb-4">مدير عام</span>
+<div class="grid grid-cols-3 w-full gap-2 mb-6 divide-x divide-x-reverse divide-gray-200 dark:divide-gray-700">
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">رسائل</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">12.5k</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">تفاعلات</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">45k</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">نقاط</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">1,200</span>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-gray-100 dark:bg-[#232f48] text-gray-900 dark:text-white text-sm font-bold hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2 group-hover/btn:bg-primary">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            متابعة
+                        </button>
+</div>
+<!-- Card 2: Active Member -->
+<div class="group relative flex flex-col items-center bg-white dark:bg-card-dark rounded-2xl p-6 border border-transparent dark:border-[#2a3441] hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+<div class="relative mb-4">
+<div class="size-24 rounded-full p-1 bg-gray-200 dark:bg-gray-700">
+<div class="size-full rounded-full bg-cover bg-center border-4 border-white dark:border-card-dark" data-alt="Active female member profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAvRrlIpmJLWngrHf3D0pX6vyUQGUa-XBlykrIoqGxk1jVJ0uDaq7zlfKmQSOLouUQavcYB8atdQtF2nbyrlOw7g3f9gaYDR7Zq-AgzzXMFL8Du4qe9LOe-w_5dHljk6b-RVkaCIh6eVpSEj803gpkb95rf9FdxtJ2Ort54rqa5tI-eiyQeQVM8GdLKZ-WwPDLFFCB_T3GUgZ02ThwFHYB54IycOnJVZ9EOAJyUOqhcn67dyLbhSqSTZePZ43rIWmFleei8qtfnBfQ");'></div>
+</div>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors cursor-pointer">سارة علي</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-bold border border-primary/20 mb-4">عضو نشيط</span>
+<div class="grid grid-cols-3 w-full gap-2 mb-6 divide-x divide-x-reverse divide-gray-200 dark:divide-gray-700">
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">رسائل</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">850</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">تفاعلات</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">2.1k</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">نقاط</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">150</span>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-gray-100 dark:bg-[#232f48] text-gray-900 dark:text-white text-sm font-bold hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            متابعة
+                        </button>
+</div>
+<!-- Card 3 -->
+<div class="group relative flex flex-col items-center bg-white dark:bg-card-dark rounded-2xl p-6 border border-transparent dark:border-[#2a3441] hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+<div class="absolute top-4 left-4">
+<span class="relative inline-flex rounded-full size-3 bg-gray-500"></span>
+</div>
+<div class="relative mb-4">
+<div class="size-24 rounded-full p-1 bg-gray-200 dark:bg-gray-700">
+<div class="size-full rounded-full bg-cover bg-center border-4 border-white dark:border-card-dark" data-alt="Male user profile picture with glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDu_76hFRUEpQr1QqpI_HVHyCqIXDLgRPHTc-D4KBpfETio1l-KoKwOYGMSOpud_hxfGFk_7wZdx157DnXnL54sCMcYwX7D6zyx_OnRQ-ay74qoo5htDvL-ybP0GzUiaLEQVQ7NWBYnYodVpxLEmjg6BWpaBUyYzaKPtUFhy6Tn24PErT2l_q3g0ZjADhPRp1OPGSPnH1nG7psXCBV8i-C3teh8z4jFMAYK9ab4mR57vDpZ-IrCTRA3kqvbo4wjl7ZvZnSOpCiKQMY");'></div>
+</div>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors cursor-pointer">كريم عبد الله</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-green-500/10 text-green-500 text-xs font-bold border border-green-500/20 mb-4">مشرف قسم</span>
+<div class="grid grid-cols-3 w-full gap-2 mb-6 divide-x divide-x-reverse divide-gray-200 dark:divide-gray-700">
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">رسائل</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">3.4k</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">تفاعلات</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">11k</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">نقاط</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">540</span>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-gray-100 dark:bg-[#232f48] text-gray-900 dark:text-white text-sm font-bold hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            متابعة
+                        </button>
+</div>
+<!-- Card 4 -->
+<div class="group relative flex flex-col items-center bg-white dark:bg-card-dark rounded-2xl p-6 border border-transparent dark:border-[#2a3441] hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+<div class="relative mb-4">
+<div class="size-24 rounded-full p-1 bg-gray-200 dark:bg-gray-700">
+<div class="size-full rounded-full bg-cover bg-center border-4 border-white dark:border-card-dark" data-alt="Young professional profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBFLHVEfsM52Q69F0cc9kJtVbvYMm4QTq7BKhNHeUdJhKfq2tXExw05_hBAfxVOByF8U9IDn85T-Y8qwhY-gPJRoTKq6HJKmK5VporB3BIOcvQpq8hxouyEml5_-xmCZytOdPD9EkWuj5BRDSxsrd76CDDscagkTBRweLDjX8rczlVtlZjL7Ko1ZWlSC5ME2-8rgg8k1XDwOGCY-u4Q3-zaY9WZgyRlb4R9HqxNKVYAp-Gcyr2Ni2se72Ag3Wh_lcx6ZA60KL0ZVZA");'></div>
+</div>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors cursor-pointer">عمر خالد</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-gray-500/10 text-gray-500 text-xs font-bold border border-gray-500/20 mb-4">عضو جديد</span>
+<div class="grid grid-cols-3 w-full gap-2 mb-6 divide-x divide-x-reverse divide-gray-200 dark:divide-gray-700">
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">رسائل</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">12</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">تفاعلات</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">5</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">نقاط</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">0</span>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-gray-100 dark:bg-[#232f48] text-gray-900 dark:text-white text-sm font-bold hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            متابعة
+                        </button>
+</div>
+<!-- Card 5 -->
+<div class="group relative flex flex-col items-center bg-white dark:bg-card-dark rounded-2xl p-6 border border-transparent dark:border-[#2a3441] hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+<div class="absolute top-4 left-4">
+<span class="relative inline-flex rounded-full size-3 bg-green-500"></span>
+</div>
+<div class="relative mb-4">
+<div class="size-24 rounded-full p-1 bg-gray-200 dark:bg-gray-700">
+<div class="size-full rounded-full bg-cover bg-center border-4 border-white dark:border-card-dark" data-alt="Artistic profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDiYIuipZXFrn09TTFzxf8BhaiLYehP6US2czsAo-6yur6PD8QBl4ZbYU5JWK-ePcOdT1dAqEBhkPbxsAW3iPsmbFD5rT-x5lVaYGjIA90jm1EPNvgAMhR4zM50MbmFzu6lVPScMKvgbpQ9hJ4oqLb2Im7nzIksJHBgR9EYYh1Hgus5RlNzRZsElZ39aaolFKAhfSa27lWb20ydT2Xk643Vd7lPVem4n8cNsmdODTSySj10Nsw0x3DzgyDS9LCeDVLYr731xlxsVr4");'></div>
+</div>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors cursor-pointer">ندى السيد</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-500 text-xs font-bold border border-purple-500/20 mb-4">مصممة جرافيك</span>
+<div class="grid grid-cols-3 w-full gap-2 mb-6 divide-x divide-x-reverse divide-gray-200 dark:divide-gray-700">
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">رسائل</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">2.2k</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">تفاعلات</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">15k</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">نقاط</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">600</span>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-gray-100 dark:bg-[#232f48] text-gray-900 dark:text-white text-sm font-bold hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            متابعة
+                        </button>
+</div>
+<!-- Card 6 -->
+<div class="group relative flex flex-col items-center bg-white dark:bg-card-dark rounded-2xl p-6 border border-transparent dark:border-[#2a3441] hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+<div class="relative mb-4">
+<div class="size-24 rounded-full p-1 bg-gray-200 dark:bg-gray-700">
+<div class="size-full rounded-full bg-cover bg-center border-4 border-white dark:border-card-dark" data-alt="Man with beard profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOjHeWpHxLZgPzD7Puki8kvZ4Yp0fIer23AB4FDLJ4ZjL5h5pPb-VnEgG3zt5OxN3g4jfKnTgDEJ5h-l5NWE_h6eWKezaPj6YEiQYfRHPFunpeM9Ii5roIrEyWztf5fG9p910McRGiT0uIULpkcaq5GXon_Nbn8cNAzgWRktZH4elhjMxPypuvCRLN2AtC86e-KOb22GwGScjIHvUdPr9zXXJPpFBqNj-xuPnzGfD4SyM9OoKi0Aj5l_T4tyFPpN2d6k3lZDa3ROg");'></div>
+</div>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors cursor-pointer">حسن يوسف</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-bold border border-primary/20 mb-4">عضو مميز</span>
+<div class="grid grid-cols-3 w-full gap-2 mb-6 divide-x divide-x-reverse divide-gray-200 dark:divide-gray-700">
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">رسائل</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">412</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">تفاعلات</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">890</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">نقاط</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">80</span>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-gray-100 dark:bg-[#232f48] text-gray-900 dark:text-white text-sm font-bold hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            متابعة
+                        </button>
+</div>
+<!-- Card 7 -->
+<div class="group relative flex flex-col items-center bg-white dark:bg-card-dark rounded-2xl p-6 border border-transparent dark:border-[#2a3441] hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+<div class="absolute top-4 left-4">
+<span class="relative inline-flex rounded-full size-3 bg-gray-500"></span>
+</div>
+<div class="relative mb-4">
+<div class="size-24 rounded-full p-1 bg-gray-200 dark:bg-gray-700">
+<div class="size-full rounded-full bg-cover bg-center border-4 border-white dark:border-card-dark" data-alt="Minimalist avatar abstract" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDco21rMEA2xYcNz7ssUeHjJeddfqif8LxeKccZyeX_kfcz2krh5WzI2jA5bN2djdnwOrhAz4oMQxOrRSa9WqydDlSpx51eUvwVjsVxGJbszX9eZ73EHiFB2wNbcqK3cLA4u-XAqB_cCK80oJj4R80eBI_YHDie97-XN1tMBUu0PfgYLcFEewj2ftMRdzoAxMJ3A-W5sJhMXY7KuQqB6QA9BsHgPOQSf7gjRUBD-w7nqTZsjBAxu7gcIERsDtClgYSJTIEkOqzlm1A");'></div>
+</div>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors cursor-pointer">نور الدين</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-bold border border-primary/20 mb-4">مبرمج</span>
+<div class="grid grid-cols-3 w-full gap-2 mb-6 divide-x divide-x-reverse divide-gray-200 dark:divide-gray-700">
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">رسائل</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">5.6k</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">تفاعلات</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">9.2k</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">نقاط</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">350</span>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-gray-100 dark:bg-[#232f48] text-gray-900 dark:text-white text-sm font-bold hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            متابعة
+                        </button>
+</div>
+<!-- Card 8 -->
+<div class="group relative flex flex-col items-center bg-white dark:bg-card-dark rounded-2xl p-6 border border-transparent dark:border-[#2a3441] hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1">
+<div class="relative mb-4">
+<div class="size-24 rounded-full p-1 bg-gray-200 dark:bg-gray-700">
+<div class="size-full rounded-full bg-cover bg-center border-4 border-white dark:border-card-dark" data-alt="Smiling woman in office" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDb2x9-obUbaMoZxApY1rzjBoXcnfa0OccPL0HkGt-fcf2KXb9OvKYFe4HgoDxjhtmbm_4CzJ0MvpMsCAUmqU-CTdv6tEZK9TwO8s6xrP6CfaUO5VGl1H5IGQLbB1GYQqVSQE8wgSM2PsyqOcmAWr3gO4VFYjevnnXWa2B8V_ex1Q6g4rHp4JFO3QMUT525CWyAnlHidHuWTQobN8wwDccj73sSs4ralRTgCGmxfqfGgGlQIUbiFoY5VjV8emAWBp1sXXL-RN86U6w");'></div>
+</div>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors cursor-pointer">مريم حسن</h3>
+<span class="px-2.5 py-0.5 rounded-full bg-gray-500/10 text-gray-500 text-xs font-bold border border-gray-500/20 mb-4">عضو جديد</span>
+<div class="grid grid-cols-3 w-full gap-2 mb-6 divide-x divide-x-reverse divide-gray-200 dark:divide-gray-700">
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">رسائل</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">3</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">تفاعلات</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">1</span>
+</div>
+<div class="flex flex-col items-center text-center px-2">
+<span class="text-xs text-gray-500 dark:text-gray-400 mb-1">نقاط</span>
+<span class="text-sm font-bold text-gray-900 dark:text-white">0</span>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-gray-100 dark:bg-[#232f48] text-gray-900 dark:text-white text-sm font-bold hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            متابعة
+                        </button>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center mt-12 mb-8">
+<button class="flex items-center gap-2 px-6 py-3 bg-white dark:bg-card-dark border border-gray-200 dark:border-[#2a3441] rounded-xl text-sm font-bold text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-[#232f48] transition-colors shadow-sm">
+<span class="material-symbols-outlined">expand_more</span>
+                        عرض المزيد من الأعضاء
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

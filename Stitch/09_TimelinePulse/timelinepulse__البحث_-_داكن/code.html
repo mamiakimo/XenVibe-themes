@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TimelinePulse: Search</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622", // Deep dark blue-black
+                        "card-dark": "#192233", // Slightly lighter for cards
+                        "border-dark": "#232f48", // Border color
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col overflow-x-hidden text-slate-900 dark:text-white">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-slate-200 dark:border-b-border-dark px-10 py-3 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-3xl">timeline</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">TimelinePulse</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium leading-normal text-primary" href="#">Search</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Forums</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Members</a>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-card-dark hover:bg-slate-200 dark:hover:bg-border-dark transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-card-dark hover:bg-slate-200 dark:hover:bg-border-dark transition-colors">
+<span class="material-symbols-outlined text-xl">mail</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ml-2 cursor-pointer border-2 border-transparent hover:border-primary transition-all" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCWTGb0WCNdZyITt0wCOsyKXv9etAlW_WZSNLZ4zz3lKSdYotOFxu9Rtl-7tC4q9RdBzmjRxPI1Jid8eRLqfQDFA7R0NlR62pKSCv_w34FKOZegiGDT8NnFtRJX0z0ZDDHK15snYm_nk9neS0ouWDg5YAK7sJkTYW_-urc7n3RdOkOC8YL8_Km0QbX-u4ntNrC4WaiDBc-3ur0cnV0q5vXZIx4aiUJx6AzuT2kcYma74rDKJ3Yd6fqF9xcXlSuZUrkC-coOefTktqQ");'></div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center w-full px-4 md:px-10 py-8">
+<!-- Search Hero Section -->
+<div class="w-full max-w-5xl mb-12">
+<div class="flex flex-col gap-6 items-center justify-center p-8 rounded-2xl bg-gradient-to-b from-card-dark to-background-dark border border-border-dark shadow-xl relative overflow-hidden">
+<!-- Background decorative elements -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+<div class="flex flex-col gap-2 text-center z-10">
+<h1 class="text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">
+                        Search the Timeline
+                    </h1>
+<p class="text-slate-400 text-sm md:text-base">
+                        Discover events, discussions, and updates across history.
+                    </p>
+</div>
+<div class="w-full max-w-2xl z-10">
+<div class="flex flex-col md:flex-row w-full items-stretch rounded-xl shadow-lg overflow-hidden border border-border-dark focus-within:border-primary transition-colors">
+<div class="flex items-center justify-center px-4 bg-card-dark text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="flex-1 bg-card-dark text-white placeholder-slate-500 px-4 py-4 focus:outline-none border-none ring-0 text-base" placeholder="Enter keywords, dates, or members..." value="Project Alpha Launch"/>
+<button class="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-6 transition-colors flex items-center justify-center gap-2">
+<span>Search</span>
+</button>
+</div>
+<!-- Quick Filters -->
+<div class="flex flex-wrap gap-2 mt-4 justify-center">
+<span class="text-xs text-slate-500 font-medium uppercase tracking-wider py-1">Filters:</span>
+<button class="flex items-center gap-1 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium border border-primary/30">
+<span class="material-symbols-outlined text-[14px]">check</span> Threads
+                        </button>
+<button class="flex items-center gap-1 px-3 py-1 rounded-full bg-card-dark hover:bg-border-dark text-slate-400 hover:text-white text-xs font-medium border border-border-dark transition-colors">
+                             Resources
+                        </button>
+<button class="flex items-center gap-1 px-3 py-1 rounded-full bg-card-dark hover:bg-border-dark text-slate-400 hover:text-white text-xs font-medium border border-border-dark transition-colors">
+                             Profile Posts
+                        </button>
+<button class="flex items-center gap-1 px-3 py-1 rounded-full bg-card-dark hover:bg-border-dark text-slate-400 hover:text-white text-xs font-medium border border-border-dark transition-colors">
+                             Members
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Area: Sidebar + Timeline -->
+<div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8">
+<!-- Sidebar: Time Period Filters -->
+<aside class="hidden lg:block space-y-6">
+<div class="sticky top-24">
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Time Period</h3>
+<div class="flex flex-col gap-2">
+<button class="flex items-center justify-between w-full p-3 rounded-lg bg-card-dark border border-border-dark hover:border-primary/50 group transition-all text-left">
+<span class="text-sm font-medium text-slate-300 group-hover:text-white">All Time</span>
+</button>
+<button class="flex items-center justify-between w-full p-3 rounded-lg bg-primary/10 border border-primary text-left">
+<span class="text-sm font-bold text-primary">Last 30 Days</span>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</button>
+<button class="flex items-center justify-between w-full p-3 rounded-lg bg-card-dark border border-border-dark hover:border-primary/50 group transition-all text-left">
+<span class="text-sm font-medium text-slate-300 group-hover:text-white">Last Year</span>
+</button>
+<button class="flex items-center justify-between w-full p-3 rounded-lg bg-card-dark border border-border-dark hover:border-primary/50 group transition-all text-left">
+<span class="text-sm font-medium text-slate-300 group-hover:text-white">Custom Range</span>
+<span class="material-symbols-outlined text-slate-500 text-sm">calendar_month</span>
+</button>
+</div>
+<div class="mt-8">
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Sort By</h3>
+<div class="bg-card-dark rounded-lg p-1 flex border border-border-dark">
+<button class="flex-1 py-1.5 text-xs font-bold text-center rounded bg-primary text-white shadow-sm">Date</button>
+<button class="flex-1 py-1.5 text-xs font-medium text-center rounded text-slate-400 hover:text-white">Relevance</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- Results Timeline -->
+<div class="flex flex-col relative">
+<!-- Results Count -->
+<div class="flex items-center justify-between mb-6 px-4">
+<p class="text-slate-400 text-sm">Found <span class="text-white font-bold">12</span> results for "<span class="text-white">Project Alpha Launch</span>"</p>
+<button class="lg:hidden flex items-center gap-1 text-primary text-sm font-medium">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filters
+                    </button>
+</div>
+<!-- Timeline Spine Container -->
+<div class="relative pl-4 md:pl-8 border-l-2 border-border-dark space-y-8">
+<!-- Result Item 1 -->
+<div class="relative group">
+<!-- Timeline Node -->
+<div class="absolute -left-[25px] md:-left-[41px] top-4 size-6 md:size-8 rounded-full bg-card-dark border-4 border-background-dark ring-2 ring-primary flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
+<div class="size-2 rounded-full bg-primary"></div>
+</div>
+<article class="flex flex-col md:flex-row gap-4 bg-card-dark hover:bg-[#1e283d] p-5 rounded-xl border border-border-dark hover:border-primary/40 transition-all shadow-sm">
+<!-- Left: Date & Type -->
+<div class="md:w-32 shrink-0 flex flex-row md:flex-col items-center md:items-start gap-2 md:gap-1 text-slate-400 border-b md:border-b-0 md:border-r border-border-dark pb-3 md:pb-0 pr-0 md:pr-4">
+<span class="text-primary font-bold text-sm">2 hours ago</span>
+<span class="text-xs">Oct 24, 2023</span>
+<div class="mt-auto hidden md:flex items-center gap-1 px-2 py-1 rounded bg-background-dark border border-border-dark w-fit">
+<span class="material-symbols-outlined text-[14px]">campaign</span>
+<span class="text-[10px] uppercase font-bold tracking-wide">News</span>
+</div>
+</div>
+<!-- Right: Content -->
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors cursor-pointer">
+                                        Project Alpha Launch Details &amp; Roadmap
+                                    </h3>
+<!-- Mobile Tag -->
+<div class="md:hidden flex items-center gap-1 px-2 py-1 rounded bg-background-dark border border-border-dark">
+<span class="material-symbols-outlined text-[14px]">campaign</span>
+<span class="text-[10px] uppercase font-bold tracking-wide">News</span>
+</div>
+</div>
+<p class="text-slate-300 text-sm leading-relaxed">
+                                    We are thrilled to announce that <span class="bg-yellow-500/20 text-yellow-200 px-1 rounded">Project Alpha Launch</span> is officially scheduled. The team has been working hard on the new features including the timeline view...
+                                </p>
+<div class="flex items-center gap-3 mt-2 pt-3 border-t border-border-dark/50">
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover bg-center" data-alt="User avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9HcVhTGq40Sh7NWdFGjedz39678QKQYoerKa3SarE6I789WajvgnNovfbeG4oCeu3URLrnHOKWIdSfgBoaBPvxKTgN8a8EWs5jNjSgD4B84Gryqv8tt4ti_1-ycAF5jB0JMoFXIsfUaSdrn4s5E-9m1u_JVV1LOUnwY4RvUSrzVa8BBHOWl8vCzoi1chyTaEZRDgGKqn3K68ZsV_xJhUG6V3mAjHk6ErD7KzXvt1ueD5euKs0I5CTm1jwPl6P4dJUYQKAsGjNykU');"></div>
+<span class="text-xs font-medium text-slate-400">posted by <span class="text-white">SarahAdmin</span></span>
+</div>
+<div class="flex items-center gap-4 ml-auto text-slate-500">
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-[14px]">visibility</span> 1.2k</span>
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-[14px]">chat_bubble</span> 42</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Result Item 2 -->
+<div class="relative group">
+<div class="absolute -left-[25px] md:-left-[41px] top-4 size-6 md:size-8 rounded-full bg-card-dark border-4 border-background-dark ring-2 ring-border-dark flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-slate-400">forum</span>
+</div>
+<article class="flex flex-col md:flex-row gap-4 bg-card-dark hover:bg-[#1e283d] p-5 rounded-xl border border-border-dark hover:border-slate-600 transition-all shadow-sm">
+<div class="md:w-32 shrink-0 flex flex-row md:flex-col items-center md:items-start gap-2 md:gap-1 text-slate-400 border-b md:border-b-0 md:border-r border-border-dark pb-3 md:pb-0 pr-0 md:pr-4">
+<span class="text-white font-medium text-sm">Yesterday</span>
+<span class="text-xs">Oct 23, 2023</span>
+<div class="mt-auto hidden md:flex items-center gap-1 px-2 py-1 rounded bg-background-dark border border-border-dark w-fit">
+<span class="material-symbols-outlined text-[14px]">forum</span>
+<span class="text-[10px] uppercase font-bold tracking-wide">Chat</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors cursor-pointer">
+                                    Community Feedback: Alpha Launch Preparations
+                                </h3>
+<p class="text-slate-300 text-sm leading-relaxed">
+                                    ...regarding the upcoming <span class="bg-yellow-500/20 text-yellow-200 px-1 rounded">Project Alpha Launch</span>. I think we need to consider server load balancing before opening the gates...
+                                </p>
+<div class="flex items-center gap-3 mt-2 pt-3 border-t border-border-dark/50">
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover bg-center" data-alt="User avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAUajmyNmYb0bGPMML4qDH9onVwOA4jq-rJ7NUaTDAeWy54ZQUPVqxBheRNXQjQncFxAu2xjPKGWHO_kVaYyLmwIOLBgNRfDPJfNXssscJ--WUzeLLiV1tu5Q8tROjdjXtWJHL2Bux3yAvKeImJ6_kp-pV8b4gKoc0HPZW-uGH8UxZzNMKLVj1ls2RNsxVKny_dlCmcJa0n1b2ssVEI36dhVh_iq21E8TBvrDLzAsdqF2Jh4NqypzlUBm1IoPqK1pH9SXjwJbEgJn4');"></div>
+<span class="text-xs font-medium text-slate-400">posted by <span class="text-white">DevMike</span></span>
+</div>
+<div class="flex items-center gap-4 ml-auto text-slate-500">
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-[14px]">visibility</span> 340</span>
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-[14px]">chat_bubble</span> 12</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Result Item 3 -->
+<div class="relative group">
+<div class="absolute -left-[25px] md:-left-[41px] top-4 size-6 md:size-8 rounded-full bg-card-dark border-4 border-background-dark ring-2 ring-border-dark flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-slate-400">folder_zip</span>
+</div>
+<article class="flex flex-col md:flex-row gap-4 bg-card-dark hover:bg-[#1e283d] p-5 rounded-xl border border-border-dark hover:border-slate-600 transition-all shadow-sm opacity-80 hover:opacity-100">
+<div class="md:w-32 shrink-0 flex flex-row md:flex-col items-center md:items-start gap-2 md:gap-1 text-slate-400 border-b md:border-b-0 md:border-r border-border-dark pb-3 md:pb-0 pr-0 md:pr-4">
+<span class="text-white font-medium text-sm">Oct 15</span>
+<span class="text-xs">2023</span>
+<div class="mt-auto hidden md:flex items-center gap-1 px-2 py-1 rounded bg-background-dark border border-border-dark w-fit">
+<span class="material-symbols-outlined text-[14px]">folder_zip</span>
+<span class="text-[10px] uppercase font-bold tracking-wide">Res</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors cursor-pointer">
+                                        Alpha Resource Pack v1.0
+                                    </h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-900/40 text-green-400 border border-green-800">RELEASE</span>
+</div>
+<p class="text-slate-300 text-sm leading-relaxed">
+                                    The initial assets for the <span class="bg-yellow-500/20 text-yellow-200 px-1 rounded">Project Alpha Launch</span>. Includes logos, banners, and default configurations.
+                                </p>
+<div class="flex items-center gap-3 mt-2 pt-3 border-t border-border-dark/50">
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover bg-center" data-alt="User avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALqfj7NgsKgcpg3GykV498WJRwgR8obfSqKugDlUkFaLMEww8PMvMFVO0IP7HG-iXrLPFTVBBNcacLFxVIVW3gwd_2eQLhS5i_T_JA3aRQuzolr1Hf2uI6vc7F5KzHKGyiOzKLGEXUZjXdPJwR-f0yvj0uXmu5wnnRkA54j6ZZnnF2X7GMWzyK2-rv7Q55YqrFIQvxslH9DxsDDsENAbY0hHTnMkGpSGwVX_3EEuy1eLewf7DkdhoMcMQXa3xR70ePmw2mfxkuiA8');"></div>
+<span class="text-xs font-medium text-slate-400">posted by <span class="text-white">DesignLead</span></span>
+</div>
+<div class="flex items-center gap-4 ml-auto text-slate-500">
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-[14px]">download</span> 85</span>
+<span class="flex items-center gap-1 text-xs"><span class="material-symbols-outlined text-[14px]">star</span> 5.0</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Result Item 4 (Old) -->
+<div class="relative group">
+<div class="absolute -left-[25px] md:-left-[41px] top-4 size-6 md:size-8 rounded-full bg-card-dark border-4 border-background-dark ring-2 ring-border-dark flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-slate-400">article</span>
+</div>
+<article class="flex flex-col md:flex-row gap-4 bg-card-dark hover:bg-[#1e283d] p-5 rounded-xl border border-border-dark hover:border-slate-600 transition-all shadow-sm opacity-60 hover:opacity-100">
+<div class="md:w-32 shrink-0 flex flex-row md:flex-col items-center md:items-start gap-2 md:gap-1 text-slate-400 border-b md:border-b-0 md:border-r border-border-dark pb-3 md:pb-0 pr-0 md:pr-4">
+<span class="text-slate-500 font-medium text-sm">Sep 01</span>
+<span class="text-xs">2023</span>
+<div class="mt-auto hidden md:flex items-center gap-1 px-2 py-1 rounded bg-background-dark border border-border-dark w-fit">
+<span class="material-symbols-outlined text-[14px]">history_edu</span>
+<span class="text-[10px] uppercase font-bold tracking-wide">Wiki</span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors cursor-pointer">
+                                    Initial Concept Draft: Project Alpha
+                                </h3>
+<p class="text-slate-300 text-sm leading-relaxed">
+                                    Historical document outlining the original vision for <span class="bg-yellow-500/20 text-yellow-200 px-1 rounded">Project Alpha</span>. Note: Much of this has changed.
+                                </p>
+<div class="flex items-center gap-3 mt-2 pt-3 border-t border-border-dark/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-slate-500">lock</span>
+<span class="text-xs font-medium text-slate-400">Archived</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="pt-8 pb-4 flex justify-center">
+<button class="px-6 py-3 rounded-full bg-card-dark border border-border-dark hover:bg-border-dark text-white font-medium text-sm transition-colors flex items-center gap-2 group">
+                            Load older events
+                            <span class="material-symbols-outlined group-hover:translate-y-1 transition-transform">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto border-t border-border-dark bg-background-dark py-8">
+<div class="max-w-6xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-slate-500 text-sm">
+                 © 2023 TimelinePulse. All rights reserved.
+             </div>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-white text-sm" href="#">Terms</a>
+<a class="text-slate-400 hover:text-white text-sm" href="#">Privacy</a>
+<a class="text-slate-400 hover:text-white text-sm" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

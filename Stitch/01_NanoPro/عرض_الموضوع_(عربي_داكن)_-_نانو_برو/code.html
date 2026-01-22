@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>عرض الموضوع - نانو برو</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#1e2330",
+              "surface-lighter": "#2a3142",
+            },
+            fontFamily: {
+              "display": ["Noto Sans Arabic", "Inter", "sans-serif"],
+              "sans": ["Noto Sans Arabic", "Inter", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for code blocks */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e2330;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #343b4f;
+            border-radius: 4px;
+        }
+        .triangle-r {
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid #1e2330; 
+        }
+        .triangle-l {
+            position: absolute;
+            top: 20px;
+            left: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid #2a3142; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-sans antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+<!-- Top Navigation -->
+<div class="w-full bg-background-dark border-b border-[#232f48] sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16 gap-4">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white shadow-[0_0_15px_rgba(19,91,236,0.5)]">
+<span class="material-symbols-outlined text-[24px]">hub</span>
+</div>
+<h1 class="text-xl font-black tracking-tight text-white hidden sm:block">نانو<span class="text-primary">برو</span></h1>
+</div>
+<!-- Search Bar (Hidden on Mobile) -->
+<div class="hidden md:flex flex-1 max-w-lg mx-8">
+<div class="flex w-full items-stretch rounded-xl bg-[#1e2330] border border-[#232f48] focus-within:border-primary transition-colors">
+<div class="flex items-center justify-center pr-4 pl-2 text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-transparent border-none text-white placeholder-slate-500 focus:ring-0 text-sm h-10" placeholder="ابحث في المنتدى..." type="text"/>
+</div>
+</div>
+<!-- Navigation & User -->
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="hover:text-primary transition-colors" href="#">المنتديات</a>
+<a class="hover:text-primary transition-colors" href="#">الأعضاء</a>
+</div>
+<div class="flex items-center gap-3 pr-4 border-r border-[#232f48]">
+<button class="relative p-2 text-slate-300 hover:text-white hover:bg-[#232f48] rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 size-2 bg-red-500 rounded-full border border-background-dark"></span>
+</button>
+<button class="p-2 text-slate-300 hover:text-white hover:bg-[#232f48] rounded-full transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<!-- User Avatar -->
+<div class="w-9 h-9 rounded-full bg-cover bg-center border-2 border-[#232f48] cursor-pointer hover:border-primary transition-colors" data-alt="User profile avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCX9enzd4LiO9AVjWV1_h2xs6g1pA9SSyPxItlFr2qMDERf4exvY1n23o_P5wopiZlttiMTkPXPxqxR0xe2_hAPLwSigR64-YDyZZvPBRg0ED9Mt1m2vCjxR2LENvr7oThJeOBaBDDY_mr4mi-kL6YEuEUhnFm8f_1s7h6sANVEmsI3CD8FuzmUTdiSlMdCDq9YRa1lrz8728uvvcHUs91f4sIxmd5_esUookM-bKZsb5uOjMnCJ4E9piXLphaiNq39mqgvdDw26sY');">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Layout -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-8">
+<!-- Main Feed Column -->
+<main class="flex-1 min-w-0">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-sm text-slate-400 mb-6 overflow-x-auto whitespace-nowrap pb-2">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<span class="material-symbols-outlined text-[16px] text-slate-600 flip-x">chevron_left</span>
+<a class="hover:text-primary transition-colors" href="#">قسم الخوادم</a>
+<span class="material-symbols-outlined text-[16px] text-slate-600 flip-x">chevron_left</span>
+<span class="text-white font-medium">مشاكل وحلول</span>
+</nav>
+<!-- Topic Header -->
+<div class="mb-8">
+<div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="px-2.5 py-0.5 rounded-md bg-primary/20 text-primary text-xs font-bold border border-primary/20">استفسار</span>
+<span class="flex items-center text-slate-500 text-xs gap-1">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+                                1.2k مشاهدة
+                            </span>
+</div>
+<h1 class="text-2xl md:text-3xl font-black text-white leading-tight mb-2">كيفية تحسين أداء السيرفر عند زيادة الضغط؟</h1>
+<p class="text-slate-400 text-sm">
+                            بواسطة <a class="text-white font-semibold hover:underline decoration-primary" href="#">Ahmed_Dev</a>، قبل 3 ساعات
+                        </p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-[#232f48] hover:bg-[#2d3b55] text-white text-sm font-bold rounded-xl transition-all border border-[#34415e]">
+<span class="material-symbols-outlined text-[20px]">star</span>
+<span>متابعة</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-blue-600 text-white text-sm font-bold rounded-xl transition-all shadow-[0_4px_14px_rgba(19,91,236,0.3)]">
+<span class="material-symbols-outlined text-[20px]">reply</span>
+<span>رد عالموضوع</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Posts Feed -->
+<div class="flex flex-col gap-6">
+<!-- Post 1: The Thread Starter (Right Aligned Avatar) -->
+<div class="group flex gap-4 items-start">
+<!-- Avatar Column -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 pt-2">
+<div class="w-12 h-12 rounded-full bg-cover bg-center border-2 border-[#232f48] shadow-lg" data-alt="Ahmed_Dev avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA1d5bal-8BjryMWVbrJvScxVoRWmT62NDxZleGvsErKH8Fz2Q-0TreQ1n_QvMNfLJiWwXLJ6HxsqbpPtdtN8o8EWT9BiHJ4CMDg1SfTcpTWJnRALXf6L7FqODfAgwnf2QIy4cl3fFQPCt1biBRx-sDxZJqZ7xMMmvRxMe4JiG8KAuaGUx0Y_Bby0dzUBagAZIpZnZ8jHkzgVhQk2xS5m6SNeckQlm46OA3LunrAWMz8gbZRn2Jmkk3foEKzBygVsk-n20IH5HWUQU');">
+</div>
+</div>
+<!-- Content Bubble -->
+<div class="flex-1 relative">
+<!-- Triangle Decoration -->
+<div class="triangle-r hidden md:block border-l-surface-dark"></div>
+<div class="bg-surface-dark rounded-2xl p-5 border border-[#232f48] shadow-sm relative group-hover:border-[#34415e] transition-colors">
+<!-- Header Info -->
+<div class="flex justify-between items-center mb-4 border-b border-[#2d3b55] pb-3">
+<div>
+<div class="flex items-baseline gap-2">
+<h3 class="text-lg font-bold text-white">Ahmed_Dev</h3>
+<span class="bg-green-500/10 text-green-400 border border-green-500/20 text-[10px] px-1.5 py-0.5 rounded font-bold">عضو نشط</span>
+</div>
+<span class="text-xs text-slate-500">مطور ويب • اليوم 10:30 ص</span>
+</div>
+<div class="flex gap-2 text-slate-500">
+<button class="hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">share</span></button>
+<button class="hover:text-white transition-colors"><span class="material-symbols-outlined text-[18px]">bookmark</span></button>
+</div>
+</div>
+<!-- Body Text -->
+<div class="prose prose-invert prose-sm max-w-none text-slate-200 leading-7">
+<p>السلام عليكم ورحمة الله وبركاته،</p>
+<p>أواجه مشكلة في قاعدة بيانات MySQL عند وصول عدد الزوار المتزامن إلى أكثر من 5000 زائر. السيرفر يبدأ بالاستجابة ببطء شديد وتصل نسبة استخدام المعالج إلى 90%.</p>
+<p>قمت بتجربة تفعيل الكاش لكن المشكلة لا تزال موجودة في الصفحات الديناميكية. هذه إعدادات <code>my.cnf</code> الحالية:</p>
+<div class="bg-[#111722] rounded-lg p-4 font-mono text-sm border border-[#2d3b55] overflow-x-auto custom-scrollbar my-4 dir-ltr text-left">
+<span class="text-purple-400">innodb_buffer_pool_size</span> = 2G<br/>
+<span class="text-purple-400">max_connections</span> = 400<br/>
+<span class="text-purple-400">query_cache_size</span> = 0<br/>
+<span class="text-purple-400">query_cache_type</span> = 0
+                                </div>
+<p>هل هناك أي اقتراحات لتحسين الأداء؟ وشكراً مقدماً.</p>
+</div>
+<!-- Interaction Bar -->
+<div class="mt-6 pt-3 border-t border-[#2d3b55] flex items-center justify-between">
+<div class="flex items-center gap-1">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-[#2d3b55] text-slate-400 hover:text-red-400 transition-all group/btn">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:fill-current">favorite</span>
+<span class="text-xs font-bold">12</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-[#2d3b55] text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[20px]">format_quote</span>
+<span class="text-xs font-bold">اقتباس</span>
+</button>
+</div>
+<button class="text-slate-500 hover:text-slate-300 text-xs font-medium">إبلاغ</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Post 2: Admin Reply (Highlighted) -->
+<div class="group flex gap-4 items-start">
+<!-- Avatar Column -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 pt-2">
+<div class="w-12 h-12 rounded-full bg-cover bg-center border-2 border-primary shadow-[0_0_10px_rgba(19,91,236,0.3)]" data-alt="Sarah_Admin avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCIuv_c_xR69luzb1kQ34Spkcjr0wVqFU82i7R43oGH_IRuYC9CuHj50lMiYx50Qrbg3p737DxPlmyHy312D1-zJmaTJgq4Za7NEceX-ANLLkrrdCl7MMrgDp1Y5YTCTQErRhMGaeC1gZGP053-Ez-GcGwTQXTk-EB204HPD_wue5aUvvHhHMHZmPJw8ESueVRU0zWQpdqnQE72nPdTVLaw9r_WqieIdPdkySbRspOadLTS-SjYB6AEsqD62hCzOSNdVcfiwu5OKyA');">
+</div>
+<span class="bg-primary text-white text-[10px] px-2 py-0.5 rounded-full font-bold shadow-sm">مشرفة</span>
+</div>
+<!-- Content Bubble -->
+<div class="flex-1 relative">
+<div class="triangle-r hidden md:block border-l-surface-lighter"></div>
+<!-- Highlighted Styling -->
+<div class="bg-surface-lighter rounded-2xl p-5 border border-primary/30 shadow-md relative">
+<!-- Header Info -->
+<div class="flex justify-between items-center mb-4 border-b border-white/5 pb-3">
+<div>
+<div class="flex items-baseline gap-2">
+<h3 class="text-lg font-bold text-white">Sarah_System</h3>
+<span class="flex items-center gap-1 text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+                                            اجابة معتمدة
+                                        </span>
+</div>
+<span class="text-xs text-slate-400">مدير النظام • منذ ساعتين</span>
+</div>
+<div class="text-slate-500 text-sm">#2</div>
+</div>
+<!-- Body Text -->
+<div class="prose prose-invert prose-sm max-w-none text-slate-200 leading-7">
+<p>أهلاً بك أخي الكريم،</p>
+<p>المشكلة تكمن غالباً في إعداد <code>innodb_buffer_pool_size</code>. إذا كان السيرفر يمتلك ذاكرة عشوائية (RAM) كافية، أنصحك برفع القيمة لتغطي حجم قاعدة البيانات بالكامل.</p>
+<p>جرب الإعدادات التالية:</p>
+<ul class="list-disc list-inside marker:text-primary">
+<li>ارفع البفر بول إلى 70% من الرام المتاح.</li>
+<li>قم بتفعيل <code>slow_query_log</code> لتحليل الاستعلامات البطيئة.</li>
+</ul>
+</div>
+<!-- Interaction Bar -->
+<div class="mt-6 pt-3 border-t border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-1">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-[20px] fill-current">thumb_up</span>
+<span class="text-xs font-bold">5 إعجابات</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-[#2d3b55] text-slate-400 hover:text-white transition-all">
+<span class="material-symbols-outlined text-[20px]">reply</span>
+<span class="text-xs font-bold">رد</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Post 3: My Reply (Logged In User - Left Aligned for "Chat" feel) -->
+<!-- Note: The user requested a "Chat bubble style". To emphasize conversation, "Me" bubbles could be right-aligned in LTR, so Left-aligned in RTL -->
+<div class="group flex flex-row-reverse gap-4 items-start mt-4">
+<!-- My Avatar -->
+<div class="flex-shrink-0 flex flex-col items-center gap-2 pt-2">
+<div class="w-12 h-12 rounded-full bg-cover bg-center border-2 border-[#232f48]" data-alt="My avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYHegXLq5XwwkbXa-335G3v3kZtp8GQVPRrgGJqabaJcsY-Q12vRELx0AVOxD2wjtnRZFDaObx8_ml-QtiQ2L_ejYqSkoB_8Ai2ztrt9SCQ15--rI0hhsBCTiJgYCD-MPoUt060DBeRgrAv4AQh1CJOmO1NN2sqG2m00KiDzO8iUxtgY2F5MohgG6cuWzXk3zh8fGk9aiyUKvfcLMMcOMQ-1uM2YeOf_23KLG9I8uCL5vKhKSDLyQCozR8lu7nhZsa4BoqpSJSRtk');">
+</div>
+</div>
+<!-- My Content Bubble -->
+<div class="flex-1 relative">
+<div class="triangle-l hidden md:block border-r-[#2a3142]"></div>
+<div class="bg-[#2a3142] rounded-2xl p-5 border border-[#34415e] shadow-sm relative text-right">
+<!-- Header Info -->
+<div class="flex justify-between items-center mb-4 border-b border-white/5 pb-3 flex-row-reverse">
+<div>
+<div class="flex items-baseline gap-2 justify-end">
+<h3 class="text-lg font-bold text-white">أنا (المستخدم الحالي)</h3>
+</div>
+<span class="text-xs text-slate-400 block text-left">منذ دقيقة</span>
+</div>
+<div class="text-slate-500 text-sm">#3</div>
+</div>
+<div class="prose prose-invert prose-sm max-w-none text-slate-200 leading-7">
+<p>شكراً لك أخت سارة، سأقوم بتجربة التعديلات ومراقبة الأداء. هل تنصحين باستخدام Redis للكاش؟</p>
+</div>
+<div class="mt-4 pt-2 border-t border-white/5 flex justify-end opacity-50 text-xs text-slate-400 gap-2">
+<span>تمت القراءة</span>
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Reply Box -->
+<div class="mt-8 bg-surface-dark border border-[#232f48] rounded-2xl p-4 shadow-lg sticky bottom-4 z-10 backdrop-blur-md bg-opacity-95">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-cover bg-center hidden sm:block" data-alt="My avatar small" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBaQUGx08broXlS0MMKN4WAs_RVcjrQYmME_ExKMjSoaaEHM2GV6FsZeeJ0rctvbM525zNTJGIbKDK3wpIB020qi9NSSh5YuQN79xVAVwSEcdzZvZqYwI4WzZOGwSaFKE5SXALREcMyy7M8rej5oVVtEqIf1JeX6HxVNd6Jsft-HBoiA5mL9J-vpgZjcDW5vV9VnHQ7ZmfCuqLUxNiBk3RDtpIl5wpXeCrQ1BjO-A8jv-dBCUtMEFTGJCi701PuUWj3WKtl_Ru4wHk');"></div>
+<div class="flex-1">
+<div class="bg-[#111722] border border-[#2d3b55] rounded-xl focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all overflow-hidden">
+<!-- Toolbar -->
+<div class="flex items-center gap-1 p-2 border-b border-[#2d3b55] bg-[#1a202c]">
+<button class="p-1.5 text-slate-400 hover:text-white hover:bg-[#2d3b55] rounded"><span class="material-symbols-outlined text-[20px]">format_bold</span></button>
+<button class="p-1.5 text-slate-400 hover:text-white hover:bg-[#2d3b55] rounded"><span class="material-symbols-outlined text-[20px]">format_italic</span></button>
+<button class="p-1.5 text-slate-400 hover:text-white hover:bg-[#2d3b55] rounded"><span class="material-symbols-outlined text-[20px]">link</span></button>
+<button class="p-1.5 text-slate-400 hover:text-white hover:bg-[#2d3b55] rounded"><span class="material-symbols-outlined text-[20px]">code</span></button>
+<div class="w-px h-4 bg-[#2d3b55] mx-1"></div>
+<button class="p-1.5 text-slate-400 hover:text-white hover:bg-[#2d3b55] rounded"><span class="material-symbols-outlined text-[20px]">image</span></button>
+<button class="p-1.5 text-slate-400 hover:text-white hover:bg-[#2d3b55] rounded"><span class="material-symbols-outlined text-[20px]">mood</span></button>
+</div>
+<textarea class="w-full bg-transparent border-none text-white p-3 focus:ring-0 resize-none text-sm placeholder-slate-500" placeholder="اكتب ردك هنا..." rows="3"></textarea>
+</div>
+<div class="flex justify-between items-center mt-3">
+<div class="text-xs text-slate-500">يتم حفظ المسودة تلقائياً</div>
+<button class="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg transition-colors flex items-center gap-2">
+<span>نشر الرد</span>
+<span class="material-symbols-outlined text-[18px] -scale-x-100">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sidebar (Hidden on Mobile) -->
+<aside class="w-full lg:w-80 hidden lg:flex flex-col gap-6">
+<!-- Author Stats Card -->
+<div class="bg-surface-dark border border-[#232f48] rounded-2xl p-5 shadow-sm">
+<h3 class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">معلومات العضو</h3>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-14 h-14 rounded-full bg-cover bg-center border-2 border-[#232f48]" data-alt="Author avatar large" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCwcGTzaH3YzTyXqqJaRQha5NerFXhPF8U2aP6-JqOKvNjq3t1yuJzISOHPckLlvkQ1m482ypM08SxBE_taltvBhDDlz5-3oykiILt7UkfxZvK75PMkAJsdvWoZrsxg6ZMYH65OVpjnKSsFdF2c4ls21n-mj28IBsng2dc7ggWYWn_mXZ9zFjybLX7xyrgyYZj-tUoXjeVLWTCfGAE0VYGbQ-GGqs_8Q30h1u6qDLQ-iCB4TE4D5M-d7a6TcKs1XSnSz1bvYDMezs4');"></div>
+<div>
+<div class="font-bold text-white text-lg">Ahmed_Dev</div>
+<div class="text-slate-500 text-sm">انضم منذ 2020</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 text-center mb-4">
+<div class="bg-[#111722] rounded-lg p-2">
+<div class="text-primary font-bold">125</div>
+<div class="text-[10px] text-slate-500">موضوع</div>
+</div>
+<div class="bg-[#111722] rounded-lg p-2">
+<div class="text-white font-bold">3.4k</div>
+<div class="text-[10px] text-slate-500">مشاركة</div>
+</div>
+<div class="bg-[#111722] rounded-lg p-2">
+<div class="text-green-400 font-bold">520</div>
+<div class="text-[10px] text-slate-500">إعجاب</div>
+</div>
+</div>
+<button class="w-full py-2 border border-[#2d3b55] rounded-lg text-slate-300 text-sm hover:bg-[#2d3b55] hover:text-white transition-colors">
+                    عرض الملف الشخصي
+                </button>
+</div>
+<!-- Similar Threads -->
+<div class="bg-surface-dark border border-[#232f48] rounded-2xl p-5 shadow-sm">
+<h3 class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">مواضيع مشابهة</h3>
+<div class="flex flex-col gap-4">
+<a class="group block" href="#">
+<h4 class="text-sm font-bold text-white group-hover:text-primary transition-colors line-clamp-2">أفضل إعدادات Nginx للحماية من هجمات DDoS</h4>
+<div class="flex items-center gap-2 mt-1 text-xs text-slate-500">
+<span>SysAdmin</span>
+<span>•</span>
+<span>15 رد</span>
+</div>
+</a>
+<div class="h-px bg-[#2d3b55]"></div>
+<a class="group block" href="#">
+<h4 class="text-sm font-bold text-white group-hover:text-primary transition-colors line-clamp-2">شرح تركيب شهادة SSL مجانية على سيرفر لينكس</h4>
+<div class="flex items-center gap-2 mt-1 text-xs text-slate-500">
+<span>WebMaster</span>
+<span>•</span>
+<span>42 رد</span>
+</div>
+</a>
+<div class="h-px bg-[#2d3b55]"></div>
+<a class="group block" href="#">
+<h4 class="text-sm font-bold text-white group-hover:text-primary transition-colors line-clamp-2">مقارنة بين MySQL و PostgreSQL</h4>
+<div class="flex items-center gap-2 mt-1 text-xs text-slate-500">
+<span>DatabaseGuy</span>
+<span>•</span>
+<span>8 رد</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Online Users Widget -->
+<div class="bg-surface-dark border border-[#232f48] rounded-2xl p-5 shadow-sm">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-slate-400 text-xs font-bold uppercase tracking-wider">المتواجدون الآن</h3>
+<span class="bg-green-500/10 text-green-400 text-[10px] px-1.5 py-0.5 rounded font-bold">142</span>
+</div>
+<div class="flex -space-x-2 space-x-reverse overflow-hidden p-1">
+<div class="inline-block size-8 rounded-full ring-2 ring-background-dark bg-cover bg-center" data-alt="User 1" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAfNz7q6a2YJu7G6GCzfUFsSTUWXNg55ZtZT10L_Gnz91Xd8xbJpUMtKkDaGxKsZPlOB8wzkFNokRtMAIIV9rvOZkZVXefi1j3wwV0X6sj0iFy_7vlpf2Csz-BUFctwP_TQnICo_nrWW9xCXU_OR5uoy5sAqj2uW3P6_nMK3Awheyj1Seyc6CbHNpAfkirMqLtUzcwcbOJZ8tcBZQTz5-M8USB52ht5BDMexw1l4aDhQRoF8km4EKdC-ruyKYKPXm0hfBFmzd4jqYU');"></div>
+<div class="inline-block size-8 rounded-full ring-2 ring-background-dark bg-cover bg-center" data-alt="User 2" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCXGKwPDrgj-kRqeq8LEBsz5YEeBfRhKIFrFgzyVn6_I0KYYfKi8iAHow5y0pvAFKJ_JMM4AulEXnAwJkDGeJ3M-Mf5qkW50MkHPK_Wpn6YgT-UArh6TDfeh-xtbN-dpyvtU_zLkmigR3zvYC-JjRNrF5WhU6xMWEhgoAZqQnGEn4pyiURzwgwBx_gKVOJo3I-P-o9KQLKfhHy2D8SRki48dmX5cdW1V6kCmSTqwkVdIPyYvqE49RhoFzCrXq98niLOSQvhWUUV6Co');"></div>
+<div class="inline-block size-8 rounded-full ring-2 ring-background-dark bg-cover bg-center" data-alt="User 3" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvk63wuPrfIbzVOQfSQxF7YB2hDHY0EKloji9f6OrzoLHopcztaG-kKnqTBTor46wCEo7iEKsC-VYWuYpDBtWOEOZAkJiUJ6PSIoQiKkY7R33nHCdWSonZRU505_5xy5wZIqsEy93QC5Z_HppKMRSOJXSHzmZMJVn2WM0ulWAD5dPKs0ORkhEnR_bAW3ZsjWsO9WYv2saunJfC6meZ_64kXmlLj1_omV8GwGXmkxPuX6B3SG8dVpiCwus02YuP2JctBth9ev-lyao');"></div>
+<div class="inline-block size-8 rounded-full ring-2 ring-background-dark bg-cover bg-center" data-alt="User 4" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJ5che60aZY47NnlG6jS9qig55pzEpRJvztb2T8MoWyxWZ1cMwLVBUAts5MFey_g0N172plyCYE5INrmqFKgzJvivh5avcT2Qc1Ozn-p66juo3zfP_c6-Sn_5u51D6r2haZPLPE-OUaBB08tjEykKaS96F1LA4cWZRYlCSmpUWfMpuU3VNt5BFZi5EoTXAESLXDy_daLbDwudDsGdj7SUohXT3Ul6vE7DSmaizTyyrgUI43thQa-cqJ32wUl4IuJ3McXZYdMKfJwI');"></div>
+<div class="size-8 rounded-full ring-2 ring-background-dark bg-[#232f48] flex items-center justify-center text-xs text-slate-400 font-bold">+99</div>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

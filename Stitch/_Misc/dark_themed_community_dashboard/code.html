@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZYZOOM Community Dashboard</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            bgDark: '#15171e',
+            panelDark: '#1e212b',
+            accentOrange: '#f59e0b',
+            accentBlue: '#3498db',
+            textGray: '#a0aec0',
+          },
+          boxShadow: {
+            'card': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Font Awesome for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            bgDark: '#15171e',
+            panelDark: '#1e212b',
+            accentOrange: '#f59e0b',
+            accentBlue: '#3498db',
+            textGray: '#a0aec0',
+          },
+          boxShadow: {
+            'card': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="scrollbar-styling">
+    /* Custom Scrollbar for dark theme */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #12141c; 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d3748; 
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4a5568; 
+    }
+  </style>
+<style data-purpose="charts-graphics">
+    /* Gradient overlay for suggested groups */
+    .group-card-gradient {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(30, 33, 43, 1) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      transition: all 0.2s;
+    }
+    .group-card-gradient:hover {
+      transform: translateY(-2px);
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-bgDark text-white font-sans min-h-screen flex flex-col">
+<!-- BEGIN: MainHeader -->
+<header class="bg-panelDark h-16 flex items-center justify-between px-6 shadow-md border-b border-gray-800 sticky top-0 z-50">
+<!-- Logo Section -->
+<div class="flex items-center gap-2">
+<div class="text-white text-3xl font-bold tracking-wider">ZY<span class="text-accentOrange">ZOOM</span></div>
+</div>
+<!-- Search Section -->
+<div class="flex-1 max-w-xl mx-8 hidden md:block">
+<div class="relative">
+<input class="w-full bg-bgDark border border-gray-700 text-gray-300 text-sm rounded-full py-2 px-4 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-colors" placeholder="Search for topics, members..." type="text"/>
+<button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white">
+<i class="fas fa-search"></i>
+</button>
+</div>
+</div>
+<!-- User Actions -->
+<div class="flex items-center gap-6">
+<button class="relative text-gray-400 hover:text-white transition-colors">
+<i class="fas fa-bell text-lg"></i>
+<span class="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></span>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors">
+<i class="fas fa-envelope text-lg"></i>
+</button>
+<!-- User Profile Dropdown Trigger -->
+<div class="flex items-center gap-3 cursor-pointer">
+<div class="text-right hidden sm:block">
+<div class="text-sm font-semibold text-white">Alex Doe</div>
+<div class="text-xs text-textGray">Admin</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold">U</div>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContainer -->
+<div class="flex-1 w-full max-w-[1600px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- BEGIN: LeftSidebar -->
+<aside class="hidden lg:block lg:col-span-3 space-y-6">
+<!-- Widget: Members Online -->
+<div class="bg-panelDark rounded-xl shadow-card overflow-hidden">
+<div class="bg-gradient-to-r from-gray-800 to-panelDark p-4 border-b border-gray-700 flex justify-between items-center">
+<h3 class="font-semibold text-sm text-white uppercase tracking-wide">Members Online</h3>
+<span class="bg-green-500/20 text-green-400 text-xs px-2 py-0.5 rounded-full">12 Active</span>
+</div>
+<div class="p-4 space-y-4">
+<!-- Member Row 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold">U</div>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-panelDark rounded-full"></span>
+</div>
+<div>
+<div class="text-sm font-medium text-gray-200">Sarah Jen</div>
+<div class="text-xs text-textGray">Moderator</div>
+</div>
+</div>
+<button class="text-gray-500 hover:text-white"><i class="fas fa-comment-dots"></i></button>
+</div>
+<!-- Member Row 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold">U</div>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-panelDark rounded-full"></span>
+</div>
+<div>
+<div class="text-sm font-medium text-gray-200">Mike Ross</div>
+<div class="text-xs text-textGray">Member</div>
+</div>
+</div>
+<button class="text-gray-500 hover:text-white"><i class="fas fa-comment-dots"></i></button>
+</div>
+<!-- Member Row 3 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold">U</div>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-yellow-500 border-2 border-panelDark rounded-full"></span>
+</div>
+<div>
+<div class="text-sm font-medium text-gray-200">Davide B.</div>
+<div class="text-xs text-textGray">Away</div>
+</div>
+</div>
+<button class="text-gray-500 hover:text-white"><i class="fas fa-comment-dots"></i></button>
+</div>
+</div>
+<div class="bg-gray-800/50 p-2 text-center text-xs text-accentBlue hover:underline cursor-pointer">
+          View all members
+        </div>
+</div>
+<!-- Widget: Forum Statistics -->
+<div class="bg-panelDark rounded-xl shadow-card overflow-hidden">
+<div class="p-4 border-b border-gray-700">
+<h3 class="font-semibold text-sm text-white uppercase tracking-wide">Forum Stats</h3>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-400"><i class="fas fa-comments w-5 text-center mr-2"></i>Threads</span>
+<span class="font-bold text-white">12,405</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-400"><i class="fas fa-reply w-5 text-center mr-2"></i>Posts</span>
+<span class="font-bold text-white">84,392</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-400"><i class="fas fa-users w-5 text-center mr-2"></i>Members</span>
+<span class="font-bold text-white">5,102</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-gray-400"><i class="fas fa-user-plus w-5 text-center mr-2"></i>Newest</span>
+<span class="font-bold text-accentOrange">J_Smith99</span>
+</div>
+</div>
+</div>
+<!-- Widget: Latest Posts -->
+<div class="bg-panelDark rounded-xl shadow-card overflow-hidden">
+<div class="p-4 border-b border-gray-700">
+<h3 class="font-semibold text-sm text-white uppercase tracking-wide">Latest Activity</h3>
+</div>
+<div class="divide-y divide-gray-800">
+<div class="p-3 flex gap-3 hover:bg-gray-800/30 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold">U</div>
+<div>
+<div class="text-sm font-medium text-white line-clamp-1">Updates to the server rules 2023</div>
+<div class="text-xs text-textGray mt-1">by <span class="text-accentBlue">Admin</span> • 2m ago</div>
+</div>
+</div>
+<div class="p-3 flex gap-3 hover:bg-gray-800/30 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold">U</div>
+<div>
+<div class="text-sm font-medium text-white line-clamp-1">Need help with CSS Grid layout</div>
+<div class="text-xs text-textGray mt-1">by <span class="text-accentBlue">DevNewbie</span> • 15m ago</div>
+</div>
+</div>
+<div class="p-3 flex gap-3 hover:bg-gray-800/30 transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold">U</div>
+<div>
+<div class="text-sm font-medium text-white line-clamp-1">Showcase: My new React project</div>
+<div class="text-xs text-textGray mt-1">by <span class="text-accentBlue">CodeMaster</span> • 1h ago</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- BEGIN: MainContent -->
+<main class="col-span-1 lg:col-span-6 space-y-6">
+<!-- Section: Latest Topics Cards -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold text-white">Latest Topics</h2>
+<a class="text-sm text-accentOrange hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Card 1 -->
+<article class="relative rounded-xl overflow-hidden shadow-card group h-48">
+<img alt="Topic Thumbnail" class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz6Y9LfpfobSavYHCCtsWGxAFJuUM5HQ0hw3QvgvWCqOBRE_pxSvEgYXvH0UHj4-G_HWreRumqNTrWcfiBB-UuSTZz753Opbvy9gtkJo1pr-Cw8OVgYIn4N2THo90VzjnCqrqyfKZrzBpIYSix9anvmfPpri0B-zBVlx4H-KB3JZrj6hM7Glz_z6XESzMWP80j9oFRksrsf4VPzniJo46tFzbIYrnLhVYgRoWj2vW-VdLfy6hGSynZABXn8BYiIFHVuOj6Z2vYtHM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90"></div>
+<span class="absolute top-3 left-3 bg-accentOrange text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">HOT</span>
+<div class="absolute bottom-0 left-0 right-0 p-4">
+<h3 class="text-base font-bold text-white mb-2 leading-tight">Comprehensive Guide to UI Design Trends</h3>
+<div class="flex items-center justify-between text-xs text-gray-300">
+<div class="flex items-center gap-1">
+<i class="fas fa-user-circle text-gray-400"></i>
+<span>DesignPro</span>
+</div>
+<span><i class="far fa-eye mr-1"></i>1.2k</span>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="relative rounded-xl overflow-hidden shadow-card group h-48">
+<img alt="Topic Thumbnail" class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz6Y9LfpfobSavYHCCtsWGxAFJuUM5HQ0hw3QvgvWCqOBRE_pxSvEgYXvH0UHj4-G_HWreRumqNTrWcfiBB-UuSTZz753Opbvy9gtkJo1pr-Cw8OVgYIn4N2THo90VzjnCqrqyfKZrzBpIYSix9anvmfPpri0B-zBVlx4H-KB3JZrj6hM7Glz_z6XESzMWP80j9oFRksrsf4VPzniJo46tFzbIYrnLhVYgRoWj2vW-VdLfy6hGSynZABXn8BYiIFHVuOj6Z2vYtHM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90"></div>
+<div class="absolute bottom-0 left-0 right-0 p-4">
+<h3 class="text-base font-bold text-white mb-2 leading-tight">Understanding Asynchronous JavaScript</h3>
+<div class="flex items-center justify-between text-xs text-gray-300">
+<div class="flex items-center gap-1">
+<i class="fas fa-user-circle text-gray-400"></i>
+<span>JSGuru</span>
+</div>
+<span><i class="far fa-eye mr-1"></i>850</span>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="relative rounded-xl overflow-hidden shadow-card group h-48">
+<img alt="Topic Thumbnail" class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz6Y9LfpfobSavYHCCtsWGxAFJuUM5HQ0hw3QvgvWCqOBRE_pxSvEgYXvH0UHj4-G_HWreRumqNTrWcfiBB-UuSTZz753Opbvy9gtkJo1pr-Cw8OVgYIn4N2THo90VzjnCqrqyfKZrzBpIYSix9anvmfPpri0B-zBVlx4H-KB3JZrj6hM7Glz_z6XESzMWP80j9oFRksrsf4VPzniJo46tFzbIYrnLhVYgRoWj2vW-VdLfy6hGSynZABXn8BYiIFHVuOj6Z2vYtHM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90"></div>
+<span class="absolute top-3 left-3 bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded z-10">NEW</span>
+<div class="absolute bottom-0 left-0 right-0 p-4">
+<h3 class="text-base font-bold text-white mb-2 leading-tight">Best Practices for Secure Authentication</h3>
+<div class="flex items-center justify-between text-xs text-gray-300">
+<div class="flex items-center gap-1">
+<i class="fas fa-user-circle text-gray-400"></i>
+<span>SecExpert</span>
+</div>
+<span><i class="far fa-eye mr-1"></i>230</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Section: Trending Topics List -->
+<section class="bg-panelDark rounded-xl shadow-card p-4">
+<h2 class="text-lg font-bold text-white mb-4 border-b border-gray-700 pb-2">Trending Discussions</h2>
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center text-lg">
+<i class="fab fa-html5"></i>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-white group-hover:text-accentOrange transition-colors cursor-pointer">HTML5 Semantic Elements Guide</h4>
+<div class="text-xs text-textGray mt-0.5">Posted by Alex in Web Dev</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right hidden sm:block">
+<div class="text-sm font-bold text-white">4.5k</div>
+<div class="text-[10px] text-textGray">Views</div>
+</div>
+<svg height="24" width="60"><path d="M0 15 Q10 20 20 10 T40 15 T60 5" fill="none" stroke="#f59e0b" stroke-width="2"></path></svg>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center text-lg">
+<i class="fab fa-css3-alt"></i>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-white group-hover:text-accentOrange transition-colors cursor-pointer">Advanced CSS Animations Tutorial</h4>
+<div class="text-xs text-textGray mt-0.5">Posted by Sarah in Styling</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right hidden sm:block">
+<div class="text-sm font-bold text-white">3.2k</div>
+<div class="text-[10px] text-textGray">Views</div>
+</div>
+<svg height="24" width="60"><path d="M0 15 Q10 20 20 10 T40 15 T60 5" fill="none" stroke="#f59e0b" stroke-width="2"></path></svg>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-yellow-500/10 text-yellow-500 flex items-center justify-center text-lg">
+<i class="fab fa-js"></i>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-white group-hover:text-accentOrange transition-colors cursor-pointer">Javascript ES6+ Features Overview</h4>
+<div class="text-xs text-textGray mt-0.5">Posted by Mike in Programming</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right hidden sm:block">
+<div class="text-sm font-bold text-white">8.1k</div>
+<div class="text-[10px] text-textGray">Views</div>
+</div>
+<svg height="24" width="60"><path d="M0 15 Q10 20 20 10 T40 15 T60 5" fill="none" stroke="#f59e0b" stroke-width="2"></path></svg>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Suggested Groups -->
+<section>
+<h2 class="text-lg font-bold text-white mb-4">Suggested Groups</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Group Card 1 -->
+<div class="group-card-gradient rounded-xl p-5 border border-transparent shadow-card flex flex-col items-center text-center">
+<div class="w-14 h-14 rounded-full bg-panelDark border border-gray-700 flex items-center justify-center mb-3 text-accentOrange text-2xl shadow-sm">
+<i class="fas fa-users"></i>
+</div>
+<h3 class="font-bold text-white text-base mb-1">UI/UX Design Team</h3>
+<p class="text-xs text-textGray mb-4 leading-relaxed">Join the creative minds shaping user experiences.</p>
+<button class="bg-accentOrange hover:bg-orange-600 text-white text-xs font-semibold py-2 px-6 rounded-full transition-colors w-full">Join Group</button>
+</div>
+<!-- Group Card 2 -->
+<div class="group-card-gradient rounded-xl p-5 border border-transparent shadow-card flex flex-col items-center text-center">
+<div class="w-14 h-14 rounded-full bg-panelDark border border-gray-700 flex items-center justify-center mb-3 text-blue-400 text-2xl shadow-sm">
+<i class="fas fa-code"></i>
+</div>
+<h3 class="font-bold text-white text-base mb-1">Backend Devs</h3>
+<p class="text-xs text-textGray mb-4 leading-relaxed">Discussions on API, Database, and Server logic.</p>
+<button class="bg-transparent border border-gray-500 hover:border-white text-white hover:bg-white hover:text-bgDark text-xs font-semibold py-2 px-6 rounded-full transition-all w-full">Request Access</button>
+</div>
+<!-- Group Card 3 -->
+<div class="group-card-gradient rounded-xl p-5 border border-transparent shadow-card flex flex-col items-center text-center">
+<div class="w-14 h-14 rounded-full bg-panelDark border border-gray-700 flex items-center justify-center mb-3 text-green-400 text-2xl shadow-sm">
+<i class="fas fa-rocket"></i>
+</div>
+<h3 class="font-bold text-white text-base mb-1">Startups Hub</h3>
+<p class="text-xs text-textGray mb-4 leading-relaxed">Connect with founders and entrepreneurs.</p>
+<button class="bg-transparent border border-gray-500 hover:border-white text-white hover:bg-white hover:text-bgDark text-xs font-semibold py-2 px-6 rounded-full transition-all w-full">Join Group</button>
+</div>
+</div>
+</section>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: RightSidebar -->
+<aside class="hidden lg:block lg:col-span-3 space-y-6">
+<!-- Navigation Menu -->
+<nav class="bg-panelDark rounded-xl shadow-card p-2">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition-colors font-medium" href="#">
+<i class="fas fa-home w-5 text-center"></i> Dashboard
+            </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition-colors font-medium" href="#">
+<i class="fas fa-layer-group w-5 text-center"></i> My Topics
+            </a>
+</li>
+<li>
+<a class="flex items-center justify-between px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition-colors font-medium" href="#">
+<div class="flex items-center gap-3">
+<i class="fas fa-envelope w-5 text-center"></i> Messages
+              </div>
+<span class="bg-blue-600 text-white text-[10px] px-1.5 py-0.5 rounded-md">3</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition-colors font-medium" href="#">
+<i class="fas fa-bookmark w-5 text-center"></i> Saved Posts
+            </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition-colors font-medium" href="#">
+<i class="fas fa-cog w-5 text-center"></i> Settings
+            </a>
+</li>
+</ul>
+</nav>
+<!-- Activity Timeline -->
+<div class="bg-panelDark rounded-xl shadow-card p-5">
+<h3 class="font-bold text-white mb-4">Recent Activity</h3>
+<div class="relative border-l border-gray-700 ml-2 space-y-6">
+<!-- Activity Item 1 -->
+<div class="ml-6 relative">
+<span class="absolute -left-[31px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-bgDark border border-gray-600 ring-4 ring-bgDark">
+<div class="h-2 w-2 rounded-full bg-accentOrange"></div>
+</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<i class="fas fa-user-circle text-gray-400"></i>
+<span class="text-sm font-semibold text-white">You</span>
+</div>
+<p class="text-xs text-textGray">Commented on <span class="text-accentBlue cursor-pointer">"React Hooks Guide"</span></p>
+<span class="text-[10px] text-gray-500 mt-1">10 mins ago</span>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="ml-6 relative">
+<span class="absolute -left-[31px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-bgDark border border-gray-600 ring-4 ring-bgDark">
+<div class="h-2 w-2 rounded-full bg-blue-500"></div>
+</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<i class="fas fa-user-circle text-gray-400"></i>
+<span class="text-sm font-semibold text-white">Sarah</span>
+</div>
+<p class="text-xs text-textGray">Replied to your post</p>
+<span class="text-[10px] text-gray-500 mt-1">45 mins ago</span>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="ml-6 relative">
+<span class="absolute -left-[31px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-bgDark border border-gray-600 ring-4 ring-bgDark">
+<div class="h-2 w-2 rounded-full bg-green-500"></div>
+</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-5 h-5 rounded-full bg-gray-700 flex items-center justify-center text-[10px]"><i class="fas fa-cog"></i></div>
+<span class="text-sm font-semibold text-white">System</span>
+</div>
+<p class="text-xs text-textGray">Weekly report is ready</p>
+<span class="text-[10px] text-gray-500 mt-1">2 hours ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Advertisement / Banner Placeholder -->
+<div class="bg-gradient-to-br from-purple-900 to-panelDark rounded-xl shadow-card p-6 text-center relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
+<i class="fas fa-crown text-6xl text-white"></i>
+</div>
+<h3 class="text-white font-bold text-lg mb-2 relative z-10">Go Premium</h3>
+<p class="text-xs text-gray-300 mb-4 relative z-10">Unlock exclusive features and badges.</p>
+<button class="bg-white text-purple-900 text-xs font-bold py-2 px-4 rounded shadow-md hover:bg-gray-100 transition-colors relative z-10">Upgrade Now</button>
+</div>
+</aside>
+<!-- END: RightSidebar -->
+</div>
+<!-- END: MainContainer -->
+<!-- Footer (Mobile/Simple) -->
+<footer class="mt-auto py-6 text-center text-xs text-gray-600 border-t border-gray-800">
+    © 2023 ZYZOOM Community. All rights reserved.
+  </footer>
+</body></html><!-- MISSING_IMAGES:
+- User avatar for 'Sarah Jen'
+- User avatar for 'Mike Ross'
+- User avatar for 'Davide B.'
+- Topic thumbnail for 'Comprehensive Guide to UI Design Trends'
+- Topic thumbnail for 'Understanding Asynchronous JavaScript'
+- Topic thumbnail for 'Best Practices for Secure Authentication'
+- Avatar for 'Sarah' in Activity Feed
+-->

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus Pagination - XenVibe Design System</title>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#161e2d",
+              "text-secondary": "#92a4c9",
+            },
+            fontFamily: {
+              "display": ["Manrope", "Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased selection:bg-primary/30 selection:text-white">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header / Topic Title -->
+<header class="w-full px-6 pt-10 pb-6 md:px-20 lg:px-40 flex justify-center border-b border-gray-800/50">
+<div class="flex w-full max-w-[960px] flex-col gap-4">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 rounded bg-primary/20 text-primary text-xs font-bold tracking-wide">مثبت</span>
+<span class="px-2 py-1 rounded bg-gray-800 text-text-secondary text-xs font-medium">تصميم UI/UX</span>
+</div>
+<h1 class="text-3xl md:text-4xl font-bold leading-tight tracking-tight text-white">
+                        موضوع المنتدى: نقاش حول أنماط التصفح الهادئة
+                    </h1>
+<p class="text-text-secondary text-base font-normal leading-relaxed max-w-2xl">
+                        نظرة عامة على تصميم ترقيم الصفحات بنمط ZenFocus الجديد وكيف يمكن أن يحسن تجربة القراءة من خلال تقليل الضوضاء البصرية.
+                    </p>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-6 md:px-20 lg:px-40 py-8 flex justify-center">
+<div class="flex flex-col w-full max-w-[960px] gap-6">
+<!-- Post 1 -->
+<article class="flex flex-col md:flex-row gap-5 bg-surface-dark/50 hover:bg-surface-dark transition-all duration-300 p-6 rounded-xl border border-gray-800/50">
+<div class="flex md:flex-col items-center md:items-start gap-4 shrink-0">
+<div class="h-16 w-16 rounded-full bg-cover bg-center ring-2 ring-gray-800" data-alt="Profile picture of a smiling young man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCXMses5Bi_vsdSSKK63kPlN5EtZWdtcCK0_fYFY_Z8lX3dzvJZHDAttnclzHBykgjVQfJ51TF_WoeIw1nYeuWmoeyLYRRVRQtaFc3iAerq8_a4yHWePtJsrT2eAYzm9-asXSvRTnMmngULX1JmSCQUnYWnNy-JM_R52ldJai0G9TwlKippMsGp6sm9OHBrdpkXavae-5v5PtjmlcdXwhKBFdIZ8splMKw_8HE0OMBNvqIhZDfU4w3Udo4haSCukhhboEb3iaNNrys");'></div>
+<div class="flex flex-col md:items-center w-full">
+<p class="text-white text-sm font-bold">أحمد محمد</p>
+<p class="text-primary text-xs font-medium">مشارك نشيط</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 flex-1">
+<div class="flex justify-between items-start">
+<span class="text-xs text-text-secondary">١٢ أكتوبر ٢٠٢٣</span>
+<button class="text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+<p class="text-gray-300 text-base leading-7">
+                            هذا نص تجريبي يمثل محتوى المشاركة في المنتدى. التصميم يركز على الهدوء والتركيز على المحتوى دون تشتيت. أعتقد أن إزالة الحواف من أزرار التنقل ستجعل الصفحة تتنفس بشكل أفضل.
+                        </p>
+<div class="mt-2 flex gap-4 border-t border-gray-800 pt-3">
+<button class="flex items-center gap-1.5 text-sm text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span>أعجبني</span>
+</button>
+<button class="flex items-center gap-1.5 text-sm text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">reply</span>
+<span>رد</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="flex flex-col md:flex-row gap-5 bg-surface-dark/50 hover:bg-surface-dark transition-all duration-300 p-6 rounded-xl border border-gray-800/50">
+<div class="flex md:flex-col items-center md:items-start gap-4 shrink-0">
+<div class="h-16 w-16 rounded-full bg-cover bg-center ring-2 ring-gray-800" data-alt="Profile picture of a woman looking confident" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwnZbKgDRMnYo3YS0UgSpKl73Rv3Fm50OwGv6FlMBYVrd3PX7OQPBzzq_2_E0xuLLa9tEqZfNod25ldxDBmu6MKSEBlNpEDyMdsChxoRIw2o1D8O__FsMvlRLllctWPWkKbUvpceI4YQOEKINliAnZMHt2IEjghd_zJ6hbhgPn0_pflxCDP4JYvIHrTqOzxueu6ykZcVQGiWa5jfUe_0M-_p4hQeBBoTMBm_qVUJyTenlV9yEGZox5sZ05pc9MXa3nOhjsT5Y25Iw");'></div>
+<div class="flex flex-col md:items-center w-full">
+<p class="text-white text-sm font-bold">سارة علي</p>
+<p class="text-text-secondary text-xs font-medium">عضو جديد</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 flex-1">
+<div class="flex justify-between items-start">
+<span class="text-xs text-text-secondary">١٢ أكتوبر ٢٠٢٣</span>
+</div>
+<p class="text-gray-300 text-base leading-7">
+                            أعجبني جداً هذا النمط البسيط. الترقيم النصي فكرة ممتازة لتقليل الضوضاء البصرية في الصفحة. هل يمكننا تجربة خطوط أكبر للعناوين أيضاً؟
+                        </p>
+<div class="mt-2 flex gap-4 border-t border-gray-800 pt-3">
+<button class="flex items-center gap-1.5 text-sm text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span>أعجبني</span>
+</button>
+<button class="flex items-center gap-1.5 text-sm text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">reply</span>
+<span>رد</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Post 3 -->
+<article class="flex flex-col md:flex-row gap-5 bg-surface-dark/50 hover:bg-surface-dark transition-all duration-300 p-6 rounded-xl border border-gray-800/50">
+<div class="flex md:flex-col items-center md:items-start gap-4 shrink-0">
+<div class="h-16 w-16 rounded-full bg-cover bg-center ring-2 ring-gray-800" data-alt="Profile picture of a man with glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOxzDu8C0Q6qR24fgxcq67m0spgRz_VQs_F3kETBqFcQa6Tjy7LNN_0cO-XGfMKbnCHmRqSVWAsBKMU7Gqcch3yDwQfrRaEFzZ3uMBe5ag6gXiqRBfDaGmq2zzHNl4bZn6al6cZ_w1oN44qLUX1QSp2p__HR4ZWdhfFhLiwga8EQS7koyoRQK9PbtUYdF6U2KcMca768KZsuzO9qHhrHsBsl58dp1v-s65nX8Rrvhot0epaoArEtQ1Ck2Tac_VF6HO0AOGfZhD-r8");'></div>
+<div class="flex flex-col md:items-center w-full">
+<p class="text-white text-sm font-bold">خالد العمر</p>
+<p class="text-[#eab308] text-xs font-medium">مدير الموقع</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 flex-1">
+<div class="flex justify-between items-start">
+<span class="text-xs text-text-secondary">قبل ساعة</span>
+</div>
+<p class="text-gray-300 text-base leading-7">
+                            سنقوم باعتماد هذا النمط في التحديث القادم. شكراً لملاحظاتكم القيمة.
+                        </p>
+<div class="mt-2 flex gap-4 border-t border-gray-800 pt-3">
+<button class="flex items-center gap-1.5 text-sm text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span>أعجبني</span>
+</button>
+<button class="flex items-center gap-1.5 text-sm text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">reply</span>
+<span>رد</span>
+</button>
+</div>
+</div>
+</article>
+<!-- ZenFocus Pagination Component -->
+<div class="mt-12 mb-8 w-full border-t border-gray-800/30 pt-10">
+<nav aria-label="Pagination" class="flex flex-col sm:flex-row items-center justify-between gap-6 px-4">
+<!-- Previous Button -->
+<a class="group flex items-center gap-3 text-text-secondary hover:text-white transition-all duration-300" href="#">
+<span class="flex items-center justify-center w-10 h-10 rounded-full group-hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[24px] transform group-hover:translate-x-1 transition-transform">chevron_right</span>
+</span>
+<span class="text-xl font-light tracking-wide font-display">السابق</span>
+</a>
+<!-- Numbers Container -->
+<div class="flex items-baseline gap-2 md:gap-4 select-none">
+<a class="text-lg text-text-secondary hover:text-white transition-colors duration-200" href="#">٠١</a>
+<span class="text-gray-700 text-sm font-light">/</span>
+<!-- Active Page -->
+<div class="relative group cursor-default">
+<span class="text-2xl font-bold text-primary px-2">٠٢</span>
+<span class="absolute -bottom-2 left-1/2 w-1 h-1 bg-primary rounded-full transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+</div>
+<span class="text-gray-700 text-sm font-light">/</span>
+<a class="text-lg text-text-secondary hover:text-white transition-colors duration-200" href="#">٠٣</a>
+<span class="text-gray-700 text-sm font-light">/</span>
+<a class="text-lg text-text-secondary hover:text-white transition-colors duration-200" href="#">٠٤</a>
+<span class="text-gray-700 text-sm font-light mx-1">...</span>
+<a class="text-lg text-text-secondary hover:text-white transition-colors duration-200" href="#">١٢</a>
+</div>
+<!-- Next Button -->
+<a class="group flex items-center gap-3 text-white hover:text-primary transition-all duration-300" href="#">
+<span class="text-xl font-medium tracking-wide font-display">التالي</span>
+<span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 group-hover:bg-primary group-hover:text-white text-primary transition-all">
+<span class="material-symbols-outlined text-[24px] transform group-hover:-translate-x-1 transition-transform">chevron_left</span>
+</span>
+</a>
+</nav>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Scroll to top suggestion) -->
+<div class="fixed bottom-8 left-8 z-50">
+<button class="group bg-surface-dark border border-gray-700 hover:border-primary text-text-secondary hover:text-primary rounded-full p-3 shadow-lg transition-all duration-300 flex items-center justify-center">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+</div>
+</div>
+</body></html>

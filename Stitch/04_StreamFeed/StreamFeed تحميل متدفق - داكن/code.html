@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StreamFeed: تحميل متدفق - داكن</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#1e2736",
+              "surface-border": "#232f48",
+              "text-secondary": "#92a4c9",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+              "body": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif;
+        }
+        /* Custom scrollbar for the feed container if needed */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-surface-border bg-background-dark/95 backdrop-blur shadow-sm">
+<div class="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<svg class="size-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight">XenVibe</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="text-white text-sm font-bold border-b-2 border-primary py-5" href="#">المنتديات</a>
+<a class="text-text-secondary text-sm font-medium hover:text-white transition-colors" href="#">الأعضاء</a>
+<a class="text-text-secondary text-sm font-medium hover:text-white transition-colors" href="#">الجديد</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64 w-full relative group">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-surface-border group-focus-within:ring-2 group-focus-within:ring-primary/50 transition-all">
+<div class="text-text-secondary flex items-center justify-center pr-3 rounded-r-lg">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full bg-transparent border-none text-white placeholder:text-text-secondary text-sm focus:ring-0 pr-2 pl-4" placeholder="بحث..." value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-surface-border cursor-pointer hover:border-primary transition-colors" data-alt="User profile picture showing a gradient avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwJNG4wuKQb_U7bvLriwZjIHCIt2RHXmZHoYrt0LyqE8Bo9aZ4HxSBF_q3Wg7xOfbUuSar4lFHqJlDQNIOsuXtV_TOQHUMVcyzk4n5i-ghaWOHmzW4gPvDRghAfZ_wrwKQUlezAWgMYpwb7KxKkt9oBQwF1Lt4sLqHChvSoVvHt5WxZ0ivOYVIHBfSb9sasWdc4pLSs4UEaqVwGllSGcpqvjgLx8nJrwbvbyGJmd9DOtqT3FyxA9nfaNOkQ03bwYdkNMM8jVoA_Eg");'></div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-[960px] mx-auto px-4 py-8">
+<!-- Page Heading -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-surface-border pb-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary mb-1">
+<span class="material-symbols-outlined text-sm">folder_open</span>
+<span class="text-xs font-bold uppercase tracking-wider">التصميم والجرافيكس</span>
+</div>
+<h1 class="text-white text-3xl md:text-4xl font-black leading-tight tracking-tight">نقاشات التصميم العام</h1>
+<p class="text-text-secondary text-base md:text-lg max-w-2xl">مساحة للحوار حول أحدث صيحات تصميم واجهات المستخدم وتجربة الاستخدام، وتبادل الخبرات بين المصممين.</p>
+</div>
+<button class="flex shrink-0 items-center justify-center gap-2 rounded-lg bg-primary hover:bg-blue-600 active:bg-blue-700 text-white px-6 py-3 font-bold transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+<span>موضوع جديد</span>
+</button>
+</div>
+<!-- Filter Tabs -->
+<div class="flex items-center gap-4 mb-6 overflow-x-auto pb-2 hide-scrollbar">
+<button class="bg-surface-border text-white px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-border/80">الأكثر شعبية</button>
+<button class="bg-transparent text-text-secondary px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-border/50 hover:text-white transition-colors">الأحدث</button>
+<button class="bg-transparent text-text-secondary px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-border/50 hover:text-white transition-colors">لم يتم الرد عليها</button>
+</div>
+<!-- Feed Container -->
+<div class="flex flex-col gap-4">
+<!-- Single Comment 1 -->
+<article class="bg-surface-dark rounded-xl p-5 border border-surface-border/50 hover:border-surface-border transition-colors">
+<div class="flex items-start gap-4">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 shrink-0 border border-surface-border" data-alt="Avatar of Ahmed Al-Otaibi" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5LFqRz0oaEO4hZkH39xcNWXNKjBZa35zLnWiaZURFzGu6lizMSDVEIRiDGtIF-XD_eWGqSnsEsfL6ULdKrAz5LGP_zFxceVjD3TjfOKZBzhdOgneTeMj_W0FrFKcAeFXsZq7EMvSIs5EWAfdFHszFVY_yEBUadmNd9lOLl8aB_jF2G9zCYC2GSid-RzlSZbOC2J6_FjBOiiYrxmGWaSdmZP7DpB2Chw6Pim4eQZQ3PbjkDxjllWcCy27yF2zWjUaZAoAvPq3HuaU");'></div>
+<div class="flex flex-col flex-1 gap-2">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-3">
+<h3 class="text-white font-bold text-base hover:underline cursor-pointer">أحمد العتيبي</h3>
+<span class="bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded font-bold">مشرف</span>
+<span class="text-text-secondary text-xs">منذ 2 ساعة</span>
+</div>
+<button class="text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+<p class="text-slate-200 text-sm leading-relaxed">
+                                التصميم الداكن يعطي انطباعاً بالفخامة والراحة للعين، خاصة عند التصفح ليلاً. هل تتفقون أن زر 'تحميل المزيد' أفضل من الترقيم التقليدي في المنتديات الحديثة؟ أرى أنه يحافظ على انغماس المستخدم في المحتوى.
+                            </p>
+<div class="flex items-center gap-6 mt-2 pt-2 border-t border-surface-border/30">
+<button class="flex items-center gap-2 text-text-secondary hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">thumb_up</span>
+<span class="text-xs font-medium">12 إعجاب</span>
+</button>
+<button class="flex items-center gap-2 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-xs font-medium">رد</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Single Comment 2 -->
+<article class="bg-surface-dark rounded-xl p-5 border border-surface-border/50 hover:border-surface-border transition-colors">
+<div class="flex items-start gap-4">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 shrink-0 border border-surface-border" data-alt="Avatar of Sarah Kamal" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDlCWJpKmU4tDpdecGROJifHbzqMrk_TtaonXRhdMVRCcfC4H08kQNstEFFI2Ga6FDwG0kBsWI5_ZrYYrYvI8aBdgir6rH6S8KaXpvr7FRo-3_kbFdOVtR4uNhE3F9E86PUxESxP-6tsu5DR8AWXbsIBK5sD-ONdpleXIL1_tJWsA2eJ29Hl-nRGG3EY_PhZ7RQ7dZMp_fPLz-pRc2Tkx--9JHUVh753dLHSP52aQyUdgntlzY_7oKK9yThMxPlYkgBh6cq_zaAwbg");'></div>
+<div class="flex flex-col flex-1 gap-2">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-3">
+<h3 class="text-white font-bold text-base hover:underline cursor-pointer">سارة كمال</h3>
+<span class="text-text-secondary text-xs">منذ 1 ساعة</span>
+</div>
+<button class="text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+<p class="text-slate-200 text-sm leading-relaxed">
+                                بالتأكيد، التمرير اللانهائي أو زر التحميل يجعل التفاعل أكثر سلاسة ويشبه تطبيقات التواصل الاجتماعي. لكن يجب توفير طريقة للعودة للمشاركات القديمة بسهولة دون الحاجة للضغط 50 مرة.
+                            </p>
+<div class="flex items-center gap-6 mt-2 pt-2 border-t border-surface-border/30">
+<button class="flex items-center gap-2 text-text-secondary hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">thumb_up</span>
+<span class="text-xs font-medium">5 إعجاب</span>
+</button>
+<button class="flex items-center gap-2 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-xs font-medium">رد</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Single Comment 3 -->
+<article class="bg-surface-dark rounded-xl p-5 border border-surface-border/50 hover:border-surface-border transition-colors">
+<div class="flex items-start gap-4">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 shrink-0 border border-surface-border" data-alt="Avatar of Omar Youssef" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrhn81LdVLwkQ6oVR5yF8DfPLSo4bP8zmbxbz88e8zkaW9Huk4ge-gVK-Y97QG4MFUTxOODJIBTa1s37d-ruE751lJ5j00EVg8qV0nr6duDcLqzALixkN9_s1xcP9axXVVdqERmqqp1zR7WDzt_GdL3MNLC6XKApgdN0lFzIUvdUTwOjpyJuTGI3omP3RA6ZCa8-_I8o_PT3s9WOETwJu4xfdEsQlr7fiaE_wgVI3-UguqtCGllQTgkAOalTNldNSzAArvPkD0XSY");'></div>
+<div class="flex flex-col flex-1 gap-2">
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-3">
+<h3 class="text-white font-bold text-base hover:underline cursor-pointer">عمر يوسف</h3>
+<span class="text-text-secondary text-xs">منذ 45 دقيقة</span>
+</div>
+<button class="text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+<p class="text-slate-200 text-sm leading-relaxed">
+                                أعتقد أن الترقيم الهجين (Load More + Pagination) هو الحل الأمثل للمنتديات الكبيرة لضمان سهولة الوصول للصفحات القديمة. الترقيم "الشبح" الذي يظهر عند الحاجة فكرة عبقرية.
+                            </p>
+<div class="flex items-center gap-6 mt-2 pt-2 border-t border-surface-border/30">
+<button class="flex items-center gap-2 text-text-secondary hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">thumb_up</span>
+<span class="text-xs font-medium">8 إعجاب</span>
+</button>
+<button class="flex items-center gap-2 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-xs font-medium">رد</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- StreamFeed Pagination Section -->
+<div class="relative group mt-6 pt-2 pb-12 flex flex-col items-center justify-center">
+<!-- Decorative Line -->
+<div class="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-surface-border to-transparent"></div>
+<!-- Main Action Button -->
+<div class="relative w-full max-w-xl z-10 transition-all duration-300 group-hover:translate-y-[-10px]">
+<button class="w-full bg-surface-dark hover:bg-surface-border border border-surface-border hover:border-primary/50 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 shadow-lg hover:shadow-primary/10 transition-all duration-300 group/btn">
+<div class="relative flex items-center justify-center">
+<span class="material-symbols-outlined text-primary group-hover/btn:animate-spin">sync</span>
+</div>
+<span class="text-sm md:text-base">تحميل المزيد من المشاركات</span>
+</button>
+</div>
+<!-- Info Text -->
+<p class="text-text-secondary text-xs font-medium mt-3 transition-opacity duration-300 group-hover:opacity-0">
+                        عرض 3 من 145 مشاركة
+                    </p>
+<!-- Ghost Pagination Strip (Reveals on hover) -->
+<div class="absolute bottom-0 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out z-20 w-full flex justify-center pointer-events-none group-hover:pointer-events-auto">
+<div class="flex items-center gap-1 bg-[#151b26]/90 backdrop-blur-xl p-1.5 rounded-full border border-surface-border shadow-2xl shadow-black/50 ring-1 ring-white/5">
+<button class="size-8 flex items-center justify-center text-text-secondary hover:text-white hover:bg-white/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[18px] rotate-180">chevron_left</span>
+</button>
+<div class="h-4 w-px bg-surface-border mx-1"></div>
+<button class="size-8 flex items-center justify-center text-text-secondary hover:text-white hover:bg-white/10 rounded-full text-xs font-medium transition-colors">1</button>
+<span class="text-text-secondary text-xs px-1 select-none">...</span>
+<button class="size-8 flex items-center justify-center text-text-secondary hover:text-white hover:bg-white/10 rounded-full text-xs font-medium transition-colors">4</button>
+<button class="size-9 flex items-center justify-center bg-primary text-white rounded-full text-sm font-bold shadow-lg shadow-primary/30 ring-2 ring-background-dark scale-110 z-10">5</button>
+<button class="size-8 flex items-center justify-center text-text-secondary hover:text-white hover:bg-white/10 rounded-full text-xs font-medium transition-colors">6</button>
+<span class="text-text-secondary text-xs px-1 select-none">...</span>
+<button class="size-8 flex items-center justify-center text-text-secondary hover:text-white hover:bg-white/10 rounded-full text-xs font-medium transition-colors">99</button>
+<div class="h-4 w-px bg-surface-border mx-1"></div>
+<button class="size-8 flex items-center justify-center text-text-secondary hover:text-white hover:bg-white/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[18px] rotate-180">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

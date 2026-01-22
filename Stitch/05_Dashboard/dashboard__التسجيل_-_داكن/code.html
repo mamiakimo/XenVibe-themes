@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard: التسجيل</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#192233",
+              "border-dark": "#324467",
+              "text-secondary": "#92a4c9",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden">
+<div class="relative flex h-screen w-full overflow-hidden">
+<!-- Sidebar Navigation -->
+<div class="hidden lg:flex w-72 flex-col border-l border-border-dark/30 bg-[#111722] p-4 justify-between">
+<div class="flex flex-col gap-6">
+<!-- Branding / User Profile -->
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-primary/20" data-alt="Avatar placeholder for guest user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCxc3yM2wTqVFVSh85qqI10PjYVP7pm4rnF13b0ALpGQa7udhp9iprNEIA2wt2xT2NWI5tbszHitRVw8mREoe2E1TY2cBB6ddpdjq7pnhXYhkeyAC48Wa-1aNpfXp_nHBvwLNN6ayWKWb6XOSrQ3kouwSMHarDfCYHPaHDJczWEWvq7t09Yh7Wl5kzb-G512RFQDGQ-d12RbuIZvfqt4o4uDK87PK6FCDzG0KFIBpWvMzWx-7jMXzM_yXHQDHfJkYDtP7LYyBoFQFY");'>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold leading-normal">زائر</h1>
+<p class="text-text-secondary text-xs font-normal leading-normal">غير مسجل</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-dark transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">home</span>
+<p class="text-text-secondary group-hover:text-white text-sm font-medium leading-normal transition-colors">الرئيسية</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 border border-primary/20" href="#">
+<span class="material-symbols-outlined text-primary fill-1">person_add</span>
+<p class="text-primary text-sm font-bold leading-normal">التسجيل</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-dark transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">login</span>
+<p class="text-text-secondary group-hover:text-white text-sm font-medium leading-normal transition-colors">تسجيل الدخول</p>
+</a>
+<div class="h-px bg-border-dark/30 my-2 mx-3"></div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-surface-dark transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">gavel</span>
+<p class="text-text-secondary group-hover:text-white text-sm font-medium leading-normal transition-colors">القوانين والشروط</p>
+</a>
+</div>
+</div>
+<!-- Bottom Info -->
+<div class="px-4 py-4 rounded-xl bg-surface-dark/50 border border-border-dark/30">
+<p class="text-xs text-text-secondary text-center leading-relaxed">
+                    منصة مجتمعية متكاملة.<br/>انضم إلينا اليوم لتشارك في الحوار.
+                </p>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-full overflow-y-auto relative z-10">
+<!-- Mobile Header -->
+<div class="lg:hidden flex items-center justify-between p-4 border-b border-border-dark/30 bg-[#111722]">
+<span class="text-white font-bold text-lg">XenForo</span>
+<button class="text-white p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<main class="flex-1 flex justify-center py-8 px-4 sm:px-8 lg:px-20">
+<div class="w-full max-w-4xl flex flex-col gap-8">
+<!-- Page Heading -->
+<div class="flex flex-col gap-3 pb-6 border-b border-border-dark/30">
+<h1 class="text-white text-4xl font-black leading-tight tracking-tight">إنشاء حساب جديد</h1>
+<p class="text-text-secondary text-base font-normal max-w-2xl">
+                            أدخل تفاصيلك للوصول إلى المنتديات والانضمام إلى المجتمع. ستتمكن من المشاركة في المناقشات وتخصيص ملفك الشخصي.
+                        </p>
+</div>
+<!-- Layout: Form & Sidebar Info -->
+<div class="flex flex-col lg:flex-row gap-8 items-start">
+<!-- Registration Form -->
+<div class="flex-1 w-full bg-[#111722] rounded-2xl border border-border-dark/50 p-6 sm:p-8 shadow-xl shadow-black/20">
+<!-- Social Auth -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<button class="flex items-center justify-center gap-3 h-12 rounded-xl bg-surface-dark border border-border-dark hover:bg-border-dark transition-all group">
+<!-- Google Logo Simulation -->
+<div class="w-5 h-5 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-blue-500" data-alt="Google G logo"></div>
+<span class="text-white text-sm font-medium">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 h-12 rounded-xl bg-[#5865F2]/10 border border-[#5865F2]/30 hover:bg-[#5865F2]/20 transition-all group">
+<!-- Discord Logo Simulation -->
+<span class="material-symbols-outlined text-[#5865F2]">hub</span>
+<span class="text-[#5865F2] text-sm font-medium">Discord</span>
+</button>
+</div>
+<div class="relative mb-8 text-center">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-border-dark"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="bg-[#111722] px-4 text-xs text-text-secondary uppercase tracking-wider">أو التسجيل بالبريد</span>
+</div>
+</div>
+<!-- Inputs -->
+<div class="space-y-6">
+<!-- Username -->
+<label class="block space-y-2">
+<span class="text-white text-sm font-bold">اسم المستخدم</span>
+<div class="relative group">
+<input class="w-full h-14 bg-surface-dark border border-border-dark rounded-xl px-4 text-white placeholder-text-secondary/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="اختر اسماً فريداً" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-primary transition-colors">person</span>
+</div>
+<p class="text-xs text-text-secondary">سيكون هذا الاسم ظاهراً للعامة في المنتدى.</p>
+</label>
+<!-- Email -->
+<label class="block space-y-2">
+<span class="text-white text-sm font-bold">البريد الإلكتروني</span>
+<div class="relative group">
+<input class="w-full h-14 bg-surface-dark border border-border-dark rounded-xl px-4 text-white placeholder-text-secondary/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="name@example.com" type="email"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-primary transition-colors">mail</span>
+</div>
+</label>
+<!-- Password & DOB Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="block space-y-2">
+<span class="text-white text-sm font-bold">كلمة المرور</span>
+<div class="relative group">
+<input class="w-full h-14 bg-surface-dark border border-border-dark rounded-xl px-4 text-white placeholder-text-secondary/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="••••••••" type="password"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary cursor-pointer hover:text-white transition-colors">visibility</span>
+</div>
+</label>
+<label class="block space-y-2">
+<span class="text-white text-sm font-bold">تاريخ الميلاد</span>
+<div class="relative group">
+<input class="w-full h-14 bg-surface-dark border border-border-dark rounded-xl px-4 text-white placeholder-text-secondary/50 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all [color-scheme:dark]" type="date"/>
+</div>
+</label>
+</div>
+<!-- Terms Checkboxes -->
+<div class="pt-4 space-y-4">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="mt-1 w-5 h-5 rounded border-border-dark bg-surface-dark text-primary focus:ring-primary/50 focus:ring-offset-0 transition-all" type="checkbox"/>
+<span class="text-sm text-text-secondary group-hover:text-white transition-colors">
+                                            أوافق على <a class="text-primary hover:underline" href="#">الشروط والقوانين</a> و <a class="text-primary hover:underline" href="#">سياسة الخصوصية</a>.
+                                        </span>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="mt-1 w-5 h-5 rounded border-border-dark bg-surface-dark text-primary focus:ring-primary/50 focus:ring-offset-0 transition-all" type="checkbox"/>
+<span class="text-sm text-text-secondary group-hover:text-white transition-colors">
+                                            أوافق على استلام رسائل البريد الإلكتروني الإخبارية من الإدارة.
+                                        </span>
+</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-14 mt-4 bg-primary hover:bg-blue-600 active:scale-[0.99] text-white text-base font-bold rounded-xl shadow-lg shadow-primary/25 transition-all flex items-center justify-center gap-2">
+<span>إنشاء الحساب</span>
+<span class="material-symbols-outlined text-xl">arrow_back</span>
+</button>
+<p class="text-center text-sm text-text-secondary mt-4">
+                                    لديك حساب بالفعل؟ <a class="text-white font-medium hover:text-primary transition-colors" href="#">سجّل الدخول هنا</a>
+</p>
+</div>
+</div>
+<!-- Info/Benefits Panel -->
+<div class="hidden lg:flex flex-col w-80 shrink-0 gap-6 sticky top-8">
+<!-- Benefit Card 1 -->
+<div class="p-5 rounded-2xl bg-gradient-to-br from-[#1a2333] to-[#111722] border border-border-dark">
+<div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<h3 class="text-white font-bold text-lg mb-2">نقاشات حية</h3>
+<p class="text-text-secondary text-sm leading-relaxed">انضم إلى آلاف الأعضاء في نقاشات يومية حول مختلف المواضيع التقنية والعامة.</p>
+</div>
+<!-- Benefit Card 2 -->
+<div class="p-5 rounded-2xl bg-gradient-to-br from-[#1a2333] to-[#111722] border border-border-dark">
+<div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center mb-4 text-green-500">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<h3 class="text-white font-bold text-lg mb-2">عضوية مميزة</h3>
+<p class="text-text-secondary text-sm leading-relaxed">احصل على شارات خاصة وميزات حصرية عند التفاعل والمشاركة المستمرة.</p>
+</div>
+<!-- Map / Image Decorative -->
+<div class="rounded-2xl overflow-hidden border border-border-dark relative h-40 group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Abstract dark map background showing global connections" data-location="Global Community" style='background-image: url("https://placeholder.pics/svg/300");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark/90 to-transparent"></div>
+<div class="absolute bottom-4 right-4">
+<p class="text-white font-bold">مجتمع عالمي</p>
+<p class="text-xs text-text-secondary">+٥٠٠٠ عضو نشط</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

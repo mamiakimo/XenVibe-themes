@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>XenVibe - Floating Pagination Card</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#192233",
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    boxShadow: {
+                        "float": "0 20px 40px -5px rgba(0, 0, 0, 0.4), 0 10px 20px -5px rgba(0, 0, 0, 0.3)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Custom scrollbar for better aesthetics in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #324467; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col font-display selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 dark:border-b-border-dark bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-10 py-3 transition-colors duration-300">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-[20px]">dataset</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">XenVibe</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-slate-600 dark:text-text-secondary hover:text-primary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Home</a>
+<a class="text-slate-900 dark:text-white text-sm font-medium leading-normal" href="#">Forums</a>
+<a class="text-slate-600 dark:text-text-secondary hover:text-primary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Members</a>
+<a class="text-slate-600 dark:text-text-secondary hover:text-primary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Resources</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<div class="hidden sm:flex relative min-w-40 max-w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-text-secondary">search</span>
+<input class="w-full rounded-lg border border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-border-dark py-2 pl-10 pr-4 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-slate-400 dark:placeholder:text-text-secondary" placeholder="Search..." type="text"/>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-gray-200 dark:ring-border-dark" data-alt="User avatar with colorful gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQgX7W2nKCioJ33ri-cg2lxIgQ8s1yTAsQH-60jN_ZfAJ5Iikict6-fn38UShjlZ7DLPdrc2jafsArRa_7QOcyV-H-53JiJfuchFq2HVKKE3RgrxneQPFcLLU1-sTqZmvdyPkIO4cdavkZ7KhRjoEwybxT04vFibB3bNdMv_uBKRSQ2Lk_MzhOKu5QUiwo7Fvonik7Thgpm-OY8BNMtHiZq7pYhqbHAlkx0oQes1E2-6tfJGe_cW0WYhriL3DW4MxEaTrj0NG9sFY");'></div>
+</div>
+</header>
+<div class="layout-container flex h-full grow flex-col relative z-0">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-8 pb-32"> <!-- Added bottom padding for floating card space -->
+<div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+<!-- Breadcrumbs -->
+<nav class="flex flex-wrap gap-2 items-center mb-6 text-sm">
+<a class="text-text-secondary hover:text-white transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">home</span>
+</a>
+<span class="text-text-secondary">/</span>
+<a class="text-text-secondary hover:text-white font-medium transition-colors" href="#">Forums</a>
+<span class="text-text-secondary">/</span>
+<span class="text-slate-900 dark:text-white font-medium">General Discussion</span>
+</nav>
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">General Discussion</h1>
+<p class="text-slate-500 dark:text-text-secondary text-base font-normal">Join the conversation with the community. Share your thoughts on the latest updates.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-2.5 px-5 rounded-lg transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                        New Thread
+                    </button>
+</div>
+<!-- Filters / Toolbar -->
+<div class="flex flex-wrap gap-3 mb-6 p-1.5 bg-gray-100 dark:bg-surface-dark border border-gray-200 dark:border-border-dark rounded-lg w-fit">
+<button class="px-4 py-1.5 rounded bg-white dark:bg-primary text-slate-900 dark:text-white shadow-sm text-sm font-semibold transition-all">Latest</button>
+<button class="px-4 py-1.5 rounded hover:bg-gray-200 dark:hover:bg-border-dark text-slate-600 dark:text-text-secondary text-sm font-medium transition-all">Trending</button>
+<button class="px-4 py-1.5 rounded hover:bg-gray-200 dark:hover:bg-border-dark text-slate-600 dark:text-text-secondary text-sm font-medium transition-all">Unanswered</button>
+</div>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Card 1 -->
+<article class="group flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark p-5 shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-full -mr-8 -mt-8 pointer-events-none"></div>
+<div class="flex items-start justify-between">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 ring-2 ring-background-light dark:ring-background-dark" data-alt="Avatar of user Admin" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALy-ScdPAHtaUTnb-9d0zN07BpwOu-dFPh7Dpx8ENWyKhzQnR7xE8e1JJfq_meaH6mp7_d1TlxQ76wiQNKQEfb7FKvtjtYnyastUeqhVd7ARSniJb0SyCUzW_qfiGpLkJvswKdSd5ydTI83NWfAD1JM1NpQrwQgvb3TQIkg3NJ--aInoFU-B8_8X8-DouIk3l6VrzWT9qYEoVQQQ3R2JjqxTu-zJkpFTjuH7gcRrxeoSMcRY3_aOIsiStNepGJpz1RgabAv8oOJXo");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-primary">Announcement</span>
+<span class="text-xs text-text-secondary">Started by Admin • 2h ago</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-text-secondary bg-background-light dark:bg-background-dark px-2 py-1 rounded text-xs">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>24</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer">XenVibe Design System Update v2.0</h2>
+<p class="text-slate-500 dark:text-text-secondary text-sm line-clamp-2">We are excited to announce the release of version 2.0. This update includes major performance improvements and a new dark mode...</p>
+</div>
+<div class="mt-auto pt-4 flex items-center gap-2 border-t border-gray-100 dark:border-border-dark">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar of recent replier" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNVmNHICb5kaFriuXvAxNGvvPHhz_g3VGIsj0yeGMvf0b3YRLL7UOcgXNFWwmt7NALbXZmWFTZcQat_vyH2x6gmyzjRdGehRVVgWX94CdjH2wM9GWJkm3_-FR7tbBwxCv_YAC9vi3dE_TZe6OjqSWcHO_FYvs5wQJ4lhAOUehgXnqJNgNZdSl8PFbm-CIJp9l7FUHSMtrGBL_S6iA1UL7RKQOLg87PXdvs_nye2IJBmY3lpUxZfbvBSZcurb1RD_UlxLAJw5OI8mg"/>
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar of recent replier" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcnAA3M56cLztJ-zMH5goil7m7LBNzXMnJae61dvjDj0zwhqKBTBEzC_5OJApMaizRfgS1D3olB_hqBkaFGOx-ZMmGCeGMItJyO7KMs_Kxk-8jCtlxRpnVfjr2poPOveDHn2LwVgk3EKd9hPCKr6GJ55nVKyuCrKLHVYAZTpX-rfOYHnAt8hURhb79816InSiV6cRxE8I13oEW-xd8-DBFNku5ZMiRnS-tOKqtH9BrbqmByfXNtE8qGbEHd5Z0igAlD3Av2vieIQI"/>
+</div>
+<span class="text-xs text-text-secondary ml-auto">Last reply just now</span>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark p-5 shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 ring-2 ring-background-light dark:ring-background-dark" data-alt="Avatar of user DesignGuru" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJlBByFQwd9Az3_QRY9faSxzh76iS-s5XD1a1i8tDU1S6WnCqLUymrpnMauuEjd_uaWDuC8O_LOYS87QW5ZAvYzUQwNyTqnxuRETJFo4v8s-ypnO2L9i255lMa-dOnL3lNBnHyhJ5B9ON0bI_zDANw7TKz0pP62k6WWig6qQXhpYau08pnJ0Phyzoy6KeBiwCa3f91NV0aWBoXpP6tPDczy-682RKzw0RaEuotkAYuR8YuC02Hcw7FClUQSyR3E1N39LrrSNxmJgM");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-emerald-500">Solved</span>
+<span class="text-xs text-text-secondary">Started by DesignGuru • 4h ago</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-text-secondary bg-background-light dark:bg-background-dark px-2 py-1 rounded text-xs">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>156</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer">Best practices for Dark Mode UI</h2>
+<p class="text-slate-500 dark:text-text-secondary text-sm line-clamp-2">Creating a dark mode isn't just about inverting colors. We need to consider contrast ratios, elevation, and...</p>
+</div>
+<div class="mt-auto pt-4 flex items-center gap-2 border-t border-gray-100 dark:border-border-dark">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRZ7vICFXyIGH5259emX9x0z2ZpGpD_53S0n1fHUdBXb_cIkX4xrvTUXItsR6LleoFZ-B9l8ZySH2F2HZ6WQuf3jsB96dmWMAA6gmZ-eh3xuyr83NiL98XgRUFkHWwjEwwiDL4kKj1bn5CHznZ6QT1Yg3aCcCg1M2mPfb7bjvAXMDntmbXy9CCK1xpwEkriWQEFI1c0fFBwkHX5xydNsaBF2rzbsXk5ZAjXopivbrTjnCthUzg-fEyEZMYqHHLtONbwBjlxo-EGGs"/>
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBY7YJyE99yPdCg1T2MJa_mdmy--HVNFHJTD2Q6d41vSF-cgFyQuhklaTckX95je-WuTqsnnsL_cgy071iBF7apMxQEUs6dIjrZX6hi6gtfA3rkjZusEAJ9zj25YXpUnKfaJhEDxY-tmJZ4a34r4jJSVSbt2W8d39y221LTDnx2FLCXXNlt9REnHJ1GP2Ji7SwgRrHHFBM2OeI4Hm8BNN0w85VZ8rZCS8pv6AFdvdsqbciIulYSQG23yAQwRFxiYDklLtekn7SzO0"/>
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwZ6WVcAmi5FnLYL7fiu3AITtDYsrYBFJSqJj7lNIN8tosfyoUV2fAslmjcbt44L9KRhsyeDGxBswJnjm2t6Dcb7R0wv8lL4ouLjo4erELplBZBe8qA9ie3a_1gxw1d-R1njzmt5rx-08JuJ9pT6XAypHQ27s1-kEZAhjTroyZ-CPuINwoZcKqvrnj7DTkC3SI0WoOJBi-HNXKr9BGTEvxZXuwqjBatyJ0b0IjKb_HZynuOTda3ezVLRMK2gjDrJWHV3mvdBt9N30"/>
+</div>
+<span class="text-xs text-text-secondary ml-auto">Last reply 15m ago</span>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark p-5 shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 ring-2 ring-background-light dark:ring-background-dark" data-alt="Avatar of user DevOne" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvKG4JysZWcjFficcgs277zD2R1XKtVg9DuyY88pbkGtg3vfl7gaeEUNlVbR4cJMjZCDjwozlx-E1khYuHswJe3vy2VejVg7vTwx7ag48CjOWivtVRfQyy5lyzTjoRcp22pO2DJOmUstAQKsVcvvQwQdCVUPKShXw2DRk8vIL5esdm5hNFXi8ZdCgKYGVmex7iPS_UWMCyxbD5k9TkslxPyDeqvzHaI1J-C63sCrPaWoZHOjG0aUBJ7_3uKspIFkXKFVyFNj9z0vk");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-amber-500">Question</span>
+<span class="text-xs text-text-secondary">Started by DevOne • 6h ago</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-text-secondary bg-background-light dark:bg-background-dark px-2 py-1 rounded text-xs">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>8</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer">How to customize the floating pagination?</h2>
+<p class="text-slate-500 dark:text-text-secondary text-sm line-clamp-2">I'm trying to change the background color of the active page item in the new pagination component but I can't find...</p>
+</div>
+<div class="mt-auto pt-4 flex items-center gap-2 border-t border-gray-100 dark:border-border-dark">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlSIv7JM0Br-zQk38gLUKxD_kX2UdnX-Kh9KLQgegMxUEXg2-ZPG_47S8c-olicDFtjIjsghsEtsgfbTqv8F26PLgp-Q9-dUiYCJYTANfoY1hcL564H9mzvXc8pXmYOySUxDDUEi787Cvkb6tsekzvJFXVs4IS_EGH-k6BSEsBm-bMKtCLWye5UgyhC3w5g7ryCXZ5Q15X6InlVB0DNiLZIXjlXS07TbEjSXAn441MdDGhnK8Dky2oNmXhtDCGer54lmrKR84noQA"/>
+</div>
+<span class="text-xs text-text-secondary ml-auto">Last reply 2h ago</span>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="group flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark p-5 shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 ring-2 ring-background-light dark:ring-background-dark" data-alt="Avatar of user User123" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKiQB44jbAiC1wXvSASL0eMLdjdeinn3AXvGUHQ0923zo0D9jMW_pDPnwBtgheEr24NaOQOUcWP9kSuQSU2108_PD4KniC4_93IS7wQ23svKriqfL-tg6fPXxOqvsllsDh8fEmE_SJQKhmfM6KA7PSvDRBQXT7QN2I5oocyzscxUkyd2REb0jL0qmAgKsSyr5rJXpMlDjvzFiKUWo2nzLs05mEC9eSVUne58LBl7wM_mmj-R3uzYFg2YE1klKnTbUUYKdX57bokJY");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-rose-500">Bug Report</span>
+<span class="text-xs text-text-secondary">Started by User123 • 8h ago</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-text-secondary bg-background-light dark:bg-background-dark px-2 py-1 rounded text-xs">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>42</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer">Feedback on the new card layout</h2>
+<p class="text-slate-500 dark:text-text-secondary text-sm line-clamp-2">The spacing on mobile devices seems a bit off when viewing in landscape mode. Has anyone else noticed this?</p>
+</div>
+<div class="mt-auto pt-4 flex items-center gap-2 border-t border-gray-100 dark:border-border-dark">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQUXnv6cvySaOpJ0Jaf2PPNZ_hPmnIwrZ7Yp5kVLUqxuGx3PLzx9UWYnR-smx73JBSqHTNcffjytq46VcdDpZL5BFRpcD2oY-VRwwOPsr39Z8bdn08poQK_MS76x1Zfn-32sOaHB3_zQzqdd1N8XwMiB9YhqQcx7Um2Y2vy0rVr5VM4NWPoHwx1SQkfI6pLGigRLHfcrWnmNzbs4gaC8zK1eOUUudNkvmtDAK7It0o3jLQRDzo0XUrmFlohMJJCLHFEipLEbS_Khw"/>
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj7b7zyqn2C_MJ-KW3w2XWMXzZpbHhsYLyD6dTjKg3cb9VglebvV5mC80tQL98H0I0PfHUXrxNjBxSWAmoaIZLx7apv48wsxjdGPj7CM9Ksfpn_67lFc3KVs0Xmk-Po34pNkfG8ZZOq91LJe4-FAp9VDCvb7OJ8lSYV9y-gAaw_5aTZ3wHtLDCGMEjhcFHDb0AW2QJZb5AexB0h-LC-xZrX-_LVEDfeQOkPlUnIRFwBX9-a44x1vNUKcPsJgEcxIOgG4RaTOiqZ2Y"/>
+</div>
+<span class="text-xs text-text-secondary ml-auto">Last reply 4h ago</span>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="group flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark p-5 shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 ring-2 ring-background-light dark:ring-background-dark" data-alt="Avatar of user MobileDev" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8qKHJdrp8n4vUxK-oxiMeD0o4A0E034VKs2YykQoQa-yhdaH_nm1qAjAAtk-4Jny_SbqyKDmIo17YMPfZeTRAwIMb4ETPBnXHlNz358IGa80cSbvMDMoywsF03-7N8y1fi4SRz016DchxRt8s9Rs4fdBvZyihI57drbft1aGjATT2Cjq40iizOZ9QF1k9HY1Ije3nI6EAfLMAdicILyZZsVoBAJWLncro2QEV5uZ8lAUS8p1KSTC0-RV_hSY6UvtwfEHLza0xcGE");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-amber-500">Question</span>
+<span class="text-xs text-text-secondary">Started by MobileDev • 1d ago</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-text-secondary bg-background-light dark:bg-background-dark px-2 py-1 rounded text-xs">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>12</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer">Mobile responsiveness issues in Safari</h2>
+<p class="text-slate-500 dark:text-text-secondary text-sm line-clamp-2">There's a weird rendering bug on the bottom navigation bar specifically on iOS Safari 15. The z-index seems to be...</p>
+</div>
+<div class="mt-auto pt-4 flex items-center gap-2 border-t border-gray-100 dark:border-border-dark">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaGwMdslB25aDegpvaP2Nf1c03DQSO0Dg35RKgk00fzN17Q-vs3pn-xk3t8CwELxJY4ZLeKLKIdStTXAr-a8QeDZE8oFrSAgdh1lYEVI9R3trbHDGKvsQK1phv18vLpn8XqDGn4e-xf3sBsZZOqijtTdqDOtWuCQs2RxXitNtEaUIlNigK6tZ3uubBH4flLnj8-Re_GTPHTx5lCZTlCi7tox0toQB3mPcs2n7aNkZQm73c1nozWZ3UBvdDlD0EUr-UoBKPxBSQLsY"/>
+</div>
+<span class="text-xs text-text-secondary ml-auto">Last reply yesterday</span>
+</div>
+</article>
+<!-- Card 6 -->
+<article class="group flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark p-5 shadow-sm hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 h-10 ring-2 ring-background-light dark:ring-background-dark" data-alt="Avatar of user ModTeam" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPfVyEuxjbpmk3OlO5C4po8kO27cOky2KqQJaRyBVAvt14Q5DwF5gdD5oqqUKDkJDzA6wpTutbHXG2q96PXRJJxgPv3Q6GpedDXF_GhSlKaC2l6-YUBhBSHgsAcwg5fmU7XpK5H82Ci8Q5aUNmln7bIKs2C2CW7rcwitwyxL8R9TOQdQ4eoBQ203CYV3558Qdg76klVEhHD4bPsWFqYg5v4lmEJg0EaxKy05VUEjuPZeAZp1aHHt2AAiCyxS8uLPbDkzR96maE8ME");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-purple-500">Sticky</span>
+<span class="text-xs text-text-secondary">Started by ModTeam • 2d ago</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-text-secondary bg-background-light dark:bg-background-dark px-2 py-1 rounded text-xs">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>89</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer">Community guidelines refresher</h2>
+<p class="text-slate-500 dark:text-text-secondary text-sm line-clamp-2">Please take a moment to review our updated community guidelines. We want to keep this space welcoming for everyone.</p>
+</div>
+<div class="mt-auto pt-4 flex items-center gap-2 border-t border-gray-100 dark:border-border-dark">
+<div class="flex -space-x-2 overflow-hidden">
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMkgYgLb5YiThsVyLBKo6ZKYyhyw76-74GUacDZGPCLu79Re0QLH0m3uYAgoeqozxbp5S_sTTP53n_K6rIitXU1mZFVBRDy5O2RXsG1As0LSJHKNqjgC5U8ntbBPfLkD3yOlVsKHhAOnMKmis4EMDLbEEbabeIVHPt7UAUw4KSDKMGEyepiAg1pZTHl8jtAF7pxcwuVCBm_xnIaj8F6Z1ZZyjaWnFFdv44YyHAndo2CC42JiSCd3tD3j01kkIFi99mYi_ZDZN2ZHI"/>
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-surface-dark" data-alt="Small avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBz_eEopgu9s8GXmIEX7jLZTHPdVMU46K60RePHeWNFYuoTvhFEbnEw1hAmhZc95_ZDDujjg2Wjik0WW1OBquURBNdiF4dwzDsBj4Rt4oroKAEIK-tDE8vFWkqyCiefyJMYPj2RPOWXYRbdeBgwIeegeVm8e5pHSjXYN2vov2MdV4flIVoKwYmFdE-X9RJAmRmoUygqWyEf3-DXUefL_2w3zaNa4zZbYoOVA2BMC6xEp2LqsNgxLxreLJNWKKNH-kDM98BORnbuXM"/>
+</div>
+<span class="text-xs text-text-secondary ml-auto">Last reply 2d ago</span>
+</div>
+</article>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Pagination Card -->
+<!-- Positioned fixed at the bottom, centered. This is the main request feature. -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-[90%] md:max-w-fit pointer-events-none">
+<div class="bg-white dark:bg-[#1e293b] rounded-xl shadow-float border border-gray-200 dark:border-[#334155]/50 p-2 pointer-events-auto flex items-center justify-center gap-1 mx-auto backdrop-blur-sm bg-opacity-95 dark:bg-opacity-95">
+<!-- Previous Button -->
+<a aria-label="Previous Page" class="flex items-center justify-center size-10 md:size-11 rounded-lg text-slate-500 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:-translate-x-0.5 transition-transform">chevron_left</span>
+</a>
+<!-- Divider Line -->
+<div class="w-px h-6 bg-gray-200 dark:bg-[#334155] mx-1 md:mx-2"></div>
+<!-- Page 1 -->
+<a class="hidden md:flex items-center justify-center size-10 md:size-11 rounded-lg text-slate-600 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 font-medium text-sm transition-all" href="#">1</a>
+<!-- Ellipsis -->
+<div class="hidden md:flex items-center justify-center size-10 md:size-11 text-slate-400 dark:text-[#475569]">
+<span class="material-symbols-outlined text-[16px]">more_horiz</span>
+</div>
+<!-- Page 4 -->
+<a class="flex items-center justify-center size-10 md:size-11 rounded-lg text-slate-600 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 font-medium text-sm transition-all" href="#">4</a>
+<!-- Active Page (5) -->
+<a class="flex items-center justify-center size-10 md:size-11 rounded-lg bg-primary text-white shadow-lg shadow-primary/40 font-bold text-base transform scale-105 transition-all ring-2 ring-primary ring-offset-2 ring-offset-white dark:ring-offset-[#1e293b]" href="#">5</a>
+<!-- Page 6 -->
+<a class="flex items-center justify-center size-10 md:size-11 rounded-lg text-slate-600 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 font-medium text-sm transition-all" href="#">6</a>
+<!-- Ellipsis -->
+<div class="flex items-center justify-center size-10 md:size-11 text-slate-400 dark:text-[#475569]">
+<span class="material-symbols-outlined text-[16px]">more_horiz</span>
+</div>
+<!-- Last Page -->
+<a class="hidden md:flex items-center justify-center size-10 md:size-11 rounded-lg text-slate-600 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 font-medium text-sm transition-all" href="#">99</a>
+<!-- Divider Line -->
+<div class="w-px h-6 bg-gray-200 dark:bg-[#334155] mx-1 md:mx-2"></div>
+<!-- Next Button -->
+<a aria-label="Next Page" class="flex items-center justify-center size-10 md:size-11 rounded-lg text-slate-500 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+</a>
+</div>
+</div>
+</body></html>

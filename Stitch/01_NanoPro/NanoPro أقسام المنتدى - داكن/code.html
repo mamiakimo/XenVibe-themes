@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NanoPro: Forum List</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-dark": "#0e44b3",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0f1115",
+                        "surface-dark": "#161b22",
+                        "surface-dark-hover": "#1c2128",
+                        "border-dark": "#30363d",
+                        "text-main": "#e6edf3",
+                        "text-muted": "#848d97",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased min-h-screen flex flex-col overflow-x-hidden">
+<!-- Navbar -->
+<nav class="sticky top-0 z-50 w-full border-b border-border-dark bg-[#111722]/95 backdrop-blur-md">
+<div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Left: Logo & Nav -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2 group" href="#">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white group-hover:bg-primary-dark transition-colors">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<span class="text-white text-lg font-bold tracking-tight">NanoPro</span>
+</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary text-sm font-medium" href="#">Forums</a>
+<a class="text-text-muted text-sm font-medium hover:text-white transition-colors" href="#">Members</a>
+</div>
+</div>
+<!-- Right: Search & User -->
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-dark border border-border-dark rounded-lg h-9 w-64 px-3 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-text-muted text-[18px]">search</span>
+<input class="bg-transparent border-none text-sm text-white placeholder-text-muted focus:ring-0 w-full h-full p-0 pl-2" placeholder="Search..." type="text"/>
+</div>
+<button class="relative p-2 text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-surface-dark"></span>
+</button>
+<div class="size-8 rounded-full bg-surface-dark border border-border-dark overflow-hidden cursor-pointer">
+<div class="w-full h-full bg-cover bg-center" data-alt="User avatar placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBlmSdQPHRotDZ7XKx8fJUvtaAa_iK0i5hhbwHNd0sQD-n9jOxlF1YG6ume-kKArKsryxqhm3MaXqHA301_EEkA2IngU5l_r4WOF5KuJMMzGBGYMLUsrcgMBd4eGs_kYqYHxnibb8r9ZDoXR69w7W__fVWw5bBpji0-eGqm1mfPBlxBZndZkrmUXe28bWLRlZuPlTydnj3Q8Ecoob9W3hsmgFylSO-hAl6aTh-EooDCmSB-9LcfUjVAoMd6lW3oNW4DY-zLNHZ-Oa0');"></div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Breadcrumbs & Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<div class="flex items-center gap-2 text-text-muted text-xs font-medium mb-2">
+<a class="hover:text-white transition-colors" href="#">Home</a>
+<span class="text-border-dark">/</span>
+<span class="text-white">Forums</span>
+</div>
+<h1 class="text-2xl font-bold text-white tracking-tight">Community Forums</h1>
+<p class="text-text-muted text-sm mt-1">Discussions, official announcements, and technical support.</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold h-10 px-5 rounded-lg transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[18px]">edit_square</span>
+<span>Post Thread</span>
+</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<!-- Forum List (Left Column) -->
+<div class="lg:col-span-3 space-y-8">
+<!-- Category: Official -->
+<section>
+<div class="flex items-center justify-between px-2 mb-3">
+<h2 class="text-xs font-bold text-text-muted uppercase tracking-wider">Official</h2>
+<button class="text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">expand_less</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<!-- Forum Node -->
+<div class="group relative flex items-center justify-between p-3 rounded-lg bg-surface-dark border border-transparent hover:border-border-dark hover:bg-surface-dark-hover transition-all cursor-pointer">
+<div class="absolute left-0 top-3 bottom-3 w-[3px] bg-primary rounded-r-full opacity-100"></div>
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="size-10 rounded-lg bg-[#111722] flex items-center justify-center text-primary shrink-0 border border-border-dark/50">
+<span class="material-symbols-outlined text-[20px]">campaign</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-white text-sm font-semibold truncate group-hover:text-primary transition-colors">Announcements</h3>
+<div class="flex items-center gap-2 text-xs text-text-muted mt-0.5">
+<span class="truncate">Latest updates and news from the team.</span>
+</div>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-6 ml-4 shrink-0">
+<div class="flex flex-col items-end w-20">
+<span class="text-white text-xs font-medium">1.2k</span>
+<span class="text-[10px] text-text-muted uppercase">Threads</span>
+</div>
+<div class="w-px h-8 bg-border-dark"></div>
+<div class="flex items-center gap-3 w-48 justify-end">
+<div class="flex flex-col items-end min-w-0">
+<span class="text-xs text-white truncate max-w-[120px]">NanoPro v2.1 Released</span>
+<span class="text-[10px] text-text-muted">2 min ago • Admin</span>
+</div>
+<div class="size-6 rounded bg-cover bg-center shrink-0" data-alt="Admin user avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAKqDs6cbZitj7KfuVgVh3WeAa8J_F1A20eWRVqlgw8Rny9Tvm0oAB5WHbOjytPJmSD-vSMqSMgmD3VzPABXbRs-zbLSQ6ZfejHzkYitxIlw1IZ95hQgvauStTDYtzsxGAh3sEQlBudCP3X4rSCO_QaOc19kgi7roU6MjWWSlW-4jxsIjMePcxOA2fUW1jE-xG_uiyD3Zqd18b9p8TVeLlfPb7mO-EPOAMxcCAiKQJNTCc7xK3izK4qCz0V3iWcptw3l5hrD8-W6RQ');"></div>
+</div>
+</div>
+</div>
+<!-- Forum Node -->
+<div class="group relative flex items-center justify-between p-3 rounded-lg bg-surface-dark border border-transparent hover:border-border-dark hover:bg-surface-dark-hover transition-all cursor-pointer">
+<div class="absolute left-0 top-3 bottom-3 w-[3px] bg-primary rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="size-10 rounded-lg bg-[#111722] flex items-center justify-center text-text-muted group-hover:text-white transition-colors shrink-0 border border-border-dark/50">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-white text-sm font-semibold truncate group-hover:text-primary transition-colors">Rules &amp; Guidelines</h3>
+<div class="flex items-center gap-2 text-xs text-text-muted mt-0.5">
+<span class="truncate">Community standards and policies.</span>
+</div>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-6 ml-4 shrink-0">
+<div class="flex flex-col items-end w-20">
+<span class="text-white text-xs font-medium">24</span>
+<span class="text-[10px] text-text-muted uppercase">Threads</span>
+</div>
+<div class="w-px h-8 bg-border-dark"></div>
+<div class="flex items-center gap-3 w-48 justify-end">
+<div class="flex flex-col items-end min-w-0">
+<span class="text-xs text-white truncate max-w-[120px]">Update to Sec. 4</span>
+<span class="text-[10px] text-text-muted">Yesterday • ModTeam</span>
+</div>
+<div class="size-6 rounded bg-cover bg-center shrink-0" data-alt="Moderator avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAoHFVOXXRsDXLFz9MrF5G8_R3FetJqr9Ubr6nVKAiVKUpCy76X0-hRZmKA5MVWKBOFYRI1AHq9NKBKxlUqBvjf3f6CwQ10ARvElhl3EfLtKkagVzY4YM-AMG09G0d5IeVjHY96zSQ75L-_YhC9sC1OuYohU3HufHcYtKAOYtQTm3SoyxF7XwH_GxnaEvG8emFazVMOCxz76qtOTgN8ssX0vz4XxAJERp3WYDy3Wn1WPOlKuKmoHLqxKIijr3bZmqK51kd9MHh6T7c');"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Development Hub -->
+<section>
+<div class="flex items-center justify-between px-2 mb-3">
+<h2 class="text-xs font-bold text-text-muted uppercase tracking-wider">Development Hub</h2>
+<button class="text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">expand_less</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<!-- Forum Node -->
+<div class="group relative flex items-center justify-between p-3 rounded-lg bg-surface-dark border border-transparent hover:border-border-dark hover:bg-surface-dark-hover transition-all cursor-pointer">
+<div class="absolute left-0 top-3 bottom-3 w-[3px] bg-primary rounded-r-full opacity-100"></div>
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="size-10 rounded-lg bg-[#111722] flex items-center justify-center text-primary shrink-0 border border-border-dark/50">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-white text-sm font-semibold truncate group-hover:text-primary transition-colors">Web Development</h3>
+<div class="flex items-center gap-2 text-xs text-text-muted mt-0.5">
+<span class="truncate">HTML, CSS, JS, and backend frameworks.</span>
+</div>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-6 ml-4 shrink-0">
+<div class="flex flex-col items-end w-20">
+<span class="text-white text-xs font-medium">8.4k</span>
+<span class="text-[10px] text-text-muted uppercase">Threads</span>
+</div>
+<div class="w-px h-8 bg-border-dark"></div>
+<div class="flex items-center gap-3 w-48 justify-end">
+<div class="flex flex-col items-end min-w-0">
+<span class="text-xs text-white truncate max-w-[120px]">Help with React Hook</span>
+<span class="text-[10px] text-text-muted">14 min ago • DevGuy</span>
+</div>
+<div class="size-6 rounded bg-cover bg-center shrink-0" data-alt="Developer avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA9xtS-pp1Y96Wpis3zXVAiRv-bQ3MY18x5oJybOs1Ht6w7T-DBE3RMbputq5TR_lXkvx4vi31z5fz27-vNTPdV8PQAvZrcbgRR1NOJ6tB5mYJkCe1LYEUTFvQrWU21Q3R_19GeNUsWFWjIztBCcE4-YrkNDwTyg_euIW6s9zSBzWYFo1isFu3X1MRYYxeBnPrMNcrfRRyGRwJzx50QIHPEEkA3X0p5qnjf9YZo7b7wjN1YhFQGyDn4iyOJX7yJZvZ-726qmJvHS6Q');"></div>
+</div>
+</div>
+</div>
+<!-- Forum Node -->
+<div class="group relative flex items-center justify-between p-3 rounded-lg bg-surface-dark border border-transparent hover:border-border-dark hover:bg-surface-dark-hover transition-all cursor-pointer">
+<div class="absolute left-0 top-3 bottom-3 w-[3px] bg-primary rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="size-10 rounded-lg bg-[#111722] flex items-center justify-center text-text-muted group-hover:text-white transition-colors shrink-0 border border-border-dark/50">
+<span class="material-symbols-outlined text-[20px]">dns</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-white text-sm font-semibold truncate group-hover:text-primary transition-colors">Server Administration</h3>
+<div class="flex items-center gap-2 text-xs text-text-muted mt-0.5">
+<span class="truncate">Linux, Nginx, Apache, and hosting talk.</span>
+</div>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-6 ml-4 shrink-0">
+<div class="flex flex-col items-end w-20">
+<span class="text-white text-xs font-medium">3.1k</span>
+<span class="text-[10px] text-text-muted uppercase">Threads</span>
+</div>
+<div class="w-px h-8 bg-border-dark"></div>
+<div class="flex items-center gap-3 w-48 justify-end">
+<div class="flex flex-col items-end min-w-0">
+<span class="text-xs text-white truncate max-w-[120px]">Ubuntu 22.04 Setup</span>
+<span class="text-[10px] text-text-muted">2h ago • SysAdmin</span>
+</div>
+<div class="size-6 rounded bg-cover bg-center shrink-0" data-alt="User avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-QBdPTRA9o7sKGqvR4AfTMh7dEUGHYOq_rr13dYP6JRTcJ6kP2WccLdQitzIRRKw1AIfKowd3tgruSN5o8JaoQFERovxYaG1b74Omos2zz7KMIKW6O7d63q0R0s3oNVaiPM1l4yCSYL6sPKqXGqBLrD1e2ToDvimCWqi9F6FZmz97BYCEA-BWPWIPufawGDiLO5QgQhY9bqaax4q9hv2DC0wYrgxoC3N8dEuXhfVoy0fDSFhRcFZxdYC1tNA62S1FNtEeUpODadY');"></div>
+</div>
+</div>
+</div>
+<!-- Forum Node -->
+<div class="group relative flex items-center justify-between p-3 rounded-lg bg-surface-dark border border-transparent hover:border-border-dark hover:bg-surface-dark-hover transition-all cursor-pointer">
+<div class="absolute left-0 top-3 bottom-3 w-[3px] bg-primary rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="size-10 rounded-lg bg-[#111722] flex items-center justify-center text-text-muted group-hover:text-white transition-colors shrink-0 border border-border-dark/50">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-white text-sm font-semibold truncate group-hover:text-primary transition-colors">UI/UX Design</h3>
+<div class="flex items-center gap-2 text-xs text-text-muted mt-0.5">
+<span class="truncate">Showcases, feedback, and design resources.</span>
+</div>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-6 ml-4 shrink-0">
+<div class="flex flex-col items-end w-20">
+<span class="text-white text-xs font-medium">1.5k</span>
+<span class="text-[10px] text-text-muted uppercase">Threads</span>
+</div>
+<div class="w-px h-8 bg-border-dark"></div>
+<div class="flex items-center gap-3 w-48 justify-end">
+<div class="flex flex-col items-end min-w-0">
+<span class="text-xs text-white truncate max-w-[120px]">Critique my portfolio</span>
+<span class="text-[10px] text-text-muted">5h ago • PixelArt</span>
+</div>
+<div class="size-6 rounded bg-cover bg-center shrink-0" data-alt="Designer avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBsxmksTQJ2wzbs7_MqkKu8M8jEja3uU_Qm23WAyUJ9Vny8vQGARlL41YgtLLUD--YuegxsR3jBHCz9YvNSF_uIaCuHw1M-XiRNGnPGeckiaF7A1vhBH-_XxHsYBNSRqYzAtPEJMD_l0n-0S73fTg47ZAp3ue-wK03v839grzhNlQ6qVtqmVYIF9UrEfRo_r8zpDhS21o1ZTfrHKP2jzQ2mGBl-oGsUuxmX6F1FdmuwgcXITXGouuLA7g1Gndf23siPSvHzH0StuGk');"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: General -->
+<section>
+<div class="flex items-center justify-between px-2 mb-3">
+<h2 class="text-xs font-bold text-text-muted uppercase tracking-wider">General</h2>
+<button class="text-text-muted hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">expand_less</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<!-- Forum Node -->
+<div class="group relative flex items-center justify-between p-3 rounded-lg bg-surface-dark border border-transparent hover:border-border-dark hover:bg-surface-dark-hover transition-all cursor-pointer">
+<div class="absolute left-0 top-3 bottom-3 w-[3px] bg-primary rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex items-center gap-4 flex-1 min-w-0">
+<div class="size-10 rounded-lg bg-[#111722] flex items-center justify-center text-text-muted group-hover:text-white transition-colors shrink-0 border border-border-dark/50">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="text-white text-sm font-semibold truncate group-hover:text-primary transition-colors">The Lounge</h3>
+<div class="flex items-center gap-2 text-xs text-text-muted mt-0.5">
+<span class="truncate">Off-topic chat, games, and introductions.</span>
+</div>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-6 ml-4 shrink-0">
+<div class="flex flex-col items-end w-20">
+<span class="text-white text-xs font-medium">54k</span>
+<span class="text-[10px] text-text-muted uppercase">Threads</span>
+</div>
+<div class="w-px h-8 bg-border-dark"></div>
+<div class="flex items-center gap-3 w-48 justify-end">
+<div class="flex flex-col items-end min-w-0">
+<span class="text-xs text-white truncate max-w-[120px]">What are you playing?</span>
+<span class="text-[10px] text-text-muted">Just now • Gamer1</span>
+</div>
+<div class="size-6 rounded bg-cover bg-center shrink-0" data-alt="User avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBY66zJTRUhOY-QpdPs3C3BJPmIxee6RB5rSdzV_KfUUpO88Y-YcAHrsSfeEXEmQSKCkczqD1bucSlHUxpkWp6eZPM2baU8D4OWxtRZvNUJE3XlG9mja05ZNzauqO2LqL9-JpdtzbAAwzpw62m2tcoOSwX-30TJYKVc3MjDHOE4aXkeYb6zqcZnGdyK-y66qGn1zu1ZPlv9_AqZ5wymQHKrRMxdMLy85TkIs9JIEtwhNm0MtZqod9qKFQETiyOtFEpKZErQ-q2tAIo');"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar (Right Column) -->
+<aside class="hidden lg:block lg:col-span-1 space-y-6">
+<!-- Members Online Widget -->
+<div class="bg-surface-dark border border-border-dark rounded-xl p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold text-white">Members Online</h3>
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded">42</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<a class="relative" href="#" title="Admin">
+<div class="size-8 rounded bg-cover bg-center border border-border-dark" data-alt="Online user" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDeG5WfP7XuhHZZM3noDbmT1vKiL6bUl_0vymAJyj0PNpp3ZYM2IQO_dFP4MIH6U0pNMFS8Xs8glPqJ-H37LOFvFxN3KxWbvM7Wq7mvkMpAjhSzDbTQlR1JenvugE9l0jqURQyQFOqOOXvrYmjBRBNXCoHV38Mi0fbPi0SMDCUy45HjhY8_kV5Yti91WmAe26WEBFOl9uuunpu0iI2cQ2jLBrTpEREFL3LiKZ9sv0STDlrXA7RXCoUE1Sxr0UcSx--C1GLWO67cUlM');"></div>
+<span class="absolute -bottom-1 -right-1 size-2.5 bg-green-500 border-2 border-surface-dark rounded-full"></span>
+</a>
+<a class="relative" href="#" title="DevGuy">
+<div class="size-8 rounded bg-cover bg-center border border-border-dark" data-alt="Online user" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAaTxVlnvjJlZAOAgv_uIS2qf3fa-QubmlH5xnKYKJvQYsc0nB5eQJnvmwQpbqAsBgfKCvDp6gtzFHNe-UcNkaMXKgK8QD8DuHp6VQJgsm_cZTnxiRdmsIJ1TIkxKgMKvVqZpFSyPWQGas-KjHDDnbo3SXuCUysLSF8xZPmBXGP7quazqEGawxJE7KsKsJd1NcXwdgoCaGuFl5lOekOZ5uu_w3AChraJyfC-cmRKx0Wzdg-6e02rqPhh3CuBUgOMFLM2MoaR2nUKDE');"></div>
+<span class="absolute -bottom-1 -right-1 size-2.5 bg-green-500 border-2 border-surface-dark rounded-full"></span>
+</a>
+<a class="relative" href="#" title="Moderator">
+<div class="size-8 rounded bg-cover bg-center border border-border-dark" data-alt="Online user" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVZSwDJVrNKW_52qMK2hVIo6Q39dLcJZXerKsdRy_bSzth1LH3oKxpvW8v4y_NWWKvwEnpMDjv_TJti2agSSgO7PMGnebcSqoEzDYq3TAOARlWiLIbIF57W1jWV1kl24Ysenr_0A62DhRwJ2PKJR9uZAS_8kj_8AgEfnmeNggmWbpN3LiodQvEob0SSViNpdDmjUcq8ShyfGPz6zIBDB_pCUtxyMVXhoCAILARTb8aSxNFSE3aTuQ7BLoCjrPY5cLFdbKjkvgpxSM');"></div>
+</a>
+<a class="relative" href="#" title="PixelArt">
+<div class="size-8 rounded bg-cover bg-center border border-border-dark" data-alt="Online user" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-3_torgAP0OE34QbYpKOBfS9vKP1UcBe7oN21cphVJlpLfEpSRAiuFOvts0e3CQgLA8YUlRTfIj5oJQo_gClAigIiHnYXtLvs4Q0iMjheAWtVEXeDxL6Tub3-hD1JEFanIL9sC3sqwPSWZKnEJKY9Gpt-Cb1McYcpvx_MMlA00THeH1niHId6HsU4DRP3KhQ2Xr-gEOfxcv4kuyL5_I6r8zxsknDq3HiCOLWmg9V5y5UMN-gRtyQdKmfTB6paGT_mYP2HTzx1Gp4');"></div>
+</a>
+<div class="size-8 rounded bg-surface-dark-hover flex items-center justify-center text-xs text-text-muted border border-border-dark border-dashed cursor-pointer hover:text-white transition-colors">
+                            +38
+                        </div>
+</div>
+<div class="mt-4 pt-4 border-t border-border-dark">
+<p class="text-xs text-text-muted">Total: <span class="text-white font-medium">1,204</span> members</p>
+</div>
+</div>
+<!-- Latest Posts Widget -->
+<div class="bg-surface-dark border border-border-dark rounded-xl p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold text-white">Latest Activity</h3>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex gap-3">
+<div class="size-8 rounded bg-cover bg-center shrink-0 mt-1" data-alt="User avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDXU5i5iQEMDkrnNpAEAPw4eag0dzm9CLQkUh1R3z8DsKJlbyC6mo1494AKNdLHhYaRpu_IqhwE8kBR3uADFs5tgHn3sohJrv9Yfy2U5f9w952UpNowQxuNd9go9n03Z1Ur47A4vggGZtHxwenzAvgwePVGhyNDFtks-UYmDgh5tFt6r4okW2m2hage80eA9Nmhe10Az0ykZEmSAtWcUm7WmYfKp2BaB5XcCwAIw_A1QDKlNPA7sRODbO39_ISdr9vMvQvQNgKQpnc');"></div>
+<div class="flex flex-col min-w-0">
+<a class="text-sm font-medium text-white hover:text-primary truncate transition-colors" href="#">Ubuntu 22.04 Setup</a>
+<p class="text-xs text-text-muted mt-0.5">SysAdmin replied 2h ago</p>
+<a class="text-[10px] text-text-muted hover:text-white mt-1 block w-fit bg-background-dark px-1.5 py-0.5 rounded" href="#">Server Administration</a>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="size-8 rounded bg-cover bg-center shrink-0 mt-1" data-alt="User avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA__XPfVQYDotAW1aqzD76WryUad6GDyIzHJ_mk5TEtBFIDMauavLcQzLlcqDlPB8lyuoCTNB0zeGMQWsWErqFQK1DHcz6rvs8GAb4wFviwIKdWuDZMV_At3W1XGL8Nph-4De3p64YIjMG56XmRLJ5bXv55RG-1q-fh7Mr40AMsqYXm4WCIEHfj54FOKa3SdR2ModS9ib-oZT2_0xVy6zLMVVN6HFEoAq1hCRWyITXM_fUbgoRPPz3HC8VF2rD7PEB9ryVg86ybHHg');"></div>
+<div class="flex flex-col min-w-0">
+<a class="text-sm font-medium text-white hover:text-primary truncate transition-colors" href="#">What are you playing?</a>
+<p class="text-xs text-text-muted mt-0.5">Gamer1 posted just now</p>
+<a class="text-[10px] text-text-muted hover:text-white mt-1 block w-fit bg-background-dark px-1.5 py-0.5 rounded" href="#">The Lounge</a>
+</div>
+</div>
+</div>
+</div>
+<!-- NanoPro Footer -->
+<div class="text-xs text-text-muted text-center pt-2">
+<p>© 2023 NanoPro Community.</p>
+<div class="flex justify-center gap-3 mt-2">
+<a class="hover:text-white" href="#">Terms</a>
+<a class="hover:text-white" href="#">Privacy</a>
+<a class="hover:text-white" href="#">Help</a>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

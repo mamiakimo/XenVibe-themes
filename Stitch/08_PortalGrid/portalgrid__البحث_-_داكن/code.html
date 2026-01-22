@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PortalGrid: Search - Dark Mode</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1e2736", // Slightly lighter than bg-dark for cards
+                        "surface-dark-hover": "#263042",
+                        "text-secondary": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #135bec;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col font-display overflow-x-hidden">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-gray-200 dark:border-b-[#232f48] bg-white dark:bg-[#111722]/90 backdrop-blur-md px-4 sm:px-10 py-3">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">PortalGrid</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Forums</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Members</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-white text-sm font-medium leading-normal transition-colors" href="#">Resources</a>
+<a class="text-slate-900 dark:text-white text-sm font-bold leading-normal transition-colors border-b-2 border-primary" href="#">Search</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors shadow-lg shadow-primary/30">
+<span class="truncate">Log In</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-gray-100 dark:bg-[#232f48] text-slate-900 dark:text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-200 dark:hover:bg-[#2e3b55] transition-colors">
+<span class="truncate">Register</span>
+</button>
+</div>
+</div>
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="flex-1 layout-container flex flex-col w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-8">
+<!-- Search Hero Area -->
+<div class="w-full flex flex-col items-center justify-center mb-10 relative">
+<div class="absolute inset-0 bg-primary/5 blur-3xl rounded-full w-1/2 h-1/2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+<h1 class="text-3xl md:text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">What are you looking for?</h1>
+<div class="w-full max-w-2xl relative group">
+<div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-blue-400 rounded-xl opacity-30 group-hover:opacity-60 transition duration-500 blur"></div>
+<div class="relative flex w-full items-center bg-surface-dark rounded-xl overflow-hidden shadow-2xl border border-[#232f48]">
+<div class="pl-4 text-text-secondary">
+<span class="material-symbols-outlined text-[28px]">search</span>
+</div>
+<input class="w-full h-14 bg-transparent border-none focus:ring-0 text-white placeholder:text-slate-500 px-4 text-lg font-medium" placeholder="Search threads, members, or resources..." value="Dark Mode Theme"/>
+<div class="pr-2 flex items-center gap-2">
+<button class="text-text-secondary hover:text-white p-2 rounded-full hover:bg-white/5 transition-colors" title="Clear">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<button class="hidden sm:flex items-center gap-2 bg-[#232f48] hover:bg-[#2e3b55] text-xs font-bold text-white px-3 py-1.5 rounded-lg mr-2 transition-colors border border-white/5">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Advanced</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Sidebar / Filters -->
+<aside class="w-full lg:w-72 shrink-0 flex flex-col gap-6">
+<!-- Filter Group 1: Tags -->
+<div class="bg-surface-dark rounded-xl p-5 border border-[#232f48]">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-white font-bold text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">filter_alt</span>
+                            Filters
+                        </h3>
+<button class="text-xs text-primary font-medium hover:underline">Reset</button>
+</div>
+<label class="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-3 block">Content Type</label>
+<div class="flex flex-wrap gap-2">
+<button class="h-8 px-3 rounded-lg bg-primary text-white text-sm font-medium border border-primary transition-all shadow-md shadow-primary/20">All</button>
+<button class="h-8 px-3 rounded-lg bg-[#232f48] hover:bg-[#2e3b55] text-slate-300 text-sm font-medium border border-transparent transition-all">Threads</button>
+<button class="h-8 px-3 rounded-lg bg-[#232f48] hover:bg-[#2e3b55] text-slate-300 text-sm font-medium border border-transparent transition-all">Users</button>
+<button class="h-8 px-3 rounded-lg bg-[#232f48] hover:bg-[#2e3b55] text-slate-300 text-sm font-medium border border-transparent transition-all">Resources</button>
+<button class="h-8 px-3 rounded-lg bg-[#232f48] hover:bg-[#2e3b55] text-slate-300 text-sm font-medium border border-transparent transition-all">Profile Posts</button>
+</div>
+</div>
+<!-- Filter Group 2: Inputs -->
+<div class="bg-surface-dark rounded-xl p-5 border border-[#232f48]">
+<label class="block mb-4">
+<span class="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2 block">By Member</span>
+<div class="flex items-center bg-[#101622] rounded-lg border border-[#232f48] focus-within:border-primary/50 transition-colors">
+<input class="w-full bg-transparent border-none text-sm text-white focus:ring-0 p-2.5 placeholder:text-slate-600" placeholder="Username..." type="text"/>
+<span class="material-symbols-outlined text-slate-600 px-3 text-[20px]">person</span>
+</div>
+</label>
+<label class="block mb-4">
+<span class="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2 block">Newer Than</span>
+<div class="flex items-center bg-[#101622] rounded-lg border border-[#232f48] focus-within:border-primary/50 transition-colors">
+<input class="w-full bg-transparent border-none text-sm text-slate-400 focus:ring-0 p-2.5 icon-white" type="date"/>
+</div>
+</label>
+<label class="block">
+<span class="text-xs font-semibold text-text-secondary uppercase tracking-wider mb-2 block">Sort By</span>
+<div class="relative">
+<select class="w-full appearance-none bg-[#101622] text-white text-sm rounded-lg border border-[#232f48] p-2.5 focus:ring-0 focus:border-primary/50 cursor-pointer">
+<option>Relevance</option>
+<option>Date (Newest)</option>
+<option>Most Replies</option>
+<option>Most Likes</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-slate-500 pointer-events-none text-[20px]">expand_more</span>
+</div>
+</label>
+</div>
+<!-- Toggles -->
+<div class="bg-surface-dark rounded-xl p-5 border border-[#232f48]">
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="text-sm font-medium text-slate-300 group-hover:text-white">Search titles only</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-[#101622] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+</div>
+</aside>
+<!-- Results Grid -->
+<div class="flex-1">
+<div class="flex items-center justify-between mb-4 px-1">
+<p class="text-slate-400 text-sm">Showing <span class="text-white font-bold">142</span> results for <span class="text-white font-bold">"Dark Mode Theme"</span></p>
+<div class="flex gap-2">
+<button class="p-1.5 rounded bg-surface-dark text-white hover:bg-surface-dark-hover transition-colors" title="Grid View">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-1.5 rounded text-slate-500 hover:text-white hover:bg-surface-dark-hover transition-colors" title="List View">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+<!-- Result Card 1: Thread (Visual) -->
+<div class="group relative flex flex-col bg-surface-dark rounded-xl overflow-hidden border border-[#232f48] hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10 cursor-pointer">
+<div class="h-32 w-full bg-cover bg-center relative" data-alt="Abstract tech background with dark blue circuit patterns" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-Ki-6N8Cztbp2ijhSzDP1gBMBl4XASUT_ZWvQ8aUtDUfB792K5Jj71N_nmwXhpneE8-6yrdNorHrqlRGwkoxzsp6D6cOYo0QIG6fKgx3Vvti0JnWE1bdzzW1UuW65zFnxLQXxKPsJPUZLB6tSOYzHbMpGOOvnZ6oPTTkXliOucSGIqNVW-k-7oraZmhmtD0xKS0VSWwB2HpsuIdgIZWHFfMqSg2dMYcgGKpHbLU-033ZBThIOt57SJCj6lL6zdaQlK-zX_6daJVk');">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dark to-transparent"></div>
+<span class="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-xs font-bold text-white px-2 py-1 rounded">Thread</span>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-2">
+<img alt="User Avatar" class="size-6 rounded-full border border-[#232f48]" data-alt="Avatar of user John Doe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3lHANgLIb4W4WolfES68ZYEr8pW0BULrQhKAwakdcZr4Pg2Gu33rAHwmUIsycHWziXmldCh9NOXdkQXyhS81Ng5jI-v_xRXlKSx4BHhiytZrNVaSB7AcuWbEOOy1Gcd5sHZ9L_Wveyn6l3T3kBX4BZR-AgfnfYCgYMbNJta7UW1Pyrd0oPlvufx-oX9HG-kjJW7yoTSJlTCz8Whjx0AMv5ZhFiUz4xJx--iP8ObBX-sT-zioZVRxQepBARee5pC0RwGwwR9jc_M4"/>
+<span class="text-xs text-text-secondary">Started by <span class="text-white hover:underline">JohnDoe</span></span>
+<span class="text-xs text-slate-600">• 2h ago</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-2 leading-tight group-hover:text-primary transition-colors">Official <span class="bg-primary/20 text-blue-200 px-0.5 rounded">Dark Mode</span> CSS Variables</h3>
+<p class="text-sm text-slate-400 line-clamp-2 mb-4">I've been working on a new set of CSS variables to handle the dark mode switching more efficiently in the upcoming release...</p>
+<div class="mt-auto flex items-center justify-between border-t border-[#232f48] pt-3">
+<div class="flex items-center gap-3 text-xs text-slate-500 font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 42</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 1.2k</span>
+</div>
+<span class="bg-green-500/10 text-green-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-green-500/20">SOLVED</span>
+</div>
+</div>
+</div>
+<!-- Result Card 2: Resource -->
+<div class="group relative flex flex-col bg-surface-dark rounded-xl overflow-hidden border border-[#232f48] hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10 cursor-pointer">
+<div class="p-4 flex flex-row gap-4 items-start">
+<div class="size-16 rounded-lg bg-[#101622] flex items-center justify-center shrink-0 border border-[#232f48]">
+<span class="material-symbols-outlined text-purple-400 text-[32px]">palette</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<span class="text-[10px] font-bold text-purple-400 uppercase tracking-wide mb-1 block">Resource</span>
+<div class="flex text-yellow-500">
+<span class="material-symbols-outlined text-[14px] filled-icon">star</span>
+<span class="material-symbols-outlined text-[14px] filled-icon">star</span>
+<span class="material-symbols-outlined text-[14px] filled-icon">star</span>
+<span class="material-symbols-outlined text-[14px] filled-icon">star</span>
+<span class="material-symbols-outlined text-[14px]">star_half</span>
+</div>
+</div>
+<h3 class="text-base font-bold text-white mb-1 truncate group-hover:text-primary transition-colors">Neon Night <span class="bg-primary/20 text-blue-200 px-0.5 rounded">Theme</span> Pack</h3>
+<p class="text-xs text-slate-400 mb-2">Version 2.1 • Updated Yesterday</p>
+</div>
+</div>
+<div class="px-4 pb-4 flex-1">
+<p class="text-sm text-slate-400 line-clamp-2">A complete overhaul of the default style featuring neon accents and deep blacks perfect for OLED screens.</p>
+</div>
+<div class="p-3 bg-[#151b26] flex items-center justify-between border-t border-[#232f48]">
+<span class="text-xs font-bold text-white">Free</span>
+<button class="text-xs bg-primary hover:bg-blue-600 text-white px-3 py-1.5 rounded font-bold transition-colors">Download</button>
+</div>
+</div>
+<!-- Result Card 3: User Profile -->
+<div class="group relative flex flex-col items-center text-center bg-surface-dark rounded-xl overflow-hidden border border-[#232f48] hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10 p-5 cursor-pointer">
+<div class="absolute top-2 right-2 text-slate-600">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</div>
+<div class="relative mb-3">
+<img alt="User Profile Picture" class="size-20 rounded-full border-4 border-[#232f48] group-hover:border-primary/30 transition-colors" data-alt="Avatar of Sarah Design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8lViFT3plXZqk1u4aLoOoVw9FkKpi851_zVzF-BvdW3wYzpcVd1g7IFfKvUttnhRVSqwjlYd8jmHnzaiMIHEwtdRGt54lfC796fMNO9yNjCSKFv6SWtKyELBOMWgDuuTURDqPIhS7dmX1YVssRQQvifyb5WSqAuNZ2Hil5wJmXQfHWW8qt__0tK6l3rjPCJJrSxJK7NtJdyJ54lt0jVsTau3aOS9mgoYBIlqUNy9oenz32azk3o0or_hA_AfpP4akXkVjYd04a58"/>
+<div class="absolute bottom-0 right-0 bg-green-500 size-4 rounded-full border-2 border-surface-dark"></div>
+</div>
+<h3 class="text-lg font-bold text-white">Sarah_Design</h3>
+<p class="text-xs text-primary font-medium mb-4">UI/UX Specialist</p>
+<div class="flex gap-4 mb-4 w-full justify-center">
+<div class="flex flex-col items-center">
+<span class="text-xs text-slate-500 uppercase">Msgs</span>
+<span class="text-sm font-bold text-white">1.4k</span>
+</div>
+<div class="flex flex-col items-center border-l border-[#232f48] pl-4">
+<span class="text-xs text-slate-500 uppercase">Score</span>
+<span class="text-sm font-bold text-white">892</span>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-[#232f48] group-hover:bg-primary group-hover:text-white text-slate-300 text-sm font-bold transition-colors">View Profile</button>
+</div>
+<!-- Result Card 4: Thread (Snippet Focus) -->
+<div class="group relative flex flex-col bg-surface-dark rounded-xl overflow-hidden border border-[#232f48] hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10 cursor-pointer">
+<div class="p-4 flex flex-col flex-1">
+<div class="flex items-center justify-between mb-2">
+<span class="bg-orange-500/10 text-orange-400 text-[10px] font-bold px-2 py-0.5 rounded border border-orange-500/20">Issue</span>
+<span class="text-xs text-slate-600">Oct 24, 2023</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-3 leading-tight group-hover:text-primary transition-colors">Help! <span class="bg-primary/20 text-blue-200 px-0.5 rounded">Dark theme</span> breaking on mobile layout</h3>
+<div class="bg-[#101622] rounded p-3 mb-3 border border-[#232f48] font-mono text-xs text-slate-400 overflow-hidden relative">
+<div class="absolute top-0 right-0 p-1">
+<div class="flex gap-1">
+<div class="size-2 rounded-full bg-red-500/20"></div>
+<div class="size-2 rounded-full bg-yellow-500/20"></div>
+<div class="size-2 rounded-full bg-green-500/20"></div>
+</div>
+</div>
+<code class="opacity-70">
+                                    .p-nav-inner {<br/>
+                                      display: flex;<br/>
+                                      <span class="text-red-400">/* This breaks it */</span><br/>
+                                      width: 100vw;<br/>
+                                    }
+                                </code>
+</div>
+<div class="mt-auto flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-purple-500 flex items-center justify-center text-[10px] font-bold text-white">M</div>
+<span class="text-xs text-slate-400">MikeDev</span>
+</div>
+<span class="flex items-center gap-1 text-xs text-slate-500"><span class="material-symbols-outlined text-[14px]">reply</span> 8 replies</span>
+</div>
+</div>
+</div>
+<!-- Result Card 5: Profile Post -->
+<div class="group relative flex flex-col bg-surface-dark rounded-xl overflow-hidden border border-[#232f48] hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10 cursor-pointer">
+<div class="p-5 flex flex-col h-full">
+<div class="flex gap-3 mb-3">
+<img alt="User Avatar" class="size-10 rounded-full border border-[#232f48]" data-alt="Avatar of user Alex" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA482qRKKBpoKq5LvDxTiEH-8H2d80DD-M72Mb7fVIoBFDkbx-eNBU1Y4B0wdrxeuDx09NNYyhufLzn2WjJVdNkXSwqOXFlZtbxY-esZIfEseNxYoPLJn9cF9zmj-gk2DCi_3BWZXtJbbmynCKXQk8QAXJ6mmY9pAQkQIglZZTr4HGvBhIv-983KjP-IPa5EtMh8bhnsTfnFnLv_V7q7COoVYUnockjzI9sNRB5-YEDjf4zsaG4c2NY8yG1gkTyO5OJ8ygPvV5Oh5I"/>
+<div>
+<h4 class="text-sm font-bold text-white">Alex_Gamer</h4>
+<p class="text-xs text-slate-500">wrote on <span class="text-slate-300">Admin's</span> profile</p>
+</div>
+<span class="ml-auto text-xs text-slate-600">3d</span>
+</div>
+<div class="relative pl-4 border-l-2 border-[#232f48] group-hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined absolute -left-[9px] -top-1 text-[#232f48] bg-surface-dark text-[16px]">format_quote</span>
+<p class="text-sm text-slate-300 italic">Just wanted to say thanks for the new <span class="bg-primary/20 text-blue-200 px-0.5 rounded not-italic">dark mode</span> update! It looks fantastic on my ultra-wide monitor.</p>
+</div>
+<div class="mt-4 flex gap-4 pt-4 border-t border-[#232f48]/50 mt-auto">
+<button class="text-xs text-slate-500 hover:text-white flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">thumb_up</span> Like</button>
+<button class="text-xs text-slate-500 hover:text-white flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">comment</span> Comment</button>
+</div>
+</div>
+</div>
+<!-- Result Card 6: Thread (No snippet, clean) -->
+<div class="group relative flex flex-col bg-surface-dark rounded-xl overflow-hidden border border-[#232f48] hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-primary/10 cursor-pointer">
+<div class="p-5 flex flex-col h-full">
+<div class="flex items-center gap-2 mb-3">
+<span class="size-2 rounded-full bg-blue-400 animate-pulse"></span>
+<span class="text-[10px] font-bold text-blue-400 uppercase tracking-wide">News</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-2 leading-tight group-hover:text-primary transition-colors">Community Spotlight: Best <span class="bg-primary/20 text-blue-200 px-0.5 rounded">Dark Mode</span> setups</h3>
+<p class="text-sm text-slate-400 mb-4">Share your desktop configurations and how you use the new theme!</p>
+<div class="flex -space-x-2 overflow-hidden mb-4">
+<img alt="User 1" class="inline-block size-6 rounded-full ring-2 ring-surface-dark" data-alt="Small avatar of user 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LxOcbhwGW2d_Rnc8G8cqy8O6ildsaYZwLXKSVEG74l-gCTPNCgJfTTLFsQrNF5QFpWO_9pMeuroTzEX81OWjCgazSzrpMysf0nC187wFbc80v0gR4ExpW8n5ajbj3bEL_JaP9GahCcIuE45UfQi0buJb0pSUpLHc0joyz_jEp31SBW8LikbOS3TLJ4JXCIWyo1Dwi5C9gTg9gNNTXyb3FDkOJLGxSFyAQFUNg1K7GHKHYgzrOyiWyriTqvgNg9thMTHvAJ25Gnc"/>
+<img alt="User 2" class="inline-block size-6 rounded-full ring-2 ring-surface-dark" data-alt="Small avatar of user 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwytMjlpadb7C6IxMwsSR_047FrGk-plj2XTohdOORDfpRud0Mw5SxgJyDerz7cu23apPmoUf-UOPCTOHq-a5-omDwP4q9fiNIf_oMubnd4Fjnex-uUEPYCFlMlSUHXUM5yHM5MhhHvFJG4cmO_1I-LwOuvp3uvTfTqsE6MTmh2nyTcJUTHEGkazdEmlIbx6iIhLuUlivaY1o9YG2kJ3LTStoTGhuq8OrKMVOFnFryqMvv1eXTF7xBpHld5M9FoM64nV8a4S1GGuw"/>
+<img alt="User 3" class="inline-block size-6 rounded-full ring-2 ring-surface-dark" data-alt="Small avatar of user 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZPaPUcy86BArqKjKFaWfdUz3Z7BjZKjFL0Xv5uHTr7DdnTFv0a4RDCPdM1gEplgSKxjaDwT_DwOmHOFNxQ6l5LSe8Q4G6j1IWC_yh2dEb0nR6AOf84vVhQHv1ES0bKATq2JCJ7KsuzkoiukrEV95iMXgU3_rPSb_yyX8o4VwSdSmrVpEDNT9hcJpS03p8FV8pC9hKD_JdgJSTcFyE7J-4nl0RVhQCUp14mHSN4-JL44XaNnAiMgVw4DAdUoGrxAjmuwPA_ttJoR4"/>
+<div class="inline-block size-6 rounded-full ring-2 ring-surface-dark bg-[#232f48] flex items-center justify-center text-[8px] font-bold text-white">+12</div>
+</div>
+<div class="mt-auto flex items-center justify-between text-xs text-slate-500 font-medium">
+<span>Yesterday at 4:20 PM</span>
+<span class="flex items-center gap-1 text-white"><span class="material-symbols-outlined text-[14px]">local_fire_department</span> Hot</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="mt-8 flex justify-center">
+<button class="bg-[#232f48] hover:bg-[#2e3b55] text-white text-sm font-bold py-3 px-8 rounded-xl transition-all flex items-center gap-2 group">
+<span class="material-symbols-outlined group-hover:animate-spin">refresh</span>
+                        Load more results
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

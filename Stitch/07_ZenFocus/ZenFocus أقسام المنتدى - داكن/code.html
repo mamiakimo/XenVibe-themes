@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus: أقسام المنتدى</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Arabic:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind & Theme Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1132d4",
+                        "primary-hover": "#0e2ab0",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101322",
+                        "surface-dark": "#181c2e",
+                        "border-dark": "#232948",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                        "sans": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for Webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101322; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232948; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #343c63; 
+        }
+        
+        /* Material Symbols overrides */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full bg-background-dark/95 backdrop-blur-md border-b border-white/5">
+<div class="max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between gap-4">
+<!-- Logo -->
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-center justify-center size-8 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-[20px]">spa</span>
+</div>
+<h1 class="text-white text-xl font-bold tracking-tight">ZenFocus</h1>
+</div>
+<!-- Navigation (Hidden on small screens) -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-white hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="text-sm font-medium text-gray-400 hover:text-white transition-colors" href="#">الجديد</a>
+<a class="text-sm font-medium text-gray-400 hover:text-white transition-colors" href="#">الأعضاء</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-3 md:gap-4 flex-1 justify-end">
+<!-- Search Bar (Minimal) -->
+<div class="relative hidden sm:block max-w-[240px] w-full">
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</span>
+<input class="block w-full rounded-lg border-0 bg-surface-dark py-1.5 pr-10 pl-3 text-white placeholder:text-gray-500 focus:ring-1 focus:ring-primary sm:text-sm sm:leading-6" placeholder="بحث..." type="text"/>
+</div>
+<!-- Search Icon (Mobile) -->
+<button class="sm:hidden p-2 text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">search</span>
+</button>
+<!-- Notifications -->
+<button class="relative p-2 text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 left-2 size-2 bg-primary rounded-full ring-2 ring-background-dark"></span>
+</button>
+<!-- Profile -->
+<button class="size-9 rounded-full bg-gray-700 overflow-hidden ring-2 ring-transparent hover:ring-primary/50 transition-all">
+<div class="w-full h-full bg-cover bg-center" data-alt="User profile picture showing a smiling man" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMCHX0Ixmllcxet2tWx2uLMQ3gL2kJBhKaNKHNyC-SgJepXfUXCNIJj86EwCQiKsF1nQK95h0aIv-riOrQE0PzpiCucTMxY69F5atcstG8KLcPElQiDBvfYuv6KMtE672joxo7aRZoKUlGR5rMIgIpQftoRE6lYVGGYlPVTheHOF8cY5A_uNiGI-3DFPSwM-aP00xIoHWxGdafNEOYsz39PylsYRzpT_DvgG57TSjqAj3nrfs3RvlvVDfC8JChvuxMyt-X0XgqIP4');"></div>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-[960px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+<!-- Welcome Message -->
+<div class="mb-12 text-center md:text-right">
+<h2 class="text-3xl font-bold text-white mb-2">مرحباً بعودتك، أحمد</h2>
+<p class="text-gray-400 text-lg font-light">إليك آخر النقاشات في مجتمعاتك المفضلة.</p>
+</div>
+<!-- Forum Section 1: Official -->
+<div class="mb-10">
+<!-- Section Header -->
+<div class="flex items-center gap-4 mb-4 pb-2 border-b border-white/5">
+<h3 class="text-primary font-bold text-lg tracking-wide uppercase">المنتديات الرسمية</h3>
+<span class="h-px flex-1 bg-gradient-to-l from-white/10 to-transparent"></span>
+</div>
+<!-- List Items Container -->
+<div class="flex flex-col gap-1">
+<!-- Item 1 -->
+<a class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-dark transition-all duration-200 border border-transparent hover:border-white/5" href="#">
+<div class="flex items-center gap-4">
+<!-- Status Indicator (Subtle) -->
+<div class="w-1 h-8 rounded-full bg-primary/30 group-hover:bg-primary transition-colors"></div>
+<div class="flex flex-col">
+<span class="text-lg font-medium text-gray-200 group-hover:text-white transition-colors">الإعلانات والأخبار</span>
+<span class="text-sm text-gray-500 font-light mt-0.5">آخر المستجدات والتحديثات الخاصة بالمنصة</span>
+</div>
+</div>
+<div class="flex items-center gap-4 pl-2">
+<span class="hidden sm:inline-block text-xs font-medium px-2.5 py-1 rounded-full bg-primary/10 text-primary-hover">٣ جديدة</span>
+<span class="material-symbols-outlined text-gray-600 group-hover:text-gray-400 transition-colors text-[20px] rtl:rotate-180">arrow_back</span>
+</div>
+</a>
+<!-- Item 2 -->
+<a class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-dark transition-all duration-200 border border-transparent hover:border-white/5" href="#">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 rounded-full bg-gray-700/30 group-hover:bg-gray-600 transition-colors"></div>
+<div class="flex flex-col">
+<span class="text-lg font-medium text-gray-200 group-hover:text-white transition-colors">الاقتراحات والشكاوي</span>
+</div>
+</div>
+<div class="flex items-center gap-4 pl-2">
+<span class="material-symbols-outlined text-gray-600 group-hover:text-gray-400 transition-colors text-[20px] rtl:rotate-180">arrow_back</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Forum Section 2: General Area -->
+<div class="mb-10">
+<!-- Section Header -->
+<div class="flex items-center gap-4 mb-4 pb-2 border-b border-white/5">
+<h3 class="text-primary font-bold text-lg tracking-wide uppercase">الساحة العامة</h3>
+<span class="h-px flex-1 bg-gradient-to-l from-white/10 to-transparent"></span>
+</div>
+<div class="flex flex-col gap-1">
+<!-- Item 1 -->
+<a class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-dark transition-all duration-200 border border-transparent hover:border-white/5" href="#">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 rounded-full bg-green-500/30 group-hover:bg-green-500 transition-colors"></div>
+<div class="flex flex-col">
+<span class="text-lg font-medium text-gray-200 group-hover:text-white transition-colors">الحوار العام</span>
+<span class="text-sm text-gray-500 font-light mt-0.5">نقاشات حرة ومواضيع متنوعة تهم الجميع</span>
+</div>
+</div>
+<div class="flex items-center gap-6 pl-2">
+<div class="hidden md:flex flex-col items-end gap-1">
+<span class="text-xs text-gray-400">٤٢ موضوع نشط</span>
+</div>
+<span class="material-symbols-outlined text-gray-600 group-hover:text-gray-400 transition-colors text-[20px] rtl:rotate-180">arrow_back</span>
+</div>
+</a>
+<!-- Item 2 -->
+<a class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-dark transition-all duration-200 border border-transparent hover:border-white/5" href="#">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 rounded-full bg-purple-500/30 group-hover:bg-purple-500 transition-colors"></div>
+<div class="flex flex-col">
+<span class="text-lg font-medium text-gray-200 group-hover:text-white transition-colors">التقنية والبرمجة</span>
+</div>
+</div>
+<div class="flex items-center gap-6 pl-2">
+<div class="hidden md:flex flex-col items-end gap-1">
+<span class="text-xs text-gray-400">١٥ موضوع نشط</span>
+</div>
+<span class="material-symbols-outlined text-gray-600 group-hover:text-gray-400 transition-colors text-[20px] rtl:rotate-180">arrow_back</span>
+</div>
+</a>
+<!-- Item 3 -->
+<a class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-dark transition-all duration-200 border border-transparent hover:border-white/5" href="#">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 rounded-full bg-gray-700/30 group-hover:bg-gray-600 transition-colors"></div>
+<div class="flex flex-col">
+<span class="text-lg font-medium text-gray-200 group-hover:text-white transition-colors">استراحة الأعضاء</span>
+</div>
+</div>
+<div class="flex items-center gap-6 pl-2">
+<span class="material-symbols-outlined text-gray-600 group-hover:text-gray-400 transition-colors text-[20px] rtl:rotate-180">arrow_back</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Forum Section 3: Specialized -->
+<div class="mb-10">
+<!-- Section Header -->
+<div class="flex items-center gap-4 mb-4 pb-2 border-b border-white/5">
+<h3 class="text-primary font-bold text-lg tracking-wide uppercase">الهوايات والإبداع</h3>
+<span class="h-px flex-1 bg-gradient-to-l from-white/10 to-transparent"></span>
+</div>
+<div class="flex flex-col gap-1">
+<!-- Item 1 -->
+<a class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-dark transition-all duration-200 border border-transparent hover:border-white/5" href="#">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 rounded-full bg-orange-500/30 group-hover:bg-orange-500 transition-colors"></div>
+<div class="flex flex-col">
+<span class="text-lg font-medium text-gray-200 group-hover:text-white transition-colors">التصوير الفوتوغرافي</span>
+</div>
+</div>
+<div class="flex items-center gap-6 pl-2">
+<div class="hidden md:flex flex-col items-end gap-1">
+<span class="text-xs text-gray-400">٨ مواضيع نشطة</span>
+</div>
+<span class="material-symbols-outlined text-gray-600 group-hover:text-gray-400 transition-colors text-[20px] rtl:rotate-180">arrow_back</span>
+</div>
+</a>
+<!-- Item 2 -->
+<a class="group flex items-center justify-between p-4 rounded-xl hover:bg-surface-dark transition-all duration-200 border border-transparent hover:border-white/5" href="#">
+<div class="flex items-center gap-4">
+<div class="w-1 h-8 rounded-full bg-pink-500/30 group-hover:bg-pink-500 transition-colors"></div>
+<div class="flex flex-col">
+<span class="text-lg font-medium text-gray-200 group-hover:text-white transition-colors">الأدب والشعر</span>
+<span class="text-sm text-gray-500 font-light mt-0.5">مساحة للإبداع الأدبي والنصوص الحرة</span>
+</div>
+</div>
+<div class="flex items-center gap-6 pl-2">
+<div class="hidden md:flex flex-col items-end gap-1">
+<span class="text-xs text-gray-400">٢١ موضوع نشط</span>
+</div>
+<span class="material-symbols-outlined text-gray-600 group-hover:text-gray-400 transition-colors text-[20px] rtl:rotate-180">arrow_back</span>
+</div>
+</a>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-8 left-8 z-40">
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white rounded-full px-6 py-4 shadow-lg hover:shadow-primary/20 transition-all duration-300 group">
+<span class="material-symbols-outlined text-[24px]">edit_square</span>
+<span class="font-bold text-base hidden group-hover:inline-block transition-all">موضوع جديد</span>
+</button>
+</div>
+<!-- Minimal Footer -->
+<footer class="mt-auto border-t border-white/5 py-8 bg-background-dark">
+<div class="max-w-[960px] mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
+<p>© 2024 ZenFocus. جميع الحقوق محفوظة.</p>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">سياسة الخصوصية</a>
+<a class="hover:text-white transition-colors" href="#">شروط الاستخدام</a>
+<a class="hover:text-white transition-colors" href="#">اتصل بنا</a>
+</div>
+</div>
+</footer>
+</body></html>

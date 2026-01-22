@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تعديل منشور - لوحة التحكم</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1b2434",
+                        "surface-light": "#ffffff",
+                        "border-dark": "#2a3649",
+                        "text-secondary": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3649; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151; 
+        }
+        
+        .editor-content {
+            min-height: 400px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white overflow-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- SIDEBAR NAVIGATION (RTL: Right side) -->
+<aside class="hidden lg:flex flex-col w-72 h-full bg-surface-dark border-l border-border-dark flex-shrink-0 transition-all duration-300">
+<!-- Branding -->
+<div class="flex items-center gap-3 px-6 py-6 border-b border-border-dark">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl size-10 shadow-lg shadow-primary/20" data-alt="Abstract geometric logo in blue" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnx1Bq_v-TjpBpOIC9lJFxEVFjjdZ7bvvg84mFfoaN6_BTioJ1iTvNBO0f7ilE6aWmmiiyDEEQkmAsgH-N0BiNbwDJUd0HyPvndUfApypV_oGkuyCzwtTjcFJ2m_H5sSA5H0aXgHO9-gS6-hVq_E_x7fOYS4gt04Kg8EAj27XndJwiXzFPaWzBTpyuBnKtamBmxUVamURJsgzOk2FsV15XGgo2LumyeK0m5PDQr48PHdk-xQIMPEb_F6w8my7PUf_9F4oXhyuw6fE");'>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-lg font-bold leading-tight">XenForo</h1>
+<p class="text-text-secondary text-xs font-normal">لوحة التحكم</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto py-6 px-4 space-y-1">
+<div class="px-2 mb-2 text-xs font-semibold text-text-secondary uppercase tracking-wider">القائمة الرئيسية</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-text-secondary hover:bg-white/5 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors">dashboard</span>
+<span class="text-sm font-medium">نظرة عامة</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 text-primary border border-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px] fill-1">forum</span>
+<span class="text-sm font-medium">المنتديات</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-text-secondary hover:bg-white/5 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors">people</span>
+<span class="text-sm font-medium">الأعضاء</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-text-secondary hover:bg-white/5 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors">campaign</span>
+<span class="text-sm font-medium">الإعلانات</span>
+</a>
+<div class="px-2 mt-6 mb-2 text-xs font-semibold text-text-secondary uppercase tracking-wider">أدوات الإشراف</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-text-secondary hover:bg-white/5 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors">report</span>
+<span class="text-sm font-medium">البلاغات</span>
+<span class="mr-auto bg-red-500/20 text-red-400 text-xs px-2 py-0.5 rounded-full font-bold">3</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-text-secondary hover:bg-white/5 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px] group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-medium">الإعدادات</span>
+</a>
+</nav>
+<!-- User Footer -->
+<div class="p-4 border-t border-border-dark">
+<button class="flex items-center gap-3 w-full p-2 rounded-xl hover:bg-white/5 transition-colors text-right">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 border-2 border-surface-dark" data-alt="User profile picture placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgLznNz2UZwr8cFKUYB_pcowvTXW6TRdWRKYQoR-MupNChhgjBxYegpNGqsnu4nBkGM7fj7HkefI8qcAixRSMT9ORD1YzaCRly4mcQWX3cnUYkWSa71rS02_0NS1t2bnq20tcns_bK186ZU-7RgvFm1QQW2aPZCFTLltlCH7T9PIFf6iZl3bmsv_ZmIJXeCEgkGR-Lu8OQbEMkca3wjWTxSX-0h8rbP-P-Umr2IIoP5dNAyyH81qVQmPIbep2Cf_YDcaeGfsY1syY");'>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="text-sm font-medium text-white truncate">أحمد محمد</span>
+<span class="text-xs text-text-secondary truncate">مدير عام</span>
+</div>
+<span class="material-symbols-outlined text-text-secondary text-lg">expand_more</span>
+</button>
+</div>
+</aside>
+<!-- MAIN CONTENT AREA -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Top Navbar -->
+<header class="h-16 border-b border-border-dark bg-background-dark/95 backdrop-blur flex items-center justify-between px-6 z-10">
+<!-- Mobile Toggle & Breadcrumbs -->
+<div class="flex items-center gap-4">
+<button class="lg:hidden text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<nav class="hidden md:flex items-center text-sm font-medium">
+<a class="text-text-secondary hover:text-white transition-colors" href="#">الرئيسية</a>
+<span class="material-symbols-outlined text-text-secondary text-base mx-2 rotate-180">chevron_right</span>
+<a class="text-text-secondary hover:text-white transition-colors" href="#">القسم العام</a>
+<span class="material-symbols-outlined text-text-secondary text-base mx-2 rotate-180">chevron_right</span>
+<span class="text-white px-2 py-1 rounded-md bg-white/5">تطوير الويب</span>
+</nav>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-3">
+<!-- Search -->
+<div class="hidden md:flex relative group">
+<span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-text-secondary group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="bg-surface-dark border border-border-dark text-white text-sm rounded-xl py-2 pr-10 pl-4 w-64 focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all placeholder:text-gray-600" placeholder="بحث سريع..." type="text"/>
+<div class="absolute inset-y-0 left-2 flex items-center pointer-events-none">
+<kbd class="hidden sm:inline-block border border-gray-700 rounded px-1.5 text-[10px] font-mono text-gray-500">⌘K</kbd>
+</div>
+</div>
+<div class="h-6 w-px bg-border-dark mx-1"></div>
+<button class="flex items-center justify-center size-9 rounded-full bg-surface-dark border border-border-dark text-text-secondary hover:text-white hover:border-gray-600 transition-all relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-0 left-0 size-2.5 bg-red-500 rounded-full border-2 border-background-dark"></span>
+</button>
+</div>
+</header>
+<!-- Content Scrollable Area -->
+<div class="flex-1 overflow-y-auto bg-background-dark p-4 md:p-8">
+<div class="max-w-7xl mx-auto h-full flex flex-col">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h1 class="text-3xl font-bold text-white tracking-tight">تعديل منشور</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 text-xs font-medium">مسودة</span>
+</div>
+<p class="text-text-secondary text-sm">تم الحفظ تلقائياً منذ دقيقتين</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 rounded-xl border border-red-500/30 text-red-400 hover:bg-red-500/10 text-sm font-medium transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                                حذف
+                            </button>
+<button class="px-4 py-2 rounded-xl bg-surface-dark border border-border-dark text-white hover:bg-white/5 text-sm font-medium transition-colors">
+                                معاينة
+                            </button>
+<button class="px-6 py-2 rounded-xl bg-primary hover:bg-blue-600 text-white shadow-lg shadow-primary/25 text-sm font-bold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                                حفظ التعديلات
+                            </button>
+</div>
+</div>
+<!-- Editor Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start h-full">
+<!-- Main Editor Column (Takes up 8/12 on large screens) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Title Input -->
+<div class="group">
+<label class="block text-text-secondary text-sm font-medium mb-2">عنوان الموضوع</label>
+<input class="w-full bg-transparent text-white text-2xl md:text-3xl font-bold border-none p-0 focus:ring-0 placeholder:text-gray-700" placeholder="اكتب عنواناً جذاباً..." type="text" value="كيف تبدأ تعلم إطار العمل React.js في 2024"/>
+<div class="h-px w-full bg-border-dark group-focus-within:bg-primary transition-colors mt-2"></div>
+</div>
+<!-- WYSIWYG Editor Container -->
+<div class="flex-1 bg-surface-dark rounded-2xl border border-border-dark overflow-hidden flex flex-col shadow-sm min-h-[500px]">
+<!-- Toolbar -->
+<div class="flex items-center flex-wrap gap-1 p-2 border-b border-border-dark bg-[#161e2c]">
+<div class="flex items-center gap-1 pr-1 pl-2 border-l border-border-dark">
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">undo</span>
+</button>
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">redo</span>
+</button>
+</div>
+<div class="flex items-center gap-1 px-2 border-l border-border-dark">
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_underlined</span>
+</button>
+</div>
+<div class="flex items-center gap-1 px-2 border-l border-border-dark">
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_align_right</span>
+</button>
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_align_center</span>
+</button>
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">format_align_left</span>
+</button>
+</div>
+<div class="flex items-center gap-1 px-2">
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-1.5 rounded hover:bg-white/10 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">code_blocks</span>
+</button>
+</div>
+</div>
+<!-- Editor Content -->
+<div class="p-6 flex-1 bg-[#131a26] text-gray-300 leading-relaxed text-lg outline-none editor-content" contenteditable="true">
+<p class="mb-4">React هو مكتبة JavaScript لبناء واجهات المستخدم، وهي واحدة من أكثر المكتبات شيوعًا في تطوير الويب اليوم.</p>
+<h3 class="text-white text-xl font-bold mb-3 mt-6">لماذا React؟</h3>
+<ul class="list-disc list-inside mb-4 space-y-2 marker:text-primary">
+<li>مكونات قابلة لإعادة الاستخدام (Components)</li>
+<li>أداء عالي بفضل Virtual DOM</li>
+<li>مجتمع ضخم ودعم مستمر</li>
+</ul>
+<div class="bg-black/30 p-4 rounded-lg border border-border-dark font-mono text-sm text-blue-300 my-6" dir="ltr">
+                                        import React from 'react';<br/>
+<br/>
+                                        function App() {<br/>
+                                          return (<br/>
+                                            &lt;h1&gt;Hello World&lt;/h1&gt;<br/>
+                                          );<br/>
+                                        }
+                                    </div>
+<p>في هذا المقال، سنستعرض الخطوات الأساسية للبدء...</p>
+</div>
+<!-- Editor Footer -->
+<div class="px-4 py-2 border-t border-border-dark flex justify-between items-center text-xs text-text-secondary">
+<span>الكلمات: 450</span>
+<span>Markdown مدعوم</span>
+</div>
+</div>
+</div>
+<!-- Sidebar Settings Column (Takes up 4/12 on large screens) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Context / Info Widget -->
+<div class="bg-surface-dark rounded-2xl border border-border-dark p-5 shadow-sm">
+<h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">tune</span>
+                                    إعدادات المنشور
+                                </h3>
+<div class="space-y-5">
+<!-- Tags -->
+<div>
+<label class="text-xs font-semibold text-text-secondary uppercase mb-2 block">الوسوم (Tags)</label>
+<div class="flex flex-wrap gap-2 mb-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary/20 text-blue-400 text-sm border border-primary/20">
+                                                JavaScript
+                                                <button class="hover:text-white"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary/20 text-blue-400 text-sm border border-primary/20">
+                                                Web Dev
+                                                <button class="hover:text-white"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+<input class="w-full bg-background-dark border border-border-dark rounded-xl px-3 py-2 text-sm text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-600" placeholder="أضف وسم..." type="text"/>
+</div>
+<!-- Author -->
+<div>
+<label class="text-xs font-semibold text-text-secondary uppercase mb-2 block">الكاتب</label>
+<div class="flex items-center gap-3 p-2 rounded-xl bg-background-dark border border-border-dark">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Author avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAvPvK21BxaBiPQjcfdzrczb678icalZQMQqfPmZ0A4W5kEPMJzbWGuH2zWGHkuaZBJ185XH5ixh3RoKDEXlZ0Mog3dPnJSYzkh4vjYXc6NaJPhnMxnL5azEaT7W9wlFcmEJsWWdnD7T_QgVWOzURi1QXAHBEpZ11eVKogQVV8rAu50kc09cLrcHlD2mjw257ZhzsQUJxnME4H4D4VyZz9EP-olrrOx8jVyu9jP2MmMGxnDZvaPgukoN4tVa0F3XbziWX-1urH9FgM");'></div>
+<span class="text-sm text-white font-medium">أحمد محمد</span>
+</div>
+</div>
+<!-- Date -->
+<div>
+<label class="text-xs font-semibold text-text-secondary uppercase mb-2 block">جدولة النشر</label>
+<div class="relative">
+<input class="w-full bg-background-dark border border-border-dark rounded-xl px-3 py-2 text-sm text-gray-300 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" type="datetime-local"/>
+<!-- Custom Icon Overlay workaround for visual only -->
+<div class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none text-text-secondary">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Controls Widget -->
+<div class="bg-surface-dark rounded-2xl border border-border-dark p-5 shadow-sm">
+<h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">toggle_on</span>
+                                    خيارات إضافية
+                                </h3>
+<div class="space-y-3">
+<!-- Toggle Item -->
+<label class="flex items-center justify-between cursor-pointer group p-2 hover:bg-white/5 rounded-lg transition-colors -mx-2">
+<div class="flex flex-col">
+<span class="text-sm text-white font-medium">تثبيت الموضوع</span>
+<span class="text-xs text-text-secondary">عرض الموضوع في أعلى القسم دائماً</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+<!-- Toggle Item -->
+<label class="flex items-center justify-between cursor-pointer group p-2 hover:bg-white/5 rounded-lg transition-colors -mx-2">
+<div class="flex flex-col">
+<span class="text-sm text-white font-medium">إغلاق الموضوع</span>
+<span class="text-xs text-text-secondary">منع الأعضاء من إضافة ردود</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full rtl:peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] rtl:after:right-auto rtl:after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+<!-- Toggle Item -->
+<label class="flex items-center justify-between cursor-pointer group p-2 hover:bg-white/5 rounded-lg transition-colors -mx-2">
+<div class="flex flex-col">
+<span class="text-sm text-white font-medium">متابعة الردود</span>
+<span class="text-xs text-text-secondary">تلقي إشعارات عند إضافة رد جديد</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:-translate-x-full rtl:peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] rtl:after:right-auto rtl:after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+</div>
+</div>
+<!-- Poll Widget (Collapsed/Teaser) -->
+<button class="w-full bg-surface-dark rounded-2xl border border-border-dark p-4 shadow-sm hover:border-primary/50 transition-colors group flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-purple-500/10 text-purple-400 p-2 rounded-lg">
+<span class="material-symbols-outlined text-[20px]">poll</span>
+</div>
+<div class="text-right">
+<span class="block text-sm font-semibold text-white group-hover:text-primary transition-colors">إضافة استطلاع</span>
+<span class="block text-xs text-text-secondary">السماح للأعضاء بالتصويت</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white transition-colors">add_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PortalGrid: Members List</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a1d24",
+                        "surface-highlight": "#232f48",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden antialiased selection:bg-primary selection:text-white">
+<div class="relative flex flex-col min-h-screen w-full">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-solid border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-[#111722]/90 backdrop-blur-md px-6 py-3 lg:px-10">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">PortalGrid</h2>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex flex-1 justify-end items-center gap-8">
+<div class="flex items-center gap-6 lg:gap-9">
+<a class="text-sm font-medium text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white transition-colors" href="#">Forums</a>
+<a class="text-sm font-bold text-primary dark:text-white" href="#">Members</a>
+<a class="text-sm font-medium text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white transition-colors" href="#">Resources</a>
+</div>
+<div class="flex gap-3 pl-4 border-l border-slate-200 dark:border-slate-800">
+<button class="flex h-9 items-center justify-center rounded-lg px-4 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-bold text-slate-900 dark:text-white transition-colors">
+                        Log In
+                    </button>
+<button class="flex h-9 items-center justify-center rounded-lg px-4 bg-primary hover:bg-blue-600 text-white text-sm font-bold transition-colors shadow-lg shadow-blue-900/20">
+                        Register
+                    </button>
+</div>
+</nav>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden p-2 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center w-full px-4 py-8 md:px-10 lg:px-20 xl:px-40">
+<div class="w-full max-w-7xl flex flex-col gap-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2 border-b border-slate-200 dark:border-slate-800/50">
+<div class="flex flex-col gap-2">
+<h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
+                            Members <span class="text-primary">Directory</span>
+</h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg">
+                            Connect with the community through the grid.
+                        </p>
+</div>
+<!-- Search Widget -->
+<div class="w-full md:w-auto md:min-w-[320px]">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 bg-white dark:bg-surface-highlight border-none rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-primary/50 transition-all shadow-sm" placeholder="Find a member..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Filters / Chips Dock -->
+<div class="flex flex-wrap items-center gap-3">
+<button class="group flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-white shadow-lg shadow-primary/25 hover:bg-blue-600 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+<span class="text-sm font-bold">All Members</span>
+</button>
+<button class="group flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white dark:bg-surface-highlight text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-surface-highlight/80 hover:text-primary dark:hover:text-white transition-all active:scale-95 border border-slate-200 dark:border-transparent">
+<span class="material-symbols-outlined text-[20px] text-green-500">fiber_manual_record</span>
+<span class="text-sm font-medium">Online Now</span>
+</button>
+<button class="group flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white dark:bg-surface-highlight text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-surface-highlight/80 hover:text-primary dark:hover:text-white transition-all active:scale-95 border border-slate-200 dark:border-transparent">
+<span class="material-symbols-outlined text-[20px] text-purple-400">verified_user</span>
+<span class="text-sm font-medium">Staff</span>
+</button>
+<button class="group flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white dark:bg-surface-highlight text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-surface-highlight/80 hover:text-primary dark:hover:text-white transition-all active:scale-95 border border-slate-200 dark:border-transparent">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+<span class="text-sm font-medium">Top Posters</span>
+</button>
+<button class="group flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white dark:bg-surface-highlight text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-surface-highlight/80 hover:text-primary dark:hover:text-white transition-all active:scale-95 border border-slate-200 dark:border-transparent">
+<span class="material-symbols-outlined text-[20px]">new_releases</span>
+<span class="text-sm font-medium">Newest</span>
+</button>
+</div>
+<!-- Member Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Member Card: Admin -->
+<div class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+<!-- Banner / Cover -->
+<div class="h-24 w-full bg-gradient-to-r from-blue-900 to-slate-900 relative">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+<!-- Online Status Dot on Card -->
+<div class="absolute top-3 right-3 flex items-center gap-1.5 px-2 py-1 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-[10px] font-bold text-white uppercase tracking-wider">Online</span>
+</div>
+</div>
+<div class="px-5 pb-5 flex flex-col flex-1">
+<!-- Avatar -->
+<div class="relative -mt-10 mb-3 self-start">
+<div class="w-20 h-20 rounded-2xl p-1 bg-white dark:bg-surface-dark shadow-lg">
+<img alt="Profile picture of AdminUser" class="w-full h-full object-cover rounded-xl" data-alt="Close up of a man with glasses smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-XVlbudZCjZ0dmdSMLOPbChO-07Yrr45zfhYLm0hdVOOva5sWX_vTnFrPWWp8BMOpJLlyETxjn9yVb9KFzlFsg4T-u-DuLvpnUPQwKTmqC8LE2Qw07o5-Ln0HVtaZAYbmzJ-9ZQbMIPvlbSv-w2GHSGWL0-96ORWGBWs4NnfWhUzl_sbgAfjLLSIm-Py33OpzQT4I1kl93pYkhy0pvPmgujZnt6cBn9vYr8gCInzDYQ9SDAwhqjB1K2gOfnGbC9ReEVNXRQeSHGM"/>
+</div>
+<!-- Badge Icon -->
+<div class="absolute -bottom-1 -right-1 bg-primary text-white rounded-full p-1 border-2 border-white dark:border-surface-dark shadow-sm" title="Administrator">
+<span class="material-symbols-outlined text-[16px] leading-none block">shield_person</span>
+</div>
+</div>
+<!-- User Info -->
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">AdminUser</h3>
+<p class="text-primary font-medium text-xs uppercase tracking-wider mt-0.5">Administrator</p>
+<div class="flex items-center gap-1 mt-2 text-slate-500 dark:text-slate-400 text-xs">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span>New York, USA</span>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-slate-100 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="text-sm font-bold text-slate-900 dark:text-white">15.4k</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Posts</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">8.2k</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Likes</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">245</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Points</span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="mt-auto w-full py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-primary hover:text-white text-slate-700 dark:text-slate-200 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2 group/btn">
+<span>View Profile</span>
+<span class="material-symbols-outlined text-[18px] group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Member Card: Moderator -->
+<div class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+<div class="h-24 w-full bg-gradient-to-r from-indigo-900 to-purple-900 relative">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-10"></div>
+<div class="absolute top-3 right-3 flex items-center gap-1.5 px-2 py-1 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+<div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+<span class="text-[10px] font-bold text-white uppercase tracking-wider">Away</span>
+</div>
+</div>
+<div class="px-5 pb-5 flex flex-col flex-1">
+<div class="relative -mt-10 mb-3 self-start">
+<div class="w-20 h-20 rounded-2xl p-1 bg-white dark:bg-surface-dark shadow-lg">
+<img alt="Profile picture of ModLead" class="w-full h-full object-cover rounded-xl" data-alt="Portrait of a smiling woman with red hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0AEhzMk0pPZNndN7brabEbVT6G49kbhTyB11IbjBizebgKFnH8_szWEJyK6J9nKG0Ga8pBZouGkSKLOC-9LbWjVGsnAyQ05sKwiOKCZluO4aiVaCYi9iy1SpXJNbjxYHGtczGwqYULFo-7r6tUK7ZqYQ3ffAlChVSaey_bp-hk1p02tLNJ3n9hQALbuvXfygdQEOqU9vIrw1vWnuF-ZeBM816ZnTkzxU6e-gaFQz9ie8SWB6k0-Ou5-H7SfEdP6JdDS9xDCEcfgs"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-green-600 text-white rounded-full p-1 border-2 border-white dark:border-surface-dark shadow-sm" title="Moderator">
+<span class="material-symbols-outlined text-[16px] leading-none block">gavel</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">ModLead</h3>
+<p class="text-green-500 font-medium text-xs uppercase tracking-wider mt-0.5">Moderator</p>
+<div class="flex items-center gap-1 mt-2 text-slate-500 dark:text-slate-400 text-xs">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+<span>London, UK</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-slate-100 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="text-sm font-bold text-slate-900 dark:text-white">4.2k</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Posts</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">1.2k</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Likes</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">89</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Points</span>
+</div>
+</div>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+                                    Follow
+                                </button>
+<button class="w-10 flex items-center justify-center py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-primary hover:text-white text-slate-700 dark:text-slate-200 rounded-lg transition-all">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Member Card: Active User -->
+<div class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+<div class="h-24 w-full bg-surface-highlight relative overflow-hidden">
+<!-- Abstract pattern for background -->
+<div class="absolute -right-4 -top-4 w-32 h-32 bg-primary/20 rounded-full blur-2xl"></div>
+<div class="absolute -left-4 -bottom-4 w-24 h-24 bg-purple-500/10 rounded-full blur-xl"></div>
+</div>
+<div class="px-5 pb-5 flex flex-col flex-1">
+<div class="relative -mt-10 mb-3 self-start">
+<div class="w-20 h-20 rounded-2xl p-1 bg-white dark:bg-surface-dark shadow-lg">
+<img alt="Profile picture of TechGuru" class="w-full h-full object-cover rounded-xl" data-alt="Man looking confidently at the camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0luvjjZjO98rj9ENSKrmRj-FvQNOFjduWfn31M8K2Bc4sdcqgp7P2wBwAaNf0V3D7GoQjqTWtRXAucmDxZ9Vc1zxuDULikkB-S3UtbyPvWDbv9-bJfHOUbEU9WiOTPl4feBZl_ksYwy7O_XechtySoN_s9RGR1WCxf7Ihc-stC9KYn21-DfZY0WQsxS6E-OEFs6MAVYkN3C8g81yeptrbZy0JdKgXrxHswolbK6fol0YbLRHvgWuKa231IsoYvIkfYdPV9ebDyCo"/>
+</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">TechGuru</h3>
+<p class="text-slate-500 dark:text-slate-400 font-medium text-xs uppercase tracking-wider mt-0.5">Active Member</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-slate-100 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="text-sm font-bold text-slate-900 dark:text-white">942</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Posts</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">356</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Likes</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">42</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Points</span>
+</div>
+</div>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+                                    Follow
+                                </button>
+<button class="w-10 flex items-center justify-center py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-primary hover:text-white text-slate-700 dark:text-slate-200 rounded-lg transition-all">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Member Card: Designer -->
+<div class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+<div class="h-24 w-full bg-gradient-to-r from-pink-500/20 to-purple-500/20 relative">
+<!-- Artistic pattern -->
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
+</div>
+<div class="px-5 pb-5 flex flex-col flex-1">
+<div class="relative -mt-10 mb-3 self-start">
+<div class="w-20 h-20 rounded-2xl p-1 bg-white dark:bg-surface-dark shadow-lg">
+<img alt="Profile picture of DesignerX" class="w-full h-full object-cover rounded-xl" data-alt="Young woman smiling with bright lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfHDsqpRtc0o-R-xvP1e8o6vvNf7-fN6UAqiYVx4nxAZXpWm-1lsyJP3GUDafbB596hH5XLgGHCAMuH6mBSxM3-sK-8nxNZJ1IJc85-HMHJs6pVj8D11I5EsWY518o9KLpX-WYQlAerF8FiZsuVvVllHXeSBJ3e5EHobvUERKHoudkKqRwQnJ2nUHK_DtGyDVq5OSNg_VkMUl3bBncZX2c__fR5LspnauC0SMMKBwTJ5Ev_lZsXhwRT8LmGz7Zo6TyeBGUqDWH30w"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-purple-500 text-white rounded-full p-1 border-2 border-white dark:border-surface-dark shadow-sm" title="Professional">
+<span class="material-symbols-outlined text-[16px] leading-none block">palette</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">DesignerX</h3>
+<p class="text-purple-400 font-medium text-xs uppercase tracking-wider mt-0.5">Professional</p>
+<div class="flex items-center gap-1 mt-2 text-slate-500 dark:text-slate-400 text-xs">
+<span class="material-symbols-outlined text-[14px]">link</span>
+<a class="hover:text-primary" href="#">portfolio.com</a>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-slate-100 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="text-sm font-bold text-slate-900 dark:text-white">567</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Posts</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">2.3k</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Likes</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">120</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Points</span>
+</div>
+</div>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+                                    Follow
+                                </button>
+<button class="w-10 flex items-center justify-center py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-primary hover:text-white text-slate-700 dark:text-slate-200 rounded-lg transition-all">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Member Card: Gamer -->
+<div class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+<div class="h-24 w-full bg-slate-800 relative">
+<!-- Game pattern -->
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30"></div>
+</div>
+<div class="px-5 pb-5 flex flex-col flex-1">
+<div class="relative -mt-10 mb-3 self-start">
+<div class="w-20 h-20 rounded-2xl p-1 bg-white dark:bg-surface-dark shadow-lg">
+<img alt="Profile picture of GamerOne" class="w-full h-full object-cover rounded-xl" data-alt="Young man smiling in a white shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALiCzrUNGj3i3x1XigCpULtX_Dq72_0-XAvjvalQi4712_9e1MnLY6bimjergj2BV25OCofvC0gV2cdYHRP9bgGFpi7-Bdql8qjgsMP1fXY5AKB5PkPyiDmXGiO-qlXctwBxkMbMC8sKVNXaAYa86an55_iMoyFeM-cvsWjzqvO4NXFF0C3hk6H9ciJH7Zv0kMSyQwhkblO5Zvp1vdEfU2POUikDv3I1H5tkVGcaMYTVsPn5Qt6HIlYSapi79vwAjHj76qivV5g4g"/>
+</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">GamerOne</h3>
+<p class="text-slate-500 dark:text-slate-400 font-medium text-xs uppercase tracking-wider mt-0.5">New Member</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-slate-100 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="text-sm font-bold text-slate-900 dark:text-white">24</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Posts</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">5</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Likes</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">2</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Points</span>
+</div>
+</div>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+                                    Follow
+                                </button>
+<button class="w-10 flex items-center justify-center py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-primary hover:text-white text-slate-700 dark:text-slate-200 rounded-lg transition-all">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Member Card: CodeWiz -->
+<div class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+<div class="h-24 w-full bg-emerald-900/50 relative">
+<div class="absolute top-3 right-3 flex items-center gap-1.5 px-2 py-1 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-[10px] font-bold text-white uppercase tracking-wider">Online</span>
+</div>
+</div>
+<div class="px-5 pb-5 flex flex-col flex-1">
+<div class="relative -mt-10 mb-3 self-start">
+<div class="w-20 h-20 rounded-2xl p-1 bg-white dark:bg-surface-dark shadow-lg">
+<img alt="Profile picture of CodeWiz" class="w-full h-full object-cover rounded-xl" data-alt="Man in casual wear posing outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ0sS-LkncjHVd5aysBtCoIibodT4p2z0WrKl-YYkkTCOjLJsv9wx1vNZK1BLxpW9hPB_4vqVePbAeF04hYdvvA2ZsI0Zup09AvIRf3VKMKzZv3maPXcmSmYtStCIP-2Sn1wW8-iAsj7_FvCaABrqeAXAo2tSVZPjt9QwTNGBdP_ZrMCApnSNSyjvKqOf5-GnO2BlCEY4q3Ux6pUoQQ_V-zBEKddGhwxar6QUJ1qPqvT7ktTI__sfa9VJ1x4H1ICQyq1lodYN9SWU"/>
+</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">CodeWiz</h3>
+<p class="text-emerald-500 font-medium text-xs uppercase tracking-wider mt-0.5">Contributor</p>
+<div class="flex items-center gap-1 mt-2 text-slate-500 dark:text-slate-400 text-xs">
+<span class="material-symbols-outlined text-[14px]">code</span>
+<span>Full Stack Dev</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-slate-100 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="text-sm font-bold text-slate-900 dark:text-white">1.8k</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Posts</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">900</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Likes</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">150</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Points</span>
+</div>
+</div>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+                                    Follow
+                                </button>
+<button class="w-10 flex items-center justify-center py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-primary hover:text-white text-slate-700 dark:text-slate-200 rounded-lg transition-all">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Member Card: MusicFan -->
+<div class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+<div class="h-24 w-full bg-amber-900/40 relative"></div>
+<div class="px-5 pb-5 flex flex-col flex-1">
+<div class="relative -mt-10 mb-3 self-start">
+<div class="w-20 h-20 rounded-2xl p-1 bg-white dark:bg-surface-dark shadow-lg">
+<img alt="Profile picture of MusicFan" class="w-full h-full object-cover rounded-xl" data-alt="Woman with short hair looking away" src="https://lh3.googleusercontent.com/aida-public/AB6AXuConxGMQ490IS-RXkIwOaG3FD4e0c5GdSTnbLwE-BCtibdnOJokgxd3-oAAaJ4drsMzu7oYOGKJmPSpcVgSpWV3KDUS0x3JBkNRWqHKPHr4lSUZxtEqs6vzIJcPaJSEW9di3D4A3ZyjKpN-imHi8CO6weEBI7rkWqM4fMfhbIcAo-AmsUcIRyVgmsKL-uvCNSfqpnle-QS1fzusmEBlX1oKOns13LcxdJSAa0Out9dptYqx3g5PwlgkguDU52XPmi0aAiSmY0LrPq0"/>
+</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">MusicFan</h3>
+<p class="text-slate-500 dark:text-slate-400 font-medium text-xs uppercase tracking-wider mt-0.5">Well-Known</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-slate-100 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="text-sm font-bold text-slate-900 dark:text-white">3.1k</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Posts</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">400</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Likes</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">60</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Points</span>
+</div>
+</div>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+                                    Follow
+                                </button>
+<button class="w-10 flex items-center justify-center py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-primary hover:text-white text-slate-700 dark:text-slate-200 rounded-lg transition-all">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Member Card: Traveler -->
+<div class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1">
+<div class="h-24 w-full bg-sky-900/40 relative">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/shattered-island.png')] opacity-20"></div>
+</div>
+<div class="px-5 pb-5 flex flex-col flex-1">
+<div class="relative -mt-10 mb-3 self-start">
+<div class="w-20 h-20 rounded-2xl p-1 bg-white dark:bg-surface-dark shadow-lg">
+<img alt="Profile picture of Traveler" class="w-full h-full object-cover rounded-xl" data-alt="Portrait of a man with a beard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOdS4_xAYi3vQtq7Pp0hrBOu-TIn697htK6LXjJSn6wImHHyE2wbs53J1RbsLmCtfwkxey9vJ5iUAguzOnGrf5RB18ks8azD4lVRWanBwUnQ8O6tXDRzFM1sODo48I9J5mf2v6lDUX4biqLG2sInT1hFtg9jAphQ_n7FVwb8ZYvs9B6_wC_hvrSKaXqAYxRp5jIgqqrWDbrdfPjYtvSVFcY-msuiJmG4YoVlu1N4rqcWzbNjbsdN2V2H4rB6rPqeuwASj3GX_mhZk"/>
+</div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Traveler</h3>
+<p class="text-slate-500 dark:text-slate-400 font-medium text-xs uppercase tracking-wider mt-0.5">Member</p>
+<div class="flex items-center gap-1 mt-2 text-slate-500 dark:text-slate-400 text-xs">
+<span class="material-symbols-outlined text-[14px]">flight</span>
+<span>Digital Nomad</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 py-4 border-t border-slate-100 dark:border-white/5 mb-4">
+<div class="flex flex-col items-center">
+<span class="text-sm font-bold text-slate-900 dark:text-white">128</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Posts</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">45</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Likes</span>
+</div>
+<div class="flex flex-col items-center border-l border-slate-100 dark:border-white/5">
+<span class="text-sm font-bold text-slate-900 dark:text-white">10</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Points</span>
+</div>
+</div>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+                                    Follow
+                                </button>
+<button class="w-10 flex items-center justify-center py-2 bg-slate-100 dark:bg-surface-highlight hover:bg-primary hover:text-white text-slate-700 dark:text-slate-200 rounded-lg transition-all">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Load More -->
+<div class="mt-8 flex flex-col items-center gap-6">
+<button class="w-full md:w-auto px-8 py-3 bg-white dark:bg-surface-highlight border border-slate-200 dark:border-white/5 text-slate-900 dark:text-white font-bold rounded-xl hover:bg-slate-50 dark:hover:bg-surface-highlight/80 transition-all flex items-center justify-center gap-2 group">
+<span>Load More Members</span>
+<span class="material-symbols-outlined group-hover:translate-y-1 transition-transform">expand_more</span>
+</button>
+<p class="text-sm text-slate-500 dark:text-slate-400">
+                        Showing 8 of 1,245 members
+                    </p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

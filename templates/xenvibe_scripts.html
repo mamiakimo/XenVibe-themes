@@ -1,0 +1,126 @@
+<xf:comment>
+/**
+ * XenVibe Scripts
+ * Sidebar toggle, dropdown functionality, and layout toggle
+ */
+</xf:comment>
+
+<script>
+// Sidebar Toggle
+(function() {
+	var sidebar = document.getElementById('xv-left-sidebar');
+	var toggle = document.getElementById('xv-sidebar-toggle');
+	var storageKey = 'xv_sidebar_collapsed';
+
+	if (!sidebar || !toggle) return;
+
+	if (localStorage.getItem(storageKey) === 'true') {
+		sidebar.classList.add('is-collapsed');
+	}
+
+	toggle.addEventListener('click', function() {
+		sidebar.classList.toggle('is-collapsed');
+		localStorage.setItem(storageKey, sidebar.classList.contains('is-collapsed'));
+	});
+})();
+
+// Dropdown Toggles
+(function() {
+	document.querySelectorAll('.xv-sidebar-toggle-btn').forEach(function(btn) {
+		btn.addEventListener('click', function(e) {
+			e.preventDefault();
+			var target = this.getAttribute('data-target');
+			var menu = document.querySelector(target);
+			if (menu) {
+				menu.classList.toggle('is-open');
+				this.classList.toggle('is-open');
+			}
+		});
+	});
+})();
+
+// Global Layout Toggle (Grid/List)
+(function() {
+	var storageKey = 'xv_layout';
+	var savedLayout = localStorage.getItem(storageKey) || 'grid';
+
+	// Apply layout class to both html and body
+	function applyLayout(layout) {
+		if (layout === 'list') {
+			document.documentElement.classList.add('xv-layout-list');
+			document.body.classList.add('xv-layout-list');
+		} else {
+			document.documentElement.classList.remove('xv-layout-list');
+			document.body.classList.remove('xv-layout-list');
+		}
+	}
+
+	// Apply saved layout on page load
+	applyLayout(savedLayout);
+
+	// Update active state of toggle buttons
+	function updateActiveState(layout) {
+		var buttons = document.querySelectorAll('.xv-layout-btn');
+		buttons.forEach(function(btn) {
+			btn.classList.toggle('is-active', btn.getAttribute('data-layout') === layout);
+		});
+	}
+
+	// Initialize active state when DOM is ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', function() {
+			updateActiveState(savedLayout);
+			applyLayout(savedLayout); // Re-apply after DOM ready
+		});
+	} else {
+		updateActiveState(savedLayout);
+	}
+
+	// Handle toggle clicks
+	document.addEventListener('click', function(e) {
+		var btn = e.target.closest('.xv-layout-btn');
+		if (!btn) return;
+
+		var layout = btn.getAttribute('data-layout');
+		localStorage.setItem(storageKey, layout);
+
+		applyLayout(layout);
+		updateActiveState(layout);
+	});
+})();
+
+// Member Tab Groups - Independent switching
+(function() {
+	document.querySelectorAll('.xv-member-section').forEach(function(section) {
+		var chips = section.querySelectorAll('.xv-filter-chip');
+		var panes = section.querySelectorAll('.memberOverviewBlock');
+
+		chips.forEach(function(chip, index) {
+			chip.addEventListener('click', function(e) {
+				e.preventDefault();
+
+				// Update active chip
+				chips.forEach(function(c) { c.classList.remove('is-active'); });
+				this.classList.add('is-active');
+
+				// Update active pane
+				panes.forEach(function(p) { p.classList.remove('is-active'); });
+				if (panes[index]) {
+					panes[index].classList.add('is-active');
+				}
+			});
+		});
+	});
+})();
+
+// Follow button class toggle
+(function() {
+	document.addEventListener('click', function(e) {
+		var btn = e.target.closest('.xv-member-btn[data-xf-click="switch"]');
+		if (btn) {
+			btn.classList.toggle('xv-member-btn--following');
+		}
+	});
+})();
+
+</script>

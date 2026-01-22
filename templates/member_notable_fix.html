@@ -1,0 +1,101 @@
+<!-- XenVibe Cards - Notable Members Template -->
+
+<xf:title>{{ $active ? $active.title : phrase('notable_members') }}</xf:title>
+
+<xf:wrap template="member_wrapper">
+	<xf:set var="$pageSelected" value="{{ $active ? $active.member_stat_key : 'overview' }}" />
+</xf:wrap>
+
+<xf:macro id="metadata_macros::canonical_url" arg-canonicalUrl="{{ link('canonical:members', null, {'key': $active ? $active.member_stat_key : null }) }}" />
+
+<xf:css src="member.less" />
+
+<div class="xv-members-page">
+	<!-- Page Header -->
+	<div class="xv-page-header">
+		<div class="xv-page-header-content">
+			<h1 class="xv-page-title">{{ $active ? $active.title : phrase('notable_members') }}</h1>
+			<p class="xv-page-subtitle">{{ phrase('browse_and_find_the_communities_most_active_and_notable_members') }}</p>
+		</div>
+	</div>
+
+	<!-- Filter Chips -->
+	<div class="xv-members-filters">
+		<div class="xv-filter-chips">
+			<a href="{{ link('members') }}" class="xv-filter-chip {{ !$active ? 'xv-filter-chip--active' : '' }}">
+				<span class="material-symbols-outlined">group</span>
+				{{ phrase('overview') }}
+			</a>
+			<xf:foreach loop="$memberStats" value="$stat">
+				<a href="{{ link('members', null, {'key': $stat.member_stat_key}) }}"
+				   class="xv-filter-chip {{ $active.member_stat_key == $stat.member_stat_key ? 'xv-filter-chip--active' : '' }}">
+					<xf:if is="$stat.member_stat_key == 'highest_trophy_points'">
+						<span class="material-symbols-outlined">military_tech</span>
+					<xf:elseif is="$stat.member_stat_key == 'most_messages'" />
+						<span class="material-symbols-outlined">chat</span>
+					<xf:elseif is="$stat.member_stat_key == 'highest_reaction_score'" />
+						<span class="material-symbols-outlined">thumb_up</span>
+					<xf:elseif is="$stat.member_stat_key == 'most_solutions'" />
+						<span class="material-symbols-outlined">lightbulb</span>
+					<xf:else />
+						<span class="material-symbols-outlined">trending_up</span>
+					</xf:if>
+					{$stat.title}
+				</a>
+			</xf:foreach>
+			<a href="{{ link('members/list') }}" class="xv-filter-chip">
+				<span class="material-symbols-outlined">list</span>
+				{{ phrase('full_list') }}
+			</a>
+		</div>
+	</div>
+
+	<xf:if is="$userNotFound">
+		<div class="blockMessage blockMessage--error blockMessage--iconic">{{ phrase('specified_member_cannot_be_found_enter_entire_name') }}</div>
+	</xf:if>
+
+	<xf:if is="$memberStats is empty">
+		<div class="xv-empty-state">
+			<span class="material-symbols-outlined">group_off</span>
+			<p>{{ phrase('no_notable_members_can_currently_be_shown') }}</p>
+		</div>
+	<xf:else />
+		<xf:if is="$active">
+			<!-- Single Category View - Card Grid -->
+			<div class="xv-members-grid">
+				<xf:foreach loop="{$resultsData.{$active.member_stat_key}}" key="$userId" value="$data">
+					<xf:macro id="member_list_macros::member_card" arg-user="{$data.user}" />
+				<xf:else />
+					<div class="xv-empty-state">
+						<span class="material-symbols-outlined">search_off</span>
+						<p>{{ phrase('no_users_match_specified_criteria') }}</p>
+					</div>
+				</xf:foreach>
+			</div>
+		<xf:else />
+			<!-- Overview - Show all categories -->
+			<xf:foreach loop="$memberStats" key="$key" value="$memberStat">
+				<xf:if is="$resultsData.{$key}">
+					<section class="xv-member-section">
+						<div class="xv-section-header">
+							<h2 class="xv-section-title">
+								<a href="{{ link('members', null, {'key': $memberStat.member_stat_key}) }}">{$memberStat.title}</a>
+							</h2>
+							<a href="{{ link('members', null, {'key': $memberStat.member_stat_key}) }}" class="xv-section-link">
+								{{ phrase('see_all') }}
+								<span class="material-symbols-outlined">arrow_forward</span>
+							</a>
+						</div>
+						<div class="xv-members-grid xv-members-grid--overview">
+							<xf:foreach loop="{$resultsData.{$key}}" key="$userId" value="$data" i="$i">
+								<xf:if is="$i <= 4">
+									<xf:macro id="member_list_macros::member_card" arg-user="{$data.user}" />
+								</xf:if>
+							</xf:foreach>
+						</div>
+					</section>
+				</xf:if>
+			</xf:foreach>
+		</xf:if>
+	</xf:if>
+</div>

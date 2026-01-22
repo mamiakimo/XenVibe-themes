@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus: Featured Content</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;family=Noto+Sans+Arabic:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#151c2a",
+                        "surface-hover": "#1c2536",
+                        "border-dark": "#232f48"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Inter", "Noto Sans Arabic", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #35425e;
+        }
+        
+        /* Smooth fade in */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-[1024px] mx-auto px-6 h-16 flex items-center justify-between">
+<!-- Logo Section -->
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">spa</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ZenFocus</h1>
+</div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="text-sm font-medium text-primary hover:text-primary/80 transition-colors relative after:content-[''] after:absolute after:-bottom-5 after:left-0 after:w-full after:h-0.5 after:bg-primary after:rounded-t-full" href="#">المميز</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">المنتديات</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors" href="#">الأعضاء</a>
+</nav>
+<!-- Action Area -->
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<div class="h-4 w-[1px] bg-gray-300 dark:bg-border-dark mx-1"></div>
+<button class="hidden sm:flex h-9 px-5 items-center justify-center rounded-lg bg-primary hover:bg-primary/90 text-white text-sm font-bold transition-all shadow-lg shadow-primary/20">
+                    تسجيل الدخول
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 w-full max-w-[1024px] mx-auto px-6 py-12">
+<!-- Page Heading -->
+<section class="mb-12 fade-in">
+<div class="max-w-2xl">
+<div class="flex items-center gap-2 mb-3">
+<span class="inline-block w-8 h-[2px] bg-primary rounded-full"></span>
+<span class="text-primary text-sm font-bold uppercase tracking-wider">مختارات</span>
+</div>
+<h2 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight mb-4 tracking-tight">
+                    المحتوى المميز
+                </h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+                    قراءة هادئة لأفضل المقالات والمناقشات المختارة بعناية، خالية من الضوضاء البصرية للتركيز على ما يهم حقاً: الكلمة.
+                </p>
+</div>
+</section>
+<!-- Featured List Container -->
+<section class="w-full flex flex-col gap-px bg-gray-200 dark:bg-border-dark rounded-2xl overflow-hidden shadow-2xl shadow-black/20 fade-in" style="animation-delay: 0.1s;">
+<!-- List Item 1 -->
+<article class="group relative flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 md:px-8 md:py-7 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-surface-hover transition-all duration-300 cursor-pointer">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></div>
+<div class="flex flex-col gap-2 flex-1">
+<div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">تطوير الذات</span>
+<span>•</span>
+<span>منذ 3 ساعات</span>
+</div>
+<h3 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-gray-100 group-hover:text-primary dark:group-hover:text-white transition-colors leading-snug">
+                        كيف تبني عادة القراءة اليومية في عالم مليء بالمشتتات؟
+                    </h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1 md:hidden">
+                        استراتيجيات عملية للعودة إلى الكتب الورقية والتركيز العميق.
+                    </p>
+</div>
+<div class="flex items-center gap-3 shrink-0 md:border-r md:border-gray-100 dark:md:border-border-dark md:pr-6">
+<div class="text-right">
+<p class="text-sm font-medium text-slate-900 dark:text-gray-200 group-hover:text-primary transition-colors">أحمد محمد</p>
+<p class="text-xs text-slate-500 dark:text-slate-500">كاتب مميز</p>
+</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-sm border border-slate-200 dark:border-slate-600">
+                        أ
+                    </div>
+</div>
+</article>
+<!-- List Item 2 -->
+<article class="group relative flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 md:px-8 md:py-7 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-surface-hover transition-all duration-300 cursor-pointer">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></div>
+<div class="flex flex-col gap-2 flex-1">
+<div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">تكنولوجيا</span>
+<span>•</span>
+<span>أمس</span>
+</div>
+<h3 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-gray-100 group-hover:text-primary dark:group-hover:text-white transition-colors leading-snug">
+                        مستقبل الذكاء الاصطناعي: هل يهدد الإبداع البشري أم يعززه؟
+                    </h3>
+</div>
+<div class="flex items-center gap-3 shrink-0 md:border-r md:border-gray-100 dark:md:border-border-dark md:pr-6">
+<div class="text-right">
+<p class="text-sm font-medium text-slate-900 dark:text-gray-200 group-hover:text-primary transition-colors">سارة العلي</p>
+<p class="text-xs text-slate-500 dark:text-slate-500">محلل تقني</p>
+</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-purple-100 to-pink-100 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-sm border border-slate-200 dark:border-slate-600">
+                        س
+                    </div>
+</div>
+</article>
+<!-- List Item 3 -->
+<article class="group relative flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 md:px-8 md:py-7 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-surface-hover transition-all duration-300 cursor-pointer">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></div>
+<div class="flex flex-col gap-2 flex-1">
+<div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">فلسفة</span>
+<span>•</span>
+<span>منذ يومين</span>
+</div>
+<h3 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-gray-100 group-hover:text-primary dark:group-hover:text-white transition-colors leading-snug">
+                        فلسفة التبسيط الرقمي: استعادة التركيز في العصر الحديث
+                    </h3>
+</div>
+<div class="flex items-center gap-3 shrink-0 md:border-r md:border-gray-100 dark:md:border-border-dark md:pr-6">
+<div class="text-right">
+<p class="text-sm font-medium text-slate-900 dark:text-gray-200 group-hover:text-primary transition-colors">كريم جابر</p>
+<p class="text-xs text-slate-500 dark:text-slate-500">عضو نشط</p>
+</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-green-100 to-teal-100 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-sm border border-slate-200 dark:border-slate-600">
+                        ك
+                    </div>
+</div>
+</article>
+<!-- List Item 4 -->
+<article class="group relative flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 md:px-8 md:py-7 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-surface-hover transition-all duration-300 cursor-pointer">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></div>
+<div class="flex flex-col gap-2 flex-1">
+<div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">عمارة وتصميم</span>
+<span>•</span>
+<span>منذ 3 أيام</span>
+</div>
+<h3 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-gray-100 group-hover:text-primary dark:group-hover:text-white transition-colors leading-snug">
+                        تاريخ التصميم المعماري في الشرق الأوسط: نظرة عميقة
+                    </h3>
+</div>
+<div class="flex items-center gap-3 shrink-0 md:border-r md:border-gray-100 dark:md:border-border-dark md:pr-6">
+<div class="text-right">
+<p class="text-sm font-medium text-slate-900 dark:text-gray-200 group-hover:text-primary transition-colors">ليلى حسن</p>
+<p class="text-xs text-slate-500 dark:text-slate-500">مهندسة معمارية</p>
+</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-sm border border-slate-200 dark:border-slate-600">
+                        ل
+                    </div>
+</div>
+</article>
+<!-- List Item 5 -->
+<article class="group relative flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 md:px-8 md:py-7 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-surface-hover transition-all duration-300 cursor-pointer">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-300"></div>
+<div class="flex flex-col gap-2 flex-1">
+<div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-1">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium">صحة</span>
+<span>•</span>
+<span>منذ أسبوع</span>
+</div>
+<h3 class="text-xl md:text-2xl font-bold text-slate-800 dark:text-gray-100 group-hover:text-primary dark:group-hover:text-white transition-colors leading-snug">
+                        أهمية النوم العميق للصحة العقلية والجسدية
+                    </h3>
+</div>
+<div class="flex items-center gap-3 shrink-0 md:border-r md:border-gray-100 dark:md:border-border-dark md:pr-6">
+<div class="text-right">
+<p class="text-sm font-medium text-slate-900 dark:text-gray-200 group-hover:text-primary transition-colors">د. عمر خالد</p>
+<p class="text-xs text-slate-500 dark:text-slate-500">طبيب نفسي</p>
+</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-cyan-100 to-blue-100 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 font-bold text-sm border border-slate-200 dark:border-slate-600">
+                        ع
+                    </div>
+</div>
+</article>
+</section>
+<!-- Pagination / Footer Actions -->
+<div class="mt-10 flex justify-center fade-in" style="animation-delay: 0.2s;">
+<a class="group flex items-center gap-2 px-6 py-3 rounded-full text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-surface-dark transition-all" href="#">
+<span class="text-sm font-bold">عرض المزيد من المقالات</span>
+<span class="material-symbols-outlined text-lg group-hover:translate-y-1 transition-transform">expand_more</span>
+</a>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="w-full border-t border-gray-200 dark:border-border-dark py-8 mt-8">
+<div class="max-w-[1024px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-right">
+<p class="text-xs text-slate-500 dark:text-slate-500">
+                © 2024 ZenFocus. جميع الحقوق محفوظة. تصميم يركز على المحتوى.
+            </p>
+<div class="flex items-center gap-6">
+<a class="text-xs text-slate-500 hover:text-primary transition-colors" href="#">الشروط والأحكام</a>
+<a class="text-xs text-slate-500 hover:text-primary transition-colors" href="#">الخصوصية</a>
+<a class="text-xs text-slate-500 hover:text-primary transition-colors" href="#">اتصل بنا</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html id="XF" lang="{$xf.language.language_code}" dir="{$xf.language.text_direction}"
+	data-xf="{$xf.versionVisible}"
+	data-app="public"
+	{{ ($xf.style.isVariationsEnabled() && $xf.visitor.style_variation) ? 'data-variation="' . $xf.visitor.style_variation . '"' : '' }}
+	{{ ($xf.style.isVariationsEnabled() && $xf.visitor.style_variation) ? 'data-color-scheme="' . property_variation('styleType', $xf.visitor.style_variation) . '"' : '' }}
+	data-template="{$template}"
+	data-container-key="{$containerKey}"
+	data-content-key="{$contentKey}"
+	data-logged-in="{{ $xf.visitor.user_id ? 'true' : 'false' }}"
+	data-cookie-prefix="{$xf.cookie.prefix}"
+	data-csrf="{{ csrf_token()|escape('js') }}"
+	class="has-no-js {{ $template ? 'template-' . $template : '' }}"
+	{{ $xf.runJobs ? ' data-run-jobs=""' : '' }}>
+<head>
+	<xf:set var="$siteName" value="{$xf.options.boardTitle}" />
+	<xf:set var="$h1"><xf:h1 fallback="{$siteName}" /></xf:set>
+	<xf:set var="$description"><xf:description /></xf:set>
+
+	<meta charset="utf-8" />
+	<title><xf:title formatter="%s | %s" fallback="{$xf.options.boardTitle}" page="{$pageNumber}" /></title>
+	<link rel="manifest" href="{{ base_url('webmanifest.php') }}">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+	<!-- Preconnect to Google Fonts for faster loading -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<xf:if is="$xf.style.isVariationsEnabled()">
+		<xf:if is="$xf.visitor.style_variation">
+			<meta name="theme-color" content="{{ parse_less_color(property_variation('metaThemeColor', $xf.visitor.style_variation)) }}" />
+		<xf:else />
+			<xf:if is="$xf.style.hasAlternateStyleTypeVariation()">
+				<meta name="theme-color" media="(prefers-color-scheme: {{ $xf.style.getDefaultStyleType() }})" content="{{ parse_less_color(property_variation('metaThemeColor', 'default')) }}" />
+				<meta name="theme-color" media="(prefers-color-scheme: {{ $xf.style.getAlternateStyleType() }})" content="{{ parse_less_color(property_variation('metaThemeColor', $xf.style.getAlternateStyleTypeVariation())) }}" />
+			<xf:else />
+				<meta name="theme-color" content="{{ parse_less_color(property_variation('metaThemeColor', 'default')) }}" />
+			</xf:if>
+		</xf:if>
+	<xf:else />
+		<meta name="theme-color" content="{{ parse_less_color(property_variation('metaThemeColor', 'default')) }}" />
+	</xf:if>
+
+	<meta name="apple-mobile-web-app-title" content="{{ $xf.options.boardShortTitle ?: $xf.options.boardTitle }}">
+	<xf:if is="property('publicIconUrl')">
+		<link rel="apple-touch-icon" href="{{ base_url(property('publicIconUrl', true)) }}">
+	<xf:elseif is="property('publicMetadataLogoUrl')" />
+		<link rel="apple-touch-icon" href="{{ base_url(property('publicMetadataLogoUrl')) }}" />
+	</xf:if>
+
+	<xf:foreach loop="$head" value="$headTag">
+		{$headTag}
+	</xf:foreach>
+
+	<xf:if is="!$head.meta_site_name && $siteName is not empty">
+		<xf:macro id="metadata_macros::site_name" arg-siteName="{$siteName}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_type">
+		<xf:macro id="metadata_macros::type" arg-type="website" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_title">
+		<xf:macro id="metadata_macros::title" arg-title="{{ page_title() ?: $siteName }}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_description && $description is not empty && $pageDescriptionMeta">
+		<xf:macro id="metadata_macros::description" arg-description="{$description}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_share_url">
+		<xf:macro id="metadata_macros::share_url" arg-shareUrl="{$xf.fullUri}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_image_url && property('publicMetadataLogoUrl')">
+		<xf:macro id="metadata_macros::image_url"
+			arg-imageUrl="{{ base_url(property('publicMetadataLogoUrl'), true) }}"
+			arg-output="{{ true }}" />
+	</xf:if>
+
+	<xf:macro id="helper_js_global::head" arg-app="public" arg-jsState="{$jsState}" />
+
+	<xf:if is="property('publicFaviconUrl')">
+		<link rel="icon" type="image/png" href="{{ base_url(property('publicFaviconUrl'), true) }}" sizes="32x32" />
+	</xf:if>
+
+	<xf:include template="google_analytics" />
+
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+</head>
+<body class="xv-body" data-template="{$template}">
+
+<div class="xv-page" id="top">
+
+	<xf:if contentcheck="true">
+		<div class="xv-staff-bar">
+			<div class="xv-staff-bar-inner">
+				<xf:contentcheck>
+					<xf:if is="$xf.visitor.is_moderator && $xf.session.unapprovedCounts.total">
+						<a href="{{ link('approval-queue') }}" class="xv-staff-link">
+							<span class="material-symbols-outlined">pending_actions</span>
+							{{ phrase('approval_queue') }}
+							<span class="xv-staff-badge">{$xf.session.unapprovedCounts.total|number}</span>
+						</a>
+					</xf:if>
+
+					<xf:if is="$xf.visitor.is_moderator && !$xf.options.reportIntoForumId && $xf.session.reportCounts.total">
+						<a href="{{ link('reports') }}" class="xv-staff-link {{ ($xf.session.reportCounts.lastBuilt > $xf.session.reportLastRead) OR $xf.session.reportCounts.assigned ? 'has-new' : '' }}">
+							<span class="material-symbols-outlined">flag</span>
+							{{ phrase('reports') }}
+							<span class="xv-staff-badge">{{ $xf.session.reportCounts.assigned ? $xf.session.reportCounts.assigned|number . '/' . $xf.session.reportCounts.total|number : $xf.session.reportCounts.total|number }}</span>
+						</a>
+					</xf:if>
+
+					<xf:if contentcheck="true">
+						<a class="xv-staff-link" data-xf-click="menu" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">
+							<span class="material-symbols-outlined">shield_person</span>
+							{{ phrase('moderator') }}
+						</a>
+						<div class="menu" data-menu="menu" aria-hidden="true">
+							<div class="menu-content">
+								<h4 class="menu-header">{{ phrase('moderator_tools') }}</h4>
+								<xf:contentcheck>
+									<!--[XF:mod_tools_menu:top]-->
+									<xf:if is="$xf.visitor.is_moderator">
+										<a href="{{ link('approval-queue') }}" class="menu-linkRow">{{ phrase('approval_queue') }}</a>
+									</xf:if>
+									<xf:if is="$xf.visitor.is_moderator && !$xf.options.reportIntoForumId">
+										<a href="{{ link('reports') }}" class="menu-linkRow">{{ phrase('reports') }}</a>
+									</xf:if>
+									<!--[XF:mod_tools_menu:bottom]-->
+								</xf:contentcheck>
+							</div>
+						</div>
+					</xf:if>
+
+					<xf:if is="$xf.visitor.is_admin">
+						<a href="{{ base_url('admin.php') }}" class="xv-staff-link" target="_blank">
+							<span class="material-symbols-outlined">admin_panel_settings</span>
+							{{ phrase('admin') }}
+						</a>
+					</xf:if>
+				</xf:contentcheck>
+			</div>
+		</div>
+	</xf:if>
+
+	<header class="xv-header" id="header">
+		<div class="xv-header-inner">
+			<div class="xv-header-start">
+				<button class="xv-mobile-menu-btn" data-xf-click="off-canvas" data-menu=".js-xvOffCanvasMenu" aria-label="{{ phrase('menu') }}">
+					<span class="material-symbols-outlined">menu</span>
+				</button>
+
+				<a href="{{ ($xf.options.logoLink && $xf.homePageUrl) ? $xf.homePageUrl : link('index') }}" class="xv-logo">
+					<xf:if is="property('publicLogoUrl')">
+						<xf:macro id="style_variation_macros::picture"
+							arg-property="publicLogoUrl"
+							arg-propertyRetina="publicLogoUrl2x"
+							arg-width="{{ property('publicLogoWidth') }}"
+							arg-height="{{ property('publicLogoHeight') }}"
+							arg-alt="{$xf.options.boardTitle}" />
+					<xf:else />
+						<div class="xv-logo-icon"><span class="material-symbols-outlined">forum</span></div>
+						<span class="xv-logo-text">{$xf.options.boardTitle}</span>
+					</xf:if>
+				</a>
+
+				<xf:if is="$xf.visitor.canSearch()">
+					<div class="xv-search-box">
+						<form action="{{ link('search/search') }}" method="post" class="xv-search-form" data-xf-init="quick-search">
+							<div class="xv-search-input-wrap" data-xf-click="menu" aria-haspopup="true">
+								<span class="material-symbols-outlined">search</span>
+								<input type="text"
+									name="keywords"
+									class="xv-search-input"
+									data-xf-init="{{ $xf.searchAutoComplete ? 'search-auto-complete' : '' }}"
+									data-acurl="{{ link('search/auto-complete') }}"
+									placeholder="{{ phrase('search...') }}"
+									aria-label="{{ phrase('search') }}"
+									data-xf-key="{{ phrase('shortcut.search_menu') }}"
+									autocomplete="off" />
+							</div>
+							<div class="menu menu--structural xv-search-dropdown" data-menu="menu" aria-hidden="true">
+								<div class="menu-content">
+									<!--[XF:search_menu:above_title_only]-->
+									<div class="menu-row">
+										<xf:checkbox standalone="true">
+											<xf:option name="c[title_only]">
+												<xf:label>{{ phrase('search_titles_only') }}</xf:label>
+											</xf:option>
+										</xf:checkbox>
+									</div>
+									<xf:if is="$searchConstraints">
+										<div class="menu-row">
+											<xf:select name="constraints" class="js-quickSearch-constraint input--fullWidth" aria-label="{{ phrase('search_within') }}">
+												<xf:option value="">{{ phrase('everywhere') }}</xf:option>
+												<xf:foreach loop="$searchConstraints" key="$constraintName" value="$constraint">
+													<xf:option value="{$constraint|json}">{$constraintName}</xf:option>
+												</xf:foreach>
+											</xf:select>
+										</div>
+									</xf:if>
+									<!--[XF:search_menu:above_member]-->
+									<div class="menu-row">
+										<div class="inputGroup">
+											<span class="inputGroup-text">{{ phrase('by:') }}</span>
+											<input type="text" class="input" name="c[users]" data-xf-init="auto-complete" placeholder="{{ phrase('member') }}" />
+										</div>
+									</div>
+									<div class="menu-footer">
+										<span class="menu-footer-controls">
+											<xf:button type="submit" class="button--primary" icon="search" />
+											<xf:button type="submit" name="from_search_menu">{{ phrase('advanced_search...') }}</xf:button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<xf:csrf />
+						</form>
+					</div>
+				</xf:if>
+			</div>
+
+			<xf:ad position="container_header" />
+
+			<div class="xv-header-end">
+				<xf:if is="$xf.visitor.user_id">
+					<div class="xv-menu-container">
+						<a href="{{ link('account/alerts') }}"
+							class="xv-icon-btn js-badge--alerts{{ $xf.visitor.alerts_unviewed ? ' has-badge' : '' }}"
+							data-xf-click="menu"
+							data-xf-key="{{ phrase('shortcut.alerts_menu') }}"
+							title="{{ phrase('alerts') }}"
+							aria-expanded="false"
+							aria-haspopup="true">
+							<span class="material-symbols-outlined">notifications</span>
+							<xf:if is="$xf.visitor.alerts_unviewed"><span class="xv-badge">{$xf.visitor.alerts_unviewed|number}</span></xf:if>
+						</a>
+						<div class="menu menu--structural menu--medium xv-menu" data-menu="menu" aria-hidden="true"
+							data-href="{{ link('account/alerts-popup') }}"
+							data-nocache="true"
+							data-load-target=".js-alertsMenuBody">
+							<div class="menu-content">
+								<h3 class="menu-header">{{ phrase('alerts') }}</h3>
+								<div class="js-alertsMenuBody">
+									<div class="menu-row">{{ phrase('loading...') }}</div>
+								</div>
+								<div class="menu-footer menu-footer--split">
+									<div class="menu-footer-main">
+										<ul class="listInline listInline--bullet">
+											<li><a href="{{ link('account/alerts') }}">{{ phrase('show_all') }}</a></li>
+											<li><a href="{{ link('account/alerts/mark-read') }}" class="js-alertsMarkRead">{{ phrase('mark_read') }}</a></li>
+											<li><a href="{{ link('account/preferences') }}">{{ phrase('preferences') }}</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="xv-menu-container">
+						<a href="{{ link('direct-messages') }}"
+							class="xv-icon-btn js-badge--conversations{{ $xf.visitor.conversations_unread ? ' has-badge' : '' }}"
+							data-xf-click="menu"
+							data-xf-key="{{ phrase('shortcut.conversations_menu') }}"
+							title="{{ phrase('direct_messages') }}"
+							aria-expanded="false"
+							aria-haspopup="true">
+							<span class="material-symbols-outlined">mail</span>
+							<xf:if is="$xf.visitor.conversations_unread"><span class="xv-badge">{$xf.visitor.conversations_unread|number}</span></xf:if>
+						</a>
+						<div class="menu menu--structural menu--medium xv-menu" data-menu="menu" aria-hidden="true"
+							data-href="{{ link('direct-messages/popup') }}"
+							data-nocache="true"
+							data-load-target=".js-convMenuBody">
+							<div class="menu-content">
+								<h3 class="menu-header">{{ phrase('direct_messages') }}</h3>
+								<div class="js-convMenuBody">
+									<div class="menu-row">{{ phrase('loading...') }}</div>
+								</div>
+								<div class="menu-footer menu-footer--split">
+									<div class="menu-footer-main">
+										<ul class="listInline listInline--bullet">
+											<li><a href="{{ link('direct-messages') }}">{{ phrase('show_all') }}</a></li>
+											<xf:if is="$xf.visitor.canStartConversation()">
+												<li><a href="{{ link('direct-messages/add') }}">{{ phrase('send_direct_message') }}</a></li>
+											</xf:if>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<xf:if is="$xf.style.isVariationsEnabled()">
+						<xf:set var="$nextVariation" value="{{ $xf.visitor.style_variation == 'alternate' ? 'default' : 'alternate' }}" />
+						<a href="{{ link('misc/style-variation', null, {'variation': $nextVariation, 't': csrf_token()}) }}"
+							class="xv-icon-btn xv-theme-toggle"
+							title="{{ $nextVariation == 'default' ? phrase('light_mode') : phrase('dark_mode') }}"
+							rel="nofollow">
+							<span class="material-symbols-outlined xv-theme-icon">
+								{{ $xf.visitor.style_variation == 'alternate' ? 'light_mode' : 'dark_mode' }}
+							</span>
+						</a>
+					</xf:if>
+
+					<!-- XenVibe: Layout Toggle -->
+					<div class="xv-layout-toggle" id="xv-layout-toggle">
+						<span class="xv-layout-btn" data-layout="grid" title="{{ phrase('grid_view') }}" role="button" tabindex="0">
+							<span class="material-symbols-outlined">grid_view</span>
+						</span>
+						<span class="xv-layout-btn" data-layout="list" title="{{ phrase('list_view') }}" role="button" tabindex="0">
+							<span class="material-symbols-outlined">view_list</span>
+						</span>
+					</div>
+
+					<span class="xv-separator"></span>
+
+					<a href="{{ link('forums/-/create-thread') }}" class="xv-btn-primary">
+						<span class="material-symbols-outlined">add</span>
+						<span>{{ phrase('post_thread') }}</span>
+					</a>
+
+					<div class="xv-menu-container">
+						<div class="xv-avatar" data-xf-click="menu" data-xf-key="{{ phrase('shortcut.visitor_menu') }}">
+							<xf:avatar user="$xf.visitor" size="s" href="" />
+						</div>
+						<div class="menu menu--structural menu--wide menu--account" data-menu="menu" aria-hidden="true"
+							data-href="{{ link('account/visitor-menu') }}"
+							data-load-target=".js-visitorMenuBody">
+							<div class="menu-content js-visitorMenuBody">
+								<div class="menu-row">{{ phrase('loading...') }}</div>
+							</div>
+						</div>
+					</div>
+				<xf:else />
+					<xf:if is="$xf.style.isVariationsEnabled()">
+						<xf:set var="$nextVariation" value="{{ $xf.visitor.style_variation == 'alternate' ? 'default' : 'alternate' }}" />
+						<a href="{{ link('misc/style-variation', null, {'variation': $nextVariation, 't': csrf_token()}) }}"
+							class="xv-icon-btn xv-theme-toggle"
+							title="{{ $nextVariation == 'default' ? phrase('light_mode') : phrase('dark_mode') }}"
+							rel="nofollow">
+							<span class="material-symbols-outlined xv-theme-icon">
+								{{ $xf.visitor.style_variation == 'alternate' ? 'light_mode' : 'dark_mode' }}
+							</span>
+						</a>
+					</xf:if>
+
+					<!-- XenVibe: Layout Toggle -->
+					<div class="xv-layout-toggle" id="xv-layout-toggle">
+						<span class="xv-layout-btn" data-layout="grid" title="{{ phrase('grid_view') }}" role="button" tabindex="0">
+							<span class="material-symbols-outlined">grid_view</span>
+						</span>
+						<span class="xv-layout-btn" data-layout="list" title="{{ phrase('list_view') }}" role="button" tabindex="0">
+							<span class="material-symbols-outlined">view_list</span>
+						</span>
+					</div>
+
+					<a href="{{ link('login') }}" class="xv-btn-text" data-xf-click="overlay" data-follow-redirects="on">{{ phrase('log_in') }}</a>
+					<xf:if is="$xf.options.registrationSetup.enabled">
+						<a href="{{ link('register') }}" class="xv-btn-primary" data-xf-click="overlay" data-follow-redirects="on">{{ phrase('register') }}</a>
+					</xf:if>
+				</xf:if>
+			</div>
+		</div>
+	</header>
+
+	<xf:if is="$notices.scrolling">
+		<div class="xv-scrolling-notices">
+			<xf:macro id="notice_macros::notice_list" arg-type="scrolling" arg-notices="{$notices.scrolling}" />
+		</div>
+	</xf:if>
+
+	<main class="xv-main">
+		<aside class="xv-sidebar xv-sidebar--left" id="xv-left-sidebar">
+			<button class="xv-sidebar-toggle" id="xv-sidebar-toggle" title="{{ phrase('xv_toggle_sidebar') }}">
+				<span class="material-symbols-outlined">chevron_left</span>
+			</button>
+
+			<div class="xv-sidebar-section">
+				<div class="xv-sidebar-header">
+					<h3 class="xv-sidebar-title">{{ phrase('navigation') }}</h3>
+				</div>
+
+				<a class="xv-sidebar-link{{ !$pageSection ? ' is-active' : '' }}" href="{{ link('index') }}">
+					<span class="material-symbols-outlined">home</span>
+					<span>{{ phrase('home') }}</span>
+				</a>
+
+				<xf:foreach loop="$navTree" key="$navSection" value="$navEntry">
+					<xf:if is="$navSection != '_default'">
+						<xf:if is="$navEntry.children">
+							<div class="xv-sidebar-dropdown">
+								<div class="xv-sidebar-link-wrap{{ $navSection == $pageSection ? ' is-active' : '' }}">
+									<a class="xv-sidebar-link" href="{$navEntry.href}">
+										<span class="material-symbols-outlined">
+											{{ $navSection == 'forums' ? 'forum' : ($navSection == 'whatsNew' ? 'whatshot' : ($navSection == 'members' ? 'people' : 'link')) }}
+										</span>
+										<span>{$navEntry.title}</span>
+									</a>
+									<button class="xv-sidebar-toggle-btn" data-xf-click="toggle" data-target=".xv-dropdown-{$navSection}">
+										<span class="material-symbols-outlined xv-sidebar-arrow">expand_more</span>
+									</button>
+								</div>
+								<div class="xv-dropdown-menu xv-dropdown-{$navSection}">
+									<xf:foreach loop="$navEntry.children" key="$childId" value="$childNav">
+										<a class="xv-sidebar-sublink" href="{$childNav.href}">{$childNav.title}</a>
+									</xf:foreach>
+								</div>
+							</div>
+						<xf:else />
+							<a class="xv-sidebar-link{{ $navSection == $pageSection ? ' is-active' : '' }}" href="{$navEntry.href}">
+								<span class="material-symbols-outlined">
+									{{ $navSection == 'forums' ? 'forum' : ($navSection == 'whatsNew' ? 'whatshot' : ($navSection == 'members' ? 'people' : 'link')) }}
+								</span>
+								<span>{$navEntry.title}</span>
+							</a>
+						</xf:if>
+					</xf:if>
+				</xf:foreach>
+			</div>
+
+			<xf:if is="$selectedNavChildren is not empty">
+				<div class="xv-communities">
+					<h3 class="xv-communities-title">{{ phrase('xv_quick_links') }}</h3>
+					<xf:foreach loop="$selectedNavChildren" key="$navId" value="$navEntry" i="$i">
+						<a href="{$navEntry.href}" class="xv-community-link">
+							<span class="xv-community-dot xv-dot-{{ $i % 8 }}"></span>
+							<span>{$navEntry.title}</span>
+						</a>
+					</xf:foreach>
+				</div>
+			</xf:if>
+
+			<xf:widgetpos id="xv_left_sidebar" />
+
+			<xf:if is="!$xf.visitor.user_id">
+				<div class="xv-cta-box">
+					<p class="xv-cta-title">{{ phrase('xv_join_the_conversation') }}</p>
+					<p class="xv-cta-text">{{ phrase('xv_register_now_to_gain_access') }}</p>
+					<a href="{{ link('register') }}" class="xv-cta-btn">{{ phrase('register') }}</a>
+				</div>
+			</xf:if>
+
+			<xf:ad position="container_sidenav_below" />
+		</aside>
+
+		<section class="xv-content">
+			<!--XF:EXTRA_OUTPUT-->
+
+			<xf:macro id="browser_warning_macros::javascript" />
+			<xf:macro id="browser_warning_macros::browser" />
+
+			<xf:if is="$notices.block">
+				<div class="xv-content-notices">
+					<xf:macro id="notice_macros::notice_list" arg-type="block" arg-notices="{$notices.block}" />
+				</div>
+			</xf:if>
+
+			<xf:widgetpos id="xv_home_top" />
+
+			<xf:ad position="container_breadcrumb_top_above" />
+			<xf:if is="$breadcrumbs is not empty">
+				<ul class="xv-breadcrumb">
+					<xf:foreach loop="$breadcrumbs" value="$breadcrumb">
+						<li><a href="{$breadcrumb.href}">{$breadcrumb.value}</a></li>
+					</xf:foreach>
+				</ul>
+			</xf:if>
+			<xf:ad position="container_breadcrumb_top_below" />
+
+			<xf:if contentcheck="true">
+				<div class="xv-page-header-auto">
+					<xf:contentcheck>
+						<xf:if is="$h1 is not empty AND !$noH1">
+							<h1 class="xv-page-title-auto">{$h1}</h1>
+						</xf:if>
+						<xf:if is="$description is not empty">
+							<p class="xv-page-subtitle-auto">{$description}</p>
+						</xf:if>
+						<xf:if contentcheck="true">
+							<div class="xv-page-actions-auto"><xf:contentcheck><xf:pageaction /></xf:contentcheck></div>
+						</xf:if>
+					</xf:contentcheck>
+				</div>
+			</xf:if>
+
+			<xf:ad position="container_content_above" />
+			<div class="xv-page-content">{$content|raw}</div>
+			<xf:ad position="container_content_below" />
+
+			<xf:ad position="container_breadcrumb_bottom_above" />
+			<xf:if is="$breadcrumbs is not empty AND property('publicShowBottomBreadcrumb')">
+				<ul class="xv-breadcrumb xv-breadcrumb--bottom">
+					<xf:foreach loop="$breadcrumbs" value="$breadcrumb">
+						<li><a href="{$breadcrumb.href}">{$breadcrumb.value}</a></li>
+					</xf:foreach>
+				</ul>
+			</xf:if>
+			<xf:ad position="container_breadcrumb_bottom_below" />
+		</section>
+
+		<xf:if is="$sidebar OR $sideNav">
+			<aside class="xv-sidebar xv-sidebar--right">
+				<xf:ad position="container_sidebar_above" />
+
+				<xf:if is="$sideNav">
+					<div class="xv-side-nav-wrap">
+						<xf:foreach loop="$sideNav" value="$sideNavHtml">
+							{$sideNavHtml}
+						</xf:foreach>
+					</div>
+				</xf:if>
+
+				<xf:if is="$sidebar">
+					<div class="xv-widgets">
+						<xf:foreach loop="$sidebar" value="$sidebarHtml">
+							{$sidebarHtml}
+						</xf:foreach>
+					</div>
+				</xf:if>
+
+				<xf:widgetpos id="xv_global_sidebar" />
+				<xf:widgetpos id="xv_home_sidebar" />
+
+				<xf:ad position="container_sidebar_below" />
+			</aside>
+		</xf:if>
+	</main>
+
+	<footer class="xv-footer">
+		<div class="xv-footer-inner">
+			<div class="xv-footer-links">
+				<a href="{{ link('misc/contact') }}">{{ phrase('contact_us') }}</a>
+				<a href="{{ link('help/terms') }}">{{ phrase('terms_and_rules') }}</a>
+				<a href="{{ link('help/privacy-policy') }}">{{ phrase('privacy_policy') }}</a>
+				<a href="{{ link('help/') }}">{{ phrase('help') }}</a>
+			</div>
+
+			<div class="xv-footer-style">
+				<a href="{{ link('misc/style') }}" class="xv-style-chooser" data-xf-click="overlay">
+					<span class="material-symbols-outlined">palette</span>
+					<span>{{ phrase('style') }}: {$xf.style.title}</span>
+				</a>
+
+				<xf:if is="$xf.visitor.canChangeLanguage()">
+					<a href="{{ link('misc/language') }}" class="xv-style-chooser" data-xf-click="overlay">
+						<span class="material-symbols-outlined">translate</span>
+						<span>{$xf.language.title}</span>
+					</a>
+				</xf:if>
+			</div>
+
+			<div class="xv-footer-copy">
+				<xf:copyright />
+			</div>
+		</div>
+	</footer>
+
+	<nav class="xv-mobile-nav">
+		<a href="{{ link('index') }}"><span class="material-symbols-outlined">home</span><span>{{ phrase('home') }}</span></a>
+		<a href="{{ link('whats-new') }}"><span class="material-symbols-outlined">explore</span><span>{{ phrase('whats_new') }}</span></a>
+		<div class="xv-fab-wrap"><a href="{{ link('forums/-/create-thread') }}" class="xv-fab"><span class="material-symbols-outlined">add</span></a></div>
+		<a href="{{ link('conversations') }}"><span class="material-symbols-outlined">chat</span><span>{{ phrase('messages') }}</span></a>
+		<a href="{{ link('account') }}"><span class="material-symbols-outlined">person</span><span>{{ phrase('account') }}</span></a>
+	</nav>
+
+	<div class="offCanvasMenu offCanvasMenu--nav js-xvOffCanvasMenu" data-menu="menu" aria-hidden="true" data-ocm-builder="navigation">
+		<div class="offCanvasMenu-backdrop" data-menu-close="true"></div>
+		<div class="offCanvasMenu-content">
+			<div class="offCanvasMenu-header">
+				{{ phrase('menu') }}
+				<a class="offCanvasMenu-closer" data-menu-close="true" role="button" tabindex="0" aria-label="{{ phrase('close') }}"></a>
+			</div>
+
+			<xf:if is="$xf.visitor.user_id">
+				<div class="offCanvasMenu-linkHolder">
+					<a href="{{ link('account') }}" class="offCanvasMenu-link">
+						<xf:avatar user="$xf.visitor" size="xxs" href="" />
+						{$xf.visitor.username}
+					</a>
+				</div>
+				<hr class="offCanvasMenu-separator" />
+			<xf:else />
+				<div class="offCanvasMenu-linkHolder">
+					<a href="{{ link('login') }}" class="offCanvasMenu-link" data-xf-click="overlay" data-menu-close="true">
+						{{ phrase('log_in') }}
+					</a>
+				</div>
+				<xf:if is="$xf.options.registrationSetup.enabled">
+					<div class="offCanvasMenu-linkHolder">
+						<a href="{{ link('register') }}" class="offCanvasMenu-link" data-xf-click="overlay" data-menu-close="true">
+							{{ phrase('register') }}
+						</a>
+					</div>
+				</xf:if>
+				<hr class="offCanvasMenu-separator" />
+			</xf:if>
+
+			<xf:foreach loop="$navTree" key="$navSection" value="$navEntry">
+				<xf:if is="$navSection != '_default'">
+					<div class="offCanvasMenu-linkHolder">
+						<a href="{$navEntry.href}" class="offCanvasMenu-link">{$navEntry.title}</a>
+					</div>
+				</xf:if>
+			</xf:foreach>
+
+			<div class="offCanvasMenu-installBanner js-installPromptContainer" style="display: none;" data-xf-init="install-prompt">
+				<div class="offCanvasMenu-installBanner-header">{{ phrase('install_app') }}</div>
+				<xf:button class="js-installPromptButton">{{ phrase('install') }}</xf:button>
+				<template class="js-installTemplateIOS">
+					<div class="js-installTemplateContent">
+						<div class="overlay-title">{{ phrase('how_to_install_app_on_ios') }}</div>
+						<div class="block-body">
+							<div class="block-row">
+								<p>{{ phrase('follow_along_with_video_below_to_see_how_to_install_our_site_as_web_app') }}</p>
+								<xf:if is="property('publicPwaInstallVideoUrl')">
+									<p style="text-align: center">
+										<video src="{{ base_url(property('publicPwaInstallVideoUrl')) }}"
+											width="280" height="480" autoplay loop muted playsinline></video>
+									</p>
+								</xf:if>
+								<p><small><strong>{{ phrase('note:') }}</strong> {{ phrase('this_feature_currently_may_not_be_available_in_some_browsers') }}</small></p>
+							</div>
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<xf:macro id="helper_js_global::body" arg-app="public" arg-jsState="{$jsState}" />
+<xf:include template="xenvibe_scripts" />
+
+</body>
+</html>

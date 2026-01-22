@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>البحث والاستكشاف - XenForo Social</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "secondary-text": "#4c669a",
+                        "card-bg": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 min-h-screen flex flex-col">
+<!-- Top Navbar -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#e7ebf3]">
+<div class="px-4 md:px-10 py-3 flex items-center justify-between max-w-7xl mx-auto w-full">
+<div class="flex items-center gap-4 text-[#0d121b]">
+<div class="size-10 flex items-center justify-center bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-3xl">hub</span>
+</div>
+<h2 class="text-[#0d121b] text-xl font-bold leading-tight tracking-[-0.015em] hidden sm:block">شبكة التواصل</h2>
+</div>
+<div class="flex-1 max-w-md mx-4 hidden md:flex">
+<!-- Mini search for sticky header, visible on scroll usually, but keeping it simple here -->
+</div>
+<div class="flex gap-3 items-center">
+<button class="size-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-slate-600 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-full hover:bg-gray-100 text-slate-600">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<div class="w-px h-6 bg-gray-200 mx-1"></div>
+<div class="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-1 pr-2 rounded-full border border-gray-200">
+<img alt="User Avatar" class="size-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8eQ8lFtWqVfLQs1_NSuqWRK0zeuORJzoWsBYyJcRSN5DaelUxrjJ86jnDbJlL_BVaq1A1-LhdKB6u_vgEUcM-Tc9VGBxx8LZTmZQXDiGMDbl1oVEZuekTuk0CG9ZWezZdN3pTr1cw_YJnsy5_VAfXHC7v8bvV3FaPV8zVk7isP_6h-PRH81KE8kNr9RuT595H6Kz_1Vwgp_x20jATPRJLEnG71voDo_hST_3U5glBz_JxnwNhXFxbdUQaqMAnAl2Vhl4w4vZ6JC8"/>
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-8 py-6 flex flex-col gap-8">
+<!-- Hero Search Section -->
+<section class="rounded-3xl overflow-hidden relative bg-gradient-to-br from-primary via-[#3b7bf7] to-[#60a5fa] text-white p-8 md:p-16 text-center shadow-lg shadow-blue-900/10">
+<!-- Decorative pattern overlay -->
+<div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+<div class="relative z-10 max-w-2xl mx-auto flex flex-col gap-6 items-center">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl md:text-5xl font-black leading-tight tracking-tight">
+                        اكتشف ما يحدث
+                    </h1>
+<p class="text-blue-100 text-base md:text-lg font-medium opacity-90">
+                        ابحث عن المواضيع، الأشخاص، والمجتمعات التي تهمك في مجتمعنا
+                    </p>
+</div>
+<!-- Search Input Group -->
+<div class="w-full bg-white p-2 rounded-2xl shadow-xl shadow-blue-900/20 flex items-center gap-2 transform transition-transform focus-within:scale-[1.02]">
+<div class="text-slate-400 pr-3">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="flex-1 bg-transparent border-none text-slate-800 placeholder-slate-400 focus:ring-0 text-lg h-12" placeholder="ابحث عن مواضيع، وسوم، أو أعضاء..." type="text"/>
+<button class="bg-primary hover:bg-blue-700 text-white font-bold h-12 px-6 rounded-xl transition-colors">
+                        بحث
+                    </button>
+</div>
+<!-- Quick Filters / Chips -->
+<div class="flex flex-wrap justify-center gap-2 pt-2">
+<span class="text-blue-100 text-sm font-medium self-center pl-2">شائع:</span>
+<button class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-3 py-1 rounded-full text-sm backdrop-blur-sm transition">#تقنية</button>
+<button class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-3 py-1 rounded-full text-sm backdrop-blur-sm transition">#تصوير</button>
+<button class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-3 py-1 rounded-full text-sm backdrop-blur-sm transition">#سفر</button>
+</div>
+</div>
+</section>
+<!-- Navigation Tabs -->
+<div class="sticky top-[73px] z-40 bg-background-light/95 backdrop-blur py-2 -mx-4 md:-mx-8 px-4 md:px-8 border-b border-gray-200/50">
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-1">
+<button class="flex shrink-0 items-center justify-center gap-x-2 rounded-xl bg-slate-900 text-white px-5 py-2.5 transition-all shadow-sm">
+<span class="text-sm font-bold">الكل</span>
+</button>
+<button class="flex shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white hover:bg-gray-50 border border-gray-200 px-5 py-2.5 transition-all text-slate-600">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+<span class="text-sm font-bold">المواضيع</span>
+</button>
+<button class="flex shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white hover:bg-gray-50 border border-gray-200 px-5 py-2.5 transition-all text-slate-600">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span class="text-sm font-bold">المجموعات</span>
+</button>
+<button class="flex shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white hover:bg-gray-50 border border-gray-200 px-5 py-2.5 transition-all text-slate-600">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span class="text-sm font-bold">الأعضاء</span>
+</button>
+</div>
+</div>
+<!-- Section 1: Trending Topics (Cards) -->
+<section>
+<div class="flex items-center justify-between mb-5 px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+<h2 class="text-[#0d121b] text-2xl font-bold tracking-tight">رائج الآن</h2>
+</div>
+<a class="text-primary text-sm font-bold hover:underline flex items-center gap-1" href="#">
+                    عرض الكل
+                    <span class="material-symbols-outlined text-sm rtl:rotate-180">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<article class="group bg-card-bg rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute top-3 right-3 z-10 bg-black/50 backdrop-blur text-white text-xs px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">image</span>
+                            صور
+                        </div>
+<div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Modern workspace desk setup with laptop and plants" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-EhBCfqklzTs97fwM8elvALpNTh8A1iHdO84JngirmedKts3ttlQkpoNkJhTae5D4LwLqn7mwXJ4z0JMV9lnIQ4xF4uf2NytQDpQMHdG0QlafrtEKoAgXnb6SYAH35FZcjuD-TCzNV7ww0bUqQ7R_2PNJRURBIS73u1cqXVyRaSaWhShsBKjNy2m9DIbAnwtL5Ov0OX0B3SYgrAH6FK4nHE7QdfJMjp4lvXzwHuN4Wcx0eslCk0nRt4NhqLeeA5fl-PcDTBgL-YA');">
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 gap-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded-md">تكنولوجيا</span>
+<span class="text-gray-400 text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                منذ ساعتين
+                            </span>
+</div>
+<h3 class="text-[#0d121b] text-lg font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                            أفضل أدوات الإنتاجية للعمل عن بعد في عام 2024
+                        </h3>
+<p class="text-secondary-text text-sm line-clamp-3">
+                            في هذا الموضوع سنناقش مجموعة من التطبيقات والأدوات التي تساعدك على تنظيم وقتك وزيادة إنتاجيتك أثناء العمل من المنزل...
+                        </p>
+<div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img alt="Author avatar" class="size-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDatYnvaZT5uGH1u0ubsV_h0jeeF--2HOm4jgbANNo2GnU0h0z0Vtt-e6xhg4U58ibgHZc6jN-5zNNSXN9MRqJi77gv655XOEyNKegCPQstK2ymcY4uo4jWZzZ0S7f9XD2yjZEEfOjMBL12U66wOt0U4WoBRyRcU0N66ek48xvGb_6qlq51FmuyqLA-NRsHtahc6HlHNnkzgKR68EyyCdyuvn1O6X2EgrsRj6qeLesll98JBOpI8atChoNPgTd0GptKw446FX0jzQ"/>
+<span class="text-xs font-bold text-gray-700">أحمد محمد</span>
+</div>
+<div class="flex items-center gap-3 text-gray-400 text-xs font-medium">
+<span class="flex items-center gap-1 hover:text-red-500 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+                                    42
+                                </span>
+<span class="flex items-center gap-1 hover:text-blue-500 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+                                    15
+                                </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group bg-card-bg rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Abstract blue wavy gradient background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC35LWGA_k-0dgAILIQK-_grdbhrFq77XNRSvTBMPC2kCS4k5kBJzueV7g4quqW0tpg-DAAAlC4GXKGzRa6zuleWKIMJa-j9tIHOLkQZfwHAsn-_pUZmSvdqj_oUK_Q6OGSbJibZPPhxlFc4aRgIyMF9pJkcRHB0C3_BrL69OyF5kydmgdBRYZKe5ay7lE6oweQBDwehxADh47UplXZIf0EJqOwVThDUAhImq_Jkbxx-R0JkReq6ZVPStKXgUFq1JbxquKo5qBdb74');">
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 gap-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-purple-50 text-purple-600 text-[10px] font-bold px-2 py-1 rounded-md">تصميم</span>
+<span class="text-gray-400 text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                أمس
+                            </span>
+</div>
+<h3 class="text-[#0d121b] text-lg font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                            اتجاهات تصميم واجهة المستخدم الحديثة
+                        </h3>
+<p class="text-secondary-text text-sm line-clamp-3">
+                            دعونا نستعرض أهم الصيحات في عالم التصميم لهذا العام، من التدرجات اللونية المعقدة إلى البساطة المفرطة.
+                        </p>
+<div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img alt="Author avatar" class="size-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzUMjac3-9Eiu3WqfZmYR9t19RcmX3cmVT9cBwnxIaOdPf8k3lg5fzAXOcG-M2G1ip2IhRIdxCqyA5utVgJ8xxVBYKF_SABJlbokpS8nxMFZA70DvfRo7YAllmF16G7_fQJWKWOyi1ADcHQWI5PqLe-bpHrcWvrp_e_4epnw2bqXKtri90tM3HAAwyDv_1DZPiG2WPEdrwGUV-S4Vq5rHOfnUbYXwrsG9b1wvxlMwX23LbrWMDnEKnJci5Ur8VGpMDdCLC8b7lDD8"/>
+<span class="text-xs font-bold text-gray-700">سارة علي</span>
+</div>
+<div class="flex items-center gap-3 text-gray-400 text-xs font-medium">
+<span class="flex items-center gap-1 hover:text-red-500 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+                                    128
+                                </span>
+<span class="flex items-center gap-1 hover:text-blue-500 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+                                    45
+                                </span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group bg-card-bg rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden">
+<div class="relative h-48 w-full overflow-hidden">
+<div class="absolute top-3 right-3 z-10 bg-black/50 backdrop-blur text-white text-xs px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">poll</span>
+                            استطلاع
+                        </div>
+<div class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Coffee cups on a wooden table in a cafe" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-J-Bl_D9-bUItSURvVlLx9gvaEgLUckw97jiw7tTxx0aL0EEqBZHDkIUe0JD-fTtiLgoU_kOqJxiNLzt6zDm7axdPVEwxN8-fHftGF8fvw48-Afh2OCvczlsHO8u1dRdV_z1d46fL8SRBP5Nk5ZCmZJFWzB7--YF9XyMu8qdwX25wATUh4z8T1UG78TyIR2gHbtaAEvTkk4rFNlzFHXThdva5Jg7dFhVM4Gv3-HqwVIPE5redqL6dMAZfvHoktMNDX4CK1_PYg68');">
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1 gap-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-orange-50 text-orange-600 text-[10px] font-bold px-2 py-1 rounded-md">نقاش عام</span>
+<span class="text-gray-400 text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                                منذ 5 ساعات
+                            </span>
+</div>
+<h3 class="text-[#0d121b] text-lg font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                            ما هو مكانك المفضل لقضاء عطلة نهاية الأسبوع؟
+                        </h3>
+<p class="text-secondary-text text-sm line-clamp-3">
+                            شاركنا تجربتك واقتراحاتك لأماكن هادئة ومميزة يمكن زيارتها بعيداً عن صخب المدينة.
+                        </p>
+<div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img alt="Author avatar" class="size-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgzSVS48TJ91_sv3tyik_iL8H9WuIU_kyMsRqybg-hEEdgobpao20WDG0tsUwBqCLyWIbiJHgh1Qr3vvPka5IpkzoAq74zSPSO9O1eAC-3Chnl1j2biKNdCsxrL2ieP3IRVolXm8VmfRZXkVKN3QAkK6CNUgDcr6dc8EZMLrevfbmXnK5RzcDnXdcq2-3hwW69C8DOESkKRay1XjMxXRgyXxplEqSOLHacbwzWLLISEsMSsQl6cE2MPUDjM7ZecoLISFAX4gNMZDc"/>
+<span class="text-xs font-bold text-gray-700">خالد عمر</span>
+</div>
+<div class="flex items-center gap-3 text-gray-400 text-xs font-medium">
+<span class="flex items-center gap-1 hover:text-red-500 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+                                    86
+                                </span>
+<span class="flex items-center gap-1 hover:text-blue-500 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+                                    32
+                                </span>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Section 2: Suggested Groups (Grid with Icons) -->
+<section class="mt-4">
+<div class="flex items-center justify-between mb-5 px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">diversity_3</span>
+<h2 class="text-[#0d121b] text-2xl font-bold tracking-tight">مجتمعات قد تهمك</h2>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Group Card 1 -->
+<div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex flex-col items-center text-center gap-3 hover:shadow-md transition">
+<div class="size-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-3xl mb-1 shadow-sm">
+<span class="material-symbols-outlined text-3xl">code</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900">المطورين العرب</h3>
+<p class="text-xs text-slate-500 mt-1">12.5 ألف عضو</p>
+</div>
+<button class="w-full mt-2 py-2 rounded-xl bg-gray-50 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-colors">
+                        انضمام
+                    </button>
+</div>
+<!-- Group Card 2 -->
+<div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex flex-col items-center text-center gap-3 hover:shadow-md transition">
+<div class="size-16 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-3xl mb-1 shadow-sm">
+<span class="material-symbols-outlined text-3xl">restaurant_menu</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900">عشاق الطبخ</h3>
+<p class="text-xs text-slate-500 mt-1">8.2 ألف عضو</p>
+</div>
+<button class="w-full mt-2 py-2 rounded-xl bg-gray-50 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-colors">
+                        انضمام
+                    </button>
+</div>
+<!-- Group Card 3 -->
+<div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex flex-col items-center text-center gap-3 hover:shadow-md transition">
+<div class="size-16 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center text-3xl mb-1 shadow-sm">
+<span class="material-symbols-outlined text-3xl">photo_camera</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900">عدسة المصور</h3>
+<p class="text-xs text-slate-500 mt-1">24 ألف عضو</p>
+</div>
+<button class="w-full mt-2 py-2 rounded-xl bg-gray-50 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-colors">
+                        انضمام
+                    </button>
+</div>
+<!-- Group Card 4 -->
+<div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex flex-col items-center text-center gap-3 hover:shadow-md transition">
+<div class="size-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-3xl mb-1 shadow-sm">
+<span class="material-symbols-outlined text-3xl">flight</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900">حول العالم</h3>
+<p class="text-xs text-slate-500 mt-1">5.4 ألف عضو</p>
+</div>
+<button class="w-full mt-2 py-2 rounded-xl bg-gray-50 hover:bg-primary hover:text-white text-primary text-sm font-bold transition-colors">
+                        انضمام
+                    </button>
+</div>
+</div>
+</section>
+<!-- Section 3: New Members (Small Horizontal Cards or Grid) -->
+<section class="mt-4">
+<div class="flex items-center justify-between mb-5 px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person_add</span>
+<h2 class="text-[#0d121b] text-2xl font-bold tracking-tight">أعضاء جدد</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<!-- User Card 1 -->
+<div class="flex items-center p-3 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition gap-3">
+<img alt="New member profile picture" class="size-12 rounded-xl object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5UxWdofRF7lXUSCWJADxPq7KsY6pDaMNpY-UHnHvR5bpK3ea_pIT_LY_cKsL57ApHBYHioDZ2VA62WiBoI6BnA_DBdnTon0smqYiESLvcnJ2os4q9f2ri_7A5Sj-vWUGknas8C8g6pLAg58DFc046Js-nBz6zPjeked4vQ5bHgTo3aQ_0BysWhqhiPtFl6x3yxj1CAkcrj_TxHgeD6jdHVreDn-MXSPYyVnnTbMO5CCAVJHSu93OAFKhzhCDwoefZgkdNL65vFoQ"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-slate-900 truncate">ليلى حسن</h4>
+<p class="text-xs text-slate-500 truncate">مهندسة ديكور</p>
+</div>
+<button class="size-8 rounded-full bg-blue-50 text-primary hover:bg-primary hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-lg">person_add</span>
+</button>
+</div>
+<!-- User Card 2 -->
+<div class="flex items-center p-3 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition gap-3">
+<img alt="New member profile picture" class="size-12 rounded-xl object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC84Z2ty-sKmukrHMSZ3cXPryAbBCtlRW0H9359jid370JIdSYOE2PY09IWZggFc_4_Kk1PrPe5Eed3mpyE22AeK30pyckBCryEYUBVAJdQTpNF5dfBvaFfW6s982M0Q2apBX5PW0e3IxgniarGwJw4o4PCO8v4Y_nPO6Odtpz0H7cCPWm0cjNdtemhHCKR5V0GITCysNyYDFd7zUAaWmGRSrEpT6D_nQ4rT9IBWWAWbfoVal7LAjE7gniRbMEca1LH50I4Sjc97-Q"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-slate-900 truncate">كريم عادل</h4>
+<p class="text-xs text-slate-500 truncate">كاتب محتوى</p>
+</div>
+<button class="size-8 rounded-full bg-blue-50 text-primary hover:bg-primary hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-lg">person_add</span>
+</button>
+</div>
+<!-- User Card 3 -->
+<div class="flex items-center p-3 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition gap-3">
+<img alt="New member profile picture" class="size-12 rounded-xl object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbyhVsDQYrTaaf9kS0FIV1ReN7C4OBJe_lVeAvydzDhzticbc87kIFnrPioqvFZ5ceHig1h262vXvojQzVlaa5uoFjRejUN-C_aKND8FGeiXyB_JIQzgevmTPhiUuNX1oLm2HTuVaFslwjaKUM1L5MbcazaqjPa_xXWx-wjKq9EI2y5goFA7KENT-VxCNFSnYC9AnuVKNMPYDitdOU9PKSMM8JHWgfKaHnhui0XHrRXExr9RPDOGwHaso6PQHMgNqnq_ClYbBIOEE"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-slate-900 truncate">نور الهدى</h4>
+<p class="text-xs text-slate-500 truncate">طالبة جامعية</p>
+</div>
+<button class="size-8 rounded-full bg-blue-50 text-primary hover:bg-primary hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-lg">person_add</span>
+</button>
+</div>
+<!-- User Card 4 -->
+<div class="flex items-center p-3 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition gap-3">
+<img alt="New member profile picture" class="size-12 rounded-xl object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU5t5uh5Y_VC_KnvyXrWMITkOW9-A6V3ao2IblEYa2ygZjt_Rg1-dalc6oBt_UM6hhk1a-auOTJM_elQWqoLrSFn1-LuPNQtWZnXwEPwNZhSgpDlKO_iLe_fG2Oa4ynSkBwPm1ZTGal5UNMXhxv6iMG61r_VFR_7YHwzEEvjwV6m9vmgmmAKpmvJkMvRRWaCPfv1nRaQeCiTCj27eHgaOd6QiTS7Ik-p_YsL21mi2ZcvsCd3OjLbxzhI8u5SME00CQg08ejD9e7Ro"/>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-slate-900 truncate">سامر يوسف</h4>
+<p class="text-xs text-slate-500 truncate">مصمم جرافيك</p>
+</div>
+<button class="size-8 rounded-full bg-blue-50 text-primary hover:bg-primary hover:text-white flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-lg">person_add</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Simple Footer -->
+<footer class="mt-auto py-8 bg-white border-t border-gray-100">
+<div class="max-w-7xl mx-auto px-10 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
+<p>© 2024 شبكة التواصل. جميع الحقوق محفوظة.</p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<a class="hover:text-primary" href="#">الشروط والقوانين</a>
+<a class="hover:text-primary" href="#">سياسة الخصوصية</a>
+<a class="hover:text-primary" href="#">اتصل بنا</a>
+</div>
+</div>
+</footer>
+</body></html>

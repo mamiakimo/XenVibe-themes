@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TimelinePulse: Forum Section</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722", // Adjusted to match snippet style
+                        "surface-dark": "#1e2430",
+                        "card-dark": "#232f48",
+                        "text-secondary": "#92a4c9"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .pulse-glow {
+            box-shadow: 0 0 12px 2px rgba(19, 91, 236, 0.4);
+        }
+        .timeline-line {
+            background: linear-gradient(180deg, #232f48 0%, #232f48 90%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-card-dark bg-background-dark/95 backdrop-blur-md">
+<div class="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-4">
+<div class="flex size-8 items-center justify-center rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-2xl">timeline</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-white">TimelinePulse</h1>
+</div>
+<div class="flex flex-1 items-center justify-end gap-4 sm:gap-6">
+<!-- Search -->
+<div class="hidden max-w-md flex-1 sm:block">
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-text-secondary">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-full rounded-lg border-0 bg-card-dark py-2 pl-10 pr-4 text-white placeholder-text-secondary focus:ring-2 focus:ring-primary sm:text-sm" placeholder="Search discussions..." type="text"/>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-lg bg-card-dark text-white hover:bg-card-dark/80 transition">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-lg bg-card-dark text-white hover:bg-card-dark/80 transition">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+</button>
+<div class="h-10 w-10 overflow-hidden rounded-full border border-card-dark bg-cover bg-center" data-alt="User profile avatar showing a smiling man" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAlu1K_qQJFBImdpfxmDe7WSHExwlg5-5qDNo8asT2Vh4192brOz63pWCX8jywmrSko7TiDv705h357bRwd6ortRiH3OOIRORgAFZiIdb2UFBiSZ_k1qyXWvbsm9OrWNvi0Y2YP-OVUaRCJVMAdqSDjfw1ihufWUzBjqKfqJnwvDWQkTGNEZLQfsOxiKn8snm2vbjx4tp73Z_CRedoKJoVu3WN4XV-oexs3mU3Vqa7L_aa7_SZ44M-IZDjG76EeK_OEKIuQDEJTgZY');"></div>
+</div>
+</div>
+</div>
+</header>
+<div class="mx-auto flex w-full max-w-[1440px] flex-1 items-start gap-8 p-4 sm:p-6 lg:p-8">
+<!-- Left Main Content -->
+<main class="flex min-w-0 flex-1 flex-col gap-6">
+<!-- Breadcrumbs -->
+<nav class="flex items-center text-sm font-medium text-text-secondary">
+<a class="hover:text-white transition" href="#">Forums</a>
+<span class="mx-2">/</span>
+<a class="hover:text-white transition" href="#">Development</a>
+<span class="mx-2">/</span>
+<span class="text-white">Web Development</span>
+</nav>
+<!-- Page Heading -->
+<div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+<div>
+<h2 class="text-3xl font-black tracking-tight text-white sm:text-4xl">Web Development</h2>
+<p class="mt-2 text-lg text-text-secondary">Discuss frontend, backend, and full-stack frameworks.</p>
+</div>
+<button class="group flex items-center gap-2 rounded-lg bg-card-dark px-4 py-2.5 text-sm font-bold text-white transition hover:bg-primary hover:text-white">
+<span class="material-symbols-outlined text-[20px] transition group-hover:animate-pulse">visibility</span>
+<span>Watch Forum</span>
+</button>
+</div>
+<!-- Filters & Sort -->
+<div class="no-scrollbar flex gap-3 overflow-x-auto pb-2">
+<button class="flex h-9 shrink-0 items-center gap-2 rounded-lg bg-primary px-4 text-sm font-medium text-white shadow-lg shadow-primary/20">
+<span>Newest</span>
+<span class="material-symbols-outlined text-[18px]">arrow_drop_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center gap-2 rounded-lg bg-card-dark px-4 text-sm font-medium text-text-secondary transition hover:text-white">
+<span>Most Popular</span>
+<span class="material-symbols-outlined text-[18px]">arrow_drop_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center gap-2 rounded-lg bg-card-dark px-4 text-sm font-medium text-text-secondary transition hover:text-white">
+<span>Unanswered</span>
+<span class="material-symbols-outlined text-[18px]">arrow_drop_down</span>
+</button>
+<button class="flex h-9 shrink-0 items-center gap-2 rounded-lg bg-card-dark px-4 text-sm font-medium text-text-secondary transition hover:text-white">
+<span>Your Threads</span>
+<span class="material-symbols-outlined text-[18px]">arrow_drop_down</span>
+</button>
+</div>
+<!-- Timeline Stream -->
+<div class="relative mt-4 flex flex-col gap-0">
+<!-- Continuous Vertical Line -->
+<div class="timeline-line absolute left-[27px] top-4 bottom-0 w-[2px]"></div>
+<!-- Timeline Group: Pinned -->
+<div class="mb-8">
+<div class="relative mb-6 flex items-center gap-4 pl-[60px]">
+<div class="absolute left-[18px] flex h-5 w-5 items-center justify-center rounded-full bg-card-dark ring-4 ring-background-dark">
+<span class="material-symbols-outlined text-[14px] text-text-secondary">push_pin</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider text-text-secondary">Pinned Threads</span>
+</div>
+<!-- Pinned Item 1 -->
+<div class="group relative flex gap-6 pb-8">
+<!-- Node -->
+<div class="z-10 flex flex-col items-center">
+<div class="flex h-14 w-14 items-center justify-center rounded-full border-4 border-background-dark bg-card-dark transition group-hover:scale-110 group-hover:border-primary/20">
+<span class="material-symbols-outlined text-primary">campaign</span>
+</div>
+</div>
+<!-- Card -->
+<div class="flex-1 overflow-hidden rounded-xl bg-gradient-to-r from-card-dark to-[#1a2336] p-5 shadow-sm ring-1 ring-white/5 transition hover:ring-primary/40">
+<div class="flex items-start justify-between gap-4">
+<div>
+<div class="mb-1 flex items-center gap-2">
+<span class="inline-flex items-center rounded bg-primary/20 px-2 py-0.5 text-xs font-bold text-primary">ANNOUNCEMENT</span>
+<span class="text-xs text-text-secondary">Oct 24 • Admin Team</span>
+</div>
+<h3 class="text-lg font-bold text-white group-hover:text-primary group-hover:underline decoration-2 underline-offset-4">Welcome to the new Developer Hub</h3>
+<p class="mt-2 line-clamp-2 text-sm text-text-secondary">We've updated the forum rules and introduced new layout features including this timeline view. Please read before posting.</p>
+</div>
+<div class="hidden shrink-0 flex-col items-end gap-1 text-xs text-text-secondary sm:flex">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>342</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>12k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Group: Today -->
+<div class="mb-2">
+<div class="relative mb-6 flex items-center gap-4 pl-[60px]">
+<div class="absolute left-[23px] h-2.5 w-2.5 rounded-full bg-primary pulse-glow ring-4 ring-background-dark"></div>
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Today</span>
+</div>
+<!-- Thread Item 1 (Active/New) -->
+<div class="group relative flex gap-6 pb-8">
+<div class="z-10 flex flex-col items-center pt-1">
+<!-- Avatar as Node -->
+<div class="relative h-14 w-14 rounded-full border-4 border-background-dark ring-2 ring-primary transition group-hover:scale-105" data-alt="Avatar of user Sarah" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBScmsAdlODCShN-Fd1gx7uzHRuUHuyk1s6SCUV9fWx8LMjpyX7LJf3F9ecb9rqJy6wVJCJnFlArvrgmiQOYaEGw9SC0RJC0NWYgN1_TrcgLepEemrgd1B6UTLyn9ayqPOOtK8FbuJxaMwUgndhZ4Y2TaZL_N2yL1Vyd4ZlRJ56L4xLuV8VhHt4X5acXGGer4razo6oSSJIA-gh1mPPLvR2IKaNHHuFamMl4rjDm9L37eOhIzpW2px6r3wD0K1Pxm5jWI_eVbp-85k'); background-size: cover;">
+<div class="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-background-dark bg-green-500"></div>
+</div>
+</div>
+<div class="flex-1 rounded-xl bg-card-dark p-5 transition hover:bg-[#2a3752]">
+<div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+<div class="flex-1">
+<h3 class="text-lg font-bold text-white group-hover:text-primary">React 19 vs Vue 3.4 Vapor Mode performance?</h3>
+<div class="mt-1 flex flex-wrap gap-2">
+<span class="inline-flex items-center rounded-full bg-[#111722] px-2 py-0.5 text-xs text-text-secondary">JavaScript</span>
+<span class="inline-flex items-center rounded-full bg-[#111722] px-2 py-0.5 text-xs text-text-secondary">Performance</span>
+</div>
+<p class="mt-3 line-clamp-2 text-sm text-text-secondary">Has anyone run benchmarks on the latest RC? I'm seeing some interesting memory usage patterns in large lists...</p>
+</div>
+<div class="mt-2 flex items-center justify-between gap-4 border-t border-white/5 pt-2 sm:mt-0 sm:flex-col sm:items-end sm:border-0 sm:pt-0">
+<div class="text-right">
+<span class="block text-sm font-bold text-white">2m ago</span>
+<span class="text-xs text-text-secondary">by Sarah_Dev</span>
+</div>
+<div class="flex items-center gap-3 rounded-lg bg-background-dark/50 px-2 py-1">
+<span class="flex items-center gap-1 text-xs font-medium text-white">
+<span class="material-symbols-outlined text-[14px] text-primary">reply</span> 14
+                                        </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Thread Item 2 -->
+<div class="group relative flex gap-6 pb-8">
+<div class="z-10 flex flex-col items-center pt-1">
+<div class="relative h-14 w-14 rounded-full border-4 border-background-dark grayscale transition group-hover:grayscale-0" data-alt="Avatar of user Mike" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJeyqvPPvoAUp8rY_YPzgAmviISP8vB8FCfut0HcEDVnA8Bc2Y-kSNZ9lXB9yEHdea-YFn4FtfwGmzLcPNQTpk8crPnyx_VAsEnRAA93m4lnVHAsMifz6drzeqZ2xoNk-tCfiZ2DeZW1uouvqlbEqvhaimLQfB0T9ebItvnVj_4sZNPqUjT14PLnUlZ5dOqVLNqCtnfD_XO9wGgUOiDowuAVQOOxwo8V04EQG3IoUS3W9x-9isKzFGeZNHNP9krbWr-IkARjsDQLw'); background-size: cover;">
+</div>
+</div>
+<div class="flex-1 rounded-xl bg-card-dark p-5 transition hover:bg-[#2a3752]">
+<div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+<div class="flex-1">
+<h3 class="text-lg font-bold text-white/90 group-hover:text-white">Help with CSS Grid alignment issue</h3>
+<p class="mt-2 line-clamp-1 text-sm text-text-secondary">My grid items are overlapping when the viewport width is exactly 768px...</p>
+</div>
+<div class="mt-2 flex items-center justify-between gap-4 border-t border-white/5 pt-2 sm:mt-0 sm:flex-col sm:items-end sm:border-0 sm:pt-0">
+<div class="text-right">
+<span class="block text-sm font-medium text-text-secondary">3h ago</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">chat_bubble_outline</span> 2
+                                        </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Group: Yesterday -->
+<div class="mb-2">
+<div class="relative mb-6 flex items-center gap-4 pl-[60px]">
+<div class="absolute left-[23px] h-2.5 w-2.5 rounded-full bg-card-dark ring-4 ring-background-dark ring-offset-2 ring-offset-text-secondary/20"></div>
+<span class="text-xs font-bold uppercase tracking-wider text-text-secondary">Yesterday</span>
+</div>
+<!-- Thread Item 3 -->
+<div class="group relative flex gap-6 pb-8">
+<div class="z-10 flex flex-col items-center pt-1">
+<div class="relative h-14 w-14 rounded-full border-4 border-background-dark bg-purple-900 flex items-center justify-center text-white font-bold text-lg">
+                                JS
+                            </div>
+</div>
+<div class="flex-1 rounded-xl bg-card-dark p-5 opacity-90 transition hover:bg-[#2a3752] hover:opacity-100">
+<div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+<div class="flex-1">
+<h3 class="text-lg font-bold text-white/90 group-hover:text-white">Best practices for state management in 2024</h3>
+<p class="mt-2 line-clamp-1 text-sm text-text-secondary">Are we still using Redux or has everyone moved to signals?</p>
+</div>
+<div class="mt-2 flex items-center justify-between gap-4 border-t border-white/5 pt-2 sm:mt-0 sm:flex-col sm:items-end sm:border-0 sm:pt-0">
+<div class="text-right">
+<span class="block text-sm font-medium text-text-secondary">1d ago</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-[14px]">whatshot</span> 45
+                                        </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- End of Feed -->
+<div class="flex flex-col items-center justify-center py-8 pl-[60px]">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-card-dark text-text-secondary">
+<span class="material-symbols-outlined">check</span>
+</div>
+<p class="mt-4 text-sm font-medium text-text-secondary">You're all caught up!</p>
+</div>
+</div>
+</main>
+<!-- Right Sidebar (Desktop) -->
+<aside class="hidden w-80 shrink-0 flex-col gap-6 xl:flex">
+<!-- Calendar Widget -->
+<div class="overflow-hidden rounded-xl bg-card-dark p-4 shadow-lg">
+<div class="mb-4 flex items-center justify-between">
+<button class="text-text-secondary hover:text-white">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<span class="text-sm font-bold text-white">October 2023</span>
+<button class="text-text-secondary hover:text-white">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center text-xs">
+<span class="py-2 font-bold text-text-secondary">S</span>
+<span class="py-2 font-bold text-text-secondary">M</span>
+<span class="py-2 font-bold text-text-secondary">T</span>
+<span class="py-2 font-bold text-text-secondary">W</span>
+<span class="py-2 font-bold text-text-secondary">T</span>
+<span class="py-2 font-bold text-text-secondary">F</span>
+<span class="py-2 font-bold text-text-secondary">S</span>
+<span class="flex aspect-square items-center justify-center rounded-full text-text-secondary hover:bg-white/5">29</span>
+<span class="flex aspect-square items-center justify-center rounded-full text-text-secondary hover:bg-white/5">30</span>
+<span class="flex aspect-square items-center justify-center rounded-full text-white hover:bg-white/5">1</span>
+<span class="flex aspect-square items-center justify-center rounded-full text-white hover:bg-white/5">2</span>
+<span class="flex aspect-square items-center justify-center rounded-full text-white hover:bg-white/5">3</span>
+<span class="flex aspect-square items-center justify-center rounded-full text-white hover:bg-white/5">4</span>
+<span class="flex aspect-square items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/40">5</span>
+<span class="flex aspect-square items-center justify-center rounded-full text-white hover:bg-white/5">6</span>
+<!-- ... simplified calendar for brevity ... -->
+</div>
+<button class="mt-4 w-full rounded-lg bg-background-dark py-2 text-xs font-bold text-white hover:bg-background-dark/80">
+                    Jump to Date
+                </button>
+</div>
+<!-- Trending Pulse Widget -->
+<div class="rounded-xl bg-card-dark p-5">
+<div class="mb-4 flex items-center justify-between">
+<h3 class="text-sm font-bold text-white">Trending Pulse</h3>
+<span class="material-symbols-outlined text-[18px] text-primary">ecg_heart</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<span class="text-lg font-bold text-primary">#1</span>
+<div class="flex-1 overflow-hidden">
+<p class="truncate text-sm font-medium text-white">Rust Foundation Debate</p>
+<p class="text-xs text-text-secondary">1.2k replies • active now</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-lg font-bold text-text-secondary">#2</span>
+<div class="flex-1 overflow-hidden">
+<p class="truncate text-sm font-medium text-white">Showcase your desk setup</p>
+<p class="text-xs text-text-secondary">856 replies</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-lg font-bold text-text-secondary">#3</span>
+<div class="flex-1 overflow-hidden">
+<p class="truncate text-sm font-medium text-white">Beginner Python Projects</p>
+<p class="text-xs text-text-secondary">420 replies</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Contributors -->
+<div class="rounded-xl bg-card-dark p-5">
+<h3 class="mb-4 text-sm font-bold text-white">Top Contributors</h3>
+<div class="flex -space-x-2">
+<div class="h-10 w-10 rounded-full border-2 border-card-dark bg-cover bg-center" data-alt="Contributor 1" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDgX6B-RJ5pASsnbMEtPAJmDWVX0JzlWK-OMOEopDmsNC9OCnYhKKM7XSDSDvtlPhC0TkAHI02OxUzPPbknybgQATv_EO5AeJl4R7kkuwi-Ul3WOY6TAGXxQhf3ifjVzbACJA6fdvjMxac8mk9JSq5a4vnRqDGREjn8TzQyfnVahbmjSiYJzMlPFEyWfKFlht74dKY0Oa6x8ipGWgzR9fkm5hd6mu0_wdI3yNs9PbySdltl2KOJBQcLykSCDnZDZV00ydF5Ne5rOIM');"></div>
+<div class="h-10 w-10 rounded-full border-2 border-card-dark bg-cover bg-center" data-alt="Contributor 2" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQk1PMrkEdViYMGJQa333Dz4fFJ4gb-zgpNmmGefJfBXSTgWrP4KBRcTLc7MmVZZr71iwkqg-cchfCucNjVH2-o7eStsratJLtIRwjD7VcAozVffUdJ2moabNGDiTsea9j0uEy54wCb2uRJJ3JnDDdqY_dBeo6krBV3g9orC2HdJIoFSK1OsGloGfGu30is4bEMI50m79x4YxlIKhG-BG9zSvah0yMr5t_gbkKtKSs2VfcHmBiOyrE_sotF_8iEp4en356eTt3yd4');"></div>
+<div class="h-10 w-10 rounded-full border-2 border-card-dark bg-cover bg-center" data-alt="Contributor 3" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCQVNN67FWEZKf4cOij5GqsIc7oNvauVukeSTLeSJ_TcHpXIZV-t6F2tXooME8DGl7a8kRIDR_lxErnWzCx72gkoOUNwrzGmmwL7AE9jZ-1tgV2rG1dyQSoIrHbHucK0Cv4hhoWTLULKmPXtO1R-eLU6KbErOyKyXvIOTCQXpb0W2XDo4OJEH-J_UvP08DARRWe3z3MZlPr32ALPpJ50u80Cw8Z0MxZcD4cTrJ8mQpyQVdpbHXPaEv5k-PvwLrzeo-6ITYjY955HPE');"></div>
+<div class="h-10 w-10 rounded-full border-2 border-card-dark bg-cover bg-center" data-alt="Contributor 4" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAroMjKs2ScwXbUQvL4Vhx90K6c0bf1tibF5SS5yltgDpA5rc_0p7tWaGOd4A_hiud7Vsb0GXs3Q1c2TpquXcq39MqOe5YkzAETy78k_Z3RLIryGn-ma4LTwldGbnLyr4a1Ah7eVlIWgAHzJleFbYd8x9oZ32wJ5wVYg2YYBO_bgoDFGQyWvY26erGi4D06u_Cw5VZk6PJSaABaJ0KnKE0dR-ZVEEGhyDE4iBxyUfVPYdUOCRXfXSXYTptBANx2UZyZFFk8LV7U4k8');"></div>
+<div class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-card-dark bg-background-dark text-xs font-bold text-text-secondary">+12</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- FAB: Post Thread -->
+<button class="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-[0_4px_20px_rgba(19,91,236,0.5)] transition hover:scale-110 hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-primary/30">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</body></html>

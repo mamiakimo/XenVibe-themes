@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إنشاء منشور (متقدم) - داكن</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#111722",
+                        "card-dark": "#232f48",
+                        "text-muted": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #34425e; 
+        }
+        
+        /* Hide default focus ring for contenteditable */
+        [contenteditable]:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body class="bg-surface-dark text-white font-display overflow-hidden h-screen flex">
+<!-- Right Sidebar (Navigation) -->
+<aside class="w-64 bg-surface-dark border-l border-card-dark flex-col hidden lg:flex h-full z-20">
+<div class="p-6 pb-2">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 shadow-lg" data-alt="User profile avatar with abstract geometric shapes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBoED1y5X215JQdYeb0vjJMMfsiRLNRAYJSXGf50mzY1aLwupBONAoG_qkkP6mIF_lzWrrj1CAADBNqjkKLy9s7RNTKDu5rgyGJLLRBviduq864jtLnqdu1ctR0m9rzYVjU7n5MyzStpzRI8aIrXxQfASKDzR7PStJ4TkoFbxqCAMLikisgfPHUETCDhMeTjqpwcFjyrMXvHvAlGm9vCvfmCOZpGKDZ35PvDuBkhYZROYw0REicgAfSocq_WvgCcA9-Nz6hJEYvb08");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-lg font-bold leading-normal">المستخدم العربي</h1>
+<p class="text-text-muted text-xs font-normal">عضو مميز</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-card-dark text-white hover:bg-primary/20 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">home</span>
+<span class="text-sm font-medium">الرئيسية</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-card-dark hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">المجتمع</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-card-dark hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-sm font-medium">استكشف</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-card-dark hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-sm font-medium">الرسائل</span>
+<span class="mr-auto bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">3</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-text-muted hover:bg-card-dark hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-sm font-medium">الملف الشخصي</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-card-dark">
+<div class="flex items-center gap-3 text-text-muted hover:text-white cursor-pointer transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">الإعدادات</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface-dark relative">
+<!-- Top Header -->
+<header class="flex items-center justify-between border-b border-card-dark px-8 py-4 bg-surface-dark z-10 sticky top-0">
+<div class="flex items-center gap-6 flex-1">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg shadow-[0_0_15px_rgba(19,91,236,0.5)]">
+<span class="material-symbols-outlined text-xl">hub</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight hidden sm:block">شبكة التواصل</h2>
+</div>
+<div class="relative hidden md:flex flex-1 max-w-md">
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted material-symbols-outlined text-[20px]">search</span>
+<input class="w-full bg-card-dark border-none rounded-xl py-2.5 pr-10 pl-4 text-sm text-white placeholder:text-text-muted focus:ring-2 focus:ring-primary/50 transition-all" placeholder="بحث في المنتديات..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-6 hidden sm:flex">
+<a class="text-text-muted hover:text-white text-sm font-medium transition-colors" href="#">المنتديات</a>
+<a class="text-text-muted hover:text-white text-sm font-medium transition-colors" href="#">الأعضاء</a>
+<a class="text-white text-sm font-medium border-b-2 border-primary pb-0.5" href="#">الجديد</a>
+</div>
+<button class="bg-card-dark p-2 rounded-full text-white hover:bg-primary hover:text-white transition-colors lg:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<div class="flex-1 overflow-y-auto p-4 sm:p-8">
+<div class="max-w-5xl mx-auto flex flex-col gap-6">
+<!-- Page Heading -->
+<div class="flex flex-wrap items-end justify-between gap-4 border-b border-card-dark pb-6">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-primary text-sm font-bold uppercase tracking-wider">محرر متقدم</span>
+<span class="bg-card-dark text-xs px-2 py-0.5 rounded text-text-muted">نسخة 3.2</span>
+</div>
+<h1 class="text-3xl sm:text-4xl font-black text-white leading-tight">إنشاء منشور جديد</h1>
+<p class="text-text-muted flex items-center gap-2 text-sm mt-1">
+<span class="size-2 rounded-full bg-green-500 animate-pulse"></span>
+                            مسودة محفوظة تلقائياً منذ دقيقتين
+                        </p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-card-dark hover:bg-[#2e3e5e] text-white rounded-xl text-sm font-bold transition-colors border border-transparent hover:border-gray-600">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>المسودات</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-card-dark hover:bg-red-500/10 text-red-400 hover:text-red-300 rounded-xl text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>حذف</span>
+</button>
+</div>
+</div>
+<!-- Main Editor Section -->
+<div class="flex flex-col gap-4">
+<!-- Title Input -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-text-muted pr-1">عنوان الموضوع</label>
+<input class="w-full bg-card-dark border border-transparent focus:border-primary focus:ring-1 focus:ring-primary rounded-xl p-4 text-lg text-white placeholder:text-gray-600 transition-all shadow-sm" placeholder="أدخل عنواناً جذاباً للنقاش..." value=""/>
+</div>
+<!-- Rich Text Editor -->
+<div class="flex flex-col bg-card-dark rounded-xl overflow-hidden shadow-sm border border-transparent focus-within:border-primary/50 transition-colors">
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center gap-1 p-2 border-b border-[#34425e] bg-[#2a3855]">
+<button class="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors" title="Bold">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors" title="Italic">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<button class="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors" title="Underline">
+<span class="material-symbols-outlined text-[20px]">format_underlined</span>
+</button>
+<div class="w-px h-5 bg-gray-600 mx-1"></div>
+<button class="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors" title="Heading">
+<span class="material-symbols-outlined text-[20px]">title</span>
+</button>
+<button class="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors" title="Link">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors" title="Image">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<div class="w-px h-5 bg-gray-600 mx-1"></div>
+<button class="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors" title="List">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+</button>
+<button class="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors" title="Quote">
+<span class="material-symbols-outlined text-[20px]">format_quote</span>
+</button>
+<button class="mr-auto p-2 text-primary hover:bg-primary/10 rounded-lg transition-colors flex items-center gap-2 text-xs font-bold">
+<span>معاينة</span>
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<!-- Text Area -->
+<div class="min-h-[300px] p-6 text-white text-base leading-relaxed outline-none" contenteditable="true">
+<p>أكتب محتوى منشورك هنا...</p>
+</div>
+<!-- Attachments Drop Zone -->
+<div class="px-4 py-3 bg-[#1e2a40] border-t border-[#34425e] flex items-center justify-between">
+<div class="flex items-center gap-2 text-xs text-text-muted">
+<span class="material-symbols-outlined text-sm">attach_file</span>
+<span>اسحب الملفات هنا أو اضغط للإرفاق</span>
+</div>
+<span class="text-[10px] text-gray-500">يدعم JPG, PNG, PDF حتى 10MB</span>
+</div>
+</div>
+</div>
+<!-- Advanced Settings (Collapsible Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+<!-- Destination Card -->
+<div class="bg-card-dark rounded-xl p-5 border border-transparent hover:border-gray-700 transition-colors">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="bg-blue-500/20 p-2 rounded-lg text-blue-400">
+<span class="material-symbols-outlined">category</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-sm">الوجهة</h3>
+<p class="text-xs text-text-muted">أين سيتم نشر هذا الموضوع؟</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<select class="w-full bg-[#111722] border border-gray-700 rounded-lg py-2.5 px-4 text-sm text-white focus:ring-primary focus:border-primary appearance-none cursor-pointer">
+<option>المنتدى العام</option>
+<option>قسم التقنية والبرمجة</option>
+<option>عالم التصميم والجرافيكس</option>
+<option>مجتمع المطورين</option>
+</select>
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 material-symbols-outlined pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- SEO & Tags Card -->
+<div class="bg-card-dark rounded-xl p-5 border border-transparent hover:border-gray-700 transition-colors">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="bg-purple-500/20 p-2 rounded-lg text-purple-400">
+<span class="material-symbols-outlined">sell</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-sm">الوسوم (SEO)</h3>
+<p class="text-xs text-text-muted">كلمات مفتاحية لتحسين البحث</p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 bg-[#111722] border border-gray-700 rounded-lg p-2 min-h-[46px]">
+<span class="bg-primary/20 text-primary-300 text-xs font-medium px-2 py-1 rounded flex items-center gap-1">
+                                تطوير_ويب <button class="hover:text-white">×</button>
+</span>
+<span class="bg-primary/20 text-primary-300 text-xs font-medium px-2 py-1 rounded flex items-center gap-1">
+                                تصميم <button class="hover:text-white">×</button>
+</span>
+<input class="bg-transparent border-none text-sm text-white focus:ring-0 p-0 placeholder:text-gray-600 w-24" placeholder="إضافة..." type="text"/>
+</div>
+</div>
+<!-- Settings Toggles -->
+<div class="md:col-span-2 bg-card-dark rounded-xl p-5 border border-transparent hover:border-gray-700 transition-colors">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 mb-2">
+<div class="bg-green-500/20 p-2 rounded-lg text-green-400">
+<span class="material-symbols-outlined">tune</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-sm">إعدادات النشر المتقدمة</h3>
+<p class="text-xs text-text-muted">تحكم في خيارات العرض والتفاعل</p>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Toggle Item -->
+<label class="flex items-center justify-between p-3 rounded-lg bg-[#111722] border border-gray-700 cursor-pointer hover:bg-gray-900 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">lock</span>
+<span class="text-sm font-medium text-gray-200">إغلاق الموضوع</span>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-700">
+<span class="inline-block h-4 w-4 transform rounded-full bg-white transition translate-x-1"></span>
+</div>
+</label>
+<!-- Toggle Item (Active) -->
+<label class="flex items-center justify-between p-3 rounded-lg bg-[#111722] border border-primary/40 cursor-pointer hover:bg-gray-900 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+<span class="text-sm font-medium text-white">متابعة الردود</span>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary">
+<span class="inline-block h-4 w-4 transform rounded-full bg-white transition -translate-x-6 shadow-sm"></span>
+</div>
+</label>
+<!-- Toggle Item -->
+<label class="flex items-center justify-between p-3 rounded-lg bg-[#111722] border border-gray-700 cursor-pointer hover:bg-gray-900 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-400">schedule</span>
+<span class="text-sm font-medium text-gray-200">نشر مجدول</span>
+</div>
+<div class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-700">
+<span class="inline-block h-4 w-4 transform rounded-full bg-white transition translate-x-1"></span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="sticky bottom-0 bg-surface-dark/95 backdrop-blur py-4 border-t border-card-dark flex justify-between items-center mt-4">
+<button class="text-text-muted hover:text-white font-medium px-6 py-2 transition-colors">إلغاء الأمر</button>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 rounded-xl border border-gray-600 text-white font-bold hover:bg-white/5 transition-colors">حفظ كمسودة</button>
+<button class="px-8 py-2.5 rounded-xl bg-primary text-white font-bold shadow-[0_4px_20px_rgba(19,91,236,0.4)] hover:shadow-[0_4px_25px_rgba(19,91,236,0.6)] hover:bg-blue-600 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+<span>نشر الموضوع</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Left Sidebar (Help/Context) - RTL Left -->
+<aside class="w-80 border-r border-card-dark bg-surface-dark hidden xl:block p-6">
+<div class="sticky top-6 flex flex-col gap-6">
+<!-- Rules Card -->
+<div class="bg-gradient-to-br from-card-dark to-[#1a2336] rounded-xl p-5 border border-card-dark shadow-sm">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-yellow-500">lightbulb</span>
+<h3 class="font-bold text-white">نصائح لنشر مميز</h3>
+</div>
+<ul class="space-y-3">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span>
+<p class="text-sm text-gray-300 leading-snug">اختر عنواناً واضحاً ومختصراً يعبر عن المحتوى.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span>
+<p class="text-sm text-gray-300 leading-snug">استخدم الوسوم المناسبة لتسهيل وصول الأعضاء لموضوعك.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span>
+<p class="text-sm text-gray-300 leading-snug">تأكد من اختيار القسم الصحيح لتجنب نقل الموضوع.</p>
+</li>
+</ul>
+</div>
+<!-- Similar Threads (Contextual) -->
+<div>
+<h3 class="text-xs font-bold text-text-muted uppercase tracking-wider mb-3">مواضيع مشابهة (تلقائي)</h3>
+<div class="flex flex-col gap-3">
+<a class="group block p-3 rounded-lg hover:bg-card-dark transition-colors border border-transparent hover:border-gray-700" href="#">
+<h4 class="text-sm font-medium text-gray-200 group-hover:text-primary transition-colors line-clamp-2">كيف أبدأ في مجال تصميم واجهات المستخدم؟</h4>
+<div class="flex items-center gap-2 mt-2 text-xs text-gray-500">
+<span class="material-symbols-outlined text-[14px]">forum</span>
+<span>المنتدى العام</span>
+<span>•</span>
+<span>منذ 3 ساعات</span>
+</div>
+</a>
+<a class="group block p-3 rounded-lg hover:bg-card-dark transition-colors border border-transparent hover:border-gray-700" href="#">
+<h4 class="text-sm font-medium text-gray-200 group-hover:text-primary transition-colors line-clamp-2">أفضل المصادر لتعلم Tailwind CSS بالعربية</h4>
+<div class="flex items-center gap-2 mt-2 text-xs text-gray-500">
+<span class="material-symbols-outlined text-[14px]">code</span>
+<span>تطوير الويب</span>
+<span>•</span>
+<span>أمس</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</aside>
+</body></html>

@@ -1,0 +1,639 @@
+// MEMBER PROFILE PAGE - CARDS LAYOUT
+// ================================================
+// تم مسح الكود القديم - سنبدأ من جديد
+
+.template-member_view {
+
+  // إزالة الشادو من البلوك الرئيسي
+  .block {
+    box-shadow: none !important;
+
+    &:hover {
+      box-shadow: none !important;
+    }
+  }
+
+  // ========================================
+  // 1. HEADER CARD - البطاقة الرئيسية
+  // ========================================
+  .block>.block-container>.block-body>.memberHeader {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 0.75rem;
+    margin-bottom: 0;
+    overflow: hidden;
+    box-shadow: none !important;
+  }
+
+  .memberHeader {
+    background: transparent;
+    border: none;
+    box-shadow: none !important;
+  }
+
+  .memberHeader-main {
+    padding: 1.25rem;
+    background: transparent;
+    position: relative;
+  }
+
+  .memberHeader-mainContent {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  // ========================================
+  // 2. AVATAR - الصورة الدائرية (تحت ويسار قليلاً)
+  // ========================================
+  .memberHeader-avatar {
+    flex-shrink: 0;
+    margin-top: 1rem;
+    margin-left: 1rem;
+
+    .avatar {
+      width: 96px !important;
+      height: 96px !important;
+      border: 3px solid @xf-borderColor;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  // ========================================
+  // 3. USER INFO - معلومات العضو
+  // ========================================
+  .memberHeader-content--info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .memberHeader-name .username {
+    font-size: 1.375rem;
+    font-weight: 700;
+  }
+
+  .memberHeader-banners {
+    margin: 0.5rem 0;
+  }
+
+  .memberHeader-blurbContainer {
+    margin-top: 0.5rem;
+  }
+
+  .memberHeader-blurb {
+    color: @xf-textColorMuted;
+    font-size: 0.8125rem;
+    margin-bottom: 0.25rem;
+
+    dt {
+      color: @xf-textColorMuted;
+    }
+
+    dd {
+      color: @xf-textColor;
+    }
+  }
+
+  // ========================================
+  // 4. MODERATOR BUTTONS - أزرار الإشراف (أقصى اليسار من الكارد)
+  // ========================================
+  .memberHeader-actionTop {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem; // في RTL، right = اليسار الفعلي
+    left: auto;
+    z-index: 10;
+    display: flex;
+    gap: 0.5rem;
+
+    .button {
+      background: @xf-linkColor;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: white;
+
+      &:hover {
+        background: darken(@xf-linkColor, 8%);
+      }
+
+      &.button--link {
+        background: fade(@xf-linkColor, 15%);
+        color: @xf-linkColor;
+
+        &:hover {
+          background: fade(@xf-linkColor, 25%);
+        }
+      }
+    }
+
+    .menuTrigger {
+      background: fade(@xf-linkColor, 15%);
+      color: @xf-linkColor;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+
+      &:hover {
+        background: fade(@xf-linkColor, 25%);
+      }
+    }
+  }
+
+  // ========================================
+  // 5. STATS + BUTTONS - الإحصائيات والأزرار
+  // ========================================
+  .memberHeader>.memberHeader-content {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid @xf-borderColor;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .memberHeader-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    .pairJustifier {
+      display: contents;
+    }
+
+    dl.pairs {
+      display: flex;
+      align-items: baseline;
+      gap: 0.375rem;
+      margin: 0;
+    }
+
+    dd {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: @xf-textColor;
+    }
+
+    dt {
+      font-size: 0.8125rem;
+      color: @xf-textColorMuted;
+      font-weight: 400;
+    }
+  }
+
+  .memberHeader-separator {
+    display: none;
+  }
+
+  .memberHeader-buttons {
+    display: flex;
+    gap: 0.75rem;
+    margin: 0;
+
+    // ستايل الأزرار الأساسية
+    .button {
+      border-radius: 0.75rem;
+      padding: 0.625rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    // ========================================
+    // زر المتابعة - أزرق Primary مثل "نشر موضوع"
+    // ========================================
+    .button[href*="/follow"] {
+      background: @xf-linkColor !important;
+      border: none !important;
+      color: white !important;
+      box-shadow: 0 4px 12px fade(@xf-linkColor, 30%);
+
+      &:hover {
+        background: darken(@xf-linkColor, 8%) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px fade(@xf-linkColor, 40%);
+      }
+
+      // إلغاء المتابعة - مصمت outline
+      &.is-selected,
+      &.is-on {
+        background: transparent !important;
+        border: 1px solid @xf-borderColor !important;
+        color: @xf-textColor !important;
+        box-shadow: none !important;
+
+        &:hover {
+          background: fade(@xf-contentHighlightBg, 50%) !important;
+          border-color: @xf-linkColor !important;
+          transform: none;
+        }
+      }
+    }
+
+    // ========================================
+    // الأزرار الثانوية (تجاهل، رسالة، بحث)
+    // ========================================
+    .button--link:not([href*="/follow"]) {
+      background: transparent;
+      border: 1px solid @xf-borderColor;
+      color: @xf-textColor;
+      box-shadow: none;
+
+      &:hover {
+        background: fade(@xf-contentHighlightBg, 50%);
+        border-color: @xf-linkColor;
+      }
+    }
+
+    .menuTrigger {
+      background: transparent;
+      border: 1px solid @xf-borderColor;
+      color: @xf-textColor;
+      border-radius: 0.75rem;
+      padding: 0.625rem 1rem;
+
+      &:hover {
+        background: fade(@xf-contentHighlightBg, 50%);
+        border-color: @xf-linkColor;
+      }
+    }
+  }
+
+  // ========================================
+  // 6. TABS - TESTING ONE BY ONE
+  // ========================================
+
+  // إخفاء كل الخلفيات الزرقاء
+  .block-tabHeader.tabs,
+  .block-tabHeader.tabs *,
+  .block-tabHeader.tabs::before,
+  .block-tabHeader.tabs::after,
+  .block-tabHeader.tabs *::before,
+  .block-tabHeader.tabs *::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  // تقليل padding الـ tabs container - زيادة التحديد لإلغاء الهامش الافتراضي
+  .block>.block-container>.block-body>.block-tabHeader.tabs {
+    padding: 0 1.25rem !important;
+    margin-bottom: 0 !important;
+    background: transparent !important;
+    border-bottom: 1px solid @xf-borderColor !important;
+  }
+
+  // التاب النشط - border-bottom بسيط
+  .block-tabHeader.tabs .tabs-tab {
+    padding-bottom: 1rem !important;
+    margin-bottom: -1px !important; // Push border down to overlap container border
+    background: transparent !important;
+    border: none !important; // Reset default borders
+  }
+
+  .block-tabHeader.tabs .tabs-tab.is-active {
+    border-bottom: 3px solid @xf-linkColor !important;
+    color: @xf-linkColor !important;
+  }
+
+  // ========================================
+  // 7. MAIN CONTENT - إزالة خلفية البلوك
+  // ========================================
+  .block--messages {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    >.block-container {
+      background: transparent;
+      border: none;
+    }
+
+    >.block-container>.block-body {
+      background: transparent;
+    }
+  }
+
+  // ========================================
+  // 8. PROFILE POSTS - كل منشور ككارد
+  // ========================================
+  .message--profilePost {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .message-inner {
+      background: transparent;
+      border: none;
+    }
+
+    .message-cell--user {
+      background: transparent;
+    }
+
+    .message-cell--main {
+      background: transparent;
+    }
+  }
+
+  // ========================================
+  // 9. WRITE POST BOX - صندوق كتابة المنشور
+  // ========================================
+  .message--quickReply {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+
+    .message-inner {
+      background: transparent;
+      border: none;
+    }
+  }
+
+  // ========================================
+  // 10. TAB PANES - محتوى التبويبات (AJAX)
+  // ========================================
+  .tabPanes {
+
+    // إزالة خلفية البلوكات داخل التبويبات
+    .block {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+
+      >.block-container {
+        background: transparent !important;
+        border: none !important;
+      }
+
+      >.block-container>.block-body {
+        background: transparent !important;
+      }
+    }
+
+    // ========================================
+    // آخر النشاطات + المنشورات - structItem as Cards
+    // ========================================
+    .structItem {
+      background: @xf-contentBg;
+      border: 1px solid @xf-borderColor;
+      border-radius: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding: 1rem 1.25rem;
+      transition: box-shadow 0.2s ease;
+
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      }
+
+      // إزالة الحدود الداخلية
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      .structItem-cell {
+        border: none;
+        padding: 0;
+      }
+    }
+
+    // ========================================
+    // معلومات (About) - block-row as Cards
+    // ========================================
+    .block-row {
+      background: @xf-contentBg;
+      border: 1px solid @xf-borderColor;
+      border-radius: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding: 1rem 1.25rem;
+
+      &:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+    }
+
+    // pairs inside block-row
+    .pairs {
+      dt {
+        color: @xf-textColorMuted;
+        font-size: 0.8125rem;
+      }
+
+      dd {
+        color: @xf-textColor;
+      }
+    }
+  }
+}
+
+// ================================================================
+// MEMBER PROFILE - PROFILE POSTS CARD LAYOUT
+// ================================================================
+// تاريخ الإضافة: يناير 2026
+// الوصف: تطبيق نفس تنسيق whats-new/profile-posts على صفحة الملف الشخصي
+// المصدر: نسخ من .template-whats_new_profile_posts (سطر 2532-2741)
+// الفروقات: بدون grid (كارد واحد في كل صف)، التاريخ منقول للأعلى عبر template modification
+// للتراجع: احذف هذا القسم بالكامل (من هذا التعليق حتى نهاية الملف)
+// ================================================================
+
+.template-member_view {
+
+  // Profile posts in member page - single column cards
+  .block--messages .message.message--simple,
+  .message--profilePost {
+    background: @xv-card-bg !important;
+    border-radius: @xv-card-radius !important;
+    border: @xv-card-border !important;
+    box-shadow: @xv-card-shadow !important;
+    overflow: hidden !important;
+    transition: @xv-card-transition !important;
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+
+    &:hover {
+      box-shadow: @xv-card-shadow-hover !important;
+      border-color: fade(@xf-linkColor, 30%) !important;
+      transform: translateY(-2px);
+    }
+
+    // ========================================
+    // LAYOUT: Column instead of row (hide sidebar)
+    // ========================================
+
+    // Change message-inner from row to column layout
+    .message-inner {
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+    }
+
+    // Hide the sidebar user cell (the long sidebar with avatar)
+    .message-cell--user {
+      display: none !important;
+    }
+
+    // Main content area takes full width
+    .message-cell--main {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      background: transparent !important;
+    }
+
+    // Message content - remove extra padding
+    .message-content {
+      padding: 0 !important;
+    }
+
+    // ========================================
+    // ATTRIBUTION: Avatar + Username + Date inline
+    // ========================================
+    .message-attribution {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      padding: 0 !important;
+
+      // Force avatar visible in attribution
+      .avatar {
+        display: inline-block !important;
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        flex-shrink: 0;
+      }
+    }
+
+    // ========================================
+    // BODY: Content flows below
+    // ========================================
+    .message-body {
+      width: 100%;
+      padding: 0 !important;
+    }
+
+    // ========================================
+    // FOOTER: Action bar
+    // ========================================
+    .message-footer {
+      background: transparent !important;
+      padding: 0.75rem 0 !important;
+      margin-top: 0.75rem;
+      margin-bottom: 0;
+    }
+
+    // Reactions row
+    .message-responseRow {
+      background: transparent !important;
+      padding: 0.5rem 0 !important;
+    }
+
+    // ========================================
+    // COMMENTS SECTION: Dark background block
+    // ========================================
+    .message-responses {
+      background: fade(@xf-textColor, 5%) !important;
+      border-radius: 0.5rem;
+      padding: 0.75rem !important;
+      margin-top: 0.75rem;
+    }
+  }
+
+  // ========================================
+  // COMMENTS STYLING
+  // ========================================
+  .comment {
+    .comment-inner {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start !important;
+      gap: 0.75rem;
+    }
+
+    // Avatar - keep visible, small size
+    .comment-avatar {
+      display: block !important;
+      flex-shrink: 0;
+
+      .avatar {
+        width: 2rem !important;
+        height: 2rem !important;
+      }
+    }
+
+    // Content takes remaining space
+    .comment-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    // Comment content wrapper
+    .comment-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    // Username, date and body layout
+    .comment-content .comment-contentWrapper {
+
+      // Username inline
+      .comment-user {
+        display: inline;
+        font-weight: 600;
+        margin-inline-end: 0.5rem;
+      }
+
+      // Date next to username (template modification adds it here)
+      .comment-date {
+        display: inline;
+        color: @xf-textColorMuted;
+        font-size: 0.75rem;
+        margin-inline-end: 0.5rem;
+
+        &::before {
+          content: "·";
+          margin-inline-end: 0.25rem;
+        }
+      }
+
+      .comment-body {
+        display: inline;
+      }
+    }
+
+    // Comment footer - hide original date (moved to username line)
+    .comment-footer {
+      margin-top: 0.5rem;
+
+      .actionBar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      // Hide the original date in footer (first action item)
+      .actionBar-action:first-child {
+        display: none !important;
+      }
+    }
+  }
+}
+
+// ================================================================

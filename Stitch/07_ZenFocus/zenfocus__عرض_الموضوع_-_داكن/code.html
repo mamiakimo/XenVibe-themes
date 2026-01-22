@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus: عرض الموضوع</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622", // Deep charcoal/black
+                        "surface-dark": "#1a2230", // Slightly lighter for cards
+                        "border-dark": "#2a3447",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Manrope", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-[#e1e3e5] font-display antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/30 selection:text-white">
+<!-- Header -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-border-dark bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 group" href="#">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_535)">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_535"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<span class="text-xl font-bold tracking-tight dark:text-white group-hover:text-primary transition-colors">ZenFocus</span>
+</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-surface-dark text-slate-500 dark:text-slate-400 transition-colors">
+<span class="material-symbols-outlined text-[22px]">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-surface-dark text-slate-500 dark:text-slate-400 transition-colors relative">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full ring-2 ring-white dark:ring-background-dark"></span>
+</button>
+<div class="w-px h-6 bg-slate-200 dark:bg-border-dark mx-1"></div>
+<button class="bg-center bg-no-repeat bg-cover rounded-full size-8 ring-2 ring-transparent hover:ring-primary transition-all" data-alt="User profile avatar gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCjgMkGAwq8kwt8N9uFHd8TmpE5h4dVMjF_ATNCw0ERHdPH_lf9X0MC4vFnDbngZ1b57fQhoS4cWL6FR_1IWdZv9v7p6mAYUZG_O9FwLfAShI32IwDLyvuHBddH44R3c9XytCWN6bkUZgsYZ0xDjlYODQhgdYQ2_1AXj8S9LRtaFoSqqE5zBPNIkprHaYNTe1i_jkW3KFeY15w_eG7DmT_vFvBx_YjKlcLrYsExRg7QSh9PfOXaDWfYfHTX5FTXvbXLdSRO20o3udQ");'>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-4xl mx-auto px-4 py-8">
+<!-- Breadcrumbs -->
+<nav class="flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-8 px-2">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<span class="material-symbols-outlined text-[14px] opacity-50 rtl:rotate-180">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">المنتديات العامة</a>
+<span class="material-symbols-outlined text-[14px] opacity-50 rtl:rotate-180">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">تطوير الذات</a>
+<span class="material-symbols-outlined text-[14px] opacity-50 rtl:rotate-180">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium truncate max-w-[200px]">كيفية تنظيم الوقت بفعالية</span>
+</nav>
+<!-- Thread Header -->
+<div class="mb-10 px-2">
+<div class="flex items-center gap-3 mb-4">
+<span class="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded-md">نقاش مفتوح</span>
+<span class="text-slate-500 dark:text-slate-500 text-sm">تم النشر في 12 أكتوبر 2023</span>
+</div>
+<h1 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white leading-tight mb-2 tracking-tight">
+                كيفية تنظيم الوقت بفعالية - نقاش مفتوح حول تقنيات الإنتاجية
+            </h1>
+<p class="text-lg text-slate-500 dark:text-slate-400 font-light">
+                شاركونا تجاربكم وأفضل الأدوات التي تستخدمونها لإدارة المهام اليومية.
+            </p>
+</div>
+<!-- Thread Posts Stream -->
+<div class="flex flex-col gap-6">
+<!-- Post #1 (OP) -->
+<article class="group relative bg-white dark:bg-surface-dark rounded-xl p-6 md:p-8 shadow-sm ring-1 ring-slate-200 dark:ring-border-dark transition-all hover:shadow-md">
+<!-- Author Meta -->
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-primary/20" data-alt="Abstract blue user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEbY3qBfcnYBdz1Fm9OTdNOpJHok1wnUOYugAZ7Jy1AHCEHLBA3LWcgpPnzYZxkxMV-NOAJT7zLgNRwM4dDKoCdPNSqJWJUQrDErlZON1u3S-vXYUxB7TCkQydxcNkaE4GJedrQzxQfc4Lel2UpecY0A_XOWn7mrJDFGTRG7850C_4-pd1tC0llFJmv1ZOba8nM_TTQyih5Dyt351N0YsUhvmpDA_nlUI9zZzufY8bjsRwYc7kTqCYgBp2diR3DtUTeSlSFBpLo_k");'></div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-900 dark:text-white text-base">أحمد محمد</span>
+<span class="material-symbols-outlined text-primary text-[16px] filled-icon" title="كاتب الموضوع">verified</span>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-500">مؤسس المجتمع</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Post Content -->
+<div class="prose dark:prose-invert max-w-none text-slate-700 dark:text-[#d1d5db] leading-relaxed text-[17px]">
+<p class="mb-4">
+                        مرحبًا بالجميع،
+                    </p>
+<p class="mb-4">
+                        لقد كنت أعاني مؤخرًا من تشتت الانتباه أثناء العمل. مع كثرة الإشعارات والمهام المتداخلة، أجد صعوبة في الحفاظ على التركيز لفترات طويلة. هل جرب أحدكم تقنية بومودورو (Pomodoro) بانتظام؟
+                    </p>
+<p class="mb-4">
+                        قرأت مؤخرًا كتاب "العمل العميق" لكال نيوبورت، وكان يتحدث عن أهمية تخصيص وقت خالٍ تمامًا من المشتتات. أحاول تطبيق ذلك ولكني أواجه صعوبة في الالتزام.
+                    </p>
+<p>
+                        أبحث عن نصائح عملية للحفاظ على التركيز لفترات طويلة دون الشعور بالإرهاق السريع. شاركونا تجاربكم وأي تطبيقات تساعدكم في ذلك.
+                    </p>
+</div>
+<!-- Post Actions (Floating/Subtle) -->
+<div class="mt-8 pt-4 border-t border-slate-100 dark:border-border-dark/50 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-background-dark hover:text-primary transition-all group/btn">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:filled-icon">thumb_up</span>
+<span class="text-sm font-medium">12 إعجاب</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-background-dark hover:text-primary transition-all">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-sm font-medium">رد</span>
+</button>
+</div>
+<span class="text-xs text-slate-400 dark:text-slate-600">#1</span>
+</div>
+</article>
+<!-- Post #2 -->
+<article class="group relative bg-white dark:bg-surface-dark/60 rounded-xl p-6 md:p-8 shadow-sm ring-1 ring-slate-200 dark:ring-border-dark/60 transition-all hover:shadow-md hover:ring-slate-300 dark:hover:ring-border-dark">
+<!-- Author Meta -->
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 opacity-90" data-alt="Green geometric user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7ZbyqK0xymzJ45QhZd-AHlkkYxcaLH3eGE9GNtyOwWTEVX6hP_2E8DYb3jS_usM8F4S5edqmx5wU_OMr48UtpAWV3NXP_oSeoYMvsVi1Uuhl5jpn4xL42yl2jloIg59gxi4xXXB0j9KQS12iKjWj43yAcPhi4WeLlhqnbBPyuHIBToPjz2Tt1i0Fz4F_SfXp-NTcFYlwzn952ZhyLuZJSnFzjq_KqIUVjIuF-RunH76TSXvueaHKzX6vF01tiuwnVItzQVTaNukA");'></div>
+<div class="flex items-baseline gap-2">
+<span class="font-bold text-slate-800 dark:text-slate-200 text-sm">سارة علي</span>
+<span class="text-xs text-slate-400 dark:text-slate-500">• منذ ساعتين</span>
+</div>
+</div>
+</div>
+<!-- Post Content -->
+<div class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed">
+<p>
+                        أهلًا أحمد، موضوع رائع جدًا! 👍
+                        <br/>
+                        بالنسبة لي، تقنية بومودورو كانت مفيدة جدًا في البداية، لكن شعرت أنها تقطع حبل أفكاري أحيانًا. الآن أستخدم نظام "Time Blocking" أو حجز الفترات الزمنية. أحدد 90 دقيقة للعمل المركز، ثم استراحة 20 دقيقة.
+                    </p>
+</div>
+<!-- Post Actions -->
+<div class="mt-4 flex items-center gap-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+<button class="flex items-center gap-1.5 text-slate-500 hover:text-primary transition-colors text-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span>3</span>
+</button>
+<button class="flex items-center gap-1.5 text-slate-500 hover:text-primary transition-colors text-sm">
+<span class="material-symbols-outlined text-[18px]">reply</span>
+<span>رد</span>
+</button>
+</div>
+</article>
+<!-- Post #3 -->
+<article class="group relative bg-white dark:bg-surface-dark/60 rounded-xl p-6 md:p-8 shadow-sm ring-1 ring-slate-200 dark:ring-border-dark/60 transition-all hover:shadow-md hover:ring-slate-300 dark:hover:ring-border-dark">
+<!-- Author Meta -->
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 opacity-90" data-alt="Purple abstract user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBekeQh0F7zcvgiMAEHqpa4vI8CRXfwmaoD2GB3w3y-Cs6QnaA6ydS7Ue0MkVpLQ2t4OaW2t_ojirWWCciMuU8a039jjrh0VHkqEvO4Q_bE8_qvtwgRtd43RVHG8QtyeAB9Joiz09LxidZh3fYfGPdcuLK20y9noejJLaPJD9yaIpJcr0uwnw7IFQb-8xCMQF1g14b4AEByhULy8EkhwDnhhumh9MGVUkw0ekDRZqvvHjXTsYT_qhE5ZN_CQauAQHEw34Z0RrDiU5s");'></div>
+<div class="flex items-baseline gap-2">
+<span class="font-bold text-slate-800 dark:text-slate-200 text-sm">كريم محمود</span>
+<span class="text-xs text-slate-400 dark:text-slate-500">• منذ ساعة</span>
+</div>
+</div>
+</div>
+<!-- Post Content -->
+<div class="prose dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed">
+<blockquote class="border-r-4 border-primary/40 pr-4 py-1 my-2 bg-slate-50 dark:bg-background-dark/50 text-slate-500 dark:text-slate-400 italic text-sm rounded-l-lg">
+                        أحد أفكاري أحيانًا. الآن أستخدم نظام "Time Blocking"
+                    </blockquote>
+<p class="mt-3">
+                        أتفق تمامًا مع سارة بخصوص تجميع المهام. أنا أستخدم تطبيق <strong>Notion</strong> لتنظيم كل شيء، ولدي صفحة خاصة للمهام اليومية مرتبة حسب الأولوية.
+                    </p>
+<p class="mt-2">
+                        أيضًا، أنصحك بإغلاق الهاتف تمامًا أو وضعه في غرفة أخرى أثناء فترات العمل العميق. الفرق في التركيز لا يصدق! 📱🚫
+                    </p>
+</div>
+<!-- Post Actions -->
+<div class="mt-4 flex items-center gap-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+<button class="flex items-center gap-1.5 text-slate-500 hover:text-primary transition-colors text-sm">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span>5</span>
+</button>
+<button class="flex items-center gap-1.5 text-slate-500 hover:text-primary transition-colors text-sm">
+<span class="material-symbols-outlined text-[18px]">reply</span>
+<span>رد</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Pagination / Infinite Scroll Trigger -->
+<div class="mt-12 mb-16 flex justify-center">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium flex items-center gap-2 transition-colors px-6 py-3 rounded-full hover:bg-slate-100 dark:hover:bg-surface-dark">
+<span>عرض المزيد من الردود</span>
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Quick Reply (Sticky Bottom or Just Bottom) -->
+<div class="sticky bottom-4 z-40 max-w-4xl mx-auto w-full px-4 mb-4">
+<div class="bg-white/90 dark:bg-surface-dark/95 backdrop-blur-lg rounded-2xl shadow-xl ring-1 ring-slate-200 dark:ring-border-dark p-2 flex flex-col gap-2 transition-all focus-within:ring-2 focus-within:ring-primary/50">
+<!-- Formatting Toolbar (Hidden by default or subtle) -->
+<div class="flex items-center gap-1 px-2 pt-1 pb-1 border-b border-slate-100 dark:border-border-dark/50">
+<button class="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">format_bold</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">format_italic</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</button>
+<div class="w-px h-4 bg-slate-200 dark:bg-border-dark mx-1"></div>
+<button class="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">image</span>
+</button>
+</div>
+<div class="flex gap-2 items-end">
+<div class="hidden sm:block pb-1.5 pr-2 pl-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8" data-alt="User profile avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBA9VLcTl70ijzEpk3bzOf0cUCDAla7yr5xg50-FhVFSrNWN8GcEMu8KVxNF-I0jZQmRSd3IRc1stYKz4BrPwrNgOO60ImOq68JyjPDTfsp_nNVNuGsqtTfKXgOXceBQX-_sEm9W8Bu1fQaD4R7OAdtyk4NQ8rHy0iDCR7GO2-YCx6GnnXuCBmJ9dTByKJn_TCMmD1GE6gU4OdX2MD6LJLaFhhwTCkvaz1gbV5OMSqoCpjzKTuidmrKWNq6lkAwMHzKxsnE5zwxCCE");'></div>
+</div>
+<textarea class="w-full bg-transparent border-0 text-slate-800 dark:text-white placeholder:text-slate-400 focus:ring-0 resize-none py-2 px-2 min-h-[50px] max-h-[200px]" placeholder="اكتب ردك هنا..." rows="1"></textarea>
+<button class="bg-primary hover:bg-blue-600 text-white rounded-xl p-2.5 mb-1 ml-1 flex items-center justify-center transition-transform active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px] rtl:rotate-180">send</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

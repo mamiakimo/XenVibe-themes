@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html id="XF" lang="{$xf.language.language_code}" dir="{$xf.language.text_direction}"
+	data-xf="{$xf.versionVisible}"
+	data-app="public"
+	data-template="{$template}"
+	data-container-key="{$containerKey}"
+	data-content-key="{$contentKey}"
+	data-logged-in="{{ $xf.visitor.user_id ? 'true' : 'false' }}"
+	data-cookie-prefix="{$xf.cookie.prefix}"
+	data-csrf="{{ csrf_token()|escape('js') }}"
+	class="has-no-js xv-cards-theme {{ property('xv_styleType') == 'dark' ? 'xv-dark' : 'xv-light' }}"
+	{{ $xf.runJobs ? ' data-run-jobs=""' : '' }}>
+<head>
+	<xf:set var="$siteName" value="{$xf.options.boardTitle}" />
+	<xf:set var="$h1"><xf:h1 fallback="{$siteName}" /></xf:set>
+	<xf:set var="$description"><xf:description /></xf:set>
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+	<title><xf:title formatter="%s | %s" fallback="{$xf.options.boardTitle}" page="{$pageNumber}" /></title>
+
+	<link rel="manifest" href="{{ base_url('webmanifest.php') }}">
+
+	<!-- Material Symbols Icons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+	<xf:foreach loop="$head" value="$headTag">{$headTag|raw}</xf:foreach>
+
+	<xf:css src="xv_core.less" />
+	<xf:css src="xv_cards.less" />
+	<xf:css />
+
+	<xf:js prod="core/head.min.js, core/head-web.min.js" dev="core/head.js, core/head-web.js" />
+</head>
+
+<body data-template="{$template}" class="{{ $bodyClasses|raw }}">
+
+<div class="xv-wrapper">
+	<xf:macro template="xv_header" name="main" />
+
+	<div class="xv-container">
+		<xf:if is="$notices.block">
+			<xf:macro template="notice_macros" name="notices" arg-type="block" arg-notices="{$notices.block}" />
+		</xf:if>
+
+		<div class="xv-layout xv-layout--{{ property('xv_sidebarPos') }}">
+			<main class="xv-content" role="main">
+				<xf:if is="$notices.scrolling">
+					<xf:macro template="notice_macros" name="notices" arg-type="scrolling" arg-notices="{$notices.scrolling}" />
+				</xf:if>
+
+				<xf:if is="$notices.floating">
+					<xf:macro template="notice_macros" name="notices" arg-type="floating" arg-notices="{$notices.floating}" />
+				</xf:if>
+
+				<xf:if contentcheck="true">
+					<div class="xv-page-header">
+						<xf:contentcheck>
+							<xf:if is="$h1"><h1>{$h1|raw}</h1></xf:if>
+							<xf:if is="$description"><p class="xv-page-description">{$description|raw}</p></xf:if>
+						</xf:contentcheck>
+					</div>
+				</xf:if>
+
+				<div class="xv-content-inner">
+					<xf:contentfor name="main_content" />
+				</div>
+			</main>
+
+			<xf:if is="property('xv_sidebarPos') != 'none'">
+				<aside class="xv-sidebar" role="complementary">
+					<xf:sidebar />
+				</aside>
+			</xf:if>
+		</div>
+	</div>
+
+	<xf:macro template="xv_footer" name="main" />
+
+	<button class="xv-scroll-top" id="scrollTop" aria-label="Scroll to top">
+		<span class="material-symbols-outlined">arrow_upward</span>
+	</button>
+</div>
+
+<script>
+(function() {
+	const scrollBtn = document.getElementById('scrollTop');
+	if (scrollBtn) {
+		window.addEventListener('scroll', function() {
+			if (window.pageYOffset > 300) {
+				scrollBtn.classList.add('is-visible');
+			} else {
+				scrollBtn.classList.remove('is-visible');
+			}
+		});
+		scrollBtn.addEventListener('click', function() {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+	}
+})();
+</script>
+
+<xf:js prod="core/core-compiled.min.js" dev="core/core-compiled.js" />
+
+</body>
+</html>

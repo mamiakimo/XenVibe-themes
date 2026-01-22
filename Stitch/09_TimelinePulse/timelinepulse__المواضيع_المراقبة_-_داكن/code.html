@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TimelinePulse: Watched Threads</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#111722",
+              "card-dark": "#1a1f2e", // Slightly lighter than background for cards
+              "border-dark": "#232f48",
+              "text-secondary": "#92a4c9",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {
+                "DEFAULT": "0.25rem", 
+                "lg": "0.5rem", 
+                "xl": "0.75rem", 
+                "full": "9999px"
+            },
+            boxShadow: {
+                "glow": "0 0 15px rgba(19, 91, 236, 0.5)",
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Custom scrollbar for dark mode vibe */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #324467; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-white overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark bg-[#111722]/95 backdrop-blur-md px-6 py-3 lg:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="flex items-center justify-center size-8 bg-primary rounded-lg shadow-glow">
+<span class="material-symbols-outlined text-white text-[20px]">timeline</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">TimelinePulse</h2>
+</div>
+<!-- Search Bar (Hidden on mobile) -->
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-64 group">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-border-dark overflow-hidden ring-1 ring-transparent focus-within:ring-primary transition-all">
+<div class="text-text-secondary flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none bg-transparent text-white border-none focus:ring-0 placeholder:text-text-secondary px-3 text-sm font-normal leading-normal" placeholder="Search threads..."/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Forums</a>
+<a class="text-white text-sm font-medium leading-normal border-b-2 border-primary pb-0.5" href="#">Watched</a>
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Members</a>
+</div>
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-border-dark text-white hover:bg-[#324467] transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 size-2 bg-red-500 rounded-full border border-[#111722]"></span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-border-dark text-white hover:bg-[#324467] transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-border-dark cursor-pointer" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB4y4KFARt7AKThrrJaGHr0P_1WbYUNNEA3KU7oQ6zs-RGxEGnIn_XNXD1MF9_3ypFyiJgJwObRvWbF0mO1skXyBqwN1GkhqKd2ITlcSVGqsKhqzyEPFGsBfH7MCUYeDPieZA6C7vKmglyw2ADSb_SCkcNR2Xg0VXVELCT5cz2Lt1noRoh9g-Ojeb_n3sDV8wwdudfDgarDaBDD1NSX8eZ2aKpvDr2gb6ugbpWpfGQIH8wdUu5uynGFA0pSoUcf9dqLJacbQUvoSUY");'></div>
+</div>
+</header>
+<div class="layout-container flex grow flex-col lg:flex-row max-w-[1440px] mx-auto w-full">
+<!-- Left Sidebar (Quick Nav) -->
+<aside class="hidden lg:flex flex-col w-64 shrink-0 border-r border-border-dark bg-[#111722] p-6 sticky top-[65px] h-[calc(100vh-65px)] overflow-y-auto">
+<div class="flex flex-col gap-6">
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold mb-1">Navigation</h1>
+<p class="text-text-secondary text-xs">Quick access</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-border-dark hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="text-sm font-medium">Watched Threads</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-border-dark hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">forum</span>
+<span class="text-sm font-medium">Your Threads</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-border-dark hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">people</span>
+<span class="text-sm font-medium">Following</span>
+</a>
+<div class="h-px bg-border-dark my-2"></div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-border-dark hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Promo / Stats -->
+<div class="mt-auto pt-6">
+<div class="bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl p-4 border border-primary/20">
+<p class="text-white text-sm font-semibold mb-1">Pro Tip</p>
+<p class="text-text-secondary text-xs mb-3">Enable push notifications to never miss a beat on your watched topics.</p>
+<button class="text-xs font-medium text-primary hover:text-white transition-colors">Enable Now</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col p-4 md:p-8 lg:p-10 max-w-5xl mx-auto w-full">
+<!-- Page Heading & Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 pb-6 border-b border-border-dark">
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-3xl md:text-4xl font-bold tracking-tight">Watched Activity</h1>
+<p class="text-text-secondary text-base">Your personalized timeline of community updates.</p>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-border-dark hover:bg-[#324467] text-white text-sm font-medium rounded-lg transition-colors shrink-0">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Manage Settings</span>
+</button>
+</div>
+<!-- Filters -->
+<div class="flex gap-3 mb-10 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-white px-5 shadow-glow transition-all">
+<span class="text-sm font-medium">Unread Only</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-border-dark text-text-secondary hover:text-white hover:bg-[#324467] px-5 transition-all">
+<span class="text-sm font-medium">All Watched</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-border-dark text-text-secondary hover:text-white hover:bg-[#324467] px-5 transition-all">
+<span class="text-sm font-medium">With Attachments</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-border-dark text-text-secondary hover:text-white hover:bg-[#324467] px-5 transition-all">
+<span class="text-sm font-medium">Participated</span>
+</button>
+</div>
+<!-- Timeline Container -->
+<div class="relative pl-2 md:pl-4">
+<!-- Global Timeline Line -->
+<div class="absolute left-[29px] md:left-[37px] top-4 bottom-0 w-[2px] bg-[#232f48]"></div>
+<!-- Timeline Group: Today -->
+<div class="mb-10 relative">
+<div class="flex items-center gap-4 mb-6">
+<div class="z-10 flex items-center justify-center size-8 md:size-10 bg-[#111722] border-2 border-[#232f48] rounded-full text-text-secondary">
+<span class="material-symbols-outlined text-[16px] md:text-[20px]">calendar_today</span>
+</div>
+<span class="text-text-secondary text-sm font-semibold uppercase tracking-wider">Today</span>
+</div>
+<!-- Item 1: Active/Unread -->
+<div class="group relative flex gap-6 mb-8">
+<!-- Pulse Node -->
+<div class="flex flex-col items-center pt-2 md:pt-1">
+<div class="relative z-10 size-4 rounded-full bg-primary shadow-glow ring-4 ring-[#111722]">
+<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+</div>
+</div>
+<!-- Content Card -->
+<div class="flex-1 bg-card-dark border border-border-dark rounded-xl p-5 hover:border-primary/30 transition-all hover:shadow-lg group-hover:translate-x-1 duration-300">
+<div class="flex justify-between items-start gap-4 mb-3">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Announcements</span>
+<span class="text-text-secondary text-xs">5 mins ago</span>
+</div>
+<a class="text-white text-lg font-bold hover:text-primary transition-colors line-clamp-1" href="#">Server Migration Updates &amp; Downtime Schedule</a>
+</div>
+<button class="size-8 flex items-center justify-center rounded-lg bg-border-dark text-text-secondary hover:bg-primary hover:text-white transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+<div class="flex items-start gap-3 bg-[#111722]/50 p-3 rounded-lg border border-white/5">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0" data-alt="Avatar of Admin user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6yhSbLcs8KVtCYD3Ne5D17wkg8Cqu44dIADBRiNAScXHkiziPnG7fvZO-qZeXMRMejQX0J8u5c6Z20eP_2yOOJjgQfgLIuEn_c81-cV5i5sHU57ItIY-P0cSId-us_vADTqmEkOw2fNF9PfHhw5PRDaIxmPugENwbL0t1E23t4unDzcnzBGaCYzDjtPu82aH086YO6dOQRLYZB_UsBsb9AJB-IWqH0_Usk5ueQwyOE09DdVMRaJYh6JDaWi0ZM2HZZKZpfI1mRNI");'></div>
+<div class="flex flex-col">
+<p class="text-sm text-text-secondary line-clamp-2"><span class="text-white font-medium">SystemAdmin:</span> Please be advised that the maintenance window has been extended by 30 minutes. We are finalizing the database optimization...</p>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-4 pt-3 border-t border-white/5">
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full ring-2 ring-card-dark bg-gray-600 bg-cover" data-alt="User avatar 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlKa2aRalyDwA6AExfFBaAQl7SetQ7Y4dYu77zPGiukUFCYuydcn1tpX2hKA1_6ch8ghSHt2oajWBUiYftkZsjkcm49Ld69okjqD9McuoHhHmD18M4_Eil1lP6blVpYy5YdOHpb8ON73jTNjNUaci3ceyOgsSAVlCPxEfz-CWgZDlIVcMGIu2VZSJaAXIgzUJcoHMU7mgf5XCD0uglee6I-AR_Cb9jyaJZ_ThQYJv8whIc-Oeg7PSmL-5Xw5g6nUIQZjFmd_iitjw");'></div>
+<div class="size-6 rounded-full ring-2 ring-card-dark bg-gray-600 bg-cover" data-alt="User avatar 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCI3yqB5ly4K_-vOqZI02W67xh4o5SCQb4lUlTpEVckKqV1eHZ6JfSvs8DPsFA6MSGaU0-76Rh6NGmavf7GnDpGZA55UrRJRcIdjT9ItGyrU3N5L9RQJyOPuLC-GZquBoXJg1raxDwV_-eFouyRIcHcQFjO3zcqBwAgIA2Cn_YVuv2XLzqne4iTAIGOExqGwoc5n5wcI8OQFewGEMY1OlEQ6yZd07I3_X42RO1W2f8wwYdKnEivAzLugj2R27acSJpivWTXR0Q-PCw");'></div>
+<div class="size-6 rounded-full ring-2 ring-card-dark bg-[#324467] flex items-center justify-center text-[10px] text-white font-bold">+12</div>
+</div>
+<span class="text-xs text-text-secondary font-medium">14 new replies</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Read/Regular -->
+<div class="group relative flex gap-6 mb-8">
+<!-- Node -->
+<div class="flex flex-col items-center pt-2 md:pt-1">
+<div class="relative z-10 size-4 rounded-full bg-[#111722] border-2 border-text-secondary ring-4 ring-[#111722]"></div>
+</div>
+<!-- Content Card -->
+<div class="flex-1 bg-card-dark border border-border-dark rounded-xl p-5 hover:border-gray-500 transition-all group-hover:translate-x-1 duration-300">
+<div class="flex justify-between items-start gap-4 mb-2">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-green-500/20 text-green-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">General</span>
+<span class="text-text-secondary text-xs">2 hours ago</span>
+</div>
+<a class="text-white text-lg font-semibold hover:text-primary transition-colors" href="#">Community Guidelines Discussion 2024</a>
+</div>
+<div class="flex items-center justify-center size-8 rounded-full bg-green-500/10 text-green-400" title="You replied in this thread">
+<span class="material-symbols-outlined text-[18px]">reply</span>
+</div>
+</div>
+<p class="text-sm text-text-secondary mb-3">Latest by <span class="text-white">SarahJ</span>: "I think the new clause about AI generated content is very timely..."</p>
+</div>
+</div>
+</div>
+<!-- Timeline Group: Yesterday -->
+<div class="mb-10 relative">
+<div class="flex items-center gap-4 mb-6">
+<div class="z-10 flex items-center justify-center size-8 md:size-10 bg-[#111722] border-2 border-[#232f48] rounded-full text-text-secondary">
+<span class="material-symbols-outlined text-[16px] md:text-[20px]">history</span>
+</div>
+<span class="text-text-secondary text-sm font-semibold uppercase tracking-wider">Yesterday</span>
+</div>
+<!-- Item 3: With Attachment -->
+<div class="group relative flex gap-6 mb-8">
+<div class="flex flex-col items-center pt-2 md:pt-1">
+<div class="relative z-10 size-4 rounded-full bg-primary ring-4 ring-[#111722]"></div>
+</div>
+<div class="flex-1 bg-card-dark border border-border-dark rounded-xl p-5 hover:border-primary/30 transition-all group-hover:translate-x-1 duration-300">
+<div class="flex justify-between items-start gap-4">
+<div class="flex flex-col gap-1 w-full">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-purple-500/20 text-purple-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Photography</span>
+<span class="text-text-secondary text-xs">Yesterday at 4:20 PM</span>
+</div>
+<a class="text-white text-lg font-bold hover:text-primary transition-colors" href="#">Weekly Photo Contest: Urban Jungle</a>
+<!-- Attachment Preview -->
+<div class="mt-3 grid grid-cols-3 gap-2 w-full max-w-md">
+<div class="aspect-video bg-cover bg-center rounded-lg border border-white/10 hover:opacity-80 transition-opacity cursor-pointer" data-alt="City skyscraper at night" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAW9zPeDrlXLhfPGgKpX5JVaOvEv-LyPr0GnzC398Xmg2t00Mzyx1sc3KV9n1duEmstdo30w0NOMpGXeoGYXJcCSHw0r1KE0IwThqBD4eFsekRM36OBbLXmFWxnF1nPjm11gtgcJSUn3EZpXxyTJIbIv3ubXbqqDQuU-gE5r8c6Rkeqglc82qMQ5qPjVp9mSfbUCAOfzIGAdfnXdyXy_LYPPJizFUIxIitfZ1_AwB40CAIjPLMQoMMA4vJf3xlnK9GKHRMRaH9s_s4");'></div>
+<div class="aspect-video bg-cover bg-center rounded-lg border border-white/10 hover:opacity-80 transition-opacity cursor-pointer" data-alt="Neon lights in rain" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZx_CDY6RYVWcBmMndwTCsJq5oIwhwtHN642d_dyez5KSM1pDl3YChotj4yNZ40ZuyxMzynRN-upK5ZiZiobDxn6M37WbO3BYdDF8h7ndapRWjYg1yhb4jaZAQM-QjvNcYZw1yy9XqHGgFFoj_7y3_fylrN6u5_grmWrTqUGqErtn-ta3VkG7j44LwHqgxRQFdc0A20jMyuRQEzNL4Nh9I9pRHbI10wD0J-p6cglofP3YlXAK7tqsTjfRNzPAiSu5XcFRbdlzbRyI");'></div>
+<div class="aspect-video bg-[#232f48] rounded-lg border border-white/10 flex flex-col items-center justify-center text-text-secondary hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined mb-1">image</span>
+<span class="text-xs">+4 more</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-4 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>3.4k views</span>
+<span class="mx-1">•</span>
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+<span>42 replies</span>
+</div>
+</div>
+</div>
+<!-- Item 4: Locked/Closed -->
+<div class="group relative flex gap-6 mb-8">
+<div class="flex flex-col items-center pt-2 md:pt-1">
+<div class="relative z-10 size-4 rounded-full bg-[#111722] border-2 border-red-900/50 ring-4 ring-[#111722]"></div>
+</div>
+<div class="flex-1 bg-card-dark/50 border border-border-dark rounded-xl p-5 opacity-75 hover:opacity-100 transition-opacity">
+<div class="flex justify-between items-start gap-4 mb-2">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-red-500/10 text-red-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Locked</span>
+<span class="text-text-secondary text-xs">Yesterday at 10:00 AM</span>
+</div>
+<a class="text-text-secondary line-through decoration-red-500/50 text-lg font-medium hover:text-white transition-colors" href="#">Spam thread regarding crypto bots</a>
+</div>
+<span class="material-symbols-outlined text-red-500 text-[20px]" title="Thread Locked">lock</span>
+</div>
+</div>
+</div>
+</div>
+<!-- End of Timeline Indicator -->
+<div class="flex items-center gap-4 pb-10">
+<div class="z-10 flex items-center justify-center size-8 md:size-10 bg-[#232f48] rounded-full text-text-secondary">
+<span class="material-symbols-outlined text-[16px] md:text-[20px]">check</span>
+</div>
+<span class="text-text-secondary text-sm">You're all caught up!</span>
+</div>
+</div>
+</main>
+<!-- Right Column (Optional - e.g. Online Users or Ad space - Hidden on smaller screens for cleaner look) -->
+<div class="hidden xl:flex flex-col w-72 shrink-0 p-6 sticky top-[65px] h-fit gap-6">
+<div class="bg-card-dark border border-border-dark rounded-xl p-4">
+<h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+                    Trending Tags
+                </h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-[#111722] hover:bg-[#324467] text-text-secondary hover:text-white text-xs rounded-md cursor-pointer transition-colors">#server-update</span>
+<span class="px-3 py-1 bg-[#111722] hover:bg-[#324467] text-text-secondary hover:text-white text-xs rounded-md cursor-pointer transition-colors">#photography</span>
+<span class="px-3 py-1 bg-[#111722] hover:bg-[#324467] text-text-secondary hover:text-white text-xs rounded-md cursor-pointer transition-colors">#guidelines</span>
+<span class="px-3 py-1 bg-[#111722] hover:bg-[#324467] text-text-secondary hover:text-white text-xs rounded-md cursor-pointer transition-colors">#welcome</span>
+<span class="px-3 py-1 bg-[#111722] hover:bg-[#324467] text-text-secondary hover:text-white text-xs rounded-md cursor-pointer transition-colors">#bug-report</span>
+</div>
+</div>
+</div>
+</div>
+</body></html>

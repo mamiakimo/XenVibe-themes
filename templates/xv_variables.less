@@ -1,0 +1,46 @@
+// ================================================
+// XenVibe Cards - Custom Styles with XenForo Variables
+// ================================================
+// NOTE: Fonts are loaded in PAGE_CONTAINER.html (no import here to avoid duplication)
+
+// ================================================
+// XenVibe Color Palette (using XenForo variables)
+// ================================================
+// These colors are used for decorative elements like community dots
+// They will work in both Light and Dark modes
+@xv-color-blue: #3b82f6;
+@xv-color-green: #22c55e;
+@xv-color-purple: #a855f7;
+@xv-color-orange: #f97316;
+@xv-color-red: #ef4444;
+@xv-color-yellow: #eab308;
+@xv-color-cyan: #06b6d4;
+@xv-color-pink: #ec4899;
+
+// For alerts/badges - uses XenForo's attention color when available
+@xv-attention-color: @xf-textColorAttention;
+
+// Card background - uses XenForo content background
+@xv-card-bg: @xf-contentBg;
+
+// ================================================
+// CSS Variables (XenForo integration)
+// ================================================
+:root {
+  --xv-primary: @xf-linkColor;
+  --xv-bg: @xf-pageBg;
+  --xv-surface: @xf-contentBg;
+  --xv-text: @xf-textColor;
+  --xv-text-muted: @xf-textColorMuted;
+  --xv-border: @xf-borderColor;
+  --xv-input-bg: @xf-inputBg;
+}
+
+// ================================================
+// Base
+// ================================================
+html,
+body {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', @xf-fontFamily;
+}
+

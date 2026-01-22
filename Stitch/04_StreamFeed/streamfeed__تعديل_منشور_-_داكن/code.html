@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StreamFeed: تعديل منشور</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&amp;family=Spline+Sans:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#192233",
+                        "surface-border": "#324467",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "Noto Sans Arabic", "sans-serif"],
+                        "sans": ["Spline Sans", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for the dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #324467; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #455d8c; 
+        }
+    </style>
+</head>
+<body class="bg-[#111722] text-white font-display overflow-hidden relative min-h-screen flex flex-col">
+<!-- BACKGROUND CONTENT (Blurred to simulate focus on modal) -->
+<div aria-hidden="true" class="flex-1 flex flex-col blur-[2px] opacity-40 pointer-events-none select-none transition-all duration-300">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#232f48] px-10 py-3 bg-[#111722]">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-4xl">dynamic_feed</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">StreamFeed</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-10 max-w-64 hidden lg:flex">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-[#232f48]">
+<div class="text-[#92a4c9] flex border-none items-center justify-center pr-4 rounded-r-xl">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-[#92a4c9] px-4 rounded-r-none pl-2 text-base font-normal leading-normal" placeholder="بحث" value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9 hidden md:flex">
+<a class="text-white text-sm font-bold border-b-2 border-primary pb-0.5 leading-normal" href="#">الرئيسية</a>
+<a class="text-[#92a4c9] text-sm font-medium leading-normal" href="#">الأكثر شعبية</a>
+<a class="text-[#92a4c9] text-sm font-medium leading-normal" href="#">المنتديات</a>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center overflow-hidden rounded-xl h-10 bg-[#232f48] text-white w-10 hover:bg-[#324467] transition">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center overflow-hidden rounded-xl h-10 bg-[#232f48] text-white w-10 hover:bg-[#324467] transition">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-[#232f48]" data-alt="User avatar abstract gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCQvscVp4H-2ex8AW6n3d3SwWWKTcL73ETCqp3Uw2vfq-OXbwzOcVBJkkOo_zvjNoMFTDWurqCLrtp1ovwGr4NY5gx98gHoql9vFpSKKCVeHuNzDKDzWxwvo-RSgmCAZSiG3StwIZzyN93ES2UO5NEjthmrj6uYcvgNhYIJ7CkOfsDpHmQHxD5riDr0h051neBwf95FHPfX2JBg7T1VDoI0isbCtyUzMTi6PFfL_Ir6sI36hMXrahXDms-_3Plr2rXqjQ2TKniD9s");'></div>
+</div>
+</header>
+<!-- Feed Content Area -->
+<div class="layout-container flex h-full grow flex-col items-center pt-8">
+<div class="w-full max-w-[700px] flex flex-col gap-6 px-4">
+<!-- Create Post Box Placeholder -->
+<div class="bg-[#192233] p-4 rounded-xl border border-[#232f48] flex gap-4 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shrink-0" data-alt="Current user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFyxIFWDYDfTgctnH3fOv3EDariHStXicPqXu6S7ISdbDC5fGEtXVSZyW_9-pnRrbMCe0UyDJOKAE0GeVmobctLHx6ZxETZUNJ61BsLHG14kcNB4IkSBl7od7nhqJ_x_HfAgQu8Jpse0b2CMuFiTAQ9LC--NEQkx0d5pL7dXMmiuQy56cHlOHrJOvOq0mQoGiuO-TR6qxlhCL6d_zV5XC3WvNIEsXH_axdnmjfNnzPIefO7lJuMTJ0gZmingkZRuu9X0F-OyV7Hyk");'></div>
+<div class="flex-1 bg-[#111722] h-10 rounded-lg flex items-center px-4 text-[#455d8c] text-sm cursor-text">
+                        اكتب شيئاً جديداً...
+                    </div>
+</div>
+<!-- Feed Post Placeholder -->
+<div class="bg-[#192233] rounded-xl border border-[#232f48] overflow-hidden">
+<div class="p-4 flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shrink-0" data-alt="Author avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1Rg3OtexWZxQaD4KedpWPRjQijosJmpLZRXLiSXEI-4LFkg8uhawNpzvNtZFjDNtXeClkFurW3MQED-RQVCk5i59TRbRL94yXuVrzeTZuOKsxIF69ssFquvun6VAcWwkqk8DtSDx09fDhzfeahfRcItgYHkVJEj5Rff9YXudSMHgMGFaZkUNFlKJPwEDkDne4aPBreUg_9PQXEKIDz8ffDsp2txhI3isukIVYcaXKYmCi5y4LrMYGWZVCnAFOAfGz1ONzKN8jP-o");'></div>
+<div>
+<p class="text-sm font-bold text-white">خالد العمراني</p>
+<p class="text-xs text-[#92a4c9]">منذ 4 ساعات</p>
+</div>
+</div>
+<div class="px-4 pb-2">
+<p class="text-white leading-relaxed">هذا نص عشوائي لمحاكاة شكل المنشور في الخلفية. التصميم يركز على الوضع الليلي وتجربة المستخدم المريحة.</p>
+</div>
+<div class="h-64 bg-[#111722] mt-2 relative"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+<!-- Backdrop -->
+<div aria-hidden="true" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+<!-- Modal Card -->
+<div class="relative w-full max-w-2xl bg-[#192233] rounded-2xl shadow-2xl border border-[#324467] flex flex-col max-h-[90vh] animate-in fade-in zoom-in-95 duration-200">
+<!-- Modal Header -->
+<div class="flex items-center justify-between px-6 py-4 border-b border-[#232f48]">
+<h2 class="text-white text-xl font-bold tracking-tight">تعديل منشور</h2>
+<button class="size-9 flex items-center justify-center rounded-full text-[#92a4c9] hover:bg-[#232f48] hover:text-white transition-colors cursor-pointer">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Scrollable Content -->
+<div class="flex-1 overflow-y-auto px-6 py-5 custom-scrollbar">
+<!-- User Profile Header in Edit Mode -->
+<div class="flex items-center gap-3 mb-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 ring-2 ring-[#232f48]" data-alt="Current User Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5iapIuVWzqkJaE0uv6RQPJdNCq2qTucuXwyct_T9A2iVpXZ1xXXdN3YrrsOH9CQrLeRdJPInrhFgtp5SY5UvX3RjbQFznGsLnnoIf87lltgN3WXVLQybf1yrGHfWDMpbQnkCA-CErE51NrjpxUnOjmcdDeWtX6ACkZ48T9Nv6NN09fulLVTEiSDT7SfbOVR1ZvLR-h92Cq4PaOuXqc_07Ilr10aPjsj8KStT0UvQy6QNchQJ863hEKGgh_3iRPAuIaT37h63Vvkk");'></div>
+<div class="flex flex-col">
+<span class="text-base font-bold text-white">أحمد محمد</span>
+<div class="flex items-center gap-1 text-xs text-[#92a4c9] bg-[#232f48] px-2 py-0.5 rounded-md w-fit mt-1">
+<span class="material-symbols-outlined text-[14px]">public</span>
+<span>عام</span>
+<span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Text Editor -->
+<div class="w-full mb-6">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-white text-lg placeholder:text-[#455d8c] resize-none min-h-[120px] p-0 leading-relaxed custom-scrollbar" placeholder="بم تفكر؟">استمتعت كثيراً في رحلة الجبال نهاية الأسبوع الماضي! المناظر كانت خلابة والطقس مثالياً للمشي لمسافات طويلة. أنصح الجميع بزيارة هذه المنطقة في هذا الوقت من السنة. 🏔️🏕️</textarea>
+</div>
+<!-- Media Attachments Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+<!-- Image 1 -->
+<div class="relative group aspect-[4/3] rounded-xl overflow-hidden bg-[#111722] border border-[#232f48]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Mountain landscape with snowy peaks" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvizLdRfiQxYrzz5DtqTDCTXozQkppuUiQdkAob0S8fL3BXO_s2_wBmYgoAA3y-Ahi0kYaSn1W2La1hesbh0wX_f-k8BdjQuXBx2-1J3q54kwiwWHyn0yoeA9x4SolhxE449DuwGQbg9UXb0kpKLpB8BW87yitJvm2UYAvDQ7UAeC8aq3iUXcGz8C0uc4HlfCIs5BbAKXIVqAHIWmYTPaGY2DiB3eSQ9LbRmkxU90_aTiXYLyaPc57zX4U1PGv87nMYfoLr2iFjRM");'></div>
+<!-- Hover Overlay with Actions -->
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-start justify-end p-2">
+<button class="bg-black/60 hover:bg-red-500/90 text-white p-1.5 rounded-lg backdrop-blur-md transition-colors shadow-lg" title="حذف الصورة">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+<button class="bg-black/60 hover:bg-white/20 text-white p-1.5 rounded-lg backdrop-blur-md transition-colors shadow-lg mr-2" title="تعديل">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</div>
+<!-- Image 2 -->
+<div class="relative group aspect-[4/3] rounded-xl overflow-hidden bg-[#111722] border border-[#232f48]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Camping tent near a lake at sunset" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7h59CphGzzQjfUSOkecZNufx3L7l7GIlA1wzlEKaodHWGyQL0Bf9R5wt2WHgLF09Bq83L10R7ai2Yacs6YJIuFKE2o8mHGNuQs38y9KSI7r5KzYUe8JOxia0pVnYNZzgt5b3PfNdPNtHGECWYW4vL5jpIvk-6l94oxHcj2DFWPIHD1KEnJZAMYBYL1t38Gxy_UP9WtxuTv5ZiWy0fF_9SzhmHQtjSz1fhL3P2JuYyEqZCSZ-K8xecM0himtn2ZQMu5n7JQz3Ma-4");'></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-start justify-end p-2">
+<button class="bg-black/60 hover:bg-red-500/90 text-white p-1.5 rounded-lg backdrop-blur-md transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+<button class="bg-black/60 hover:bg-white/20 text-white p-1.5 rounded-lg backdrop-blur-md transition-colors shadow-lg mr-2">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Add More Button (Placeholder style) -->
+<button class="w-full py-3 border-2 border-dashed border-[#324467] rounded-xl text-[#92a4c9] hover:text-white hover:border-[#455d8c] hover:bg-[#232f48]/50 transition flex items-center justify-center gap-2 mb-4">
+<span class="material-symbols-outlined">add_photo_alternate</span>
+<span class="text-sm font-medium">إضافة المزيد من الصور</span>
+</button>
+</div>
+<!-- Modal Footer / Sticky Actions -->
+<div class="p-4 sm:px-6 sm:py-5 border-t border-[#232f48] bg-[#192233] rounded-b-2xl">
+<!-- Add to post toolbar -->
+<div class="flex items-center justify-between mb-5 bg-[#111722] p-3 rounded-xl border border-[#232f48]">
+<span class="text-sm font-bold text-white mr-2">إضافة إلى منشورك</span>
+<div class="flex items-center gap-1">
+<button class="size-9 flex items-center justify-center rounded-full text-[#45bd62] hover:bg-[#232f48] transition-colors tooltip" title="صور/فيديو">
+<span class="material-symbols-outlined">image</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-full text-[#1877f2] hover:bg-[#232f48] transition-colors" title="تحديد أصدقاء">
+<span class="material-symbols-outlined">person_add</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-full text-[#f7b928] hover:bg-[#232f48] transition-colors" title="شعور/نشاط">
+<span class="material-symbols-outlined">mood</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-full text-[#f02849] hover:bg-[#232f48] transition-colors" title="موقع جغرافي">
+<span class="material-symbols-outlined">location_on</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-full text-[#92a4c9] hover:bg-[#232f48] transition-colors" title="المزيد">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex w-full gap-3">
+<button class="flex-1 h-11 bg-transparent border border-[#324467] text-white rounded-xl font-bold hover:bg-[#232f48] transition active:scale-[0.98]">
+                        إلغاء
+                    </button>
+<button class="flex-[2] h-11 bg-[#135bec] hover:bg-[#114cc7] text-white rounded-xl font-bold shadow-lg shadow-blue-900/30 transition active:scale-[0.98] flex items-center justify-center gap-2">
+<span>حفظ التغييرات</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

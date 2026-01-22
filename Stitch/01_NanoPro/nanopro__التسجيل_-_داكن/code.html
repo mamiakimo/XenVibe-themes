@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NanoPro: التسجيل - داكن</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2230",
+                        "border-dark": "#2b3649",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "sans": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>/* Custom Scrollbar for dark mode */
+::-webkit-scrollbar {
+    width: 8px
+    }
+::-webkit-scrollbar-track {
+    background: #101622
+    }
+::-webkit-scrollbar-thumb {
+    background: #2b3649;
+    border-radius: 4px
+    }
+/* Select Reset for consistent styling */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBNb9tOw1Ew8glBFpkQGivMxxelCPCXEkijCd2tUyLvBLaC2VfWYE2O8ughtzxNhsnd-Hx3QhWB11GELR1wQgjlct6wk6YqlJLt-X0Gd6D48uwqFZ9XSH9lJSYUTjfDepn73vdKWGEG8zwg-J74LRdv0iKWXj-ECoTBkiHXZUpxt1BHIghGtC_t9ZvSq0gb9lMYeRHt0MRWeyOe_LwRiqDMrqZIHLEf4tpKP5yXBctFOXdvh_GowGAhfEe9tWCI672ztFDLj3e9zp8);
+    background-position: left 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-left: 2.5rem
+    }</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-white font-display antialiased overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-[#232f48] bg-[#111722]/80 backdrop-blur-md px-4 sm:px-10 py-3">
+<div class="mx-auto flex max-w-7xl items-center justify-between gap-4">
+<!-- Logo & Title -->
+<div class="flex items-center gap-4 text-white shrink-0">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 30.5736C16.7203 29.8826 20.2244 29.4783 24 29.4783C27.7756 29.4783 31.2797 29.8826 34.1739 30.5736C36.9144 31.2278 39.9967 32.7669 41.3563 33.8352L24.8486 7.36089C24.4571 6.73303 23.5429 6.73303 23.1514 7.36089L6.64374 33.8352C8.00331 32.7669 11.0856 31.2278 13.8261 30.5736Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 35.764C39.9944 35.7463 39.9875 35.7155 39.9748 35.6706C39.9436 35.5601 39.8949 35.4259 39.8346 35.2825C39.8168 35.2403 39.7989 35.1993 39.7813 35.1602C38.5103 34.2887 35.9788 33.0607 33.7095 32.5189C30.9875 31.8691 27.6413 31.4783 24 31.4783C20.3587 31.4783 17.0125 31.8691 14.2905 32.5189C12.0012 33.0654 9.44505 34.3104 8.18538 35.1832C8.17384 35.2075 8.16216 35.233 8.15052 35.2592C8.09919 35.3751 8.05721 35.4886 8.02977 35.589C8.00356 35.6848 8.00039 35.7333 8.00004 35.7388C8.00004 35.739 8 35.7393 8.00004 35.7388C8.00004 35.7641 8.0104 36.0767 8.68485 36.6314C9.34546 37.1746 10.4222 37.7531 11.9291 38.2772C14.9242 39.319 19.1919 40 24 40C28.8081 40 33.0758 39.319 36.0709 38.2772C37.5778 37.7531 38.6545 37.1746 39.3151 36.6314C39.9006 36.1499 39.9857 35.8511 39.998 35.764ZM4.95178 32.7688L21.4543 6.30267C22.6288 4.4191 25.3712 4.41909 26.5457 6.30267L43.0534 32.777C43.0709 32.8052 43.0878 32.8338 43.104 32.8629L41.3563 33.8352C43.104 32.8629 43.1038 32.8626 43.104 32.8629L43.1051 32.865L43.1065 32.8675L43.1101 32.8739L43.1199 32.8918C43.1276 32.906 43.1377 32.9246 43.1497 32.9473C43.1738 32.9925 43.2062 33.0545 43.244 33.1299C43.319 33.2792 43.4196 33.489 43.5217 33.7317C43.6901 34.1321 44 34.9311 44 35.7391C44 37.4427 43.003 38.7775 41.8558 39.7209C40.6947 40.6757 39.1354 41.4464 37.385 42.0552C33.8654 43.2794 29.133 44 24 44C18.867 44 14.1346 43.2794 10.615 42.0552C8.86463 41.4464 7.30529 40.6757 6.14419 39.7209C4.99695 38.7775 3.99999 37.4427 3.99999 35.7391C3.99999 34.8725 4.29264 34.0922 4.49321 33.6393C4.60375 33.3898 4.71348 33.1804 4.79687 33.0311C4.83898 32.9556 4.87547 32.8935 4.9035 32.8471C4.91754 32.8238 4.92954 32.8043 4.93916 32.7889L4.94662 32.777L4.95178 32.7688ZM35.9868 29.004L24 9.77997L12.0131 29.004C12.4661 28.8609 12.9179 28.7342 13.3617 28.6282C16.4281 27.8961 20.0901 27.4783 24 27.4783C27.9099 27.4783 31.5719 27.8961 34.6383 28.6282C35.082 28.7342 35.5339 28.8609 35.9868 29.004Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-tight">NanoPro</h2>
+</div>
+<!-- Search Bar (Hidden on mobile) -->
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64 mx-auto lg:mx-0">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-[#232f48] overflow-hidden group focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+<div class="text-[#92a4c9] flex items-center justify-center px-4">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none bg-transparent text-white focus:outline-none placeholder:text-[#92a4c9] h-full text-sm font-normal leading-normal" placeholder="بحث..." value=""/>
+</div>
+</label>
+<!-- Menu Links -->
+<div class="flex items-center justify-end gap-2 sm:gap-6 lg:gap-8">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-gray-300 hover:text-white hover:bg-[#232f48] px-3 py-2 rounded-lg transition-colors text-sm font-medium leading-normal" href="#">الرئيسية</a>
+<a class="text-gray-300 hover:text-white hover:bg-[#232f48] px-3 py-2 rounded-lg transition-colors text-sm font-medium leading-normal" href="#">المنتديات</a>
+<a class="text-gray-300 hover:text-white hover:bg-[#232f48] px-3 py-2 rounded-lg transition-colors text-sm font-medium leading-normal" href="#">الأعضاء</a>
+<a class="text-gray-300 hover:text-white hover:bg-[#232f48] px-3 py-2 rounded-lg transition-colors text-sm font-medium leading-normal" href="#">مساعدة</a>
+</nav>
+<div class="flex items-center gap-3">
+<a class="text-sm font-medium text-gray-400 hover:text-white lg:hidden" href="#">دخول</a>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border border-[#232f48]" data-alt="Default user avatar silhouette" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwUbCGcPyGPdB_-Ty7HF0tmEuGKUGS1aCdKB5lCMXgiiyOSf8B9YZT_QIVfNRmsf4pHMq7QnSwCISJgJJn5ZJ1k-sF0hWBKxduKXvgLatJFNRyvucce3PrZhlEW5E9TS5x7YdZ-c32Y43RX4Jv_oD0Z2l_fFyfwi-s0HBOc-qL28n0D1pN0md10WKDkqjMqa9RBfQc_wvtTaw-Ba3lK6hMJD4ZBXmlCCjzkOPf9p7kmh9fkcy1Yq70DvdiDXY3JkIjH8ALbYAAhPQ");'></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex items-center justify-center p-4 sm:p-8">
+<!-- Registration Card Container -->
+<div class="w-full max-w-[520px] bg-surface-dark border border-border-dark rounded-2xl shadow-2xl p-6 sm:p-8 md:p-10 relative overflow-hidden">
+<!-- Background Decoration (Subtle glow) -->
+<div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- Header -->
+<div class="text-center mb-8 relative z-10">
+<h1 class="text-white text-3xl font-bold tracking-tight mb-2">إنشاء حساب جديد</h1>
+<p class="text-[#92a4c9] text-base">
+                    هل لديك حساب بالفعل؟ 
+                    <a class="text-primary hover:text-primary/80 font-medium transition-colors" href="#">تسجيل الدخول</a>
+</p>
+</div>
+<!-- Form -->
+<form action="#" class="space-y-5 relative z-10" method="POST">
+<!-- Username -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-gray-300" for="username">اسم المستخدم</label>
+<div class="relative">
+<input class="w-full bg-[#111722] border border-[#2b3649] focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3.5 text-white placeholder:text-gray-600 transition-all outline-none" id="username" placeholder="اختر اسماً مميزاً" type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-[20px] pointer-events-none">person</span>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-gray-300" for="email">البريد الإلكتروني</label>
+<div class="relative">
+<input class="w-full bg-[#111722] border border-[#2b3649] focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3.5 text-white placeholder:text-gray-600 transition-all outline-none" id="email" placeholder="name@example.com" type="email"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-[20px] pointer-events-none">mail</span>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-gray-300" for="password">كلمة المرور</label>
+<div class="relative group">
+<input class="w-full bg-[#111722] border border-[#2b3649] focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3.5 text-white placeholder:text-gray-600 transition-all outline-none" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+<!-- Password Strength Meter (Simplified) -->
+<div class="flex gap-1 h-1 mt-2">
+<div class="flex-1 bg-red-500/50 rounded-full"></div>
+<div class="flex-1 bg-[#2b3649] rounded-full"></div>
+<div class="flex-1 bg-[#2b3649] rounded-full"></div>
+<div class="flex-1 bg-[#2b3649] rounded-full"></div>
+</div>
+</div>
+<!-- Date of Birth -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-gray-300">تاريخ الميلاد</label>
+<div class="grid grid-cols-3 gap-3">
+<div class="relative">
+<select class="w-full bg-[#111722] border border-[#2b3649] focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-3 py-3 text-white text-sm transition-all outline-none appearance-none cursor-pointer">
+<option disabled="" selected="" value="">اليوم</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+</select>
+</div>
+<div class="relative">
+<select class="w-full bg-[#111722] border border-[#2b3649] focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-3 py-3 text-white text-sm transition-all outline-none appearance-none cursor-pointer">
+<option disabled="" selected="" value="">الشهر</option>
+<option>يناير</option>
+<option>فبراير</option>
+<option>مارس</option>
+</select>
+</div>
+<div class="relative">
+<select class="w-full bg-[#111722] border border-[#2b3649] focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-3 py-3 text-white text-sm transition-all outline-none appearance-none cursor-pointer">
+<option disabled="" selected="" value="">السنة</option>
+<option>2005</option>
+<option>2004</option>
+<option>2003</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Terms and Conditions -->
+<div class="flex items-start gap-3 py-2">
+<div class="relative flex h-5 w-5 items-center justify-center">
+<input class="peer h-5 w-5 appearance-none rounded border border-[#2b3649] bg-[#111722] checked:border-primary checked:bg-primary transition-all cursor-pointer" id="terms" type="checkbox"/>
+<span class="material-symbols-outlined absolute text-[16px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+</div>
+<label class="text-sm text-gray-400 cursor-pointer select-none leading-tight" for="terms">
+                        أوافق على <a class="text-primary hover:underline" href="#">الشروط والقوانين</a> و <a class="text-primary hover:underline" href="#">سياسة الخصوصية</a>.
+                    </label>
+</div>
+<!-- Human Verification (Visual Placeholder) -->
+<div class="flex items-center justify-between p-3 rounded-xl bg-[#111722] border border-[#2b3649]">
+<div class="flex items-center gap-3">
+<div class="h-6 w-6 border-2 border-gray-500 rounded sm:rounded-md cursor-pointer hover:border-white"></div>
+<span class="text-sm text-gray-300">أنا لست برنامج روبوت</span>
+</div>
+<div class="flex flex-col items-center">
+<img alt="Captcha Logo" class="w-6 opacity-50 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo8v1yppADQRUOJaCgqPk7umuwX8BHlimyGoexBGi0AAiqK9a8waEH58yww9TihdGcs5LeI3y73DZQlUasKwA3CPix3MPKnd9kmofA20yq2mE7edrHkiT3buUBJcGFwr-7u9fUmzKWs2KwH71t3YmvBegM_5dxK0_fKtUhhkfJuFdR3g1BVB53jz7mabnYM6gPZpZhJNWNmuzmScgSCQr-5XFW8omj3RdQl7Otm50NCYtiiYcjLIrhIeGFjLMhG1Sp7Ob8LFDFuSo"/>
+<span class="text-[10px] text-gray-500 mt-1">reCAPTCHA</span>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-3.5 rounded-xl transition-all shadow-[0_0_20px_-5px_#135bec] hover:shadow-[0_0_25px_-5px_#135bec] active:scale-[0.98]" type="button">
+                    تسجيل الانضمام
+                </button>
+<!-- Divider -->
+<div class="relative py-2">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-[#2b3649]"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="bg-surface-dark px-4 text-xs text-gray-500 font-medium">أو سجل باستخدام</span>
+</div>
+</div>
+<!-- Social Buttons -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 bg-[#111722] hover:bg-[#1c2431] border border-[#2b3649] rounded-xl py-3 transition-colors group" type="button">
+<svg class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24">
+<path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81Z"></path>
+</svg>
+<span class="text-sm font-medium text-gray-400 group-hover:text-white">جوجل</span>
+</button>
+<button class="flex items-center justify-center gap-2 bg-[#111722] hover:bg-[#1c2431] border border-[#2b3649] rounded-xl py-3 transition-colors group" type="button">
+<svg class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24">
+<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+</svg>
+<span class="text-sm font-medium text-gray-400 group-hover:text-white">تويتر</span>
+</button>
+</div>
+</form>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="py-6 text-center text-sm text-[#92a4c9]">
+<div class="flex flex-wrap justify-center gap-4 mb-2">
+<a class="hover:text-white transition-colors" href="#">اتصل بنا</a>
+<span class="text-[#2b3649]">•</span>
+<a class="hover:text-white transition-colors" href="#">سياسة الاستخدام</a>
+<span class="text-[#2b3649]">•</span>
+<a class="hover:text-white transition-colors" href="#">الخصوصية</a>
+</div>
+<p>© 2024 نانو برو. جميع الحقوق محفوظة.</p>
+</footer>
+</body></html>

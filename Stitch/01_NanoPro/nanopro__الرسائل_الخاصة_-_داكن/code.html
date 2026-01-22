@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NanoPro: الرسائل الخاصة</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3b19e6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#141121",
+                        "background-card": "#1e1b2e",
+                        "secondary-text": "#9c93c8",
+                        "divider": "#2a2447"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #141121; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2447; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b19e6; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col overflow-hidden">
+<!-- Top Navbar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-divider bg-background-dark px-6 py-3 shrink-0 z-20">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">token</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">NanoPro</h2>
+</div>
+<!-- Navigation Links (Hidden on small screens) -->
+<div class="hidden md:flex items-center gap-9 flex-1 justify-center">
+<a class="text-secondary-text hover:text-white transition-colors text-sm font-medium leading-normal" href="#">الرئيسية</a>
+<a class="text-white text-sm font-bold leading-normal border-b-2 border-primary py-4" href="#">المحادثات</a>
+<a class="text-secondary-text hover:text-white transition-colors text-sm font-medium leading-normal" href="#">المنتديات</a>
+<a class="text-secondary-text hover:text-white transition-colors text-sm font-medium leading-normal" href="#">الأعضاء</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-divider/50 hover:bg-divider text-white transition-all">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button class="relative flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-divider/50 hover:bg-divider text-white transition-all">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 size-2 bg-primary rounded-full border-2 border-background-dark"></span>
+</button>
+<button class="flex items-center justify-center overflow-hidden rounded-xl h-10 px-2 bg-divider/20 hover:bg-divider/40 transition-all gap-2 ml-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-6" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCHXhYh-hkzdaSjyPgaH2W67cZIwKNAjttv3SUNtU2_2PxfQhGjUbVgS7AFhp43KO4EWg4s2YogrS2Jo5uhXLcUYI-mrRud0YwTsbtDeNlFqHrg5yRegcRaUhmklrGZGE6qqkSGQAVPg7aSoPDV-y2Q77X6oBRO2JBpjmm5dCd7TUXoHzWX-qGFv-LmjPF7YtgVUpIvEwc7yBv4Y6Uf0PRCu0PZ_yZdoICqH60RcXfqdYzpSww8ox30g8o3ybDF1b4kUZP-WMNUbTk");'></div>
+<span class="material-symbols-outlined text-secondary-text text-[20px]">expand_more</span>
+</button>
+</div>
+</header>
+<!-- Main Content Layout -->
+<!-- Flex direction normal in RTL means: First child starts on Right, Second child on Left. 
+         Prompt requested List on Left, Chat on Right.
+         In RTL: [Chat Area (Right)] [Sidebar (Left)]
+    -->
+<div class="flex flex-1 overflow-hidden h-full relative">
+<!-- Chat Area (Main Content - Right side in RTL) -->
+<main class="flex-1 flex flex-col h-full bg-background-dark relative md:border-l border-divider/50 z-0">
+<!-- Chat Header -->
+<div class="h-16 border-b border-divider flex items-center justify-between px-6 bg-background-dark/95 backdrop-blur shrink-0">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3 space-x-reverse">
+<div class="bg-center bg-no-repeat bg-cover rounded-full ring-2 ring-background-dark size-10" data-alt="Participant 1 Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBT53nAS40E4GP0y9R_alXXi0lwcEq-eDk0a4CkblRxifv5kNiLs27temAU4X49ec-7kEebe77zUl9d5BGtiR2fInbwca9YLjY8udztzvIRKHew-t9zMQ-BBNzKuJZoMPtDt6TKlHSnhyzf8n9Mfyo63MRfgFLFf_Kxts0NN7htoHMwfW18HZ26SBGnDplRtdWl41qxinFQGODskehTXWp9qClizCFTD5cvH7E35PrktsHhL83mA2_BplWN8SB3UZPYcxUd7XYdZM");'></div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full ring-2 ring-background-dark size-10" data-alt="Participant 2 Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBzEIbgBgcMJ0L3v2XpdNA51d6SlROcOmc9cuRwVO1nincShmxwVlvYiy_lhhTnmDKCQHdkkwC-otZ0Corg2XFcmipwwN7ZhstCGS-BCmPTcN2M4DddVfYOY9yDYELS743ArMZWiAffjvxYkv0R5oFqcRZRlez5VIPJIPupKB05AUFDHL2zenRy1gXwDgI3jHwZABM8Q3j22hOFtsmi14DGWdrQnpGUbdLtOSU3I4WoWXVBHZ-1_8ABwH9TTmqLDovD4fg4V0PHg5o");'></div>
+</div>
+<div class="flex flex-col">
+<h3 class="text-white text-base font-bold leading-tight">مشروع تطوير واجهة XenForo</h3>
+<span class="text-secondary-text text-xs">أنت، أحمد، سارة، +2</span>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="text-secondary-text hover:text-white p-2 rounded-lg hover:bg-divider/30 transition-colors">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</button>
+<button class="text-secondary-text hover:text-white p-2 rounded-lg hover:bg-divider/30 transition-colors">
+<span class="material-symbols-outlined text-[20px]">videocam</span>
+</button>
+<button class="text-secondary-text hover:text-white p-2 rounded-lg hover:bg-divider/30 transition-colors">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+</div>
+</div>
+<!-- Messages Stream -->
+<div class="flex-1 overflow-y-auto p-6 flex flex-col gap-6" id="message-container">
+<!-- Date Divider -->
+<div class="flex justify-center">
+<span class="text-xs font-medium text-secondary-text bg-divider/30 px-3 py-1 rounded-full">اليوم</span>
+</div>
+<!-- Message Received (Other) -->
+<div class="flex items-end gap-3 self-end w-full max-w-2xl group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0 mb-1" data-alt="Ahmed Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvJpCN9p1NUdt0FrqUzxNpO0_eWo0N6ooJS0-u4ndAegQDllgKPsb5KaSEIZKST413F7RBHpfMFwLuz5lyhO1VGCHqZssPdftfDwftaM2-93unAd5rm14KagQhhPnMWCSkhizlus7DluhYVHosd6htvlxHTJ5S9h8QLfDTXMbi4IJQ9FOTWWO0xYRi6eBjumCz-AcZGnE7J2ZUu4C_o9J3_sp26vhCL-ZdUkryz6CWsasK6_tclSvYA0TzXKW8Ki-LWN7S1nbr4Wk");'></div>
+<div class="flex flex-col gap-1 items-start w-full">
+<span class="text-xs text-secondary-text mr-1">أحمد محمد</span>
+<div class="bg-divider text-white px-4 py-3 rounded-2xl rounded-br-sm w-fit max-w-full">
+<p class="text-sm leading-relaxed">السلام عليكم، هل انتهينا من تصميم القائمة الجانبية؟ أحتاج الملفات للبدء في البرمجة.</p>
+</div>
+<span class="text-[10px] text-secondary-text opacity-0 group-hover:opacity-100 transition-opacity mr-1">10:30 ص</span>
+</div>
+</div>
+<!-- Message Received (Other 2) -->
+<div class="flex items-end gap-3 self-end w-full max-w-2xl group">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0 mb-1" data-alt="Sarah Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARG5xaMeaVkjqd-Ik0pI9hVOBOknqof6daIlFGgSxmhr1f3KM8MPUkVJ4XQR6FzDik5J8ZK2K2Bqjxx2oMTpCtrX9zQw4FRnNapkVfSlmtMXxdQ-UmVasxp3czExa1I5ytzS3PYX_jw3_00AcPxW6k2BjzzYCqSem_nr0Zew1tVpfNmWiXN5uF_X4u0gbOa2I6Nv62Fb0ue1ibIIhAyUspiBH6cVUxW8Bm314nEDADKrforuujO7OmnNJle7EbwDg9OTcymTZFb90");'></div>
+<div class="flex flex-col gap-1 items-start w-full">
+<span class="text-xs text-secondary-text mr-1">سارة علي</span>
+<div class="bg-divider text-white px-4 py-3 rounded-2xl rounded-br-sm w-fit max-w-full">
+<p class="text-sm leading-relaxed">نعم، سأرسل التحديثات خلال دقيقة. هناك تعديل بسيط على الألوان.</p>
+</div>
+<!-- Image Attachment -->
+<div class="mt-1 overflow-hidden rounded-xl border border-divider/50 w-64 h-40 bg-center bg-cover relative" data-alt="Design mockup preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBVo6DoNMjVbsD2QwdiPt9_D0jN9kPjHPJvx4XfnA0dutuJ6ddQO3jhveR7rakaYTsj0NtBHhwk2dbHTbO5uvilN2l1qKGRh-_BGx6bfBhbagWnrIlSs9BbCYzVaHzIMO04mxADpjpEK_DbvERFndUClDioC06jBW9hk1vsolQixe0JB4_G8vgkQzGTJsU83Q87WOn4zDvsXCZJYP8_dwh0jiW9KgvLWZjPJf00n4bpmbnlMz4p6KE1l_sTgydj4yeeSAgPdlEK19A");'>
+<div class="absolute inset-0 bg-black/20 hover:bg-transparent transition-colors cursor-pointer"></div>
+</div>
+<span class="text-[10px] text-secondary-text opacity-0 group-hover:opacity-100 transition-opacity mr-1">10:32 ص</span>
+</div>
+</div>
+<!-- Message Sent (Me) -->
+<div class="flex items-end gap-3 self-start flex-row-reverse w-full max-w-2xl group">
+<!-- No avatar for me usually in compact mode, or show it. Let's keep it minimal -->
+<div class="flex flex-col gap-1 items-end w-full">
+<div class="bg-primary text-white px-4 py-3 rounded-2xl rounded-bl-sm w-fit max-w-full shadow-lg shadow-primary/10">
+<p class="text-sm leading-relaxed">ممتاز! تأكدوا من دعم الوضع الداكن بشكل كامل كما اتفقنا.</p>
+</div>
+<span class="text-[10px] text-secondary-text opacity-0 group-hover:opacity-100 transition-opacity ml-1 flex items-center gap-1">
+                            10:35 ص
+                            <span class="material-symbols-outlined text-[12px] text-primary">done_all</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Composer -->
+<div class="p-4 bg-background-dark border-t border-divider shrink-0">
+<div class="flex items-end gap-2 bg-divider/30 p-2 rounded-xl border border-divider/50 focus-within:border-primary/50 transition-colors">
+<button class="p-2 text-secondary-text hover:text-white hover:bg-divider rounded-lg transition-colors shrink-0">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+</button>
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-white placeholder-secondary-text/50 resize-none py-2 max-h-32 text-sm leading-6" placeholder="اكتب رسالتك هنا..." rows="1"></textarea>
+<div class="flex items-center gap-1 shrink-0 pb-1">
+<button class="p-2 text-secondary-text hover:text-white hover:bg-divider rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">sentiment_satisfied</span>
+</button>
+<button class="p-2 bg-primary hover:bg-primary/90 text-white rounded-lg transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px] -ml-0.5 mt-0.5 -rotate-180 transform">send</span>
+</button>
+</div>
+</div>
+<div class="text-center mt-2">
+<p class="text-[10px] text-secondary-text/40">اضغط Enter للإرسال، Shift+Enter لسطر جديد</p>
+</div>
+</div>
+</main>
+<!-- Sidebar (List - Left side in RTL) -->
+<aside class="w-80 md:w-96 bg-background-card dark:bg-[#110e1c] flex flex-col border-r-0 md:border-l-0 border-divider z-10 shrink-0 h-full">
+<div class="p-4 flex flex-col gap-4 border-b border-divider/50">
+<!-- Search -->
+<div class="relative w-full">
+<span class="absolute top-1/2 -translate-y-1/2 right-3 text-secondary-text material-symbols-outlined text-[20px]">search</span>
+<input class="w-full h-10 bg-divider/30 text-white text-sm rounded-xl border-none focus:ring-1 focus:ring-primary pr-10 pl-4 placeholder:text-secondary-text/60 font-normal" placeholder="بحث في المحادثات..." type="text"/>
+</div>
+<!-- New Conversation Button -->
+<button class="w-full h-10 bg-primary hover:bg-primary/90 text-white rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+<span>محادثة جديدة</span>
+</button>
+</div>
+<!-- List -->
+<div class="flex-1 overflow-y-auto p-3 flex flex-col gap-1">
+<!-- Active Item -->
+<div class="group flex items-center gap-3 p-3 rounded-xl bg-divider/40 cursor-pointer border-r-2 border-primary">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Active Chat Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBjgRZSqyYlpye9CY0Zq8s_HiFSDDACIffFplVnBEgf9cuI5YyF2WRTvAiROMONi-2dOM2Q3ymrJT4dHD7zaJt0OIw9rHiQQShkCFiAFq_4D5c-ZViNq4Q5vZyhtzWCngI5x7NMIJIQ7gKZMVbcrbhqVbfndMu8_LzHP5SOsJq-GB18O59MMtZr5HostpSABK78o8aQ373uYfd6VQxsytDcxq9ySPzXM7Qv469Whe47FvJTvxnGA-PV3JfoYIMiOGrKRWg1x7KqqFs");'></div>
+<span class="absolute bottom-0 left-0 size-3 bg-green-500 border-2 border-background-card rounded-full"></span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<span class="text-white text-sm font-bold truncate">مشروع تطوير واجهة...</span>
+<span class="text-xs text-primary font-medium">10:35 ص</span>
+</div>
+<p class="text-secondary-text text-xs truncate leading-normal">أنت: ممتاز! تأكدوا من دعم الوضع...</p>
+</div>
+</div>
+<!-- List Item 1 -->
+<div class="group flex items-center gap-3 p-3 rounded-xl hover:bg-divider/20 cursor-pointer border-r-2 border-transparent hover:border-divider/50 transition-all">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="User Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBN88EsWxJLP3_3uu8OEfQUCTC4gUUyx8tC3D-SJIw6dJhYn9F5Y93xAL2_ybnDn7irpRc6jFMVxrILOEv-HJz7QXvMMOJVFfwGyrlVphzBY5DOGGtpVnPu0a5BSq1gjttlFu5n4TqDhUfFMsBzCoemW5nQ_iTYGa2BAdLq5JuwjKP1FB8a20oob2cQi9zMPQ8WtU1a6_s5zw0hrz5Z0i5-kWuVM9pO8XqsBXt8sp-QKQYYVQ0odrKC-T0kiE2HHKD7rknYEi8Oi5U");'></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<span class="text-white text-sm font-semibold truncate">الدعم الفني</span>
+<span class="text-xs text-secondary-text">أمس</span>
+</div>
+<p class="text-secondary-text text-xs truncate leading-normal">تم حل المشكلة المتعلقة بتسجيل الدخول.</p>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="group flex items-center gap-3 p-3 rounded-xl hover:bg-divider/20 cursor-pointer border-r-2 border-transparent hover:border-divider/50 transition-all">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="User Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB7qb4-CJqJuielS-QILE2DaX1nSR8On3NC5a69Eyw7alnW35u3z2ow-vaq19IA9TGjfqblwXXRfyE23he8YU9TPR99LcelOREgxgxRKDzDI3kN9rUdVct3Jop8qacoG_5-B8oDEoczbA25WKUdMc0dJlpIKtiE9vroYhlWVz82s8bIckE06ULPeURxMxmE6LKhSUo8vLc42VYAKddHBlPNqERn37QmXzamazMaLIkH4NtZNTUISFeFaGf15ZO-VvncF3qR3MiuFLw");'></div>
+<span class="absolute bottom-0 left-0 size-3 bg-gray-500 border-2 border-background-card rounded-full"></span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<span class="text-white text-sm font-semibold truncate">خالد عمر</span>
+<span class="text-xs text-secondary-text">الثلاثاء</span>
+</div>
+<p class="text-white text-xs truncate font-medium leading-normal">أرسلت لك ملف التصميم الجديد.</p>
+</div>
+<!-- Unread Badge -->
+<div class="bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">2</div>
+</div>
+<!-- List Item 3 -->
+<div class="group flex items-center gap-3 p-3 rounded-xl hover:bg-divider/20 cursor-pointer border-r-2 border-transparent hover:border-divider/50 transition-all">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 grayscale opacity-70" data-alt="User Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMylebrJgFwb89KnFnAeffvpgd01XBPrfxmaJmRI2Mj7jXxznmci4tjVZBhw4x7D2NP-jkbpFz6wLzxKUcOc-ZERY2xT8r4BB1FChelIoDVpGc7a2n643m-jlHCRZrdmQnEG-GkLsXCZwU2HghVBuVu6SzwDU0R8isExmdSArFstW5u1wwwlSmLRR7nbfRCEaSdk3dUKAIdAucd0rZ_QHmsXU9b_7v-KfHfMojN2MXLG4H3PiYDVPErAB9buGa39Wk-etk3mrGKTE");'></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0 opacity-70">
+<div class="flex justify-between items-center mb-0.5">
+<span class="text-white text-sm font-semibold truncate">منى السيد</span>
+<span class="text-xs text-secondary-text">05/10/23</span>
+</div>
+<p class="text-secondary-text text-xs truncate leading-normal">شكراً جزيلاً لك.</p>
+</div>
+</div>
+<!-- List Item 4 -->
+<div class="group flex items-center gap-3 p-3 rounded-xl hover:bg-divider/20 cursor-pointer border-r-2 border-transparent hover:border-divider/50 transition-all">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="User Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAc7yhvjeGYjurpYrdCuej5QD85CrhuatpTGjpqZ_iq4rLJSs-kUeAkQVbWxTI128oxMenK2ZYKU0OH1VoEPbn6jWT2lme1YGm5kyf29iL--XsvSLbd7p6YKDWACHa7CBLIwPtoygtCHNct1A0tZ8F9e_7dwfjfeM9v8GRv5XeSi5FnKbV5YPk16_YNuVD7cJvEV88Y0Jsb1POoj-UecGIP_v4YwCL23hoPKcfmmGug6XUKsDPgyK7dMuMvz3ZTs581yCJFmPXvmHs");'></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-center mb-0.5">
+<span class="text-white text-sm font-semibold truncate">فريق التسويق</span>
+<span class="text-xs text-secondary-text">01/10/23</span>
+</div>
+<p class="text-secondary-text text-xs truncate leading-normal">اجتماعنا القادم يوم الأحد.</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

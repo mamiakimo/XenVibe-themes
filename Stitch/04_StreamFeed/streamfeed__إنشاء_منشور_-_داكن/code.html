@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StreamFeed: Create Post</title>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1E2736",
+                        "border-dark": "#2d3b55",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#232f48] bg-[#111722]/95 backdrop-blur-md px-4 sm:px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white cursor-pointer">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em] hidden sm:block">StreamFeed</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full group focus-within:ring-2 ring-primary/50 transition-all">
+<div class="text-[#92a4c9] flex border-none bg-[#232f48] items-center justify-center pl-4 rounded-l-xl border-r-0 group-focus-within:text-white">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#232f48] focus:border-none h-full placeholder:text-[#92a4c9] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-4 sm:gap-8">
+<div class="hidden lg:flex items-center gap-9">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Home</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Popular</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Groups</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Marketplace</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center size-10 rounded-full bg-[#232f48] hover:bg-[#2d3b55] text-white transition-colors lg:hidden">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-transparent hover:ring-primary cursor-pointer transition-all" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAakWOY_9qRvTU5At6CF7tA0oNSJfw0IJenXQdsXZRG8_mePQCCs6Yq1weuQPdTsdJ2j6vs5GJcwJkxKP8eiIZn7SWqC_JeLcJb_Q8JNqmlllRchH0wzNcwXarQAMmXzzSA7AAmeU4D_hVh2YCnY_8SohA9pk2Jxph0M1GyxEGHV_mi_F5m7e4v6aQtGRPcCRpNUW6ZYQL7TVW2EIEMYm7tyxLqK6C-4JFrrb7n0EZL63O3CiMvkh3tZUNnm52EVp4Ik3PqZy-4Luo");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 justify-center max-w-[1440px] w-full mx-auto p-4 sm:p-6 lg:p-8 gap-8">
+<!-- Left Sidebar -->
+<aside class="hidden md:flex w-64 flex-col gap-6 sticky top-24 h-[calc(100vh-6rem)]">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center p-2 rounded-xl hover:bg-[#232f48]/50 transition-colors cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="User profile avatar large" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCD4rjcod-7PmTVgQ0PC0MbOh4X1ePsbvuHCBjmfjs47JErX6HDVuFNC8rIjJf9668RzCo0_JCvWSuOVa1pZUtuky_2r0h6L4n8rJIbEd6TDJVGgPnTKrljTsVcIOz2BO2GNLtTCsE-0to2vNOX7T2msZxV3E3Qg-v1IB4m0_eDTKxoVvgDBz64ge4_ZXHJtmjbjRoar4f4bQrNpOjy1QI7QAxFCskKwKxUUBPlRO_JNcloz4zxh_1liStv8FsGACyinXGrLzak5q8");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold leading-normal">My Profile</h1>
+<p class="text-[#92a4c9] text-sm font-normal leading-normal">@username</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#232f48] text-primary transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined fill-current">edit_square</span>
+<p class="text-white text-sm font-medium leading-normal">Create Post</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] group transition-colors" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-white transition-colors">home</span>
+<p class="text-[#92a4c9] group-hover:text-white text-sm font-medium leading-normal transition-colors">Feed</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] group transition-colors" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-white transition-colors">group</span>
+<p class="text-[#92a4c9] group-hover:text-white text-sm font-medium leading-normal transition-colors">Friends</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] group transition-colors" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-white transition-colors">chat_bubble</span>
+<p class="text-[#92a4c9] group-hover:text-white text-sm font-medium leading-normal transition-colors">Messages</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] group transition-colors" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-white transition-colors">notifications</span>
+<p class="text-[#92a4c9] group-hover:text-white text-sm font-medium leading-normal transition-colors">Notifications</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] group transition-colors" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-white transition-colors">settings</span>
+<p class="text-[#92a4c9] group-hover:text-white text-sm font-medium leading-normal transition-colors">Settings</p>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area: Create Post Interface -->
+<main class="flex-1 max-w-2xl w-full flex flex-col gap-6">
+<!-- Context/Breadcrumb -->
+<div class="flex items-center gap-2 text-sm text-[#92a4c9] px-1">
+<a class="hover:text-white" href="#">Feed</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-white">Create Thread</span>
+</div>
+<!-- Create Post Card -->
+<div class="flex flex-col bg-surface-dark rounded-2xl shadow-xl ring-1 ring-[#2d3b55] overflow-hidden">
+<!-- Header -->
+<div class="flex items-center justify-between p-4 border-b border-[#2d3b55]">
+<h2 class="text-lg font-bold text-white tracking-wide">Create Post</h2>
+<button class="text-[#92a4c9] hover:text-white hover:bg-[#2d3b55] rounded-full p-2 transition-all">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Body -->
+<div class="p-4 flex flex-col gap-4">
+<!-- User & Audience -->
+<div class="flex items-start gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 shadow-md" data-alt="Current user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-rE731srHghhfLJjZ3qSMwPBR27o_wk55EkI5RizYtOx5p0DmSY_5JwJ54OFItfnf5Fl7fMDZoR71fhH5Dr00hqz1N8qydH77xIC-Y1QFu2Vq1lq95dcQ7KUdCsTczuk1xOxgAoLmaz7VeFywZzfgeis-YP7YmU2FVrZVhjKSXrBKrxbLk3qHkJT1cuQuyB08Cs242Yx3OeX_3nEnbCrunxinYfGbDiKV3ldsSUFJMSLDH-GJm6nlxSU2FjgtqovG8WCJP5xO-Ho");'></div>
+<div class="flex flex-col gap-1">
+<span class="text-white font-semibold text-base">Jane Doe</span>
+<!-- Audience Selector -->
+<div class="relative inline-block">
+<button class="flex items-center gap-1.5 bg-[#2d3b55] hover:bg-[#374663] text-white text-xs font-medium py-1 px-2.5 rounded-lg transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[14px]">public</span>
+<span>Public</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Text Input -->
+<div class="flex-1 min-h-[200px] mt-2">
+<textarea class="w-full h-full bg-transparent border-none text-white text-xl placeholder-[#5a6b85] focus:ring-0 resize-none p-0 leading-relaxed font-normal" placeholder="What's on your mind, Jane?"></textarea>
+</div>
+<!-- Attachment Preview Mockup (Optional state) -->
+<div class="relative group rounded-xl overflow-hidden border border-[#2d3b55] bg-[#111722]">
+<div class="absolute top-2 right-2 z-10">
+<button class="bg-black/60 hover:bg-black/80 text-white p-1.5 rounded-full backdrop-blur-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="h-48 w-full bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Abstract gradient preview of an uploaded image" style="background-image: linear-gradient(135deg, #135bec 0%, #232f48 100%);"></div>
+</div>
+<!-- Add to post card -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 rounded-xl border border-[#2d3b55] bg-[#151c2a]">
+<span class="text-sm font-medium text-white w-full sm:w-auto">Add to your post</span>
+<div class="flex items-center gap-1 w-full sm:w-auto justify-between sm:justify-end">
+<button class="p-2 rounded-full hover:bg-[#232f48] text-[#45bd62] transition-colors tooltip-trigger" title="Photo/Video">
+<span class="material-symbols-outlined text-[24px]">image</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#232f48] text-[#f7b928] transition-colors" title="Tag People">
+<span class="material-symbols-outlined text-[24px]">person_add</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#232f48] text-[#f02849] transition-colors" title="Feeling/Activity">
+<span class="material-symbols-outlined text-[24px]">sentiment_satisfied</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#232f48] text-[#135bec] transition-colors" title="Check in">
+<span class="material-symbols-outlined text-[24px]">location_on</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#232f48] text-[#92a4c9] transition-colors" title="More">
+<span class="material-symbols-outlined text-[24px]">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="p-4 border-t border-[#2d3b55] bg-[#151c2a]/50">
+<button class="w-full py-3 px-4 rounded-xl bg-primary hover:bg-blue-600 text-white font-bold text-base shadow-lg shadow-blue-900/20 transition-all transform active:scale-[0.99]">
+                        Post
+                    </button>
+</div>
+</div>
+<!-- Recent Drafts / Info (Optional) -->
+<div class="flex items-center justify-between px-4 py-3 rounded-xl bg-[#232f48]/40 border border-[#2d3b55] text-sm">
+<div class="flex items-center gap-2 text-[#92a4c9]">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Saved Drafts</span>
+</div>
+<button class="text-primary hover:text-white font-medium transition-colors">View (2)</button>
+</div>
+</main>
+<!-- Right Sidebar: Trending / Groups -->
+<aside class="hidden lg:flex w-80 flex-col gap-6 sticky top-24 h-[calc(100vh-6rem)]">
+<!-- Trending Card -->
+<div class="bg-surface-dark rounded-xl border border-[#2d3b55] p-5 flex flex-col gap-4">
+<h3 class="text-white font-bold text-lg">Trending Now</h3>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1 cursor-pointer group">
+<div class="flex items-center justify-between">
+<span class="text-xs text-[#92a4c9]">Technology • Trending</span>
+<span class="material-symbols-outlined text-[#92a4c9] text-[16px] group-hover:text-white">more_horiz</span>
+</div>
+<p class="text-white font-medium group-hover:text-primary transition-colors">#StreamFeedDark</p>
+<span class="text-xs text-[#92a4c9]">12.5K posts</span>
+</div>
+<div class="flex flex-col gap-1 cursor-pointer group">
+<div class="flex items-center justify-between">
+<span class="text-xs text-[#92a4c9]">Design • Trending</span>
+<span class="material-symbols-outlined text-[#92a4c9] text-[16px] group-hover:text-white">more_horiz</span>
+</div>
+<p class="text-white font-medium group-hover:text-primary transition-colors">Tailwind CSS v4</p>
+<span class="text-xs text-[#92a4c9]">8.2K posts</span>
+</div>
+<div class="flex flex-col gap-1 cursor-pointer group">
+<div class="flex items-center justify-between">
+<span class="text-xs text-[#92a4c9]">Gaming • Live</span>
+<span class="material-symbols-outlined text-[#92a4c9] text-[16px] group-hover:text-white">more_horiz</span>
+</div>
+<p class="text-white font-medium group-hover:text-primary transition-colors">E3 2024 Highlights</p>
+<span class="text-xs text-[#92a4c9]">54K posts</span>
+</div>
+</div>
+<button class="text-primary text-sm font-medium hover:underline text-left mt-2">Show more</button>
+</div>
+<!-- Suggested Groups -->
+<div class="bg-surface-dark rounded-xl border border-[#2d3b55] p-5 flex flex-col gap-4">
+<h3 class="text-white font-bold text-lg">Suggested Groups</h3>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="bg-cover bg-center rounded-lg size-10" data-alt="Abstract geometric logo for UI Design group" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbC1urA5rLmgj_CS9-JDECGfNxzE8tI_Dzih06_aIHfcjj95RBz9yJnTsXi5RBZNQuhe0QSnFdbwNsLOxMs4eecnRf9Wj1WieQTvV3lwz4fGDE5VRMFo-HKSEVLRNwx2Bpd__1AgorZ57aE9OIahnigV3Kf_EuGFxFe_WsoQVHhfPLYbTSo-NYBbYI8GD0Il68volybwjlFab8SAwQG6mB7SpD9z3o8Ka8gilWkSM8-OMyoxV_s3iIPkneH6b4UqNRaaEir2A64g0");'></div>
+<div class="flex flex-col flex-1">
+<p class="text-white text-sm font-semibold hover:underline cursor-pointer">UI/UX Designers</p>
+<p class="text-[#92a4c9] text-xs">24k Members</p>
+</div>
+<button class="p-1.5 rounded-full bg-[#232f48] hover:bg-primary text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-cover bg-center rounded-lg size-10" data-alt="Code bracket logo for Developers group" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDqP7q9yvz6ziwkwXwHjLmJ6vgtQeGpSqzcWQXwIqEl4-qktJcrn2jsFHrlTRwd6HuBH_nllGCOCq6DJdhTWmxSowL2yGSCaerGJtlzG4T0BTlvqc0_WGDzOAZvehyxLa-mTI1OyB6Ac9avv2A5gkiSB5xjlG--ETSCtNcW1Yw-yQpbkqZ-1OJkkLvv7Rehk5OcO93gc5lyHgw5c4GuaxCEQIMqFkRaEoIgmwz-Or81JQVUYEAanPMQLqU4xD7sfvBTbWj69PYXpSM");'></div>
+<div class="flex flex-col flex-1">
+<p class="text-white text-sm font-semibold hover:underline cursor-pointer">Web Developers</p>
+<p class="text-[#92a4c9] text-xs">105k Members</p>
+</div>
+<button class="p-1.5 rounded-full bg-[#232f48] hover:bg-primary text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus: البحث</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722", // Matches the bg provided in snippets
+                        "surface-dark": "#232f48", // Matches the surface provided
+                        "text-muted": "#92a4c9", // Matches placeholder color
+                    },
+                    fontFamily: {
+                        "display": ["'Noto Sans Arabic'", "Inter", "sans-serif"],
+                        "sans": ["'Noto Sans Arabic'", "Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #344260; 
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display antialiased min-h-screen flex flex-col selection:bg-primary/30 selection:text-white">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-[#111722]/90 backdrop-blur-md border-b border-[#232f48]">
+<div class="px-4 md:px-10 lg:px-40 flex items-center justify-between h-16 max-w-[1280px] mx-auto w-full">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_535)">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_535"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight">ZenFocus</h2>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center size-10 rounded-lg bg-surface-dark hover:bg-surface-dark/80 text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-lg bg-surface-dark hover:bg-surface-dark/80 text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow w-full px-4 md:px-10 lg:px-40 py-8 flex justify-center">
+<div class="w-full max-w-[800px] flex flex-col gap-6">
+<!-- Hero / Search Section -->
+<div class="flex flex-col gap-6 pt-8 pb-4">
+<h1 class="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">البحث في ZenFocus</h1>
+<p class="text-text-muted text-lg">ابحث عن الأفكار، المناقشات، والمحتوى الملهم.</p>
+<!-- Search Bar Container -->
+<div class="relative w-full group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-text-muted group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="w-full h-14 bg-surface-dark border-2 border-transparent focus:border-primary rounded-xl text-white placeholder:text-text-muted pr-12 pl-14 text-lg shadow-sm focus:ring-0 transition-all duration-200 outline-none" placeholder="اكتب ما تبحث عنه..." type="text" value="تجربة المستخدم"/>
+<!-- Filter Toggle Button -->
+<button class="absolute inset-y-2 left-2 size-10 flex items-center justify-center rounded-lg bg-[#1a2332] hover:bg-primary/20 text-text-muted hover:text-primary transition-colors cursor-pointer" title="تصفية النتائج">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+<!-- Active Filters (Chips) -->
+<div class="flex flex-wrap gap-2">
+<button class="h-8 px-4 rounded-full bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors">الكل</button>
+<button class="h-8 px-4 rounded-full bg-surface-dark text-text-muted text-sm font-medium hover:bg-surface-dark/80 hover:text-white transition-colors">المواضيع</button>
+<button class="h-8 px-4 rounded-full bg-surface-dark text-text-muted text-sm font-medium hover:bg-surface-dark/80 hover:text-white transition-colors">المشاركات</button>
+<button class="h-8 px-4 rounded-full bg-surface-dark text-text-muted text-sm font-medium hover:bg-surface-dark/80 hover:text-white transition-colors">الأعضاء</button>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px w-full bg-gradient-to-r from-transparent via-surface-dark to-transparent my-2"></div>
+<!-- Search Results Header -->
+<div class="flex items-center justify-between pb-2">
+<h3 class="text-white text-lg font-bold">نتائج البحث (١٢)</h3>
+<div class="flex items-center gap-1 text-sm text-text-muted cursor-pointer hover:text-white transition-colors">
+<span>الأحدث أولاً</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+</div>
+<!-- Results List -->
+<div class="flex flex-col gap-2">
+<!-- Result Item 1 -->
+<article class="p-5 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-surface-dark group cursor-pointer">
+<div class="flex flex-col gap-2">
+<h4 class="text-xl font-bold text-primary group-hover:text-blue-400 transition-colors leading-snug">
+                            كيف نحسن <span class="bg-primary/20 text-blue-200 px-1 rounded">تجربة المستخدم</span> في التطبيقات النصية؟
+                        </h4>
+<p class="text-gray-300 leading-relaxed text-base line-clamp-3">
+                            التركيز على المحتوى هو المفتاح الأساسي. في هذا الموضوع نناقش كيف يمكن لتقليل العناصر البصرية أن يعزز من <span class="text-white font-medium">تجربة المستخدم</span> بشكل ملحوظ، مما يسمح للقارئ بالانغماس الكامل في النص دون تشتيت...
+                        </p>
+<div class="flex items-center gap-3 text-xs md:text-sm text-text-muted mt-2 pt-2 border-t border-white/5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">account_circle</span>
+<span>أحمد محمد</span>
+</div>
+<span class="size-1 bg-text-muted/50 rounded-full"></span>
+<span>منذ يومين</span>
+<span class="size-1 bg-text-muted/50 rounded-full"></span>
+<span class="bg-surface-dark px-2 py-0.5 rounded text-xs border border-white/5">تصميم الواجهات</span>
+</div>
+</div>
+</article>
+<!-- Result Item 2 -->
+<article class="p-5 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-surface-dark group cursor-pointer">
+<div class="flex flex-col gap-2">
+<h4 class="text-xl font-bold text-white group-hover:text-primary transition-colors leading-snug">
+                            أهمية الخطوط العربية في التصميم الحديث
+                        </h4>
+<p class="text-gray-300 leading-relaxed text-base line-clamp-3">
+                            اختيار الخط المناسب هو نصف <span class="bg-primary/20 text-blue-200 px-1 rounded">تجربة المستخدم</span>. الخطوط الجيدة تسهل القراءة وتجعل الواجهة تبدو أكثر احترافية. سنستعرض هنا مجموعة من أفضل الخطوط العربية المجانية...
+                        </p>
+<div class="flex items-center gap-3 text-xs md:text-sm text-text-muted mt-2 pt-2 border-t border-white/5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">account_circle</span>
+<span>سارة علي</span>
+</div>
+<span class="size-1 bg-text-muted/50 rounded-full"></span>
+<span>منذ أسبوع</span>
+<span class="size-1 bg-text-muted/50 rounded-full"></span>
+<span class="bg-surface-dark px-2 py-0.5 rounded text-xs border border-white/5">الموارد والأدوات</span>
+</div>
+</div>
+</article>
+<!-- Result Item 3 -->
+<article class="p-5 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-surface-dark group cursor-pointer">
+<div class="flex flex-col gap-2">
+<h4 class="text-xl font-bold text-white group-hover:text-primary transition-colors leading-snug">
+                            فلسفة ZenFocus وتأثيرها على التركيز
+                        </h4>
+<p class="text-gray-300 leading-relaxed text-base line-clamp-3">
+                            هل لاحظت كيف أن التطبيقات المزدحمة تزيد من التوتر؟ إن تبني فلسفة Zen في <span class="bg-primary/20 text-blue-200 px-1 rounded">تجربة المستخدم</span> ليس مجرد خيار جمالي، بل ضرورة وظيفية في عصرنا الرقمي المزدحم...
+                        </p>
+<div class="flex items-center gap-3 text-xs md:text-sm text-text-muted mt-2 pt-2 border-t border-white/5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">account_circle</span>
+<span>مدير الموقع</span>
+</div>
+<span class="size-1 bg-text-muted/50 rounded-full"></span>
+<span>منذ شهر</span>
+<span class="size-1 bg-text-muted/50 rounded-full"></span>
+<span class="bg-surface-dark px-2 py-0.5 rounded text-xs border border-white/5">المنتدى العام</span>
+</div>
+</div>
+</article>
+<!-- Result Item 4 -->
+<article class="p-5 rounded-xl hover:bg-surface-dark/50 transition-colors border border-transparent hover:border-surface-dark group cursor-pointer">
+<div class="flex flex-col gap-2">
+<h4 class="text-xl font-bold text-white group-hover:text-primary transition-colors leading-snug">
+                            نقاش: هل الوضع الداكن يحسن القراءة؟
+                        </h4>
+<p class="text-gray-300 leading-relaxed text-base line-clamp-3">
+                            العديد من الدراسات تشير إلى أن الوضع الداكن يقلل من إجهاد العين، لكن هل هو الخيار الأمثل دائمًا لتحسين <span class="bg-primary/20 text-blue-200 px-1 rounded">تجربة المستخدم</span>؟ شاركنا رأيك وتجربتك الشخصية...
+                        </p>
+<div class="flex items-center gap-3 text-xs md:text-sm text-text-muted mt-2 pt-2 border-t border-white/5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">account_circle</span>
+<span>عضو جديد</span>
+</div>
+<span class="size-1 bg-text-muted/50 rounded-full"></span>
+<span>منذ ٣ ساعات</span>
+<span class="size-1 bg-text-muted/50 rounded-full"></span>
+<span class="bg-surface-dark px-2 py-0.5 rounded text-xs border border-white/5">نقاشات مفتوحة</span>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="py-6 flex justify-center">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-surface-dark hover:bg-surface-dark/80 text-white font-medium transition-all transform active:scale-95 border border-white/5">
+<span>تحميل المزيد من النتائج</span>
+<span class="material-symbols-outlined text-[20px] animate-pulse">refresh</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Simple Footer for Zen Feel -->
+<footer class="py-8 text-center text-text-muted text-sm border-t border-surface-dark mt-auto">
+<p>© 2024 ZenFocus. تصميم هادئ للقراءة المركزة.</p>
+</footer>
+</body></html>

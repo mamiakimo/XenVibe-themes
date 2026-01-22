@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>الرسائل الخاصة - XenForo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161e2c",
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark text-white font-display overflow-hidden selection:bg-primary selection:text-white">
+<div class="relative flex h-screen w-full flex-col">
+<!-- Top Navigation -->
+<header class="flex shrink-0 items-center justify-between whitespace-nowrap border-b border-border-dark bg-[#111722] px-6 py-3 shadow-md z-20">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-tight">منتدى XenForo</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#">الرئيسية</a>
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#">المنتديات</a>
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#">الأعضاء</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<!-- Search Input -->
+<label class="hidden lg:flex flex-col min-w-40 !h-10 w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-border-dark group focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+<div class="text-text-secondary flex border-none items-center justify-center pr-4 pl-2 rounded-r-xl border-l-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-transparent focus:border-none h-full placeholder:text-text-secondary px-2 rounded-r-none border-r-0 text-sm font-normal" placeholder="بحث..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-xl bg-border-dark text-white hover:bg-primary/20 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-xl bg-border-dark text-white hover:bg-primary/20 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-border-dark cursor-pointer" data-alt="User profile picture placeholder with abstract gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwjvXbAMM-wy6WcuX7vdj0aR_m_5NPjlHyolPkLiADztSb3FE8SARidEMuecyAMpBRASWnHXgHGuQP07hO7jsLcj-ivCZhMz3dozxbTkV9OoIm9Bo-BVVuRWtRgsiXLEq-NdiDS-S303QE47WWqtWa7P5tymF90NKTNK3uarb_a2ZCikiXt-sFhIgV8htE_yMu7UEl3Uz4P7d-AGT1CXjUTqGuLGmWPcK7awKkmBa4cZwTh4LsZvxGklGazmFY5fGxPeioz90IFBg");'></div>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar (Conversation List) -->
+<aside class="flex w-full md:w-[380px] lg:w-[420px] flex-col border-l border-border-dark bg-[#111722] z-10 shrink-0">
+<div class="p-5 pb-2">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-white text-2xl font-bold">المحادثات</h2>
+<button class="flex items-center justify-center rounded-xl h-9 px-4 bg-primary hover:bg-blue-600 text-white gap-2 text-sm font-bold shadow-lg shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-[18px]">edit_square</span>
+<span>رسالة جديدة</span>
+</button>
+</div>
+<div class="mb-4">
+<label class="flex flex-col h-11 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-border-dark/50 hover:bg-border-dark transition-colors">
+<div class="text-text-secondary flex border-none items-center justify-center pr-4 pl-2">
+<span class="material-symbols-outlined text-[22px]">search</span>
+</div>
+<input class="flex w-full flex-1 bg-transparent border-none text-white focus:ring-0 h-full placeholder:text-text-secondary px-2 text-sm" placeholder="ابحث عن عضو أو رسالة..."/>
+</div>
+</label>
+</div>
+</div>
+<!-- List Items -->
+<div class="flex-1 overflow-y-auto px-3 pb-4 space-y-1 custom-scrollbar">
+<!-- Active Item -->
+<div class="group flex cursor-pointer items-center gap-4 bg-[#232f48] rounded-xl p-3 border border-primary/30 shadow-sm relative overflow-hidden">
+<div class="absolute right-0 top-0 bottom-0 w-1 bg-primary rounded-l"></div>
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Portrait of a user named Ahmed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuauoOqYAT3OwBx6EhhCK1K5oxp85rkC43aRVq7m0vehbTFxJyvfW4L_7vY-7gW1pUdF1PtrYXC7NVLfghjvT5mFIPGSk6D0KvviAdAOWjzdt-i0_L2enDdYodUw4Wsr10Np_IJj3Xy1ddS4vOOaRA4aeSGlDr9PcNeCu7vJR52Zwg5kI3mIvQyA1VUU8IiP8y_pGqvMVHIBq4lUR-U56xN6RmBaiOf-W5Aetg85YmZjyNcaLD4AOiYmLzvQN_6JhO_LKcY4jLcIA");'></div>
+<span class="absolute bottom-0 left-0 size-3 bg-green-500 border-2 border-[#232f48] rounded-full"></span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<p class="text-white text-base font-bold truncate">أحمد علي</p>
+<p class="text-primary text-xs font-medium whitespace-nowrap">دقيقتان</p>
+</div>
+<p class="text-gray-300 text-sm truncate opacity-90">هل يمكننا مراجعة التصميم الجديد للمنتدى؟</p>
+</div>
+</div>
+<!-- Regular Item -->
+<div class="group flex cursor-pointer items-center gap-4 hover:bg-[#1a2332] rounded-xl p-3 transition-colors border border-transparent hover:border-border-dark">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Portrait of a user named Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqgeY6eGKjRQduoq-WRnVp8yvO9SR6FhXiX2v_r5-nAE3bG_I7jMaxZbPUDtkXU9_EdTq3p0ZmYiZHISXqqjYzfQf7JAmz6RjipzmrsOwPN90jNCIWxyPor8QPA-gxveWeWRhud8hnnkaWP4fEuWyE7M2e3WjOXvgNru05AdMKLtqCfzSEx6uxQvqA8TV8kX__S9ivAYAqv_vXjkjuu17iaGvq5Cb7BB8KRCjrB1TEZp9xVhfhbihE0SMjGCEjiQUQ4cfRPSeUk8s");'></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<p class="text-white text-base font-medium truncate">سارة محمد</p>
+<p class="text-text-secondary text-xs font-normal whitespace-nowrap">ساعة واحدة</p>
+</div>
+<p class="text-text-secondary group-hover:text-gray-400 text-sm truncate">شكراً لك، سأقوم بالتحقق من الموضوع فوراً.</p>
+</div>
+<div class="size-2 rounded-full bg-primary shrink-0 mt-1"></div>
+</div>
+<!-- Regular Item -->
+<div class="group flex cursor-pointer items-center gap-4 hover:bg-[#1a2332] rounded-xl p-3 transition-colors border border-transparent hover:border-border-dark">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Team logo icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbeXlB4-QglUAW_5d1hRX8MV4W7aPT3eIRiWMe-RTYtE2_200TWAYp9OPeP7_s3LwZBZWNwo8Bb6zKED8IstxyBNkE3WKHnloaibGrHimDL65LHpFhqbX9vLwnmffmwb_WhpaPtrbNFJ7C_N6HQxjCi1qWqUYjKov7Lf5pAIPSFjgNLABO3x72A0SKT4wrcpeajCSleoXjzYWlYWNEyw0U-NGxYwSQL-eW1-JLVzMokMn6PE7XjkR6pJNBhiIR9u2PIOuOjLZJ0Ps");'></div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<p class="text-white text-base font-medium truncate">فريق الدعم</p>
+<p class="text-text-secondary text-xs font-normal whitespace-nowrap">أمس</p>
+</div>
+<p class="text-text-secondary group-hover:text-gray-400 text-sm truncate">تم تجديد اشتراكك بنجاح.</p>
+</div>
+</div>
+<!-- Regular Item -->
+<div class="group flex cursor-pointer items-center gap-4 hover:bg-[#1a2332] rounded-xl p-3 transition-colors border border-transparent hover:border-border-dark">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Portrait of a user named Khalid" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAUUf3ZG6XCDVlLdnvDvGf_OvPE9a0a0F7cLXhLdpBqZE_20pgAh4rxdrcfS-pN3guu-pOVBadXFcMatlr550v61qfAWizS1y5-AEFmhLLOoqvzcAvEbYpXJSTSJslaWGosxfIHHyM7IVEING1qBQYvCEkuSDHpJ-czbHjOPfvpNpkq-jYmHkrrVhtrQ5UdTsB_YeUdSWkllJL_3eT1gnZ9-SWEwnhpZjLRHAvXJZc12icGBJJt6-OiMwFd5bmxV0cuLCK7aRiOExA");'></div>
+<span class="absolute bottom-0 left-0 size-3 bg-gray-500 border-2 border-[#1a2332] rounded-full"></span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex justify-between items-baseline">
+<p class="text-white text-base font-medium truncate">خالد عمر</p>
+<p class="text-text-secondary text-xs font-normal whitespace-nowrap">الخميس</p>
+</div>
+<p class="text-text-secondary group-hover:text-gray-400 text-sm truncate">أرسلت لك الملفات المطلوبة على الإيميل.</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Chat Area -->
+<main class="flex flex-1 flex-col bg-[#0d1117] relative w-full min-w-0">
+<!-- Chat Header -->
+<div class="flex items-center justify-between px-6 py-3 border-b border-border-dark bg-[#111722]/80 backdrop-blur-md sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<div class="md:hidden">
+<button class="text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Portrait of current chat user Ahmed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSoMl9g9cU3U3AE2Aqf2LRbdxaRi5PXKsVsXI5CSyoimVHAXeHop8tJ8GQrktqx_Xy534zYSaEGufMMvtPV2vr4IOUlFU7JJ9WE5LBMx6vf2To0_Y3nphWe-Z1HjczhcumrgLZkgcI9_4WO3qPwvmbb-IsM4tmr_1v5Po-d5jt3Ex9YGuaHW3S9q3ALH4vUqLyTNl5PPvwdkC7gfLnaJbcBMDTgZSrooE62MWir9nWLCN91VTPnNH548ChlEsFzg1ibwe1TzqR9No");'></div>
+<div>
+<h3 class="text-white font-bold text-base leading-tight">أحمد علي</h3>
+<div class="flex items-center gap-1.5">
+<span class="size-2 rounded-full bg-green-500"></span>
+<span class="text-text-secondary text-xs font-medium">متصل الآن</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-border-dark text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-border-dark text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Messages Stream -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar flex flex-col-reverse">
+<!-- Note: flex-col-reverse keeps scroll at bottom, but we need to reverse DOM order or just use flex-col and justify-end if content is small. Let's use flex-col and scroll to bottom naturally or minimal JS, but CSS only approach implies standard flow. -->
+<!-- Outgoing Message (Me) - Should be on LEFT in RTL -->
+<div class="flex flex-col items-end self-end max-w-[85%] md:max-w-[70%] gap-1">
+<div class="bg-primary text-white px-5 py-3 rounded-2xl rounded-tl-none shadow-md">
+<p class="text-sm leading-relaxed">أهلاً أحمد، كيف حالك؟ اطلعت على التعديلات الأخيرة في قسم المنتديات.</p>
+</div>
+<span class="text-[11px] text-text-secondary px-1">10:30 ص <span class="material-symbols-outlined text-[12px] align-middle ml-1">done_all</span></span>
+</div>
+<!-- Incoming Message (Other) - Should be on RIGHT in RTL -->
+<div class="flex flex-col items-start self-start max-w-[85%] md:max-w-[70%] gap-1">
+<div class="flex items-end gap-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0 mb-1 hidden md:block" data-alt="Avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD83f8SgcO0Rw2cD2XOXu4fd6OnEv-QosqinzP3S3v_EZkavyQKxHWzkO3X48K44TSD-Ofk43ByuRE-9Vqt-NYhtT-eLnN3uGYjOujI5nUqw5S1FPxDmwR-wnPLjkaYpdQ7qLpd1iPHv_19PYB-9YS55OfXoMAbs8O1nltRYl35bXQiUQOpVrVZDPynGPVcotpKN8IUH-m5BprS5sRzNqSnsQCX-jOg9-np5OR2ZsvwZ5U0y12_qoiLJFlJ7U2uZioDr4W1Qz4sJoE");'></div>
+<div class="bg-[#232f48] text-gray-100 px-5 py-3 rounded-2xl rounded-tr-none shadow-sm border border-white/5">
+<p class="text-sm leading-relaxed">أهلاً بك! بخير الحمدلله. ما رأيك في توزيع البطاقات الجديد؟ حاولت جعله أكثر عصرية.</p>
+</div>
+</div>
+<span class="text-[11px] text-text-secondary px-11">10:32 ص</span>
+</div>
+<!-- Outgoing Message (Me) -->
+<div class="flex flex-col items-end self-end max-w-[85%] md:max-w-[70%] gap-1">
+<div class="bg-primary text-white px-5 py-3 rounded-2xl rounded-tl-none shadow-md">
+<p class="text-sm leading-relaxed">التصميم ممتاز جداً! الألوان الداكنة مريحة للعين، والمسافات متناسقة.</p>
+</div>
+<!-- Chained message -->
+<div class="bg-primary text-white px-5 py-3 rounded-2xl rounded-tl-none shadow-md mt-0.5">
+<p class="text-sm leading-relaxed">هل يمكننا إضافة زر "تعديل" سريع في القائمة الجانبية؟</p>
+</div>
+<span class="text-[11px] text-text-secondary px-1">10:35 ص <span class="material-symbols-outlined text-[12px] align-middle ml-1">done_all</span></span>
+</div>
+<!-- Incoming Message (Other) -->
+<div class="flex flex-col items-start self-start max-w-[85%] md:max-w-[70%] gap-1">
+<div class="flex items-end gap-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0 mb-1 hidden md:block" data-alt="Avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDehDrw2ryEyXK1yHX3VFjt0QzF0g8DaF0CZMJnZYqnCgnKdlULEmTVVenir1I1otWVez9drkAF63MCaJ4dQ-PBWJLwyX7_825jRtpWAT86KBlQrRPTjZYDtriit4Zh278m56Hzv7u4uQhSxszbdaBgVCvDPbplFm9NAE53feWnwNJErJ1qdirDimiDE8P6AK42KNBB2xdH2zK9mtis1CBfVQjPDotDLgNgPPMEFxKV7Ywlh11fo6jM8zOc5vfRkHom6pswdI0QLLA");'></div>
+<div class="bg-[#232f48] text-gray-100 px-5 py-3 rounded-2xl rounded-tr-none shadow-sm border border-white/5">
+<p class="text-sm leading-relaxed">فكرة رائعة. سأقوم بإضافتها في التحديث القادم. هل لديك أي ملاحظات أخرى؟</p>
+</div>
+</div>
+<span class="text-[11px] text-text-secondary px-11">10:40 ص</span>
+</div>
+<!-- Date Divider -->
+<div class="flex justify-center my-4">
+<span class="text-xs font-medium text-text-secondary bg-[#1a2332] px-3 py-1 rounded-full">اليوم</span>
+</div>
+<!-- Incoming Message (Other) -->
+<div class="flex flex-col items-start self-start max-w-[85%] md:max-w-[70%] gap-1">
+<div class="flex items-end gap-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0 mb-1 hidden md:block" data-alt="Avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-YKQ3_QSH6DvABhyaGnZ0MI_hip3j2HYxU_M7FuYDTLOsv7OXU7tVldOkM8y_uwfB0TMpKnkOxkHihJw9Zysdac_i_2V18jfEhvd4zUhpR5Ht6ZJ_PRy8JATDw8O2sDA8oyNpgSU9QJdLPvbe14DRZUSnMPseh0qDY0GT7JwxqeLwHPOOlbQH3AQhQ9BCz4IhpK6l4A24aTkVya_Kr2ey-5zjqMjqimM7BsDbHTDVo6hPdrd0Zt33MHTISUb7mOohKLK2-zGkYxE");'></div>
+<div class="bg-[#232f48] text-gray-100 px-5 py-3 rounded-2xl rounded-tr-none shadow-sm border border-white/5">
+<p class="text-sm leading-relaxed">هل يمكننا مراجعة التصميم الجديد للمنتدى؟</p>
+</div>
+</div>
+<span class="text-[11px] text-text-secondary px-11">منذ دقيقتين</span>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-[#111722] border-t border-border-dark">
+<div class="flex items-end gap-3 max-w-4xl mx-auto bg-[#1a2332] p-2 rounded-2xl border border-white/5 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/50 transition-all">
+<button class="p-2 text-text-secondary hover:text-white rounded-full hover:bg-white/5 transition-colors shrink-0">
+<span class="material-symbols-outlined text-[24px]">add_circle</span>
+</button>
+<div class="flex-1 py-2">
+<textarea class="w-full bg-transparent border-none text-white placeholder:text-text-secondary focus:ring-0 resize-none p-0 text-base max-h-32 custom-scrollbar" placeholder="اكتب رداً..." rows="1"></textarea>
+</div>
+<div class="flex items-center gap-1 shrink-0 pb-1">
+<button class="p-2 text-text-secondary hover:text-white rounded-full hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[24px]">sentiment_satisfied</span>
+</button>
+<button class="p-2 text-text-secondary hover:text-white rounded-full hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[24px]">image</span>
+</button>
+<button class="ml-1 p-2 bg-primary hover:bg-blue-600 text-white rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px] -rotate-180">send</span> <!-- Rotated for RTL context visually if icon is directional -->
+</button>
+</div>
+</div>
+<div class="text-center mt-2">
+<p class="text-[10px] text-text-secondary/60">اضغط Enter للإرسال، Shift+Enter لسطر جديد</p>
+</div>
+</div>
+</main>
+</div>
+</div>
+<style>
+        /* Custom Scrollbar for cleaner look */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #232f48;
+            border-radius: 20px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: #3b4c6b;
+        }
+    </style>
+</body></html>

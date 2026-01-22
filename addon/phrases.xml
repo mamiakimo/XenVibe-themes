@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+	<phrase title="xenvibe_core" addon_id="XenVibe/Core">XenVibe Core</phrase>
+	<phrase title="xenvibe_settings" addon_id="XenVibe/Core">XenVibe Settings</phrase>
+	<phrase title="xenvibe_style_options" addon_id="XenVibe/Core">Style Options</phrase>
+
+	<phrase title="style_prop_group.xvBasic" addon_id="XenVibe/Core">XenVibe: Basic</phrase>
+	<phrase title="style_prop_group.xvPalette" addon_id="XenVibe/Core">XenVibe: Colors</phrase>
+	<phrase title="style_prop_group.xvTypography" addon_id="XenVibe/Core">XenVibe: Typography</phrase>
+	<phrase title="style_prop_group.xvHeader" addon_id="XenVibe/Core">XenVibe: Header</phrase>
+	<phrase title="style_prop_group.xvContent" addon_id="XenVibe/Core">XenVibe: Content</phrase>
+	<phrase title="style_prop_group.xvSidebar" addon_id="XenVibe/Core">XenVibe: Sidebar</phrase>
+	<phrase title="style_prop_group.xvFooter" addon_id="XenVibe/Core">XenVibe: Footer</phrase>
+	<phrase title="style_prop_group.xvEffects" addon_id="XenVibe/Core">XenVibe: Effects</phrase>
+
+	<!-- Widget Position -->
+	<phrase title="widget_pos.xv_left_sidebar" addon_id="XenVibe/Core">XenVibe: Left Sidebar</phrase>
+	<phrase title="widget_pos_desc.xv_left_sidebar" addon_id="XenVibe/Core">Widgets displayed in the left navigation sidebar</phrase>
+
+	<!-- XenVibe UI Phrases (Used in all 9 styles) -->
+	<phrase title="xv_join_the_conversation" addon_id="XenVibe/Core"><![CDATA[Join the conversation]]></phrase>
+	<phrase title="xv_register_now_to_gain_access" addon_id="XenVibe/Core"><![CDATA[Register now to gain access to all features]]></phrase>
+	<phrase title="xv_toggle_sidebar" addon_id="XenVibe/Core"><![CDATA[Toggle sidebar]]></phrase>
+</phrases>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus - Private Messages</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13c8ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#111f22",
+                        "background-darker": "#0d181a",
+                        "surface-dark": "#1a2c30",
+                        "border-dark": "#234248",
+                        "text-secondary": "#92c0c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111f22; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #234248; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #13c8ec; 
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation -->
+<header class="shrink-0 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark px-6 py-3 bg-background-dark z-20">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_535)">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_535"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-tight">ZenFocus</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#">Forums</a>
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium" href="#">New Posts</a>
+<a class="text-white text-sm font-medium" href="#">Messages</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-text-secondary">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="block w-full rounded-lg border-none bg-surface-dark py-2 pl-10 pr-4 text-sm text-white placeholder-text-secondary focus:ring-1 focus:ring-primary" placeholder="Search..." type="text"/>
+</div>
+<button class="relative p-2 text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 h-2 w-2 rounded-full bg-primary"></span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 border border-border-dark" data-alt="User avatar showing a minimalist abstract pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDWBi3C_KfEfoYLrIoC4I75ulgFVQBve0frVKBWhY8geazKVF0s43qlX4flP5UbcWynm7Hw2LdClWPTvy_X2aJpwkqMfu6NBAbPH6l0h319bg_CTX1vSfDauCZQvfLnh7hTFVW2CWZypRhiTKg2aeNNdDpHSDVguwPcCW8YksmWm1Yg7uwAGTFXB4o6bLrJ87kP_Ir8CRm9I_LiyIqz4OLFz5txSJpMM0IWEywiLY0dzBZfGCadndKxm0aP5-J0U969KfbLAFOFqmY");'></div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar: Conversation List -->
+<aside class="w-full md:w-[380px] flex flex-col border-r border-border-dark bg-background-darker shrink-0 z-10 transition-all duration-300">
+<!-- Sidebar Header -->
+<div class="p-4 border-b border-border-dark flex justify-between items-center sticky top-0 bg-background-darker z-10">
+<h1 class="text-xl font-bold tracking-tight text-white">Inbox</h1>
+<button class="flex items-center justify-center gap-2 bg-primary hover:bg-opacity-90 text-background-dark px-4 py-2 rounded-lg text-sm font-bold transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>New</span>
+</button>
+</div>
+<!-- Conversation List -->
+<div class="flex-1 overflow-y-auto">
+<!-- Active Item -->
+<div class="group flex items-start gap-4 p-4 border-l-[3px] border-primary bg-surface-dark/50 cursor-pointer hover:bg-surface-dark transition-colors">
+<div class="shrink-0 relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Profile picture of Ahmed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAK6P6g-0ET-6UtM94192q-HxoL3Pb5SompON5VXA2zM6ITOCr2ts_wnVR33WdPrLPeE0K7uK609tF8QGV-4mr57hDQgoLd4bN0iJ85jDeS7HI1MuBrIvQGz8JjAN9lJiFoQZWDW-a-AUZd2kqO0EGdRXvM-OpE7CZtAkAYXV11v_4KjwuBsMdRZ7QujraR2_FLL4uWPgYv_oIPVwTmqpgEvHpZ84HaG6srmm65vhwM5LwJ3OJaPptsHPCXSbp5H64WwC2f6vSGO-o");'></div>
+<span class="absolute bottom-0 right-0 size-3 border-2 border-background-darker rounded-full bg-green-500"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-white font-semibold truncate">Ahmed</h3>
+<span class="text-xs text-primary font-medium">10:35 AM</span>
+</div>
+<p class="text-text-secondary text-sm font-medium truncate">Re: Project Typography Update</p>
+<p class="text-slate-500 text-sm truncate mt-0.5">That sounds perfect. Let's deploy...</p>
+</div>
+</div>
+<!-- Unread Item -->
+<div class="group flex items-start gap-4 p-4 border-l-[3px] border-transparent cursor-pointer hover:bg-surface-dark/30 transition-colors">
+<div class="shrink-0 relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Profile picture of Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD22jgOYL7T9C1u16qks8seoQSMI8wr0iJtq279P9MZ1WCcMhLmVfi-PNAE7QrSrMAdnrxQOtRgtBSA_n8BwmCDX0rF7DRjU3EFHSlqauJVk49D2-dfv7xUeK1DU8zm3qJ5y5I-7h0ju59ApngL4zHzATPb7-MwHel1Bv--n4zNeSOvZovCdg0aylmZaQrzWY1EyLOPN_9BTi0V4ybRq6RHKIxPHARNkC9uQin-hD7RDrzA86ACdC1gV3E7Pp8O8W-s3VHD0ToAZh0");'></div>
+<span class="absolute bottom-0 right-0 size-3 border-2 border-background-darker rounded-full bg-gray-500"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-white font-medium truncate">Sarah Johnson</h3>
+<span class="text-xs text-text-secondary">Yesterday</span>
+</div>
+<p class="text-white text-sm font-medium truncate">Design System Review</p>
+<p class="text-text-secondary text-sm truncate mt-0.5">I've attached the new assets for...</p>
+</div>
+<div class="self-center shrink-0 size-2 rounded-full bg-primary mt-1"></div>
+</div>
+<!-- Read Item -->
+<div class="group flex items-start gap-4 p-4 border-l-[3px] border-transparent cursor-pointer hover:bg-surface-dark/30 transition-colors">
+<div class="shrink-0 relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 bg-indigo-600 flex items-center justify-center text-white font-bold" data-alt="Initials avatar for System Admin">
+                            AD
+                        </div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-white font-medium truncate">Admin</h3>
+<span class="text-xs text-slate-500">Tue</span>
+</div>
+<p class="text-slate-400 text-sm truncate">Welcome to ZenFocus Forums</p>
+<p class="text-slate-500 text-sm truncate mt-0.5">Please read the community guidelines...</p>
+</div>
+</div>
+<!-- Read Item -->
+<div class="group flex items-start gap-4 p-4 border-l-[3px] border-transparent cursor-pointer hover:bg-surface-dark/30 transition-colors">
+<div class="shrink-0 relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Profile picture of Mike" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBz0S_d6tZi-u5xNvG9vQCRahADAZRz_gMMyooLwuUkpEuguR8rNjEvkQq_nTpnJM8nrMQ_5fs_mhDH-Lx-esCwPjE5S6e7dFu8NWmfW76e-jjt7RU7sy53qobRagyShelEOUlG1FFLysVajykOjmlTMgRiCKtADXz9z0SXzEe6bz43pYqOtnYngLkENgIpXz8BMjktgXijPFSq7eXOLkF5jvFAzla3YIu9DihGiwF6oTfW4lIhYQqTwv5gS3M6WLhwailm5W8gsqg");'></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<h3 class="text-white font-medium truncate">Mike Chen</h3>
+<span class="text-xs text-slate-500">Mon</span>
+</div>
+<p class="text-slate-400 text-sm truncate">Development Roadmap</p>
+<p class="text-slate-500 text-sm truncate mt-0.5">Are we still meeting this Friday?</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Chat Area -->
+<main class="flex-1 flex flex-col relative min-w-0 bg-background-dark">
+<!-- Chat Header -->
+<header class="flex items-center justify-between px-6 py-4 border-b border-border-dark bg-background-dark/95 backdrop-blur supports-[backdrop-filter]:bg-background-dark/60 z-10">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-text-secondary text-sm">Conversation with</span>
+<span class="text-white font-bold">Ahmed</span>
+</div>
+<h2 class="text-lg font-bold text-white tracking-tight">Project Typography Update</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-surface-dark transition-colors" title="Search in conversation">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-surface-dark transition-colors" title="Conversation info">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+<button class="p-2 rounded-lg text-text-secondary hover:text-red-400 hover:bg-surface-dark transition-colors" title="Leave conversation">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+</button>
+</div>
+</header>
+<!-- Messages Stream -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8 scroll-smooth">
+<!-- Timestamp Separator -->
+<div class="flex justify-center">
+<span class="text-xs font-medium text-slate-500 bg-surface-dark/50 px-3 py-1 rounded-full">Today, October 24</span>
+</div>
+<!-- Message Received -->
+<div class="flex gap-4 max-w-3xl">
+<div class="shrink-0 flex flex-col items-center gap-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Profile picture of Ahmed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAcuv9I5upKLGND7OwuIF-ZfO8KSj8oLqtw01Nk4L0DG-ghe2NTntBwtPeJ1DVd6e8cc2WjTmBs7YMKzqMEn_IpRKLqu02ZttbWq17apJWvB-YfzrlUXTR15TG4yQyqjzakCmdrMqnUrOFt3CulrCNKwc6hsIRHw29ld7Q7qpkd7JbPN1NdBaZwFE7TsRqBXItifUNm2myVK9hbUKk4qJRF0PeFinx8EduOnxv1B4QZqmkubNY5nmt_lsTcNlvYiEeYIbydukSo7g4");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<span class="text-sm font-bold text-white">Ahmed</span>
+<span class="text-xs text-slate-500">10:15 AM</span>
+</div>
+<div class="group relative">
+<div class="px-5 py-3 bg-surface-dark rounded-2xl rounded-tl-none text-gray-200 leading-relaxed text-[15px] shadow-sm">
+<p>Hey! I was reviewing the latest mocks for the mobile view. The whitespace looks amazing, but I'm wondering if we should increase the base font size slightly?</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Message Sent (Me) -->
+<div class="flex flex-row-reverse gap-4 max-w-3xl ml-auto">
+<div class="shrink-0 flex flex-col items-center gap-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border border-border-dark" data-alt="My profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKFoMaJuuCHXNROdDyZVSY_JoepSnfLxLCyy6JDQGxoVAZETahoQTf6TZyffKL2t88NUReZwKj-atgFQgV9KU9uTVuBNcVrq0Y-bMYIRYZZZ5Ej0GH7lT_x_gKua-E-8WDmNNXIjj64ayoPM_PgM1at9Fy-5cl7hmGw4z3i51UbYjrDtxWG_PNxqSfJiKVxY60yYzAwB3_IGiGqvZzg_VybRO1espyejkoWIw1WKQhZgBIOmSl28XGlELDV1tKWDR7XDIsre3L9Eo");'></div>
+</div>
+<div class="flex flex-col gap-1 items-end">
+<div class="flex items-baseline gap-2 flex-row-reverse">
+<span class="text-sm font-bold text-white">You</span>
+<span class="text-xs text-slate-500">10:22 AM</span>
+</div>
+<div class="group relative">
+<!-- Primary color accent used here for sent messages -->
+<div class="px-5 py-3 bg-primary/10 border border-primary/20 rounded-2xl rounded-tr-none text-white leading-relaxed text-[15px] shadow-sm">
+<p>Good catch. I think bumping it up to 16px for body text would improve readability on smaller devices. I'll push an update shortly.</p>
+</div>
+<div class="flex justify-end mt-1">
+<span class="material-symbols-outlined text-[14px] text-primary">done_all</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Message Received -->
+<div class="flex gap-4 max-w-3xl">
+<div class="shrink-0 flex flex-col items-center gap-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Profile picture of Ahmed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCxc5w0P28J7Xy7EYulXgFnp3_gxuCa9pCNihWVxMjstrkI8SJuy7h-6v_03_OtYfbSjJtGh3aFx2bGGa-qorrSqacp6EfPAWc4GL_gFJucZC1XkiVTuyUTcq5tkbhbILlmj87DZo_KK6n6rvFuZypXPYae4ktRQVBshW72idd-J2viF74DUElxETaCVdzXC4RFZPqgmwkN_PJnDE_kbqkpih-T2EzmchIyfMUTmbEm0M3BvnYY5vm9ME_i8ntWgoI1NwRI1jsssHI");'></div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline gap-2">
+<span class="text-sm font-bold text-white">Ahmed</span>
+<span class="text-xs text-slate-500">10:35 AM</span>
+</div>
+<div class="group relative">
+<div class="px-5 py-3 bg-surface-dark rounded-2xl rounded-tl-none text-gray-200 leading-relaxed text-[15px] shadow-sm">
+<p>That sounds perfect. Let's deploy the changes to the staging environment once you're done. Also, check out this reference:</p>
+<a class="flex items-center gap-3 mt-3 p-3 rounded-lg bg-background-dark border border-border-dark hover:border-primary/50 transition-colors group/link" href="#">
+<div class="bg-primary/20 p-2 rounded-md text-primary">
+<span class="material-symbols-outlined">link</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-sm font-medium text-primary group-hover/link:underline truncate">Material Design 3 Typography</span>
+<span class="text-xs text-slate-500 truncate">m3.material.io</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Typing Indicator (Subtle) -->
+<div class="flex gap-4 max-w-3xl animate-pulse opacity-50">
+<div class="shrink-0 size-10"></div> <!-- Spacer -->
+<div class="px-4 py-2 bg-surface-dark rounded-xl rounded-tl-none flex gap-1 items-center">
+<div class="size-1.5 bg-text-secondary rounded-full"></div>
+<div class="size-1.5 bg-text-secondary rounded-full"></div>
+<div class="size-1.5 bg-text-secondary rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-6 pt-2 bg-background-dark z-20">
+<div class="relative flex items-end gap-2 bg-surface-dark rounded-xl border border-border-dark focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/20 transition-all shadow-lg p-2">
+<button class="p-2 text-text-secondary hover:text-white rounded-lg hover:bg-background-dark transition-colors self-end mb-0.5">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+</button>
+<textarea class="w-full bg-transparent border-none text-white placeholder-slate-500 focus:ring-0 resize-none py-3 px-2 max-h-32 text-[15px]" placeholder="Write a message..." rows="1" style="min-height: 44px;"></textarea>
+<div class="flex items-center gap-1 self-end mb-0.5">
+<button class="p-2 text-text-secondary hover:text-white rounded-lg hover:bg-background-dark transition-colors hidden sm:block">
+<span class="material-symbols-outlined text-[20px]">sentiment_satisfied</span>
+</button>
+<button class="p-2 bg-primary text-background-dark rounded-lg hover:bg-primary/90 transition-colors font-bold flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined filled-icon text-[20px]">send</span>
+</button>
+</div>
+</div>
+<div class="text-center mt-2">
+<p class="text-[10px] text-slate-600">Press <span class="font-mono bg-surface-dark px-1 rounded">Enter</span> to send, <span class="font-mono bg-surface-dark px-1 rounded">Shift + Enter</span> for new line</p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

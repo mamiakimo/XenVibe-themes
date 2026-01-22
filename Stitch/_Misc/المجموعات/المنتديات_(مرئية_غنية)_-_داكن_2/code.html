@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ForoSocial - Discover Communities</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                        "surface-dark": "#1a2332",
+                        "surface-highlight": "#232f48",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<nav class="sticky top-0 z-50 border-b border-[#232f48] bg-[#111722]/90 backdrop-blur-md px-4 lg:px-10 py-3">
+<div class="flex items-center justify-between gap-4 max-w-[1440px] mx-auto">
+<!-- Logo section -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-white group" href="#">
+<div class="size-9 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-primary/20 group-hover:shadow-primary/40 transition-all">
+<span class="material-symbols-outlined text-white text-[20px]">hub</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">ForoSocial</h2>
+</a>
+<!-- Search -->
+<div class="hidden md:flex items-center bg-[#232f48] rounded-xl h-10 w-80 px-4 focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+<span class="material-symbols-outlined text-[#92a4c9]">search</span>
+<input class="bg-transparent border-none text-white placeholder-[#92a4c9] text-sm w-full focus:ring-0" placeholder="Search communities..." type="text"/>
+</div>
+</div>
+<!-- Nav Links & Actions -->
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-8 text-sm font-medium text-[#92a4c9]">
+<a class="text-white hover:text-primary transition-colors" href="#">Home</a>
+<a class="hover:text-white transition-colors" href="#">Discover</a>
+<a class="hover:text-white transition-colors" href="#">Events</a>
+<a class="hover:text-white transition-colors" href="#">Marketplace</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="size-10 rounded-xl bg-[#232f48] hover:bg-[#2d3b55] flex items-center justify-center text-white transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 size-2 bg-red-500 rounded-full border-2 border-[#232f48]"></span>
+</button>
+<button class="size-10 rounded-xl bg-[#232f48] hover:bg-[#2d3b55] flex items-center justify-center text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-[#232f48] cursor-pointer" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQ83YF_9R9l8CjMyt4TD9vi48eUZJoUkNkC6m6qlmsFu7J0kuDx-FHuqo8mxBdUKSZi78IPwzSIGbQjvtt-ZENAmPsDD5wnHO8vatS64TytvK3JIF8tjkDD9Rkuq2TeY2CK9KR8OBKyoeJof3UPQueoq8Ge6i6wNv-w4JIn6CkhDw4hom_ZoD-rm0kO2yBn87n9rscpoaw7M1UQtf5pxSbXKM2qlqmUnuKxWIn5duNch_Ruv6Ye6pJ6T3xfBpQFOvFl51xbCol9qM");'></div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Layout -->
+<main class="max-w-[1440px] mx-auto px-4 lg:px-10 py-8 flex flex-col lg:flex-row gap-8">
+<!-- Left Column: Content Feed -->
+<div class="flex-1 flex flex-col gap-8 min-w-0">
+<!-- Page Header & Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-2">Discover Communities</h1>
+<p class="text-[#92a4c9] text-lg">Join discussions, share your world, and connect with 2M+ members.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-primary/30 transition-all hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Create Group</span>
+</button>
+</div>
+<!-- Hero Section: Featured Groups (Masonry/Grid) -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-500">local_fire_department</span>
+                        Trending Now
+                    </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-[420px]">
+<!-- Main Hero Card -->
+<div class="md:col-span-2 relative group overflow-hidden rounded-2xl bg-[#232f48] cursor-pointer h-[300px] md:h-full">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Mountain landscape photography" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA5PlZKsHy08juJKr9VbHGO17-e6iKYPfgQNmcYvwLnlnApyIOEG2pP0ratkHE0O39Pv3iu4aCSGJ-zq3FaRKdvnRnFYMhld0YliQVKH2x_ZtXfts3_9C4pgsv_kLocpKTFX3O8PYDNV-OX-mNA38lElL_-nt5YvXFWruMSanEpkbHsVqKkECS8TjZZxVafDk4ymwDGYBQvokpRMwLaeG661OJKgliGzO1VVRHt2Eb3DtGgPYp2avf-LuaIHrjHnUhRAWyzCCELJME");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#111722] via-[#111722]/50 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 w-full">
+<div class="flex gap-2 mb-3">
+<span class="bg-primary/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-lg">Featured</span>
+<span class="bg-white/10 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">visibility</span> 12k Live
+                                </span>
+</div>
+<h3 class="text-3xl font-bold text-white mb-2 leading-tight group-hover:text-primary transition-colors">Photography &amp; Visual Arts</h3>
+<p class="text-gray-300 line-clamp-2 max-w-lg">The world's largest community for photographers. Share your portfolio, get critiques, and join monthly contests.</p>
+<div class="flex items-center gap-4 mt-4 text-sm text-gray-400">
+<div class="flex -space-x-2">
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-[#111722]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhbDULkSR69VBSJ3j-9MEmr4y1oaKGBTu4j5aU3JcERwHf8T4Ja1Kkd8svM4_AQHJRLdV9Hr2hhsNtQhpBrDVeFMxZaIQzOU8mnKygbCKOnahMAgHCjvbHQhPw7iyaQwhG2o8rApJatdBhgBa14KaVuSV9rtzy1jrhedxtBM2ZQY4Fx-l4-R9Ebt6Jsqdc-vMCW4PEOcJHMIH9qTPpLvguRJVvoN1ExHe2j-WR2j76dQl91kj-X1JNZwe50Ow1Nydmw6YW1lyZ4KE"/>
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-[#111722]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP39yNK3iUGuXc9KbHIO33cK8GucF2biTq58xxedTpqlN-6W9lwzJNrefK1VuDCwZrtZmI_1qEXCB4Ys0iTTn-ZqCCuTanHw1aa-QpkralKR_JXLouUALQeOLUsg6-PPxVcrMhMVVN-YyRPWjpnDMXcrjXZh18M77a6NmkYqOoNsjHi_0DV9w01LgOIGOAGQJk4_zbyI749gHq5JxkvmpyAGgIWrqbcm_kiDhUQsA0zoyXfNVon3JQOP9OMb6vzG_H6upjJ4lpxx0"/>
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-[#111722]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNZTGhiX0m1g_GC-0A_KLDUtZDaa59IXIIqGCWSs8u8cbyind8x5yBwWtITp_mHdU_DyDqr-L1wFh_lcMcfAfmCoVAg7tWCdoCh1AXiy8MysuEBsi3AeopF-UtPCOHnkJZnMEGV7jI6csDSasN9Z92WdrqVXbfIR72q_f4DfCx82LxYRqGuLg-WW0LKdyz5LM4Rv9QrbSITImTr3k_weQusxn4oBFnmhuYuMhJQN-GW-BOA-qHs7cyRsDMRScxT9i9ZAjgwRq34xY"/>
+</div>
+<span>+450 joined today</span>
+</div>
+</div>
+</div>
+<!-- Secondary Stacked Cards -->
+<div class="flex flex-col gap-4 h-full">
+<!-- Card 2 -->
+<div class="flex-1 relative group overflow-hidden rounded-2xl bg-[#232f48] cursor-pointer min-h-[180px]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="E-sports gaming setup" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSBGphMVuzSZx_6RwpLA_PuW7lU5iugNM-7EKqMd7wf70E2pqh8tpyvpUskxVCxwncG21_ZqPj7WD1yESRtV_VS3E3v_MM6h_njoXiIZxxWPiXyRpS4hILnjvDF2CMUmHh64YoC9QgIXcT68QJWLuNX5iWYdHSz4pNmbjEzxncWsJoV4zmCKMJ0d9_HHFtf6ux1Jii_l41yx5cmZSmzxE16b-rRbShYSYIUkzMFvrBI0WCETugVRfYklp_Tf56Fl_P7pe9c4haEMo");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#111722] via-[#111722]/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-5">
+<h3 class="text-xl font-bold text-white mb-1">Gaming Lounge</h3>
+<p class="text-xs text-gray-300">5.2k Active Players</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex-1 relative group overflow-hidden rounded-2xl bg-[#232f48] cursor-pointer min-h-[180px]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="Restaurant interior cozy" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA-fnq5j4wMfy4qdTE8TH7zjpMhiZeI-JWdAVzIgjmwyfrRXb5D0Z7BJf2FLNV_FZkd-7pCZM2-CFmtAHnMTFpTXWEM6d9bXJtEIKyGtDz-9QlP5WeW8SWyiLOgPw3-S3t6ol0XY9DFazn0S4HIsc4ZFkL_-k5QpvJ53yMwO8ItfpS4ZVrmyXwiK0Kw4z2WO8eUPbU8AdOhwO2n7S_Sc-orInpRiuO9jZskyAowbROrF4r4KyC5Gb2Y6tzgFOaW2gCSHmJcA4gAJ3k");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#111722] via-[#111722]/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-5">
+<h3 class="text-xl font-bold text-white mb-1">Culinary Explorers</h3>
+<p class="text-xs text-gray-300">New Recipe Challenge</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Filters -->
+<div class="sticky top-[72px] z-40 bg-[#111722]/95 backdrop-blur py-2 -mx-4 px-4 md:mx-0 md:px-0">
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-1">
+<button class="whitespace-nowrap px-5 py-2.5 rounded-xl bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20">All Groups</button>
+<button class="whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#232f48] hover:bg-[#2d3b55] text-white text-sm font-medium transition-colors">My Communities</button>
+<button class="whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#232f48] hover:bg-[#2d3b55] text-white text-sm font-medium transition-colors">Technology</button>
+<button class="whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#232f48] hover:bg-[#2d3b55] text-white text-sm font-medium transition-colors">Lifestyle</button>
+<button class="whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#232f48] hover:bg-[#2d3b55] text-white text-sm font-medium transition-colors">Crypto &amp; Finance</button>
+<button class="whitespace-nowrap px-5 py-2.5 rounded-xl bg-[#232f48] hover:bg-[#2d3b55] text-white text-sm font-medium transition-colors">Sports</button>
+</div>
+</div>
+<!-- Visual Grid: Standard Forums -->
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+<!-- Card Item -->
+<article class="group bg-surface-highlight rounded-2xl overflow-hidden hover:ring-2 hover:ring-primary/50 transition-all hover:-translate-y-1">
+<div class="h-32 bg-cover bg-center relative" data-alt="Retro computer technology" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAb6JSKbMO9oOH1cu0BWMmzzEREN2srY29aEmpl_HNlLDNO5tQcgaWmUhETrKwiDAVOZv60N2YsKwf5m6FHQygnriX4M3jD5DYO-agtsrnQG5ta1qn0kXvXOno3Oqw4XH8TXy6MBf4L5lRS-83Pt9vajJHRZy3WsOmeqmc1P9MqwS83H3JRIwIl5dwJxlCfVgflI4ILiQsQ4Qdi3Ws1c8ceMcpUBcEj0zrN8QFedkmni1JvAKl7kgcO0f525aItvjGKKPaBMqC6re8");'>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-lg text-white">Retro Computing</h3>
+<span class="bg-[#111722] text-[#92a4c9] text-xs font-semibold px-2 py-1 rounded-md">Tech</span>
+</div>
+<p class="text-[#92a4c9] text-sm mb-4 line-clamp-2">Discussion about vintage hardware, software, and restoration projects.</p>
+<div class="flex items-center justify-between border-t border-[#111722] pt-4 mt-2">
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>14.5k</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>230 new</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card Item -->
+<article class="group bg-surface-highlight rounded-2xl overflow-hidden hover:ring-2 hover:ring-primary/50 transition-all hover:-translate-y-1">
+<div class="h-32 bg-cover bg-center relative" data-alt="Travel adventure desert" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwVgOPbCkuql_JdxTA_GJFvwiit1v8wT_U2l5CRFC4-OOJY2Fm4-uYubWy25eUKk-sRHvx8Vi3aLmZdM6n4niNqFHQgjCmCwhnHZz2KFWlHI_vYLzBV4FlKAcjWncpRI_a8dgfHAgFHMLHOhp3iU_ADFunO5OvV4vNptAA0g6JI8keu_YCVFFlCWqECyfaPjCF2LxtaCNosR19DVykcrap3HhzVnBgwjpgGi0154_hdEEilcLnfSqQ9Io_WZVh7C3aU6G9heETf68");'>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-lg text-white">Digital Nomads</h3>
+<span class="bg-[#111722] text-[#92a4c9] text-xs font-semibold px-2 py-1 rounded-md">Travel</span>
+</div>
+<p class="text-[#92a4c9] text-sm mb-4 line-clamp-2">Tips for remote work, visas, and finding the best cafes with WiFi worldwide.</p>
+<div class="flex items-center justify-between border-t border-[#111722] pt-4 mt-2">
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>89k</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>1.2k new</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card Item -->
+<article class="group bg-surface-highlight rounded-2xl overflow-hidden hover:ring-2 hover:ring-primary/50 transition-all hover:-translate-y-1">
+<div class="h-32 bg-cover bg-center relative" data-alt="Modern sports car" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7jYw9BvJU2ttQiZpf5T3zVK9X1RgzoJBcAek-3zbOK0N4wJ4Y1GJ2h_DaBYXGtkZ75aD4IuB5Ekv78eWJSRxq2XjhSaaMz75zukb0oDWSvG9p5vo_7NsXLpPteunACIhJv0E031ppOz9MmX23LotmdIMozu-0f3pFt3cMrJwSy_1pfHg3QEZW3CXe56tDuS8T0ax9X6LlIw-NeEiYI0PxiDYtu5V7e6F3U39i-cIcyuFjHwD2cqb1dFmAJ-6eJe_dA02qWG-N7I8");'>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-lg text-white">Automotive Hub</h3>
+<span class="bg-[#111722] text-[#92a4c9] text-xs font-semibold px-2 py-1 rounded-md">Cars</span>
+</div>
+<p class="text-[#92a4c9] text-sm mb-4 line-clamp-2">Car reviews, modification guides, and motorsports discussions.</p>
+<div class="flex items-center justify-between border-t border-[#111722] pt-4 mt-2">
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>34k</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>560 new</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card Item -->
+<article class="group bg-surface-highlight rounded-2xl overflow-hidden hover:ring-2 hover:ring-primary/50 transition-all hover:-translate-y-1">
+<div class="h-32 bg-cover bg-center relative" data-alt="Healthy food salad" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB7WbVdctSKpK2iQj_5q56dq4EvqAnhdb_sNVF9dEeFieELE0wbg5v5DFOaxSjom41FTDpFJBdYg-naFe6eoRb6Nvaug8WjlbgAXaRFSdgC8Vv8ApSSvrSU1pRVOH55KZcSzV0KFqBh4nBd-GgPoHGGyDPGVYXpKMrE7pJmCUAEPxokGmys2pZj-oBBcx0r2WkdASekZR8_q9TYV8s__xnR2S_qE1rvrfedtW75NUj01KNpYfzGiiRtRGK2Y2BhMjG12_g5wBO48gk");'>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-lg text-white">Healthy Living</h3>
+<span class="bg-[#111722] text-[#92a4c9] text-xs font-semibold px-2 py-1 rounded-md">Lifestyle</span>
+</div>
+<p class="text-[#92a4c9] text-sm mb-4 line-clamp-2">Recipes, workout routines, and mental wellness support group.</p>
+<div class="flex items-center justify-between border-t border-[#111722] pt-4 mt-2">
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>210k</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>3.4k new</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card Item -->
+<article class="group bg-surface-highlight rounded-2xl overflow-hidden hover:ring-2 hover:ring-primary/50 transition-all hover:-translate-y-1">
+<div class="h-32 bg-cover bg-center relative" data-alt="Abstract blockchain network" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALqRq0R4PssvU3ItC3S2AjtumVBW7pQ5Jq3tQnGQnrwhogHkN3PaZnAqxu_RHn1x0Ty1RP2pG9orOxJt3dT2UYbOPl75YAA83fJ1dQLJ53rhzfKghNMFSELjbPWikc6pJOvXhKTF-be8H89zHliqhHrY11Df8SrvGQbP_Gu4SoTDvYLqDVJPqvnLFomn2nTTChJWjLDtDs_TYR2AH1Zoy8WG3jG2x6su9rYGs_6cPWcdXhT-UaLKkhqr6fdbqMwDnHzqt9qSeShVc");'>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-lg text-white">Crypto &amp; Web3</h3>
+<span class="bg-[#111722] text-[#92a4c9] text-xs font-semibold px-2 py-1 rounded-md">Finance</span>
+</div>
+<p class="text-[#92a4c9] text-sm mb-4 line-clamp-2">Market analysis, NFT drops, and blockchain development talk.</p>
+<div class="flex items-center justify-between border-t border-[#111722] pt-4 mt-2">
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>56k</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>890 new</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card Item (More minimalist fallback for no image) -->
+<article class="group bg-surface-highlight rounded-2xl overflow-hidden hover:ring-2 hover:ring-primary/50 transition-all hover:-translate-y-1">
+<div class="h-32 bg-gradient-to-br from-indigo-900 to-purple-900 relative flex items-center justify-center">
+<span class="material-symbols-outlined text-white/20 text-[64px]">code</span>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-lg text-white">Dev Corner</h3>
+<span class="bg-[#111722] text-[#92a4c9] text-xs font-semibold px-2 py-1 rounded-md">Code</span>
+</div>
+<p class="text-[#92a4c9] text-sm mb-4 line-clamp-2">Python, JS, Rust, and Go. Help with debugging and architecture.</p>
+<div class="flex items-center justify-between border-t border-[#111722] pt-4 mt-2">
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>12k</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>145 new</span>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Compact List: Administrative / Low Visual Forums -->
+<section class="mt-4">
+<h2 class="text-sm font-bold text-[#92a4c9] uppercase tracking-wider mb-4 px-2">Support &amp; Feedback</h2>
+<div class="bg-surface-highlight rounded-2xl overflow-hidden divide-y divide-[#111722]">
+<div class="p-4 flex items-center gap-4 hover:bg-[#2d3b55] transition-colors cursor-pointer group">
+<div class="size-10 rounded-lg bg-[#111722] flex items-center justify-center text-[#92a4c9] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">info</span>
+</div>
+<div class="flex-1">
+<h3 class="text-white font-medium text-sm">Announcements</h3>
+<p class="text-[#92a4c9] text-xs">Platform updates and news</p>
+</div>
+<div class="text-right hidden sm:block">
+<span class="text-xs text-[#92a4c9] block">Last: Admin</span>
+<span class="text-xs text-[#92a4c9] block">2 mins ago</span>
+</div>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-[#2d3b55] transition-colors cursor-pointer group">
+<div class="size-10 rounded-lg bg-[#111722] flex items-center justify-center text-[#92a4c9] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</div>
+<div class="flex-1">
+<h3 class="text-white font-medium text-sm">Technical Support</h3>
+<p class="text-[#92a4c9] text-xs">Get help with account issues</p>
+</div>
+<div class="text-right hidden sm:block">
+<span class="text-xs text-[#92a4c9] block">Last: User123</span>
+<span class="text-xs text-[#92a4c9] block">1 hr ago</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Sidebar (Desktop) -->
+<aside class="hidden lg:flex w-80 flex-col gap-6 shrink-0">
+<!-- Widget: Trending Topics -->
+<div class="bg-surface-highlight rounded-2xl p-5">
+<h3 class="text-white font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">trending_up</span>
+                    Hot Threads
+                </h3>
+<div class="flex flex-col gap-4">
+<a class="flex gap-3 group" href="#">
+<div class="size-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Person profile silhouette" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDEx2JMNYWnvpiY4IxGfxChEoJPdkkiwRYlCa0fENADYcU4WVedvzvVWAOCXuWigldFSrOwWq3eEN9NgrsD-N2yRM4xuFpXZ_xssQUuVlW1pdWbtwSAhoT1tQFy3fJse2X_LEGck_Gn-skcfRI8Zo2jILYfoSkkR1RtS61JJp5ZGsApp6WE13kX2dHprh-WLzYTZ1IvSc4GAIA8egqJfBkFGbg5EIqBlJEVGj8jlinLO_tsqKKBdBpG8yoVBxui8bEJ7B8KVQzblQE");'></div>
+<div>
+<h4 class="text-sm font-semibold text-white group-hover:text-primary transition-colors line-clamp-2">Best settings for night photography?</h4>
+<p class="text-xs text-[#92a4c9] mt-1">45 replies · 2h ago</p>
+</div>
+</a>
+<a class="flex gap-3 group" href="#">
+<div class="size-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Cybersecurity lock code" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdRJqsKlvK_LG_Fyo15HiCB5KNINOnHTzgKk4CD8xLv-dmTjtVDZjH0mLocU1Zf7zqTA2GcXxqDyZwufqDlT8DWFtA6iI03uMR1o-QQqCIgHvZ6TcKajscWtWoDaErhqw_xvHoRDRGS-h9nOwIgb-M8p_6PNeYhKdwayWDMgApGmJa5RjXUPIGAKO1ntbP3Fmj3cDY1IpikgqE2snBKaB4WhTq7ibt0xPXCNPTe_uyJ_rZ6BOXbAhtKDkC8Do56uNY2W0GMkRPboQ");'></div>
+<div>
+<h4 class="text-sm font-semibold text-white group-hover:text-primary transition-colors line-clamp-2">New security patch released today</h4>
+<p class="text-xs text-[#92a4c9] mt-1">128 replies · 4h ago</p>
+</div>
+</a>
+<a class="flex gap-3 group" href="#">
+<div class="size-12 rounded-lg bg-cover bg-center shrink-0" data-alt="DJ console mixer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBNM72zeFknczbTyYWAzll7StzAfMWAYIFey6g-90zHxqSM68IV3Qb-zG83viNMTyJo2lUhasXVxgalGyBb95aSPWqheuO00f7E1Mo7OfuNwHRN_n3EQDPz3-C4GYUP-K5xGKd3lDwM7cNzb0XFl8DrPfQeADJ5WEqZeZVWfpOqpZLwcu3kaUPbspx8wqiQ0zEq7t2BtX0yTxPZYPx0IhEC5AEC2kpsKZMK3zbCazsEPPRAcBI_b4vtVAuovehBkrAmNBnDxIt0kGU");'></div>
+<div>
+<h4 class="text-sm font-semibold text-white group-hover:text-primary transition-colors line-clamp-2">Upcoming Music Festival Meetup</h4>
+<p class="text-xs text-[#92a4c9] mt-1">302 replies · 1d ago</p>
+</div>
+</a>
+</div>
+</div>
+<!-- Widget: Members Online -->
+<div class="bg-surface-highlight rounded-2xl p-5">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-white font-bold text-sm">Members Online</h3>
+<span class="text-xs text-primary font-bold bg-primary/10 px-2 py-1 rounded-full">1,204</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<div class="size-9 rounded-full bg-cover bg-center border border-[#111722]" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCeylC_S4tI5iZL4v-Y1kkDVO4YqFGUqS9GiZAtz3xbmue17VqsLrutK80xJmxgBBeQxyRJF1xkOCm9Ikx8wvwoz9Xeor-2yCd6E3OpX1eFpR_81a-G-Vk-rpIYFq9zYFe26YYNZBMmsQ2Z5ORccLCRCNyzaHoWJLOBd2MNVM7YSrKcig3DquXK68kCtSemwcXXZ-m26jpFq-DFfeUCkOddITjD7-LzDFbb1_PJ0JK3IRdFkeAibdc2hvBLZ7FpuN0M7aPe4R7OJ_M");'></div>
+<div class="size-9 rounded-full bg-cover bg-center border border-[#111722]" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBFVDnrHBfYrnkvTkow_usccsFPv7-MHwd09h8kTxA6rUcnU3OyoYGrR0XjvCMaEnt8keo_Wak454YJgF2HbNRbvgVLY9Y4OSRTrDvH6Vs24S9T3ZGvSC03ZDiARTPR8kvw-dYvvjX_0M308bSfh2f3wc6QvLVlewUSbW3ATX7lHkqNDxtmpkl_WpZrGB7CsgWoQyCQWPipX0lMIXD1dkAoawk5QT8g42ypm2tB5iJLpzLJYq58tVzIYFEdqk-kwykYeEQpVUZojys");'></div>
+<div class="size-9 rounded-full bg-cover bg-center border border-[#111722]" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrKUhDET6jgqDOqTuKhB3yxS7oe3-j6yurCIuWtYzFcIprNa-2s7wH34HYIUtKB7XciVGbRjZoF_0CidmjZiV8Un3D9_PcU0mBKh4twbUYtZecNWddkdQhA1oGUtHWT9rvKs0XNExvDyzno87EdVqq21PqRfQbyKPBEP2BM0yaodHIu3T4f_clUyCo_YfjhKUqMC6GepWH2DnKOjGXM3al2BFL-uZ2CIDq6BZhU9iKAXqk7l2uacgD5Eeh6CgiRfBPss-v828BMcQ");'></div>
+<div class="size-9 rounded-full bg-cover bg-center border border-[#111722]" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpc1FFpNPl0j21HLUQ2iDiSxwOtBz-NUQ_sOlJ0uTMWyKOHxxZBaCRzrnnPdNeV6KtMpfsRSVy5wHyyI8tfilctmGGzcKqlw2ykuwRyaytoAMsC2rvAhniyJv-OpRj0fElyluLvt_ShKX_CYYuOxKc_x86OOker_dW95tBzR6kPvLAGdw0pi-LhylxSvNAAL_4GYOCbw5vLEbQ6MDb3Vv8nhwn3UdfgloNob6tiZsfpcEpkCWFTT505DZaMKtFuL2XmocMEpZTIH8");'></div>
+<div class="size-9 rounded-full bg-cover bg-center border border-[#111722]" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBiQ584yz71A_X1kS76_uvu7-dzY5djlO04ejkkzGPLo93F1mepWuOvnQn_YfVcUg48ziu7x0KFGb00EOOsNq0mHeEr5rPk4e3kMFETs2iY1rIlALBMavs2NTUhcRHWVXhliyfPyKCSb-Dc0xtbtIsPo7FE3-xEWjgsom94I0jWqOEucD-cM6yUWZsKWm_qQjWaQlJWEVQBafQ_v0lTu4KpninOEF_K1MxMyuCxGkLKNrMqnWJRVgA5chV1XHPlfAzDsaUca9dCSug");'></div>
+<div class="size-9 rounded-full bg-cover bg-center border border-[#111722]" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBf1sbfoW4zZ1cbyFmVz1kV7BMxT37N0Nc6iEPnN8XAYU29VD4upsJVU8_M22_v0N6nIvS02wiEUZkPGmFbcFTE0dKTgc14tAJ_vdkSJQrPG8tPMQKYOfjwo9ntqZs_JyNNTGcVwM7diTgjQtbFPmtBF8zK7_xC1VCXpW66t3iigJiiJxWLvIL9pNcxR1XiB-8AunmpXFzfwfda-nfng1ZVqH1WMPRoQG6XphD5Dvu_FF16Q0VRx4Q4oR1WBZw9DP6oIcNWiU-YekM");'></div>
+<div class="size-9 rounded-full bg-gray-700 flex items-center justify-center text-xs text-gray-400 border border-[#111722]">+2k</div>
+</div>
+</div>
+<!-- Widget: Advertisement / Promo -->
+<div class="bg-gradient-to-br from-primary to-purple-600 rounded-2xl p-6 text-center text-white">
+<span class="material-symbols-outlined text-[32px] mb-2">star</span>
+<h3 class="font-bold text-lg mb-1">Premium Membership</h3>
+<p class="text-white/80 text-sm mb-4">Support the community and get exclusive badges.</p>
+<button class="bg-white text-primary px-4 py-2 rounded-lg text-sm font-bold w-full hover:bg-gray-100 transition-colors">Upgrade Now</button>
+</div>
+</aside>
+</main>
+<!-- Floating Action Button (Mobile) -->
+<div class="fixed bottom-6 right-6 lg:hidden">
+<button class="bg-primary hover:bg-blue-600 text-white size-14 rounded-full shadow-xl shadow-primary/40 flex items-center justify-center transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[28px]">edit</span>
+</button>
+</div>
+</body></html>

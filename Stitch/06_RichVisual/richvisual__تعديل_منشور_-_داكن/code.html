@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RichVisual: تعديل المنشور</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;family=Noto+Sans+Arabic:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#1d6bf5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                        "surface-dark": "#1e2736",
+                        "surface-border": "#2b384f",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Spline Sans", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for a more gaming/app-like feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2b384f; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3e4e6a; 
+        }
+        
+        .glass-panel {
+            background: rgba(30, 39, 54, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased overflow-x-hidden min-h-screen flex flex-col">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-b-[#232f48] bg-[#111722]/90 backdrop-blur-md px-6 py-3">
+<div class="layout-content-container max-w-[1200px] mx-auto flex items-center justify-between gap-6">
+<!-- Logo & Nav (RTL: Logo on Right) -->
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">dataset</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-tight">RichVisual</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">المنتديات</a>
+<a class="text-primary text-sm font-bold bg-primary/10 px-3 py-1 rounded-lg" href="#">ما الجديد</a>
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">الوسائط</a>
+</nav>
+</div>
+<!-- Search & Actions (RTL: Left side) -->
+<div class="flex items-center gap-4 flex-1 justify-end">
+<!-- Search Bar -->
+<label class="hidden lg:flex flex-col min-w-40 h-10 w-64 group">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-[#232f48] border border-transparent group-focus-within:border-primary/50 transition-all overflow-hidden">
+<div class="text-[#92a4c9] flex items-center justify-center pr-3">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 bg-transparent border-none text-white focus:ring-0 h-full placeholder:text-[#92a4c9] text-sm px-2 font-normal" placeholder="بحث..." value=""/>
+</div>
+</label>
+<!-- User Actions -->
+<div class="flex gap-3">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-[#232f48] cursor-pointer hover:border-primary transition-colors" data-alt="User Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDftG4LjIhDVcLVQF_i_w5eaE9YMHyDTNFDrlmgYTEfAhLDJ-S3S4qCnARMPCl4wl9pPYrA_yqXwwI58p_CHV9cHQOaOhu6vg9Gu6HWlpeWBXOc6arS63bx09hS0RoknKd3aeDQQ0xLRGOQ-iQbj-G7-T2F-i1iHb00W6s9k7OvYChSvXqM7Q86wc-gu9UAErfaM7xsB1XrkNLnjbNo0JMEf11FPde-zlTOXqto3yiOHJpmOhvculTpA70NuXrf08s_N0_4D-rILpc");'></div>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-[#111722]"></div>
+</div>
+<button class="flex items-center justify-center size-10 rounded-xl bg-[#232f48] text-white hover:bg-[#2d3b55] transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="md:hidden flex items-center justify-center size-10 rounded-xl bg-[#232f48] text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col items-center py-8 px-4 sm:px-6">
+<div class="w-full max-w-[1000px] flex flex-col gap-6">
+<!-- Breadcrumbs / Heading Area -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-[#92a4c9] text-xs font-medium">
+<span>الرئيسية</span>
+<span class="material-symbols-outlined text-[10px]">chevron_left</span>
+<span>منتديات الألعاب</span>
+<span class="material-symbols-outlined text-[10px]">chevron_left</span>
+<span class="text-white">تحديثات اللعبة v2.0</span>
+</div>
+<h1 class="text-white text-3xl font-bold leading-tight">تعديل المنشور #1234</h1>
+<p class="text-[#92a4c9] text-sm">جاري التعديل في الموضوع: <span class="text-white font-medium">تحديثات اللعبة الجديدة v2.0</span></p>
+</div>
+<!-- Helper Actions -->
+<div class="flex gap-2">
+<button class="flex items-center gap-2 h-9 px-4 rounded-lg bg-[#232f48] text-[#92a4c9] hover:text-white hover:bg-[#2d3b55] text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>سجل التعديلات</span>
+</button>
+<button class="flex items-center gap-2 h-9 px-4 rounded-lg bg-red-500/10 text-red-500 hover:bg-red-500/20 text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>حذف</span>
+</button>
+</div>
+</div>
+<!-- Editor Card -->
+<div class="flex flex-col bg-surface-dark border border-surface-border rounded-2xl shadow-xl overflow-hidden">
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center gap-1 p-2 border-b border-surface-border bg-[#1a2332]">
+<div class="flex gap-1 border-l border-surface-border pl-2 ml-2">
+<button class="p-2 text-[#92a4c9] hover:text-white hover:bg-[#232f48] rounded-lg transition-colors" title="Bold">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-2 text-[#92a4c9] hover:text-white hover:bg-[#232f48] rounded-lg transition-colors" title="Italic">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<button class="p-2 text-[#92a4c9] hover:text-white hover:bg-[#232f48] rounded-lg transition-colors" title="Underline">
+<span class="material-symbols-outlined text-[20px]">format_underlined</span>
+</button>
+<button class="p-2 text-[#92a4c9] hover:text-white hover:bg-[#232f48] rounded-lg transition-colors" title="Strikethrough">
+<span class="material-symbols-outlined text-[20px]">format_strikethrough</span>
+</button>
+</div>
+<div class="flex gap-1 border-l border-surface-border pl-2 ml-2">
+<button class="p-2 text-[#92a4c9] hover:text-white hover:bg-[#232f48] rounded-lg transition-colors" title="Link">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="p-2 text-[#92a4c9] hover:text-white hover:bg-[#232f48] rounded-lg transition-colors" title="Image">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-2 text-[#92a4c9] hover:text-white hover:bg-[#232f48] rounded-lg transition-colors" title="Video">
+<span class="material-symbols-outlined text-[20px]">movie</span>
+</button>
+</div>
+<div class="flex gap-1 border-l border-surface-border pl-2 ml-2">
+<button class="p-2 text-[#92a4c9] hover:text-white hover:bg-[#232f48] rounded-lg transition-colors" title="List">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+</button>
+<button class="p-2 text-[#92a4c9] hover:text-white hover:bg-[#232f48] rounded-lg transition-colors" title="Quote">
+<span class="material-symbols-outlined text-[20px]">format_quote</span>
+</button>
+<button class="p-2 text-[#92a4c9] hover:text-white hover:bg-[#232f48] rounded-lg transition-colors" title="Code">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</button>
+</div>
+<div class="flex-1"></div>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 text-xs font-bold uppercase tracking-wider transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>معاينة حية</span>
+</button>
+</div>
+<!-- Text Area -->
+<div class="relative w-full min-h-[300px] bg-[#151b26] p-4">
+<textarea class="w-full h-full min-h-[300px] bg-transparent border-none focus:ring-0 text-white placeholder:text-[#3d4b66] resize-y text-base leading-relaxed" placeholder="اكتب مشاركتك هنا...">مرحباً بالجميع،
+
+أردت مشاركة بعض اللقطات الجديدة من التحديث القادم للعبة v2.0. لقد تم تحسين الرسومات بشكل كبير، خصوصاً في بيئات الليل.
+
+شاهدوا الصور المرفقة أدناه للحصول على لمحة سريعة عن نماذج الشخصيات الجديدة. أتطلع لسماع آرائكم!
+
+تحياتي،
+فريق التطوير.</textarea>
+<!-- Floating alignment helpers (Example UI element) -->
+<div class="absolute bottom-4 left-4 text-[#3d4b66] text-xs pointer-events-none">
+                        تم الحفظ تلقائياً: 10:42 ص
+                    </div>
+</div>
+<!-- Attachments Section -->
+<div class="flex flex-col bg-[#111722] p-6 gap-6 border-t border-surface-border">
+<div class="flex items-center justify-between">
+<h3 class="text-white text-lg font-bold">المرفقات والوسائط</h3>
+<span class="text-[#92a4c9] text-xs">مسموح: JPG, PNG, MP4 (Max 50MB)</span>
+</div>
+<!-- Drop Zone -->
+<div class="group relative flex flex-col items-center gap-4 rounded-xl border-2 border-dashed border-[#2b384f] bg-[#1a2332]/50 hover:bg-[#1a2332] hover:border-primary/50 transition-all cursor-pointer px-6 py-10">
+<input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" multiple="" type="file"/>
+<div class="size-16 rounded-full bg-[#232f48] flex items-center justify-center text-primary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[32px]">cloud_upload</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-center">
+<p class="text-white text-base font-bold">اضغط للاستعراض أو اسحب الملفات هنا</p>
+<p class="text-[#92a4c9] text-sm">سيتم رفع الملفات مباشرة إلى معرض الوسائط الخاص بك</p>
+</div>
+</div>
+<!-- Existing Attachments Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<!-- Item 1 -->
+<div class="group relative flex flex-col gap-2 p-2 rounded-xl bg-[#1a2332] border border-surface-border hover:border-primary/50 transition-colors">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-black">
+<div class="w-full h-full bg-center bg-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Screenshot of gameplay showing a futuristic city at night" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDrEF4sUldPPs8dBl6gs_fWHTRwg43u7dxW6Op6gj2x3cMnFqaLaRUu3XAM54PcJxQNepzgLp1z7qNQ0X_8MB3mrrukCIQtPcNuZ-QFPtH0bxNEl2xmQ18msuStKdA9KAIvcy2BJLhKO9gWAL6WAmh3cGza5pxuTHMTyBpyX8uTYLLxoyTTJJ88lOwkkPqv_8ONrJ2fviDKjtuAxGBDBXIBEqcFSjjFf54X04MBSn9aoi4qnX2cmV7iWOlwo1Uh-mKUEhafQdCOFgw");'></div>
+<div class="absolute top-2 left-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-black/70 text-white p-1 rounded hover:bg-red-500 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
+<span class="bg-primary/90 text-white text-xs px-2 py-1 rounded font-bold">إدراج</span>
+</div>
+</div>
+<div class="px-1">
+<p class="text-white text-sm font-medium truncate">gameplay_night_v2.png</p>
+<p class="text-[#92a4c9] text-xs">2.4 MB</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group relative flex flex-col gap-2 p-2 rounded-xl bg-[#1a2332] border border-surface-border hover:border-primary/50 transition-colors">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-black">
+<div class="w-full h-full bg-center bg-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="3D Character model render" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCH71xgJFnrscYwFcC5lx00oiS3JvK-eJdbdLgTQLcrcmlSOXWe9O1RWQ1ZN14wp9HoUcAyLR-oFFw4PH76ZJ5wg0b5rw_aOD77ym6_T13-NKyFhU1bHhSJDEHgoCyR9G1YKC85S4sirapYhBCyjc0_SwsVP_mG7yl4Hq9YvMB4g6A8AGALdumYnkg4hjduJqv7LN_QSOaRww2Fn_aoYJDhVVll2pPAytHh7TxJ6b5JstqcYuPoZTbhqDGRJxV05kTHYPhiOViOldc");'></div>
+<div class="absolute top-2 left-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-black/70 text-white p-1 rounded hover:bg-red-500 transition-colors">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<div class="px-1">
+<p class="text-white text-sm font-medium truncate">char_render_final.jpg</p>
+<p class="text-[#92a4c9] text-xs">1.8 MB</p>
+</div>
+</div>
+<!-- Item 3 (Video) -->
+<div class="group relative flex flex-col gap-2 p-2 rounded-xl bg-[#1a2332] border border-surface-border hover:border-primary/50 transition-colors">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-black">
+<div class="w-full h-full bg-center bg-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="Abstract neon lights representing a video thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAiw0ylQVQzz00U8elY_98Ehl_ivD6hFGHn4zVt4JmcysdyHm-kwflD9V8wl4cY5nNitg45C468RY-qf4ZHLfkzvKw611CE8Hyja9OBhn58GGd90avLYLU8TXzOehd9tDIxTWCWLZw_m1tZ_742L-pEKS3apFhaa_keARfyG8AIUTxDPePYl6x-VhKAhpbhgvv_Cz38xrpzgxkY5rJDpygjfPATCWjjxp0bNi6y44mAXD9GCBrV6vFGoEN6XHfQJlbLBKJJRYHa4M0");'></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="size-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined text-white">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/80 px-1.5 rounded text-[10px] text-white font-mono">02:14</div>
+</div>
+<div class="px-1">
+<p class="text-white text-sm font-medium truncate">update_trailer.mp4</p>
+<p class="text-[#92a4c9] text-xs">14.5 MB</p>
+</div>
+</div>
+<!-- Item 4 (Loading State Simulation) -->
+<div class="relative flex flex-col gap-2 p-2 rounded-xl bg-[#1a2332] border border-surface-border">
+<div class="relative w-full aspect-video rounded-lg overflow-hidden bg-[#111722] flex items-center justify-center">
+<div class="size-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+</div>
+<div class="px-1">
+<p class="text-white text-sm font-medium truncate text-opacity-50">patch_notes.pdf</p>
+<div class="w-full bg-[#232f48] h-1.5 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-primary h-full w-[60%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 pt-2">
+<button class="w-full sm:w-auto px-6 h-11 rounded-xl border border-[#2b384f] text-[#92a4c9] hover:bg-[#1e2736] hover:text-white font-medium transition-colors">
+                    إلغاء الأمر
+                </button>
+<div class="flex w-full sm:w-auto gap-3">
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 h-11 rounded-xl bg-[#232f48] text-white hover:bg-[#2d3b55] font-bold transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+<span>معاينة</span>
+</button>
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-8 h-11 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold shadow-lg shadow-primary/25 transition-all transform active:scale-95">
+<span class="material-symbols-outlined text-[20px]">save</span>
+<span>حفظ التعديلات</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Simple -->
+<footer class="mt-auto border-t border-[#232f48] py-8 text-center text-[#92a4c9] text-sm">
+<p>© 2024 RichVisual Forum. جميع الحقوق محفوظة.</p>
+</footer>
+</body></html>

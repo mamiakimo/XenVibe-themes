@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DynamicList: Home</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161b22",
+                        "surface-dark-highlight": "#1e2530",
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display antialiased overflow-x-hidden text-slate-900 dark:text-white">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid dark:border-border-dark bg-white dark:bg-[#111722] px-6 py-3 shadow-sm">
+<div class="flex items-center gap-8 w-full max-w-[1600px] mx-auto">
+<!-- Logo -->
+<div class="flex items-center gap-3 text-slate-900 dark:text-white">
+<div class="flex items-center justify-center size-10 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">dynamic_form</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">DynamicList</h2>
+</div>
+<!-- Search Bar (Expanded) -->
+<label class="hidden md:flex flex-col flex-1 max-w-[600px]">
+<div class="relative flex w-full flex-1 items-center rounded-lg h-10 border border-slate-200 dark:border-border-dark bg-slate-50 dark:bg-[#1c2536] focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+<div class="absolute left-3 text-slate-400 dark:text-text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full bg-transparent border-none text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-text-secondary h-full px-10 rounded-lg text-sm font-medium focus:ring-0" placeholder="Search threads, tags, or users..." value=""/>
+<div class="absolute right-2 px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200 dark:bg-border-dark text-slate-500 dark:text-text-secondary border border-slate-300 dark:border-slate-600">CTRL+K</div>
+</div>
+</label>
+<!-- Right Actions -->
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-600 dark:text-white text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-slate-600 dark:text-text-secondary text-sm font-medium hover:text-white transition-colors" href="#">Forums</a>
+<a class="text-slate-600 dark:text-text-secondary text-sm font-medium hover:text-white transition-colors" href="#">Members</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center size-10 rounded-lg hover:bg-slate-100 dark:hover:bg-border-dark dark:text-white text-slate-600 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-white dark:border-[#111722]"></span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-lg hover:bg-slate-100 dark:hover:bg-border-dark dark:text-white text-slate-600 transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-full overflow-hidden border border-slate-200 dark:border-border-dark ml-2">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="User profile picture showing a smiling person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM5FtOrtof1kaLwPy-FKMX1xhQPhV-5G7EeAde6WRhY38lFWricNSiehsdcppvMyl4XBDOuvR8A7_jVExZZG1hi7sFiYSNdmuUoMD_293TMQqExk5VU9mhPVSWRryedxzpuNvRD-GwEhimxwl6bqcH61_LYfEBZtBczJU10z5CealQSOOu5XZtFx7BjvJptvOEu0nc-i5YBG-wUC7DDB8rtc9UjGlgd8hud--EpFy5IZnNmXLZXJweJFkIfolJ8B2e-nv6OoVv0CU"/>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="flex flex-1 w-full max-w-[1600px] mx-auto p-4 md:p-6 gap-6">
+<!-- Left Sidebar (Navigation) -->
+<aside class="hidden lg:flex w-64 flex-col gap-6 shrink-0">
+<!-- Nav Menu -->
+<div class="flex flex-col gap-2">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 mb-2 px-3">Menu</h3>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary border border-primary/10" href="#">
+<span class="material-symbols-outlined fill-current">forum</span>
+<span class="text-sm font-bold">All Threads</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-text-secondary hover:bg-slate-100 dark:hover:bg-surface-dark-highlight hover:text-slate-900 dark:hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">local_fire_department</span>
+<span class="text-sm font-medium">Popular</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-text-secondary hover:bg-slate-100 dark:hover:bg-surface-dark-highlight hover:text-slate-900 dark:hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="text-sm font-medium">Solved</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-text-secondary hover:bg-slate-100 dark:hover:bg-surface-dark-highlight hover:text-slate-900 dark:hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-sm font-medium">Unanswered</span>
+<span class="ml-auto bg-slate-200 dark:bg-border-dark text-slate-600 dark:text-slate-400 text-xs font-bold px-1.5 py-0.5 rounded">12</span>
+</a>
+</div>
+<div class="h-px bg-slate-200 dark:bg-border-dark my-1"></div>
+<!-- Categories -->
+<div class="flex flex-col gap-2">
+<h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500 mb-2 px-3">Forums</h3>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-text-secondary hover:bg-slate-100 dark:hover:bg-surface-dark-highlight hover:text-slate-900 dark:hover:text-white text-sm font-medium group" href="#">
+<span>Development</span>
+<span class="opacity-0 group-hover:opacity-100 text-primary material-symbols-outlined text-[16px]">arrow_forward_ios</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-text-secondary hover:bg-slate-100 dark:hover:bg-surface-dark-highlight hover:text-slate-900 dark:hover:text-white text-sm font-medium group" href="#">
+<span>Design &amp; UI</span>
+<span class="opacity-0 group-hover:opacity-100 text-primary material-symbols-outlined text-[16px]">arrow_forward_ios</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-text-secondary hover:bg-slate-100 dark:hover:bg-surface-dark-highlight hover:text-slate-900 dark:hover:text-white text-sm font-medium group" href="#">
+<span>Server Admin</span>
+<span class="opacity-0 group-hover:opacity-100 text-primary material-symbols-outlined text-[16px]">arrow_forward_ios</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-text-secondary hover:bg-slate-100 dark:hover:bg-surface-dark-highlight hover:text-slate-900 dark:hover:text-white text-sm font-medium group" href="#">
+<span>Off Topic</span>
+<span class="opacity-0 group-hover:opacity-100 text-primary material-symbols-outlined text-[16px]">arrow_forward_ios</span>
+</a>
+</div>
+</aside>
+<!-- Center Feed (Main) -->
+<main class="flex flex-col flex-1 min-w-0">
+<!-- Header & Controls -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap items-center gap-2 text-sm">
+<a class="text-slate-500 dark:text-text-secondary hover:text-primary transition-colors" href="#">Home</a>
+<span class="text-slate-400 dark:text-slate-600">/</span>
+<span class="text-slate-900 dark:text-white font-medium">All Threads</span>
+</div>
+<!-- Action Button -->
+<button class="flex items-center justify-center gap-2 px-5 h-10 bg-primary hover:bg-blue-600 text-white text-sm font-bold rounded-lg shadow-lg shadow-blue-900/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>New Thread</span>
+</button>
+</div>
+<!-- Filters Bar -->
+<div class="flex items-center gap-1 mb-4 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-4 py-1.5 rounded-full bg-slate-200 dark:bg-white text-slate-900 dark:text-black text-sm font-bold whitespace-nowrap">Latest</button>
+<button class="px-4 py-1.5 rounded-full text-slate-600 dark:text-text-secondary hover:bg-slate-100 dark:hover:bg-surface-dark-highlight text-sm font-medium whitespace-nowrap transition-colors">Top Voted</button>
+<button class="px-4 py-1.5 rounded-full text-slate-600 dark:text-text-secondary hover:bg-slate-100 dark:hover:bg-surface-dark-highlight text-sm font-medium whitespace-nowrap transition-colors">Most Replies</button>
+<div class="h-4 w-px bg-slate-300 dark:bg-border-dark mx-2"></div>
+<button class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white flex items-center gap-2 text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span>Filter</span>
+</button>
+</div>
+<!-- Dynamic List Table -->
+<div class="@container">
+<div class="flex flex-col overflow-hidden rounded-xl border border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark shadow-sm">
+<!-- Table Header -->
+<div class="hidden sm:grid grid-cols-12 gap-4 border-b border-slate-100 dark:border-border-dark bg-slate-50 dark:bg-[#192233] px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+<div class="col-span-12 sm:col-span-7 lg:col-span-6 pl-2">Topic Summary</div>
+<div class="col-span-0 sm:col-span-2 text-center">Stats</div>
+<div class="col-span-0 lg:col-span-2 hidden lg:block">Tags</div>
+<div class="col-span-0 sm:col-span-3 lg:col-span-2 text-right pr-2">Last Activity</div>
+</div>
+<!-- Row 1 -->
+<div class="group relative grid grid-cols-12 gap-4 px-4 py-4 border-b border-slate-100 dark:border-border-dark hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors items-center">
+<!-- Content -->
+<div class="col-span-12 sm:col-span-7 lg:col-span-6 flex flex-col gap-1.5">
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight">
+<a class="hover:text-primary transition-colors line-clamp-1" href="#">How to optimize XenForo for large databases?</a>
+</h3>
+<p class="text-sm text-slate-500 dark:text-text-secondary line-clamp-1">
+                                We are migrating a 5M post forum and facing slow query times on the thread list view. Any indexes recommended?
+                            </p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="Avatar" class="size-5 rounded-full border border-slate-200 dark:border-border-dark" data-alt="Small user avatar of the thread starter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAB6wqi8XDd10DxbDxpaJ3OvqIYcFVzVBrdfB3BPvz4xnmE8rXZc0SDhabV2psI-8LvanSWAYGuYp-PAV9GO36_j5DmE4Nth-m0kOQBe-92Z279HYCsdy2FKAxQhpSxgl4a1WuFm0h8gCnr2Tmjp0NzekTQn00DKGhIiROdOd85bN_uu5KnTiO_qa1jAIDcU_vA10bMcpepSQH1nputH5DEknK57nbsI7za8bCrUbsfptg6kfZJOYEcWAG3XIwNxzvKH5E3lWRmaI"/>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300 hover:underline cursor-pointer">@DevMaster</span>
+<span class="text-xs text-slate-400 dark:text-slate-600">•</span>
+<span class="text-xs text-slate-400 dark:text-slate-500">2 hours ago</span>
+</div>
+</div>
+<!-- Stats (Mobile Hidden, stacked) -->
+<div class="hidden sm:flex col-span-2 flex-col items-center justify-center gap-1">
+<div class="flex flex-col items-center min-w-[60px] p-1 rounded bg-slate-100 dark:bg-border-dark/50 border border-slate-200 dark:border-border-dark">
+<span class="text-sm font-bold text-slate-900 dark:text-white">12</span>
+<span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400">Votes</span>
+</div>
+<div class="text-xs font-medium text-slate-500 dark:text-text-secondary mt-1">
+                                5 replies
+                            </div>
+</div>
+<!-- Tags (Desktop only) -->
+<div class="hidden lg:flex col-span-2 flex-wrap gap-1.5 content-center">
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-blue-50 dark:bg-primary/10 text-blue-600 dark:text-blue-400 text-xs font-medium border border-blue-100 dark:border-primary/20">Server Admin</span>
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-slate-100 dark:bg-border-dark text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-600">MySQL</span>
+</div>
+<!-- Activity -->
+<div class="hidden sm:flex col-span-3 lg:col-span-2 justify-end items-center gap-3">
+<div class="flex flex-col items-end text-right">
+<span class="text-xs font-medium text-slate-900 dark:text-white">@Admin</span>
+<span class="text-xs text-slate-500 dark:text-text-secondary">2m ago</span>
+</div>
+<img alt="Last Poster" class="size-8 rounded-lg border border-slate-200 dark:border-border-dark" data-alt="Avatar of the user who last replied" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUJ26BZUvVucvnpcgfGTnI3GoZS8vprjOR8H75Kq-jloWibH9aewfOug1GwCnInLzo7JLoBH7x7enrkkn9Yo5RmsxqCIU6AwA9gwdmq85BcytdpyAm_t0iaA3zXrhthyVy2YhQ-O1LnNnjlVCwX0guPRig71naablv75w_GcmFNxhHCBAjyffHm7keRz-1U3tQdryMSNk-WIkko2e17ZgKZkKv4Xg6bRkxGlYM2Kr0Xn1211DeYqxR1KsGFPD-04MmWkOcDSdiW4I"/>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="group relative grid grid-cols-12 gap-4 px-4 py-4 border-b border-slate-100 dark:border-border-dark hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors items-center">
+<div class="col-span-12 sm:col-span-7 lg:col-span-6 flex flex-col gap-1.5">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="material-symbols-outlined text-[16px] text-green-500" title="Solved">check_circle</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight">
+<a class="hover:text-primary transition-colors line-clamp-1" href="#">Customizing the DynamicList theme colors</a>
+</h3>
+</div>
+<p class="text-sm text-slate-500 dark:text-text-secondary line-clamp-1">
+                                Is there a variable file for the primary colors? I want to change the blue to purple.
+                            </p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="Avatar" class="size-5 rounded-full border border-slate-200 dark:border-border-dark" data-alt="Small user avatar of the thread starter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJSAS1y1tkgkNKpgsTMKbUUH_xTiE6cBt4B-uP6GKuBitVCvwmmWWnVOb41iQV4C05riyBrGCCk_t-DLFUdr51LbfTcuvI80lY7yhcpabFRjca59y_xPwjW0uqgcpz2Kg_rAmSGftBUDCB2NyOGT0p9eyWshxNLWNfeiNpB0Er74wfQEMAYN2mhUPC3DIAD6zBfEHZYmM7ztSn6qC2MOuFqgzlI71MhYOSAf5mRsCyzQMEPbLbs3oHdN5HpXXvFJ5GieO0MJXERr4"/>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300 hover:underline cursor-pointer">@Designer</span>
+<span class="text-xs text-slate-400 dark:text-slate-600">•</span>
+<span class="text-xs text-slate-400 dark:text-slate-500">Yesterday</span>
+</div>
+</div>
+<div class="hidden sm:flex col-span-2 flex-col items-center justify-center gap-1">
+<div class="flex flex-col items-center min-w-[60px] p-1 rounded bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800/30">
+<span class="text-sm font-bold text-green-700 dark:text-green-400">45</span>
+<span class="text-[10px] uppercase font-bold text-green-600 dark:text-green-500">Votes</span>
+</div>
+<div class="text-xs font-medium text-slate-500 dark:text-text-secondary mt-1">
+                                12 replies
+                            </div>
+</div>
+<div class="hidden lg:flex col-span-2 flex-wrap gap-1.5 content-center">
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-xs font-medium border border-purple-100 dark:border-purple-800/30">CSS</span>
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-slate-100 dark:bg-border-dark text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-600">Theme</span>
+</div>
+<div class="hidden sm:flex col-span-3 lg:col-span-2 justify-end items-center gap-3">
+<div class="flex flex-col items-end text-right">
+<span class="text-xs font-medium text-slate-900 dark:text-white">@User2</span>
+<span class="text-xs text-slate-500 dark:text-text-secondary">15m ago</span>
+</div>
+<img alt="Last Poster" class="size-8 rounded-lg border border-slate-200 dark:border-border-dark" data-alt="Avatar of the user who last replied" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiSArw1IZ3u6yGm521fDibVXOM8Pw4JfIWUWXz9QCmq1SnR-XqjROsNuMbBd3_QFayeuEE95em0fWZTuvwJMR0J1GXnHnHanU83qQezkOHNgUEwF9I3v2oUPQm3rejAFN1oIZL7r43wjpLr0izlsKyGp9xxeleDd8HJtiIuJ7PAQnxNqYOJN3rAs2njreQ_sQoEzsuTs2v9K1UrurzB52-R6s_7gB2BUE7E-gdA4g010cqoWvno0-XnGFxn8WnjxDSS6IbIliXdGg"/>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="group relative grid grid-cols-12 gap-4 px-4 py-4 border-b border-slate-100 dark:border-border-dark hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors items-center">
+<div class="col-span-12 sm:col-span-7 lg:col-span-6 flex flex-col gap-1.5">
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight">
+<a class="hover:text-primary transition-colors line-clamp-1" href="#">Error 503 on huge load</a>
+</h3>
+<p class="text-sm text-slate-500 dark:text-text-secondary line-clamp-1">
+                                Getting intermittent 503s from Nginx. Logs are unclear.
+                            </p>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex items-center justify-center size-5 bg-pink-500 text-white rounded-full text-[10px] font-bold">N</span>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300 hover:underline cursor-pointer">@Newbie</span>
+<span class="text-xs text-slate-400 dark:text-slate-600">•</span>
+<span class="text-xs text-slate-400 dark:text-slate-500">1 hour ago</span>
+</div>
+</div>
+<div class="hidden sm:flex col-span-2 flex-col items-center justify-center gap-1">
+<div class="flex flex-col items-center min-w-[60px] p-1 rounded bg-slate-100 dark:bg-border-dark/30 border border-slate-200 dark:border-border-dark/50 opacity-60">
+<span class="text-sm font-bold text-slate-700 dark:text-slate-300">0</span>
+<span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400">Votes</span>
+</div>
+<div class="text-xs font-medium text-slate-400 dark:text-slate-600 mt-1">
+                                0 replies
+                            </div>
+</div>
+<div class="hidden lg:flex col-span-2 flex-wrap gap-1.5 content-center">
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-xs font-medium border border-red-100 dark:border-red-800/30">Help</span>
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-slate-100 dark:bg-border-dark text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-600">Nginx</span>
+</div>
+<div class="hidden sm:flex col-span-3 lg:col-span-2 justify-end items-center gap-3">
+<div class="flex flex-col items-end text-right">
+<span class="text-xs font-medium text-slate-900 dark:text-white">@Newbie</span>
+<span class="text-xs text-slate-500 dark:text-text-secondary">1h ago</span>
+</div>
+<span class="flex items-center justify-center size-8 bg-pink-500 text-white rounded-lg text-xs font-bold border border-white dark:border-border-dark">N</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="group relative grid grid-cols-12 gap-4 px-4 py-4 border-b border-slate-100 dark:border-border-dark hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors items-center">
+<div class="col-span-12 sm:col-span-7 lg:col-span-6 flex flex-col gap-1.5">
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight">
+<a class="hover:text-primary transition-colors line-clamp-1" href="#">Best practices for XenForo addons</a>
+</h3>
+<p class="text-sm text-slate-500 dark:text-text-secondary line-clamp-1">
+                                Looking for a boilerplate for XF 2.2 addons.
+                            </p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="Avatar" class="size-5 rounded-full border border-slate-200 dark:border-border-dark" data-alt="Small user avatar of the thread starter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXCkN4cGgGdXQltbxj_7ajLewZAzYMwczEeYXpmibItbmHPaVW9t_2AhwFAip5Wb1RfgHWQl7zqF9xc89R1YpFGpunve1yf7WkWk-UzQZy8V3GNnXW3zYXWnV-_82nYFdPNif8Q2dKZ3kwsYckBDOYvLKXhHYtV8CpCAvJCqHCdUpTuaoNh0cf0pPyUCVCjvXds3T1lFrXtcv2ATS4gMPwH4c844j0sjd6J2XZuM6LITMDOblE8aTNttmGkvo62WJ92oF2WDdYc68"/>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300 hover:underline cursor-pointer">@Coder</span>
+<span class="text-xs text-slate-400 dark:text-slate-600">•</span>
+<span class="text-xs text-slate-400 dark:text-slate-500">3 hours ago</span>
+</div>
+</div>
+<div class="hidden sm:flex col-span-2 flex-col items-center justify-center gap-1">
+<div class="flex flex-col items-center min-w-[60px] p-1 rounded bg-slate-100 dark:bg-border-dark/50 border border-slate-200 dark:border-border-dark">
+<span class="text-sm font-bold text-slate-900 dark:text-white">8</span>
+<span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400">Votes</span>
+</div>
+<div class="text-xs font-medium text-slate-500 dark:text-text-secondary mt-1">
+                                2 replies
+                            </div>
+</div>
+<div class="hidden lg:flex col-span-2 flex-wrap gap-1.5 content-center">
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 text-xs font-medium border border-orange-100 dark:border-orange-800/30">Development</span>
+</div>
+<div class="hidden sm:flex col-span-3 lg:col-span-2 justify-end items-center gap-3">
+<div class="flex flex-col items-end text-right">
+<span class="text-xs font-medium text-slate-900 dark:text-white">@DevMaster</span>
+<span class="text-xs text-slate-500 dark:text-text-secondary">3h ago</span>
+</div>
+<img alt="Last Poster" class="size-8 rounded-lg border border-slate-200 dark:border-border-dark" data-alt="Avatar of the user who last replied" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvmSsY_LWDiVroMJDc9QA3H5u_LUYNMyxcSSw0joAHortQzD0LjKo4CJF0TiQWqMdeqM3fl63MA2h5v8Z1TK6exBsKWD_VtNA_dMbXyWZJfhs8aeRNhVmhrPpww79jPiscYQ54Qt9XwocLsihhkhrDf4hE0__h51GIlhDANi-kpdDvtRaHijNNu1vfQTw1dwA_bhnS6SgmDBgDfX3FQx9uKI66e8u_mIRrJQXr8XmwYNV9_T-ftrYtXBEqkap7XMw1E9PiV-i7ay4"/>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="group relative grid grid-cols-12 gap-4 px-4 py-4 border-b border-slate-100 dark:border-border-dark hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors items-center">
+<div class="col-span-12 sm:col-span-7 lg:col-span-6 flex flex-col gap-1.5">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="material-symbols-outlined text-[16px] text-slate-400 dark:text-slate-500" title="Locked">lock</span>
+<h3 class="text-base font-bold text-slate-900 dark:text-white leading-tight">
+<a class="hover:text-primary transition-colors line-clamp-1" href="#">Migration from vBulletin to XF</a>
+</h3>
+</div>
+<p class="text-sm text-slate-500 dark:text-text-secondary line-clamp-1">
+                                Archived thread about the legacy migration process.
+                            </p>
+<div class="flex items-center gap-2 mt-1">
+<img alt="Avatar" class="size-5 rounded-full border border-slate-200 dark:border-border-dark" data-alt="Small user avatar of the thread starter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAam4fMTwCd3Bg9RA-7RmwNv_eRWLCH1pL-h_x5GGHjS1ygZtMn5AAwKJtHvbP-jKR8E5awGLX-GkTikkCJp7GVJPQXpBeM4ZN6TeEDxqGVvHgglRikfElFSrl37BiZ-smTzWhEEmSRKARdZ_gURR6cNnHoVBBxDMLo534o4vgTuEsHFWlKyXheJ8FpR-JQndzWdZ9i7XZi-_TzbVQ88dlwUlCXUSNJ_XxTmXnQlV3SFvMl_7xaMRPvZKpcExmNIE6KOTdqm9b6kKA"/>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300 hover:underline cursor-pointer">@OldSchool</span>
+<span class="text-xs text-slate-400 dark:text-slate-600">•</span>
+<span class="text-xs text-slate-400 dark:text-slate-500">5 hours ago</span>
+</div>
+</div>
+<div class="hidden sm:flex col-span-2 flex-col items-center justify-center gap-1">
+<div class="flex flex-col items-center min-w-[60px] p-1 rounded bg-slate-100 dark:bg-border-dark/50 border border-slate-200 dark:border-border-dark">
+<span class="text-sm font-bold text-slate-900 dark:text-white">20</span>
+<span class="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400">Votes</span>
+</div>
+<div class="text-xs font-medium text-slate-500 dark:text-text-secondary mt-1">
+                                8 replies
+                            </div>
+</div>
+<div class="hidden lg:flex col-span-2 flex-wrap gap-1.5 content-center">
+<span class="inline-flex items-center px-2 py-1 rounded-md bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 text-xs font-medium border border-indigo-100 dark:border-indigo-800/30">Migration</span>
+</div>
+<div class="hidden sm:flex col-span-3 lg:col-span-2 justify-end items-center gap-3">
+<div class="flex flex-col items-end text-right">
+<span class="text-xs font-medium text-slate-900 dark:text-white">@Mod</span>
+<span class="text-xs text-slate-500 dark:text-text-secondary">5h ago</span>
+</div>
+<img alt="Last Poster" class="size-8 rounded-lg border border-slate-200 dark:border-border-dark" data-alt="Avatar of the user who last replied" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTfHibEohP4GXXxc7FuHZuiogoaoe6HhUlz2Fq-03NEOhOAt3eQ8Lin5_D4z7duNS-HHX7j5uU6W46wPvQ9Yx4IMJ7wHxyF_aurGwhN-25wj6S-B6NdaXUPj6uz90wMulc_8ui27GvSJes_1femsd6IBsUsd4ugad3prMQkVGcxxyI8DQaAtz9AXDfvaA2SRAHNeUx-pp2-dku-L9L3L552MfFisscI_FcJRuBxPzEbuVRznXwzS-U0RbPZPiVyynJYOHUgdiNWR4"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center mt-6">
+<nav class="flex gap-2">
+<button class="px-3 py-1 rounded-lg border border-slate-200 dark:border-border-dark text-slate-500 dark:text-text-secondary text-sm hover:bg-slate-100 dark:hover:bg-surface-dark-highlight">Prev</button>
+<button class="px-3 py-1 rounded-lg bg-primary text-white text-sm font-bold">1</button>
+<button class="px-3 py-1 rounded-lg border border-slate-200 dark:border-border-dark text-slate-500 dark:text-text-secondary text-sm hover:bg-slate-100 dark:hover:bg-surface-dark-highlight">2</button>
+<button class="px-3 py-1 rounded-lg border border-slate-200 dark:border-border-dark text-slate-500 dark:text-text-secondary text-sm hover:bg-slate-100 dark:hover:bg-surface-dark-highlight">3</button>
+<button class="px-3 py-1 rounded-lg border border-slate-200 dark:border-border-dark text-slate-500 dark:text-text-secondary text-sm hover:bg-slate-100 dark:hover:bg-surface-dark-highlight">Next</button>
+</nav>
+</div>
+</main>
+<!-- Right Sidebar (Widgets) -->
+<aside class="hidden xl:flex w-80 flex-col gap-6 shrink-0">
+<!-- Stats Widget -->
+<div class="rounded-xl border border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark p-5 shadow-sm">
+<h3 class="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                    Forum Stats
+                </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<span class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">1.2M</span>
+<span class="text-xs font-medium uppercase text-slate-500 dark:text-text-secondary">Threads</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">50k</span>
+<span class="text-xs font-medium uppercase text-slate-500 dark:text-text-secondary">Members</span>
+</div>
+<div class="col-span-2 h-px bg-slate-100 dark:bg-border-dark my-1"></div>
+<div class="col-span-2">
+<div class="flex items-center gap-3">
+<img alt="Newest Member" class="size-8 rounded-full border border-slate-200 dark:border-border-dark" data-alt="Small user avatar of the newest member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnannJoZnbRRNxiSponM9eFnl6b0K7VhsxObz-XvrhOABXE4RTjGo26i2pJVUhee7k0Aw4VfNpJRKSC4CYXeFo4UXJF8lGrXSGEVBjgxNIwiMa1gwI3nTzdn_69K8_C6ccTLUT4q_jN46yqPSspGDIQdeQqadzJrE0Mu_QtKLn5jjkb7yFETGewnIrDwadIjBgEV_M357rjRDOhARLIZ_3C3N0qGWi-HY9GIANdwM4PhZMzIQTYAqi7b6FVIWC3YFq1dYSgjQLhSY"/>
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 dark:text-text-secondary">Welcome newest member</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary cursor-pointer">@DevUser99</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Trending Tags -->
+<div class="rounded-xl border border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark p-5 shadow-sm">
+<h3 class="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">tag</span>
+                    Trending Tags
+                </h3>
+<div class="flex flex-wrap gap-2">
+<a class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-surface-dark-highlight hover:bg-slate-100 dark:hover:bg-border-dark border border-slate-200 dark:border-border-dark text-xs font-medium text-slate-600 dark:text-slate-300 transition-colors" href="#">#XenForo</a>
+<a class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-surface-dark-highlight hover:bg-slate-100 dark:hover:bg-border-dark border border-slate-200 dark:border-border-dark text-xs font-medium text-slate-600 dark:text-slate-300 transition-colors" href="#">#Addons</a>
+<a class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-surface-dark-highlight hover:bg-slate-100 dark:hover:bg-border-dark border border-slate-200 dark:border-border-dark text-xs font-medium text-slate-600 dark:text-slate-300 transition-colors" href="#">#Help</a>
+<a class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-surface-dark-highlight hover:bg-slate-100 dark:hover:bg-border-dark border border-slate-200 dark:border-border-dark text-xs font-medium text-slate-600 dark:text-slate-300 transition-colors" href="#">#Development</a>
+<a class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-surface-dark-highlight hover:bg-slate-100 dark:hover:bg-border-dark border border-slate-200 dark:border-border-dark text-xs font-medium text-slate-600 dark:text-slate-300 transition-colors" href="#">#Styling</a>
+<a class="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-surface-dark-highlight hover:bg-slate-100 dark:hover:bg-border-dark border border-slate-200 dark:border-border-dark text-xs font-medium text-slate-600 dark:text-slate-300 transition-colors" href="#">#MySQL</a>
+</div>
+</div>
+<!-- Staff Online -->
+<div class="rounded-xl border border-slate-200 dark:border-border-dark bg-white dark:bg-surface-dark p-5 shadow-sm">
+<h3 class="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+                    Staff Online
+                </h3>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Admin" class="size-10 rounded-full border border-slate-200 dark:border-border-dark" data-alt="Avatar of admin user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCiEV3xnxhUnUMb1AAzRMi2C7vL08zn939RiMLfxSL56yy5DWywBAKXM_wFRlIk5DFZjxe8pjsL43C9vVhLx4CUpakXKQpI-3oncNVQT2RqySuHJ_IE5N7WtpQBlHLrE0wcC28Coqmxu0Da8DeUFgByuzla7qwC2k2tkJ66Jqliqo2oTbVJHVyCU3iGsc5lJ9ykSYFTPk0wMwt_IS6CkCjE8Oppkv2SvrnUw8sSRpzfI9jDWRX3_byg-UUzpVC_6EBqQ-dQ5fd0kg"/>
+<span class="absolute bottom-0 right-0 size-2.5 bg-green-500 rounded-full border border-white dark:border-surface-dark"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white hover:underline cursor-pointer">DevMaster</span>
+<span class="text-xs text-slate-500 dark:text-text-secondary">Administrator</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Mod" class="size-10 rounded-full border border-slate-200 dark:border-border-dark" data-alt="Avatar of moderator user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAobvCV-Z4WzNGmw0J9JXXF4_nOOKZhGOr6LEtYzMEPsdyELUCzmGPrSmH2xSZF_rmSkkce12czkIfdj67Fvp80xxRyDry8m1crZjxiXT0XwQ_LrkJ8a14K8nleFMw4EAtf2CC8bVmDW2xTFp8ttfrxj68gqv_2K2VNAq6yAo66I1O8o9ftnp3ani8l-_nOdu5HblbCWVEwq3StTlKqDcHyZlk103oYV2yP1PN-j7wOS2VZIA2mYER9KAhS3dEOM7LrGui50jsaXDk"/>
+<span class="absolute bottom-0 right-0 size-2.5 bg-green-500 rounded-full border border-white dark:border-surface-dark"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white hover:underline cursor-pointer">Mod</span>
+<span class="text-xs text-slate-500 dark:text-text-secondary">Moderator</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

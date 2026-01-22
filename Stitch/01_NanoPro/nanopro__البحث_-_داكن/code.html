@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NanoPro: البحث - داكن</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#18212f",
+                        "border-dark": "#232f48"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #344260;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display transition-colors duration-200 min-h-screen flex flex-col overflow-x-hidden">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-border-dark bg-white/80 dark:bg-[#111722]/90 backdrop-blur-md">
+<div class="w-full max-w-[1200px] mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 group" href="#">
+<div class="bg-primary/20 text-primary p-1.5 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors duration-200">
+<span class="material-symbols-outlined text-[24px]">bolt</span>
+</div>
+<h2 class="text-lg font-bold tracking-tight dark:text-white text-slate-900">NanoPro</h2>
+</a>
+</div>
+<nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="hover:text-primary transition-colors" href="#">المنتديات</a>
+<a class="hover:text-primary transition-colors" href="#">الأعضاء</a>
+<a class="text-primary" href="#">البحث</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="hidden md:flex items-center justify-center size-10 rounded-lg hover:bg-gray-100 dark:hover:bg-border-dark text-slate-600 dark:text-slate-300 transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#111722]"></span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-lg hover:bg-gray-100 dark:hover:bg-border-dark text-slate-600 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-bold text-white hover:bg-blue-600 transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="hidden sm:inline">موضوع جديد</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[960px] mx-auto px-4 md:px-8 py-8 flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<nav class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary hover:underline" href="#">الرئيسية</a>
+<span class="mx-2 text-slate-600">/</span>
+<a class="hover:text-primary hover:underline" href="#">المنتديات</a>
+<span class="mx-2 text-slate-600">/</span>
+<span class="text-slate-900 dark:text-white font-medium">بحث متقدم</span>
+</nav>
+<!-- Search Header Section -->
+<div class="flex flex-col gap-4">
+<h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">البحث</h1>
+<!-- Search Bar -->
+<div class="relative group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full h-14 pr-12 pl-4 rounded-xl bg-white dark:bg-card-dark border-0 ring-1 ring-slate-200 dark:ring-border-dark focus:ring-2 focus:ring-primary text-slate-900 dark:text-white placeholder:text-slate-400 transition-all text-lg shadow-sm" placeholder="ابحث في المواضيع، المشاركات، والعناوين..." type="text" value="NanoPro Dark Mode"/>
+<div class="absolute inset-y-0 left-2 flex items-center gap-1">
+<button class="p-2 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-border-dark transition-colors" title="خيارات البحث">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+<button class="p-2 rounded-lg text-slate-400 hover:text-red-500 hover:bg-gray-100 dark:hover:bg-border-dark transition-colors" title="مسح">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+</button>
+</div>
+</div>
+<!-- Filters / Chips -->
+<div class="flex flex-wrap gap-2 items-center pt-2">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400 ml-2">ترتيب حسب:</span>
+<button class="flex items-center gap-1.5 h-8 px-4 rounded-lg bg-primary text-white text-sm font-medium transition-colors shadow-sm shadow-primary/20">
+<span>الأكثر صلة</span>
+<span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+<button class="flex items-center gap-1.5 h-8 px-4 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark text-slate-600 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-border-dark transition-colors">
+<span>الأحدث</span>
+</button>
+<div class="w-px h-6 bg-slate-200 dark:bg-border-dark mx-2"></div>
+<button class="flex items-center gap-1.5 h-8 px-4 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark text-slate-600 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-border-dark transition-colors">
+<span>الكاتب</span>
+</button>
+<button class="flex items-center gap-1.5 h-8 px-4 rounded-lg bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark text-slate-600 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-border-dark transition-colors">
+<span>المواضيع فقط</span>
+</button>
+</div>
+</div>
+<!-- Results Info -->
+<div class="flex items-center justify-between border-b border-slate-200 dark:border-border-dark pb-4 mt-2">
+<p class="text-sm text-slate-500 dark:text-slate-400">
+                تم العثور على <span class="font-bold text-slate-900 dark:text-white">42</span> نتيجة لـ <span class="font-bold text-primary">"NanoPro Dark Mode"</span>
+</p>
+<span class="text-xs text-slate-400">0.24 ثانية</span>
+</div>
+<!-- Results List -->
+<div class="flex flex-col gap-4">
+<!-- Result Item 1 (Highlighted/Best Match) -->
+<article class="p-5 rounded-xl bg-white dark:bg-card-dark border border-primary/30 shadow-sm hover:shadow-md transition-shadow duration-200 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-primary/10 text-primary border border-primary/20">مثبت</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">folder</span>
+                                    الإعلانات والتحديثات
+                                </span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+<a class="focus:outline-none" href="#">
+<span class="absolute inset-0"></span>
+                                    إطلاق الإصدار الرسمي: NanoPro <span class="text-primary bg-primary/10 px-1 rounded">Dark Mode</span> V2.0
+                                </a>
+</h3>
+</div>
+<span class="shrink-0 text-xs font-medium text-slate-400 bg-slate-100 dark:bg-border-dark px-2 py-1 rounded-md">منذ ساعتين</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+                        يسعدنا أن نعلن عن الإصدار الجديد من <span class="font-bold text-slate-900 dark:text-white">NanoPro</span>. التحديث يركز بشكل كامل على تحسين تجربة <span class="font-bold text-slate-900 dark:text-white">Dark Mode</span> لتكون أكثر راحة للعين مع تباين لوني محسّن...
+                    </p>
+<div class="flex items-center gap-4 mt-2 pt-3 border-t border-slate-100 dark:border-border-dark/50 text-xs text-slate-500 dark:text-slate-400 z-10 relative">
+<div class="flex items-center gap-1.5 hover:text-primary transition-colors cursor-pointer">
+<div class="size-5 rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 flex items-center justify-center text-[10px] font-bold text-white shadow-sm">A</div>
+<span class="font-medium">Admin</span>
+</div>
+<div class="flex items-center gap-1" title="المشاهدات">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+<span>1.2k</span>
+</div>
+<div class="flex items-center gap-1" title="الردود">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>45</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Result Item 2 -->
+<article class="p-5 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark shadow-sm hover:shadow-md transition-shadow duration-200 group">
+<div class="flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">folder</span>
+                                    الدعم الفني
+                                </span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+<a href="#">مشكلة في تفعيل <span class="text-primary bg-primary/10 px-1 rounded">Dark Mode</span> على الجوال</a>
+</h3>
+</div>
+<span class="shrink-0 text-xs font-medium text-slate-400 bg-slate-100 dark:bg-border-dark px-2 py-1 rounded-md">أمس</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+                        واجهت مشكلة غريبة بعد التحديث الأخير. عند تصفح المنتدى من خلال الآيفون، لا يتم تطبيق الـ <span class="font-bold text-slate-900 dark:text-white">Dark Mode</span> تلقائياً حسب إعدادات النظام...
+                    </p>
+<div class="flex items-center gap-4 mt-2 pt-3 border-t border-slate-100 dark:border-border-dark/50 text-xs text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5 hover:text-primary transition-colors cursor-pointer">
+<div class="size-5 rounded-full bg-slate-600 flex items-center justify-center text-[10px] font-bold text-white shadow-sm">U</div>
+<span class="font-medium">User123</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>3</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Result Item 3 -->
+<article class="p-5 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark shadow-sm hover:shadow-md transition-shadow duration-200 group">
+<div class="flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">folder</span>
+                                    تطوير الواجهات
+                                </span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+<a href="#">دليل تخصيص ألوان الـ <span class="text-primary bg-primary/10 px-1 rounded">Dark Mode</span> في ملفات CSS</a>
+</h3>
+</div>
+<span class="shrink-0 text-xs font-medium text-slate-400 bg-slate-100 dark:bg-border-dark px-2 py-1 rounded-md">1 أسبوع</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+                        إذا كنت ترغب في تغيير درجة اللون الأسود المستخدمة في الخلفية، يمكنك التوجه إلى قالب extra.less وإضافة المتغيرات التالية الخاصة بـ <span class="font-bold text-slate-900 dark:text-white">NanoPro</span>...
+                    </p>
+<div class="flex items-center gap-4 mt-2 pt-3 border-t border-slate-100 dark:border-border-dark/50 text-xs text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5 hover:text-primary transition-colors cursor-pointer">
+<div class="size-5 rounded-full bg-purple-500 flex items-center justify-center text-[10px] font-bold text-white shadow-sm">D</div>
+<span class="font-medium">DevTeam</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">thumb_up</span>
+<span>12</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>8</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Result Item 4 -->
+<article class="p-5 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark shadow-sm hover:shadow-md transition-shadow duration-200 group opacity-75">
+<div class="flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">folder</span>
+                                    الأرشيف
+                                </span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+<a href="#">اقتراح إضافة <span class="text-primary bg-primary/10 px-1 rounded">Dark Mode</span> (تم التنفيذ)</a>
+</h3>
+</div>
+<span class="shrink-0 text-xs font-medium text-slate-400 bg-slate-100 dark:bg-border-dark px-2 py-1 rounded-md">3 أشهر</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2">
+                        نقترح إضافة وضع ليلي للمنتدى لتسهيل القراءة ليلاً. الكثير من المواقع الحديثة تدعم هذا...
+                    </p>
+<div class="flex items-center gap-4 mt-2 pt-3 border-t border-slate-100 dark:border-border-dark/50 text-xs text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5 hover:text-primary transition-colors cursor-pointer">
+<div class="size-5 rounded-full bg-orange-500 flex items-center justify-center text-[10px] font-bold text-white shadow-sm">M</div>
+<span class="font-medium">Member99</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>مغلق</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-center pt-8 pb-4">
+<button class="w-full sm:w-auto h-12 px-8 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark text-slate-700 dark:text-slate-200 font-bold hover:bg-slate-50 dark:hover:bg-border-dark hover:border-slate-300 dark:hover:border-slate-600 transition-all shadow-sm">
+                تحميل المزيد من النتائج
+            </button>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="w-full border-t border-gray-200 dark:border-border-dark bg-white dark:bg-[#111722] py-6 mt-auto">
+<div class="max-w-[960px] mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500 dark:text-slate-400">
+<p>© 2023 NanoPro Community. جميع الحقوق محفوظة.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">اتصل بنا</a>
+<a class="hover:text-primary transition-colors" href="#">الشروط والقوانين</a>
+<a class="hover:text-primary transition-colors" href="#">الخصوصية</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="ltr" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TimelinePulse: Profile - Dark</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2332",
+                        "surface-dark-lighter": "#232f48",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #324467;
+        }
+        
+        /* Timeline line effect */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 28px;
+            width: 2px;
+            background: linear-gradient(180deg, #135bec 0%, #232f48 50%, #101622 100%);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<div class="relative flex w-full flex-col bg-surface-dark border-b border-surface-dark-lighter sticky top-0 z-50">
+<header class="flex items-center justify-between whitespace-nowrap px-10 py-3 max-w-[1400px] mx-auto w-full">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">timeline</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">TimelinePulse</h2>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">Forums</a>
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">Members</a>
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">Activity</a>
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">Help</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="hidden lg:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-surface-dark-lighter focus-within:ring-2 ring-primary/50 transition-all">
+<div class="text-text-secondary flex border-none items-center justify-center pl-3">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-transparent placeholder:text-text-secondary px-3 text-sm font-normal" placeholder="Search..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg size-10 bg-surface-dark-lighter text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-10 bg-surface-dark-lighter text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-10 border-2 border-surface-dark-lighter cursor-pointer" data-alt="User avatar thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA9wS0NjVT3d6R8J3WfOXmPNz_v1IhfgJdmAiHnDdvfBZX6HuTZNhgdnPlRDYOp7fyLJF2fG8R5r46ezUrifhJ9olY1SphQVTETQ-qMqgKwoxMtW_53gPDavVsR-JSK21Y5Mu3jEIOPIJVUZzHSRRBrYIPcrIgocNcqngY0L5T49fdpIBsrqF9dPB86MXyHqOxCk2_FtQMBHmPj6frZgGj-DfyYAXHqv0H4998dUzUKiJeZbSrICgHnzAmncHJVJbalmJ4dUe4tF7A");'></div>
+</div>
+</header>
+</div>
+<!-- Main Content Area -->
+<div class="layout-container flex justify-center py-8 px-4 sm:px-6 lg:px-8">
+<div class="layout-content-container flex flex-col max-w-[1100px] w-full gap-6">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 text-sm">
+<a class="text-text-secondary hover:text-white transition-colors" href="#">Home</a>
+<span class="text-text-secondary">/</span>
+<a class="text-text-secondary hover:text-white transition-colors" href="#">Members</a>
+<span class="text-text-secondary">/</span>
+<span class="text-white font-medium">Ahmed Al-Farsi</span>
+</div>
+<!-- Profile Header Card -->
+<div class="bg-surface-dark rounded-xl border border-surface-dark-lighter p-6 relative overflow-hidden">
+<!-- Decorative BG graphic -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+<div class="flex flex-col md:flex-row gap-6 items-start relative z-10">
+<!-- Avatar -->
+<div class="bg-center bg-no-repeat bg-cover rounded-xl size-32 md:size-40 shadow-lg border-4 border-surface-dark shrink-0" data-alt="Profile picture of Ahmed Al-Farsi" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQK18LZ_dMsbYF4A40whuBIzO_tnONpvuRs2xmQhghaGc6Kn39Pe-0E1-eKBy0hX3hZS2tVtK3rQzlkDToppvjizJdExj3EknNAmZkezDu9ImFwZAE7hHxxiWLpXkbaaq6JbIyaCbNDniG4SuyYeg_ml_RwGaKz-mJ3qeMXevayPfiSAb_V0CHo_ME8MrvnCNSII-COOKjmCTEAI-Y6ZGRhj5zUCTYPe2-v1xP8Y-MLagQaf07Y5IBu06xu6nrabVXgqljFMgxKUY");'>
+<div class="absolute bottom-2 right-2 size-4 bg-green-500 border-2 border-surface-dark rounded-full" title="Online"></div>
+</div>
+<!-- Info -->
+<div class="flex flex-col flex-1 gap-4 w-full">
+<div class="flex flex-col md:flex-row justify-between gap-4">
+<div>
+<h1 class="text-3xl font-bold text-white tracking-tight flex items-center gap-2">
+                                    Ahmed Al-Farsi
+                                    <span class="material-symbols-outlined text-blue-400 text-xl" title="Verified Member">verified</span>
+</h1>
+<p class="text-primary font-medium mt-1">UI/UX Designer &amp; Community Lead</p>
+<div class="flex flex-wrap items-center gap-4 mt-3 text-text-secondary text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">calendar_month</span> Joined Oct 2021</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">location_on</span> Dubai, UAE</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">link</span> ahmed.design</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex gap-3 mt-2 md:mt-0">
+<button class="h-10 px-5 bg-primary hover:bg-blue-600 text-white text-sm font-bold rounded-lg transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span> Follow
+                                </button>
+<button class="h-10 px-5 bg-surface-dark-lighter hover:bg-slate-700 text-white text-sm font-bold rounded-lg border border-slate-700 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">chat</span> Message
+                                </button>
+<button class="h-10 w-10 bg-surface-dark-lighter hover:bg-slate-700 text-white rounded-lg flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
+<div class="bg-background-dark/50 rounded-lg p-3 border border-surface-dark-lighter/50">
+<p class="text-2xl font-bold text-white">1,240</p>
+<p class="text-text-secondary text-xs uppercase tracking-wider font-semibold">Messages</p>
+</div>
+<div class="bg-background-dark/50 rounded-lg p-3 border border-surface-dark-lighter/50">
+<p class="text-2xl font-bold text-white">5.3k</p>
+<p class="text-text-secondary text-xs uppercase tracking-wider font-semibold">Reactions</p>
+</div>
+<div class="bg-background-dark/50 rounded-lg p-3 border border-surface-dark-lighter/50">
+<p class="text-2xl font-bold text-white">450</p>
+<p class="text-text-secondary text-xs uppercase tracking-wider font-semibold">Points</p>
+</div>
+<div class="bg-background-dark/50 rounded-lg p-3 border border-surface-dark-lighter/50">
+<p class="text-2xl font-bold text-white">12</p>
+<p class="text-text-secondary text-xs uppercase tracking-wider font-semibold">Badges</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Split -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-2">
+<!-- Main Column: Timeline -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Tabs -->
+<div class="flex border-b border-surface-dark-lighter gap-6 px-2 sticky top-[70px] z-40 bg-background-dark/95 backdrop-blur-sm pt-2">
+<button class="relative pb-3 text-primary font-bold text-sm">
+                            Timeline
+                            <span class="absolute bottom-0 left-0 w-full h-[3px] bg-primary rounded-t-sm"></span>
+</button>
+<button class="relative pb-3 text-text-secondary hover:text-white font-medium text-sm transition-colors">
+                            About
+                        </button>
+<button class="relative pb-3 text-text-secondary hover:text-white font-medium text-sm transition-colors">
+                            Discussions
+                        </button>
+<button class="relative pb-3 text-text-secondary hover:text-white font-medium text-sm transition-colors">
+                            Media
+                        </button>
+</div>
+<!-- Timeline Feed -->
+<div class="relative timeline-line pl-2 pb-10">
+<!-- Timeline Item 1: Post -->
+<div class="relative pl-12 mb-8 group">
+<!-- Node -->
+<div class="absolute left-[13px] top-0 size-8 rounded-full bg-surface-dark border-4 border-background-dark flex items-center justify-center z-10 group-hover:scale-110 transition-transform shadow-sm shadow-black">
+<div class="size-2.5 bg-primary rounded-full"></div>
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-3">
+<div class="flex items-baseline justify-between">
+<div class="text-sm text-text-secondary">
+                                        Replied to <a class="text-primary hover:underline font-medium" href="#">Web Design Trends 2024</a>
+</div>
+<span class="text-xs text-text-secondary">2 hours ago</span>
+</div>
+<div class="bg-surface-dark p-5 rounded-lg border border-surface-dark-lighter hover:border-primary/30 transition-colors shadow-sm">
+<p class="text-slate-300 text-sm leading-relaxed">
+                                        I totally agree with the bento grid approach. It's becoming ubiquitous because it solves the responsive problem so elegantly while keeping the content digestible. Have you tried combining it with scroll-driven animations?
+                                    </p>
+<div class="mt-3 flex items-center gap-4">
+<button class="flex items-center gap-1.5 text-text-secondary hover:text-white text-xs font-medium transition-colors">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span> 12
+                                        </button>
+<button class="flex items-center gap-1.5 text-text-secondary hover:text-white text-xs font-medium transition-colors">
+<span class="material-symbols-outlined text-[16px]">reply</span> Reply
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2: Achievement -->
+<div class="relative pl-12 mb-8 group">
+<!-- Node -->
+<div class="absolute left-[13px] top-0 size-8 rounded-full bg-yellow-500/20 border-4 border-background-dark flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-yellow-500 text-[16px]">emoji_events</span>
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-3">
+<div class="flex items-baseline justify-between">
+<div class="text-sm text-text-secondary">
+                                        Earned a new badge
+                                    </div>
+<span class="text-xs text-text-secondary">Yesterday</span>
+</div>
+<div class="bg-surface-dark p-4 rounded-lg border border-surface-dark-lighter flex items-center gap-4">
+<div class="size-12 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-600 flex items-center justify-center shrink-0 shadow-lg shadow-orange-500/20">
+<span class="material-symbols-outlined text-white text-[24px]">workspace_premium</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm">Dedicated Member</h4>
+<p class="text-text-secondary text-xs mt-0.5">Posted 1,000 messages in the community.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Item 3: Created Thread with Image -->
+<div class="relative pl-12 mb-8 group">
+<!-- Node -->
+<div class="absolute left-[13px] top-0 size-8 rounded-full bg-surface-dark border-4 border-background-dark flex items-center justify-center z-10 group-hover:scale-110 transition-transform shadow-sm shadow-black">
+<div class="size-2.5 bg-green-500 rounded-full"></div>
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-3">
+<div class="flex items-baseline justify-between">
+<div class="text-sm text-text-secondary">
+                                        Created a new thread in <a class="text-white hover:underline font-medium" href="#">Showcase</a>
+</div>
+<span class="text-xs text-text-secondary">3 days ago</span>
+</div>
+<div class="bg-surface-dark rounded-lg border border-surface-dark-lighter overflow-hidden hover:border-surface-dark-lighter/80 transition-all">
+<div class="h-40 bg-cover bg-center" data-alt="Abstract colorful dashboard interface design" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCxOaaL8bnpRHg5MguQbmYntcJRBs4sgRHFwMB8qTuQvTy9j-11XioBWxEsZhTrDwfgS7Ap46HmTwSgQAkTAOwmigjXoehNsehyl4mCCsK5mvprmuMEZME9jwJbJKjFld7NC7Jn9rZ-hpNBlsG152mMQ-RPjb7hLMTIoak9YN2J3N8aWsfuFZVwtp5Ku-68PFGNO9zG7jR29L7BvrF_c7aE7eL0vO4nmH841bhuKfgKUpCOL0tz4lpf-MWOuLks9w2pGsSNJuWXRdA");'></div>
+<div class="p-4">
+<h3 class="text-white font-bold text-lg mb-2">Dark Mode Dashboard Concept - Feedback Wanted</h3>
+<p class="text-slate-300 text-sm leading-relaxed mb-3">
+                                            Hey everyone! I've been working on this finance dashboard concept for a client. Trying to balance high contrast with a sleek modern look. What do you think about the card layouts?
+                                        </p>
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded bg-surface-dark-lighter text-xs text-text-secondary border border-slate-700">#UI</span>
+<span class="px-2 py-1 rounded bg-surface-dark-lighter text-xs text-text-secondary border border-slate-700">#Dashboard</span>
+</div>
+</div>
+<div class="bg-surface-dark-lighter/50 px-4 py-3 border-t border-surface-dark-lighter flex justify-between items-center">
+<div class="flex -space-x-2">
+<img alt="User" class="size-6 rounded-full border-2 border-surface-dark" data-alt="User avatar small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRZZwhKTaapus2p2AESsu81mW7TNMCgrP0jixAi2TnE3UZXlV14drV-PoNPYbtgpkXsp-dzn33szHhBN0H4i03ogR0bzugjfbNMBoVSPwfoo3M_78yxzPEwg3sn9GNlOxnbKzfltoS9zRT7FTMG6aST9JBSjsFuFg3y1OP6Xs9l7RfeVjWzg2gQR-jjy5-RtANB9BYBlXhJxEScjgll4k6hseBriplvlnadBXEn5iurJ41b5wiIX0gLBCyfLu8UijcoU9Pb8K7eAo"/>
+<img alt="User" class="size-6 rounded-full border-2 border-surface-dark" data-alt="User avatar small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe7VAH8Kb8qw8g1ZqbiICBMoMCooTvwMHaLeeoC3FWpRckU5_nW3QHyVv3o088RccUq1DMAgqxoCiVwtO1bklrDYJeI6gUWvxobVVaax5U_Br7i7iOQ_nosqPwKRsLnxAws1djgq7NrB-dkRYVTpgSMMa85oFIU93crp17tFBbxy_gkMu0XILow23DgshTuBzZGG8AhQN2Ln87LGgf1BjHC4tESeJQmd7WiQubt0L7VD1XhecBFYzbjs38ZPsFDQ7wDScF4iTvhHQ"/>
+<div class="size-6 rounded-full border-2 border-surface-dark bg-slate-700 text-[10px] flex items-center justify-center text-white font-bold">+5</div>
+</div>
+<div class="flex gap-4 text-xs text-text-secondary font-medium">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 1.2k</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">chat_bubble</span> 24</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Item 4: Reaction -->
+<div class="relative pl-12 mb-8 group">
+<!-- Node -->
+<div class="absolute left-[13px] top-0 size-8 rounded-full bg-red-500/20 border-4 border-background-dark flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-red-500 text-[16px]">favorite</span>
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-2">
+<div class="flex items-baseline justify-between">
+<div class="text-sm text-text-secondary">
+                                        Liked a post by <a class="text-white hover:underline font-medium" href="#">Sarah Jenkins</a>
+</div>
+<span class="text-xs text-text-secondary">5 days ago</span>
+</div>
+<div class="pl-4 border-l-2 border-surface-dark-lighter italic text-text-secondary text-sm">
+                                    "The best way to learn React is just to build something. Don't get stuck in tutorial hell."
+                                </div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 rounded-lg border border-dashed border-surface-dark-lighter text-text-secondary hover:text-white hover:border-primary hover:bg-surface-dark-lighter transition-all text-sm font-medium mb-10">
+                        Load older activity
+                    </button>
+</div>
+<!-- Sidebar -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- About Widget -->
+<div class="bg-surface-dark rounded-xl border border-surface-dark-lighter p-5">
+<h3 class="text-white font-bold text-base mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">info</span> About
+                        </h3>
+<div class="text-sm text-text-secondary space-y-3">
+<p>Passionate about creating clean, user-centric interfaces. Currently leading the community design team at TechFlow.</p>
+<div class="border-t border-surface-dark-lighter my-3"></div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="text-xs uppercase tracking-wide text-slate-500 block mb-1">Occupation</span>
+<span class="text-slate-300">Product Designer</span>
+</div>
+<div>
+<span class="text-xs uppercase tracking-wide text-slate-500 block mb-1">Website</span>
+<a class="text-primary hover:underline truncate block" href="#">portfolio.io</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Following Widget -->
+<div class="bg-surface-dark rounded-xl border border-surface-dark-lighter p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-white font-bold text-base flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">group</span> Following
+                            </h3>
+<span class="text-xs bg-surface-dark-lighter text-text-secondary px-2 py-0.5 rounded-full">128</span>
+</div>
+<div class="grid grid-cols-4 gap-3">
+<div class="aspect-square bg-cover bg-center rounded-lg cursor-pointer hover:opacity-80 transition-opacity" data-alt="Follower avatar 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDE-DkV21R2QQBmI7v6RS4V0jf0nDBOT4eNE4Lux24KiZaNFcsvRA0NH_FY-JvqTJDYPwWD_QkKoyLVx3jKaYApTEGTudbHuG1WCjwC8aKe9pJnVlIqNf-l8x4of0DaYxcYTnP10GcZVHV0YfKsxKHmKrOcMI7AGf0-G-wt3hA0NTOk0ML8_g2Ccnlu4FsO6ofMaYj7zCki5BK3dbId8kYsS-2pmgleJ0BYMbjFyCj9uuBXTSnSOgEXrll-ZGI6vZeBCnedsatR_Hk");'></div>
+<div class="aspect-square bg-cover bg-center rounded-lg cursor-pointer hover:opacity-80 transition-opacity" data-alt="Follower avatar 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpgdrJiAtiXeZE4iAyUNP9FRU5ZeGzl8IgZD9M6qw6W8uTgujpS5JhtC5wNCXK_bOARqkY3nGJboCyblIgzPUo_DAelygKRACYVjqhWOEIAjLnSgok4zJbBNSKnQSogDBm-C6_gNoqGQ8XHXoouDDKdgYiHURWbL2wH2PBawE0XWmV8REBp3ZfthVIbSOxN7G8StlgBVhoEDn0DFs7WNtsEZbsPxx9ntn3omJ9TOngGmXHY7IPNo-g3RDryxfejW-ng0s-S_kvxsk");'></div>
+<div class="aspect-square bg-cover bg-center rounded-lg cursor-pointer hover:opacity-80 transition-opacity" data-alt="Follower avatar 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAKRFoNnNDzc5IHCUfbXrVUa3sb4tSsPlkJO-yoPIQcLMmmiLHairzrV4djMFK8KRvosQyykUZ_di22GkJ-0-Ad94Y1V0RhTJhGvhv9t1cxPJyxJp1dE7Hp5QgAkqyBOy5TtZJ-YX7Z2NVS4OdjtoC6vRtZjCmzdqjt4MnuMRfIlV6k8cfAz63QWTtnGUG37--LFYLWnUqzRdVCNaFbfomg3IHoUsI1y9snk-iBfVZMgsJ5nIZ7W9lPttHIncRDkCu7dpXFm5eewik");'></div>
+<div class="aspect-square bg-cover bg-center rounded-lg cursor-pointer hover:opacity-80 transition-opacity" data-alt="Follower avatar 4" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBErmn3tPohfk-s2SJD9gKLOyuwheB6KR-WMvn4Ld1GWFR8u-DQW3TIj2D7bphql0U4KpKZfuLVh9iYJfX2gUGoR5zubyQQrOmsUOXdzWkHhUTDHNCcptAeuxMVDNE6SKju2XQ3H-nhf0X-_732RRf4uqojkmZoAVkkQfA8v01JwQ7ODS9_VNpTyQQnbnqpcRJP3_enH-4ldjiUU_Q5TQEEoQXCg02BNqwdAclVCUruDpdVwUZbPSDGNGzf2v17KLKLAHhvfijtrB8");'></div>
+<div class="aspect-square bg-cover bg-center rounded-lg cursor-pointer hover:opacity-80 transition-opacity" data-alt="Follower avatar 5" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDadW1a9D9bKXyUGBovcvvDuKGHXhW-WkTcphkKkYg8fJ0Z5ZkQF0jZIucRR_mS0y4d8haHnY77A9y3cr6CaViVETX1eIMeI4jWtnMrm63ta6EPPxVV9AcdcvtAW2mKP3-wqcpDDd-ZGRWXgdXFZAd3ebsMBOtQePyp7bab_j-ceKkHGIgcjWfa8W3g2CIg7by_djFm92OvVKV7tB0cMsj1b_VZk9gtOYTzFf5RBWjZurgo-Jw5eV1o1HMG9PcRENRw1K4taSEfaCM");'></div>
+<div class="aspect-square bg-cover bg-center rounded-lg cursor-pointer hover:opacity-80 transition-opacity" data-alt="Follower avatar 6" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmTgJmxIXXEA3rpe5gJk8e9kaculFAgvUXgbEsJJ0tTr2MvANNkXq72FeEQvyZNJNk-HggPUp_ho50RiNkJNrCOm7vQ6dRAxoy_WrubJeZeJtEGqBqsexe6OPcdKdMUE1bL3gvkrvSmmVFnUnyWF9jigbJyd1qLpaaHDcTZOE1i1ODN1-ruU78lp8VmNBwEAVgeq3n34QcBqQdCCvXStQEpnGhjfU3vXGG7w8rMrC0PYlGSrWbQ0hHJDevudPBtUZCGfITWvYHUCQ");'></div>
+<div class="col-span-2 aspect-auto bg-surface-dark-lighter rounded-lg flex items-center justify-center text-xs text-text-secondary font-medium cursor-pointer hover:bg-slate-700 transition-colors">
+                                 View All
+                             </div>
+</div>
+</div>
+<!-- Trophy Widget -->
+<div class="bg-surface-dark rounded-xl border border-surface-dark-lighter p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-white font-bold text-base flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-500 text-[20px]">military_tech</span> Trophies
+                            </h3>
+<span class="text-xs text-primary font-medium cursor-pointer hover:underline">See all</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-surface-dark-lighter flex items-center justify-center text-yellow-500">
+<span class="material-symbols-outlined">star</span>
+</div>
+<div>
+<p class="text-white text-sm font-semibold">First Year</p>
+<p class="text-text-secondary text-xs">Member for 365 days</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-surface-dark-lighter flex items-center justify-center text-blue-400">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<div>
+<p class="text-white text-sm font-semibold">Conversationalist</p>
+<p class="text-text-secondary text-xs">Started 50 threads</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded bg-surface-dark-lighter flex items-center justify-center text-green-400">
+<span class="material-symbols-outlined">thumb_up</span>
+</div>
+<div>
+<p class="text-white text-sm font-semibold">Well Liked</p>
+<p class="text-text-secondary text-xs">Received 500 likes</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

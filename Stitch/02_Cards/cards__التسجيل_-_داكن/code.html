@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cards: التسجيل - داكن</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#1c232e",
+                        "input-dark": "#232f48",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col relative selection:bg-primary selection:text-white">
+<!-- Background Masonry (Decorative) -->
+<div class="fixed inset-0 z-0 grid grid-cols-2 md:grid-cols-4 gap-4 p-4 opacity-10 pointer-events-none select-none blur-sm overflow-hidden h-screen">
+<div class="flex flex-col gap-4">
+<div class="h-64 bg-slate-800 rounded-xl w-full bg-cover bg-center" data-alt="Abstract dark fluid shapes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9gLImwO0s_RiPjM_6IQfBsK_e9n8icNCsJg3n3vmMmFCsqA5xcn_V3aL1NZM7Yypf1XWXrPnfiLsxKwfHK6oQTX5XAgYxCvWati8H_Yvkonggqd_Huc6YsrzUCbr_feD4xRySSjgjBwDSco9lCIaTdjxavApN2Vfc1SFbkv5bJqmwee9PrDeCN9OrB_g9OfG-y0bEcBjcMjy9Rh-Ojd1CD63KMEyf_fhAU-nMU6iAreHLp3g3_cq9IUj5UygP_OOgmORx1YD4Aws');"></div>
+<div class="h-40 bg-slate-800 rounded-xl w-full bg-cover bg-center" data-alt="Neon light gradients" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAescsCT4dZJVQgG6mS4ykQK9yt-OfFptS-jLAMxY305xHpOYF3IILkPw5WPbf9bmJ9ryxp5Rl8Rmj7D4ZQRiJUZwHA-CJvCWNLnO8aDRuGrkOEOaGOfNfG738Oe4HnLEip5WvI9sCSG7JO8IRGDp58haxYWZLEcHk6itY8PwDy34EcgAXLYSqIzfpxi51DFrqWH_abmJv3ObME-cNejD5sUe0s-ytSlinZJI41T6iluy_Gcw8B9FZ6tNJIH4bsujH2eQwJInNGTkU');"></div>
+<div class="h-72 bg-slate-800 rounded-xl w-full bg-cover bg-center" data-alt="Dark abstract geometric shapes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCe905lKDjmHBhBGBgeccDgq13xGHx1xbZtYdfq7bjCI0Uwy61dWfTRoaxw9ZGFo42vDJr4UcobVEUQBH3R_2nX6jUQwAC4L99mljzmfe8lVF31hXNFkD5KHZ5za2iQw_DEkptX7v6vxOr5NBnpGebErxyuAcPetwt0gb2B_8A2JPA8O1XznwlWQGXFOMJ8M_Fnu4EsjfaS6uJfDpj377rKdBVWxlduum44M1uhUOXnHCC1J62PTywkAA0F501cyR0TPO-0JWDLIwg');"></div>
+</div>
+<div class="flex flex-col gap-4 pt-12">
+<div class="h-56 bg-slate-800 rounded-xl w-full bg-cover bg-center" data-alt="Retro computer setup" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRE4AehvMnzvpUiaOX4jRiO_geHu3CcnikfOIGGHVhVVLe-OllO2PjItWeujIWET-vSZ0gZz2KRWXTCvWEb5L6WNfise66yFBYx20IAHv351nzavbmR3ZesOJpjWHm_79LDA6ZPKpxsawaFC7dSUHEGGZvyrqW966d_YQtxuUpDoqgX3Sv3YMkoaYs5WiztFzqcfCKrzCiHDB7rXgx8ZRwTjJHd_LY2Hu3ldRoPb7KpIxxOol6gilMHUDQSBVkDeoWANHH4hGptao');"></div>
+<div class="h-80 bg-slate-800 rounded-xl w-full bg-cover bg-center" data-alt="Vibrant abstract colorful smoke" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDHXI5m3gJV5Zj2CTk2Y49kYFxPtVpMITvXplFojBBCdcfQbkG4fbMLfQGRobSx1zisb3Q5PgHL-wQv1nLgJIaQ7cHS076zb0t80fiSr0EIKckJ0LYjZXlGR3vVbx8BVlfUGFJXN9IA8nBD_-7d1uk8ROoc7TsAu-TLY89HVzpoV084jzcUUj0peYPZzptOWa4y0weKWRH9gbWqe_CDgDME4afBULQzYdhsiJtc9vTUyq_VxSG8aWw3vzqEKD16KtzmLZu1Z_P-x7M');"></div>
+</div>
+<div class="flex flex-col gap-4 hidden md:flex">
+<div class="h-48 bg-slate-800 rounded-xl w-full bg-cover bg-center" data-alt="Cyberpunk city glitch art" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBmhK-PEAwIesHbUEo6OZLeBvj1tXkm1ddrGMH8QlV9FIjBppLqKnI2YRw_l7GxbXhSqQqLPX4_UT9Ttkg1Re3gOC6644OL3frfLR5EaX1zOsgLvujjdHdl-3IePsMyu9gH1IjSM0OcDXMseVvlhVPg48Zfjn4R1YxGo6iPzIToj318TTGqi9g5uxwL89D8rfvPyfXXsVqB2UKGruwCNsbk8RusaX9NiQ3sJtU6mbdRHvOamkTWkGvhd_8dasCiTwwCEUE6pemTSyA');"></div>
+<div class="h-64 bg-slate-800 rounded-xl w-full bg-cover bg-center" data-alt="Cyber security concept lock" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAoJdSuq8sRvz3MyuBUz__P_J2bm90Cpq1HyLVny6AOqI4l7QDouFfyNIJYWGGgB7jVQP2s0Qmr1ybzqU8jJB5IAdYflHekoRLWcD9HZHzGU3UcOTUJaCt8EXV6OEG96V22XNr_kKIzwqsK0QzrVAA3U6issH5pjE5ciVnsut5930TTpV4LhZ6y5an8bsIejFNeEIsibIktidwc3d5rOQbaHYF1vUgaMFCqlDHIBGW1XxssQXk4DhjDEdvg0cPaSHz2YrhfJEe0YAU');"></div>
+<div class="h-48 bg-slate-800 rounded-xl w-full bg-cover bg-center" data-alt="Event crowd at night" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQLOpeCda8-WgV2Qkle0n7-ZLNXtLq5j0HzoX8foAJWCVtP9anpqwA16UJsYhx2u0MM3qE4c5cE5vbwIb-_Sma6gxjX9jMMeGKGEzZL3RsL_Gtdh6Mg1NLp4jXQeK1AIVgsG9ILgyKHr1GxgGNJ0Bhk7ThCh6K9XYeUS2jsBFNMn4FjGRJxv9F9XD8jwcMBPNym98vChSrfOJH7GWfb7wkcJJW1-otZeIH5sJ7n6x1hUL5WmNncum_t1p_GrZ7ts9IUaUy66kq4eE');"></div>
+</div>
+<div class="flex flex-col gap-4 hidden md:flex pt-20">
+<div class="h-72 bg-slate-800 rounded-xl w-full bg-cover bg-center" data-alt="Abstract network connections" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLk-zR5oZfwJ_c77X_KwithpEAWan2QsiDiG6aSoWplqOLGjRXHZJqevREwWkM9-kXmzQ0tCA5I_FvHM4mPCMY8JxRUrQ7lmlTKviEl1wPxDErwJU8Urwu_fcj6mzKiCtTUTsbNIzIlcqRKR3I2k_7iXu1_PZYvBvtiVnTFbOHGHNSkLeVTiIH295kMrMHd3KuZ7wWdkyCNo4-7HjQ2VfbUMDTCGJGMGLCMrhOqMMWypxkMNmYy0Ocz9Z0chR490YnOo1OyYko7k0');"></div>
+<div class="h-48 bg-slate-800 rounded-xl w-full bg-cover bg-center" data-alt="Code on screen matrix style" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDoHUPJzBpw97IV9Lssl2pH0VJpHWim7zl8MKmHN6wl7XPLRUwU146CAzf-7BfvnYCU5RnmTiLQW-gJXrDn8a1-iJmzAKvWFJB_7Niw7BnuYGy2JRxvFM2fAwRyEa-dgArcRFrjLAByQEU2ajbOSfvQ6mal68PYtgUZBNj3Z6j4DUz2RXVGxa6liHvjMf0NlClQYlIGvR27sZoXHgszxTmWZU7deueDjLm8w5GnoHZgIEr1Ebv-8AzGX3Ij-L_Rf4YRpo1Il6M--iQ');"></div>
+</div>
+</div>
+<!-- Top Navigation -->
+<header class="relative z-20 flex items-center justify-between border-b border-white/5 px-6 py-4 lg:px-12 backdrop-blur-md bg-background-dark/70">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_330)">
+<path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_330"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight">XenForo Cards</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex h-10 items-center justify-center rounded-xl bg-input-dark px-4 text-sm font-bold text-white transition hover:bg-white/10">
+                تسجيل الدخول
+            </button>
+<button class="flex size-10 items-center justify-center rounded-xl bg-input-dark text-white transition hover:bg-white/10">
+<span class="material-symbols-outlined text-[20px]">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="relative z-10 flex flex-1 flex-col items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
+<!-- Registration Card -->
+<div class="w-full max-w-4xl overflow-hidden rounded-3xl bg-card-dark/90 shadow-2xl backdrop-blur-xl border border-white/5 flex flex-col md:flex-row">
+<!-- Visual Side (Hidden on Mobile) -->
+<div class="hidden md:flex w-1/3 bg-primary/10 relative flex-col justify-between p-8">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent"></div>
+<div class="relative z-10">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center mb-6 shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-white">auto_awesome</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-2 leading-tight">شارك إبداعك مع العالم</h3>
+<p class="text-gray-400 text-sm leading-relaxed">انضم إلى آلاف المصممين والمطورين في مجتمع XenForo Cards. اكتشف، تواصل، وألهم.</p>
+</div>
+<div class="relative z-10 mt-auto">
+<div class="flex -space-x-3 space-x-reverse mb-3">
+<img alt="" class="inline-block h-8 w-8 rounded-full ring-2 ring-card-dark object-cover" data-alt="User avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJKl8rKFEXxSjD3Z7GW6SC3Dg5psDdAhTzoY6r8mfS-6a36Blu2cch8LGtifUCi7SCWYfihnjmR6v4pIuEi6SuK4Pamwelsl_5IaxN3B6TRWd5QBIXROmxcx2HOSAwP_V40QDU611q-0IATO56RYokLbZPtqjY48TWqzO1PlFoW4B1JstnC3JbsBQ7SktsMe7cjFwTcjOE5cKFPBQC8ku5Tu2ctb119hIAuVaZrP6Tml42otMTWmM8P5B669cHcmigrWASctrwQD4"/>
+<img alt="" class="inline-block h-8 w-8 rounded-full ring-2 ring-card-dark object-cover" data-alt="User avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR-lBGL631ebooxYj494D-ilhO6DsDkIxVAdjeOMsOj_CTsi81cdTrqZE015e-CPjvb9qXMf69fMIYh5iZ0M8BfBlc_Btk2FB2t9perTkH5koTG6cbt58gEmS8xdK6pdE-3THisOMTBi8qfU6ACpfKJR1AxQ2LnLrVbST9shtZ41i9ZljgrvjHoeZ-UvDTMhGX_FUiVBstDq3LUSt5HDmjPwAAa3GXzoAy2nWufOOfhPdKewo_k50z3BeOsd_lH-MD5X29tcMjakc"/>
+<img alt="" class="inline-block h-8 w-8 rounded-full ring-2 ring-card-dark object-cover" data-alt="User avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL5C7YAiS15llfgD_0jzAd3B_3LARJg4psppHIVtMqH5ZC6peXOMFr9Lb6uIy6h_G02HsO50FxJuYddm_3RtjuDyaNoBReFk8XajdQ03gnt6AkXbsKfKWKfLwubpVGLuQnQdDLcxOsfcbK9d41S8S3NpvGrdiQTzroxtRURWieMrZNcwwzozm8aZif9FQSvMTvqKOtsR6p4mctPjY2bmLW4vvHCvYxOxCZJ3F1AqEL92OPyMBaMGyEA1vcqaF_J3EwIGcreIaXiEg"/>
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-input-dark ring-2 ring-card-dark text-[10px] font-bold text-white">+2k</div>
+</div>
+<p class="text-xs text-primary font-medium">أعضاء جدد انضموا هذا الأسبوع</p>
+</div>
+</div>
+<!-- Form Side -->
+<div class="flex-1 p-6 sm:p-10">
+<div class="mb-8 text-center md:text-right">
+<h1 class="text-3xl font-bold text-white tracking-tight mb-2">انضم إلى المجتمع</h1>
+<p class="text-slate-400 text-sm">أدخل التفاصيل الخاصة بك لإنشاء حساب جديد</p>
+</div>
+<!-- Social Actions -->
+<div class="grid grid-cols-3 gap-3 mb-8">
+<button class="group flex flex-col items-center justify-center gap-2 rounded-xl bg-input-dark/50 py-3 transition hover:bg-input-dark border border-transparent hover:border-white/5">
+<span class="material-symbols-outlined text-white group-hover:scale-110 transition-transform">public</span>
+<span class="text-xs font-medium text-slate-300">جوجل</span>
+</button>
+<button class="group flex flex-col items-center justify-center gap-2 rounded-xl bg-input-dark/50 py-3 transition hover:bg-input-dark border border-transparent hover:border-white/5">
+<span class="material-symbols-outlined text-white group-hover:scale-110 transition-transform">share</span>
+<span class="text-xs font-medium text-slate-300">تويتر</span>
+</button>
+<button class="group flex flex-col items-center justify-center gap-2 rounded-xl bg-input-dark/50 py-3 transition hover:bg-input-dark border border-transparent hover:border-white/5">
+<span class="material-symbols-outlined text-white group-hover:scale-110 transition-transform">groups</span>
+<span class="text-xs font-medium text-slate-300">فيسبوك</span>
+</button>
+</div>
+<div class="relative mb-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-white/10"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="bg-card-dark px-4 text-xs text-slate-500 uppercase">أو التسجيل عبر البريد</span>
+</div>
+</div>
+<!-- Form Fields -->
+<form class="space-y-5">
+<!-- Username -->
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-slate-300" for="username">اسم المستخدم</label>
+<div class="relative">
+<input class="w-full rounded-xl border-none bg-input-dark py-3.5 px-4 pr-11 text-white placeholder-slate-500 focus:ring-2 focus:ring-primary transition-all text-sm" id="username" placeholder="أدخل اسم المستخدم المفضل" type="text"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-slate-300" for="email">البريد الإلكتروني</label>
+<div class="relative">
+<input class="w-full rounded-xl border-none bg-input-dark py-3.5 px-4 pr-11 text-white placeholder-slate-500 focus:ring-2 focus:ring-primary transition-all text-sm" id="email" placeholder="example@email.com" type="email"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+</div>
+</div>
+<!-- Password and DOB Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-slate-300" for="password">كلمة المرور</label>
+<div class="relative">
+<input class="w-full rounded-xl border-none bg-input-dark py-3.5 px-4 pr-11 text-white placeholder-slate-500 focus:ring-2 focus:ring-primary transition-all text-sm" id="password" placeholder="••••••••" type="password"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-sm font-medium text-slate-300" for="dob">تاريخ الميلاد</label>
+<div class="relative">
+<input class="w-full rounded-xl border-none bg-input-dark py-3.5 px-4 pr-11 text-white placeholder-slate-500 focus:ring-2 focus:ring-primary transition-all text-sm dark:[color-scheme:dark]" id="dob" type="date"/>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Terms Card -->
+<div class="mt-2 rounded-xl bg-input-dark/30 border border-white/5 p-3">
+<div class="flex items-start gap-3">
+<div class="flex h-5 items-center">
+<input class="h-4 w-4 rounded border-gray-600 bg-gray-700 text-primary focus:ring-primary focus:ring-offset-gray-800" id="terms" type="checkbox"/>
+</div>
+<div class="text-xs leading-5">
+<label class="font-medium text-slate-300" for="terms">الموافقة على الشروط</label>
+<div class="h-16 overflow-y-auto pr-1 mt-1 text-slate-500 scrollbar-thin">
+<p>بالمتابعة، أنت توافق على شروط الخدمة وسياسة الخصوصية الخاصة بنا. نحن نستخدم ملفات تعريف الارتباط لتحسين تجربتك. يرجى قراءة القواعد بعناية لضمان بيئة آمنة للجميع.</p>
+<p class="mt-2">يجب أن تلتزم بقواعد المجتمع وعدم نشر محتوى مسيء. الإدارة لها الحق في تعليق الحسابات المخالفة.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="mt-4 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-primary py-4 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all hover:bg-blue-600 hover:shadow-primary/40 active:scale-[0.98]" type="button">
+                        إنشاء حساب جديد
+                    </button>
+<div class="mt-4 text-center">
+<p class="text-sm text-slate-400">
+                            لديك حساب بالفعل؟ 
+                            <a class="font-bold text-primary hover:text-blue-400 hover:underline" href="#">سجل الدخول هنا</a>
+</p>
+</div>
+</form>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="mt-8 flex gap-6 text-sm text-slate-500">
+<a class="hover:text-white transition-colors" href="#">اتصل بنا</a>
+<a class="hover:text-white transition-colors" href="#">المساعدة</a>
+<a class="hover:text-white transition-colors" href="#">الخصوصية</a>
+</div>
+</main>
+</body></html>

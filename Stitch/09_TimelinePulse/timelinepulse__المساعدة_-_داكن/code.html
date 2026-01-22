@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TimelinePulse: المساعدة</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#1a1d24",
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #324467;
+        }
+        
+        .pulse-effect {
+            box-shadow: 0 0 0 0 rgba(19, 91, 236, 0.7);
+            animation: pulse-blue 2s infinite;
+        }
+        
+        @keyframes pulse-blue {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(19, 91, 236, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(19, 91, 236, 0);
+            }
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(19, 91, 236, 0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<nav class="sticky top-0 z-50 w-full border-b border-solid border-border-dark bg-background-dark/95 backdrop-blur-sm px-4 lg:px-10 py-3">
+<div class="flex items-center justify-between max-w-7xl mx-auto">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-[20px]">timeline</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">TimelinePulse</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-center gap-8">
+<a class="text-text-secondary hover:text-white text-sm font-medium transition-colors" href="#">الرئيسية</a>
+<a class="text-text-secondary hover:text-white text-sm font-medium transition-colors" href="#">المنتديات</a>
+<a class="text-white text-sm font-medium transition-colors" href="#">المساعدة</a>
+<a class="text-text-secondary hover:text-white text-sm font-medium transition-colors" href="#">الأعضاء</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center rounded-lg h-9 px-4 bg-border-dark hover:bg-opacity-80 text-white text-sm font-bold transition-all">
+<span>تسجيل</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-9 px-4 bg-primary hover:bg-blue-600 text-white text-sm font-bold shadow-[0_0_15px_rgba(19,91,236,0.3)] transition-all">
+<span>دخول</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Layout -->
+<div class="flex-1 flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
+<div class="w-full max-w-4xl flex flex-col gap-8">
+<!-- Page Heading & Search Section -->
+<div class="flex flex-col gap-6 items-center text-center py-6">
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-4xl sm:text-5xl font-black leading-tight tracking-[-0.033em]">مركز المساعدة</h1>
+<p class="text-text-secondary text-lg font-normal">تصفح الجدول الزمني للأدلة التعليمية وابحث عن إجاباتك</p>
+</div>
+<!-- Search Bar -->
+<div class="w-full max-w-2xl relative group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-text-secondary group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full h-14 pr-12 pl-4 rounded-xl bg-card-dark border border-border-dark text-white placeholder-text-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all shadow-lg" placeholder="كيف يمكننا مساعدتك اليوم؟... (مثال: تغيير كلمة المرور)" type="text"/>
+</div>
+<!-- Chips / Filters -->
+<div class="flex flex-wrap justify-center gap-3 w-full">
+<button class="flex h-9 items-center justify-center px-5 rounded-full bg-primary text-white text-sm font-bold shadow-md transition-transform hover:scale-105">
+                        الكل
+                    </button>
+<button class="flex h-9 items-center justify-center px-5 rounded-full bg-card-dark border border-border-dark text-text-secondary hover:text-white hover:border-primary/50 text-sm font-medium transition-all hover:scale-105">
+                        الحساب
+                    </button>
+<button class="flex h-9 items-center justify-center px-5 rounded-full bg-card-dark border border-border-dark text-text-secondary hover:text-white hover:border-primary/50 text-sm font-medium transition-all hover:scale-105">
+                        النشر
+                    </button>
+<button class="flex h-9 items-center justify-center px-5 rounded-full bg-card-dark border border-border-dark text-text-secondary hover:text-white hover:border-primary/50 text-sm font-medium transition-all hover:scale-105">
+                        الخصوصية
+                    </button>
+<button class="flex h-9 items-center justify-center px-5 rounded-full bg-card-dark border border-border-dark text-text-secondary hover:text-white hover:border-primary/50 text-sm font-medium transition-all hover:scale-105">
+                        الإشعارات
+                    </button>
+</div>
+</div>
+<!-- Timeline Section -->
+<div class="relative flex flex-col mt-4">
+<!-- Background Line Decoration (Optional) -->
+<div class="absolute right-[19px] top-4 bottom-10 w-[2px] bg-gradient-to-b from-primary via-border-dark to-border-dark/0 h-full opacity-20 hidden md:block"></div>
+<div class="grid grid-cols-[40px_1fr] gap-x-6 sm:gap-x-8">
+<!-- Timeline Item 1: Active/Start -->
+<div class="flex flex-col items-center">
+<div class="relative z-10 size-10 rounded-full bg-primary flex items-center justify-center text-white pulse-effect shadow-lg">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+</div>
+<div class="w-[2px] bg-gradient-to-b from-primary to-border-dark h-full min-h-[60px]"></div>
+</div>
+<div class="pb-10 pt-1">
+<div class="group relative bg-card-dark hover:bg-[#20252e] border border-border-dark hover:border-primary/30 rounded-2xl p-6 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-lg font-bold">البداية: إنشاء حسابك</h3>
+<span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded font-bold">للمبتدئين</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed mb-4">
+                                مرحباً بك في TimelinePulse. تعلم كيفية إنشاء حساب جديد وتفعيل البريد الإلكتروني للبدء في المشاركة في المنتديات.
+                            </p>
+<div class="flex items-center text-primary text-sm font-bold gap-1 group-hover:gap-2 transition-all">
+<span>اقرأ الدليل</span>
+<span class="material-symbols-outlined text-[16px] rtl:rotate-180">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="flex flex-col items-center">
+<div class="w-[2px] bg-border-dark h-4"></div>
+<div class="relative z-10 size-10 rounded-full bg-card-dark border-2 border-border-dark flex items-center justify-center text-text-secondary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">person_edit</span>
+</div>
+<div class="w-[2px] bg-border-dark h-full min-h-[60px]"></div>
+</div>
+<div class="pb-10 pt-1">
+<div class="group relative bg-card-dark hover:bg-[#20252e] border border-border-dark hover:border-primary/30 rounded-2xl p-6 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-lg font-bold">تخصيص ملفك الشخصي</h3>
+<span class="bg-border-dark text-text-secondary text-xs px-2 py-1 rounded font-bold">إعدادات</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed">
+                                اجعل ملفك الشخصي يعبر عنك. كيفية تغيير الصورة الرمزية، الغلاف، وإضافة نبذة تعريفية وروابط التواصل الاجتماعي.
+                            </p>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="flex flex-col items-center">
+<div class="w-[2px] bg-border-dark h-4"></div>
+<div class="relative z-10 size-10 rounded-full bg-card-dark border-2 border-border-dark flex items-center justify-center text-text-secondary">
+<span class="material-symbols-outlined text-[20px]">post_add</span>
+</div>
+<div class="w-[2px] bg-border-dark h-full min-h-[60px]"></div>
+</div>
+<div class="pb-10 pt-1">
+<div class="group relative bg-card-dark hover:bg-[#20252e] border border-border-dark hover:border-primary/30 rounded-2xl p-6 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-lg font-bold">كيفية نشر موضوع جديد</h3>
+<span class="bg-border-dark text-text-secondary text-xs px-2 py-1 rounded font-bold">دليل</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed">
+                                شرح أدوات المحرر المتقدمة، كيفية إدراج الصور والفيديو، واستخدام الوسوم لتنظيم المحتوى الخاص بك بشكل فعال.
+                            </p>
+</div>
+</div>
+<!-- Timeline Item 4 -->
+<div class="flex flex-col items-center">
+<div class="w-[2px] bg-border-dark h-4"></div>
+<div class="relative z-10 size-10 rounded-full bg-card-dark border-2 border-border-dark flex items-center justify-center text-text-secondary">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<div class="w-[2px] bg-border-dark h-full min-h-[60px]"></div>
+</div>
+<div class="pb-10 pt-1">
+<div class="group relative bg-card-dark hover:bg-[#20252e] border border-border-dark hover:border-primary/30 rounded-2xl p-6 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-lg font-bold">إعدادات الخصوصية والأمان</h3>
+<span class="bg-border-dark text-text-secondary text-xs px-2 py-1 rounded font-bold">أمان</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed">
+                                تحكم في من يمكنه رؤية منشوراتك والتواصل معك. تفعيل المصادقة الثنائية لحماية حسابك من الوصول غير المصرح به.
+                            </p>
+</div>
+</div>
+<!-- Timeline Item 5: End -->
+<div class="flex flex-col items-center">
+<div class="w-[2px] bg-border-dark h-4"></div>
+<div class="relative z-10 size-10 rounded-full bg-card-dark border-2 border-border-dark flex items-center justify-center text-text-secondary">
+<span class="material-symbols-outlined text-[20px]">help_center</span>
+</div>
+<div class="w-[2px] bg-gradient-to-b from-border-dark to-transparent h-full grow"></div>
+</div>
+<div class="pb-6 pt-1">
+<div class="group relative bg-card-dark hover:bg-[#20252e] border border-border-dark hover:border-primary/30 rounded-2xl p-6 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-lg font-bold">تواصل مع الدعم الفني</h3>
+<span class="bg-border-dark text-text-secondary text-xs px-2 py-1 rounded font-bold">مساعدة</span>
+</div>
+<p class="text-text-secondary text-sm leading-relaxed mb-4">
+                                لم تجد ما تبحث عنه؟ فريقنا جاهز للمساعدة في أي وقت.
+                            </p>
+<button class="w-full bg-border-dark hover:bg-primary text-white font-bold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+                                فتح تذكرة دعم
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Small -->
+<div class="border-t border-border-dark pt-8 pb-4 text-center">
+<p class="text-text-secondary text-sm">
+                    © 2024 TimelinePulse. جميع الحقوق محفوظة.
+                </p>
+</div>
+</div>
+</div>
+<!-- Floating Action Button for Support (Mobile/Desktop) -->
+<div class="fixed bottom-6 left-6 z-40">
+<button class="flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-lg shadow-blue-900/50 hover:bg-blue-600 transition-transform hover:scale-110">
+<span class="material-symbols-outlined text-[28px]">chat</span>
+</button>
+</div>
+</body></html>

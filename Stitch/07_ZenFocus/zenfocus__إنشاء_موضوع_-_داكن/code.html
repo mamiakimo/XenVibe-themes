@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus: إنشاء موضوع</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#195de6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111621",
+                        "surface-dark": "#1a202c",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                        "sans": ["Noto Sans Arabic", "Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111621; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568; 
+        }
+        
+        .editor-content:empty:before {
+            content: attr(placeholder);
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col font-display selection:bg-primary/30">
+<!-- Header -->
+<header class="w-full border-b border-gray-200 dark:border-gray-800 bg-white/5 dark:bg-[#111621]/95 backdrop-blur-md sticky top-0 z-50 transition-colors">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo area -->
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 group" href="#">
+<div class="size-8 rounded-lg bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white shadow-lg shadow-primary/20 group-hover:shadow-primary/40 transition-all duration-300">
+<span class="material-symbols-outlined text-[20px]">spa</span>
+</div>
+<span class="text-lg font-bold tracking-tight text-gray-900 dark:text-white">ZenFocus</span>
+</a>
+</div>
+<!-- Navigation -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors" href="#">الرئيسية</a>
+<a class="text-sm font-medium text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors" href="#">المنتديات</a>
+<a class="text-sm font-medium text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors" href="#">الجديد</a>
+</nav>
+<!-- User Profile -->
+<div class="flex items-center gap-4">
+<button class="p-2 text-gray-400 hover:text-white transition-colors rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-9 rounded-full bg-cover bg-center ring-2 ring-gray-800 cursor-pointer hover:ring-primary/50 transition-all" data-alt="User profile avatar showing a stylized abstract face" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFxNYtxW8m_aMROuyByghbO1eG9VViBpeonlGni6rs1xun-vQJbPEjo3r6-KhlA900mrTgvSt2v-cjqSQgfhp7lMqK3VSBB3FrEAZI_A8zaUF_uGzeB6fksJSZTNZlzOOsCMECAI2_TF860Xk8kH60nu0VAgbRLl_eJU_eJkhXnEv6mlHARdXrW63s_jufC4Wyg4I5OnLREawmlwhaeaSN_CKpKYAsG-SYlaoZ27YSZHNvONzlMyT1v6fF7IhlyCu8nhxwE96rmHA");'>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center py-8 px-4 sm:px-6">
+<div class="w-full max-w-4xl flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<nav class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4 animate-fade-in">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<span class="mx-2 text-gray-600">/</span>
+<a class="hover:text-primary transition-colors" href="#">المنتدى العام</a>
+<span class="mx-2 text-gray-600">/</span>
+<span class="text-gray-900 dark:text-gray-200 font-medium">إنشاء موضوع</span>
+</nav>
+<!-- Editor Container -->
+<div class="flex flex-col gap-6">
+<!-- Title Input Section -->
+<div class="group relative">
+<input autofocus="" class="w-full bg-transparent border-0 border-b border-gray-800 px-0 py-4 text-4xl font-black placeholder-gray-600 text-gray-900 dark:text-white focus:ring-0 focus:border-primary transition-all duration-300 leading-tight tracking-tight" placeholder="أضف عنواناً جذاباً..." type="text"/>
+</div>
+<!-- Tags Input -->
+<div class="flex flex-wrap items-center gap-2">
+<div class="flex items-center gap-2 bg-[#1a202c] border border-gray-800 rounded-full px-3 py-1 text-sm text-gray-300">
+<span class="material-symbols-outlined text-[16px]">tag</span>
+<span>نقاش_عام</span>
+<button class="hover:text-red-400 transition-colors"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</div>
+<input class="bg-transparent border-0 text-sm text-gray-400 placeholder-gray-600 focus:ring-0 focus:text-white p-1 min-w-[200px]" placeholder="+ أضف وسوماً (اختياري)" type="text"/>
+</div>
+<!-- Rich Text Editor Toolbar -->
+<div class="sticky top-[65px] z-40 bg-background-light dark:bg-background-dark/95 backdrop-blur border-y border-gray-200 dark:border-gray-800 py-3 flex items-center gap-1 sm:gap-4 overflow-x-auto no-scrollbar transition-all">
+<!-- Text Style Group -->
+<div class="flex items-center gap-1 border-l border-gray-700 pl-4 ml-2">
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" title="Bold">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" title="Italic">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" title="Underline">
+<span class="material-symbols-outlined text-[20px]">format_underlined</span>
+</button>
+</div>
+<!-- Structure Group -->
+<div class="flex items-center gap-1 border-l border-gray-700 pl-4 ml-2">
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" title="Heading">
+<span class="material-symbols-outlined text-[20px]">title</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" title="Quote">
+<span class="material-symbols-outlined text-[20px]">format_quote</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" title="Bullet List">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+</button>
+</div>
+<!-- Media Group -->
+<div class="flex items-center gap-1">
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" title="Link">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" title="Image">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" title="Code Block">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</button>
+</div>
+<div class="flex-1"></div>
+<span class="text-xs text-gray-500 hidden sm:block">تم الحفظ تلقائياً</span>
+</div>
+<!-- Writing Canvas -->
+<div class="min-h-[400px] w-full bg-transparent focus:outline-none text-lg text-gray-800 dark:text-gray-200 leading-relaxed editor-content relative" contenteditable="true" placeholder="شارك أفكارك وتجاربك هنا... التركيز هو مفتاح الإبداع.">
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="sticky bottom-0 z-50 border-t border-gray-200 dark:border-gray-800 bg-background-light/80 dark:bg-background-dark/95 backdrop-blur-lg py-4">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                    معاينة
+                </button>
+<button class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                    حفظ كمسودة
+                </button>
+</div>
+<div class="flex items-center gap-3">
+<button class="sm:hidden p-3 rounded-lg text-gray-400 hover:bg-gray-800">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="bg-primary hover:bg-blue-600 text-white px-8 py-2.5 rounded-lg font-bold text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2">
+<span>نشر الموضوع</span>
+<span class="material-symbols-outlined text-[18px] rtl:rotate-180">send</span>
+</button>
+</div>
+</div>
+</footer>
+</body></html>

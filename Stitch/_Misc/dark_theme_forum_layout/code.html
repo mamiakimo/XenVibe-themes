@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zyzoom Dark Theme Replica</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Font Awesome for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-bg': '#121212',
+            'card-bg': '#1e1e1e',
+            'accent-orange': '#ff5722',
+            'text-light': '#e5e7eb',
+            'text-dim': '#9ca3af',
+          },
+          fontFamily: {
+            sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom CSS for specific layout needs and scrollbar -->
+<style data-purpose="scrollbar-and-utilities">
+    /* Custom Scrollbar for Dark Mode */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f0f10; 
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #333; 
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555; 
+    }
+
+    /* Utility to ensure images cover areas nicely */
+    .img-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Play button overlay centering and style */
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+  </style>
+</head>
+<body class="bg-dark-bg text-text-light font-sans min-h-screen">
+<!-- BEGIN: Header -->
+<!-- Full width header with Logo, Search, and Navigation -->
+<header class="sticky top-0 z-50 bg-card-bg/95 backdrop-blur shadow-md border-b border-gray-800 h-16">
+<div class="container mx-auto px-4 h-full flex items-center justify-between">
+<!-- Left: Logo -->
+<div class="flex items-center gap-4">
+<a class="flex-shrink-0" href="#">
+<img alt="Zyzoom Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI0sA2iZ6nUK8Jw1k02cwdpZNjOd3b3EMMz0Q8-IKA1pi7zYrQ_JehjdMJH67lhPm6ozKKQJlzcUYFHantHheeslBSf9g9Wg4vuPFdqSDeCGszA0KrXcv7MwCKgXnPBJFsteVv3_wW-ey_r2SMcU_4SK97siWLIpJfrXkqnmzP5Eu__v7Uz_h9gwB6WkRkVFeEiuGeTtb8wFcBI57pyiLlJ3wi35JZqtMdj_B--YBXav4M8LQpTBTYTxcbd32QToJxdre_2Guiwio"/>
+</a>
+</div>
+<!-- Center: Search Bar (Hidden on very small screens) -->
+<div class="hidden md:flex flex-1 max-w-lg mx-8 relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-500">
+<i class="fas fa-search"></i>
+</span>
+<input aria-label="Search" class="w-full bg-[#131314] text-sm text-gray-200 rounded-full border border-gray-700 focus:border-accent-orange focus:ring-1 focus:ring-accent-orange pl-10 pr-4 py-2 transition-colors placeholder-gray-500 text-right" placeholder="... ابحث هنا" type="text"/>
+</div>
+<!-- Right: Navigation Icons -->
+<nav class="flex items-center gap-3 sm:gap-5 text-gray-400">
+<button class="hover:text-accent-orange transition-colors"><i class="fas fa-home text-xl"></i></button>
+<button class="hover:text-accent-orange transition-colors relative">
+<i class="fas fa-layer-group text-xl"></i>
+<span class="absolute -top-1 -right-1 bg-accent-orange text-white text-[10px] font-bold px-1 rounded-full">3</span>
+</button>
+<!-- Mobile Search Icon trigger -->
+<button class="md:hidden hover:text-accent-orange transition-colors"><i class="fas fa-search text-xl"></i></button>
+<button class="hover:text-accent-orange transition-colors"><i class="fas fa-user text-xl"></i></button>
+<button class="hover:text-accent-orange transition-colors relative">
+<i class="fas fa-bell text-xl"></i>
+<span class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1 rounded-full">9+</span>
+</button>
+</nav>
+</div>
+</header>
+<!-- END: Header -->
+<!-- BEGIN: MainContainer -->
+<!-- Grid layout: Content on Left (wider), Sidebar on Right (narrower) -->
+<div class="container mx-auto px-4 py-6">
+<div class="flex flex-col lg:flex-row gap-6">
+<!-- BEGIN: MainContent (Left Column) -->
+<main class="w-full flex-1">
+<!-- Section Title -->
+<div class="flex justify-end items-center mb-6 border-b border-gray-800 pb-2">
+<h2 class="text-xl font-bold text-right text-accent-orange border-b-2 border-accent-orange pb-2 -mb-2.5 px-2">أحدث المشاركات</h2>
+</div>
+<!-- Grid of Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<article class="bg-card-bg rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 border border-gray-800 group" data-purpose="post-card">
+<!-- Thumbnail -->
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Windows 11" class="img-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa9oHjPAFynx52IfZRlCGgInVXaYJJZhY68tl0uY-zsGeKBb8QYjPJvAEEdxJYi9oAFZAt8t50szSfTLiSOwg9Ur8BhyiMDQVirz0xTD6WhVhTV8AnVWpmobHmJeKQ7DuA6yYqn0jBygstWZKhdJmJLXfcNz9NouYc9oKfYPs5CPIFC5wNZeJIlqdzjlvWWU44F4iDKdjreY9_ntvhXH5mEqs38IWR63Vh21Gu4a3Lstc6K_YC3N_dG8gTKP-NthNOqQavizsfNGk"/>
+<!-- Play Button Overlay -->
+<div class="play-overlay group-hover:bg-accent-orange/80 transition-colors cursor-pointer">
+<i class="fas fa-play text-white ml-1"></i>
+</div>
+<!-- Duration Badge -->
+<span class="absolute bottom-2 right-2 bg-black/70 text-xs px-2 py-0.5 rounded text-white">12:30</span>
+</div>
+<!-- Content -->
+<div class="p-3">
+<!-- Title (Right Aligned for Arabic) -->
+<h3 class="font-bold text-right mb-2 leading-snug line-clamp-2 hover:text-accent-orange cursor-pointer text-base">
+                تحميل وتفعيل ويندوز 11 النسخة الأصلية كاملة مجاناً 2024
+              </h3>
+<!-- Author Row (Right Aligned Layout) -->
+<div class="flex items-center justify-end gap-3 mt-3 mb-4">
+<div class="text-right">
+<p class="text-xs text-text-light font-semibold">أحمد المصري</p>
+<p class="text-[10px] text-gray-500">مدير عام</p>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-gray-600">
+<img alt="User" class="img-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck"/>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="flex items-center justify-between border-t border-gray-700 pt-3">
+<div class="flex items-center gap-3 pt-3 border-t border-gray-700">
+<button class="bg-accent-orange text-white px-3 py-1 rounded flex items-center gap-1 hover:opacity-90 transition-opacity">
+<span class="text-xs font-bold">128</span> <i class="fas fa-heart"></i>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+<span class="text-xs">14</span> <i class="far fa-comment-dots"></i>
+</button>
+<button class="text-gray-400 hover:text-blue-400 transition-colors">
+<i class="fas fa-share"></i>
+</button>
+<div class="flex-grow"></div>
+<button class="text-gray-400 hover:text-white transition-colors">
+<i class="far fa-bookmark"></i>
+</button>
+</div></div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-card-bg rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 border border-gray-800 group" data-purpose="post-card">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Software Box" class="img-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvEhotTbAC2hJhdFRALeOAidH2GckHvVcLPC6BbYvbKhAQQsHsiUmHFs8DJ-NwcMB-hmXdxpXUy0vu2c2f27dGpr1Wds6sh_muHuT_4qCmOUJyoTdBtwxS-PVJng6fRN4aDz5NubB07t8ZOl_WYnXX-HRYVur0Kuy8CqraIn8aNVv5f91R8DLJGx0fk7yfKpLOFLdNKlVftBdJByR6FvyKxtIDVGitYQU49cyZvzva8GIFqOFVh3KnbUENfp02Sh3Z1n6w8pkI0Q8"/>
+</div>
+<div class="p-3">
+<h3 class="font-bold text-right mb-2 leading-snug line-clamp-2 hover:text-accent-orange cursor-pointer text-base">
+                أسطوانة البرامج العملاقة 2024 - كل ما يحتاجه جهازك
+              </h3>
+<div class="flex items-center justify-end gap-3 mt-3 mb-4">
+<div class="text-right">
+<p class="text-xs text-text-light font-semibold">محمد علي</p>
+<p class="text-[10px] text-gray-500">عضو نشيط</p>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-gray-600">
+<img alt="User" class="img-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck"/>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-gray-700 pt-3">
+<div class="flex items-center gap-3 pt-3 border-t border-gray-700">
+<button class="bg-accent-orange text-white px-3 py-1 rounded flex items-center gap-1 hover:opacity-90 transition-opacity">
+<span class="text-xs font-bold">42</span> <i class="fas fa-heart"></i>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+<span class="text-xs">5</span> <i class="far fa-comment-dots"></i>
+</button>
+<button class="text-gray-400 hover:text-blue-400 transition-colors">
+<i class="fas fa-share"></i>
+</button>
+<div class="flex-grow"></div>
+<button class="text-gray-400 hover:text-white transition-colors">
+<i class="far fa-bookmark"></i>
+</button>
+</div></div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-card-bg rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 border border-gray-800 group" data-purpose="post-card">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Abstract Tech" class="img-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa9oHjPAFynx52IfZRlCGgInVXaYJJZhY68tl0uY-zsGeKBb8QYjPJvAEEdxJYi9oAFZAt8t50szSfTLiSOwg9Ur8BhyiMDQVirz0xTD6WhVhTV8AnVWpmobHmJeKQ7DuA6yYqn0jBygstWZKhdJmJLXfcNz9NouYc9oKfYPs5CPIFC5wNZeJIlqdzjlvWWU44F4iDKdjreY9_ntvhXH5mEqs38IWR63Vh21Gu4a3Lstc6K_YC3N_dG8gTKP-NthNOqQavizsfNGk"/>
+<div class="play-overlay group-hover:bg-accent-orange/80 transition-colors cursor-pointer">
+<i class="fas fa-play text-white ml-1"></i>
+</div>
+</div>
+<div class="p-3">
+<h3 class="font-bold text-right mb-2 leading-snug line-clamp-2 hover:text-accent-orange cursor-pointer text-base">
+                شرح حصري لطريقة استرجاع الملفات المحذوفة
+              </h3>
+<div class="flex items-center justify-end gap-3 mt-3 mb-4">
+<div class="text-right">
+<p class="text-xs text-text-light font-semibold">سارة أحمد</p>
+<p class="text-[10px] text-gray-500">مشرفة</p>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-gray-600">
+<img alt="User" class="img-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck"/>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-gray-700 pt-3">
+<div class="flex items-center gap-3 pt-3 border-t border-gray-700">
+<button class="bg-accent-orange text-white px-3 py-1 rounded flex items-center gap-1 hover:opacity-90 transition-opacity">
+<span class="text-xs font-bold">89</span> <i class="fas fa-heart"></i>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+<span class="text-xs">32</span> <i class="far fa-comment-dots"></i>
+</button>
+<button class="text-gray-400 hover:text-blue-400 transition-colors">
+<i class="fas fa-share"></i>
+</button>
+<div class="flex-grow"></div>
+<button class="text-gray-400 hover:text-white transition-colors">
+<i class="far fa-bookmark"></i>
+</button>
+</div></div>
+</div>
+</article>
+<!-- Card 4 (Repeating Placeholder Data) -->
+<article class="bg-card-bg rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 border border-gray-800 group" data-purpose="post-card">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Design" class="img-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvEhotTbAC2hJhdFRALeOAidH2GckHvVcLPC6BbYvbKhAQQsHsiUmHFs8DJ-NwcMB-hmXdxpXUy0vu2c2f27dGpr1Wds6sh_muHuT_4qCmOUJyoTdBtwxS-PVJng6fRN4aDz5NubB07t8ZOl_WYnXX-HRYVur0Kuy8CqraIn8aNVv5f91R8DLJGx0fk7yfKpLOFLdNKlVftBdJByR6FvyKxtIDVGitYQU49cyZvzva8GIFqOFVh3KnbUENfp02Sh3Z1n6w8pkI0Q8"/>
+</div>
+<div class="p-3">
+<h3 class="font-bold text-right mb-2 leading-snug line-clamp-2 hover:text-accent-orange cursor-pointer text-base">
+                 مجموعة خطوط عربية احترافية للمصممين 2024
+              </h3>
+<div class="flex items-center justify-end gap-3 mt-3 mb-4">
+<div class="text-right">
+<p class="text-xs text-text-light font-semibold">كريم محمود</p>
+<p class="text-[10px] text-gray-500">مصمم</p>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-gray-600">
+<img alt="User" class="img-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck"/>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-gray-700 pt-3">
+<div class="flex items-center gap-3 pt-3 border-t border-gray-700">
+<button class="bg-accent-orange text-white px-3 py-1 rounded flex items-center gap-1 hover:opacity-90 transition-opacity">
+<span class="text-xs font-bold">56</span> <i class="fas fa-heart"></i>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+<span class="text-xs">8</span> <i class="far fa-comment-dots"></i>
+</button>
+<button class="text-gray-400 hover:text-blue-400 transition-colors">
+<i class="fas fa-share"></i>
+</button>
+<div class="flex-grow"></div>
+<button class="text-gray-400 hover:text-white transition-colors">
+<i class="far fa-bookmark"></i>
+</button>
+</div></div>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="bg-card-bg rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 border border-gray-800 group" data-purpose="post-card">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Security" class="img-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa9oHjPAFynx52IfZRlCGgInVXaYJJZhY68tl0uY-zsGeKBb8QYjPJvAEEdxJYi9oAFZAt8t50szSfTLiSOwg9Ur8BhyiMDQVirz0xTD6WhVhTV8AnVWpmobHmJeKQ7DuA6yYqn0jBygstWZKhdJmJLXfcNz9NouYc9oKfYPs5CPIFC5wNZeJIlqdzjlvWWU44F4iDKdjreY9_ntvhXH5mEqs38IWR63Vh21Gu4a3Lstc6K_YC3N_dG8gTKP-NthNOqQavizsfNGk"/>
+<div class="play-overlay group-hover:bg-accent-orange/80 transition-colors cursor-pointer">
+<i class="fas fa-play text-white ml-1"></i>
+</div>
+</div>
+<div class="p-3">
+<h3 class="font-bold text-right mb-2 leading-snug line-clamp-2 hover:text-accent-orange cursor-pointer text-base">
+                دورة حماية الأجهزة من الاختراق والفيروسات - الدرس الأول
+              </h3>
+<div class="flex items-center justify-end gap-3 mt-3 mb-4">
+<div class="text-right">
+<p class="text-xs text-text-light font-semibold">حسين سالم</p>
+<p class="text-[10px] text-gray-500">خبير أمني</p>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-gray-600">
+<img alt="User" class="img-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck"/>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-gray-700 pt-3">
+<div class="flex items-center gap-3 pt-3 border-t border-gray-700">
+<button class="bg-accent-orange text-white px-3 py-1 rounded flex items-center gap-1 hover:opacity-90 transition-opacity">
+<span class="text-xs font-bold">200</span> <i class="fas fa-heart"></i>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+<span class="text-xs">45</span> <i class="far fa-comment-dots"></i>
+</button>
+<button class="text-gray-400 hover:text-blue-400 transition-colors">
+<i class="fas fa-share"></i>
+</button>
+<div class="flex-grow"></div>
+<button class="text-gray-400 hover:text-white transition-colors">
+<i class="far fa-bookmark"></i>
+</button>
+</div></div>
+</div>
+</article>
+<!-- Card 6 -->
+<article class="bg-card-bg rounded-2xl overflow-hidden shadow-lg hover:-translate-y-1 transition-transform duration-300 border border-gray-800 group" data-purpose="post-card">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Tech" class="img-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa9oHjPAFynx52IfZRlCGgInVXaYJJZhY68tl0uY-zsGeKBb8QYjPJvAEEdxJYi9oAFZAt8t50szSfTLiSOwg9Ur8BhyiMDQVirz0xTD6WhVhTV8AnVWpmobHmJeKQ7DuA6yYqn0jBygstWZKhdJmJLXfcNz9NouYc9oKfYPs5CPIFC5wNZeJIlqdzjlvWWU44F4iDKdjreY9_ntvhXH5mEqs38IWR63Vh21Gu4a3Lstc6K_YC3N_dG8gTKP-NthNOqQavizsfNGk"/>
+</div>
+<div class="p-3">
+<h3 class="font-bold text-right mb-2 leading-snug line-clamp-2 hover:text-accent-orange cursor-pointer text-base">
+                أفضل التطبيقات المجانية للأندرويد هذا الشهر
+              </h3>
+<div class="flex items-center justify-end gap-3 mt-3 mb-4">
+<div class="text-right">
+<p class="text-xs text-text-light font-semibold">نورة محمد</p>
+<p class="text-[10px] text-gray-500">كاتبة تقنية</p>
+</div>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-gray-600">
+<img alt="User" class="img-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck"/>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-gray-700 pt-3">
+<div class="flex items-center gap-3 pt-3 border-t border-gray-700">
+<button class="bg-accent-orange text-white px-3 py-1 rounded flex items-center gap-1 hover:opacity-90 transition-opacity">
+<span class="text-xs font-bold">34</span> <i class="fas fa-heart"></i>
+</button>
+<button class="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+<span class="text-xs">11</span> <i class="far fa-comment-dots"></i>
+</button>
+<button class="text-gray-400 hover:text-blue-400 transition-colors">
+<i class="fas fa-share"></i>
+</button>
+<div class="flex-grow"></div>
+<button class="text-gray-400 hover:text-white transition-colors">
+<i class="far fa-bookmark"></i>
+</button>
+</div></div>
+</div>
+</article>
+</div>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: Sidebar (Right Column) -->
+<aside class="w-full lg:w-[300px] space-y-6">
+<!-- User Profile Widget -->
+<div class="bg-card-bg rounded-2xl p-6 text-center border border-gray-800 shadow-lg relative overflow-hidden" data-purpose="profile-widget">
+<!-- Decorative Background Blur -->
+<div class="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-accent-orange/20 to-transparent"></div>
+<div class="relative z-10">
+<div class="w-20 h-20 mx-auto rounded-full border-4 border-card-bg overflow-hidden shadow-lg mb-3">
+<img alt="Profile" class="img-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck"/>
+</div>
+<h3 class="text-lg font-bold text-white">Guest User</h3>
+<p class="text-xs text-accent-orange mb-4">زائر جديد</p>
+<div class="flex justify-center gap-4 text-center border-t border-gray-700 pt-4">
+<div>
+<span class="block font-bold text-lg text-white">0</span>
+<span class="text-[10px] text-gray-400">متابعين</span>
+</div>
+<div>
+<span class="block font-bold text-lg text-white">0</span>
+<span class="text-[10px] text-gray-400">لايكات</span>
+</div>
+<div>
+<span class="block font-bold text-lg text-white">0</span>
+<span class="text-[10px] text-gray-400">مشاركات</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Staff Online Widget -->
+<div class="bg-card-bg rounded-2xl p-4 border border-gray-800" data-purpose="staff-online">
+<h4 class="text-right font-bold text-gray-200 border-b border-gray-700 pb-2 mb-3 text-sm border-r-4 border-accent-orange pr-2">
+<i class="fas fa-users-cog text-accent-orange mr-2"></i> الطاقم الإداري المتواجد
+           </h4>
+<div class="space-y-3">
+<div class="flex items-center justify-end gap-3">
+<div class="text-right">
+<p class="text-xs font-bold text-white">Admin</p>
+<p class="text-[10px] text-red-400">مدير الموقع</p>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-gray-700"><img class="img-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck"/></div>
+</div>
+<div class="flex items-center justify-end gap-3">
+<div class="text-right">
+<p class="text-xs font-bold text-white">Moderator</p>
+<p class="text-[10px] text-green-400">مشرف عام</p>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-gray-700"><img class="img-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck"/></div>
+</div>
+</div>
+</div>
+<!-- New Members Widget -->
+<div class="bg-card-bg rounded-2xl p-4 border border-gray-800" data-purpose="new-members">
+<h4 class="text-right font-bold text-gray-200 border-b border-gray-700 pb-2 mb-3 text-sm border-r-4 border-accent-orange pr-2">
+<i class="fas fa-user-plus text-accent-orange mr-2"></i> أحدث الأعضاء
+          </h4>
+<div class="flex flex-wrap justify-end gap-2">
+<img class="w-8 h-8 rounded-full border border-gray-600" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck" title="User 1"/>
+<img class="w-8 h-8 rounded-full border border-gray-600" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck" title="User 2"/>
+<img class="w-8 h-8 rounded-full border border-gray-600" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck" title="User 3"/>
+<img class="w-8 h-8 rounded-full border border-gray-600" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck" title="User 4"/>
+<img class="w-8 h-8 rounded-full border border-gray-600" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8CGFEOJhKa4N2ROMFu_iSb1_4E_KNP_wtOojjsjAZrTiyHUJqbPFulY628DUc58x7kKdy0cWkXQ7QRytm8qdu-O5KSYSF76P_46f-IWgm7TKczO3YIA6gpr__EIkad9b1tZ9W226YvhoWGd67b0LdqVNcy8JopdCJBwiKZJN249w6W4BFYSqkM0JyoBqOU1jhofooQnFQoo68cFlTkjvhAiKtV7n6U9HfM1nvEDG3K1DeYEQ_WE3tkPA74w5zQO3WiM_MT7aXeck" title="User 5"/>
+</div>
+</div>
+<!-- Groups / Badges Widget -->
+<div class="bg-card-bg rounded-2xl p-4 border border-gray-800" data-purpose="groups-badges">
+<h4 class="text-right font-bold text-gray-200 border-b border-gray-700 pb-2 mb-3 text-sm border-r-4 border-accent-orange pr-2">
+<i class="fas fa-layer-group text-accent-orange mr-2"></i> المجموعات
+          </h4>
+<div class="grid grid-cols-4 gap-2">
+<div class="bg-pink-600 rounded-lg flex items-center justify-center text-white font-bold text-xs w-8 h-8" title="Females">F</div>
+<div class="bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xs w-8 h-8" title="Designers">D</div>
+<div class="bg-green-600 rounded-lg flex items-center justify-center text-white font-bold text-xs w-8 h-8" title="VIP">V</div>
+<div class="bg-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xs w-8 h-8" title="Developers">Dev</div>
+<div class="bg-yellow-600 rounded-lg flex items-center justify-center text-white font-bold text-xs w-8 h-8" title="Gold">G</div>
+<div class="bg-red-600 rounded-lg flex items-center justify-center text-white font-bold text-xs w-8 h-8" title="Admin">A</div>
+<div class="bg-gray-600 rounded-lg flex items-center justify-center text-white font-bold text-xs w-8 h-8" title="Banned">B</div>
+<div class="bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xs w-8 h-8" title="Support">S</div>
+</div>
+</div>
+<!-- Social Share Widget -->
+<div class="bg-card-bg rounded-2xl p-4 border border-gray-800 text-center" data-purpose="social-share">
+<h4 class="text-xs text-gray-400 mb-3 border-r-4 border-accent-orange pr-2">شارك الصفحة</h4>
+<div class="flex justify-center gap-3">
+<button class="w-8 h-8 rounded-full bg-[#1877f2] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-facebook-f"></i></button>
+<button class="w-8 h-8 rounded-full bg-[#1da1f2] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-twitter"></i></button>
+<button class="w-8 h-8 rounded-full bg-[#25d366] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-whatsapp"></i></button>
+<button class="w-8 h-8 rounded-full bg-[#0088cc] text-white flex items-center justify-center hover:opacity-80 transition"><i class="fab fa-telegram-plane"></i></button>
+</div>
+</div>
+</aside>
+<!-- END: Sidebar -->
+</div>
+</div>
+<!-- END: MainContainer -->
+<!-- Footer Simple -->
+<footer class="mt-12 border-t border-gray-800 bg-card-bg py-8">
+<div class="container mx-auto px-4 text-center">
+<p class="text-gray-500 text-sm">© 2024 Zyzoom Forum Replica. All Rights Reserved.</p>
+</div>
+</footer>
+</body></html>

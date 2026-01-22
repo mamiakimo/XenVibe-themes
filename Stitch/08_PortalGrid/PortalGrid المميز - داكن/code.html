@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PortalGrid: المميز - داكن</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161e2d",
+                        "surface-highlight": "#1f293a",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        /* Custom Scrollbar for the grid areas */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        
+        .glass-panel {
+            background: rgba(22, 30, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .portal-card {
+            transition: all 0.3s ease;
+        }
+        .portal-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            border-color: rgba(19, 91, 236, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex overflow-hidden selection:bg-primary selection:text-white">
+<!-- Side Navigation (Right Side due to RTL) -->
+<aside class="w-20 lg:w-64 flex-shrink-0 flex flex-col justify-between border-l border-white/5 bg-surface-dark h-screen sticky top-0 z-20 transition-all duration-300">
+<div class="flex flex-col gap-6 p-4">
+<!-- User Profile Snippet -->
+<div class="flex items-center gap-3 pb-6 border-b border-white/5">
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 lg:size-12 ring-2 ring-transparent group-hover:ring-primary transition-all" data-alt="User profile avatar with abstract geometric shapes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCHK9w3LeFp5tTfuU6BKiasPXZNDgZ1TTglvHd2KZ2OpHVpGG1oJbZsQQ8OGgIfgnSit3zgGeSVkl78n7opoy_9sNPIKbpBcwN77-6csVicKGcgxvV0La-i-y9R7HKP59rxZIrqJfxVtWyuhYSJwpfEU4njGzk0poJ25a6gEv8Fu0PBW7h36irbqPcYa_6sqlZdezm5lt7bPPukmbygjTGBEQtCdeO4fVM6zA9yKjvmgN91ZJClyKxFJpP3zPwlTXTC7nCsPzhvjUw");'>
+</div>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-surface-dark"></div>
+</div>
+<div class="hidden lg:flex flex-col">
+<h1 class="text-white text-base font-bold leading-tight">أحمد محمد</h1>
+<p class="text-slate-400 text-xs font-normal">مطور واجهات</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]" data-weight="fill">dashboard</span>
+<span class="hidden lg:block text-sm font-bold">لوحة التحكم</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">forum</span>
+<span class="hidden lg:block text-sm font-medium">المنتديات</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<span class="hidden lg:block text-sm font-medium">الأعضاء</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">folder_open</span>
+<span class="hidden lg:block text-sm font-medium">الموارد</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 text-slate-400 hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px]">search</span>
+<span class="hidden lg:block text-sm font-medium">بحث</span>
+</a>
+</nav>
+</div>
+<!-- Action Button -->
+<div class="p-4">
+<button class="flex w-full cursor-pointer items-center justify-center lg:justify-start gap-3 overflow-hidden rounded-xl h-12 lg:px-4 bg-primary hover:bg-blue-600 text-white transition-all shadow-lg shadow-primary/20 group">
+<span class="material-symbols-outlined text-[24px]">add_circle</span>
+<span class="hidden lg:block text-sm font-bold truncate">موضوع جديد</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto custom-scrollbar relative">
+<!-- Top Bar / Header -->
+<header class="flex-shrink-0 px-6 py-8 flex flex-wrap justify-between items-end gap-4 max-w-7xl mx-auto w-full">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary text-sm font-bold tracking-wider uppercase">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+<span>PortalGrid</span>
+</div>
+<h1 class="text-white text-3xl lg:text-4xl font-black leading-tight tracking-tight">المحتوى المميز</h1>
+<p class="text-slate-400 text-base font-normal max-w-xl">نظرة شاملة على أبرز ما يدور في المجتمع، مخصصة لك.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 h-10 px-4 rounded-lg bg-surface-highlight border border-white/5 text-slate-300 hover:text-white hover:bg-white/5 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span class="hidden sm:inline">تخصيص العرض</span>
+</button>
+<button class="flex items-center gap-2 h-10 px-4 rounded-lg bg-surface-highlight border border-white/5 text-slate-300 hover:text-white hover:bg-white/5 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+</div>
+</header>
+<!-- Filters / Chips -->
+<div class="px-6 pb-6 flex-shrink-0 max-w-7xl mx-auto w-full overflow-hidden">
+<div class="flex gap-3 overflow-x-auto pb-2 custom-scrollbar mask-gradient">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white pl-3 pr-3 transition-transform active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">star</span>
+<span class="text-sm font-bold">الكل</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-highlight hover:bg-white/10 text-slate-300 hover:text-white pl-3 pr-3 border border-white/5 transition-all">
+<span class="material-symbols-outlined text-[20px]">local_fire_department</span>
+<span class="text-sm font-medium">رائج الآن</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-highlight hover:bg-white/10 text-slate-300 hover:text-white pl-3 pr-3 border border-white/5 transition-all">
+<span class="material-symbols-outlined text-[20px]">newspaper</span>
+<span class="text-sm font-medium">أخبار</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-highlight hover:bg-white/10 text-slate-300 hover:text-white pl-3 pr-3 border border-white/5 transition-all">
+<span class="material-symbols-outlined text-[20px]">code</span>
+<span class="text-sm font-medium">برمجة</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-highlight hover:bg-white/10 text-slate-300 hover:text-white pl-3 pr-3 border border-white/5 transition-all">
+<span class="material-symbols-outlined text-[20px]">design_services</span>
+<span class="text-sm font-medium">تصميم</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-highlight hover:bg-white/10 text-slate-300 hover:text-white pl-3 pr-3 border border-white/5 transition-all">
+<span class="material-symbols-outlined text-[20px]">photo_library</span>
+<span class="text-sm font-medium">معرض الصور</span>
+</button>
+</div>
+</div>
+<!-- The Portal Grid (Bento Box Layout) -->
+<div class="px-6 pb-20 max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[minmax(180px,auto)] gap-4">
+<!-- Hero Tile: Featured Article (2x2) -->
+<div class="col-span-1 sm:col-span-2 lg:col-span-2 row-span-2 relative group overflow-hidden rounded-2xl portal-card bg-surface-dark">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Futuristic dark geometric landscape with glowing blue lines representing connectivity" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuChhY5jSoZDAY5lRy65SkJmy14Jp1kjdBTuunrT9Dr0PYQ9D0KojGjrBHN_CCydrqXct1f2Nz28qlKIr9D5Q9pp1KArV4OToCsMwKAKLKkkh63Jt7ig5Jas125nEburm_A2LHUPxoM-OT0m-ylW0gTVe0vm6C5um56RzXckWvLGHT-Mqv_jo5-kp8712h4oiCqoC7Wt1RZb1GeqwvyC9qOk7o73Xupkx4OjB3WxSr8qudHJ5S0HUBvCIkIXkXFnXcs5KuoZVFVxMj4");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+<div class="absolute top-4 right-4 bg-primary/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                        مميز
+                    </div>
+<div class="absolute bottom-0 p-6 flex flex-col gap-3 w-full">
+<div class="flex items-center gap-2 text-primary-300 text-sm font-medium mb-1">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>منذ ساعتين</span>
+</div>
+<h2 class="text-white text-2xl lg:text-3xl font-bold leading-tight drop-shadow-lg">إطلاق واجهة PortalGrid الجديدة: تجربة مستخدم لا مثيل لها</h2>
+<p class="text-slate-300 text-sm lg:text-base line-clamp-2 max-w-[90%]">تعرف على الخصائص الجديدة في التحديث الأخير، بما في ذلك الوضع الداكن المحسن، ونظام الإشعارات الذكي، والسرعة الفائقة في التصفح.</p>
+<div class="flex items-center gap-4 mt-2 pt-4 border-t border-white/10">
+<div class="flex items-center gap-2">
+<div class="bg-gray-600 size-6 rounded-full bg-cover" data-alt="Author avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB_GqAkSVLkGh_lXhyxPbXT4xJZzhiT4llVqp21LrFkz1ns6lQw0Z0p9czeRYdQ2Bn9ltUwAUAH1mWyUnBznyK7IFXmKyq1tUMqLJktWi6cPJy84iC0Kh3AgC6RPDZzT3fBf9gwEjFLYXASWXFY9_sEx5ERZVRriufkSioMUWS68R4leEUXe40SK4BC9BxEK_0fiwt3dAxUH7qwVeh83sgUReMMlGbKIBid9NauPNYcX3ZflZvJYk9j3mWsed5-iGKhErBwTNWRp4w")'></div>
+<span class="text-white text-sm font-semibold">سارة أحمد</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400 text-xs">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>42 تعليق</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Trending Stats Widget (1x1) -->
+<div class="col-span-1 row-span-1 bg-surface-dark border border-white/5 rounded-2xl p-5 flex flex-col justify-between portal-card relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 bg-primary/10 w-24 h-24 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
+<div class="flex justify-between items-start z-10">
+<div class="flex flex-col">
+<h3 class="text-slate-400 text-sm font-medium">الأعضاء المتواجدون</h3>
+<span class="text-white text-4xl font-black mt-1">1,240</span>
+</div>
+<div class="bg-green-500/10 text-green-400 p-2 rounded-lg">
+<span class="material-symbols-outlined text-[24px]">trending_up</span>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-2 z-10">
+<div class="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+<div class="bg-green-500 h-full rounded-full w-[75%]"></div>
+</div>
+<p class="text-green-400 text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+<span>+12% عن الأمس</span>
+</p>
+</div>
+</div>
+<!-- Quick Discussion List (1x2) -->
+<div class="col-span-1 row-span-2 bg-surface-dark border border-white/5 rounded-2xl p-0 flex flex-col portal-card overflow-hidden">
+<div class="p-5 border-b border-white/5 flex justify-between items-center bg-surface-highlight/30">
+<h3 class="text-white text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">whatshot</span>
+                             نقاشات ساخنة
+                        </h3>
+</div>
+<div class="flex-1 flex flex-col overflow-y-auto custom-scrollbar p-2">
+<!-- List Item 1 -->
+<a class="p-3 rounded-xl hover:bg-white/5 transition-colors flex gap-3 group" href="#">
+<div class="text-slate-500 mt-1 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">numbers</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-white text-sm font-bold line-clamp-2 group-hover:text-primary transition-colors">أفضل لغات البرمجة لتعلمها في 2024 حسب الطلب في السوق</h4>
+<div class="flex items-center gap-3 text-xs text-slate-500">
+<span>منذ 3 ساعات</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">forum</span> 89</span>
+</div>
+</div>
+</a>
+<!-- List Item 2 -->
+<a class="p-3 rounded-xl hover:bg-white/5 transition-colors flex gap-3 group" href="#">
+<div class="text-slate-500 mt-1 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">numbers</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-white text-sm font-bold line-clamp-2 group-hover:text-primary transition-colors">مشكلة في تثبيت مكتبة React Native على ويندوز</h4>
+<div class="flex items-center gap-3 text-xs text-slate-500">
+<span>منذ 5 ساعات</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">forum</span> 34</span>
+</div>
+</div>
+</a>
+<!-- List Item 3 -->
+<a class="p-3 rounded-xl hover:bg-white/5 transition-colors flex gap-3 group" href="#">
+<div class="text-slate-500 mt-1 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">numbers</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-white text-sm font-bold line-clamp-2 group-hover:text-primary transition-colors">تجربتي مع الانتقال من فوتوشوب إلى فيجما</h4>
+<div class="flex items-center gap-3 text-xs text-slate-500">
+<span>أمس</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">forum</span> 156</span>
+</div>
+</div>
+</a>
+<!-- List Item 4 -->
+<a class="p-3 rounded-xl hover:bg-white/5 transition-colors flex gap-3 group" href="#">
+<div class="text-slate-500 mt-1 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">numbers</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="text-white text-sm font-bold line-clamp-2 group-hover:text-primary transition-colors">تحديث جديد للعبة Call of Duty: Warzone</h4>
+<div class="flex items-center gap-3 text-xs text-slate-500">
+<span>أمس</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[12px]">forum</span> 210</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+<!-- Gallery Widget (1x1) -->
+<div class="col-span-1 row-span-1 relative rounded-2xl overflow-hidden portal-card group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Abstract 3D render of colorful spheres" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZDiNMHEFkzqtf3YprnsK3axZxOhhEj2O3CncB0ZL056uLJZYRUmpIYl9u_jC2-riM7KC96EJqgzTNhiYie1zr2O9O4E8EGCDhOjD5GXaAKc1HDcgerSVUGN5M3AMwCEFSpFzLIm6h-Qwd4fcmWpghlwV3rDCvMGSx4dkAX1cEytiKkoXfZtZiTjoa_DQVRw57_YspYwSS0p9YmgycuOmliWDNfidqP5Jsdky31gFKzBV89HzyvKgOLnUh-Rgng6BAzLVpqUUthfA");'>
+</div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+<div class="absolute bottom-4 right-4 text-white">
+<div class="bg-white/20 backdrop-blur-md p-2 rounded-lg inline-flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</div>
+<h3 class="font-bold text-lg leading-none">معرض التصاميم</h3>
+<p class="text-xs text-white/80 mt-1">12 صورة جديدة</p>
+</div>
+</div>
+<!-- Announcement Widget (2x1) -->
+<div class="col-span-1 sm:col-span-2 row-span-1 bg-gradient-to-r from-primary to-blue-700 rounded-2xl p-6 flex items-center justify-between portal-card relative overflow-hidden">
+<!-- Decorative shapes -->
+<div class="absolute -left-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute right-10 top-0 w-20 h-20 bg-white/5 rounded-full blur-xl"></div>
+<div class="flex flex-col gap-2 max-w-[70%] z-10">
+<div class="flex items-center gap-2 text-blue-200 text-xs font-bold uppercase tracking-wider">
+<span class="bg-white/20 px-2 py-0.5 rounded text-[10px]">إعلان</span>
+<span>مسابقة الشهر</span>
+</div>
+<h2 class="text-white text-xl lg:text-2xl font-bold">اربح اشتراك Premium لمدة سنة!</h2>
+<p class="text-blue-100 text-sm hidden sm:block">شارك أفضل تصميم لواجهة المستخدم لديك وادخل السحب.</p>
+</div>
+<button class="shrink-0 bg-white text-primary hover:bg-blue-50 font-bold py-2.5 px-5 rounded-lg text-sm transition-colors z-10 shadow-lg">
+                        اشترك الآن
+                    </button>
+</div>
+<!-- User Activity / New Members (1x1) -->
+<div class="col-span-1 row-span-1 bg-surface-dark border border-white/5 rounded-2xl p-5 flex flex-col gap-4 portal-card">
+<div class="flex justify-between items-center">
+<h3 class="text-white text-base font-bold">أعضاء جدد</h3>
+<a class="text-primary text-xs hover:underline" href="#">عرض الكل</a>
+</div>
+<div class="flex -space-x-3 space-x-reverse">
+<div class="size-10 rounded-full ring-2 ring-surface-dark bg-cover bg-center" data-alt="User avatar 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALnjre-gAU2FfOju_amNUwOTEsV2Eof7HB8gFc8EllOedoRwo0iWCxjvpHzQNb8v04bDVGq7w34iz6K5SCwaotk-BKzXWpG92d0NUPb7RP61MHlRWUd8gXaO2cSGTq8lAb2J_V2X3IZs3cvdUPrDUteBrdnlanwQR41erBQQjKqKDY6dSF4ks9Ely_D1tb4w7A3sPQifB8I_89y-EmCt8pDFq1w3_GtlegNrGkgS4dLUPawe61_GDEof83t7FQ2W0ZSYplzoR5rPQ")'></div>
+<div class="size-10 rounded-full ring-2 ring-surface-dark bg-cover bg-center" data-alt="User avatar 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9Si2vm4I0zs8SBn97NBiTfXRpw5f7Qc8-KSv219chOwhiFGMGCldoIzvE4sKYU-t_StOAqTEMKf8IRJHjtpRgEsLgQC3LEPg-klWatugiszmRi9BzmxG7tSfDjlZ3gQV6IILRaaAdHj-12Kz9jPaVJNIo0BeBAAlfYt6HA0u3MGBFQ59ZlQv2DtKJtgk-nUwWtCqYPcwV6wfJSzUimA7SZt1B54L3rS3kl-ASkJjnNFvmI6I4wos0QfgDAagQxX5M4n6EB6ZhXYE")'></div>
+<div class="size-10 rounded-full ring-2 ring-surface-dark bg-cover bg-center" data-alt="User avatar 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCcD7sha-ld_2cqzBmJk548Euazv0sB5oZncGBHot4UDVk3mvRmZLJO6JlbiiIBBBVi2uPBzujh1vCBhjSThKArO_kCojv5tQ9shR_2uPyCpCUY-OvDgJTutl9leD9iDtf6icz8ESN9wrmC8yENnMbt0pJMk3aS6Hoq7xZ7Egw1lHK5lOFUAxCyNVGdgenfsP1jL53f8pua-DKmsD3OUP8Tyl0ocGYh7bUJr9L4wa7BMv7A2omx7G3qLWmKXFRwQLkjQwxfu7U9Bns")'></div>
+<div class="size-10 rounded-full ring-2 ring-surface-dark bg-cover bg-center" data-alt="User avatar 4" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAWoN0myICcfowiV_-NGUcVdelcEj4IltcMyeYTcaKGnjdIY1VMJdg7ghG7-l6OTaJcPf3QzkGaEBzwKNNMVX8c2ztwKmN3Lq1dSFcH8KTkIJ_enxUq_tLm5S6rvUaC2FOM9_eLg3doDceCvXV79FOMM_KSPyCKR_2EIl2qYCFb08QkfObArD4TGCmieU5TLOeVHblBf8NrQZ24c5tfKVeNO3rVboDkWdp8YfoZGfGW3r3yupUs3hkMxyqD3QtTj2LDgwV1NPZ4gbs")'></div>
+<div class="size-10 rounded-full ring-2 ring-surface-dark bg-surface-highlight text-xs flex items-center justify-center text-slate-300 font-bold">+12</div>
+</div>
+<p class="text-slate-400 text-xs mt-auto">انضموا خلال الـ 24 ساعة الماضية، رحبوا بهم!</p>
+</div>
+<!-- Resource Tile (1x1) -->
+<div class="col-span-1 row-span-1 bg-surface-dark border border-white/5 rounded-2xl p-5 flex flex-col justify-between portal-card group hover:bg-surface-highlight/30">
+<div class="flex items-start justify-between">
+<div class="bg-purple-500/10 text-purple-400 p-2.5 rounded-lg group-hover:bg-purple-500 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[24px]">download</span>
+</div>
+<span class="text-xs text-slate-500 font-mono bg-white/5 px-2 py-1 rounded">v2.4</span>
+</div>
+<div>
+<h3 class="text-white text-base font-bold mt-3 group-hover:text-purple-400 transition-colors">قالب لوحة تحكم Admin</h3>
+<p class="text-slate-400 text-xs mt-1 line-clamp-2">قالب HTML/CSS جاهز يدعم الوضع الداكن.</p>
+</div>
+<div class="flex items-center gap-3 mt-3 pt-3 border-t border-white/5 text-xs text-slate-500">
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[14px]">star</span> 4.8</span>
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[14px]">cloud_download</span> 1.2k</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

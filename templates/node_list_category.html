@@ -1,0 +1,62 @@
+<!-- XenVibe Cards - Category Template -->
+
+<xf:macro id="depth1" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<div class="xv-category" id="{$node.Data.getCategoryAnchor()}">
+		<!-- Category Header -->
+		<div class="xv-category-header">
+			<h2 class="xv-category-title">
+				<a href="{{ link('categories', $node) }}">{$node.title}</a>
+			</h2>
+			<xf:if is="{$node.description}">
+				<p class="xv-category-desc">{$node.description|raw}</p>
+			</xf:if>
+		</div>
+
+		<!-- Forums Grid -->
+		<div class="xv-forums-grid">
+			<xf:macro id="forum_list::node_list"
+				arg-children="{$children}"
+				arg-extras="{$childExtras}"
+				arg-depth="{{ $depth + 1 }}" />
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro id="depth2" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<!-- Nested category as a card -->
+	<article class="xv-forum-card xv-forum-card--category {{ $extras.hasNew ? 'xv-forum-card--unread' : '' }}">
+		<div class="xv-forum-card-icon xv-forum-card-icon--category">
+			<span class="material-symbols-outlined">folder</span>
+		</div>
+		<div class="xv-forum-card-content">
+			<h3 class="xv-forum-card-title">
+				<a href="{{ link('categories', $node) }}">{$node.title}</a>
+			</h3>
+			<xf:if is="{$node.description}">
+				<p class="xv-forum-card-desc">{$node.description|raw}</p>
+			</xf:if>
+		</div>
+		<xf:if is="!{$extras.privateInfo}">
+			<div class="xv-forum-card-stats">
+				<span class="xv-forum-stat">
+					<span class="material-symbols-outlined">forum</span>
+					{$extras.discussion_count|number_short(1)}
+				</span>
+				<span class="xv-forum-stat">
+					<span class="material-symbols-outlined">chat_bubble</span>
+					{$extras.message_count|number_short(1)}
+				</span>
+			</div>
+		</xf:if>
+	</article>
+</xf:macro>
+
+<xf:macro id="depthN" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<li>
+		<a href="{{ link('categories', $node) }}" class="subNodeLink subNodeLink--category {{ $extras.hasNew ? 'subNodeLink--unread' : '' }}">{$node.title}</a>
+		<xf:macro id="forum_list::sub_node_list"
+			arg-children="{$children}"
+			arg-childExtras="{$childExtras}"
+			arg-depth="{{ $depth + 1 }}" />
+	</li>
+</xf:macro>

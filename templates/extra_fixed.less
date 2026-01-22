@@ -1,0 +1,715 @@
+// XenVibe Cards Style - extra.less
+// Uses XenForo LESS variables - NO hardcoded colors
+// Does NOT override XenForo layout systems
+
+// ===========================================
+// FONT IMPORT
+// ===========================================
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;700&display=swap');
+
+// ===========================================
+// BASE STYLES
+// ===========================================
+html, body {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', @xf-fontFamily;
+}
+
+a {
+    transition: color 0.2s ease;
+}
+
+// ===========================================
+// HEADER
+// ===========================================
+.p-header {
+    background: @xf-pageBg;
+    border-bottom: 1px solid @xf-borderColor;
+}
+
+.p-header-inner {
+    padding: 0.75rem 1rem;
+}
+
+.p-header-logo {
+    padding: 0.5rem 0;
+}
+
+// ===========================================
+// NAVIGATION
+// ===========================================
+.p-nav {
+    background: @xf-contentBg;
+    border-bottom: 1px solid @xf-borderColor;
+}
+
+.p-nav-inner {
+    padding: 0;
+}
+
+.p-nav-list {
+    // Keep XenForo's default display
+}
+
+.p-navEl {
+    // Keep default layout
+}
+
+.p-navEl-link {
+    padding: 0.75rem 1rem;
+    color: @xf-textColorMuted;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: @xf-textColor;
+        background: fade(@xf-contentHighlight, 30%);
+    }
+}
+
+.p-navEl.is-selected .p-navEl-link {
+    color: @xf-linkColor;
+    background: fade(@xf-linkColor, 10%);
+}
+
+// Sub navigation
+.p-sectionLinks {
+    background: @xf-contentBg;
+    border-bottom: 1px solid @xf-borderColor;
+}
+
+.p-sectionLinks-link {
+    color: @xf-textColorMuted;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+        color: @xf-textColor;
+    }
+
+    &.is-selected {
+        color: @xf-linkColor;
+    }
+}
+
+// ===========================================
+// PAGE BODY
+// ===========================================
+.p-body {
+    background: @xf-pageBg;
+    padding: 1.5rem 0;
+}
+
+.p-body-inner {
+    // Keep default
+}
+
+.p-body-main {
+    // Keep default
+}
+
+// ===========================================
+// BLOCKS (Cards)
+// ===========================================
+.block {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.block-container {
+    background: transparent;
+    border: none;
+}
+
+.block-header {
+    background: fade(@xf-contentHighlight, 30%);
+    border-bottom: 1px solid @xf-borderColor;
+    padding: 1rem;
+    font-weight: 700;
+    color: @xf-textColor;
+}
+
+.block-body {
+    padding: 0;
+}
+
+.block-row {
+    padding: 1rem;
+    border-bottom: 1px solid @xf-borderColorFaint;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.block-footer {
+    background: fade(@xf-contentHighlight, 20%);
+    border-top: 1px solid @xf-borderColor;
+    padding: 0.75rem 1rem;
+}
+
+// ===========================================
+// CONTENT ROWS (Thread List, etc.)
+// ===========================================
+.structItem {
+    padding: 1rem;
+    border-bottom: 1px solid @xf-borderColorFaint;
+    transition: background 0.2s ease;
+
+    &:hover {
+        background: fade(@xf-contentHighlight, 20%);
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.structItem-title {
+    font-weight: 600;
+    font-size: 1rem;
+
+    a {
+        color: @xf-textColor;
+
+        &:hover {
+            color: @xf-linkColor;
+        }
+    }
+}
+
+.structItem-minor {
+    color: @xf-textColorMuted;
+    font-size: 0.8125rem;
+}
+
+.structItem-cell--meta {
+    color: @xf-textColorDimmed;
+    font-size: 0.75rem;
+}
+
+// ===========================================
+// NODE LIST (Forum List)
+// ===========================================
+.node {
+    // Keep XenForo default layout
+}
+
+.node-body {
+    padding: 1rem;
+}
+
+.node-title {
+    font-weight: 700;
+    font-size: 1rem;
+
+    a {
+        color: @xf-textColor;
+
+        &:hover {
+            color: @xf-linkColor;
+        }
+    }
+}
+
+.node-description {
+    color: @xf-textColorMuted;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.node-icon {
+    i {
+        color: @xf-linkColor;
+    }
+}
+
+.node-stats {
+    color: @xf-textColorDimmed;
+    font-size: 0.75rem;
+}
+
+.node-extra {
+    color: @xf-textColorMuted;
+    font-size: 0.8125rem;
+}
+
+// ===========================================
+// SIDEBAR
+// ===========================================
+.p-body-sidebar {
+    // Keep XenForo default layout
+}
+
+.p-body-sidebarCol {
+    padding-right: 0;
+}
+
+.block--category {
+    .block-header {
+        background: @xf-linkColor;
+        color: #fff;
+    }
+}
+
+// Sidebar widgets
+.block-minorHeader {
+    background: transparent;
+    border-bottom: 1px solid @xf-borderColor;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: @xf-textColorMuted;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+// ===========================================
+// PAGINATION - DO NOT OVERRIDE LAYOUT
+// ===========================================
+// Only style colors, not layout properties
+.pageNav-jump {
+    color: @xf-textColor;
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 6px;
+    padding: 0.375rem 0.75rem;
+    margin: 0 0.125rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: @xf-contentHighlight;
+        border-color: @xf-linkColor;
+        color: @xf-linkColor;
+    }
+}
+
+.pageNav-jump--current {
+    background: @xf-linkColor;
+    color: #fff;
+    border-color: @xf-linkColor;
+}
+
+// ===========================================
+// BUTTONS
+// ===========================================
+.button {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.button--primary {
+    background: @xf-linkColor;
+    border-color: @xf-linkColor;
+
+    &:hover {
+        background: darken(@xf-linkColor, 10%);
+        border-color: darken(@xf-linkColor, 10%);
+    }
+}
+
+.button--link {
+    color: @xf-linkColor;
+}
+
+// ===========================================
+// FORMS
+// ===========================================
+.input {
+    background: @xf-pageBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 8px;
+    color: @xf-textColor;
+    padding: 0.625rem 1rem;
+
+    &:focus {
+        border-color: @xf-linkColor;
+        box-shadow: 0 0 0 3px fade(@xf-linkColor, 15%);
+    }
+
+    &::placeholder {
+        color: @xf-textColorDimmed;
+    }
+}
+
+select.input {
+    background: @xf-pageBg;
+}
+
+textarea.input {
+    border-radius: 8px;
+}
+
+// ===========================================
+// AVATARS
+// ===========================================
+.avatar {
+    border-radius: 50%;
+}
+
+.avatar--s {
+    width: 36px;
+    height: 36px;
+}
+
+.avatar--m {
+    width: 48px;
+    height: 48px;
+}
+
+// ===========================================
+// FOOTER
+// ===========================================
+.p-footer {
+    background: @xf-contentBg;
+    border-top: 1px solid @xf-borderColor;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.p-footer-inner {
+    color: @xf-textColorMuted;
+}
+
+.p-footer-linkList a {
+    color: @xf-textColorMuted;
+
+    &:hover {
+        color: @xf-linkColor;
+    }
+}
+
+.p-footer-copyright {
+    color: @xf-textColorDimmed;
+    font-size: 0.75rem;
+}
+
+// ===========================================
+// MENUS & DROPDOWNS
+// ===========================================
+.menu {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.menu-header {
+    background: fade(@xf-contentHighlight, 30%);
+    border-bottom: 1px solid @xf-borderColor;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+}
+
+.menu-content {
+    padding: 0.5rem 0;
+}
+
+.menu-row {
+    padding: 0.5rem 1rem;
+    color: @xf-textColor;
+
+    &:hover {
+        background: fade(@xf-contentHighlight, 30%);
+    }
+}
+
+.menu-linkRow {
+    color: @xf-textColor;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+        background: fade(@xf-contentHighlight, 30%);
+        color: @xf-linkColor;
+    }
+}
+
+.menu-footer {
+    background: fade(@xf-contentHighlight, 20%);
+    border-top: 1px solid @xf-borderColor;
+    padding: 0.5rem 1rem;
+}
+
+// ===========================================
+// BREADCRUMBS
+// ===========================================
+.p-breadcrumbs {
+    padding: 0.75rem 0;
+    font-size: 0.8125rem;
+}
+
+.p-breadcrumbs-item {
+    color: @xf-textColorMuted;
+
+    a {
+        color: @xf-textColorMuted;
+
+        &:hover {
+            color: @xf-linkColor;
+        }
+    }
+}
+
+// ===========================================
+// PAGE TITLE
+// ===========================================
+.p-title {
+    padding: 1rem 0;
+}
+
+.p-title-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: @xf-textColor;
+}
+
+// ===========================================
+// TABS
+// ===========================================
+.tabs {
+    border-bottom: 1px solid @xf-borderColor;
+}
+
+.tabs-tab {
+    padding: 0.75rem 1rem;
+    color: @xf-textColorMuted;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+
+    &:hover {
+        color: @xf-textColor;
+    }
+
+    &.is-active {
+        color: @xf-linkColor;
+        border-bottom-color: @xf-linkColor;
+    }
+}
+
+// ===========================================
+// MESSAGES (Posts)
+// ===========================================
+.message {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.message-inner {
+    // Keep XenForo default
+}
+
+.message-cell--user {
+    background: fade(@xf-contentHighlight, 20%);
+    border-right: 1px solid @xf-borderColor;
+    padding: 1rem;
+}
+
+.message-cell--main {
+    padding: 1rem;
+}
+
+.message-name {
+    font-weight: 700;
+
+    a {
+        color: @xf-textColor;
+    }
+}
+
+.message-userTitle {
+    color: @xf-textColorMuted;
+    font-size: 0.75rem;
+}
+
+.message-body {
+    color: @xf-textColor;
+    line-height: 1.7;
+}
+
+.message-footer {
+    border-top: 1px solid @xf-borderColor;
+    padding: 0.75rem 1rem;
+    background: fade(@xf-contentHighlight, 10%);
+}
+
+// Action bar - DO NOT OVERRIDE LAYOUT (uses floats)
+.actionBar-action {
+    color: @xf-textColorMuted;
+    padding: 0.375rem 0.5rem;
+    border-radius: 4px;
+
+    &:hover {
+        color: @xf-textColor;
+        background: fade(@xf-contentHighlight, 30%);
+    }
+}
+
+// ===========================================
+// REACTIONS
+// ===========================================
+.reactionsBar {
+    // Keep default layout
+}
+
+.reaction {
+    // Keep default
+}
+
+// ===========================================
+// TOOLTIPS
+// ===========================================
+.tooltip {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+// ===========================================
+// ALERTS & NOTICES
+// ===========================================
+.notice {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 8px;
+}
+
+.notice--primary {
+    background: fade(@xf-linkColor, 10%);
+    border-color: @xf-linkColor;
+}
+
+// ===========================================
+// ONLINE INDICATORS
+// ===========================================
+.userBanner {
+    border-radius: 4px;
+    font-size: 0.6875rem;
+    padding: 0.125rem 0.5rem;
+}
+
+// ===========================================
+// SCROLLBAR (Dark theme)
+// ===========================================
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: @xf-pageBg;
+}
+
+::-webkit-scrollbar-thumb {
+    background: @xf-borderColor;
+    border-radius: 4px;
+
+    &:hover {
+        background: lighten(@xf-borderColor, 10%);
+    }
+}
+
+// ===========================================
+// RTL SUPPORT
+// ===========================================
+[dir="rtl"] {
+    .p-body-sidebarCol {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .message-cell--user {
+        border-right: none;
+        border-left: 1px solid @xf-borderColor;
+    }
+}
+
+// ===========================================
+// XENVIBE ADDON CUSTOM STYLES
+// ===========================================
+.xv-thread-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.xv-thread-card {
+    background: @xf-contentBg;
+    border-radius: 12px;
+    border: 1px solid @xf-borderColor;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.xv-card-header {
+    padding: 1rem;
+    border-bottom: 1px solid @xf-borderColorFaint;
+}
+
+.xv-card-body {
+    padding: 1rem;
+}
+
+.xv-card-footer {
+    padding: 0.75rem 1rem;
+    background: fade(@xf-contentHighlight, 30%);
+    border-top: 1px solid @xf-borderColorFaint;
+}
+
+.xv-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: @xf-textColor;
+    line-height: 1.4;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            color: @xf-linkColor;
+        }
+    }
+}
+
+.xv-card-meta {
+    font-size: 0.75rem;
+    color: @xf-textColorMuted;
+}
+
+.xv-filter-chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.xv-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: @xf-textColor;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &.is-active {
+        background: @xf-linkColor;
+        color: #fff;
+        border-color: @xf-linkColor;
+    }
+}

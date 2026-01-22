@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تفاصيل الحساب - Cards Style</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter & Noto Sans Arabic -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#1e2330",
+                        "card-hover": "#252b3b",
+                        "border-dark": "#2d3548",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                        "body": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3548; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3e4a63; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-body antialiased selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-[#111722]/80 backdrop-blur-md border-b border-gray-200 dark:border-[#232f48]">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Left Side: Logo & Nav -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-slate-900 dark:text-white group" href="#">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/30 group-hover:shadow-primary/50 transition-all duration-300">
+<span class="material-symbols-outlined text-white text-xl">forum</span>
+</div>
+<h2 class="text-xl font-black tracking-tighter">XenForo</h2>
+</a>
+<nav class="hidden md:flex items-center gap-1">
+<a class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary rounded-lg hover:bg-slate-100 dark:hover:bg-[#232f48] transition-colors" href="#">الرئيسية</a>
+<a class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary rounded-lg hover:bg-slate-100 dark:hover:bg-[#232f48] transition-colors" href="#">المنتديات</a>
+<a class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary rounded-lg hover:bg-slate-100 dark:hover:bg-[#232f48] transition-colors" href="#">الأعضاء</a>
+</nav>
+</div>
+<!-- Right Side: Search & Profile -->
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="block w-full rounded-xl border-none bg-slate-100 dark:bg-[#232f48] py-2 pr-10 pl-4 text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-primary placeholder:text-slate-400 transition-all" placeholder="بحث..." type="text"/>
+</div>
+<button class="relative p-2 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 size-2 bg-red-500 rounded-full border-2 border-[#111722]"></span>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center ring-2 ring-primary/20 cursor-pointer hover:ring-primary transition-all" data-alt="User avatar small" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBR8WIW7PeoWqep8pwHxxIsKPywr1EXgnopkXNpP6FkMUnT6tzB3uscjuon-pyc3TmcZHtWTwn3vg7jIvrs_vMECYnjqHVr-1gH0zO4G9CJ-IJuU-7n4FyrFiCvkYOfsMAjnrlRrL2Kg_ogRC_x6bH447aEk7id-vDmX4Z90jtZBcGWZIkQfK2C3wILL2ZPcdT9V5wfB_7M2hIILrL2mYLvyxBMqsRr8kPCkUsIpDInyrK1ejsXlMsd1kRsSOXT-6FZrm5ROpsvZ84');"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex-1 w-full max-w-[1400px] mx-auto p-4 sm:p-6 lg:p-8">
+<!-- Breadcrumbs & Heading -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div class="flex flex-col gap-2">
+<nav class="flex items-center gap-2 text-xs text-slate-500 font-medium">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<span class="material-symbols-outlined text-[10px]">chevron_left</span>
+<a class="hover:text-primary transition-colors" href="#">لوحة التحكم</a>
+<span class="material-symbols-outlined text-[10px]">chevron_left</span>
+<span class="text-slate-300">تفاصيل الحساب</span>
+</nav>
+<h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">تفاصيل الحساب</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-2xl">قم بإدارة معلوماتك الشخصية، خيارات الخصوصية، وتفضيلات الأمان لحسابك.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-primary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">save</span>
+<span>حفظ التغييرات</span>
+</button>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Sidebar Navigation (Sticky) -->
+<aside class="lg:col-span-3 sticky top-24 space-y-2">
+<div class="bg-white dark:bg-card-dark rounded-2xl p-4 border border-gray-100 dark:border-border-dark shadow-sm">
+<div class="flex items-center gap-4 mb-6 p-2">
+<div class="size-12 rounded-xl bg-cover bg-center" data-alt="User avatar sidebar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCVm1B8xUywjyrRn6qrbyhq316uHP_6W3uINI0N-N_8aGRHLsFEiw0kXAwc61fORJvRHlchIDKTrRCoPXnkoNlMZNflOLAnxy_viScjuWGhle7vfELrNbJXKWZGmiHjBZRy_OOm66M_lw5gd1CG0XYtoyTI92Wx11yQ6FPjtFlzBt2KFGeuhobx261ZKzUOLgmhFRWwBCdou76h1nfymFSEK_-Zyz5EH3GNhVBcg5W3nnqsoyPt9uEFSsF5BEW_9q3EkOQqh4KxiT8');"></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">أحمد محمد</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">عضو مميز</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-xl font-bold text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+                            تفاصيل الحساب
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-[#252b3b] hover:text-slate-900 dark:hover:text-white rounded-xl font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+                            كلمة المرور والأمان
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-[#252b3b] hover:text-slate-900 dark:hover:text-white rounded-xl font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">privacy_tip</span>
+                            الخصوصية
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-[#252b3b] hover:text-slate-900 dark:hover:text-white rounded-xl font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+                            التنبيهات
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-[#252b3b] hover:text-slate-900 dark:hover:text-white rounded-xl font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">ink_pen</span>
+                            التوقيع
+                        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-[#252b3b] hover:text-slate-900 dark:hover:text-white rounded-xl font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">link</span>
+                            الحسابات المرتبطة
+                        </a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Grid (Masonry-like) -->
+<div class="lg:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1: Avatar & Basic Info -->
+<div class="md:col-span-2 bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark rounded-2xl p-6 shadow-sm overflow-hidden relative group">
+<div class="absolute top-0 right-0 w-full h-32 bg-gradient-to-l from-primary/20 to-transparent opacity-50"></div>
+<div class="relative flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+<div class="relative group/avatar cursor-pointer">
+<div class="size-28 rounded-2xl bg-cover bg-center ring-4 ring-white dark:ring-card-dark shadow-xl" data-alt="User profile picture big" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2HJP4AgFqN9-d4lg6LTuMY_tzPMoK3dnG8bAPH26tpTGAnZddvBZ5ykvLac_uWZuuBv9vDsbgqKubhA_v0VLOwJQxDMTqGs5U4QAJarx4KXMfrP_1Felzp6HcLb0hT9d7ArvFfd1-nHC1gBB8P_bZ-YZY6hUKGZngL_QPlBKFo2V8W6hLHylJixZm5gAq5SGuSIgTjqQiFBJVIkpgYvgMSniWhN_865eQidpaxZt3QXG5wVaRS2cvc5ocZJsNFgCo5iNDUx7tTYc');"></div>
+<div class="absolute inset-0 bg-black/50 rounded-2xl flex items-center justify-center opacity-0 group-hover/avatar:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">photo_camera</span>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex flex-wrap items-center gap-3">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">أحمد محمد</h2>
+<span class="px-2 py-0.5 rounded text-xs font-bold bg-green-500/10 text-green-500 border border-green-500/20">متصل الآن</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">عضو نشط منذ 2021 • آخر ظهور: اليوم</p>
+<div class="pt-2 flex flex-wrap gap-2">
+<button class="px-4 py-2 bg-slate-100 dark:bg-[#252b3b] hover:bg-slate-200 dark:hover:bg-[#2e3648] text-slate-700 dark:text-slate-200 text-sm font-medium rounded-lg transition-colors">تغيير الصورة الرمزية</button>
+<button class="px-4 py-2 bg-slate-100 dark:bg-[#252b3b] hover:bg-slate-200 dark:hover:bg-[#2e3648] text-slate-700 dark:text-slate-200 text-sm font-medium rounded-lg transition-colors">تعديل الغلاف</button>
+</div>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<label class="block">
+<span class="text-slate-700 dark:text-slate-300 font-medium text-sm mb-1.5 block">اسم المستخدم</span>
+<div class="relative">
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">alternate_email</span>
+</span>
+<input class="block w-full rounded-xl border-gray-200 dark:border-[#2d3548] bg-slate-50 dark:bg-[#111722] text-slate-900 dark:text-white focus:border-primary focus:ring-primary text-sm py-2.5 pr-10" readonly="" type="text" value="AhmedMohamed"/>
+</div>
+<p class="mt-1 text-xs text-slate-500">لا يمكنك تغيير اسم المستخدم إلا بموافقة الإدارة.</p>
+</label>
+<label class="block">
+<span class="text-slate-700 dark:text-slate-300 font-medium text-sm mb-1.5 block">المسمى الوظيفي (Title)</span>
+<input class="block w-full rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white focus:border-primary focus:ring-primary text-sm py-2.5 shadow-sm" type="text" value="مطور ويب"/>
+</label>
+</div>
+</div>
+<!-- Card 2: Personal Info -->
+<div class="bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark rounded-2xl p-6 shadow-sm flex flex-col h-full">
+<div class="flex items-center gap-3 mb-6 border-b border-gray-100 dark:border-[#2d3548] pb-4">
+<div class="size-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">البيانات الشخصية</h3>
+</div>
+<div class="space-y-5 flex-1">
+<label class="block">
+<span class="text-slate-700 dark:text-slate-300 font-medium text-sm mb-1.5 block">تاريخ الميلاد</span>
+<div class="grid grid-cols-3 gap-2">
+<select class="rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white text-sm py-2.5 focus:border-primary focus:ring-primary">
+<option>يوم</option>
+<option selected="">15</option>
+</select>
+<select class="rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white text-sm py-2.5 focus:border-primary focus:ring-primary">
+<option>شهر</option>
+<option selected="">يونيو</option>
+</select>
+<input class="rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white text-sm py-2.5 focus:border-primary focus:ring-primary placeholder:text-slate-500" type="number" value="1995"/>
+</div>
+</label>
+<label class="block">
+<span class="text-slate-700 dark:text-slate-300 font-medium text-sm mb-1.5 block">الموقع (المدينة، الدولة)</span>
+<div class="relative">
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+</span>
+<input class="block w-full rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white focus:border-primary focus:ring-primary text-sm py-2.5 pr-10 shadow-sm" type="text" value="الرياض، السعودية"/>
+</div>
+</label>
+<label class="block">
+<span class="text-slate-700 dark:text-slate-300 font-medium text-sm mb-1.5 block">الموقع الإلكتروني</span>
+<div class="relative">
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">globe</span>
+</span>
+<input class="block w-full rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white focus:border-primary focus:ring-primary text-sm py-2.5 pr-10 shadow-sm" placeholder="https://" type="url"/>
+</div>
+</label>
+</div>
+</div>
+<!-- Card 3: Contact & About -->
+<div class="bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark rounded-2xl p-6 shadow-sm flex flex-col h-full">
+<div class="flex items-center gap-3 mb-6 border-b border-gray-100 dark:border-[#2d3548] pb-4">
+<div class="size-8 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-500">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">نبذة عنك</h3>
+</div>
+<div class="space-y-5 flex-1">
+<label class="block h-full">
+<span class="text-slate-700 dark:text-slate-300 font-medium text-sm mb-1.5 block">اكتب شيئاً عن نفسك</span>
+<textarea class="block w-full h-32 rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white focus:border-primary focus:ring-primary text-sm p-3 shadow-sm resize-none" placeholder="أحب البرمجة والتصميم..."></textarea>
+<div class="flex justify-between items-center mt-2">
+<span class="text-xs text-slate-400">يظهر هذا النص في ملفك الشخصي.</span>
+<span class="text-xs text-slate-400">0/500</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Card 4: Security (Email & Password) -->
+<div class="md:col-span-2 bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark rounded-2xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6 border-b border-gray-100 dark:border-[#2d3548] pb-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">البريد الإلكتروني وكلمة المرور</h3>
+</div>
+<span class="px-3 py-1 bg-green-500/10 text-green-500 text-xs font-bold rounded-full border border-green-500/20">محمي</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Email Section -->
+<div class="space-y-4">
+<label class="block">
+<span class="text-slate-700 dark:text-slate-300 font-medium text-sm mb-1.5 block">البريد الإلكتروني الحالي</span>
+<div class="relative">
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</span>
+<input class="block w-full rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white focus:border-primary focus:ring-primary text-sm py-2.5 pr-10 shadow-sm" type="email" value="ahmed@example.com"/>
+</div>
+</label>
+<div class="bg-yellow-500/5 border border-yellow-500/20 rounded-xl p-4 flex gap-3">
+<span class="material-symbols-outlined text-yellow-600 dark:text-yellow-500 shrink-0">info</span>
+<p class="text-xs text-yellow-800 dark:text-yellow-200 leading-relaxed">
+                                    تغيير البريد الإلكتروني قد يتطلب إعادة تفعيل حسابك عن طريق رابط سيصلك على البريد الجديد.
+                                </p>
+</div>
+</div>
+<!-- Password Section -->
+<div class="space-y-4 border-r-0 md:border-r border-gray-100 dark:border-[#2d3548] md:pr-8">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                تغيير كلمة المرور
+                                <span class="text-xs font-normal text-slate-400">(اتركه فارغاً إذا كنت لا تود التغيير)</span>
+</h4>
+<label class="block">
+<input class="block w-full rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white focus:border-primary focus:ring-primary text-sm py-2.5 shadow-sm" placeholder="كلمة المرور الحالية" type="password"/>
+</label>
+<label class="block">
+<input class="block w-full rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white focus:border-primary focus:ring-primary text-sm py-2.5 shadow-sm" placeholder="كلمة المرور الجديدة" type="password"/>
+</label>
+<label class="block">
+<input class="block w-full rounded-xl border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] text-slate-900 dark:text-white focus:border-primary focus:ring-primary text-sm py-2.5 shadow-sm" placeholder="تأكيد كلمة المرور الجديدة" type="password"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Card 5: Social Identities -->
+<div class="md:col-span-2 bg-white dark:bg-card-dark border border-gray-100 dark:border-border-dark rounded-2xl p-6 shadow-sm">
+<div class="flex items-center gap-3 mb-6 border-b border-gray-100 dark:border-[#2d3548] pb-4">
+<div class="size-8 rounded-full bg-teal-500/10 flex items-center justify-center text-teal-500">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">الهويات والتواصل</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="group flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] hover:border-primary/50 transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
+<div class="size-8 rounded bg-[#1877F2] text-white flex items-center justify-center font-bold text-xs shrink-0">FB</div>
+<input class="w-full bg-transparent border-none text-sm text-slate-900 dark:text-white p-0 focus:ring-0 placeholder:text-slate-500" placeholder="Facebook User" type="text"/>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] hover:border-primary/50 transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
+<div class="size-8 rounded bg-[#1DA1F2] text-white flex items-center justify-center font-bold text-xs shrink-0">TW</div>
+<input class="w-full bg-transparent border-none text-sm text-slate-900 dark:text-white p-0 focus:ring-0 placeholder:text-slate-500" placeholder="Twitter User" type="text"/>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] hover:border-primary/50 transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
+<div class="size-8 rounded bg-[#229ED9] text-white flex items-center justify-center font-bold text-xs shrink-0">TG</div>
+<input class="w-full bg-transparent border-none text-sm text-slate-900 dark:text-white p-0 focus:ring-0 placeholder:text-slate-500" placeholder="Telegram User" type="text"/>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] hover:border-primary/50 transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
+<div class="size-8 rounded bg-[#5865F2] text-white flex items-center justify-center font-bold text-xs shrink-0">DC</div>
+<input class="w-full bg-transparent border-none text-sm text-slate-900 dark:text-white p-0 focus:ring-0 placeholder:text-slate-500" placeholder="Discord User" type="text"/>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-[#2d3548] bg-white dark:bg-[#111722] hover:border-primary/50 transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
+<div class="size-8 rounded bg-[#333] text-white flex items-center justify-center font-bold text-xs shrink-0">GH</div>
+<input class="w-full bg-transparent border-none text-sm text-slate-900 dark:text-white p-0 focus:ring-0 placeholder:text-slate-500" placeholder="Github User" type="text"/>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="md:col-span-2 flex items-center justify-between pt-4 mt-4 border-t border-gray-200 dark:border-[#2d3548]">
+<a class="text-red-500 text-sm font-medium hover:text-red-600 transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                        حذف الحساب
+                    </a>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 text-slate-600 dark:text-slate-300 font-medium text-sm hover:text-slate-900 dark:hover:text-white transition-colors">إلغاء</button>
+<button class="px-8 py-2.5 bg-primary hover:bg-primary/90 text-white font-bold text-sm rounded-xl shadow-lg shadow-primary/30 transition-all active:scale-95">حفظ التعديلات</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-gray-200 dark:border-[#232f48] py-8 bg-white dark:bg-[#111722]">
+<div class="max-w-[1400px] mx-auto px-4 text-center">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                © 2023 XenForo Ltd. جميع الحقوق محفوظة.
+            </p>
+<div class="flex justify-center gap-6 mt-4 text-sm font-medium text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">سياسة الخصوصية</a>
+<a class="hover:text-primary transition-colors" href="#">الشروط والقوانين</a>
+<a class="hover:text-primary transition-colors" href="#">اتصل بنا</a>
+</div>
+</div>
+</footer>
+</body></html>

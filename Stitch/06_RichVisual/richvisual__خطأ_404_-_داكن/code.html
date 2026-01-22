@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RichVisual - 404 Error</title>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#1d6bf5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2332",
+                        "border-dark": "#232f48"
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Spline Sans", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #232f48 1px, transparent 1px), linear-gradient(to bottom, #232f48 1px, transparent 1px)",
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Spline Sans", "Noto Sans Arabic", sans-serif;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(19, 91, 236, 0.5);
+        }
+        .bg-grid {
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white overflow-x-hidden min-h-screen flex flex-col">
+<!-- Navbar -->
+<div class="w-full border-b border-solid border-border-dark bg-[#111722]/90 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+<header class="flex items-center justify-between h-16">
+<!-- Logo & Nav -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-white group" href="#">
+<div class="size-8 rounded-lg bg-primary flex items-center justify-center text-white group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">dataset</span>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight">RichVisual</h2>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">الرئيسية</a>
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">المنتديات</a>
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">الأعضاء</a>
+</nav>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-4">
+<div class="hidden sm:block relative">
+<span class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-500">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="bg-surface-dark border border-border-dark text-white text-sm rounded-lg block w-full pr-10 pl-4 py-2 focus:ring-primary focus:border-primary placeholder-slate-500 transition-all hover:bg-[#232f48]" placeholder="بحث..." type="text"/>
+</div>
+<button class="bg-surface-dark hover:bg-[#232f48] text-white p-2 rounded-lg transition-colors border border-border-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="size-9 rounded-full bg-surface-dark border border-border-dark bg-cover bg-center cursor-pointer hover:ring-2 hover:ring-primary transition-all" data-alt="User profile avatar placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcMjz301I6lhGCy4eZjjErJgXIDb8OBNtHP2dduvFvTCiXFo6JriqRt0rc1-oM8YzsZsj-fU7u3cSatXiZv-QSPZPPlMf5meXTi-haX_tkeJvjs_F2283emCzccSr23-HGPkavtv7U3g7E6d6eS3IqCu9MDQGkScKNlfzb10zDFYhXlAITg6bdUb_rmnna87Mq9R-YJV8F0uKxy2NNhRKiDLCAV_rFN7Yz0O-iKM2A-yegpTvI_COD5F40uVXl9fFXJPTN_knB-zE');">
+</div>
+</div>
+</header>
+</div>
+</div>
+<!-- Main 404 Content -->
+<main class="flex-grow flex items-center justify-center relative w-full overflow-hidden py-12 px-4">
+<!-- Ambient Background Effects -->
+<div class="absolute inset-0 z-0 pointer-events-none">
+<!-- Grid Pattern -->
+<div class="absolute inset-0 bg-grid-pattern opacity-[0.07] bg-grid"></div>
+<!-- Gradient Orbs -->
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-600/10 rounded-full blur-[100px]"></div>
+</div>
+<!-- Content Card -->
+<div class="relative z-10 w-full max-w-2xl mx-auto">
+<div class="bg-surface-dark/60 backdrop-blur-xl border border-border-dark rounded-2xl p-8 md:p-12 shadow-2xl text-center flex flex-col items-center">
+<!-- Visual Glitch Element -->
+<div class="relative mb-8 group">
+<h1 class="text-[120px] md:text-[160px] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-400 to-slate-600 select-none">
+                        404
+                    </h1>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-100 mix-blend-overlay">
+<h1 class="text-[120px] md:text-[160px] font-black leading-none tracking-tighter text-primary translate-x-1 translate-y-1">404</h1>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/20 blur-[60px] rounded-full pointer-events-none"></div>
+</div>
+<!-- Text Content -->
+<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                    عذراً، حدث خلل في النظام
+                </h2>
+<p class="text-slate-400 text-base md:text-lg max-w-lg mx-auto mb-10 leading-relaxed">
+                    يبدو أنك وصلت إلى منطقة مجهولة. الصفحة التي تبحث عنها غير موجودة، أو ربما تم نقلها إلى خادم آخر في المجرة.
+                </p>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+<a class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 rounded-xl transition-all hover:shadow-[0_0_20px_rgba(19,91,236,0.4)] hover:-translate-y-0.5" href="#">
+<span class="material-symbols-outlined">home</span>
+<span>العودة للرئيسية</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 bg-[#232f48] hover:bg-[#2d3b55] text-white font-medium py-3 px-8 rounded-xl transition-all border border-transparent hover:border-slate-600" href="#">
+<span class="material-symbols-outlined">support</span>
+<span>مركز المساعدة</span>
+</a>
+</div>
+<!-- Quick Links -->
+<div class="mt-12 pt-8 border-t border-border-dark w-full">
+<p class="text-slate-500 text-sm mb-4">روابط سريعة قد تساعدك:</p>
+<div class="flex flex-wrap justify-center gap-3">
+<a class="text-sm text-slate-400 hover:text-primary transition-colors bg-[#111722] px-4 py-2 rounded-lg border border-border-dark hover:border-primary/50" href="#">الألعاب الجديدة</a>
+<a class="text-sm text-slate-400 hover:text-primary transition-colors bg-[#111722] px-4 py-2 rounded-lg border border-border-dark hover:border-primary/50" href="#">الأعضاء النشطين</a>
+<a class="text-sm text-slate-400 hover:text-primary transition-colors bg-[#111722] px-4 py-2 rounded-lg border border-border-dark hover:border-primary/50" href="#">آخر المشاركات</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-dark bg-[#111722] py-8 mt-auto z-10">
+<div class="max-w-[960px] mx-auto px-6 text-center">
+<div class="flex flex-wrap items-center justify-center gap-8 mb-6">
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">المساعدة</a>
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">قوانين المنتدى</a>
+<a class="text-slate-400 hover:text-white text-sm font-medium transition-colors" href="#">اتصل بنا</a>
+</div>
+<p class="text-slate-600 text-sm">© 2024 RichVisual Community. جميع الحقوق محفوظة.</p>
+</div>
+</footer>
+</body></html>

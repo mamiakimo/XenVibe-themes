@@ -1,0 +1,84 @@
+// XenVibe Cards - Stitch Design CSS Variables
+// Version 3.0.0 - Dark Theme Colors
+// Compatible with XenForo 2.3+
+
+// ===========================================
+// CSS VARIABLES - STITCH DARK THEME
+// ===========================================
+
+:root {
+    // Background Colors
+    --xv-bg-primary: #111722;
+    --xv-bg-surface: #1e293b;
+    --xv-bg-elevated: #283548;
+    --xv-bg-card: #192233;
+    --xv-bg-input: #232f48;
+    --xv-bg-hover: #1a2333;
+
+    // Border Colors
+    --xv-border-color: #2e3b52;
+    --xv-border-light: #324467;
+
+    // Text Colors
+    --xv-text-primary: #f8fafc;
+    --xv-text-secondary: #94a3b8;
+    --xv-text-muted: #64748b;
+    --xv-text-link: #92a4c9;
+
+    // Accent Colors
+    --xv-accent: #135bec;
+    --xv-accent-hover: #1d4ed8;
+    --xv-accent-light: rgba(19, 91, 236, 0.1);
+    --xv-accent-glow: rgba(19, 91, 236, 0.25);
+
+    // Status Colors
+    --xv-success: #22c55e;
+    --xv-danger: #ef4444;
+    --xv-warning: #f59e0b;
+    --xv-info: #3b82f6;
+
+    // Radius
+    --xv-radius-sm: 0.5rem;
+    --xv-radius: 0.75rem;
+    --xv-radius-lg: 1rem;
+    --xv-radius-xl: 1.5rem;
+    --xv-radius-2xl: 2rem;
+    --xv-radius-full: 9999px;
+
+    // Shadows
+    --xv-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --xv-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --xv-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.4);
+    --xv-shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.5);
+    --xv-shadow-accent: 0 4px 12px rgba(19, 91, 236, 0.25);
+
+    // Transitions
+    --xv-transition: 0.2s ease;
+    --xv-transition-slow: 0.3s ease;
+
+    // Header specific
+    --xv-header-bg: rgba(17, 23, 34, 0.95);
+    --xv-header-text: #f8fafc;
+}
+
+
+// ===========================================
+// ADDITIONAL COMPUTED COLORS
+// ===========================================
+
+// For components that need computed hover states
+.xv-hover-mixin() {
+    transition: all var(--xv-transition);
+    &:hover {
+        background: var(--xv-bg-hover);
+    }
+}
+
+// For components with accent border on focus
+.xv-focus-ring() {
+    &:focus {
+        outline: none;
+        border-color: var(--xv-accent);
+        box-shadow: 0 0 0 3px var(--xv-accent-light);
+    }
+}

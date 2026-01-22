@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <template title="xv_home" type="public" addon_id="XenVibe/Core" version_id="1000010" version_string="1.0.0"><![CDATA[<xf:title>{{ phrase('xv_home') }}</xf:title>
+<xf:h1>{{ phrase('xv_welcome') }}</xf:h1>
+
+<div class="xv-home-layout">
+    <!-- Welcome & Filters -->
+    <div class="xv-welcome-section">
+        <div class="xv-welcome-text">
+            <xf:if is="$xf.visitor.user_id">
+                <h2 class="xv-welcome-title">مرحباً، {$xf.visitor.username} 👋</h2>
+            <xf:else />
+                <h2 class="xv-welcome-title">مرحباً بك 👋</h2>
+            </xf:if>
+            <p class="xv-welcome-subtitle">إليك آخر المستجدات في مجتمعاتك المفضلة.</p>
+        </div>
+
+        <div class="xv-filter-chips">
+            <button class="xv-chip active">الكل</button>
+            <button class="xv-chip">
+                <span class="material-symbols-outlined">trending_up</span>
+                الرائج
+            </button>
+            <button class="xv-chip">الصور فقط</button>
+            <button class="xv-chip">الأعلى تقييماً</button>
+        </div>
+    </div>
+
+    <!-- Thread Cards Grid -->
+    <div class="xv-cards-grid">
+        <xf:foreach loop="$threads" value="$thread">
+            <article class="xv-thread-card">
+                <div class="xv-card-header">
+                    <div class="xv-card-author">
+                        <xf:avatar user="$thread.User" size="s" />
+                        <div class="xv-author-info">
+                            <xf:username user="$thread.User" class="xv-author-name" />
+                            <span class="xv-card-meta">
+                                <xf:date time="{$thread.post_date}" /> &bull; {$thread.Forum.title}
+                            </span>
+                        </div>
+                    </div>
+                    <button class="xv-card-menu">
+                        <span class="material-symbols-outlined">more_horiz</span>
+                    </button>
+                </div>
+
+                <div class="xv-card-body">
+                    <a href="{xf:link('threads', $thread)}" class="xv-card-title">{$thread.title}</a>
+                </div>
+
+                <div class="xv-card-footer">
+                    <div class="xv-card-stats">
+                        <span class="xv-stat">
+                            <span class="material-symbols-outlined">thumb_up</span>
+                            {$thread.first_post_reaction_score|number}
+                        </span>
+                        <span class="xv-stat">
+                            <span class="material-symbols-outlined">chat_bubble</span>
+                            {$thread.reply_count|number}
+                        </span>
+                    </div>
+                    <div class="xv-card-views">
+                        <span class="material-symbols-outlined">visibility</span>
+                        {$thread.view_count|number}
+                    </div>
+                </div>
+            </article>
+        </xf:foreach>
+    </div>
+
+    <!-- Load More -->
+    <div class="xv-load-more">
+        <button class="xv-load-more-btn">تحميل المزيد من المنشورات</button>
+    </div>
+</div>
+]]></template>
+
+    <template title="xv_header" type="public" addon_id="XenVibe/Core" version_id="1000010" version_string="1.0.0"><![CDATA[<xf:macro name="main" arg-navTree="!" arg-selectedNavTab="">
+<!-- XenVibe Custom Header -->
+</xf:macro>
+]]></template>
+
+    <template title="xv_footer" type="public" addon_id="XenVibe/Core" version_id="1000010" version_string="1.0.0"><![CDATA[<xf:macro name="main">
+<!-- XenVibe Custom Footer -->
+</xf:macro>
+]]></template>
+
+    <template title="xv_sidebar_widgets" type="public" addon_id="XenVibe/Core" version_id="1000010" version_string="1.0.0"><![CDATA[<xf:macro name="trending">
+</xf:macro>
+
+<xf:macro name="online">
+</xf:macro>
+]]></template>
+</templates>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SocialForum - General Discussion</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#1b2434",
+              "surface-highlight": "#232f48",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#111418] dark:text-white overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e5e7eb] dark:border-b-[#232f48] bg-white dark:bg-[#111722] px-4 py-3 md:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">SocialForum</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Forums</a>
+<a class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Members</a>
+<a class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Marketplace</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full border border-[#dce0e5] dark:border-none bg-background-light dark:bg-[#232f48]">
+<div class="text-[#637588] dark:text-[#92a4c9] flex items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-[#637588] dark:placeholder:text-[#92a4c9] px-4 rounded-l-none text-sm font-normal leading-normal" placeholder="Search topics..."/>
+</div>
+</label>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center rounded-full size-10 bg-background-light dark:bg-[#232f48] text-[#111418] dark:text-white md:hidden">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="relative flex items-center justify-center rounded-full size-10 bg-background-light dark:bg-[#232f48] text-[#111418] dark:text-white hover:bg-primary/10 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-[#111722]"></span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-transparent hover:border-primary cursor-pointer transition-colors" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBej-zmSVxbosRsiQW6UDN8oXhiSnhWvyJV8SiVF2hO0m21oQSgkbNyIqdBqWs49q_cCp3r2CJ_JmfHSLlkkgR71YEC8Wya4ayxRL2eKx0eYqjvoxSk3Di3_oar0wDibUO42IeI5A40IMAyDI0lZM7dD1jBzoardbH8d3SPozqbHO2LBnDihgBc6m7wRbRJLQsvnNL53lHGcJmxloN2ODX1JZFvcdSq3t5XhXS2kOfnbnJGiVdK8gPcnnv2633pPS6QLdZs6Fs-02Q");'></div>
+</div>
+</div>
+</header>
+<div class="layout-container flex flex-col items-center w-full">
+<div class="w-full max-w-[1440px] px-4 md:px-10 py-6 md:py-8 flex flex-col gap-8">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 px-1">
+<a class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<span class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium leading-normal">/</span>
+<a class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Forums</a>
+<span class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium leading-normal">/</span>
+<span class="text-[#111418] dark:text-white text-sm font-medium leading-normal">General Discussion</span>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Main Content Column -->
+<main class="flex-1 min-w-0 flex flex-col gap-6">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2">
+<div class="flex flex-col gap-2">
+<h1 class="text-[#111418] dark:text-white text-3xl md:text-4xl font-extrabold leading-tight tracking-[-0.02em]">General Discussion</h1>
+<p class="text-[#637588] dark:text-[#92a4c9] text-base font-normal leading-normal max-w-2xl">A community space for general conversation, social bonding, and sharing daily updates with friends.</p>
+</div>
+<button class="flex items-center justify-center gap-2 rounded-xl h-10 px-5 bg-primary hover:bg-blue-600 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors shadow-lg shadow-blue-900/20 whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">edit_square</span>
+<span>Post New Thread</span>
+</button>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-wrap items-center gap-3 py-2 border-b border-[#e5e7eb] dark:border-[#232f48]/50">
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-primary/10 hover:bg-primary/20 pl-3 pr-4 transition-colors">
+<span class="material-symbols-outlined text-primary text-[18px]">apps</span>
+<span class="text-primary text-sm font-semibold">All Topics</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-transparent hover:bg-[#e5e7eb] dark:hover:bg-[#232f48] pl-3 pr-4 transition-colors group">
+<span class="material-symbols-outlined text-[#637588] dark:text-[#92a4c9] group-hover:text-[#111418] dark:group-hover:text-white text-[18px]">mark_chat_unread</span>
+<span class="text-[#637588] dark:text-[#92a4c9] group-hover:text-[#111418] dark:group-hover:text-white text-sm font-medium">Unread</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-transparent hover:bg-[#e5e7eb] dark:hover:bg-[#232f48] pl-3 pr-4 transition-colors group">
+<span class="material-symbols-outlined text-[#637588] dark:text-[#92a4c9] group-hover:text-[#111418] dark:group-hover:text-white text-[18px] icon-filled">local_fire_department</span>
+<span class="text-[#637588] dark:text-[#92a4c9] group-hover:text-[#111418] dark:group-hover:text-white text-sm font-medium">Hot</span>
+</button>
+<button class="flex h-9 items-center justify-center gap-x-2 rounded-lg bg-transparent hover:bg-[#e5e7eb] dark:hover:bg-[#232f48] pl-3 pr-4 transition-colors group">
+<span class="material-symbols-outlined text-[#637588] dark:text-[#92a4c9] group-hover:text-[#111418] dark:group-hover:text-white text-[18px]">push_pin</span>
+<span class="text-[#637588] dark:text-[#92a4c9] group-hover:text-[#111418] dark:group-hover:text-white text-sm font-medium">Sticky</span>
+</button>
+<div class="flex-1"></div>
+<div class="flex items-center gap-2 border-l border-[#e5e7eb] dark:border-[#232f48] pl-3 ml-1">
+<button class="size-8 flex items-center justify-center rounded-lg text-[#111418] dark:text-white hover:bg-[#e5e7eb] dark:hover:bg-[#232f48]">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded-lg text-[#637588] dark:text-[#92a4c9] hover:bg-[#e5e7eb] dark:hover:bg-[#232f48]">
+<span class="material-symbols-outlined text-[20px]">view_list</span>
+</button>
+</div>
+</div>
+<!-- Topic Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+<!-- Card 1: Sticky/Pinned -->
+<article class="group relative flex flex-col gap-3 rounded-2xl bg-white dark:bg-surface-dark p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-primary/5 dark:shadow-black/20 border border-transparent dark:hover:border-primary/30 ring-1 ring-black/5 dark:ring-white/5">
+<!-- Image -->
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<div class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Abstract blue digital network connection background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCM9YV-TtQhcaueeIoLcMmzIDQ--f4spZCfG0sx3LfxCkCXjtygnDezybx1TA_PX6BwqsKYdsFSqUqg8kjoH85lvVRIeHn0K0I-pLERDDOhUTn0QHtkPnNF8Ent8tVSBlgYm6HDU9xaN2Phr9SMUlspFeJcFC1hJbcHSG-o9a3tnPIT5onVqQ6v8r1jq2j0QSaAZI0a3h0_7eAG5wosOGKnfsmHij1MHlLd50XRaD5Dv5_uf9jecakxeRkDyT3F8osaxHGBSWGAFLo");'></div>
+<div class="absolute top-3 right-3 z-20 flex gap-2">
+<span class="flex items-center gap-1 rounded-md bg-primary/90 backdrop-blur-sm px-2 py-1 text-xs font-bold text-white shadow-lg">
+<span class="material-symbols-outlined text-[14px]">push_pin</span>
+                                        Sticky
+                                    </span>
+</div>
+<div class="absolute bottom-3 left-3 z-20 flex gap-2">
+<span class="rounded bg-red-500/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">Important</span>
+</div>
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-2 mb-2">
+<h3 class="text-lg font-bold text-[#111418] dark:text-white leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+<a class="after:absolute after:inset-0" href="#">Welcome to the new platform rules &amp; guidelines 2024</a>
+</h3>
+<p class="text-[#637588] dark:text-[#92a4c9] text-sm line-clamp-2">Please read carefully before posting. New moderation policies are effective immediately.</p>
+</div>
+<!-- Meta / Footer -->
+<div class="mt-auto flex items-center justify-between pt-3 border-t border-[#e5e7eb] dark:border-[#232f48]">
+<div class="flex items-center gap-2 relative z-20">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-surface-dark bg-gray-700 bg-cover" data-alt="Profile picture of Admin" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYyX1H1u_r3OXn4AlziNSV2IZR07uBQE2Iu-tCTiS-mW7lpyw3WSTcurYIe1M4vbHkxvRyaxE8nAFFNat6dJ-kb_4rTjTLopXhVsD92-cVxOEYd3yjc6MavmWk8dBtPa5ckr1ZpKLKEUO5OZu7AoKTDn1jUPsWr4ln2LYPcu-bn8T7ngCiNDq0BV8gux8dOeAI_AhCPIQL0p6jf7ZJCaeP2kuMSeV6hL3EwdLZ_ZVSvK2ets1uY1B9dS35hlO9y7auGuBQli_KPRc");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-surface-dark bg-gray-600 bg-cover" data-alt="Profile picture of Moderator" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdE6M_WMi6rjBH385ziiwhKnnI8ArZl4zC9tJPkumy2bPfWgKOM0Wgc-TPKYVhzewP8IQxQwqZMZzCH59LSvLc8fHkODe2wQSqiVFzAjic7pfT5KfvbsfgGGKj4iNPrEXXmrRb-i6zIIj8d30KpSg7eU-G1eYLs85YGr_AI7z5uRPxBoQ9nO6Qm5QT0zJnxKrsosa1rta82Ka1Gc3RNelfcDSeWvn7-z2uosVnkuG6BajT07t-OmFq9DB0amo6P5om3eX4F-XXEgk");'></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-[#111418] dark:text-white">Admin</span>
+<span class="text-[10px] text-[#637588] dark:text-[#92a4c9]">2h ago</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-[#637588] dark:text-[#92a4c9] text-xs font-medium">
+<div class="flex items-center gap-1" title="Views"><span class="material-symbols-outlined text-[16px]">visibility</span> 5.2k</div>
+<div class="flex items-center gap-1" title="Replies"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 120</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Image Heavy -->
+<article class="group relative flex flex-col gap-3 rounded-2xl bg-white dark:bg-surface-dark p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-primary/5 dark:shadow-black/20 border border-transparent dark:hover:border-primary/30 ring-1 ring-black/5 dark:ring-white/5">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<div class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Cherry blossoms in Tokyo street" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJVlWGPAtND0wWT3jMk8U3cVgZa-WW-op4YLlxWeNa7ihDbJKwiQh9itRIaBYf2AwceprAhx2UFaFBRXgL5tpG765sY_ZOe6PRw4bh904Q23mz8g3fSBBrtmfPEPCAnB64zis-11IleI6qBvbYMlXLMOFXKcaSTUgPcUF-3iN5EMTmswSvnZw3I00DnlrKlfk7e7OzctY_C7fGdb1sAJyAHoeF6PjNU5GabBkKpxcTd4b02ZefCzBmsrk881HEDLyGapwdsB0gPMs");'></div>
+<div class="absolute bottom-3 left-3 z-20 flex gap-2">
+<span class="rounded bg-green-500/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">Travel</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 mb-2">
+<h3 class="text-lg font-bold text-[#111418] dark:text-white leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+<a class="after:absolute after:inset-0" href="#">My photography trip to Japan - Tokyo &amp; Kyoto Diary</a>
+</h3>
+<p class="text-[#637588] dark:text-[#92a4c9] text-sm line-clamp-2">Just got back from a 2 week trip. Here are some of my favorite shots from the streets of Shinjuku.</p>
+</div>
+<div class="mt-auto flex items-center justify-between pt-3 border-t border-[#e5e7eb] dark:border-[#232f48]">
+<div class="flex items-center gap-2 relative z-20">
+<div class="size-8 rounded-full border-2 border-white dark:border-surface-dark bg-gray-700 bg-cover" data-alt="Profile picture of User123" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB78FV8DLHwKcdP6iYRE0NIJ8Xb3EOZ_FIKUCRgSKySrKj0D9kfOJmOZuIUdPlABWjbyEKCF9yudEmfiCCYADS8C4VdzrrR8UvnKOudhjUv_H-XeaHfMftOGMsv1NUAsGzzofxYB7caDVj8imtpo6_5lEt0-Z1abBB2ayCGXE0tKFAqLLP3w2dTtXqIjnDfTpA2g1_0q3qjs4y40xElVEKlQm_Peek1QV5riEa0xndQxYe_54da8ZiuUm1j-y6HJM_fXAMCqRTAft4");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-[#111418] dark:text-white">User123</span>
+<span class="text-[10px] text-[#637588] dark:text-[#92a4c9]">5m ago</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-[#637588] dark:text-[#92a4c9] text-xs font-medium">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 340</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 45</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Gradient/No Image -->
+<article class="group relative flex flex-col gap-3 rounded-2xl bg-white dark:bg-surface-dark p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-primary/5 dark:shadow-black/20 border border-transparent dark:hover:border-primary/30 ring-1 ring-black/5 dark:ring-white/5">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+<div class="absolute inset-0 bg-black/10 z-10"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white/50 text-6xl">smart_toy</span>
+</div>
+<div class="absolute bottom-3 left-3 z-20 flex gap-2">
+<span class="rounded bg-purple-500/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">Tech</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 mb-2">
+<h3 class="text-lg font-bold text-[#111418] dark:text-white leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+<a class="after:absolute after:inset-0" href="#">Discussion on new AI tools and their impact on design</a>
+</h3>
+<p class="text-[#637588] dark:text-[#92a4c9] text-sm line-clamp-2">Are we moving towards a future where AI handles all UI drafting? Let's discuss the ethics.</p>
+</div>
+<div class="mt-auto flex items-center justify-between pt-3 border-t border-[#e5e7eb] dark:border-[#232f48]">
+<div class="flex items-center gap-2 relative z-20">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-surface-dark bg-gray-700 bg-cover" data-alt="Profile picture of TechGuru" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBMaDmAvEO5GzfjYEdfvGg0L1ph_O-_Oq1zNQr_y1ki4tZ_obuuEJAYx9m0Q66EBLnGZVhv_DDql35UmSzWjkE9elwY2yaokcdEx0TUUKlrTUuAc7MWzcD10-sWFqtt5OXHlx7CMLXAcysqveWDHd8OhCP9nDO-fIlAs2b2_KnAQS8mMIhsCj_RFjozwgMspSGMGsXkJJEDLcTnJjswtQ7kPsfdSkxxJUTvFV8iP9Wz7DM0RjqtWDH_aevJOBIpoe8MIKPGV9TbFc");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-surface-dark bg-gray-700 bg-cover" data-alt="Profile picture of Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB_F1UvDD1G6RM0vLEFuBcJ_Rb3RpmFwEXL10X6AQ2T8S8x8ef4erAicLSmbKyUNdT6qnC0SKyd4atwPCY3pGlGRBtd3Y-Ahq_lu6BxYAZQq5wdXMEeWBMdWrGKIchTbHEaikp9lUW59LawgFyBMiaBhBSQUoJ1LM6FgtNOrnTBKFKovK3Qrc_LxqtbF673SRT3AIWMoCfwkO0F7fo9bLqfR9_xGTBHBbcOF6Cn5V7KO1dfiSw0XMq2P746cECb94JvgnZpfkR30N8");'></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-[#111418] dark:text-white">Sarah</span>
+<span class="text-[10px] text-[#637588] dark:text-[#92a4c9]">12m ago</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-[#637588] dark:text-[#92a4c9] text-xs font-medium">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 1.2k</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 89</div>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="group relative flex flex-col gap-3 rounded-2xl bg-white dark:bg-surface-dark p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-primary/5 dark:shadow-black/20 border border-transparent dark:hover:border-primary/30 ring-1 ring-black/5 dark:ring-white/5">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<div class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist desk setup with laptop" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBzhxiVcEacDNLUTIWbdkrIe6xsWxpZwaxd_ig64Ky4IBW1zBKVW7Ks6M-e6PEUniiQKImkRhr4vq4Uw7D9vR_5-Oqt3clI1ifE5US_09YzNb05uVTPKFPn5TKOMt1ISZemsTOauhGL6YPLNmYKZUxl8JrfTT7s7bGMa9OKmniTtXt18W0niIHL8Zt8PKAKSULCxT6Te0tm6kvdNly8JK7mu8cpDoeN03Exq1-rOTkJ7jZNxQqFFU9y-ODqbgef62XVhGzz0lfU4io");'></div>
+<div class="absolute bottom-3 left-3 z-20 flex gap-2">
+<span class="rounded bg-blue-500/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">Setup</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 mb-2">
+<h3 class="text-lg font-bold text-[#111418] dark:text-white leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+<a class="after:absolute after:inset-0" href="#">Show off your workstation! [September 2024 Edition]</a>
+</h3>
+<p class="text-[#637588] dark:text-[#92a4c9] text-sm line-clamp-2">It's that time of the month again. Post your desk setups, specs, and any new gear you bought.</p>
+</div>
+<div class="mt-auto flex items-center justify-between pt-3 border-t border-[#e5e7eb] dark:border-[#232f48]">
+<div class="flex items-center gap-2 relative z-20">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-surface-dark bg-gray-700 bg-cover" data-alt="Profile picture of Mike" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2lMfLwQA9IiX7ndozZ2FyaxZY-WjL03B5KL4RskMXtijTkCcYsglIepB9jh3yfvpTM5of_dBwCGYPoZ7KFOLE2-CpOBiPLcE3mX7LOaNdNWRQHc343KBxOmKMQguI8-rYhq6zmhtKSp5JMDSbZ5ObiMy9acu8iXZ08rSsMGMOEYnrQeVeo8e4Ixq76u0U0Zip88fBiU2akXGE-BNUhsV0xf0qjQGB-KkZz485pXYssfqfKqq6T9AwpeDetrpCijU0aYsGw6dAr3s");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-surface-dark bg-gray-700 bg-cover" data-alt="Profile picture of Lisa" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBUmQnaI6cS3VFAf9LJmTxllv6lfWRj0JgsHeG5xQO-6fH91bCDjz0pQJo0ldjuBkb9yoboJUOe3-6JgxAzCvi33gPQjHNGY67P2uWzUANSclnJ6G0EgcsgnteiaChY-mAlx_oCruakS9sjAA-ciQJCtZOhS25MwhMOJ61UEFR78T_4b_yLmblfn5x8WHQOsvC4ilpon4QjN33X_AbCzcB5-tiZGtd13VFWmGQ5Yia04NFprXe94itlgdVNWBrBgX2i_En0q-lELXw");'></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-[#111418] dark:text-white">Lisa</span>
+<span class="text-[10px] text-[#637588] dark:text-[#92a4c9]">1h ago</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-[#637588] dark:text-[#92a4c9] text-xs font-medium">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 890</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 67</div>
+</div>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="group relative flex flex-col gap-3 rounded-2xl bg-white dark:bg-surface-dark p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-primary/5 dark:shadow-black/20 border border-transparent dark:hover:border-primary/30 ring-1 ring-black/5 dark:ring-white/5">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-800">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<div class="w-full h-full bg-center bg-cover transform group-hover:scale-105 transition-transform duration-500" data-alt="Healthy food bowl" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLiy74n46VQVO2dxfpv3LwBRh8zR5CdjWnkjHBm2TnUVstpISqP3jMSwmqPlKuH-cZj6fPXhHlz_ZY8kPiJ3U0XAnZw6hXaWN0AWU_DEWId5_ZDokJF3xIo094NdPE0f95EGjgSfPSwDJBhlF0QhhWRhtp4GN1z_xTD1E1asEnpSaUWD6BPfZybJ-CchOZWkDYUnp5M7NzDEFJtIMThRTfXNOX_SSdHNKlN1CYjRZejVcdg5upI0QroKv5ZZmuJokxK1mOYET2qck");'></div>
+<div class="absolute bottom-3 left-3 z-20 flex gap-2">
+<span class="rounded bg-orange-500/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">Food</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 mb-2">
+<h3 class="text-lg font-bold text-[#111418] dark:text-white leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+<a class="after:absolute after:inset-0" href="#">Best spots for Ramen in the city?</a>
+</h3>
+<p class="text-[#637588] dark:text-[#92a4c9] text-sm line-clamp-2">I'm visiting next week and looking for authentic recommendations. Avoid tourist traps if possible.</p>
+</div>
+<div class="mt-auto flex items-center justify-between pt-3 border-t border-[#e5e7eb] dark:border-[#232f48]">
+<div class="flex items-center gap-2 relative z-20">
+<div class="size-8 rounded-full border-2 border-white dark:border-surface-dark bg-gray-700 bg-cover" data-alt="Profile picture of Foodie" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBXO485TcF6_YfkJ9VN3_LFIj9Cw8E7ZzkWmTum0mfcJc2dlpRPFpwrhua_hbffTHxQlFJHkWKjqtHVXJDsq4g4wO4y3AEXrMOkybhuJvHhNsJf1U9ljgDH2V5vncmNMo3-Z_3OX0MDbA1vcSvZH1wEGEtGZ7UgVFUzVMkH9zUROWGM4m4yT1yexnOhonazaRjezb9vUv_0eeuQThVZKRQ_D1gZsldFo4-PQdz4Or-fnDQDynopJXKjT5pEBCdK4rlxvdXss1ShCY4");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-[#111418] dark:text-white">Foodie</span>
+<span class="text-[10px] text-[#637588] dark:text-[#92a4c9]">3h ago</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-[#637588] dark:text-[#92a4c9] text-xs font-medium">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 230</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 15</div>
+</div>
+</div>
+</article>
+<!-- Card 6 -->
+<article class="group relative flex flex-col gap-3 rounded-2xl bg-white dark:bg-surface-dark p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-primary/5 dark:shadow-black/20 border border-transparent dark:hover:border-primary/30 ring-1 ring-black/5 dark:ring-white/5">
+<div class="relative w-full aspect-video rounded-xl overflow-hidden bg-gradient-to-br from-green-500 to-teal-600">
+<div class="absolute inset-0 bg-black/10 z-10"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white/50 text-6xl">code</span>
+</div>
+<div class="absolute bottom-3 left-3 z-20 flex gap-2">
+<span class="rounded bg-teal-500/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">Dev</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 mb-2">
+<h3 class="text-lg font-bold text-[#111418] dark:text-white leading-tight line-clamp-2 group-hover:text-primary transition-colors">
+<a class="after:absolute after:inset-0" href="#">Help with CSS Grid alignment issues</a>
+</h3>
+<p class="text-[#637588] dark:text-[#92a4c9] text-sm line-clamp-2">I can't get my footer to stick to the bottom when the content is short. Here's my snippet...</p>
+</div>
+<div class="mt-auto flex items-center justify-between pt-3 border-t border-[#e5e7eb] dark:border-[#232f48]">
+<div class="flex items-center gap-2 relative z-20">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-surface-dark bg-gray-700 bg-cover" data-alt="Profile picture of JuniorDev" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdkjBbNWQX3nHgSLoKbZTAjPm2hpQmWFQi1NemqqPMDkdjN1kInuId7GZd6qqrFJcgKYGjqexF3IAxAD2rfSfLAB_zw-7smbVSeTL-iSYjhNHGQV1z65-qr7fP5SJwHfn7X7yryRL-QpuDZmLx51RG6JJt5RpJ4YbDGQWbarIU3M-fFOGOemhC92PIgQ6S682TeQLAGVH3MIHQKdKAoXBwZULzZCo4WXiyzWZ5HUbSAclwSfp7bo6Up4MSlxVjfcxHVJQagSLKZBs");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-surface-dark bg-gray-700 bg-cover" data-alt="Profile picture of SeniorDev" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQhi6Z8u1tGESKZU62Fmj97tKZRHlmeHOYGpVofF2Yc7HCgKFLsLZXcFYKScKA8CBeTAjxl5ycsaCLdsP_-8Z2lnvevlusd-Hvkm7lPgaE1q5AGUbmEm7RTUkr8bV4ishe9X9JQpcxSzUL91Xvp7gXe7eJbyslF0iIS8azEO_OnndvaVgnolsmjPhuToAUOjo7bK0pIUrjI7DFMcKEwuGN7mslBxODoENXf_K72n8TQwRhvWdeaa1hJ5abSM0t_tjAeOvCTRcmtXg");'></div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-[#111418] dark:text-white">SeniorDev</span>
+<span class="text-[10px] text-[#637588] dark:text-[#92a4c9]">45m ago</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-[#637588] dark:text-[#92a4c9] text-xs font-medium">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">visibility</span> 65</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 8</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="flex justify-center pt-8 pb-4">
+<button class="flex items-center justify-center gap-2 rounded-xl h-10 px-8 bg-transparent hover:bg-[#e5e7eb] dark:hover:bg-[#232f48] border border-[#e5e7eb] dark:border-[#232f48] text-[#111418] dark:text-white text-sm font-bold leading-normal transition-colors">
+<span>Load More Topics</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Sidebar Column -->
+<aside class="w-full lg:w-80 flex flex-col gap-6 shrink-0">
+<!-- Popular Tags Widget -->
+<div class="rounded-2xl bg-white dark:bg-surface-dark p-5 border border-transparent ring-1 ring-black/5 dark:ring-white/5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Popular Tags</h3>
+<a class="text-primary text-xs font-bold hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-wrap gap-2">
+<a class="rounded-lg bg-background-light dark:bg-[#111722] px-3 py-2 text-xs font-medium text-[#637588] dark:text-[#92a4c9] hover:bg-primary/10 hover:text-primary transition-colors" href="#">#Photography</a>
+<a class="rounded-lg bg-background-light dark:bg-[#111722] px-3 py-2 text-xs font-medium text-[#637588] dark:text-[#92a4c9] hover:bg-primary/10 hover:text-primary transition-colors" href="#">#Technology</a>
+<a class="rounded-lg bg-background-light dark:bg-[#111722] px-3 py-2 text-xs font-medium text-[#637588] dark:text-[#92a4c9] hover:bg-primary/10 hover:text-primary transition-colors" href="#">#JapanTrip</a>
+<a class="rounded-lg bg-background-light dark:bg-[#111722] px-3 py-2 text-xs font-medium text-[#637588] dark:text-[#92a4c9] hover:bg-primary/10 hover:text-primary transition-colors" href="#">#DailyLife</a>
+<a class="rounded-lg bg-background-light dark:bg-[#111722] px-3 py-2 text-xs font-medium text-[#637588] dark:text-[#92a4c9] hover:bg-primary/10 hover:text-primary transition-colors" href="#">#Gaming</a>
+<a class="rounded-lg bg-background-light dark:bg-[#111722] px-3 py-2 text-xs font-medium text-[#637588] dark:text-[#92a4c9] hover:bg-primary/10 hover:text-primary transition-colors" href="#">#Help</a>
+</div>
+</div>
+<!-- Top Contributors Widget -->
+<div class="rounded-2xl bg-white dark:bg-surface-dark p-5 border border-transparent ring-1 ring-black/5 dark:ring-white/5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold">Top Contributors</h3>
+<span class="material-symbols-outlined text-[#637588] dark:text-[#92a4c9]">emoji_events</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover" data-alt="Avatar of user Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBuILhbTyPg9ss3GbufByem_NXN0P-rq86F12vVhpMi88MyHQXecBAjhR9EXoDwhjDyyX4LLYb6PUhjgMLWfZKx9KdF16mkIom67aYKG6ufTwWMrM23itEiZotxmVYhl0_1q-nyq4C36jAert5YShpuUo0wXU40KyqMq9ewLVDtBQKXAovYrWerPlDPTDyJh90lU360THPn24Ww952hxcAMsEsL1It8PJWGvarPPBB71gsANz6ClJk8hACFeNMdVs-tQ7gO3-n-8bw");'></div>
+<div class="absolute -bottom-1 -right-1 size-4 bg-yellow-500 rounded-full flex items-center justify-center text-[10px] font-bold text-black border border-white dark:border-surface-dark">1</div>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-sm font-bold text-[#111418] dark:text-white">Sarah Jenkins</p>
+<p class="text-xs text-[#637588] dark:text-[#92a4c9]">1,240 likes</p>
+</div>
+<button class="p-1 rounded-full hover:bg-background-light dark:hover:bg-[#111722] text-primary"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover" data-alt="Avatar of user Mike" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCWyvKpXrdudLS655i6kRYVTTkpMffZFCeumVCAKy-EK-OmLW2a16cQNi5p79zlLfKAXQYYdlFm4jLT-rObEgxFRpwIDb66EeFMJ9JnYjnugh-btQtodZkctTeuoH076gbciBp1awrG7iUH_O_tgP2_TxuPfd7bk_rergAJkkcUefUavDDdunqsFZub18hsAr-ilE3jYLblAFbJ84ZV2bt8b31yDKmYzZby0DRqT80m_I_rmHbKL40jGtn7IpMN9c0sujvw7MKIci4");'></div>
+<div class="absolute -bottom-1 -right-1 size-4 bg-gray-400 rounded-full flex items-center justify-center text-[10px] font-bold text-black border border-white dark:border-surface-dark">2</div>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-sm font-bold text-[#111418] dark:text-white">Mike Ross</p>
+<p class="text-xs text-[#637588] dark:text-[#92a4c9]">980 likes</p>
+</div>
+<button class="p-1 rounded-full hover:bg-background-light dark:hover:bg-[#111722] text-primary"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover" data-alt="Avatar of user Jessica" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXuL-i7bWPm6zk-Z51iCpRui7-h3X_5LVeDWTKT8TgWRezQCMBBy2C82qQ9G2NoPkfLttzMKImzF_7UjOSXUgRPFHiowrZbGptv5huiv0OV6DJgxr6JP4S8A-CdFX9Aq90vWzrtBGUdoko3-ip4W7HgMwrb6FSnRYx3tjiYhR6ITNgY8bVg4I56lrSn4krKjJ-O5yhEBCUgU98P004bJhmWWu9Yg0rqAfSI0FuL5eQ732_7uTXc9USn9dAcwaNGdgrOjZeh-n8kDY");'></div>
+<div class="absolute -bottom-1 -right-1 size-4 bg-orange-700 rounded-full flex items-center justify-center text-[10px] font-bold text-white border border-white dark:border-surface-dark">3</div>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-sm font-bold text-[#111418] dark:text-white">Jessica Pearson</p>
+<p class="text-xs text-[#637588] dark:text-[#92a4c9]">850 likes</p>
+</div>
+<button class="p-1 rounded-full hover:bg-background-light dark:hover:bg-[#111722] text-primary"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</body></html>

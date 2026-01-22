@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>إعدادات زين فورو - مرئي غني</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1A202C", // Slightly lighter for cards
+                        "surface-hover": "#232936",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                        "sans": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for dark mode richness */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-[#111722]/90 backdrop-blur-md border-b border-[#232f48] px-4 lg:px-10 py-3">
+<div class="flex items-center justify-between whitespace-nowrap max-w-[1400px] mx-auto w-full">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_535)">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_535"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-tight hidden sm:block">زين فورو الاجتماعي</h2>
+</div>
+<!-- Quick Actions -->
+<div class="flex items-center gap-6">
+<button class="text-[#92a4c9] hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-[#92a4c9] hover:text-white transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-[#232f48]" data-alt="User profile picture showing a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDptvi53tIOPhwpleyVnod6vsevEJP5N-P1-JSecyTrzL4TaLHKMLuzZSfLVerGqvRsG1CJ3P1HUDiOGNbnfb9Vpb9iAbBz2TSCzA6mQDIjLMddtjBOd6FskYXiQDtnq2sbhRqzw4khN_zkFojiQkQ2zfVLGGRDKBaE0jehoeporQc4sO9o-a0W8JWANJw0WD7DmIXOQw9a7tJS6mU7pTNiVmo-ss_YasaHl7EeRKM6tWSoR0bCgoGJniHAo6ggW4Sy8DaqQalhzVE");'>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 max-w-[1400px] mx-auto w-full">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden lg:flex w-72 flex-col gap-4 border-l border-[#232f48] bg-[#111722] p-6 sticky top-[73px] h-[calc(100vh-73px)] overflow-y-auto">
+<!-- User Mini Profile -->
+<div class="flex items-center gap-4 pb-6 border-b border-[#232f48]">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 ring-2 ring-primary/30" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQpx9puKIO9z44E0we4pRiaKfQeObtYOEKwun1niG2XtBTICl6gEsMUGwY5ZhnWPR0K386Xo_6lbiwSPL_t0Geqd8q2_fMDmV2inpJOKA3Iw4pKkRVp8rtUZ1ZsdddQxgMs5qg62XxJA-0fkIt-j56-98MA3CnFrCSb0vdf7kO9nR3z4H_FPONfSlySp63I3wsTSdeaDg148s_u7I3DlzxohFC8__yXINaMtCybGZ3Cj_BYH1TLfEfRPg3mSb0folHQEmvbsWAQ5w");'>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-lg font-bold leading-tight">أحمد محمد</h1>
+<p class="text-[#92a4c9] text-sm font-medium">عضو ماسي</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-2 mt-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#92a4c9] hover:bg-[#232f48] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">home</span>
+<span class="font-medium">الرئيسية</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#92a4c9] hover:bg-[#232f48] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
+<span class="font-medium">الملف الشخصي</span>
+</a>
+<div class="my-2 border-t border-[#232f48]"></div>
+<p class="px-4 text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 mt-2">الإعدادات</p>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/25" href="#">
+<span class="material-symbols-outlined fill-1">settings</span>
+<span class="font-bold">الإعدادات العامة</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#92a4c9] hover:bg-[#232f48] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">lock</span>
+<span class="font-medium">الخصوصية والأمان</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#92a4c9] hover:bg-[#232f48] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">notifications</span>
+<span class="font-medium">الإشعارات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#92a4c9] hover:bg-[#232f48] hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">palette</span>
+<span class="font-medium">المظهر</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-[#232f48] p-3 text-red-400 hover:bg-red-500/10 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-bold text-sm">تسجيل الخروج</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Hero Header Section -->
+<div class="relative w-full h-48 sm:h-64 bg-cover bg-center" data-alt="Abstract blue digital network pattern background" style='background-image: linear-gradient(to bottom, rgba(16, 22, 34, 0) 0%, #101622 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDXvuoNdkiQ5OPgBUst-L9ogF3DL9eq7Eh5eNDN2_AuntV5W_gkVIAuyONUPW7n8Ju6GeMeeH1tWJzcclgqMlrJOYtZ6tMzmNEJ-RifKdlcP_nEkpPKkXpJFDHLjTuBkYHi2t6abnBkwmiBAyY0cqpM-nvF9-SVUvQI2ZrHDdxI6QIGP4-eAGSi5-sbhqea67FKI1S0lWDRoDe8a6cHaMEuZzphzTIzek0K0BOkf5aJpaJwvhe06QA3aqLP2VYm-lfHN5IFlBsvAZk");'>
+<div class="absolute bottom-0 right-0 w-full px-4 sm:px-8 pb-6 flex flex-col sm:flex-row items-end sm:items-center justify-between gap-4">
+<div class="flex items-end gap-5">
+<div class="relative">
+<div class="size-24 sm:size-32 rounded-full border-4 border-[#101622] bg-cover bg-center shadow-2xl" data-alt="User profile avatar enlarged" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYMlQws4vtX99JY83Rd0I7ORwzrsQjWDgWNXhCREp2WUytO1Iv9DgX53loYNVq6BCb0WGR8w60HttxbUAFe3NSfm_EEf4yRmoGxPE5dkTsFdZ0JGkSHOv4olo5Dl7LA2aCeJCkTxj0xPxeXNjA1jWx2XFINngKlxvR806rMVbJVTuQkhPrqf6dAGh-j7wFl5GyRxCuioMU666FEMMpJoDS-ohNorGhRFLZTnj2S1D4OtWLZpxK7JzvZsaVYXxePiHMhed9O2xywJk");'>
+</div>
+<div class="absolute bottom-1 left-1 bg-green-500 size-5 rounded-full border-4 border-[#101622]"></div>
+</div>
+<div class="mb-3">
+<h1 class="text-2xl sm:text-3xl font-black text-white tracking-tight">إعدادات الحساب</h1>
+<p class="text-[#92a4c9] text-sm sm:text-base">تحكم في تجربتك وحافظ على أمان حسابك</p>
+</div>
+</div>
+</div>
+</div>
+<div class="px-4 sm:px-8 py-6 flex flex-col gap-8">
+<!-- Search Bar -->
+<div class="relative w-full max-w-2xl">
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+<span class="material-symbols-outlined text-primary">search</span>
+</div>
+<input class="block w-full p-4 pr-12 text-base text-white border-none rounded-2xl bg-[#1e2330] focus:ring-2 focus:ring-primary placeholder-[#64748b] shadow-sm transition-all hover:bg-[#252b3b]" placeholder="ابحث عن إعداد معين (مثل: كلمة المرور، الوضع الليلي)..." type="text"/>
+</div>
+<!-- Settings Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+<!-- Card 1: Account Security -->
+<div class="group relative flex flex-col justify-between p-6 bg-[#1e2330] hover:bg-[#252b3b] border border-transparent hover:border-primary/30 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-primary/5 cursor-pointer">
+<div>
+<div class="size-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 mb-4 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[28px]">shield_person</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">الأمان وتسجيل الدخول</h3>
+<p class="text-[#92a4c9] text-sm leading-relaxed">تغيير كلمة المرور، المصادقة الثنائية، وإدارة الجلسات النشطة.</p>
+</div>
+<div class="mt-6 flex items-center text-sm font-bold text-primary">
+<span>إدارة</span>
+<span class="material-symbols-outlined text-lg mr-1 rotate-180">arrow_right_alt</span>
+</div>
+</div>
+<!-- Card 2: Privacy -->
+<div class="group relative flex flex-col justify-between p-6 bg-[#1e2330] hover:bg-[#252b3b] border border-transparent hover:border-emerald-500/30 rounded-2xl transition-all duration-300 shadow-lg cursor-pointer">
+<div>
+<div class="size-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 mb-4 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[28px]">lock</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">الخصوصية</h3>
+<p class="text-[#92a4c9] text-sm leading-relaxed">التحكم في من يمكنه رؤية منشوراتك، حالتك المتصلة، ومعلوماتك الشخصية.</p>
+</div>
+<div class="mt-6 flex items-center text-sm font-bold text-emerald-500">
+<span>تعديل</span>
+<span class="material-symbols-outlined text-lg mr-1 rotate-180">arrow_right_alt</span>
+</div>
+</div>
+<!-- Card 3: Notifications (With Toggle) -->
+<div class="group relative flex flex-col justify-between p-6 bg-[#1e2330] hover:bg-[#252b3b] border border-transparent hover:border-amber-500/30 rounded-2xl transition-all duration-300 shadow-lg cursor-pointer">
+<div>
+<div class="flex justify-between items-start mb-4">
+<div class="size-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[28px]">notifications_active</span>
+</div>
+<!-- Toggle Switch Mockup -->
+<div class="relative inline-flex items-center cursor-pointer" onclick="event.stopPropagation();">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">الإشعارات والتنبيهات</h3>
+<p class="text-[#92a4c9] text-sm leading-relaxed">تخصيص ما تتلقى إشعارات بشأنه عبر البريد الإلكتروني أو المتصفح.</p>
+</div>
+<div class="mt-6 flex items-center text-sm font-bold text-amber-500">
+<span>تخصيص</span>
+<span class="material-symbols-outlined text-lg mr-1 rotate-180">arrow_right_alt</span>
+</div>
+</div>
+<!-- Card 4: Appearance -->
+<div class="group relative flex flex-col justify-between p-6 bg-[#1e2330] hover:bg-[#252b3b] border border-transparent hover:border-purple-500/30 rounded-2xl transition-all duration-300 shadow-lg cursor-pointer">
+<div>
+<div class="size-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500 mb-4 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[28px]">palette</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">المظهر والتفضيلات</h3>
+<p class="text-[#92a4c9] text-sm leading-relaxed">الوضع الداكن، حجم الخط، لغة الواجهة، وخيارات العرض الأخرى.</p>
+</div>
+<div class="mt-6 flex items-center gap-3">
+<div class="h-6 w-6 rounded-full bg-white border border-gray-600"></div>
+<div class="h-6 w-6 rounded-full bg-[#101622] border border-gray-600 ring-2 ring-purple-500 ring-offset-2 ring-offset-[#1e2330]"></div>
+<div class="h-6 w-6 rounded-full bg-[#0f172a] border border-gray-600"></div>
+</div>
+</div>
+<!-- Card 5: Connected Accounts -->
+<div class="group relative flex flex-col justify-between p-6 bg-[#1e2330] hover:bg-[#252b3b] border border-transparent hover:border-pink-500/30 rounded-2xl transition-all duration-300 shadow-lg cursor-pointer">
+<div>
+<div class="size-12 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-500 mb-4 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[28px]">link</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">الحسابات المرتبطة</h3>
+<p class="text-[#92a4c9] text-sm leading-relaxed">إدارة الارتباط مع جوجل، تويتر، فيسبوك وغيرها لسهولة الدخول.</p>
+</div>
+<div class="mt-6 flex items-center gap-2 opacity-60">
+<span class="text-xs text-white bg-[#232f48] px-2 py-1 rounded">Google</span>
+<span class="text-xs text-white bg-[#232f48] px-2 py-1 rounded">Twitter</span>
+</div>
+</div>
+<!-- Card 6: Blocking -->
+<div class="group relative flex flex-col justify-between p-6 bg-[#1e2330] hover:bg-[#252b3b] border border-transparent hover:border-red-500/30 rounded-2xl transition-all duration-300 shadow-lg cursor-pointer">
+<div>
+<div class="size-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500 mb-4 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[28px]">block</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">التجاهل والحظر</h3>
+<p class="text-[#92a4c9] text-sm leading-relaxed">إدارة قائمة الأعضاء المحظورين والمحتوى الذي لا ترغب برؤيته.</p>
+</div>
+<div class="mt-6 flex items-center text-sm font-bold text-red-500">
+<span>عرض القائمة</span>
+<span class="material-symbols-outlined text-lg mr-1 rotate-180">arrow_right_alt</span>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<div class="mt-10 border-t border-[#232f48] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#92a4c9]">
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">شروط الخدمة</a>
+<a class="hover:text-white transition-colors" href="#">سياسة الخصوصية</a>
+<a class="hover:text-white transition-colors" href="#">المساعدة والدعم</a>
+</div>
+<div>
+                        © 2023 زين فورو الاجتماعي. جميع الحقوق محفوظة.
+                    </div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

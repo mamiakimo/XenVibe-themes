@@ -1,0 +1,234 @@
+<!-- XenVibe Cards - Notable Members Template -->
+<!-- Two Tab Groups Layout -->
+
+<xf:title>{{ phrase('notable_members') }}</xf:title>
+
+<xf:wrap template="member_wrapper">
+	<xf:set var="$pageSelected" value="overview" />
+</xf:wrap>
+
+<xf:macro id="metadata_macros::canonical_url" arg-canonicalUrl="{{ link('canonical:members') }}" />
+
+<xf:css src="member.less" />
+
+<div class="xv-members-page">
+
+	<xf:if is="$userNotFound">
+		<div class="blockMessage blockMessage--error blockMessage--iconic">{{ phrase('specified_member_cannot_be_found_enter_entire_name') }}</div>
+	</xf:if>
+
+	<xf:if is="$memberStats is empty">
+		<div class="xv-empty-state">
+			<span class="material-symbols-outlined">group_off</span>
+			<p>{{ phrase('no_notable_members_can_currently_be_shown') }}</p>
+		</div>
+	<xf:else />
+
+		<!-- ================================================ -->
+		<!-- GROUP 1: الأكثر مشاركة - الأكثر تفاعلاً - الأكثر إجابة -->
+		<!-- ================================================ -->
+		<section class="xv-member-section" data-group-id="1">
+			<div class="xv-filter-chips">
+				<xf:set var="$isFirst1" value="{{ true }}" />
+				<xf:foreach loop="$memberStats" value="$stat">
+					<xf:if is="$stat.member_stat_key == 'most_messages'">
+						<a href="javascript:void(0)" class="xv-filter-chip {{ $isFirst1 ? 'is-active' : '' }}" data-stat-key="{$stat.member_stat_key}">
+							<span class="material-symbols-outlined">chat</span>
+							{$stat.title}
+						</a>
+						<xf:set var="$isFirst1" value="{{ false }}" />
+					</xf:if>
+					<xf:if is="$stat.member_stat_key == 'highest_reaction_score'">
+						<a href="javascript:void(0)" class="xv-filter-chip {{ $isFirst1 ? 'is-active' : '' }}" data-stat-key="{$stat.member_stat_key}">
+							<span class="material-symbols-outlined">thumb_up</span>
+							{$stat.title}
+						</a>
+						<xf:set var="$isFirst1" value="{{ false }}" />
+					</xf:if>
+					<xf:if is="$stat.member_stat_key == 'most_solutions'">
+						<a href="javascript:void(0)" class="xv-filter-chip {{ $isFirst1 ? 'is-active' : '' }}" data-stat-key="{$stat.member_stat_key}">
+							<span class="material-symbols-outlined">lightbulb</span>
+							{$stat.title}
+						</a>
+						<xf:set var="$isFirst1" value="{{ false }}" />
+					</xf:if>
+				</xf:foreach>
+			</div>
+
+			<ul class="xv-tab-panes memberOverviewBlocks">
+				<xf:set var="$isFirstPane1" value="{{ true }}" />
+				<xf:foreach loop="$memberStats" key="$key" value="$memberStat">
+					<xf:set var="$currentResults" value="{$resultsData.{$key}}" />
+					<xf:if is="$memberStat.member_stat_key == 'most_messages'">
+						<xf:if is="$currentResults">
+							<li class="memberOverviewBlock {{ $isFirstPane1 ? 'is-active' : '' }}" data-stat-key="{$memberStat.member_stat_key}">
+								<div class="xv-members-grid">
+									<xf:foreach loop="$currentResults" value="$data">
+										<xf:macro id="xv_member_card" arg-user="{$data.user}" />
+									</xf:foreach>
+								</div>
+							</li>
+							<xf:set var="$isFirstPane1" value="{{ false }}" />
+						</xf:if>
+					</xf:if>
+					<xf:if is="$memberStat.member_stat_key == 'highest_reaction_score'">
+						<xf:if is="$currentResults">
+							<li class="memberOverviewBlock {{ $isFirstPane1 ? 'is-active' : '' }}" data-stat-key="{$memberStat.member_stat_key}">
+								<div class="xv-members-grid">
+									<xf:foreach loop="$currentResults" value="$data">
+										<xf:macro id="xv_member_card" arg-user="{$data.user}" />
+									</xf:foreach>
+								</div>
+							</li>
+							<xf:set var="$isFirstPane1" value="{{ false }}" />
+						</xf:if>
+					</xf:if>
+					<xf:if is="$memberStat.member_stat_key == 'most_solutions'">
+						<xf:if is="$currentResults">
+							<li class="memberOverviewBlock {{ $isFirstPane1 ? 'is-active' : '' }}" data-stat-key="{$memberStat.member_stat_key}">
+								<div class="xv-members-grid">
+									<xf:foreach loop="$currentResults" value="$data">
+										<xf:macro id="xv_member_card" arg-user="{$data.user}" />
+									</xf:foreach>
+								</div>
+							</li>
+							<xf:set var="$isFirstPane1" value="{{ false }}" />
+						</xf:if>
+					</xf:if>
+				</xf:foreach>
+			</ul>
+		</section>
+
+		<!-- ================================================ -->
+		<!-- GROUP 2: الأكثر نقاطاً - أعياد ميلاد اليوم - طاقم الإدارة -->
+		<!-- ================================================ -->
+		<section class="xv-member-section" data-group-id="2">
+			<div class="xv-filter-chips">
+				<xf:set var="$isFirst2" value="{{ true }}" />
+				<xf:foreach loop="$memberStats" value="$stat">
+					<xf:if is="$stat.member_stat_key == 'most_points'">
+						<a href="javascript:void(0)" class="xv-filter-chip {{ $isFirst2 ? 'is-active' : '' }}" data-stat-key="{$stat.member_stat_key}">
+							<span class="material-symbols-outlined">military_tech</span>
+							{$stat.title}
+						</a>
+						<xf:set var="$isFirst2" value="{{ false }}" />
+					</xf:if>
+					<xf:if is="$stat.member_stat_key == 'todays_birthdays'">
+						<a href="javascript:void(0)" class="xv-filter-chip {{ $isFirst2 ? 'is-active' : '' }}" data-stat-key="{$stat.member_stat_key}">
+							<span class="material-symbols-outlined">cake</span>
+							{$stat.title}
+						</a>
+						<xf:set var="$isFirst2" value="{{ false }}" />
+					</xf:if>
+					<xf:if is="$stat.member_stat_key == 'staff_members'">
+						<a href="javascript:void(0)" class="xv-filter-chip {{ $isFirst2 ? 'is-active' : '' }}" data-stat-key="{$stat.member_stat_key}">
+							<span class="material-symbols-outlined">shield_person</span>
+							{$stat.title}
+						</a>
+						<xf:set var="$isFirst2" value="{{ false }}" />
+					</xf:if>
+				</xf:foreach>
+			</div>
+
+			<ul class="xv-tab-panes memberOverviewBlocks">
+				<xf:set var="$isFirstPane2" value="{{ true }}" />
+				<xf:foreach loop="$memberStats" key="$key" value="$memberStat">
+					<xf:set var="$currentResults2" value="{$resultsData.{$key}}" />
+					<xf:if is="$memberStat.member_stat_key == 'most_points'">
+						<xf:if is="$currentResults2">
+							<li class="memberOverviewBlock {{ $isFirstPane2 ? 'is-active' : '' }}" data-stat-key="{$memberStat.member_stat_key}">
+								<div class="xv-members-grid">
+									<xf:foreach loop="$currentResults2" value="$data">
+										<xf:macro id="xv_member_card" arg-user="{$data.user}" />
+									</xf:foreach>
+								</div>
+							</li>
+							<xf:set var="$isFirstPane2" value="{{ false }}" />
+						</xf:if>
+					</xf:if>
+					<xf:if is="$memberStat.member_stat_key == 'todays_birthdays'">
+						<xf:if is="$currentResults2">
+							<li class="memberOverviewBlock {{ $isFirstPane2 ? 'is-active' : '' }}" data-stat-key="{$memberStat.member_stat_key}">
+								<div class="xv-members-grid">
+									<xf:foreach loop="$currentResults2" value="$data">
+										<xf:macro id="xv_member_card" arg-user="{$data.user}" />
+									</xf:foreach>
+								</div>
+							</li>
+							<xf:set var="$isFirstPane2" value="{{ false }}" />
+						</xf:if>
+					</xf:if>
+					<xf:if is="$memberStat.member_stat_key == 'staff_members'">
+						<xf:if is="$currentResults2">
+							<li class="memberOverviewBlock {{ $isFirstPane2 ? 'is-active' : '' }}" data-stat-key="{$memberStat.member_stat_key}">
+								<div class="xv-members-grid">
+									<xf:foreach loop="$currentResults2" value="$data">
+										<xf:macro id="xv_member_card" arg-user="{$data.user}" />
+									</xf:foreach>
+								</div>
+							</li>
+							<xf:set var="$isFirstPane2" value="{{ false }}" />
+						</xf:if>
+					</xf:if>
+				</xf:foreach>
+			</ul>
+		</section>
+
+	</xf:if>
+</div>
+
+<!-- Member Card Macro -->
+<xf:macro id="xv_member_card" arg-user="!">
+	<div class="xv-member-card">
+		<div class="xv-member-avatar-wrap">
+			<div class="xv-member-avatar">
+				<xf:avatar user="$user" size="m" />
+			</div>
+			<xf:if is="$user.is_staff">
+				<span class="xv-member-verified">
+					<span class="material-symbols-outlined">verified</span>
+				</span>
+			</xf:if>
+		</div>
+		<h3 class="xv-member-name">
+			<xf:username user="$user" rich="true" />
+		</h3>
+		<xf:if is="$user.custom_title">
+			<span class="xv-member-role">{$user.custom_title}</span>
+		</xf:if>
+		<div class="xv-member-stats">
+			<div class="xv-member-stat">
+				<span class="xv-member-stat-label">رسائل</span>
+				<span class="xv-member-stat-value">{{ number_short($user.message_count) }}</span>
+			</div>
+			<div class="xv-member-stat">
+				<span class="xv-member-stat-label">تفاعلات</span>
+				<span class="xv-member-stat-value">{{ number_short($user.reaction_score) }}</span>
+			</div>
+			<div class="xv-member-stat">
+				<span class="xv-member-stat-label">نقاط</span>
+				<span class="xv-member-stat-value">{{ number_short($user.trophy_points) }}</span>
+			</div>
+		</div>
+		<xf:if is="$xf.visitor.canFollowUser($user)">
+			<a href="{{ link('members/follow', $user) }}"
+				class="xv-member-btn{{ $xf.visitor.isFollowing($user) ? ' xv-member-btn--following' : '' }}"
+				data-xf-click="switch"
+				data-sk-follow="متابعة"
+				data-sk-unfollow="إلغاء المتابعة">
+				<xf:if is="$xf.visitor.isFollowing($user)">
+					<span class="material-symbols-outlined">person_remove</span>
+					إلغاء المتابعة
+				<xf:else />
+					<span class="material-symbols-outlined">person_add</span>
+					متابعة
+				</xf:if>
+			</a>
+		<xf:else />
+			<a href="{{ link('members', $user) }}" class="xv-member-btn">
+				<span class="material-symbols-outlined">person</span>
+				عرض الملف
+			</a>
+		</xf:if>
+	</div>
+</xf:macro>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PortalGrid: Edit Post - Dark</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#1d64f2",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0f1115",
+                        "surface-dark": "#1e2229",
+                        "surface-dark-lighter": "#2a303b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark mode tech feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1115;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a303b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f4756;
+        }
+        .glass-panel {
+            background: rgba(30, 34, 41, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 dark:border-white/5 bg-white dark:bg-[#111722] px-6 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">PortalGrid</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-primary dark:text-white text-sm font-medium leading-normal" href="#">Forums</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Members</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Activity</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-[#232f48] border border-transparent focus-within:border-primary/50 transition-colors">
+<div class="text-slate-400 dark:text-[#92a4c9] flex items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent border-none focus:ring-0 text-sm h-full placeholder:text-slate-400 dark:placeholder:text-[#92a4c9] px-3" placeholder="Search..."/>
+</div>
+</label>
+<button class="relative text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#111722]"></span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-white/10 cursor-pointer hover:border-primary transition-colors" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCkvFOZ8f_IRIODCCunEZ85CyAuDlzzSGxlXB_LZufiyXHWE8VKiu_Vz59znd5V_MMPFYjSIZIU-UtzqJVlGUoxubH4sK3JTrRJJV2FvGc2tta8K-XLROe8dx846xOlpGqmg-r7P382rM1bIG7ahxwuF7qf5B_B3Cbn1TGSZDnz06Gy46GhMrCHElBUJJk4l_Ba3c9Pk_Pb9eD7qZM8dmTHTgew9kBbwIcxfqirFuyu01Mifyc4O2OKlUXMhyfw-gprLGwNFei7vXg");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 sm:px-8 py-6 w-full max-w-[1440px] mx-auto">
+<!-- Breadcrumbs & Header -->
+<div class="mb-8 space-y-4">
+<div class="flex flex-wrap items-center gap-2 text-sm text-slate-500 dark:text-[#92a4c9]">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Forums</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Technology</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">Edit Post</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-1">
+<h1 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900 dark:text-white">Edit Portal Entry</h1>
+<p class="text-slate-500 dark:text-[#92a4c9]">Update your content block for the Technology grid.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/5 border border-transparent transition-colors">
+                        Drafts (2)
+                    </button>
+<button class="px-4 py-2 text-sm font-medium rounded-lg bg-surface-dark border border-white/10 text-white hover:bg-surface-dark-lighter transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">visibility</span> Preview
+                    </button>
+</div>
+</div>
+</div>
+<!-- Main Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full">
+<!-- Left Column: Main Editor (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Title & Meta -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 space-y-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Thread Title</label>
+<input class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-slate-400" type="text" value="The Future of AI in Web Development"/>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Prefix</label>
+<div class="relative">
+<select class="w-full appearance-none bg-white dark:bg-surface-dark border border-slate-200 dark:border-white/10 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all">
+<option>Discussion</option>
+<option>News</option>
+<option>Tutorial</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-slate-400">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Rich Text Editor Tile -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-white/5 shadow-sm overflow-hidden flex flex-col min-h-[500px] flex-1">
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center gap-1 p-2 border-b border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-[#232830]">
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-white/5 text-slate-600 dark:text-slate-400 transition-colors" title="Bold">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-white/5 text-slate-600 dark:text-slate-400 transition-colors" title="Italic">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-white/5 text-slate-600 dark:text-slate-400 transition-colors" title="Underline">
+<span class="material-symbols-outlined text-[20px]">format_underlined</span>
+</button>
+<div class="w-px h-6 bg-slate-300 dark:bg-white/10 mx-1"></div>
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-white/5 text-slate-600 dark:text-slate-400 transition-colors" title="Link">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-white/5 text-slate-600 dark:text-slate-400 transition-colors" title="Image">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-white/5 text-slate-600 dark:text-slate-400 transition-colors" title="Code Block">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</button>
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-white/5 text-slate-600 dark:text-slate-400 transition-colors" title="Quote">
+<span class="material-symbols-outlined text-[20px]">format_quote</span>
+</button>
+<div class="w-px h-6 bg-slate-300 dark:bg-white/10 mx-1"></div>
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-white/5 text-slate-600 dark:text-slate-400 transition-colors" title="List">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+</button>
+<div class="flex-1"></div>
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-white/5 text-slate-600 dark:text-slate-400 transition-colors" title="Fullscreen">
+<span class="material-symbols-outlined text-[20px]">fullscreen</span>
+</button>
+</div>
+<!-- Text Area -->
+<textarea class="w-full h-full flex-1 bg-transparent border-none p-6 text-slate-800 dark:text-slate-200 resize-none focus:ring-0 text-lg leading-relaxed font-normal" placeholder="Start typing your amazing content here...">The rapid evolution of artificial intelligence is reshaping how we approach web development. From code generation to dynamic UI adaptation, the possibilities seem endless. 
+
+But what does this mean for the traditional frontend developer?
+
+In this post, I want to explore three key areas:
+1. Automated Testing
+2. Generative Design
+3. Backend optimization</textarea>
+<!-- Bottom Status Bar -->
+<div class="px-4 py-2 border-t border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-[#232830] flex justify-between items-center text-xs text-slate-500 dark:text-slate-400">
+<span>Last saved 2 minutes ago</span>
+<span>428 words</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Tools Grid (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Media Manager Widget -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-white/5 p-4 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Media Assets</h3>
+<span class="material-symbols-outlined text-primary">perm_media</span>
+</div>
+<!-- Drop Zone -->
+<div class="border-2 border-dashed border-slate-300 dark:border-white/10 rounded-lg p-6 flex flex-col items-center justify-center text-center gap-2 hover:border-primary/50 hover:bg-primary/5 transition-all cursor-pointer group">
+<div class="size-10 rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 group-hover:text-white">cloud_upload</span>
+</div>
+<p class="text-sm font-medium text-slate-600 dark:text-slate-300">Click or drag images</p>
+<p class="text-xs text-slate-400 dark:text-slate-500">JPG, PNG, GIF up to 10MB</p>
+</div>
+<!-- Attached Images List -->
+<div class="space-y-2">
+<div class="flex items-center gap-3 p-2 bg-slate-50 dark:bg-[#15181e] rounded-lg border border-slate-200 dark:border-white/5 group">
+<div class="size-10 rounded bg-cover bg-center" data-alt="Thumbnail of AI circuit board abstract art" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACorkEmV-NdQHzyZKc1BOZeXkqXsd1WO5dTwjnCiRBX6-1rz1WSknnwVmDFtL0f9w_9kWRtw1G4IYPbzhHxDPc9eC67sBrURpVEn07tt03Xf7Jh1Vao6lR5zdVJcoskIgWBRC3t-fwD8qI5OePv8d3J25nAofnTnNH58k4oiu2Tt7L-Rd94V0JILVPLC5uiF7h2MZRAXTg15HuM62U1qj7v_AatdtPccek5H42cjIz5qdE2l0Sjbv8LFLTGHfxmWfBelyyHiNzvTI");'></div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">header-ai-viz.jpg</p>
+<p class="text-xs text-green-500">Uploaded</p>
+</div>
+<button class="text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity p-1">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Interactive Poll Widget -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-white/5 p-4 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Poll</h3>
+<div class="flex items-center gap-2">
+<span class="text-xs text-slate-500 dark:text-slate-400">Off</span>
+<div class="w-8 h-4 bg-slate-200 dark:bg-white/10 rounded-full relative cursor-pointer">
+<div class="absolute left-0.5 top-0.5 size-3 bg-white dark:bg-slate-400 rounded-full shadow-sm transition-transform"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Settings & Tags Widget -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-white/5 p-4 flex flex-col gap-4 flex-1">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Post Settings</h3>
+<div class="space-y-3">
+<div class="flex flex-col gap-1">
+<label class="text-xs font-medium text-slate-600 dark:text-slate-300">Tags</label>
+<div class="flex flex-wrap gap-2 p-2 bg-slate-50 dark:bg-[#15181e] rounded-lg border border-slate-200 dark:border-white/5 min-h-[42px]">
+<span class="px-2 py-0.5 rounded bg-primary/20 text-primary text-xs font-medium border border-primary/20 flex items-center gap-1">
+                                    AI <span class="material-symbols-outlined text-[12px] cursor-pointer">close</span>
+</span>
+<span class="px-2 py-0.5 rounded bg-primary/20 text-primary text-xs font-medium border border-primary/20 flex items-center gap-1">
+                                    WebDev <span class="material-symbols-outlined text-[12px] cursor-pointer">close</span>
+</span>
+<input class="bg-transparent border-none p-0 text-xs focus:ring-0 text-slate-700 dark:text-slate-300 placeholder:text-slate-400 w-20" placeholder="+ Add tag" type="text"/>
+</div>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="text-sm text-slate-600 dark:text-slate-300">Lock Thread</span>
+<div class="size-5 border-2 border-slate-300 dark:border-white/20 rounded cursor-pointer"></div>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-white/5">
+<span class="text-sm text-slate-600 dark:text-slate-300">Watch Thread</span>
+<div class="size-5 bg-primary border-2 border-primary rounded flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</div>
+</div>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm text-slate-600 dark:text-slate-300">Sticky Post</span>
+<div class="size-5 border-2 border-slate-300 dark:border-white/20 rounded cursor-pointer"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Action Footer -->
+<div class="sticky bottom-4 z-40 mt-6">
+<div class="glass-panel rounded-xl p-4 flex items-center justify-between shadow-lg shadow-black/20 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-4 text-sm text-slate-400 hidden sm:flex">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">info</span>
+<span>Auto-saved to draft</span>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+<button class="px-6 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-200 dark:hover:bg-white/10 transition-colors">
+                        Discard
+                    </button>
+<button class="px-8 py-2.5 rounded-lg bg-primary hover:bg-primary-hover text-white font-semibold shadow-lg shadow-primary/20 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">save</span> Update Portal
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Post (Modal) - Dark</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for textarea */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background-color: #324467;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col text-[#111418] dark:text-white overflow-hidden">
+<!-- Background Layer (Simulating the underlying page/feed) -->
+<div class="fixed inset-0 z-0 flex flex-col opacity-20 pointer-events-none select-none blur-[2px]">
+<div class="w-full h-16 border-b border-[#324467] bg-[#192233]"></div>
+<div class="flex-1 flex justify-center p-8">
+<div class="w-full max-w-[960px] space-y-4">
+<div class="h-48 rounded-xl bg-[#192233] border border-[#324467]"></div>
+<div class="h-48 rounded-xl bg-[#192233] border border-[#324467]"></div>
+<div class="h-48 rounded-xl bg-[#192233] border border-[#324467]"></div>
+</div>
+</div>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-all duration-300">
+<!-- Modal Container -->
+<div class="w-full max-w-[680px] flex flex-col bg-[#192233] border border-[#324467] rounded-xl shadow-2xl relative overflow-hidden ring-1 ring-white/10">
+<!-- Header -->
+<div class="flex items-center justify-between px-5 py-4 border-b border-[#324467]">
+<h3 class="text-white tracking-tight text-xl font-bold leading-tight">Create Post</h3>
+<button class="group flex items-center justify-center p-2 rounded-full hover:bg-[#324467] transition-colors focus:outline-none">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-white" style="font-size: 24px;">close</span>
+</button>
+</div>
+<!-- Scrollable Content Area -->
+<div class="flex flex-col flex-1 overflow-y-auto max-h-[70vh]">
+<div class="flex px-5 py-5 gap-4">
+<!-- User Avatar -->
+<div class="shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 shadow-sm border border-[#324467]" data-alt="User profile picture showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2HJiZ7thq45pErFGtKm0v_RLK43Py2-5PeulpDqzU8PWPay4FCWSxkDoYc9imomwmzQb2WRQiBJPMQhpbEG7J4ciBmRj-LbNC_eanrOOnVMI-MEJqNE-yKuJzjNeRyvG4AIVo6DLLlkNte7k71c9_juJQM_mFy0SsKI_uMlRSzlXJDqXtYIFbkz-qDsX4IXN5VrxeFmCJ4CiQc9OYemVXK6NZRP2TVgQtyfNIq14_1JSMMSHfhj91V68gVC7boaZRGF6MNzPUZiQ");'>
+</div>
+</div>
+<!-- Input & Preview Section -->
+<div class="flex flex-1 flex-col gap-4">
+<!-- Text Input -->
+<div class="flex flex-col">
+<textarea class="w-full bg-transparent text-white text-lg placeholder-[#64748b] resize-none focus:outline-none border-none p-0 min-h-[120px] leading-relaxed" placeholder="What's happening? Share your thoughts..."></textarea>
+</div>
+<!-- Link Preview / Media Preview (Example of uploaded content) -->
+<div class="relative group w-full rounded-xl overflow-hidden border border-[#324467] bg-[#111722]">
+<!-- Media Content -->
+<div class="aspect-video w-full bg-center bg-cover bg-no-repeat opacity-90 group-hover:opacity-100 transition-opacity" data-alt="Preview of a futuristic city landscape with neon lights" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDeq2bgaCqvTqgQJT-n0VNZbMt5Ah7hnTBuHLhg1UnH5CZDEqzEUEYS2z-KtLK4D0A_QQBTqVI_wVjgzwugc_JzD4dR-nsms2S9uuAm3gH99nV6voADrnP68OwVdebuZ18cqriH0lOCA2IHfVurALEYXO2vrFxqKGNhs5hzRiOIkzlkoVoWalSSNt8puYGqy6LaXp8V_EIA4HHajxb_ddZhug5Exm-oDcoJu6rT9PUF7sveXIfKkd-DnGXa9reTbHdQhTxH7Deovk0");'>
+</div>
+<!-- Remove Button -->
+<button class="absolute top-3 right-3 bg-black/60 hover:bg-black/80 text-white rounded-full p-1.5 backdrop-blur-md transition-all opacity-0 group-hover:opacity-100 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+</button>
+<!-- Alt Text Badge -->
+<div class="absolute bottom-3 left-3 bg-black/60 text-white text-xs font-semibold px-2 py-1 rounded-md backdrop-blur-md">
+                                ALT
+                            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Action Bar -->
+<div class="flex flex-col px-5 pb-5 pt-2">
+<!-- Divider -->
+<div class="h-px w-full bg-[#324467] mb-4"></div>
+<div class="flex flex-wrap items-center justify-between gap-4">
+<!-- Quick Actions (Left) -->
+<div class="flex items-center gap-1">
+<button class="group flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-all" title="Add Image">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">image</span>
+</button>
+<button class="group flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-all" title="Add Video">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">videocam</span>
+</button>
+<button class="group flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-all" title="Create Poll">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">poll</span>
+</button>
+<button class="group flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-all" title="Insert Code">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">code</span>
+</button>
+<button class="group flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-all" title="Add Emoji">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">sentiment_satisfied</span>
+</button>
+</div>
+<!-- Post Controls (Right) -->
+<div class="flex items-center gap-3 ml-auto">
+<!-- Privacy Dropdown -->
+<div class="relative group">
+<div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#232f48] border border-transparent hover:border-[#324467] transition-all cursor-pointer">
+<span class="material-symbols-outlined text-[#92a4c9] text-sm">public</span>
+<span class="text-[#92a4c9] text-sm font-medium pr-1">Public</span>
+<span class="material-symbols-outlined text-[#92a4c9] text-sm">expand_more</span>
+</div>
+</div>
+<!-- Divider Vertical -->
+<div class="w-px h-8 bg-[#324467] mx-1 hidden sm:block"></div>
+<!-- Post Button -->
+<button class="flex items-center justify-center h-10 px-6 rounded-lg bg-primary hover:bg-[#1151d3] text-white text-sm font-bold tracking-[0.015em] transition-all shadow-lg shadow-primary/25 active:scale-95">
+                            Post
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PortalGrid: تفاصيل الحساب</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1e2532",
+                        "surface-border": "#2d3a54",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', sans-serif;
+        }
+        /* Custom scrollbar for dark mode feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3a54; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3e4e6e; 
+        }
+        
+        .portal-card {
+            background-color: #1e2532;
+            border: 1px solid #2d3a54;
+            transition: all 0.2s ease-in-out;
+        }
+        .portal-card:hover {
+            border-color: #3e4e6e;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Form inputs override */
+        .form-input-dark {
+            background-color: #111722;
+            border: 1px solid #2d3a54;
+            color: white;
+            transition: all 0.2s;
+        }
+        .form-input-dark:focus {
+            border-color: #135bec;
+            ring: 1px solid #135bec;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(19, 91, 236, 0.2);
+        }
+    </style>
+</head>
+<body class="relative flex h-full min-h-screen w-full flex-col bg-background-light dark:bg-background-dark text-white overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-surface-border bg-background-dark/95 backdrop-blur-md px-4 py-3 lg:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined !text-4xl">grid_view</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-tight">PortalGrid</h2>
+</div>
+<!-- Search Bar (Desktop) -->
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full group focus-within:ring-2 focus-within:ring-primary/50">
+<div class="text-text-secondary flex border border-surface-border bg-surface-dark items-center justify-center ps-4 rounded-s-lg border-e-0 group-focus-within:border-primary">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 border border-surface-border bg-surface-dark h-full placeholder:text-text-secondary px-4 rounded-s-none border-s-0 ps-2 text-sm font-normal leading-normal group-focus-within:border-primary" placeholder="بحث..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4 lg:gap-8">
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors" href="#">الرئيسية</a>
+<a class="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors" href="#">المنتديات</a>
+<a class="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors" href="#">الأعضاء</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-text-secondary hover:text-white lg:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center gap-3 ps-4 border-s border-surface-border">
+<div class="flex flex-col items-end hidden sm:flex">
+<span class="text-sm font-bold text-white">أحمد محمد</span>
+<span class="text-xs text-text-secondary">عضو مميز</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-surface-border" data-alt="User profile picture placeholder with abstract gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfr7YYh3qzDXHlooNSZmstj57bJNYLEgqIC9zI1VKyXMqWfouFF4ITLs4XiJA3-vFvRIBMV2PSekz2s247K9FNzOWpQJpHaHd5M9RCxRpu9zsKqpdXXmJ5m_40-ZmgO3RDg9iO-CdsyjP7i8gm4EyDhX1N9rP4mbpNFeDSz3JJl9QjJjsmX8KRdfs23sjgb8TDoDFiVLQsMWsNxifbNgRBcFcWTrsSvd6X5JZX0PxqPTkN_3MDXj_Z6groioS3OjCbkgD_R1WIn3A");'>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Layout Container -->
+<div class="flex flex-1 max-w-[1440px] w-full mx-auto p-4 lg:p-8 gap-8">
+<!-- Sidebar Navigation (Right Side RTL) -->
+<aside class="hidden lg:flex flex-col w-64 shrink-0 gap-6">
+<div class="sticky top-24 flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 items-center text-sm">
+<a class="text-text-secondary hover:text-primary transition-colors" href="#">الرئيسية</a>
+<span class="text-surface-border material-symbols-outlined text-[12px]">chevron_left</span>
+<span class="text-white font-medium">حسابي</span>
+</div>
+<nav class="flex flex-col gap-1">
+<h1 class="text-white text-lg font-bold mb-3 px-3">لوحة التحكم</h1>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 border border-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span class="text-sm font-bold">تفاصيل الحساب</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-dark text-text-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+<span class="text-sm font-medium">كلمة المرور والأمان</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-dark text-text-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+<span class="text-sm font-medium">الخصوصية</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-dark text-text-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+<span class="text-sm font-medium">التفضيلات</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-dark text-text-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">link</span>
+<span class="text-sm font-medium">الحسابات المتصلة</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-surface-dark text-text-secondary hover:text-white transition-colors mt-4 text-red-400 hover:text-red-300" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="text-sm font-medium">تسجيل الخروج</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 min-w-0">
+<!-- Mobile Breadcrumb & Title -->
+<div class="flex flex-col gap-2 mb-8">
+<div class="lg:hidden flex flex-wrap gap-2 items-center text-xs text-text-secondary mb-2">
+<a href="#">الرئيسية</a> <span>/</span> <span>حسابي</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<h1 class="text-3xl md:text-4xl font-black text-white tracking-tight mb-2">تفاصيل الحساب</h1>
+<p class="text-text-secondary text-base">قم بإدارة ملفك الشخصي وتفضيلات الظهور عبر الشبكة.</p>
+</div>
+<!-- Quick Save Action for Header -->
+<button class="hidden md:flex items-center gap-2 bg-primary hover:bg-blue-600 text-white px-6 py-2.5 rounded-lg font-bold transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>حفظ التغييرات</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-20">
+<!-- 1. Hero Identity Portal (Span 2) -->
+<div class="portal-card rounded-2xl p-6 md:col-span-2 relative overflow-hidden group">
+<!-- Background accent -->
+<div class="absolute top-0 right-0 w-full h-24 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none"></div>
+<div class="relative flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+<div class="relative">
+<div class="size-24 sm:size-32 rounded-full ring-4 ring-surface-dark bg-cover bg-center" data-alt="User avatar image placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCM2g6rrcQbfhRzqvn26HYMBi137hEIEhDW2GQyblqpsPv4814H38gqEPQqJauhDDjwCTDdCKMtLYqh-wW9Rb3vIO-AQO_LYR3_KXAktMz9cIviNZFUm_IMr8a0jhGp2IcO1uMP0N-MuVrQHWXaeRmJe7Srlc1vYNZCePKiPiwiCMEvp7MakN5MZ7XFdLh_GnLsouU2qnydYySKzcv8ALaJgpTWUb1HbbIBxPqll7HTPFFvQMQjAaBAZfjqGRgkrXyeSZM9rD7g-28");'>
+</div>
+<button class="absolute bottom-0 left-0 bg-surface-dark border border-surface-border text-white p-2 rounded-full hover:bg-primary hover:border-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+<div class="flex-1 w-full space-y-4">
+<div class="flex flex-col">
+<h3 class="text-2xl font-bold text-white">أحمد محمد</h3>
+<p class="text-text-secondary text-sm">عضو منذ ٢٠٢٠</p>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-medium text-text-secondary uppercase tracking-wider">اللقب المخصص</label>
+<div class="flex gap-2">
+<input class="form-input-dark w-full rounded-lg px-4 py-2 text-sm font-medium placeholder-text-secondary/50" placeholder="اكتب لقبك هنا..." type="text" value="مطور واجهات محترف"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Stats Widget (Span 1) -->
+<div class="portal-card rounded-2xl p-6 flex flex-col justify-between">
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-lg font-bold text-white">إحصائيات</h4>
+<span class="material-symbols-outlined text-text-secondary">bar_chart</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-background-dark/50 rounded-xl p-4 border border-surface-border/50 text-center">
+<span class="block text-2xl font-bold text-primary mb-1">١,٢٤٠</span>
+<span class="text-xs text-text-secondary font-medium">مشاركة</span>
+</div>
+<div class="bg-background-dark/50 rounded-xl p-4 border border-surface-border/50 text-center">
+<span class="block text-2xl font-bold text-green-500 mb-1">٨٥٦</span>
+<span class="text-xs text-text-secondary font-medium">إعجاب</span>
+</div>
+<div class="col-span-2 bg-background-dark/50 rounded-xl p-4 border border-surface-border/50 flex items-center justify-between">
+<span class="text-xs text-text-secondary font-medium">نقاط التفاعل</span>
+<span class="text-lg font-bold text-white">٥,٤٣٠</span>
+</div>
+</div>
+</div>
+<!-- 3. Personal Info Portal (Span 2) -->
+<div class="portal-card rounded-2xl p-6 md:col-span-2 space-y-5">
+<div class="flex items-center gap-3 border-b border-surface-border pb-4">
+<div class="p-2 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">person_pin</span>
+</div>
+<h4 class="text-lg font-bold text-white">المعلومات الشخصية</h4>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-medium text-text-secondary">الموقع الجغرافي</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-text-secondary text-[20px]">location_on</span>
+<input class="form-input-dark w-full rounded-lg pr-10 pl-4 py-2.5 text-sm" placeholder="أين تقيم؟" type="text" value="الرياض، المملكة العربية السعودية"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-text-secondary">الموقع الإلكتروني</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-text-secondary text-[20px]">language</span>
+<input class="form-input-dark w-full rounded-lg pr-10 pl-4 py-2.5 text-sm ltr-text text-right" placeholder="رابط موقعك" type="text" value="https://portalgrid.com"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-text-secondary">تاريخ الميلاد</label>
+<div class="grid grid-cols-3 gap-2">
+<select class="form-input-dark rounded-lg px-2 py-2.5 text-sm">
+<option>01</option>
+<option selected="">15</option>
+<option>30</option>
+</select>
+<select class="form-input-dark rounded-lg px-2 py-2.5 text-sm">
+<option>يناير</option>
+<option selected="">يونيو</option>
+<option>ديسمبر</option>
+</select>
+<input class="form-input-dark rounded-lg px-2 py-2.5 text-sm text-center" type="text" value="1995"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-text-secondary">المهنة</label>
+<input class="form-input-dark w-full rounded-lg px-4 py-2.5 text-sm" placeholder="ماذا تعمل؟" type="text"/>
+</div>
+</div>
+</div>
+<!-- 4. Security Widget (Span 1) -->
+<div class="portal-card rounded-2xl p-6 space-y-5">
+<div class="flex items-center gap-3 border-b border-surface-border pb-4">
+<div class="p-2 rounded-lg bg-red-500/10 text-red-400">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<h4 class="text-lg font-bold text-white">الأمان</h4>
+</div>
+<div class="space-y-4">
+<div class="space-y-2">
+<label class="text-sm font-medium text-text-secondary">البريد الإلكتروني</label>
+<div class="relative opacity-75">
+<input class="form-input-dark w-full rounded-lg px-4 py-2.5 text-sm bg-surface-dark border-transparent cursor-not-allowed" readonly="" type="email" value="ahmed***@gmail.com"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-green-500 text-[18px]">check_circle</span>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 rounded-lg border border-surface-border hover:bg-surface-border text-sm font-bold text-white transition-colors flex items-center justify-center gap-2">
+<span>تغيير كلمة المرور</span>
+</button>
+<div class="flex items-center gap-2 mt-2">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-xs text-text-secondary">تم التحقق بخطوتين (مفعل)</span>
+</div>
+</div>
+</div>
+<!-- 5. Bio Portal (Span 2) -->
+<div class="portal-card rounded-2xl p-6 md:col-span-2 space-y-4 h-full">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-purple-500/10 text-purple-400">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<h4 class="text-lg font-bold text-white">نبذة عني</h4>
+</div>
+<span class="text-xs text-text-secondary bg-surface-dark px-2 py-1 rounded">Markdown مدعوم</span>
+</div>
+<textarea class="form-input-dark w-full h-40 rounded-lg p-4 text-sm leading-relaxed resize-none" placeholder="اكتب نبذة مختصرة عن نفسك لتظهر في ملفك الشخصي...">مرحباً، أنا أحمد. مطور واجهات ويب مهتم بتجربة المستخدم وتصميم الواجهات الحديثة. أعمل حالياً على مشاريع مفتوحة المصدر.</textarea>
+</div>
+<!-- 6. Preferences Widget (Span 1) -->
+<div class="portal-card rounded-2xl p-6 space-y-5">
+<div class="flex items-center gap-3 border-b border-surface-border pb-4">
+<div class="p-2 rounded-lg bg-yellow-500/10 text-yellow-400">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<h4 class="text-lg font-bold text-white">التفضيلات</h4>
+</div>
+<div class="flex flex-col gap-4">
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="text-sm font-medium text-white group-hover:text-primary transition-colors">عرض حالة الاتصال</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="text-sm font-medium text-white group-hover:text-primary transition-colors">استلام النشرة البريدية</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="text-sm font-medium text-white group-hover:text-primary transition-colors">عرض تاريخ الميلاد</span>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Mobile Sticky Action Bar -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-surface-dark border-t border-surface-border md:hidden z-40">
+<button class="w-full bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-bold transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">save</span>
+<span>حفظ التغييرات</span>
+</button>
+</div>
+</main>
+</div>
+</body></html>

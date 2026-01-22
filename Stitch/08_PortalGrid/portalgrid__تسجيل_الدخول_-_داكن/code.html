@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PortalGrid: تسجيل الدخول</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#0f4bc4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2130",
+                        "border-dark": "#2a3447",
+                    },
+                    fontFamily: {
+                        "display": ["'Noto Sans Arabic'", "Inter", "sans-serif"],
+                        "body": ["'Noto Sans Arabic'", "Inter", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px)",
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3447;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374151;
+        }
+        .grid-bg {
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/30 selection:text-primary-100">
+<!-- Background Effects -->
+<div class="fixed inset-0 z-0 pointer-events-none">
+<div class="absolute inset-0 bg-grid-pattern opacity-[0.05] grid-bg"></div>
+<div class="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-primary/10 to-transparent opacity-40"></div>
+</div>
+<!-- Navigation -->
+<header class="relative z-10 flex items-center justify-between border-b border-border-dark bg-background-dark/80 backdrop-blur-md px-6 py-4 md:px-10 lg:px-40">
+<div class="flex items-center gap-3 text-white">
+<div class="flex items-center justify-center size-10 rounded-xl bg-primary/20 text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">grid_view</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">PortalGrid</h2>
+</div>
+<div class="flex gap-3">
+<button class="hidden md:flex items-center justify-center rounded-lg h-10 px-4 bg-transparent hover:bg-surface-dark border border-transparent text-gray-300 text-sm font-bold transition-colors">
+<span class="truncate">المساعدة</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 px-6 bg-surface-dark hover:bg-border-dark border border-border-dark text-white text-sm font-bold transition-all shadow-sm">
+<span class="truncate">إنشاء حساب</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="relative z-10 flex flex-1 flex-col items-center justify-center p-4 py-12 md:p-8">
+<div class="w-full max-w-[520px] flex flex-col gap-6">
+<!-- Login Card -->
+<div class="bg-surface-dark border border-border-dark rounded-2xl shadow-2xl shadow-black/50 overflow-hidden">
+<!-- Card Header Image/Gradient -->
+<div class="relative h-32 w-full overflow-hidden bg-surface-dark border-b border-border-dark">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/20 via-background-dark to-primary/5"></div>
+<div class="absolute inset-0 opacity-30" data-alt="Abstract geometric pattern background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDI8LXZwm8ZO6geTGJRZVkBKnMGXX6n06QcsV85WKLpwaasKX_Ma3WRuwONSJLnFoIN7fI30ufwljnOpqzF7bJCEovOpA1muTwzPj3QLh1NutdZT-yHZRDp6Xi3yT-hr8Ov35f_U6JICeB7qPBx5M39C80EZ9aa5Pv-S0HuRCv8Ljk0o3U5KONHKQFpHd1S7vGkqMoAIGipXNZ3MA3cm8CW9VD-4g_MPFQSF_6Ib0vL-ZBigSwjClgZ3QXWp8nMjImNiOWdrffspzU");'></div>
+<div class="absolute bottom-0 right-0 left-0 p-6 flex items-end justify-between z-10">
+<div>
+<h1 class="text-2xl font-bold text-white mb-1">مرحباً بعودتك</h1>
+<p class="text-gray-400 text-sm">سجل الدخول للمتابعة إلى لوحة التحكم</p>
+</div>
+<div class="bg-background-dark/50 backdrop-blur-sm p-2 rounded-lg border border-white/10">
+<span class="material-symbols-outlined text-primary block" style="font-size: 24px;">lock</span>
+</div>
+</div>
+</div>
+<!-- Form Section -->
+<div class="p-6 md:p-8 flex flex-col gap-5">
+<!-- Username Input -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-gray-300" for="username">اسم المستخدم أو البريد الإلكتروني</label>
+<div class="relative group">
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 group-focus-within:text-primary transition-colors pointer-events-none">
+<span class="material-symbols-outlined" style="font-size: 20px;">person</span>
+</span>
+<input class="w-full bg-background-dark text-white placeholder:text-gray-600 border border-border-dark rounded-lg h-12 pr-10 pl-4 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all outline-none" id="username" placeholder="example@portalgrid.com" type="text"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="text-sm font-medium text-gray-300" for="password">كلمة المرور</label>
+<a class="text-xs font-medium text-primary hover:text-primary-hover transition-colors" href="#">نسيت كلمة المرور؟</a>
+</div>
+<div class="relative group flex items-stretch">
+<!-- Icon (Right in RTL context means start) -->
+<!-- NOTE: In RTL flex row, items start from right. 
+                                  We want Input on Right, Eye on Left.
+                                  Input: rounded-r-lg (start), rounded-l-none (flat end)
+                                  Button: rounded-l-lg (end), rounded-r-none (flat start)
+                             -->
+<input class="flex-1 w-full bg-background-dark text-white placeholder:text-gray-600 border border-border-dark border-l-0 rounded-r-lg rounded-l-none h-12 pr-10 pl-2 focus:ring-0 focus:border-primary focus:z-10 transition-all outline-none" id="password" placeholder="••••••••" type="password"/>
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 group-focus-within:text-primary transition-colors pointer-events-none z-20">
+<span class="material-symbols-outlined" style="font-size: 20px;">key</span>
+</span>
+<button class="bg-background-dark border border-border-dark border-r-0 rounded-l-lg rounded-r-none px-3 flex items-center justify-center text-gray-400 hover:text-white hover:bg-border-dark transition-colors focus:z-10 focus:ring-2 focus:ring-primary/50 focus:outline-none" type="button">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center gap-3 py-1">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="peer sr-only" type="checkbox"/>
+<div class="w-9 h-5 bg-border-dark peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary rounded-full peer peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+<span class="text-sm text-gray-300 font-medium">تذكر تسجيل دخولي</span>
+</div>
+<!-- Submit Button -->
+<button class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary hover:bg-primary-hover text-white h-12 text-base font-bold shadow-lg shadow-primary/25 transition-all active:scale-[0.98]">
+<span>تسجيل الدخول</span>
+<span class="material-symbols-outlined rtl:rotate-180" style="font-size: 20px;">arrow_forward</span>
+</button>
+<!-- Divider -->
+<div class="relative flex py-2 items-center">
+<div class="flex-grow border-t border-border-dark"></div>
+<span class="flex-shrink-0 mx-4 text-gray-500 text-xs font-medium uppercase tracking-wider">أو المتابعة عبر</span>
+<div class="flex-grow border-t border-border-dark"></div>
+</div>
+<!-- Social Grid -->
+<div class="grid grid-cols-3 gap-3">
+<button class="flex items-center justify-center h-10 rounded-lg bg-background-dark border border-border-dark hover:bg-border-dark hover:border-gray-500 transition-all group">
+<!-- Google Icon placeholder using simple colored circles or path if needed, sticking to material symbols per prompt request for data-icons but these are brand icons. I will use generic shapes/colors for abstraction or text -->
+<span class="text-white font-bold text-lg leading-none" style="font-family: sans-serif;">G</span>
+</button>
+<button class="flex items-center justify-center h-10 rounded-lg bg-background-dark border border-border-dark hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white transition-all group text-[#1877F2]">
+<span class="font-bold text-lg leading-none" style="font-family: sans-serif;">f</span>
+</button>
+<button class="flex items-center justify-center h-10 rounded-lg bg-background-dark border border-border-dark hover:bg-white hover:border-white hover:text-black transition-all group text-white">
+<span class="font-bold text-lg leading-none" style="font-family: sans-serif;">X</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="text-center">
+<p class="text-gray-400 text-sm">
+                    ليس لديك حساب في PortalGrid؟
+                    <a class="text-primary hover:text-white font-bold transition-colors mr-1" href="#">سجل حساب جديد الآن</a>
+</p>
+</div>
+</div>
+</main>
+</body></html>

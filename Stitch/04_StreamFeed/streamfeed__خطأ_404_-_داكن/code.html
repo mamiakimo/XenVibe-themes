@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StreamFeed: خطأ 404</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a212e",
+                        "border-dark": "#2a3447",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a3447;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4760;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark bg-background-dark/95 backdrop-blur-md px-6 lg:px-10 py-3">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-white hover:opacity-90 transition-opacity" href="#">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined !text-3xl">dynamic_feed</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em] hidden md:block">StreamFeed</h2>
+</a>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full border border-border-dark bg-surface-dark focus-within:border-primary transition-colors">
+<div class="text-text-secondary flex border-none items-center justify-center pr-4 pl-2">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-transparent h-full placeholder:text-text-secondary px-2 text-sm font-normal leading-normal" placeholder="بحث..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors" href="#">الرئيسية</a>
+<a class="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors" href="#">المنتديات</a>
+<a class="text-text-secondary hover:text-white text-sm font-medium leading-normal transition-colors" href="#">الأعضاء</a>
+</div>
+<div class="flex gap-3">
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-9 px-4 bg-surface-dark hover:bg-[#232f48] border border-border-dark text-white text-sm font-bold transition-all">
+<span class="truncate">تسجيل الدخول</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-9 px-4 bg-primary hover:bg-primary/90 text-white text-sm font-bold shadow-[0_0_15px_rgba(19,91,236,0.3)] transition-all">
+<span class="truncate">إنشاء حساب</span>
+</button>
+</div>
+<!-- User Avatar Placeholder (if logged in) -->
+<!-- <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-surface-dark cursor-pointer" data-alt="User profile picture" style='background-image: url("https://placeholder.pics/svg/300");'></div> -->
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex items-center justify-center p-4">
+<div class="flex flex-col w-full max-w-[560px] gap-6 animate-fade-in-up">
+<!-- 404 Card -->
+<div class="flex flex-col items-center bg-surface-dark border border-border-dark rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+<!-- Background decorative elements -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+<div class="flex flex-col items-center gap-6 relative z-10 w-full text-center">
+<!-- Illustration -->
+<div class="bg-background-dark/50 p-6 rounded-full border border-border-dark mb-2">
+<span class="material-symbols-outlined !text-6xl text-primary opacity-80">link_off</span>
+</div>
+<div class="flex flex-col items-center gap-3 max-w-[480px]">
+<h1 class="text-white text-4xl font-bold leading-tight tracking-tight">404</h1>
+<p class="text-xl font-semibold text-white">المحتوى غير موجود</p>
+<p class="text-text-secondary text-base font-normal leading-relaxed max-w-[400px]">
+                            يبدو أنك وصلت إلى رابط مكسور أو تم حذف المنشور من الخلاصة. لا تقلق، يمكنك العودة لمتابعة التصفح.
+                        </p>
+</div>
+<button class="flex w-full max-w-[280px] cursor-pointer items-center justify-center gap-2 rounded-xl h-11 px-6 bg-primary hover:bg-primary/90 text-white text-sm font-bold tracking-[0.015em] transition-all transform hover:scale-[1.02] shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined !text-lg">arrow_back</span>
+<span class="truncate">العودة إلى الخلاصة الرئيسية</span>
+</button>
+</div>
+</div>
+<!-- Suggestions Section -->
+<div class="flex flex-col gap-3">
+<!-- Header -->
+<div class="px-2 flex items-center gap-2 text-text-secondary">
+<span class="material-symbols-outlined !text-lg">trending_up</span>
+<h4 class="text-sm font-bold leading-normal tracking-[0.015em]">مواضيع قد تهمك في StreamFeed</h4>
+</div>
+<!-- List Items -->
+<div class="flex flex-col gap-2">
+<!-- Item 1 -->
+<a class="group flex items-center gap-4 bg-surface-dark hover:bg-[#232f48] border border-border-dark hover:border-primary/30 p-4 rounded-xl transition-all duration-200" href="#">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-white text-base font-medium leading-normal truncate group-hover:text-primary transition-colors">#تحديثات_المنصة_الجديدة</p>
+<span class="text-xs text-text-secondary truncate">1.2 ألف مشاركة اليوم</span>
+</div>
+</div>
+<div class="shrink-0 mr-auto">
+<div class="text-text-secondary group-hover:text-white flex size-7 items-center justify-center transition-colors">
+<span class="material-symbols-outlined rtl:rotate-180">chevron_right</span>
+</div>
+</div>
+</a>
+<!-- Item 2 -->
+<a class="group flex items-center gap-4 bg-surface-dark hover:bg-[#232f48] border border-border-dark hover:border-primary/30 p-4 rounded-xl transition-all duration-200" href="#">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="text-green-400 flex items-center justify-center rounded-lg bg-green-400/10 shrink-0 size-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-white text-base font-medium leading-normal truncate group-hover:text-primary transition-colors">مناقشات التقنية العامة</p>
+<span class="text-xs text-text-secondary truncate">نشط الآن • 340 متصل</span>
+</div>
+</div>
+<div class="shrink-0 mr-auto">
+<div class="text-text-secondary group-hover:text-white flex size-7 items-center justify-center transition-colors">
+<span class="material-symbols-outlined rtl:rotate-180">chevron_right</span>
+</div>
+</div>
+</a>
+<!-- Item 3 -->
+<a class="group flex items-center gap-4 bg-surface-dark hover:bg-[#232f48] border border-border-dark hover:border-primary/30 p-4 rounded-xl transition-all duration-200" href="#">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="text-purple-400 flex items-center justify-center rounded-lg bg-purple-400/10 shrink-0 size-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-white text-base font-medium leading-normal truncate group-hover:text-primary transition-colors">معرض التصاميم والإبداع</p>
+<span class="text-xs text-text-secondary truncate">أحدث المشاركات منذ ساعة</span>
+</div>
+</div>
+<div class="shrink-0 mr-auto">
+<div class="text-text-secondary group-hover:text-white flex size-7 items-center justify-center transition-colors">
+<span class="material-symbols-outlined rtl:rotate-180">chevron_right</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Simple -->
+<footer class="py-6 text-center text-text-secondary text-xs">
+<p>© 2024 StreamFeed. جميع الحقوق محفوظة.</p>
+</footer>
+</body></html>

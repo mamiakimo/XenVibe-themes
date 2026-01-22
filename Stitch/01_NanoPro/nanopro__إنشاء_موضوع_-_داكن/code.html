@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NanoPro: إنشاء موضوع</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1e293b",
+                        "surface-darker": "#111827",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+        }
+        /* Custom scrollbar for dark mode editors */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col font-body">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#111722] px-6 lg:px-10 py-3 sticky top-0 z-50 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 30.5736C16.7203 29.8826 20.2244 29.4783 24 29.4783C27.7756 29.4783 31.2797 29.8826 34.1739 30.5736C36.9144 31.2278 39.9967 32.7669 41.3563 33.8352L24.8486 7.36089C24.4571 6.73303 23.5429 6.73303 23.1514 7.36089L6.64374 33.8352C8.00331 32.7669 11.0856 31.2278 13.8261 30.5736Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 35.764C39.9944 35.7463 39.9875 35.7155 39.9748 35.6706C39.9436 35.5601 39.8949 35.4259 39.8346 35.2825C39.8168 35.2403 39.7989 35.1993 39.7813 35.1602C38.5103 34.2887 35.9788 33.0607 33.7095 32.5189C30.9875 31.8691 27.6413 31.4783 24 31.4783C20.3587 31.4783 17.0125 31.8691 14.2905 32.5189C12.0012 33.0654 9.44505 34.3104 8.18538 35.1832C8.17384 35.2075 8.16216 35.233 8.15052 35.2592C8.09919 35.3751 8.05721 35.4886 8.02977 35.589C8.00356 35.6848 8.00039 35.7333 8.00004 35.7388C8.00004 35.739 8 35.7393 8.00004 35.7388C8.00004 35.7641 8.0104 36.0767 8.68485 36.6314C9.34546 37.1746 10.4222 37.7531 11.9291 38.2772C14.9242 39.319 19.1919 40 24 40C28.8081 40 33.0758 39.319 36.0709 38.2772C37.5778 37.7531 38.6545 37.1746 39.3151 36.6314C39.9006 36.1499 39.9857 35.8511 39.998 35.764ZM4.95178 32.7688L21.4543 6.30267C22.6288 4.4191 25.3712 4.41909 26.5457 6.30267L43.0534 32.777C43.0709 32.8052 43.0878 32.8338 43.104 32.8629L41.3563 33.8352C43.104 32.8629 43.1038 32.8626 43.104 32.8629L43.1051 32.865L43.1065 32.8675L43.1101 32.8739L43.1199 32.8918C43.1276 32.906 43.1377 32.9246 43.1497 32.9473C43.1738 32.9925 43.2062 33.0545 43.244 33.1299C43.319 33.2792 43.4196 33.489 43.5217 33.7317C43.6901 34.1321 44 34.9311 44 35.7391C44 37.4427 43.003 38.7775 41.8558 39.7209C40.6947 40.6757 39.1354 41.4464 37.385 42.0552C33.8654 43.2794 29.133 44 24 44C18.867 44 14.1346 43.2794 10.615 42.0552C8.86463 41.4464 7.30529 40.6757 6.14419 39.7209C4.99695 38.7775 3.99999 37.4427 3.99999 35.7391C3.99999 34.8725 4.29264 34.0922 4.49321 33.6393C4.60375 33.3898 4.71348 33.1804 4.79687 33.0311C4.83898 32.9556 4.87547 32.8935 4.9035 32.8471C4.91754 32.8238 4.92954 32.8043 4.93916 32.7889L4.94662 32.777L4.95178 32.7688ZM35.9868 29.004L24 9.77997L12.0131 29.004C12.4661 28.8609 12.9179 28.7342 13.3617 28.6282C16.4281 27.8961 20.0901 27.4783 24 27.4783C27.9099 27.4783 31.5719 27.8961 34.6383 28.6282C35.082 28.7342 35.5339 28.8609 35.9868 29.004Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">NanoPro</h2>
+</div>
+<div class="flex items-center gap-4 lg:gap-8">
+<div class="hidden sm:flex gap-2">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-[#232f48] text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-slate-100 dark:bg-[#232f48] text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-slate-200 dark:ring-slate-700" data-alt="User avatar profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDGKZsBV4dXdTC2CYoZsaMBQosd1W84kO73NnV7ixw1VTUl0haga_hSaF3ElpcKuuqQFQEVxNboCRjqG7ym6ySUnpKAQZRu9uplPcxrIvoIy5KWDd9JdYG8INGaA6ecXfZcDKlcSDE4LxD5GyK57xAnpb5QiWYLYXnVPpHod6z6n6f49Fxdb2qYyTsL2qDwmbwNYlRdmCaYY0fCXz_aVozo3uCUByFI4N2krxy5DpNLSFLwEpQ8UlilgkuvhFMWNt6bCUR4VUxct_A");'></div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 px-4 md:px-6 py-8 flex justify-center">
+<div class="w-full max-w-4xl flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<nav class="flex flex-wrap items-center gap-2 text-sm">
+<a class="text-slate-500 dark:text-[#92a4c9] hover:text-primary transition-colors font-medium" href="#">الرئيسية</a>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 text-sm transform rotate-180">chevron_right</span>
+<a class="text-slate-500 dark:text-[#92a4c9] hover:text-primary transition-colors font-medium" href="#">المنتديات</a>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-600 text-sm transform rotate-180">chevron_right</span>
+<span class="text-slate-900 dark:text-white font-medium">النقاش العام</span>
+</nav>
+<!-- Page Title -->
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-bold tracking-tight">إنشاء موضوع جديد</h1>
+<p class="text-slate-500 dark:text-slate-400">شارك أفكارك مع المجتمع في منتدى النقاش العام.</p>
+</div>
+<!-- Editor Container -->
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-sm p-6 md:p-8 mt-2 flex flex-col gap-6">
+<!-- Category Selector -->
+<div class="w-full max-w-md">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">القسم</label>
+<div class="relative">
+<select class="w-full appearance-none bg-slate-50 dark:bg-surface-darker text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-shadow">
+<option value="general">النقاش العام</option>
+<option value="news">أخبار وتقارير</option>
+<option value="help">المساعدة والدعم</option>
+</select>
+<span class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
+<span class="material-symbols-outlined">expand_more</span>
+</span>
+</div>
+</div>
+<!-- Title Input -->
+<div class="flex flex-col gap-2">
+<input class="w-full bg-transparent text-slate-900 dark:text-white text-2xl md:text-3xl font-bold border-0 border-b-2 border-slate-200 dark:border-slate-700 px-0 py-3 placeholder:text-slate-300 dark:placeholder:text-slate-600 focus:ring-0 focus:border-primary transition-colors" placeholder="عنوان الموضوع..." type="text"/>
+</div>
+<!-- Rich Text Editor (Simplified) -->
+<div class="flex flex-col gap-2 min-h-[400px]">
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center gap-1 border-b border-slate-200 dark:border-slate-700 pb-3 mb-2 sticky top-0 bg-white dark:bg-surface-dark z-10">
+<button class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" title="Bold">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" title="Italic">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<button class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" title="Underline">
+<span class="material-symbols-outlined text-[20px]">format_underlined</span>
+</button>
+<div class="w-px h-5 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+<button class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" title="List">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+</button>
+<button class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" title="Quote">
+<span class="material-symbols-outlined text-[20px]">format_quote</span>
+</button>
+<div class="w-px h-5 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+<button class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" title="Link">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" title="Image">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" title="Code">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</button>
+<div class="mr-auto">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+                                معاينة
+                            </button>
+</div>
+</div>
+<!-- Text Area -->
+<textarea class="flex-1 w-full bg-transparent border-none p-2 text-lg text-slate-700 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:ring-0 resize-y min-h-[300px] leading-relaxed custom-scrollbar" placeholder="اكتب ما يدور في ذهنك هنا..."></textarea>
+</div>
+<!-- Tags Input -->
+<div class="pt-4 border-t border-slate-200 dark:border-slate-700/50">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">الوسوم (اختياري)</label>
+<div class="flex flex-wrap items-center gap-2 bg-slate-50 dark:bg-surface-darker border border-slate-300 dark:border-slate-700 rounded-lg p-2 focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition-shadow">
+<span class="bg-primary/10 text-primary px-2 py-1 rounded text-sm font-medium flex items-center gap-1">
+                            #نقاش
+                            <button class="hover:text-red-500"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+<input class="bg-transparent border-none focus:ring-0 p-1 text-sm text-slate-900 dark:text-white flex-1 min-w-[120px]" placeholder="أضف وسماً..." type="text"/>
+</div>
+<p class="text-xs text-slate-500 mt-1.5">افصل بين الوسوم بفاصلة أو اضغط Enter</p>
+</div>
+<!-- Actions Footer -->
+<div class="flex flex-col-reverse sm:flex-row items-center justify-between gap-4 mt-4 pt-4">
+<button class="w-full sm:w-auto px-6 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium transition-colors">
+                        إلغاء
+                    </button>
+<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-6 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-medium transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">draft</span>
+                            حفظ كمسودة
+                        </button>
+<button class="w-full sm:w-auto px-8 py-2.5 rounded-lg bg-primary text-white hover:bg-blue-600 font-bold shadow-lg shadow-blue-900/20 transition-all transform active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">send</span>
+                            نشر الموضوع
+                        </button>
+</div>
+</div>
+</div>
+<!-- Posting Rules / Sidebar Hint (Optional for context) -->
+<div class="bg-blue-50 dark:bg-primary/5 border border-blue-100 dark:border-primary/10 rounded-lg p-4 flex gap-3 items-start">
+<span class="material-symbols-outlined text-primary mt-0.5">info</span>
+<div class="text-sm text-slate-600 dark:text-slate-300">
+<p class="font-bold text-slate-900 dark:text-white mb-1">تذكر عند النشر:</p>
+<ul class="list-disc list-inside space-y-1 marker:text-primary">
+<li>التزم بآداب الحوار والنقاش العام.</li>
+<li>تأكد من عدم تكرار الموضوع في القسم.</li>
+<li>استخدم عناوين واضحة ومعبرة عن المحتوى.</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+</body></html>

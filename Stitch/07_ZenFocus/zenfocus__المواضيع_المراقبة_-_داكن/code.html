@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus: المواضيع المراقبة</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13a4ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111c22", 
+                        "surface-dark": "#1a262d",
+                        "surface-hover": "#233c48",
+                        "text-main": "#e3e5e8",
+                        "text-muted": "#92b7c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "sans": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111c22;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #233c48;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #13a4ec;
+        }
+        
+        .zen-item:hover .zen-actions {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/30 selection:text-white">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#233c48] px-6 lg:px-40 py-4 bg-background-dark/95 backdrop-blur sticky top-0 z-50 transition-all duration-300">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined !text-[28px]">spa</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">ZenFocus</h2>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<button class="flex items-center justify-center rounded-lg size-10 text-text-muted hover:text-white hover:bg-surface-hover transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-10 text-text-muted hover:text-white hover:bg-surface-hover transition-colors lg:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="hidden lg:block bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-surface-hover cursor-pointer" data-alt="User profile avatar showing a minimalist abstract face" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDCVQhVqZYdq51mSI6QlEJVm-k3-tLeK56wN_reZM7E7ycE21wEgHYtCGA31-sv5EnREiZ-mTrurFB0mc3X9uDMfgiTivHlelIyB0N8stTxkme4GfozW7x9uQiAK2SeA2pFDQ1FQCK5_q_YILMNE5VQ9TPaNTvYsE510iXXBxQ1v7vh9DmySsaO6o7ZFwrVvM1lf09f20ZaA8PGgxJ81xGkR9DAiqkHewtw9XCTfGhoq4bH-8MXXvnpO_CANE90qih0zqN6jYzjZkI");'>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-[840px] mx-auto px-4 py-8 lg:py-12">
+<!-- Page Title -->
+<div class="mb-8">
+<h1 class="text-white text-3xl lg:text-4xl font-black leading-tight tracking-[-0.033em] mb-2">المواضيع المراقبة</h1>
+<p class="text-text-muted text-lg font-normal">قائمتك الشخصية للمتابعة والقراءة الهادئة.</p>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-3 mb-8 overflow-x-auto pb-2 no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-white px-5 transition-transform active:scale-95 shadow-[0_0_15px_rgba(19,164,236,0.2)]">
+<span class="text-sm font-bold">الكل</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-hover text-text-muted hover:text-white hover:bg-[#2f4b5a] px-5 transition-colors">
+<span class="text-sm font-medium">غير مقروء</span>
+<span class="flex items-center justify-center bg-primary/20 text-primary text-[10px] font-bold h-5 min-w-[20px] rounded-full px-1">3</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-hover text-text-muted hover:text-white hover:bg-[#2f4b5a] px-5 transition-colors">
+<span class="text-sm font-medium">النشطة مؤخراً</span>
+</button>
+</div>
+<!-- List Container -->
+<div class="flex flex-col gap-1">
+<!-- Item 1: Unread -->
+<div class="zen-item group relative flex items-start gap-4 p-4 rounded-xl hover:bg-surface-hover transition-all duration-200 cursor-pointer border border-transparent hover:border-[#2f4b5a]">
+<!-- Status Indicator -->
+<div class="mt-2.5 shrink-0">
+<div class="size-2.5 rounded-full bg-primary shadow-[0_0_8px_#13a4ec]"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-1.5">
+<h3 class="text-white text-lg font-bold leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                        كيف تبني عادة القراءة اليومية في 30 يوماً؟
+                    </h3>
+<div class="flex items-center gap-3 text-sm text-text-muted">
+<span class="flex items-center gap-1.5">
+<span class="size-5 rounded-full bg-cover bg-center" data-alt="Small avatar of user Ahmed" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOe7F1i8xO6mBIFtVAg26_ss-gbIR-GxsF3z3e-ab-oHx32hY73mBpvF_eDtOWA8N3czJ6zP0SEiHPj2OY5kqS1Lzkmd7HypICnWBNdz41SGCjq_46c5wAoloxeBUM7_EDFxPBTgRsCC6lTsf3zfiZEJ3QbOtw_crZ6ww7FYsfdpSxZY31VLo-s9Sw78OyTfgiWpTn52KCBtf5R2datGpcIil2Hy92lHGijugNOYxx87AtioJeJdIWkt6njGlzmMlym9nBjyNWxVI')"></span>
+<span class="font-medium text-[#cddae2]">أحمد</span>
+</span>
+<span class="size-1 rounded-full bg-surface-hover"></span>
+<span class="font-normal">منذ 5 دقائق</span>
+<span class="hidden sm:inline-flex size-1 rounded-full bg-surface-hover"></span>
+<span class="hidden sm:inline-flex items-center gap-1 text-xs bg-surface-hover px-2 py-0.5 rounded text-[#92b7c9]">
+<span class="material-symbols-outlined !text-[14px]">forum</span>
+                            24
+                        </span>
+</div>
+</div>
+<!-- Hover Actions -->
+<div class="zen-actions absolute left-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex gap-2 bg-surface-dark/80 backdrop-blur-sm p-1 rounded-lg border border-[#2f4b5a] shadow-lg">
+<button class="text-text-muted hover:text-white p-1.5 rounded hover:bg-[#2f4b5a]" title="توقف عن المراقبة">
+<span class="material-symbols-outlined !text-[20px]">notifications_off</span>
+</button>
+<button class="text-text-muted hover:text-primary p-1.5 rounded hover:bg-[#2f4b5a]" title="انتقل لأول مشاركة غير مقروءة">
+<span class="material-symbols-outlined !text-[20px]">mark_chat_unread</span>
+</button>
+</div>
+</div>
+<!-- Item 2: Unread -->
+<div class="zen-item group relative flex items-start gap-4 p-4 rounded-xl hover:bg-surface-hover transition-all duration-200 cursor-pointer border border-transparent hover:border-[#2f4b5a]">
+<div class="mt-2.5 shrink-0">
+<div class="size-2.5 rounded-full bg-primary shadow-[0_0_8px_#13a4ec]"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-1.5">
+<h3 class="text-white text-lg font-bold leading-snug group-hover:text-primary transition-colors line-clamp-1">
+                        مراجعة كتاب: العادات الذرية - جيمس كلير
+                    </h3>
+<div class="flex items-center gap-3 text-sm text-text-muted">
+<span class="flex items-center gap-1.5">
+<span class="size-5 rounded-full bg-cover bg-center" data-alt="Small avatar of user Sarah" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDd1HNHQAv7fzsagcFnArEstNGiswGXm-AycAKv36zVV_LPdm9Jx6nlbcDS-5sOzivIl0f3dj5YqL1yPzLTEfFQx-QT8Hm9njPh7Edpv9JiueYE_jdUkJxZWuUh0nLAfToSAvcQmmNbMpQCgPLIiwsuTI6lHmzeJEf7oimDy_rbQOmgrdA0FApBE50JvlyuDbI1Oxas4cAXAhHN50_nd3DLPZyH0yzUWLp-O8XPOdcQCc3v9PKwmG5sR9NY6Ls8ExzQCgIKeZkexdk')"></span>
+<span class="font-medium text-[#cddae2]">سارة</span>
+</span>
+<span class="size-1 rounded-full bg-surface-hover"></span>
+<span class="font-normal">منذ ساعتين</span>
+<span class="hidden sm:inline-flex size-1 rounded-full bg-surface-hover"></span>
+<span class="hidden sm:inline-flex items-center gap-1 text-xs bg-surface-hover px-2 py-0.5 rounded text-[#92b7c9]">
+<span class="material-symbols-outlined !text-[14px]">forum</span>
+                            156
+                        </span>
+</div>
+</div>
+<div class="zen-actions absolute left-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex gap-2 bg-surface-dark/80 backdrop-blur-sm p-1 rounded-lg border border-[#2f4b5a] shadow-lg">
+<button class="text-text-muted hover:text-white p-1.5 rounded hover:bg-[#2f4b5a]" title="توقف عن المراقبة">
+<span class="material-symbols-outlined !text-[20px]">notifications_off</span>
+</button>
+<button class="text-text-muted hover:text-primary p-1.5 rounded hover:bg-[#2f4b5a]" title="انتقل لأول مشاركة غير مقروءة">
+<span class="material-symbols-outlined !text-[20px]">mark_chat_unread</span>
+</button>
+</div>
+</div>
+<!-- Item 3: Read -->
+<div class="zen-item group relative flex items-start gap-4 p-4 rounded-xl hover:bg-surface-hover transition-all duration-200 cursor-pointer border border-transparent hover:border-[#2f4b5a]">
+<div class="mt-2.5 shrink-0">
+<!-- Read indicator is subtle ring or nothing -->
+<div class="size-2.5 rounded-full border-2 border-[#233c48]"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-1.5">
+<h3 class="text-[#92b7c9] group-hover:text-white text-lg font-medium leading-snug transition-colors line-clamp-1">
+                        نقاش مفتوح: ما هي أفضل لغة برمجة للبدء في 2024؟
+                    </h3>
+<div class="flex items-center gap-3 text-sm text-text-muted/70 group-hover:text-text-muted transition-colors">
+<span class="flex items-center gap-1.5">
+<span class="size-5 rounded-full bg-cover bg-center" data-alt="Small avatar of user Khaled" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQddp2u0BWRMhg7jJf3EXnB7yDabBg_junm9F3p28eUt8OEAxkIigOrsA-DSJZL6uLoIcUx9fkjGmsw0k-QUy6K74QWIi9zr68z2T7nFBRXsl8U02LCND3VtBSR3DExW1deGYccSsRIygmgcP8MO3aCAFcMqYaIThq5F5H70utvMqppWlK9KqzQMh1UJ-XDCVfTNfDeB45qrJzWHhmOrIC8pPCqfLFm_6e8_sXslLYRmJL0zElo9Z0UnDeIS3FdW9QUwZCROPZjxc')"></span>
+<span class="font-medium">خالد</span>
+</span>
+<span class="size-1 rounded-full bg-surface-hover"></span>
+<span class="font-normal">أمس في 9:00 م</span>
+</div>
+</div>
+<div class="zen-actions absolute left-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex gap-2 bg-surface-dark/80 backdrop-blur-sm p-1 rounded-lg border border-[#2f4b5a] shadow-lg">
+<button class="text-text-muted hover:text-white p-1.5 rounded hover:bg-[#2f4b5a]" title="توقف عن المراقبة">
+<span class="material-symbols-outlined !text-[20px]">notifications_off</span>
+</button>
+</div>
+</div>
+<!-- Item 4: Read -->
+<div class="zen-item group relative flex items-start gap-4 p-4 rounded-xl hover:bg-surface-hover transition-all duration-200 cursor-pointer border border-transparent hover:border-[#2f4b5a]">
+<div class="mt-2.5 shrink-0">
+<div class="size-2.5 rounded-full border-2 border-[#233c48]"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-1.5">
+<h3 class="text-[#92b7c9] group-hover:text-white text-lg font-medium leading-snug transition-colors line-clamp-1">
+                        تجارب الأعضاء مع الصيام المتقطع
+                    </h3>
+<div class="flex items-center gap-3 text-sm text-text-muted/70 group-hover:text-text-muted transition-colors">
+<span class="flex items-center gap-1.5">
+<span class="size-5 rounded-full bg-cover bg-center" data-alt="Small avatar of user Omar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHgv-am4Le-w-FY5D6zqFoqfHlndK0L4dl2KV3fhBHxIyVt3Yxj2qVvhmfUsaohV2_LDkXTUrWWcYo4nmsU3fHp2rfU6C-KRN9x9XLsjIwmSktqYxwIQ2RETcyl3gfg1AjZvNSG7EZBeM2QtOvfuofCaECekuGRbZwTg3QaELbTipGWToLsbd5a1k7H8cHTD50hkKXAockM-mnAg6FKfDJ0UungVa_4f48yyq2W25sUZi-uTrjiRc4P5RzD3sKJUV-IAUx9lEqC6M')"></span>
+<span class="font-medium">عمر</span>
+</span>
+<span class="size-1 rounded-full bg-surface-hover"></span>
+<span class="font-normal">منذ يومين</span>
+</div>
+</div>
+<div class="zen-actions absolute left-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex gap-2 bg-surface-dark/80 backdrop-blur-sm p-1 rounded-lg border border-[#2f4b5a] shadow-lg">
+<button class="text-text-muted hover:text-white p-1.5 rounded hover:bg-[#2f4b5a]" title="توقف عن المراقبة">
+<span class="material-symbols-outlined !text-[20px]">notifications_off</span>
+</button>
+</div>
+</div>
+<!-- Item 5: Unread -->
+<div class="zen-item group relative flex items-start gap-4 p-4 rounded-xl hover:bg-surface-hover transition-all duration-200 cursor-pointer border border-transparent hover:border-[#2f4b5a]">
+<div class="mt-2.5 shrink-0">
+<div class="size-2.5 rounded-full bg-primary shadow-[0_0_8px_#13a4ec]"></div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-1.5">
+<h3 class="text-white text-lg font-bold leading-snug group-hover:text-primary transition-colors line-clamp-1">
+                        تحديثات جديدة في عالم الذكاء الاصطناعي هذا الأسبوع
+                    </h3>
+<div class="flex items-center gap-3 text-sm text-text-muted">
+<span class="flex items-center gap-1.5">
+<span class="size-5 rounded-full bg-cover bg-center" data-alt="Small avatar of user Layla" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbuvtpKnq9rY82B5rnmYvVsr92wm0Ozl7PgBBGj9DRSw0xMCAWVbruJD4aYn84HFHCtmX2_lnRMLEZRUevdkzY4Sk8vZFYxM2lmstNA_-_OMUHXNWvlBBSDrKBGy13wZfhy2UoraGFiCIOIuhRZ7dPia6SJGeZXe5RFuZpNNq8qllTGDMbUSIN5ROxNgIDsNr1mtk0BatktDj8xCVH9Byp49Zb3hf6RU_2NdhbvC-JA-ar9oDWx01A4OM5QgEOXWBXYoLH3C5eFUY')"></span>
+<span class="font-medium text-[#cddae2]">ليلى</span>
+</span>
+<span class="size-1 rounded-full bg-surface-hover"></span>
+<span class="font-normal">منذ 3 ساعات</span>
+<span class="hidden sm:inline-flex size-1 rounded-full bg-surface-hover"></span>
+<span class="hidden sm:inline-flex items-center gap-1 text-xs bg-surface-hover px-2 py-0.5 rounded text-[#92b7c9]">
+<span class="material-symbols-outlined !text-[14px]">forum</span>
+                            8
+                        </span>
+</div>
+</div>
+<div class="zen-actions absolute left-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex gap-2 bg-surface-dark/80 backdrop-blur-sm p-1 rounded-lg border border-[#2f4b5a] shadow-lg">
+<button class="text-text-muted hover:text-white p-1.5 rounded hover:bg-[#2f4b5a]" title="توقف عن المراقبة">
+<span class="material-symbols-outlined !text-[20px]">notifications_off</span>
+</button>
+<button class="text-text-muted hover:text-primary p-1.5 rounded hover:bg-[#2f4b5a]" title="انتقل لأول مشاركة غير مقروءة">
+<span class="material-symbols-outlined !text-[20px]">mark_chat_unread</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="flex justify-center mt-12 mb-8">
+<button class="text-text-muted hover:text-white text-sm font-medium border border-[#233c48] hover:border-text-muted/50 rounded-lg px-6 py-2 transition-all">
+                تحميل المزيد من المواضيع
+            </button>
+</div>
+</main>
+</body></html>

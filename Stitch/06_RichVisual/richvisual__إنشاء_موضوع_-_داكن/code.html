@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RichVisual: إنشاء موضوع جديد</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#1a2332",
+              "surface-light": "#ffffff",
+              "text-secondary": "#92a4c9",
+            },
+            fontFamily: {
+              "display": ["Inter", "Noto Sans Arabic", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for better look in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #34425e; 
+        }
+        
+        .ProseMirror p.is-editor-empty:first-child::before {
+            color: #92a4c9;
+            content: attr(data-placeholder);
+            float: right;
+            height: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white overflow-x-hidden min-h-screen flex flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-surface-light dark:bg-[#111722]/90 backdrop-blur-md border-b border-gray-200 dark:border-[#232f48] px-4 lg:px-10 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-gray-900 dark:text-white">
+<div class="size-8 text-primary">
+<svg class="fill-current w-full h-full" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<h2 class="hidden md:block text-lg font-bold tracking-tight">RichVisual Forum</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-gray-600 dark:text-text-secondary hover:text-primary dark:hover:text-white transition-colors text-sm font-medium" href="#">الرئيسية</a>
+<a class="text-gray-900 dark:text-white font-semibold text-sm" href="#">المنتديات</a>
+<a class="text-gray-600 dark:text-text-secondary hover:text-primary dark:hover:text-white transition-colors text-sm font-medium" href="#">الأعضاء</a>
+<a class="text-gray-600 dark:text-text-secondary hover:text-primary dark:hover:text-white transition-colors text-sm font-medium" href="#">الجديد</a>
+</nav>
+</div>
+<div class="flex items-center gap-4 flex-1 justify-end">
+<div class="hidden sm:flex relative w-full max-w-xs group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+<!-- Material Symbol: search -->
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-full rounded-xl border-gray-200 dark:border-[#232f48] bg-gray-50 dark:bg-[#232f48] text-gray-900 dark:text-white placeholder-gray-400 focus:border-primary focus:ring-primary sm:text-sm pl-10 pr-4 py-2" placeholder="بحث..." type="text"/>
+</div>
+<button class="relative rounded-full size-10 overflow-hidden ring-2 ring-gray-200 dark:ring-[#232f48] hover:ring-primary transition-all">
+<div class="w-full h-full bg-cover bg-center" data-alt="User avatar profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAUICy--i-2Xrlr6SVZBCXICzGl_2_IIqG7T58Yw-98c_Y7WVwyFfyTL9YMb8lAfuG2A38j0Bob5DNLvK0Jj22TybETWHAtDw2PCEGJxx2XF--xowMc9DhOvEnt3HMMMo1wVsru6fbsIY8phRwLaSiAXb1thzrH4LemgR0s4k2jQbir3W3U8Za_42WsKmV85wd0WVEHlua2MLfkRIrTYT5WmEQybuHIalt0rszOJRGejWpi9Cps3VIRrQYDgM80XK94kWyhb9hiC3k");'></div>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow container mx-auto px-4 lg:px-8 py-8 max-w-5xl">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex mb-6">
+<ol class="inline-flex items-center space-x-1 space-x-reverse md:space-x-3">
+<li class="inline-flex items-center">
+<a class="inline-flex items-center text-sm font-medium text-text-secondary hover:text-white" href="#">
+<span class="material-symbols-outlined text-[18px] ml-1">home</span>
+                        الرئيسية
+                    </a>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-text-secondary text-[16px] mx-1">chevron_left</span>
+<a class="text-sm font-medium text-text-secondary hover:text-white" href="#">الألعاب</a>
+</div>
+</li>
+<li aria-current="page">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-text-secondary text-[16px] mx-1">chevron_left</span>
+<span class="text-sm font-medium text-white">نقاشات عامة</span>
+</div>
+</li>
+</ol>
+</nav>
+<!-- Page Header -->
+<div class="mb-8">
+<h1 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-2 tracking-tight">إنشاء موضوع جديد</h1>
+<p class="text-gray-500 dark:text-text-secondary text-lg">شارك قصتك، ابدأ نقاشاً، أو استعرض إبداعاتك مع المجتمع.</p>
+</div>
+<form action="#" class="space-y-6" method="POST">
+<!-- Type Selector (Prefixes) -->
+<div aria-label="Thread Type" class="flex flex-wrap gap-3" role="group">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="thread_type" type="radio" value="discussion"/>
+<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-light dark:bg-[#232f48] border border-transparent peer-checked:bg-primary peer-checked:text-white text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2c3b59] transition-all">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="font-medium text-sm">نقاش</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="thread_type" type="radio" value="showcase"/>
+<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-light dark:bg-[#232f48] border border-transparent peer-checked:bg-purple-600 peer-checked:text-white text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2c3b59] transition-all">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+<span class="font-medium text-sm">استعراض</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="thread_type" type="radio" value="question"/>
+<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-light dark:bg-[#232f48] border border-transparent peer-checked:bg-amber-500 peer-checked:text-white text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2c3b59] transition-all">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="font-medium text-sm">سؤال</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="thread_type" type="radio" value="guide"/>
+<div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-light dark:bg-[#232f48] border border-transparent peer-checked:bg-emerald-600 peer-checked:text-white text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#2c3b59] transition-all">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span class="font-medium text-sm">دليل</span>
+</div>
+</label>
+</div>
+<!-- Title Input -->
+<div class="group relative">
+<input class="block w-full bg-transparent border-0 border-b-2 border-gray-200 dark:border-[#232f48] px-0 py-4 text-2xl md:text-3xl font-bold text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 focus:border-primary focus:ring-0 transition-colors" id="title" name="title" placeholder="عنوان الموضوع المثير..." required="" type="text"/>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-600 opacity-0 group-focus-within:opacity-100 transition-opacity">
+<span class="text-sm">80/0</span>
+</div>
+</div>
+<!-- Media Dropzone (The "RichVisual" Focus) -->
+<div class="relative rounded-2xl border-2 border-dashed border-gray-300 dark:border-[#34425e] bg-gray-50 dark:bg-[#1a2332] hover:bg-gray-100 dark:hover:bg-[#1f293a] transition-all group cursor-pointer overflow-hidden">
+<input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" multiple="" type="file"/>
+<div class="p-8 md:p-12 text-center flex flex-col items-center justify-center gap-4">
+<div class="p-4 rounded-full bg-blue-50 dark:bg-[#232f48] text-primary group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[40px]">add_photo_alternate</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">اسحب وأفلت الوسائط هنا</h3>
+<p class="text-sm text-gray-500 dark:text-text-secondary">صور (JPG, PNG)، فيديو (MP4)، أو صور متحركة (GIF)</p>
+</div>
+<div class="flex gap-4 mt-2">
+<span class="px-2 py-1 rounded bg-gray-200 dark:bg-[#232f48] text-xs font-mono text-gray-600 dark:text-gray-400">MAX 50MB</span>
+<span class="px-2 py-1 rounded bg-gray-200 dark:bg-[#232f48] text-xs font-mono text-gray-600 dark:text-gray-400">HD SUPPORTED</span>
+</div>
+</div>
+</div>
+<!-- Uploaded Media Preview (Simulated State) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Image 1 -->
+<div class="relative group aspect-video rounded-xl overflow-hidden bg-gray-800 border border-gray-700">
+<div class="absolute inset-0 bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Screenshot of a futuristic sci-fi city in a video game" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGUhtgvrkBgmSQTEq13O7s5eB48-OQqj-GmrVBA-s2HXzMwQXI4hhvE_hCklUZTpsIGA0ztxBIYBkcgOFsnKciXeGOnXHPZRBDrSbHcbEIQT8QREIOzZVQFmROuYMoSHKFDlxF5bxCP1Ooj4uU84sukmaMt2HyTgrFS8o96oGuSaZ-OaLmldbPG6rPX6Y-OymQABZTuiGRtv6r8gE3hsNq6i_YUaZI5pZSeWaVjz8XpSs1vjiES2MAPJGfmrkC4yGEwG8lFnIxiOI");'></div>
+<button class="absolute top-2 left-2 p-1 rounded-full bg-black/60 text-white hover:bg-red-500 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<div class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/60 text-white text-xs font-medium">Cover</div>
+</div>
+<!-- Image 2 -->
+<div class="relative group aspect-video rounded-xl overflow-hidden bg-gray-800 border border-gray-700">
+<div class="absolute inset-0 bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Cyberpunk character holding a glowing sword" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOj6b1Emh_bjwMKecqqEeubIX8ZRmphq3ZKwlf3xkiXdcfhqPOIOBv7v0DFCMsJnVgRNLwjlXFLx0BMESHwgYRrLvZb9nHAmeymstSQ_uVziI_ptRvdqHVeUWSO-I7uDfV6L2zjP36cT2OIhsrShDJZJ5bZi6oRbaDZeKsNLAZOL4ZsdiYnGL8nSLRvL_JA87xJwTrQ0vLYWAlzNcK6WLypo3PKADTBUVcLyzxLi7em6wTYrPxzZmaNw7gE3d53i6X9xy3jukgkDk");'></div>
+<button class="absolute top-2 left-2 p-1 rounded-full bg-black/60 text-white hover:bg-red-500 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Add more placeholder -->
+<div class="flex items-center justify-center aspect-video rounded-xl border border-dashed border-gray-600 bg-gray-800/50 hover:bg-gray-800 transition-colors cursor-pointer text-gray-400 hover:text-white">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</div>
+</div>
+<!-- Rich Text Editor Container -->
+<div class="bg-surface-light dark:bg-[#1a2332] rounded-2xl border border-gray-200 dark:border-[#232f48] overflow-hidden shadow-sm">
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center gap-1 p-2 border-b border-gray-200 dark:border-[#232f48] bg-gray-50 dark:bg-[#161d2a]">
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-[#232f48] text-gray-600 dark:text-gray-300" type="button">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-[#232f48] text-gray-600 dark:text-gray-300" type="button">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-[#232f48] text-gray-600 dark:text-gray-300" type="button">
+<span class="material-symbols-outlined text-[20px]">format_underlined</span>
+</button>
+<div class="w-px h-6 bg-gray-300 dark:bg-[#34425e] mx-1"></div>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-[#232f48] text-gray-600 dark:text-gray-300" type="button">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-[#232f48] text-gray-600 dark:text-gray-300" type="button">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-[#232f48] text-gray-600 dark:text-gray-300" type="button">
+<span class="material-symbols-outlined text-[20px]">sentiment_satisfied</span>
+</button>
+<div class="w-px h-6 bg-gray-300 dark:bg-[#34425e] mx-1"></div>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-[#232f48] text-gray-600 dark:text-gray-300" type="button">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+</button>
+<button class="p-2 rounded hover:bg-gray-200 dark:hover:bg-[#232f48] text-gray-600 dark:text-gray-300" type="button">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</button>
+<div class="flex-1"></div>
+<button class="text-xs font-medium text-primary hover:text-blue-400 px-3 py-1" type="button">تبديل للمحرر المتقدم</button>
+</div>
+<!-- Text Area -->
+<div class="p-4 min-h-[300px]">
+<textarea class="w-full h-full min-h-[300px] bg-transparent border-none focus:ring-0 text-gray-800 dark:text-gray-200 resize-none leading-relaxed" placeholder="اكتب محتوى الموضوع هنا... يمكنك استخدام # للوسوم و @ للإشارة للأعضاء."></textarea>
+</div>
+</div>
+<!-- Additional Options -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-4">
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-200 dark:bg-[#232f48] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+<span class="text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-white transition-colors">تفعيل التنبيهات لهذا الموضوع</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input class="peer sr-only" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-200 dark:bg-[#232f48] rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+<span class="text-sm font-medium text-gray-600 dark:text-gray-300 group-hover:text-white transition-colors">إغلاق الموضوع بعد النشر</span>
+</label>
+</div>
+<!-- Tags Input -->
+<div class="flex-1 md:max-w-md">
+<div class="flex items-center bg-surface-light dark:bg-[#232f48] border border-gray-200 dark:border-transparent rounded-xl px-3 py-2 focus-within:ring-2 ring-primary">
+<span class="material-symbols-outlined text-gray-400 text-[20px] ml-2">label</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-white placeholder-gray-500" placeholder="أضف وسوم (افصل بينها بفاصلة)..." type="text"/>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="text-xs px-2 py-1 rounded bg-gray-200 dark:bg-[#1a2332] text-gray-500 hover:text-white cursor-pointer">#ألعاب_فيديو</span>
+<span class="text-xs px-2 py-1 rounded bg-gray-200 dark:bg-[#1a2332] text-gray-500 hover:text-white cursor-pointer">#مراجعة</span>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="sticky bottom-0 z-40 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur border-t border-gray-200 dark:border-[#232f48] -mx-4 px-4 py-4 md:-mx-8 md:px-8 flex justify-between items-center mt-8">
+<button class="px-6 py-2.5 rounded-xl border border-gray-300 dark:border-[#34425e] text-gray-700 dark:text-white font-medium hover:bg-gray-100 dark:hover:bg-[#232f48] transition-colors" type="button">
+                    معاينة
+                </button>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 rounded-xl text-gray-600 dark:text-gray-300 font-medium hover:text-gray-900 dark:hover:text-white transition-colors" type="button">
+                        إلغاء
+                    </button>
+<button class="px-8 py-2.5 rounded-xl bg-primary hover:bg-blue-600 text-white font-bold shadow-lg shadow-primary/20 transition-all transform hover:scale-105 flex items-center gap-2" type="submit">
+<span class="material-symbols-outlined text-[20px]">send</span>
+                        نشر الموضوع
+                    </button>
+</div>
+</div>
+</form>
+</main>
+<!-- Simple Footer -->
+<footer class="border-t border-gray-200 dark:border-[#232f48] py-8 mt-auto">
+<div class="container mx-auto px-4 text-center text-sm text-gray-500 dark:text-[#92a4c9]">
+<p>© 2023 RichVisual Forum. جميع الحقوق محفوظة.</p>
+<div class="flex justify-center gap-4 mt-4">
+<a class="hover:text-primary" href="#">الشروط والقوانين</a>
+<a class="hover:text-primary" href="#">سياسة الخصوصية</a>
+<a class="hover:text-primary" href="#">اتصل بنا</a>
+</div>
+</div>
+</footer>
+</body></html>

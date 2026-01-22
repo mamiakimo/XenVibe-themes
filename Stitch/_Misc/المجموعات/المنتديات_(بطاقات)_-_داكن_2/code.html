@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>XenSocial - Groups</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#0f4bc4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#1b2434",
+                        "card-border": "#2a364d",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a364d; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4d6e; 
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#232f48] bg-[#111722]/95 backdrop-blur-md px-6 py-3">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">XenSocial</h2>
+</div>
+<!-- Mobile/Tablet search hidden on small, visible on lg -->
+<div class="hidden lg:flex flex-1 max-w-[480px] px-8">
+<div class="flex w-full items-center rounded-xl bg-[#232f48] h-10 px-3 gap-2">
+<span class="material-symbols-outlined text-[#92a4c9] text-[20px]">search</span>
+<input class="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-[#92a4c9] focus:ring-0" placeholder="Search communities..."/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-full hover:bg-[#232f48] transition-colors text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-full hover:bg-[#232f48] transition-colors text-white">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-[#232f48]" data-alt="User profile picture showing a person smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuABP_fQzd-rfAGzPCPQPbVh6nn88fvjjZy3Djg2TZUaGEWPMqRcnZcndum01qpgFjU1EqaqMItRuTNmu7D-dUJgxvPheMSn9aPyDvctbuarAUMeVQ0M1NdhlhtrsWH2_ntF3ALvZ60aGmqOz6HLHfjAJxcYnG7L1_5XFFkQytdW40w7dC3PtjWv_rICUXxfJkZKOIRIMUfY7T5YfbKJcymqLw5X-Abqh_GD-XRaHQFA2qC01Hy2KWegOWOrEfiVKmU3SDBo-e492KY");'></div>
+</div>
+</header>
+<div class="flex flex-1 relative">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col w-64 border-r border-[#232f48] bg-[#111722] fixed h-[calc(100vh-65px)] overflow-y-auto pt-6 pb-10">
+<div class="flex flex-col gap-6 px-4">
+<!-- Main Nav -->
+<div class="flex flex-col gap-2">
+<h3 class="px-3 text-xs font-bold text-[#92a4c9] uppercase tracking-wider">Menu</h3>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-primary transition-colors">home</span>
+<span class="text-sm font-medium">Home</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary text-white shadow-[0_0_20px_rgba(19,91,236,0.3)]" href="#">
+<span class="material-symbols-outlined fill">explore</span>
+<span class="text-sm font-medium">Browse Groups</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-primary transition-colors">feed</span>
+<span class="text-sm font-medium">My Feed</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-primary transition-colors">forum</span>
+<span class="text-sm font-medium">Discussions</span>
+</a>
+</div>
+<!-- Your Communities -->
+<div class="flex flex-col gap-2">
+<h3 class="px-3 text-xs font-bold text-[#92a4c9] uppercase tracking-wider">Your Groups</h3>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#232f48] transition-colors" href="#">
+<div class="size-6 rounded-md bg-purple-500/20 text-purple-400 flex items-center justify-center text-[10px] font-bold">UI</div>
+<span class="text-sm font-medium text-white truncate">UI Design Hub</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#232f48] transition-colors" href="#">
+<div class="size-6 rounded-md bg-green-500/20 text-green-400 flex items-center justify-center text-[10px] font-bold">JS</div>
+<span class="text-sm font-medium text-white truncate">JavaScript Devs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-[#232f48] transition-colors" href="#">
+<div class="size-6 rounded-md bg-orange-500/20 text-orange-400 flex items-center justify-center text-[10px] font-bold">G</div>
+<span class="text-sm font-medium text-white truncate">Gaming Lounge</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 p-6 lg:p-10 max-w-[1600px] mx-auto w-full">
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl md:text-4xl font-black text-white tracking-tight">Discover Communities</h1>
+<p class="text-[#92a4c9] text-base md:text-lg">Explore diverse groups and join the conversation.</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded-xl font-bold text-sm transition-all shadow-[0_4px_20px_rgba(19,91,236,0.3)] hover:shadow-[0_4px_25px_rgba(19,91,236,0.5)] active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Create Group</span>
+</button>
+</div>
+<!-- Filters & Search (Stacked on Mobile, Row on Desktop) -->
+<div class="flex flex-col lg:flex-row gap-4 mb-8">
+<!-- Mobile Search (Visible only on small screens) -->
+<div class="lg:hidden w-full">
+<div class="flex w-full items-center rounded-xl bg-[#232f48] h-12 px-4 gap-3">
+<span class="material-symbols-outlined text-[#92a4c9]">search</span>
+<input class="bg-transparent border-none outline-none text-white text-base w-full placeholder:text-[#92a4c9] focus:ring-0" placeholder="Search groups..."/>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-1 gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex items-center whitespace-nowrap gap-2 px-4 py-2 rounded-full bg-white text-background-dark font-bold text-sm transition-transform hover:scale-105">
+                        All Groups
+                    </button>
+<button class="flex items-center whitespace-nowrap gap-2 px-4 py-2 rounded-full bg-[#232f48] text-[#92a4c9] hover:text-white hover:bg-[#2d3b55] font-medium text-sm transition-all border border-transparent hover:border-[#3b4d6e]">
+                        Trending
+                        <span class="material-symbols-outlined text-[16px]">trending_up</span>
+</button>
+<button class="flex items-center whitespace-nowrap gap-2 px-4 py-2 rounded-full bg-[#232f48] text-[#92a4c9] hover:text-white hover:bg-[#2d3b55] font-medium text-sm transition-all border border-transparent hover:border-[#3b4d6e]">
+                        Newest
+                        <span class="material-symbols-outlined text-[16px]">new_releases</span>
+</button>
+<button class="flex items-center whitespace-nowrap gap-2 px-4 py-2 rounded-full bg-[#232f48] text-[#92a4c9] hover:text-white hover:bg-[#2d3b55] font-medium text-sm transition-all border border-transparent hover:border-[#3b4d6e]">
+                        My Groups
+                    </button>
+<button class="flex items-center whitespace-nowrap gap-2 px-4 py-2 rounded-full bg-[#232f48] text-[#92a4c9] hover:text-white hover:bg-[#2d3b55] font-medium text-sm transition-all border border-transparent hover:border-[#3b4d6e]">
+                        Technology
+                    </button>
+</div>
+<!-- Sort Dropdown -->
+<div class="hidden lg:flex">
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#232f48] text-white font-medium text-sm border border-transparent hover:border-[#3b4d6e] transition-all">
+<span class="material-symbols-outlined text-[20px]">sort</span>
+<span>Sort by: Recommended</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+<!-- Card 1: Technology -->
+<div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-card-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] hover:-translate-y-1 relative">
+<!-- Cover Image -->
+<div class="h-32 bg-cover bg-center relative" data-alt="Abstract blue digital circuit board pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvOyZV0ZT9TnRwhTJkGCX0P6GwqZ7wTbRp-N5LV5cMrjkVoSLZqsXseVtdFeaax0v1FzjCRZK0dbHfwK43DWJlRL8allvUGHKTFgZbNXa_Z_biGotPBQ9wB6iQe32gr2SlF_RsEzf0qxveft9xgYkFKuG391N51wHpqED5OMeDnHLyz-XusTtMLI2Yrk0_hW08xl9gDkYiRaNHhHC4Ou6-_aCanZ8V85rWaYJ7EdExBp0dFJdcQHEyFDEp3M3u52IVuzjvgXktMao");'>
+<div class="absolute inset-0 bg-gradient-to-t from-card-dark to-transparent"></div>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-[14px]">circle</span>
+<span class="text-xs font-bold text-white">125 Online</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Tech Enthusiasts</h3>
+<span class="material-symbols-outlined text-primary" title="Verified Community">verified</span>
+</div>
+<p class="text-[#92a4c9] text-sm line-clamp-2 mb-4">The central hub for all things technology, gadgets, coding, and future tech discussions.</p>
+<!-- Stats Row -->
+<div class="flex items-center gap-4 text-xs font-medium text-gray-400 mb-5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>15.2k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>840 Posts/day</span>
+</div>
+</div>
+<!-- Footer -->
+<div class="mt-auto pt-4 border-t border-card-border flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Member Avatar" class="w-8 h-8 rounded-full border-2 border-card-dark" data-alt="Male face avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC3KMxDZH6d-5x7smy5XAJHO5VFv-BaBwm89pkJHIIuhVuRKXXEmN2q10vlWoKCF-KMxKErq9my7nR2rWwxBq4H4Jfk4ewNORalfeuiGyy4EIt9ej5LusjwaVLIKwzY_5vZRpJMu6hxkXRd90bl5NI0FtnwgzC9zfJXlQYW6pWV09NrxnLZ1KheBtJMcogio0HE-Piy2AqGXtKNLHOfdpgv7VFTgkBxZjcvCYuCzNkuYZhglr9DG910eNmP-IXFNCJwl-Aa2aMQGU"/>
+<img alt="Member Avatar" class="w-8 h-8 rounded-full border-2 border-card-dark" data-alt="Female face avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB22wy6vV5x-CKC9qC8EmsWmPi3wfRrqPV2avi2GWGyhRGzWzW6RBL0n4cPehfNS5JXTiSA6kayjY-7gWqPvEFPZeIy2HeP2guYXmfe60MaxA2zYTnnRMRxdFllsR0iD-WMFhrIAd4CH6zUjh37UOhrpHrtMEIbbCFHbRLiX0hDQoX4bQ6CbLv4c4z_5Ch3heZRbnBbFzJ9cdClVyH0a3Xj0lZsAlR3wnK4GpNIpmcUt2kEAy0Pk5dLL88e3aiXjvRjbfmkRJz04LE"/>
+<div class="w-8 h-8 rounded-full border-2 border-card-dark bg-[#2d3b55] text-white flex items-center justify-center text-[10px] font-bold">+9</div>
+</div>
+<button class="px-4 py-1.5 rounded-lg bg-[#232f48] text-white text-sm font-semibold hover:bg-primary transition-colors">
+                                Join
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 2: Digital Art -->
+<div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-card-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] hover:-translate-y-1">
+<div class="h-32 bg-cover bg-center relative" data-alt="Vibrant abstract colorful gradient artwork" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDj4TqDcmp-n6TpRSv46hGu2W-05sY_G6zSmZGLc9U8BwZuZSBr1l4vt3BVvdoRbp4gSjHmL2LEHjpFqS1m7xrltgZ3gc59rIazxo9ePg7L70SlJ02TckHbK31P5CN6XZb35eJRLmK7M_v8jc2vaw3_SChh5y5dyAVn8QS9pdSM2TDCTKS3g38fH8JuvzbsuYwbNHhp4-kk53yuFNaBDoVjkbqfgzV_qbegnFUHkufZmpcQP7Fc7d1WYBSIkKYqFO5_DyJHCfL8-kg");'>
+<div class="absolute inset-0 bg-gradient-to-t from-card-dark to-transparent"></div>
+<div class="absolute top-3 left-3 bg-primary/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-white text-[14px]">trending_up</span>
+<span class="text-xs font-bold text-white">Trending</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Digital Art &amp; VFX</h3>
+</div>
+<p class="text-[#92a4c9] text-sm line-clamp-2 mb-4">Share your creations, get feedback on your portfolio, and discuss the latest industry tools.</p>
+<div class="flex items-center gap-4 text-xs font-medium text-gray-400 mb-5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>8.4k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">image</span>
+<span>2.1k Artworks</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-card-border flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Member Avatar" class="w-8 h-8 rounded-full border-2 border-card-dark" data-alt="Male avatar looking right" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBze46KyBfBzS41tr_GcD4cku6NXxc5sqxwlc0DpsGtjnedEhNp-b174Qahz9fQT6haeXWJGrI2HCM2Wt6uFzddBycvJoq1sZjQHtYg_siTPz3ApQ17uIbBr4g09UNtsLk-q6MQqzONmD-mzQqvKcHsTOAN2muXJJVUnRUTXNwe4NaK842y8WAEh0yu7SZMecsWc2ZmbAV3eYYeivF21lGuAim2iUCRLXJ3iToXR-KwvcE42CTVjx1ZyMJk9IIdibLDMdjbMHHnihQ"/>
+<img alt="Member Avatar" class="w-8 h-8 rounded-full border-2 border-card-dark" data-alt="Female avatar smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCtL-ddRCSoxTMxy_Xs66IVbgJ2InLBrQIciNAtExWXDpE43_V0DbwJLWXozlCcxqsxYF_AQiGhf4OfKW2SGs8ixDU1_v9cvGZ1DGsBtfpQlOxOORgXvBxisNBmABIsBZA90TPXuhthKnpapHhl7iao_5AdZKM5fwQTfFTtACzerynHQi_H4i6DHu539ltF1aTNZl9v8ZUy20VPucW4PN6b_4NgJpB3Q2Guh7tg_GSx1K7WcPG4o0xdnWubw0JCY2nouJFWUpK3HY"/>
+<div class="w-8 h-8 rounded-full border-2 border-card-dark bg-[#2d3b55] text-white flex items-center justify-center text-[10px] font-bold">+15</div>
+</div>
+<button class="px-4 py-1.5 rounded-lg bg-[#232f48] text-white text-sm font-semibold hover:bg-primary transition-colors">
+                                Join
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 3: Gaming (Joined) -->
+<div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-card-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] hover:-translate-y-1">
+<div class="h-32 bg-cover bg-center relative" data-alt="Neon cyberpunk city street at night" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGOFstMXQSrIU1EQqI2ksPPWYj6KGRccnIEjajnIFk2TjVVF1uZSzPcyMrNbMtJeZFNBTL7oMSY6DpvnFzcNEm1Jxqj4W-szycwPXnJv8QI70L2AI-o8xEDsIcJKIZFd1QIUqOnWa8Ua4OZWx28JEk2r_OGU3VBjG8OSPsXGiHRoWyhCyF8eMRIdVvZhZdPpcWuRCcAS7dLlIbFAWdKf7sN9BMeNHX6RzEEBRebYK-zxsV3CsGoGjmUBIT3L5FmfKzK5fheaWhOwE");'>
+<div class="absolute inset-0 bg-gradient-to-t from-card-dark to-transparent"></div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Gaming Lounge</h3>
+</div>
+<p class="text-[#92a4c9] text-sm line-clamp-2 mb-4">Looking for a squad? Discussing the latest patch notes? This is the place for gamers.</p>
+<div class="flex items-center gap-4 text-xs font-medium text-gray-400 mb-5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>42k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">sports_esports</span>
+<span>Very Active</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-card-border flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Member Avatar" class="w-8 h-8 rounded-full border-2 border-card-dark" data-alt="Male avatar with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuQCQ2m-4vp5c3EZyV31hfM7fGovXdZvWEqZnJ-XQJDsraXKoNsC7wBLDI88ZJT7HS-oyePhEj_cRgu8Y1iOGvgalkcinQv4uuFuOc5LW_bOElkUVvsJuOiCE-DwjoDbrM2B34iOonVUeDRcpO2g7fCOWiMKRcaeQHtptTxklIwz5ZaN3wkpnn-0VksUPCWhQMo5MUM5PXyJnS0lYpVH9nFW9t4mSUlU2638npcykINq_ytr0TOYnnfTtRIYNEubjoLSLz3C2vMtM"/>
+<img alt="Member Avatar" class="w-8 h-8 rounded-full border-2 border-card-dark" data-alt="Female avatar thoughtful" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAI61VGVRjX8Hsn30bM22ikHtWoW5T1L6bpZT7UkrMq6SIzNWH19qkECQXv-0haac7VrTljNBzrInZNFh_LFTjCALvWmYCgLQRdd8eoqawV8wvgtkNkgpSNq2JEobNTMWa_kIYxurKKMO4yWgryhwjQsvbgbax8jnSGAPyPHtp4ntrVMlUGGm6KBzRuuCkB60_HMWYMSXtK2FTCThyJqSXIaPRH_L0qoQRYMgOKY5bBLKwlU39gaoKjrbj0hRKfg1kRL5CqVpoV-LA"/>
+<div class="w-8 h-8 rounded-full border-2 border-card-dark bg-[#2d3b55] text-white flex items-center justify-center text-[10px] font-bold">+50</div>
+</div>
+<button class="px-4 py-1.5 rounded-lg bg-primary/20 text-primary border border-primary/20 text-sm font-semibold hover:bg-primary hover:text-white transition-colors">
+                                View
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 4: Photography -->
+<div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-card-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] hover:-translate-y-1">
+<div class="h-32 bg-cover bg-center relative" data-alt="Close up of a camera lens" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmQXCwZwzCoajp1pqNQVHTTjRtquUYWWEfs8LuiJ6e9Zn_kxXPkHrSxMwVO1_z2FttVtt7MVcwjTGyVaJ6FAypqZVmNbzSMhu1AwRksz5S_CAE18Uye4Y4U0cObYWhBWZIxsZkJIh9a0cASDIAoEDeB2L8IC4hcTz9QaDmL0kwyYoL2xXhnEQaigwbkVxqRAfRarMXzDqouUxMJEWrmSeLfou5wajQmvOjM8Fo0anwx7airYZN4eUwUF6fyKgvcvB3aowItYy69ls");'>
+<div class="absolute inset-0 bg-gradient-to-t from-card-dark to-transparent"></div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Shutterbugs</h3>
+</div>
+<p class="text-[#92a4c9] text-sm line-clamp-2 mb-4">A community for photographers of all levels to share tips, tricks, and their best shots.</p>
+<div class="flex items-center gap-4 text-xs font-medium text-gray-400 mb-5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>3.2k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">camera_alt</span>
+<span>Weekly Challenges</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-card-border flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Member Avatar" class="w-8 h-8 rounded-full border-2 border-card-dark" data-alt="Female avatar smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxJAcOC2vfYsybxkp3AErKO-ZwS5vnyizGSTdVTLZ7j8RwvBsvM2AFWea-G6leVfa5idMnPwo5CFJmmklv1c63nQFeC_tgOuGIEoRYoMLxigxZCEfS9oJC_WMKEI4xm78vx5RbrE-n41ITJigER5MXqCe9Nfsyr8ZmEzqmd2Y26INWuaS_cnqFpUNmboEVdYKvnl98XN6fuMKWWrTe1bTnu8FVjmNKJRPA75r-5ud0A84bjweGjTxybAz_WictUkC5Y2ltE8aJUTc"/>
+<div class="w-8 h-8 rounded-full border-2 border-card-dark bg-[#2d3b55] text-white flex items-center justify-center text-[10px] font-bold">+2</div>
+</div>
+<button class="px-4 py-1.5 rounded-lg bg-[#232f48] text-white text-sm font-semibold hover:bg-primary transition-colors">
+                                Join
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 5: Finance -->
+<div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-card-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] hover:-translate-y-1">
+<div class="h-32 bg-cover bg-center relative" data-alt="Stock market graph on a screen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkECFf6kkNchh4GDdEGGgi0v5KdQKsd_GI53-p2seeSiuIpfSeBlf7cciGQmovyG8zZ6NgvSFdrzK-kYwJXpFfT8UzKrFQ6hrywX2xBTBrpvwb1e7tjSLsiHICSB4By4h5CgDHmMPKyp-0y7n9rF-6irrAzn3CFJT5diEYqf_iSElDFpjA-0orkA9QiKjVys0Eyh6GVpPAYYIsfvKfLwuuaq4Bk04ULLCBJolP4iQmgBkPbFaolf0SQtbTfT43DbqDYiR8YzJz6Ds");'>
+<div class="absolute inset-0 bg-gradient-to-t from-card-dark to-transparent"></div>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-green-400 text-[14px]">arrow_upward</span>
+<span class="text-xs font-bold text-white">+5% Activity</span>
+</div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Crypto &amp; Finance</h3>
+</div>
+<p class="text-[#92a4c9] text-sm line-clamp-2 mb-4">Discussion about stocks, crypto, and personal finance strategies for the modern age.</p>
+<div class="flex items-center gap-4 text-xs font-medium text-gray-400 mb-5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>21k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">paid</span>
+<span>Investment Tips</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-card-border flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Member Avatar" class="w-8 h-8 rounded-full border-2 border-card-dark" data-alt="Female avatar serious" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALYPF1B00PN4nnCF4uNSt0PfXxrS5OvBPdLViHc7UOTOYYiKUImN8R8Ng650Phu8jaG0NMKYVBz90Nf-OI2NJOyXzaw3GGphlmLDFck_moqQO2PIve2IOfIC4rLtK8nISrPucXh39iBLhb8BR2FY-NgYZzRv3t-oTOjhFdw9fQ5yEBJao6pFLE_vT5OkaLDNjegnXyulEx1IsDH9jWMhkOy2Ew34EGgWK48lS-JQW1Tsp7F6aRe1Wtag69aMv2OQLABailJq9T4J0"/>
+<img alt="Member Avatar" class="w-8 h-8 rounded-full border-2 border-card-dark" data-alt="Female avatar blonde" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpIGVHJxbUIA0l83jjVWeAyNgHc-L34MEQP-GPqHNww4o2TICuOM3CDZmdWl3_Ez-yjUg7FG2j29fxaJVFg8QZ0vVMxvq0d5eTQzXPpNorPUG9O0dGWApxH_QVKAwO3qBbbbWRFsLTbD0mQ3g6lxPnGmDzWw8zk7ty83C_EyTnCYXUVzg0339-TrUG1QFq3F99r7ooYm5TmzHejVuiiUYNnOH4xfoJJAL8T-1qWnyDL_SO4oJ1oIzGk2TE4KOcxMc80V0uR7eetfs"/>
+<div class="w-8 h-8 rounded-full border-2 border-card-dark bg-[#2d3b55] text-white flex items-center justify-center text-[10px] font-bold">+120</div>
+</div>
+<button class="px-4 py-1.5 rounded-lg bg-[#232f48] text-white text-sm font-semibold hover:bg-primary transition-colors">
+                                Join
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 6: Music -->
+<div class="group flex flex-col bg-card-dark rounded-2xl overflow-hidden border border-card-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] hover:-translate-y-1">
+<div class="h-32 bg-cover bg-center relative" data-alt="Music studio recording equipment console" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBr0OB5arb7EhRg_wDvLGd_4QHYZFUoarcmTf0PnghhVlFKaKEPxUCe0oPZFbwNtMD-wa6m0iRTSjDWHYNpi877tNFJ0Rai5OEOtvuT4Ya0q-KaR4zukB0zOuagJqaabafU0aUcorbCm7WZ6NE74ReDoPU_vrXu1ivlR_v1vUKqbw7ejxsOiuSWwZrbNMS4OdSWNLRciuUYDx0esDLI5BLExw71Aq3EtycWBlng8Q1moUJQPUOfQwhkgE7Uu7tZSKytJ00dxUM-fLg");'>
+<div class="absolute inset-0 bg-gradient-to-t from-card-dark to-transparent"></div>
+</div>
+<div class="p-5 flex flex-col flex-1">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Music Makers</h3>
+</div>
+<p class="text-[#92a4c9] text-sm line-clamp-2 mb-4">For producers, instrumentalists, and vocalists to collaborate and showcase tracks.</p>
+<div class="flex items-center gap-4 text-xs font-medium text-gray-400 mb-5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span>6.7k</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">headphones</span>
+<span>Collabs Open</span>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-card-border flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Member Avatar" class="w-8 h-8 rounded-full border-2 border-card-dark" data-alt="Male avatar with blue shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV56nIAJqzYUBFPBgJsN-s5TfHE9UiC75TDh6Elz3JnLPX09vCsiLrCHh2ynJsx19BbzS_icE9_tuyUj8mnKvjRtxF3CO77HGGlrpFlnpZreHYiJPbUBZhxmfdc-mXgNcbOA10lEuQvr6rYyoMfomThh8CKeb8RyjdKekWuJG1Hr1NI7bTc7_-MJRtJEDom74BRaOk5Dtez85JXt87XM_bvVfanZOLFaajIwFlkTGgyBy9T-4f7Z0yie1CQWfWlKl2P7hjuun2kgU"/>
+<div class="w-8 h-8 rounded-full border-2 border-card-dark bg-[#2d3b55] text-white flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+<button class="px-4 py-1.5 rounded-lg bg-[#232f48] text-white text-sm font-semibold hover:bg-primary transition-colors">
+                                Join
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Loading Spinner / Infinite Scroll Indicator -->
+<div class="w-full flex justify-center py-10">
+<div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+</div>
+</main>
+</div>
+</body></html>

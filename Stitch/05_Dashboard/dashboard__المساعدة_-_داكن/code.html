@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard: المساعدة - داكن</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#192233",
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                        "body": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for Webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #324467; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Sidebar Navigation -->
+<aside class="w-72 hidden lg:flex flex-col border-l border-border-dark bg-[#111722] h-full shrink-0">
+<div class="flex flex-col h-full justify-between p-4">
+<div class="flex flex-col gap-6">
+<!-- User Profile Snippet -->
+<div class="flex gap-3 items-center px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 border-2 border-border-dark" data-alt="صورة المستخدم الشخصية" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnJYThzlQvuuFsnJ03vya2rmG9qmY96NAzAi-DLnFxKjIx7B-ywAUEZziaGQyxWwQb5PZE4krqV7kh4sHZ9G_gN8enhL607KkMtKy_uijPQh7fxFbMQ07tetgrw-LpSAH_aY1aRhEtHp_I_LvGF1YCC_QIn7-5IMd3Ly2cW6KJiqOKNp3FmYrxyluRiATZG0K5w7RLy32WY3HFiVlEmwadENvwisE8JvFoHrZtWiaO7ynwMl9yD-dlUvkMWwPq8xvTTK11kpU8OBw");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold leading-normal">أحمد محمد</h1>
+<p class="text-text-secondary text-sm font-normal leading-normal">عضو مميز</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white">dashboard</span>
+<p class="text-text-secondary group-hover:text-white text-sm font-medium leading-normal">لوحة المعلومات</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white">chat</span>
+<p class="text-text-secondary group-hover:text-white text-sm font-medium leading-normal">الرسائل</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white">group</span>
+<p class="text-text-secondary group-hover:text-white text-sm font-medium leading-normal">الأعضاء</p>
+</a>
+<div class="my-2 h-px bg-border-dark mx-3"></div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary" href="#">
+<span class="material-symbols-outlined">help</span>
+<p class="text-sm font-bold leading-normal">مركز المساعدة</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white">settings</span>
+<p class="text-text-secondary group-hover:text-white text-sm font-medium leading-normal">الإعدادات</p>
+</a>
+</nav>
+</div>
+<div class="px-3 py-2">
+<a class="flex items-center gap-3 px-3 py-2 text-red-400 hover:bg-red-500/10 rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<p class="text-sm font-medium leading-normal">تسجيل الخروج</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-hidden bg-background-light dark:bg-background-dark relative">
+<!-- Mobile Header (Visible only on small screens) -->
+<div class="lg:hidden flex items-center justify-between p-4 border-b border-border-dark bg-[#111722]">
+<div class="flex items-center gap-3">
+<button class="text-white p-1">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-bold text-white">مركز المساعدة</span>
+</div>
+<div class="size-8 bg-gray-700 rounded-full bg-cover" data-alt="User avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAwfPPrARsT03MoELaU6cuG1CHR9N22EJfVjlJIS1MXvHIgoI8WbIyLSg8hGVB-HJAw16bQEvKJkR7cJlwd4JWGdkYHgN2CM-y2wQSVvze9O3IoHKn6gF1eRTNPmgyqQ0BnFl-PkqSCtnfTaeq8B9-puP4UmEyWxnLws6iMAf-ouSzt9x1Q3VuyejNhuC0OkLCi984bMXTp6ckImeCFOT3JJnf5eOcU5nnvYXpNtMG3A-RX-OHRaqtIIRGOmZNKuGKc0jXrIoFyjM");'></div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto">
+<div class="container mx-auto max-w-5xl p-6 lg:p-10 flex flex-col gap-8">
+<!-- Header Group -->
+<div class="flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap items-center gap-2 text-sm">
+<a class="text-text-secondary hover:text-white transition-colors" href="#">الرئيسية</a>
+<span class="material-symbols-outlined text-text-secondary text-[16px]">chevron_left</span>
+<a class="text-text-secondary hover:text-white transition-colors" href="#">لوحة التحكم</a>
+<span class="material-symbols-outlined text-text-secondary text-[16px]">chevron_left</span>
+<span class="text-white font-medium">مركز المساعدة</span>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl lg:text-4xl font-black tracking-tight text-white">كيف يمكننا مساعدتك اليوم؟</h1>
+<p class="text-text-secondary text-lg">ابحث عن الحلول، تصفح الأدلة، أو تواصل مع فريق الدعم.</p>
+</div>
+<button class="bg-primary hover:bg-blue-600 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add</span>
+<span>تذكرة جديدة</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="relative w-full group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+<span class="material-symbols-outlined text-text-secondary group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="w-full h-14 bg-card-dark border border-border-dark rounded-xl pr-12 pl-4 text-white placeholder-text-secondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-sm" placeholder="ابحث عن مقال، إعدادات، أو كود خطأ... (Cmd+K)" type="text"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+<kbd class="hidden sm:inline-block px-2 py-1 text-xs font-mono text-text-secondary bg-[#232f48] rounded border border-[#324467]">⌘K</kbd>
+</div>
+</div>
+</div>
+<!-- Widgets Grid -->
+<div class="flex flex-col gap-6">
+<!-- Row 1: Quick Actions -->
+<div>
+<h3 class="text-white font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">bolt</span>
+                                إجراءات سريعة
+                            </h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<a class="flex flex-col gap-3 rounded-2xl border border-border-dark bg-card-dark p-5 hover:border-primary/50 hover:bg-[#1e293b] transition-all group" href="#">
+<div class="size-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<h2 class="text-white text-base font-bold">قوانين المنتدى</h2>
+</a>
+<a class="flex flex-col gap-3 rounded-2xl border border-border-dark bg-card-dark p-5 hover:border-primary/50 hover:bg-[#1e293b] transition-all group" href="#">
+<div class="size-10 rounded-full bg-green-500/10 flex items-center justify-center text-green-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">lock_reset</span>
+</div>
+<h2 class="text-white text-base font-bold">تغيير كلمة المرور</h2>
+</a>
+<a class="flex flex-col gap-3 rounded-2xl border border-border-dark bg-card-dark p-5 hover:border-primary/50 hover:bg-[#1e293b] transition-all group" href="#">
+<div class="size-10 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<h2 class="text-white text-base font-bold">تراخيص العضوية</h2>
+</a>
+<a class="flex flex-col gap-3 rounded-2xl border border-border-dark bg-card-dark p-5 hover:border-primary/50 hover:bg-[#1e293b] transition-all group" href="#">
+<div class="size-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<h2 class="text-white text-base font-bold">اتصل بالإدارة</h2>
+</a>
+</div>
+</div>
+<!-- Row 2: FAQ & Ticket Status -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- FAQ Section (2/3) -->
+<div class="lg:col-span-2 flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="text-white font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">quiz</span>
+                                        الأسئلة الشائعة
+                                    </h3>
+<a class="text-sm text-primary hover:underline" href="#">عرض الكل</a>
+</div>
+<div class="flex flex-col gap-3">
+<details class="group bg-card-dark border border-border-dark rounded-xl open:border-primary/50 transition-colors">
+<summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+<span class="text-white font-medium">كيف يمكنني تغيير اسم المستخدم الخاص بي؟</span>
+<span class="material-symbols-outlined text-text-secondary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-4 pb-4 text-text-secondary text-sm leading-relaxed border-t border-border-dark pt-3">
+                                            يمكنك تغيير اسم المستخدم مرة واحدة كل 30 يومًا من خلال إعدادات الحساب &gt; تفاصيل الحساب. إذا واجهت مشكلة، يرجى فتح تذكرة دعم.
+                                        </div>
+</details>
+<details class="group bg-card-dark border border-border-dark rounded-xl open:border-primary/50 transition-colors">
+<summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+<span class="text-white font-medium">لماذا لا أستطيع الرد على المواضيع؟</span>
+<span class="material-symbols-outlined text-text-secondary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-4 pb-4 text-text-secondary text-sm leading-relaxed border-t border-border-dark pt-3">
+                                            قد يكون حسابك مقيدًا مؤقتًا أو أنك تحاول الرد في قسم مغلق. تأكد من تفعيل بريدك الإلكتروني ومراجعة قوانين القسم.
+                                        </div>
+</details>
+<details class="group bg-card-dark border border-border-dark rounded-xl open:border-primary/50 transition-colors">
+<summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+<span class="text-white font-medium">كيف أبلغ عن مشاركة مسيئة؟</span>
+<span class="material-symbols-outlined text-text-secondary group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-4 pb-4 text-text-secondary text-sm leading-relaxed border-t border-border-dark pt-3">
+                                            يوجد زر "إبلاغ" أسفل كل مشاركة. استخدمه لإرسال تنبيه مباشر للمشرفين وسيتم التعامل مع الأمر بسرية تامة.
+                                        </div>
+</details>
+</div>
+</div>
+<!-- Ticket Status (1/3) -->
+<div class="flex flex-col gap-4">
+<h3 class="text-white font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">confirmation_number</span>
+                                    تذاكري
+                                </h3>
+<div class="bg-card-dark border border-border-dark rounded-2xl p-5 flex flex-col gap-4 h-full">
+<div class="flex items-center justify-between pb-3 border-b border-border-dark">
+<span class="text-text-secondary text-sm font-medium">التذاكر النشطة</span>
+<span class="bg-primary/20 text-primary text-xs px-2 py-1 rounded-md font-bold">1 نشط</span>
+</div>
+<!-- Active Ticket Item -->
+<a class="flex flex-col gap-2 hover:bg-[#232f48] -mx-2 p-2 rounded-lg transition-colors" href="#">
+<div class="flex justify-between items-start">
+<span class="text-white font-semibold text-sm line-clamp-1">مشكلة في تسجيل الدخول الثنائي</span>
+<span class="size-2 rounded-full bg-yellow-500 mt-1.5 shrink-0" title="قيد الانتظار"></span>
+</div>
+<div class="flex justify-between items-center text-xs text-text-secondary">
+<span>#2940</span>
+<span>منذ ساعتين</span>
+</div>
+</a>
+<div class="mt-auto pt-4 border-t border-border-dark">
+<button class="w-full py-2 rounded-lg border border-border-dark text-text-secondary hover:text-white hover:bg-[#232f48] text-sm font-medium transition-colors">
+                                            أرشيف التذاكر
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 3: Guides -->
+<div>
+<h3 class="text-white font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">menu_book</span>
+                                الأدلة والشروحات
+                            </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Guide Card 1 -->
+<a class="group relative overflow-hidden rounded-2xl border border-border-dark bg-card-dark min-h-[160px] flex flex-col justify-end p-5" href="#">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 opacity-60" data-alt="Abstract geometric dark blue background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRXYEzntKt7rCXW_zoEsI5aicSGSxZTVqi4-SzJlQ9Mm_ER8UFAXW86WkxQZdx4O_JyVxReKA8N02VYB6cNW86n3xVrz3BsxfBA_WkKnEcyRIOhIDWG2ptj1_SCBzdasCwPqhYwXorfUtpKtspyX7K6vRYr5ziP3aSt1Mz2CIm34ArkDVQSxdmnYfXUfjwnDClxi2apm4nnDFU--o3aeagIBpXw_lU6O435kcQpE8tGO-5uHoFv5oydzIU9DZEFoALl5v39eATR0E");'></div>
+<div class="relative z-20 flex flex-col gap-1">
+<div class="bg-blue-500 w-fit px-2 py-0.5 rounded text-[10px] font-bold text-white mb-1">للمبتدئين</div>
+<h4 class="text-white font-bold text-lg">دليل المستخدم الجديد</h4>
+<p class="text-gray-300 text-xs">تعرف على أساسيات المنتدى وكيفية البدء.</p>
+</div>
+</a>
+<!-- Guide Card 2 -->
+<a class="group relative overflow-hidden rounded-2xl border border-border-dark bg-card-dark min-h-[160px] flex flex-col justify-end p-5" href="#">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 opacity-60" data-alt="Code snippets on a screen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA8Q5BORxRcE5OjD8jM1dGiPLWMi220yoRlGR0cGhrjfTttKIgQgGDha3tSaTGcZG8X5HYxPlRysxgOSdJEwwKDNBMNMHs-fjDz0eAgFqoaIO_0kkgc6wf_if_rmFLxPb1JO4x1996iVshiAlW-2hLtMLenryu2wofnAU6498pcWT3clvESainNCrdMJdyRNn4WU3UCyHuZww9TCFXR1FVsTJz6RzP2XaHBELGmaOBry5hywuPFHUloCJ0oE_cpD1yLHUMAsuq5geI");'></div>
+<div class="relative z-20 flex flex-col gap-1">
+<div class="bg-purple-500 w-fit px-2 py-0.5 rounded text-[10px] font-bold text-white mb-1">تنسيق</div>
+<h4 class="text-white font-bold text-lg">أكواد التنسيق (BBCodes)</h4>
+<p class="text-gray-300 text-xs">كيف تجعل مشاركاتك تبدو رائعة ومنسقة.</p>
+</div>
+</a>
+<!-- Guide Card 3 -->
+<a class="group relative overflow-hidden rounded-2xl border border-border-dark bg-card-dark min-h-[160px] flex flex-col justify-end p-5" href="#">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 opacity-60" data-alt="Security lock visualization" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvtH2Fq5IgHAmaBfWReC2KvRogfOn1DMNhsW8TYPPxpWk0tAdShDH2pLBh2k6OZvOEalsrn7MT6vF_rqxnv0A3VRT-ICPMd4JzhPpiIWNmK3fHwi1MdokeY1c9sCEZK4H5Sj1_BALprwQ-jMpf9bmQyytHSBNNX6khnbcvt7HIPCg2kiCrZpzMUpKiDAm6hnf5SbyzeLH_HnkcElJPF_RXIqwBUb34OdiqSQR_CkJNOwmhzdSLOkyRfVw361KqckQN35lAHvDs-RQ");'></div>
+<div class="relative z-20 flex flex-col gap-1">
+<div class="bg-green-500 w-fit px-2 py-0.5 rounded text-[10px] font-bold text-white mb-1">أمان</div>
+<h4 class="text-white font-bold text-lg">تأمين حسابك</h4>
+<p class="text-gray-300 text-xs">خطوات تفعيل المصادقة الثنائية وحماية البيانات.</p>
+</div>
+</a>
+</div>
+</div>
+</div> <!-- End Grid -->
+<!-- Footer -->
+<div class="flex flex-col md:flex-row justify-between items-center border-t border-border-dark pt-8 mt-4 text-sm text-text-secondary gap-4">
+<p>© 2023 منتدى XenForo. جميع الحقوق محفوظة.</p>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">شروط الخدمة</a>
+<a class="hover:text-white transition-colors" href="#">سياسة الخصوصية</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

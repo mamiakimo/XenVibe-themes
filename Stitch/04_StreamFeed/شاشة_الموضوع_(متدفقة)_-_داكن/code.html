@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>شاشة الموضوع - XenSocial</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "surface-dark": "#1e293b",
+              "surface-darker": "#0f172a",
+              "border-dark": "#232f48",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem", 
+              "lg": "0.5rem", 
+              "xl": "0.75rem", 
+              "2xl": "1rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+        /* Custom scrollbar for better aesthetic in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<nav class="sticky top-0 z-50 w-full border-b border-border-dark bg-[#111722]/95 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white cursor-pointer">
+<div class="size-8 text-primary">
+<svg class="h-8 w-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
+</svg>
+</div>
+<h1 class="text-xl font-bold tracking-tight">XenSocial</h1>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">الرئيسية</a>
+<a class="text-primary text-sm font-medium border-b-2 border-primary py-5" href="#">المنتديات</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm font-medium" href="#">الأعضاء</a>
+<a class="text-slate-400 hover:text-white transition-colors text-sm font-medium" href="#">السوق</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden md:block">
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</span>
+<input class="bg-[#232f48] border-none rounded-lg text-white placeholder-slate-400 text-sm py-2 pr-10 pl-4 w-64 focus:ring-2 focus:ring-primary focus:outline-none" placeholder="بحث..." type="text"/>
+</div>
+<button class="relative p-2 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 left-2 size-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="size-9 rounded-full bg-cover bg-center ring-2 ring-primary/20 cursor-pointer" data-alt="User profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZkX44h8ra6y675XwF3GUwZpX9usuNbKjhw5Js0KBs79aPYQ_IRKNqrjODFwEgfCuJ6JsfLgcYwJs5qeK6FAPF8G-DPraKo8hI8kM91q1cLLdErU14U-ZqInbbHfGFMQZQNy2WHJt4M_MbmombcaYQSYaC9VXy6o8k4T5KT_ITRs1TO8xnmrauY4-RxqH7uYWaU0ByZRKMSPX1Sq7hgHURJs9BkFsYjoJ7xQzUPkBbg_3VZwagvKamhHhbNrtvXG2gtj3T7Ep7nLo')"></div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Layout -->
+<main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Thread Content Column -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap items-center gap-2 text-sm text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">المنتديات</a>
+<span class="material-symbols-outlined text-[16px] rtl:rotate-180">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">التكنولوجيا</a>
+<span class="material-symbols-outlined text-[16px] rtl:rotate-180">chevron_right</span>
+<span class="text-white font-medium">تطوير الويب</span>
+</div>
+<!-- Page Heading & Actions -->
+<header class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-2 border-b border-border-dark/50">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="bg-primary/20 text-primary text-xs px-2 py-0.5 rounded font-medium border border-primary/20">نقاش</span>
+<h2 class="text-2xl sm:text-3xl font-bold text-white leading-tight">مستقبل الذكاء الاصطناعي في تطوير الويب</h2>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-400">
+<span>بدأ بواسطة</span>
+<a class="text-primary hover:underline font-medium" href="#">@alex_dev</a>
+<span>•</span>
+<span>اليوم الساعة 10:00 ص</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">visibility</span> 1.2k</span>
+</div>
+</div>
+<button class="flex items-center justify-center gap-2 bg-surface-dark hover:bg-[#232f48] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors border border-border-dark whitespace-nowrap">
+<span>انتقال للأحدث</span>
+<span class="material-symbols-outlined text-[18px]">arrow_downward</span>
+</button>
+</header>
+<!-- Posts Stream -->
+<div class="flex flex-col gap-6 relative">
+<!-- Vertical Connection Line (Visual connector for flow) -->
+<div class="absolute top-8 bottom-8 right-[2.25rem] w-0.5 bg-border-dark/50 hidden md:block -z-10"></div>
+<!-- ORIGINAL POST (Hero Card Style) -->
+<article class="flex gap-4 group animate-fade-in">
+<!-- Avatar Column -->
+<div class="flex-shrink-0 hidden md:flex flex-col items-center gap-2 w-16 pt-1">
+<div class="relative">
+<div class="size-14 rounded-xl bg-cover bg-center ring-2 ring-primary shadow-lg shadow-primary/20" data-alt="Thread starter avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6yV1xdXCQOjMgZ6R_hj6DToh3uQhHY26WIrcgjUW6DDzy87HkN0S1MFktUbbeOuosKTZcmQjuguEdS3eRR8MZOT7sZ-xJJ463mPQfPfmz7Ldx4wS7CyP5wmVvMiQTPyLT1W9ljbvS7Kik_kt5oCv7oiCPBrrkiXKg9PTZA7leG-COeyk4k9WyUiiyZzpS3x7zWGdxnIP2BIlz5nvm71fhrGpHXBVDnZzue6R_dIfxku97YGe8OvocM-82zJifV3PYxeNe-EE3afI')"></div>
+<span class="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-background-dark ring-2 ring-background-dark">
+<span class="h-2.5 w-2.5 rounded-full bg-green-500"></span>
+</span>
+</div>
+<span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">ناشر الموضوع</span>
+</div>
+<!-- Content Bubble -->
+<div class="flex-1 min-w-0">
+<!-- Mobile Avatar Header -->
+<div class="flex items-center gap-3 md:hidden mb-2">
+<div class="size-10 rounded-lg bg-cover bg-center ring-1 ring-primary" data-alt="Thread starter avatar mobile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDymj-Cw-Hg5ZF6sjduZ8kIgDZJf9sqmjIcH2nKLUrjjg9vXK-r31gYrx9rmm8sP9jJiTP8JuMBrEwPDTAI_ki1TEZqlo6O7YnIBPdPj8z-0cW-6akUjStC1ZgjCkRYaPHxYuH4FzN7EhvVFrGw9L0GEx-Cl6sWqFKeceOMWP0UQpkT9WHDbwmnz7n4ZhJBK4YH2GBfHceQGPr8LdBp0pQRpinie6YFwBazAnXE4sfQSRawUHmv_GZtWES0HiICT2QEjgtmep2Shs0')"></div>
+<div class="flex flex-col">
+<span class="text-white font-bold text-sm">Alexander Davis</span>
+<span class="text-primary text-xs">ناشر الموضوع</span>
+</div>
+</div>
+<div class="bg-surface-dark border border-border-dark rounded-2xl p-5 sm:p-6 shadow-sm relative before:hidden md:before:block before:absolute before:right-[-8px] before:top-6 before:w-4 before:h-4 before:bg-surface-dark before:rotate-45 before:border-t before:border-r before:border-border-dark">
+<!-- Meta Header Inside Bubble -->
+<div class="flex justify-between items-start mb-4 border-b border-border-dark/50 pb-3">
+<div>
+<h3 class="text-lg font-bold text-white hidden md:block">Alexander Davis</h3>
+<span class="text-xs text-slate-400">مطور واجهات أمامية • منذ 4 ساعات</span>
+</div>
+<button class="text-slate-400 hover:text-white p-1 rounded hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+<!-- Post Body -->
+<div class="prose prose-invert max-w-none text-slate-300 text-base leading-relaxed">
+<p>لقد كنت أفكر كثيرًا مؤخرًا في كيفية تغيير نماذج اللغة الكبيرة (LLMs) لسير عملنا اليومي كمطورين. لم يعد الأمر يتعلق فقط بكتابة الأكواد البرمجية يدويًا، بل أصبح يتعلق أكثر بتنسيق المنطق وهيكلة الأنظمة.</p>
+<p class="mt-4">هل تعتقدون أننا نتجه نحو مستقبل نصبح فيه "مهندسي أوامر" أكثر من كوننا مبرمجين تقليديين؟ وكيف سيؤثر ذلك على المطورين الجدد الذين يدخلون المجال؟</p>
+<div class="mt-4 rounded-xl overflow-hidden border border-border-dark">
+<div class="w-full h-64 bg-cover bg-center relative" data-alt="Abstract code visualization with AI concept" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_LA1l8Si9CunncA21smaF-erZTcm7SBoYbomu5d3yDuZzt3u6QpIQhJ0rWCH4NVIW-_fZjN7rBDGUcTOfwIT-mJrAlc8xQVBt_L31MDtqC7Sc45ghRsKdiN6dd3WcY2KOLTlnS3wYkixb5_TShV6d43XPgbz0Ib2W5lpOTSe5zB2C54ijFQp--Fsad54Q0TsRG5GNNgLIoQkNmCu2qw-lYdOWX6MqnNw5Olp4DqICC4o2tHdlixKj9VPWU5FSkuS95THClc-GltE')">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+<p class="text-white font-medium text-sm">مخطط تطور أدوات التطوير (2020-2024)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions Bar -->
+<div class="mt-6 flex flex-wrap items-center gap-4 pt-4 border-t border-border-dark/50">
+<button class="flex items-center gap-2 text-slate-400 hover:text-primary transition-colors group/btn">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">thumb_up</span>
+<span class="text-sm font-medium">إعجاب (24)</span>
+</button>
+<button class="flex items-center gap-2 text-slate-400 hover:text-primary transition-colors group/btn">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">format_quote</span>
+<span class="text-sm font-medium">اقتباس</span>
+</button>
+<button class="flex items-center gap-2 text-slate-400 hover:text-primary transition-colors group/btn">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">reply</span>
+<span class="text-sm font-medium">رد</span>
+</button>
+<div class="flex-grow"></div>
+<button class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- REPLY 1 -->
+<article class="flex gap-4 group">
+<div class="flex-shrink-0 hidden md:flex flex-col items-center gap-2 w-16 pt-1">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center ring-1 ring-slate-600 grayscale hover:grayscale-0 transition-all duration-300" data-alt="User avatar 2" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSMbScBeTB1ZUjNPHwaqfnskKE4Ex8CQ9CXllf8yrZQsvp7S7TpACljd3gyvnMo01w9B66L6J4X9kPqf5Y-lB6gVGF5CuuuWWYCXf3k7vbWE4wESH5Z3JfRqSjQlwiNdctMxaXrqO0GbiUwhXVkhmI1XMdXa7F8M_es102nflmgcu3-WWaP1gxuD18YNbvr_ZODDrdnN8fDT-qKd8gur9iP-ArGY00yLUULOjuX5JXHzJlv4NBrZcJnIIij6zmJ4xPVe7emOxzbuI')"></div>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<!-- Mobile Header -->
+<div class="flex items-center gap-3 md:hidden mb-1">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="User avatar 2 mobile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBgk1UT_3NetCtDC1C8Ba5XgEZJdWIWPZwwm8rjEdGnAdIBmMSpRWpjhIiWmeUQdUFOVgbL_Ejm4vyZAvuCEzTdzEdhctQLnH228qZVAAIW3BWgeb2lyeMxpMRjd3zwBGyreGOoJ93rzr0qqSkJGsHd-lovPQbmbjAV_Cx60BZ9jiyAIIWTozIJuNmU3gfax8l-4r0ss4QycR87LBAcFRQExlNbhJSMDYgHhGPYzJpl1VFIIHhfsUp8QhPjgZMCWXSmMvUEWSNyqqI')"></div>
+<span class="text-white font-medium text-sm">Sarah Jenkins</span>
+</div>
+<div class="bg-[#161f32] hover:bg-[#1a253a] transition-colors rounded-xl p-4 relative">
+<div class="flex justify-between items-center mb-2">
+<div class="flex items-center gap-2">
+<span class="text-white font-bold text-sm hidden md:block">Sarah Jenkins</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20 font-medium">مشرف</span>
+<span class="text-xs text-slate-500">• منذ 3 ساعات</span>
+</div>
+</div>
+<div class="text-slate-300 text-sm leading-relaxed">
+                                أتفق معك تمامًا أليكس. أعتقد أن المهارة القادمة ستكون القدرة على تصحيح ومراجعة الكود الذي يكتبه الذكاء الاصطناعي، وليس كتابته من الصفر. هذا يتطلب فهمًا أعمق للأساسيات.
+                            </div>
+<div class="mt-3 flex gap-4 opacity-50 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-primary text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span> 5
+                                </button>
+<button class="text-slate-400 hover:text-primary text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">reply</span> رد
+                                </button>
+</div>
+</div>
+</div>
+</article>
+<!-- REPLY 2 (Nested/Quoted) -->
+<article class="flex gap-4 group">
+<div class="flex-shrink-0 hidden md:flex flex-col items-center gap-2 w-16 pt-1">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center ring-1 ring-slate-600" data-alt="User avatar 3" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB2Pw5g_M4r3vvTzgOcqPvhROMojocKoeHMyIB2WtBg9BLk4uI_GxpLmspzHCuSDOcm6UO_sSqSSqasTGv3ahVDk0V8HOpF4B-xTfZUd2V3YoSR6PvAMZZlIdycu-T-ZYRck8Zcv-jX5DpNSJ8Om2DXN0QPLkCDP0H8_CiIYooiTqUc8Pm-cM1bNm_Pkd16ue7-Fu5W556KbW4i5rCoQCEkkx2knk1muVYaNG-NlLASQRcle0WEEweAED27kZHPhbZFJNRKalSu0dU')"></div>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<!-- Mobile Header -->
+<div class="flex items-center gap-3 md:hidden mb-1">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="User avatar 3 mobile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBjG5GHbymwkdYQbJdelWDNfcMnwJblrOztIV-sX4mD24LhP4fUnNNh6xpxroIu0gHSBnm8HiUVKvvjHt0w1-M06IPuBssPT8jbW54SMMazhftHOt-t-9gtJ-Qslu44Cp8Zvr3FYv3bpiAsMOyMvKxGfp57nUvb7vzlJRjBf0xANxxBT_lSXIluTLDtsnIOCuXIgeyCB_7uLVmoVYav0O8KCqNkNbCfwKQMSiHgk4vW4C9edWlhiEa7lmi7D54ooFXeCFpmuBSinM0')"></div>
+<span class="text-white font-medium text-sm">Mike Ross</span>
+</div>
+<div class="bg-[#161f32] hover:bg-[#1a253a] transition-colors rounded-xl p-4 relative">
+<div class="flex justify-between items-center mb-2">
+<div class="flex items-center gap-2">
+<span class="text-white font-bold text-sm hidden md:block">Mike Ross</span>
+<span class="text-xs text-slate-500">• منذ ساعتين</span>
+</div>
+</div>
+<!-- Quote Block -->
+<div class="mb-3 p-3 rounded bg-background-dark border-r-2 border-primary/60 text-xs text-slate-400 italic relative">
+<div class="font-bold text-slate-500 mb-1 not-italic flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_quote</span>
+                                    Sarah Jenkins قال:
+                                </div>
+                                هذا يتطلب فهمًا أعمق للأساسيات.
+                            </div>
+<div class="text-slate-300 text-sm leading-relaxed">
+                                بالضبط! <span class="text-primary font-medium">@Sarah</span> النقطة هي أن المبتدئين قد يعتمدون عليه كليًا دون فهم ما يحدث خلف الكواليس، وهذا هو الخطر الحقيقي.
+                            </div>
+<div class="mt-3 flex gap-4 opacity-50 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-primary text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span> 12
+                                </button>
+<button class="text-slate-400 hover:text-primary text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">reply</span> رد
+                                </button>
+</div>
+</div>
+</div>
+</article>
+<!-- REPLY 3 -->
+<article class="flex gap-4 group">
+<div class="flex-shrink-0 hidden md:flex flex-col items-center gap-2 w-16 pt-1">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center ring-1 ring-slate-600 grayscale" data-alt="User avatar 4" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC9kSV9suXYaEjtKDMuFC-fv6LqnIhTOVq9cG6vRuUqGVdfFHZUsBHIVvay4gCyObh7_FohlnDj3oTbcrgIIGY9Js6p_HNMQsuX9fcY0XXrdfh3u60RCBqxpi2q3eatPFBJWN4zWHEoQ2MJCLYUqTGTjDvRPxL3UeynYm-TIez5eeuUxFZfCMoVI37Hr2Xi-vts8efGGHDApBdWvrzjpZSPYmmY3wfLOMCjVmRHKXnDK1SbDAFkZdCd86NGHXg-ONbYgYWq37AMDS4')"></div>
+<span class="absolute -bottom-0.5 -right-0.5 flex h-3 w-3 items-center justify-center rounded-full bg-background-dark ring-2 ring-background-dark">
+<span class="h-2 w-2 rounded-full bg-yellow-500"></span>
+</span>
+</div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-3 md:hidden mb-1">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="User avatar 4 mobile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAT_tm1oyo5ffeg8j_OdXvv30cEV6VHYkMLwDtrs4phVNuQBK3W8SzOTx3QDnQ62NMURPdRD2pOPLVd68m9ur18gCUUCYF_ejV6BvfHDwct2aTLWaxuH7DQEfaMFCn2cCyHUiSxvh9yHRdFGDkHltwvdECmSYFApB6rGs5xuhOXeJVxFGF6gDSm0nGr8pyNplN83v0_ltBA9Nzp-clgoHnrdoRCEx8VXvdZlUkRNJGmV7DkDL-PX8_PkXyD9eS_OZNxz4-_4mNsZ4Q')"></div>
+<span class="text-white font-medium text-sm">DevMaster99</span>
+</div>
+<div class="bg-[#161f32] hover:bg-[#1a253a] transition-colors rounded-xl p-4 relative">
+<div class="flex justify-between items-center mb-2">
+<div class="flex items-center gap-2">
+<span class="text-white font-bold text-sm hidden md:block">DevMaster99</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 font-medium">عضو مميز</span>
+<span class="text-xs text-slate-500">• منذ 45 دقيقة</span>
+</div>
+</div>
+<div class="text-slate-300 text-sm leading-relaxed">
+                                لا أرى أن الأمر بهذه السوداوية. الأدوات تتطور، ونحن نتطور معها. تذكروا عندما ظهر jQuery؟ أو React؟ كل أداة جديدة ترفع مستوى التجريد (Abstraction).
+                            </div>
+<div class="mt-3 flex gap-4 opacity-50 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-primary text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span> 2
+                                </button>
+<button class="text-slate-400 hover:text-primary text-xs font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">reply</span> رد
+                                </button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Infinite Scroll Loader -->
+<div class="py-8 flex justify-center">
+<button class="flex items-center gap-2 text-slate-400 hover:text-white bg-surface-dark px-4 py-2 rounded-full text-sm font-medium transition-colors border border-border-dark">
+<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span>
+                    جاري تحميل المزيد من الردود...
+                </button>
+</div>
+<!-- Sticky Reply Box -->
+<div class="sticky bottom-4 z-40 mt-auto">
+<div class="bg-surface-dark border border-border-dark rounded-xl shadow-xl p-3 flex gap-3 items-end ring-1 ring-black/10 backdrop-blur-md bg-opacity-95">
+<div class="size-8 rounded-full bg-cover bg-center flex-shrink-0" data-alt="My Avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXViat3ml7YYn8iU-vvpfYiuVK5NU1VRsElshCDXXq0B-I2j9uxFAb1bG-3CJPwdP7p9tDJsvK9TZmByaO5ZXI6aJzNqsS770ooX29TOb-XZpNwUHHODXSiAckAebEwx4Pb8NXU3WXBZ3W-Csdk0zf1706c0ifrl6Xn_R3rLMkkqLuAiiY9M2nkTF4upTf6SBsQb0Pa_RxRizFD6TEIdWh7D7tIzY_Zw6XzulhyGttvoasjUEFit52E3Jtd3FtXhxGiyM3p3Ome-Q')"></div>
+<div class="flex-grow flex flex-col gap-2">
+<textarea class="w-full bg-transparent border-none text-white placeholder-slate-400 focus:ring-0 resize-none py-2 px-0 text-sm" placeholder="اكتب ردك هنا..." rows="1"></textarea>
+<div class="flex items-center justify-between border-t border-border-dark pt-2">
+<div class="flex gap-2 text-slate-400">
+<button class="hover:text-primary p-1 rounded hover:bg-white/5"><span class="material-symbols-outlined text-[20px]">image</span></button>
+<button class="hover:text-primary p-1 rounded hover:bg-white/5"><span class="material-symbols-outlined text-[20px]">code</span></button>
+<button class="hover:text-primary p-1 rounded hover:bg-white/5"><span class="material-symbols-outlined text-[20px]">sentiment_satisfied</span></button>
+</div>
+<button class="bg-primary hover:bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition-colors">
+                                إرسال
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Column -->
+<aside class="hidden lg:flex lg:col-span-4 flex-col gap-6">
+<!-- Thread Stats Widget -->
+<div class="bg-surface-dark border border-border-dark rounded-xl p-5 shadow-sm">
+<h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">bar_chart</span>
+                    إحصائيات الموضوع
+                </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-background-dark rounded-lg p-3 text-center border border-border-dark">
+<div class="text-2xl font-bold text-white">42</div>
+<div class="text-xs text-slate-400 mt-1">ردود</div>
+</div>
+<div class="bg-background-dark rounded-lg p-3 text-center border border-border-dark">
+<div class="text-2xl font-bold text-white">1.2k</div>
+<div class="text-xs text-slate-400 mt-1">مشاهدات</div>
+</div>
+<div class="bg-background-dark rounded-lg p-3 text-center border border-border-dark col-span-2 flex items-center justify-center gap-2">
+<div class="flex -space-x-2 space-x-reverse">
+<div class="size-6 rounded-full ring-2 ring-background-dark bg-cover bg-center" data-alt="User 1" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCf1MyWo1vn--Ni6IzkkfjXHTP-1XOaJr9NN6OF_j01GueqCQw81IS9PRAOp4dVi5YH2fCJS_logvu2-WsCGgm1PFnOAjHiEUQZ_RK0p_Z4ZL92Jov1db2eig1IwipkpToanjKnn5GpK0WdtPJgFXnSOjzsD3x84V3QybG5gUAEc0-lzm4QkPLQsHpKcZLS2qY1M2I_mh4H3yRfNLPOhw3jVBucfkf1bCFKKRjRpcTN77-D_gh6k0aZ9DyZeIvY6_d9zNqdluycd2Y')"></div>
+<div class="size-6 rounded-full ring-2 ring-background-dark bg-cover bg-center" data-alt="User 2" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDKeVOPt3KocYOze4lhMNDdHwBDK7Wwm7uG_TpEhn1CWaDYB1b_RA3wqv1mgAloDBw-IE2WQVDqGJ6eyET_XCiYb3Lt_WVljehloqltUg_5CkQe5GdEVHMlqsg6IUgKCavkxGvQ6hI94z1VKnShp7V0Fd9_gOKZukLOniIvRcqnwV2_bz29IR6JbZ2_IyMctcKPAEZbBIXBG7uBOJQMGDO2Y8J67ImcDFrETlmMCkvhi9_Uy6Y6_T8uY3n1jHhJE5hjWD4OxzJVKZ8')"></div>
+<div class="size-6 rounded-full ring-2 ring-background-dark bg-cover bg-center" data-alt="User 3" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDdF7g3BPgljdsWVuN6Pu_XeTzslwIJfaXUtKDq0NUUkhH6qKLwqRl4Y6yb4bOtrH_mZuoPKcNxXBtD0xNdrEEFlDY2J51HmGE6qPNb_VXhXQ2uejINgH2Yizrx92CllcQ7ZONbGfJgyZENqKxiHfsqB4AqLqdbBK-YA2xDxcPp31zppJ4QodkrSGaVGqsXBFLJeUWZexOmY3p5PUVrC80eanVEdJ3jLIfA18rt1INgQWIPkiDYTGhSYOgHs33BbktrMCujZEeHitw')"></div>
+</div>
+<span class="text-xs text-slate-400">+5 مشاركين</span>
+</div>
+</div>
+</div>
+<!-- Related Threads Widget -->
+<div class="bg-surface-dark border border-border-dark rounded-xl p-5 shadow-sm">
+<h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">forum</span>
+                    مواضيع مشابهة
+                </h3>
+<div class="flex flex-col gap-4">
+<a class="group flex flex-col gap-1 pb-3 border-b border-border-dark/50 last:border-0 last:pb-0" href="#">
+<span class="text-sm font-medium text-slate-200 group-hover:text-primary transition-colors line-clamp-2">أفضل 5 أدوات للذكاء الاصطناعي للمبرمجين في 2024</span>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span class="bg-blue-500/10 text-blue-400 px-1.5 rounded">نقاش</span>
+<span>24 رد</span>
+</div>
+</a>
+<a class="group flex flex-col gap-1 pb-3 border-b border-border-dark/50 last:border-0 last:pb-0" href="#">
+<span class="text-sm font-medium text-slate-200 group-hover:text-primary transition-colors line-clamp-2">هل سيستبدل Copilot المطورين المبتدئين؟</span>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span class="bg-red-500/10 text-red-400 px-1.5 rounded">ساخن</span>
+<span>156 رد</span>
+</div>
+</a>
+<a class="group flex flex-col gap-1 pb-3 border-b border-border-dark/50 last:border-0 last:pb-0" href="#">
+<span class="text-sm font-medium text-slate-200 group-hover:text-primary transition-colors line-clamp-2">شرح كيفية دمج OpenAI API في تطبيقات الويب</span>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span class="bg-green-500/10 text-green-400 px-1.5 rounded">شرح</span>
+<span>12 رد</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Ad / Promotion Space -->
+<div class="rounded-xl overflow-hidden relative group cursor-pointer">
+<div class="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-20 transition-opacity z-10"></div>
+<img alt="Coding workspace setup promotion" class="w-full h-48 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANmgeDSWnojsZAxkQscu0l6HwhP4QqJQvETe5cypStKoK4Rejic7oVIgF58RxDC8e1BlAkM0nLJlTLTF53SA3Umw4IopSdvRqtzqHD7LrPTN-Al7pVn384HFPAnPvfwpm3jltSvTmsDrj87ZWmx_d454vNFCI8XQ2qCBeucx0KSVoyaDyXP6lSRUI6yqN6HB0GfcaIK98qNdX4HjQRRUIZQPYtIjiIXIDOtLALOThxWstOf3BCNSeiFZqpuMPtKl4fAP9fyydy1CM"/>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+<span class="text-xs font-bold text-white bg-primary px-2 py-0.5 rounded mb-1 inline-block">إعلان</span>
+<p class="text-white font-medium text-sm">احصل على استضافة ويب سحابية بخصم 50%</p>
+</div>
+</div>
+</aside>
+</main>
+</body></html>

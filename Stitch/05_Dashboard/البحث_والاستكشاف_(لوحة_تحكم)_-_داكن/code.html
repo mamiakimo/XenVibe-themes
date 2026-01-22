@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Discovery Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+              "card-dark": "#1c2433", 
+              "card-border": "#2b3649"
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"],
+              "body": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white h-screen overflow-hidden flex selection:bg-primary selection:text-white">
+<!-- Main Layout Container -->
+<div class="flex h-full w-full">
+<!-- Sidebar Navigation -->
+<aside class="w-[280px] shrink-0 hidden lg:flex flex-col border-r border-[#232f48] bg-[#111722] h-full overflow-y-auto">
+<div class="flex flex-col h-full justify-between p-4">
+<div class="flex flex-col gap-6">
+<!-- User Profile -->
+<div class="flex gap-3 items-center px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 border-2 border-[#232f48]" data-alt="User profile picture showing a smiling developer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPFX-FoSvYpq8UqU1-wR3z_spDizImLnbIQ0485tV1saw_WogAa0LyGKxS38pFQia8aNTm6_NxVuYoB51isRAtxswgOsHaZtAGVR9fbOZXrGLUM1QtRNcCC9xpBtqQ-X5mvSESJYj164NJMrpvihV58VgjW8TbD2mroXgZHfx67zpRmZMEXz3z76DC9B4hc38zdWE0kuEPPTlqGCGmsmk4pMNsbaOFGpGiY57fQHIzhjki8Hg0CPf-_XdpMytumLWXTpP7SeBBdic");'>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold leading-normal">Ahmed</h1>
+<p class="text-[#92a4c9] text-sm font-normal leading-normal">@ahmed_dev</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#232f48] text-[#92a4c9] hover:text-white transition-colors group" href="#">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-sm font-medium leading-normal">Home</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl bg-primary/10 text-primary transition-colors" href="#">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px] fill-1">explore</span>
+<span class="text-sm font-bold leading-normal">Discovery</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#232f48] text-[#92a4c9] hover:text-white transition-colors" href="#">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">groups</span>
+<span class="text-sm font-medium leading-normal">My Groups</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#232f48] text-[#92a4c9] hover:text-white transition-colors" href="#">
+<div class="relative">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">chat</span>
+<span class="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white">3</span>
+</div>
+<span class="text-sm font-medium leading-normal">Messages</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#232f48] text-[#92a4c9] hover:text-white transition-colors" href="#">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="text-sm font-medium leading-normal">Notifications</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Settings -->
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-[#232f48] text-[#92a4c9] hover:text-white transition-colors" href="#">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-sm font-medium leading-normal">Settings</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Mobile Header (Visible only on small screens) -->
+<div class="lg:hidden flex items-center justify-between p-4 border-b border-[#232f48] bg-[#111722]">
+<div class="flex items-center gap-2 text-white font-bold text-lg">
+<span class="material-symbols-outlined text-primary">explore</span> Discovery
+                </div>
+<button class="text-white p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-10 scrollbar-hide">
+<div class="max-w-7xl mx-auto flex flex-col gap-8">
+<!-- Page Heading -->
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Discovery Dashboard</h1>
+<p class="text-[#92a4c9] text-base font-normal">Customize your feed and explore what's happening in the community.</p>
+</div>
+<!-- Search & Filters Container -->
+<div class="flex flex-col gap-5">
+<!-- Search Bar -->
+<div class="relative w-full">
+<div class="flex w-full items-stretch rounded-xl h-14 bg-[#1c2433] focus-within:ring-2 focus-within:ring-primary/50 transition-all shadow-lg">
+<div class="flex items-center justify-center pl-4 text-[#92a4c9]">
+<span class="material-symbols-outlined text-[28px]">search</span>
+</div>
+<input class="flex w-full bg-transparent border-none text-white placeholder-[#5d6b82] text-lg font-medium px-4 focus:ring-0 focus:outline-none h-full" placeholder="Search threads, members, tags or groups..." type="text" value="React development tutorials"/>
+<div class="flex items-center pr-2">
+<button class="flex items-center justify-center w-10 h-10 rounded-lg text-[#92a4c9] hover:text-white hover:bg-[#2b3649] transition-colors">
+<span class="material-symbols-outlined text-[24px]">cancel</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Filters & Actions Row -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<!-- Chips -->
+<div class="flex gap-2 flex-wrap">
+<button class="flex h-9 items-center px-4 rounded-xl bg-primary text-white text-sm font-semibold shadow-lg shadow-primary/20 transition-transform active:scale-95">All</button>
+<button class="flex h-9 items-center px-4 rounded-xl bg-[#232f48] text-[#92a4c9] hover:text-white hover:bg-[#2d3b55] text-sm font-medium transition-colors">Threads</button>
+<button class="flex h-9 items-center px-4 rounded-xl bg-[#232f48] text-[#92a4c9] hover:text-white hover:bg-[#2d3b55] text-sm font-medium transition-colors">Users</button>
+<button class="flex h-9 items-center px-4 rounded-xl bg-[#232f48] text-[#92a4c9] hover:text-white hover:bg-[#2d3b55] text-sm font-medium transition-colors">Groups</button>
+<button class="flex h-9 items-center px-4 rounded-xl bg-[#232f48] text-[#92a4c9] hover:text-white hover:bg-[#2d3b55] text-sm font-medium transition-colors">Resources</button>
+</div>
+<!-- Customize Button -->
+<button class="flex items-center gap-2 h-9 px-4 rounded-xl bg-[#232f48] hover:bg-[#2d3b55] text-white text-sm font-bold transition-all border border-[#2b3649] shrink-0 ml-auto md:ml-0">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Customize Layout</span>
+</button>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Widget: Trending Topics (Left Large Col) -->
+<div class="col-span-1 md:col-span-8 flex flex-col gap-6">
+<!-- Trending Card -->
+<div class="bg-[#1c2433] rounded-2xl p-6 border border-[#2b3649] shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-pink-500/10 rounded-lg">
+<span class="material-symbols-outlined text-pink-500">trending_up</span>
+</div>
+<h2 class="text-white text-lg font-bold">Trending Topics</h2>
+</div>
+<button class="text-[#92a4c9] hover:text-white text-sm font-medium">View all</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Trend Item 1 -->
+<div class="bg-[#111722] p-4 rounded-xl border border-[#232f48] hover:border-primary/50 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[#92a4c9] text-xs font-semibold uppercase tracking-wider">Development</span>
+<span class="text-green-500 text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +24%
+                                            </span>
+</div>
+<h3 class="text-white font-bold text-lg mb-1 group-hover:text-primary transition-colors">#ReactJS Patterns</h3>
+<p class="text-[#92a4c9] text-sm">2.4k recent posts • 140 active now</p>
+</div>
+<!-- Trend Item 2 -->
+<div class="bg-[#111722] p-4 rounded-xl border border-[#232f48] hover:border-primary/50 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[#92a4c9] text-xs font-semibold uppercase tracking-wider">Design</span>
+<span class="text-green-500 text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +18%
+                                            </span>
+</div>
+<h3 class="text-white font-bold text-lg mb-1 group-hover:text-primary transition-colors">#UI_Trends_2024</h3>
+<p class="text-[#92a4c9] text-sm">1.8k recent posts • 85 active now</p>
+</div>
+<!-- Trend Item 3 -->
+<div class="bg-[#111722] p-4 rounded-xl border border-[#232f48] hover:border-primary/50 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[#92a4c9] text-xs font-semibold uppercase tracking-wider">General</span>
+<span class="text-[#92a4c9] text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">remove</span> 0%
+                                            </span>
+</div>
+<h3 class="text-white font-bold text-lg mb-1 group-hover:text-primary transition-colors">#WeeklyShowcase</h3>
+<p class="text-[#92a4c9] text-sm">950 recent posts • 210 active now</p>
+</div>
+<!-- Trend Item 4 -->
+<div class="bg-[#111722] p-4 rounded-xl border border-[#232f48] hover:border-primary/50 transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[#92a4c9] text-xs font-semibold uppercase tracking-wider">Community</span>
+<span class="text-green-500 text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +12%
+                                            </span>
+</div>
+<h3 class="text-white font-bold text-lg mb-1 group-hover:text-primary transition-colors">#ForumUpdates</h3>
+<p class="text-[#92a4c9] text-sm">820 recent posts • 54 active now</p>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<div class="flex flex-col gap-4">
+<h2 class="text-white text-lg font-bold pl-1">Recent Discussions</h2>
+<!-- Feed Item 1 -->
+<div class="bg-[#1c2433] p-4 rounded-2xl border border-[#2b3649] flex gap-4 hover:bg-[#232f48] transition-colors cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 shrink-0 border border-[#2b3649]" data-alt="Profile picture of Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC8USieFG1ToXJ7PsG9QfhSV-4Hy6JALJr0BVJimg5WhG-kbVW3nw5dfWkrel3CTsPJHouOZSnBczvoX5JkHtY7GPReP2SGgg1fGAM4uplI8GMZ0b6dCDm9flOTMuFsZayZdIzcyzZVI0w7DB0Dkf6EBIGHAwqWcC0bhvVFQ6UtqQL-lGZEYzDHdG-ljXf_q1rNNLWKoohHfydRbGUnxz0Tbd1JDDDjL2-1Ym-UWbAfOexbu0eBhI8RYBnI4ShQRMeXy3Gam5yDu2k");'></div>
+<div class="flex flex-col flex-1 gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-white font-semibold text-sm">Sarah Jenkins</span>
+<span class="text-[#5d6b82] text-xs">• 2h ago in <span class="text-primary hover:underline">Web Dev</span></span>
+</div>
+<button class="text-[#92a4c9] hover:text-white"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</div>
+<p class="text-[#cdd7e8] text-sm leading-relaxed">Does anyone have experience migrating from Redux to Zustand? I'm finding the boilerplate reduction amazing but wondering about edge cases for large apps.</p>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex items-center gap-1 text-[#92a4c9] text-xs hover:text-white">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span> 24 replies
+                                            </div>
+<div class="flex items-center gap-1 text-[#92a4c9] text-xs hover:text-white">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span> 156 likes
+                                            </div>
+<div class="flex items-center gap-1 ml-auto">
+<span class="bg-[#232f48] text-[#92a4c9] text-[10px] px-2 py-0.5 rounded-full">#react</span>
+<span class="bg-[#232f48] text-[#92a4c9] text-[10px] px-2 py-0.5 rounded-full">#state</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="bg-[#1c2433] p-4 rounded-2xl border border-[#2b3649] flex gap-4 hover:bg-[#232f48] transition-colors cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 shrink-0 border border-[#2b3649]" data-alt="Profile picture of Mike" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSehCyqga-mu8uOLszkz76rukweuzJCGcdX0ruSTT5dMsp9nhOlGKgSLYbKGhHLTDBy20Fg7A_KitC9kpaGrw76iAOLEWJkXLugK16YDO7wMNoxJ57eTxIFaRoMpCipq_Wb8ZdIANhwhfuWlB68iSiQ1Swbgo2cAl4dGrLKa6jSJ_IGp-JeIqU-xBjtZjVKxeBb5tzfpJxoqml37W0a5Atne_sPdKGeI5dsNr-mj0Cu0aJU4DzmRK8fpa-MX8TZicQJBh0IqWBpgw");'></div>
+<div class="flex flex-col flex-1 gap-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-white font-semibold text-sm">Mike Ross</span>
+<span class="text-[#5d6b82] text-xs">• 4h ago in <span class="text-primary hover:underline">Showcase</span></span>
+</div>
+<button class="text-[#92a4c9] hover:text-white"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</div>
+<p class="text-[#cdd7e8] text-sm leading-relaxed">Just launched my new portfolio site! Built with Tailwind and Next.js. Feedback appreciated on the dark mode toggle animation.</p>
+<!-- Attached Image Preview -->
+<div class="mt-2 rounded-lg overflow-hidden h-32 w-full bg-cover bg-center" data-alt="Screenshot of a modern dark portfolio website" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAyIeyk-bTvTuUhYQKYub1EbjtWS5_0_RQ1pHrCx6QJGHHNn_nRtIdoV1r8KH7xVudOW_nKfe-fjbE7qIzqI8FVcs1bKGUhYBgUtApqXDEgYSypcjRmv_LCkGpAtaSbuYTDj-FEFWiinQLmAEv4cfailCrZZEWd9kxssIKZ-KS6oh0lp83CFx4vYBRWzATAPt1lVG35a8HHI0c7zbmZuOL71e_7cFNxw8OAEGfanQ1rOiPjlo_EO1rjS3YyjSM0fAWGx-UNu7Ld3BE');"></div>
+<div class="flex items-center gap-4 mt-3">
+<div class="flex items-center gap-1 text-[#92a4c9] text-xs hover:text-white">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span> 8 replies
+                                            </div>
+<div class="flex items-center gap-1 text-[#92a4c9] text-xs hover:text-white">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span> 42 likes
+                                            </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar Column (Small Widgets) -->
+<div class="col-span-1 md:col-span-4 flex flex-col gap-6">
+<!-- Who to Follow -->
+<div class="bg-[#1c2433] rounded-2xl p-5 border border-[#2b3649]">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person_add</span>
+<h2 class="text-white text-base font-bold">Who to follow</h2>
+</div>
+<button class="text-primary text-xs font-bold hover:underline">See all</button>
+</div>
+<div class="flex flex-col gap-4">
+<!-- User 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-10 w-10 border border-[#2b3649]" data-alt="Profile picture of potential connection" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCF0lVj_D5cmJaeOUA09L1KFO2Ut5aRz4S2gZagz9b51IZ40_aPPxJaSf3n2NUWpt6dyR7ZNAygDZH8nWV058ot1gBxTpv06-rh7IVV1IZYfwVtaI_C26xOg3pi42pSHiAzVbZFdKWVTMUvUKMB62CR-EaLAezOiluczbuciEiOH5tz6Fgll8qIqfIROtKCkHqd-HZSlMzyWZxOeHk4hwRHpNDpf1K04MJxMrntfQ4Cg7aNAvxnqznaLoFXFt8BkfJJkbduUSJST0k");'></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-semibold hover:underline cursor-pointer">David Chen</span>
+<span class="text-[#92a4c9] text-xs">@dchen_88</span>
+</div>
+</div>
+<button class="bg-white text-black hover:bg-gray-200 px-3 py-1 rounded-lg text-xs font-bold transition-colors">Follow</button>
+</div>
+<!-- User 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-10 w-10 border border-[#2b3649]" data-alt="Profile picture of potential connection" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBo-E1PusZOOmzh-tILFrDbGFbA5GbPrLxsUEvvf2Dt9kfx0IHq1HiEFL5pk_0h4lgyce_vr5wWSAy98lRpoKDMlaP0_fUiqxiOSTMqotL_vdm2CgOkR_fSHpBVgS9aVVft4CO6MOfDuQqRT1LzP7gcE0Lr27lrpADq4UwVaFyC8e9jBzwD4D80AyZA6ffsdQY3i7_OADpCOs7jMV5gNIzNVDROAKPieaLSOotpZ4MVWMaXTEokaOiA2rBG2VnB7hnBDH3ppCbrv1M");'></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-semibold hover:underline cursor-pointer">Lisa Wong</span>
+<span class="text-[#92a4c9] text-xs">@lisa_design</span>
+</div>
+</div>
+<button class="bg-white text-black hover:bg-gray-200 px-3 py-1 rounded-lg text-xs font-bold transition-colors">Follow</button>
+</div>
+<!-- User 3 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-10 w-10 border border-[#2b3649]" data-alt="Profile picture of potential connection" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAaq1uvhV8yDSni8AF0Iy41LP9G0sPWFnuPuflNG7fm8ZbBNV-m1R8Y0PJE0YTZ67v7b21GdRi0274fnJY9IT9CG_nLIdE5cyKUaKZvViUdoNK9fiYaXO97mbUIWGDbuNUvzvNBjC3wPk_F3vEjEM2e2gFMheO4q9z40_mL-n6CXQKtApKELXXh7xsQprx2lo6tmcbI30gIDbmqwJsi6h34lX65Om3qxg4N5chlOwR8VsPLW3Uz5bgq27VfizPTIeu0JQfN60BJNkQ");'></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-semibold hover:underline cursor-pointer">Mark T.</span>
+<span class="text-[#92a4c9] text-xs">@mark_t</span>
+</div>
+</div>
+<button class="bg-transparent border border-[#5d6b82] text-[#92a4c9] hover:border-white hover:text-white px-3 py-1 rounded-lg text-xs font-bold transition-colors">Pending</button>
+</div>
+</div>
+</div>
+<!-- Active Groups -->
+<div class="bg-[#1c2433] rounded-2xl p-5 border border-[#2b3649]">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-500">groups</span>
+<h2 class="text-white text-base font-bold">Active Groups</h2>
+</div>
+<button class="text-primary text-xs font-bold hover:underline">Explore</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<!-- Group 1 -->
+<div class="bg-[#111722] p-3 rounded-xl border border-[#232f48] flex flex-col gap-2 hover:border-yellow-500/50 transition-colors cursor-pointer text-center group">
+<div class="mx-auto bg-center bg-no-repeat bg-cover rounded-xl h-12 w-12" data-alt="Icon for Photography group" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCuS36JpRUCHQ1o6AKnckl7l8DGhFLe9NLeaNWyELqusmPaxljVVDBBvHqsPQLjNIa33UJZuFCiqUXomjCSpU5zmvy9WD5PNNDKeBEaLw2mS8eNVfxWWX8y2Y88KA18TBngayXWKKHv4Z9Ivr8iGr7IOL-7WLOvWDEXtKB0h8Q-5JS7lwsbYXzPfZPV7SdseG7BWzJgWDUejgdzD0B476n_RSZJBFWJ0OptFMs0pJ2BsmSIMdBFD592qhnrTBQ28dFTGojjSY-HDxQ");'></div>
+<div>
+<h3 class="text-white text-xs font-bold truncate">Photography</h3>
+<p class="text-[#5d6b82] text-[10px]">12k Members</p>
+</div>
+</div>
+<!-- Group 2 -->
+<div class="bg-[#111722] p-3 rounded-xl border border-[#232f48] flex flex-col gap-2 hover:border-blue-500/50 transition-colors cursor-pointer text-center group">
+<div class="mx-auto bg-center bg-no-repeat bg-cover rounded-xl h-12 w-12" data-alt="Icon for Tech Support group" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBpcn7MU65HnH6ftTenI85Z3GEATVmkhzlsNOb7a_PxWDN1CVjPCY5DioPvaOL3yQL6R9_ielJBV2ElX2-MJgzROGm5A76kzo5UN8lKhVIv_Ooz_RvIu66RmiBnngIwJKM6B-l4_M5cOLMWTS7X-wziJv55NA5s3HmU3DK86GaKfty-wFCbzCsO1hdfBdz_89C5Ip9Kok0EJ42phzqRgHisu0dz9Wr_9nZs1jBAsWEFUhdz4s4zFaUJbXXH6KtRlzeybCnJ58YBnkw");'></div>
+<div>
+<h3 class="text-white text-xs font-bold truncate">Tech Support</h3>
+<p class="text-[#5d6b82] text-[10px]">45k Members</p>
+</div>
+</div>
+<!-- Group 3 -->
+<div class="bg-[#111722] p-3 rounded-xl border border-[#232f48] flex flex-col gap-2 hover:border-green-500/50 transition-colors cursor-pointer text-center group">
+<div class="mx-auto bg-center bg-no-repeat bg-cover rounded-xl h-12 w-12" data-alt="Icon for Gaming group" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCC5NoHNPJKAMwc0fWTFOhiPYtEAYn3KFLdAQd1cBUDDJ-0j-k7PmHzSU9p5wTmK5izVIPnRkHQcI2LMaiBlVdT-ugQHD-rkNjwDz2tB3ouX2ZpYKYJbKaU4bza5T3LIEAem-hVFvSsRbMqDBzi2Xgrds3I9aKfdo50chqsZ4h-VXEbczifpbLaXGSIuywwZjwIuo_j1FKlRUz-0a8jOdW76G4xgf-PCFcierMlC3vfHJZOe9Yy1T6nkACe7d0QufKYKAYA5q4e334");'></div>
+<div>
+<h3 class="text-white text-xs font-bold truncate">Gaming</h3>
+<p class="text-[#5d6b82] text-[10px]">8.2k Members</p>
+</div>
+</div>
+<!-- Group 4 -->
+<div class="bg-[#111722] p-3 rounded-xl border border-[#232f48] flex flex-col gap-2 hover:border-purple-500/50 transition-colors cursor-pointer text-center group">
+<div class="mx-auto bg-center bg-no-repeat bg-cover rounded-xl h-12 w-12" data-alt="Icon for Crypto group" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBjcByPWNVkuTz348C2nLLWiGuMeBWa2Q_OU9VYBVVvsLCeDBkq-nsqofPWQt4yEnz8aKH_DTXQsed9ehRID3U71dlTlmb5qVOSzt42ni5q12L0SY6u2K4ILO8b9J5ZU6fd-DHd35WbnnUkG1fffCb1zckHSXV1pL5Oltir_8wpFHvtY7uGjz795pRxnqQ5k7b466ZVqnEcwzMCHDcB6xYbp8YGm3TaxYTEvD2HKg6fpSqUoq3LzQhTJ-e8q-LL3G2ZEyI1bKljPCE");'></div>
+<div>
+<h3 class="text-white text-xs font-bold truncate">Crypto</h3>
+<p class="text-[#5d6b82] text-[10px]">15k Members</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Promo / Ads Space (Optional but fits dashboard) -->
+<div class="rounded-2xl p-5 bg-gradient-to-br from-primary to-blue-900 relative overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+<div class="relative z-10 flex flex-col gap-3">
+<div class="p-2 bg-white/20 w-fit rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined text-white">workspace_premium</span>
+</div>
+<div>
+<h3 class="text-white font-bold text-lg">Go Premium</h3>
+<p class="text-blue-100 text-sm mt-1">Unlock advanced search filters and analytics.</p>
+</div>
+<button class="bg-white text-primary px-4 py-2 rounded-lg text-sm font-bold w-fit mt-2 group-hover:scale-105 transition-transform">Upgrade Now</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

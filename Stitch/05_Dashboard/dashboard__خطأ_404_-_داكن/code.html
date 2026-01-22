@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard: خطأ 404</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Arabic:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#1d6bf5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                        "surface-dark": "#1a212e",
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px -5px rgba(19, 91, 236, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+        }
+        /* Custom scrollbar for dashboard feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #34425f; 
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white overflow-hidden h-screen flex flex-col selection:bg-primary selection:text-white">
+<div class="flex h-full w-full overflow-hidden">
+<!-- SIDEBAR (RTL: Appears on Right) -->
+<aside class="w-64 flex-shrink-0 border-l border-border-dark bg-[#111722] flex flex-col h-full z-20 hidden md:flex">
+<div class="p-5 flex flex-col gap-6 h-full">
+<!-- Brand -->
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shadow-lg border border-border-dark" data-alt="Abstract geometric logo representing the dashboard brand" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBm24YY4RTci7vCxIkSFT0MoWAz2oIzXXUPRVsUpQD4ge8bdYYjjqy3YyJd6JyA5tM3mas6Qj2Yvgz8flbtLFzQkT-u5q5cY63GTtRwTiWLXmlU41FfpYQ8k7MAx2IXeNIVJ_0EY_EdUIQgqPMKX0bZz3_8RyD5YRvyTyKDNu2cS-n6j9bN0vLmhRn2m8b4Xm4dqtb14Rr3MKqiQCccSpMOTPdSHmFnltmjINA2ySNMz5_-jyEcNCTBZTTKUWjoFvYCHL2Ys-TzIIM");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-bold leading-tight">XenForo Dash</h1>
+<p class="text-text-secondary text-xs font-normal">Admin CP</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-1 flex-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-border-dark hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white">home</span>
+<span class="text-sm font-medium">نظرة عامة</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-border-dark hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white">forum</span>
+<span class="text-sm font-medium">المناقشات</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-border-dark hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white">group</span>
+<span class="text-sm font-medium">الأعضاء</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-border-dark hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white">description</span>
+<span class="text-sm font-medium">التقارير</span>
+</a>
+<div class="my-2 border-t border-border-dark"></div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-border-dark hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white">settings</span>
+<span class="text-sm font-medium">الإعدادات</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-border-dark hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-white">warning</span>
+<span class="text-sm font-medium text-white">سجلات الأخطاء</span>
+<span class="mr-auto bg-primary/20 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded">NEW</span>
+</a>
+</nav>
+<!-- User Profile Snippet -->
+<div class="mt-auto pt-4 border-t border-border-dark">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAiVXuhM8eveT4GsLXD-rw7dYC2ubJfG1vZDjcCeduvRQu73GfNlXeG8CG5hl6bEHl2_79jpyl7uGELN-8f5aazuFbc7qM_2gHUCA0hs2QBOunLa-fYGek6mbqzDqEWANa5vOMucJxcQSEw_2WlFTgnzt6DqOKVNs6eSYMswhOE7ZeAwzUB8syhrrA7kmK3faTx8e35h_pFrYu25upWy2o1nDH77_B1mBH1SPtB9_kXP_ROvOZ0nU7QyfGFPbJN6aaQ1OaQLVr0JTo");'></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium">أحمد محمد</span>
+<span class="text-text-secondary text-xs">مدير عام</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT AREA -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-dark relative">
+<!-- TOP HEADER -->
+<header class="h-16 flex items-center justify-between px-6 border-b border-border-dark bg-[#111722]/80 backdrop-blur-md sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<!-- Mobile Menu Trigger -->
+<button class="md:hidden text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Breadcrumbs -->
+<div class="hidden sm:flex items-center gap-2 text-sm">
+<a class="text-text-secondary hover:text-white transition-colors" href="#">الرئيسية</a>
+<span class="text-text-secondary/40">/</span>
+<a class="text-text-secondary hover:text-white transition-colors" href="#">النظام</a>
+<span class="text-text-secondary/40">/</span>
+<span class="text-white font-medium bg-red-500/10 text-red-400 px-2 py-0.5 rounded text-xs border border-red-500/20">404</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<!-- Search Bar -->
+<div class="hidden md:flex items-center relative w-64 h-9">
+<span class="material-symbols-outlined absolute right-3 text-text-secondary text-lg">search</span>
+<input class="w-full h-full bg-border-dark/50 hover:bg-border-dark focus:bg-border-dark border-none rounded-lg pr-10 pl-3 text-sm text-white placeholder-text-secondary focus:ring-1 focus:ring-primary transition-all" placeholder="بحث سريع..." type="text"/>
+<div class="absolute left-2 flex items-center gap-1">
+<kbd class="hidden xl:inline-block border border-gray-600 rounded px-1.5 text-[10px] text-gray-400 font-sans">⌘ K</kbd>
+</div>
+</div>
+<div class="w-px h-6 bg-border-dark mx-2"></div>
+<button class="text-text-secondary hover:text-white transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-red-500 rounded-full border-2 border-background-dark"></span>
+</button>
+<button class="text-text-secondary hover:text-white transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<!-- 404 CONTENT WRAPPER -->
+<div class="flex-1 flex items-center justify-center p-4 sm:p-8 relative overflow-hidden">
+<!-- Background Decoration -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px]"></div>
+</div>
+<!-- CENTRAL ERROR CARD -->
+<div class="relative w-full max-w-[480px] bg-surface-dark border border-border-dark rounded-xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300">
+<!-- Card Header / Status Bar -->
+<div class="px-6 py-4 border-b border-border-dark bg-[#1e2532] flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-red-500"></span>
+<span class="text-xs font-mono font-medium text-text-secondary uppercase tracking-wider">System_Error</span>
+</div>
+<span class="text-xs font-mono text-text-secondary">ERR_404</span>
+</div>
+<div class="p-8 flex flex-col items-center text-center">
+<!-- Icon -->
+<div class="mb-6 relative">
+<div class="size-16 rounded-2xl bg-gradient-to-br from-border-dark to-surface-dark border border-border-dark flex items-center justify-center shadow-lg group">
+<span class="material-symbols-outlined text-text-secondary text-3xl group-hover:text-primary transition-colors">link_off</span>
+</div>
+<!-- Pulse effect -->
+<div class="absolute -right-1 -top-1 size-4 bg-background-dark rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-yellow-500 text-sm fill">warning</span>
+</div>
+</div>
+<!-- Headlines -->
+<h2 class="text-2xl font-bold text-white mb-3">الصفحة غير موجودة</h2>
+<p class="text-text-secondary text-sm leading-relaxed max-w-xs mx-auto mb-8">
+                            عذراً، لم نتمكن من العثور على الصفحة التي تبحث عنها. ربما تم نقل الرابط أو حذفه نهائياً من النظام.
+                        </p>
+<!-- Functional Suggestions (Checklist style) -->
+<div class="w-full bg-[#151a23] rounded-lg border border-border-dark p-1 mb-8">
+<div class="flex items-center gap-3 p-3 border-b border-border-dark/50 last:border-0">
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+<span class="text-sm text-text-secondary text-right flex-1">تأكد من صحة الرابط في المتصفح</span>
+</div>
+<div class="flex items-center gap-3 p-3">
+<span class="material-symbols-outlined text-gray-500 text-lg">search</span>
+<span class="text-sm text-text-secondary text-right flex-1">استخدم البحث للعثور على الموضوع</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col w-full gap-3">
+<a class="flex items-center justify-center w-full py-2.5 px-4 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded-lg shadow-glow transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-offset-background-dark focus:ring-primary outline-none" href="#">
+<span class="material-symbols-outlined text-lg ml-2">arrow_forward</span>
+                                العودة إلى لوحة المعلومات
+                            </a>
+<div class="flex items-center justify-center gap-6 mt-2">
+<a class="text-xs text-text-secondary hover:text-white transition-colors" href="#">مركز المساعدة</a>
+<span class="size-1 bg-border-dark rounded-full"></span>
+<a class="text-xs text-text-secondary hover:text-white transition-colors" href="#">الإبلاغ عن مشكلة</a>
+</div>
+</div>
+</div>
+<!-- Card Footer decoration (Code snippet style) -->
+<div class="bg-[#11161d] py-2 px-6 border-t border-border-dark flex items-center gap-2 overflow-hidden">
+<span class="text-[10px] font-mono text-gray-600 select-none">GET /admin.php?tools/run-job tr_id=404</span>
+<span class="w-2 h-4 bg-primary/50 animate-pulse ml-auto"></span>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

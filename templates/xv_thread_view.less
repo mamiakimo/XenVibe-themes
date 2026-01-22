@@ -1,0 +1,209 @@
+html.template-thread_view {
+
+  // Thread action buttons (Watch, Manage, More options)
+  .block-outer-opposite {
+    .buttonGroup {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      padding: 0;
+      border: none;
+
+      .button--link {
+        background: fade(@xf-textColor, 8%);
+        border: 1px solid @xf-borderColor;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        color: @xf-textColor;
+        font-size: 0.8125rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: fade(@xf-textColor, 12%);
+          border-color: @xf-linkColor;
+        }
+      }
+
+      .buttonGroup-buttonWrapper {
+        .button--link {
+          padding: 0.5rem 0.75rem;
+        }
+      }
+    }
+  }
+
+  // Each post as a card
+  .message--post {
+    background: @xv-card-bg !important;
+    border-radius: @xv-card-radius !important;
+    border: @xv-card-border !important;
+    box-shadow: @xv-card-shadow !important;
+    overflow: hidden !important;
+    margin-bottom: 1.5rem;
+
+    // Remove default table/row layout
+    display: block !important;
+
+    .message-inner {
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 0 !important;
+      position: relative;
+    }
+
+    // User sidebar -> Horizontal Header
+    .message-cell--user {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      width: 100% !important;
+      padding: 1rem 1.25rem !important;
+      padding-inline-end: 12rem; // Reserve space for attribution
+      border-bottom: 1px solid fade(@xf-borderColor, 50%);
+      background: fade(@xf-textColor, 3%);
+    }
+
+    .message-user {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 0.75rem;
+      width: auto !important;
+      padding: 0 !important;
+      border: none !important;
+      background: transparent !important;
+      min-width: 0 !important;
+
+      .avatar {
+        width: 2.75rem !important;
+        height: 2.75rem !important;
+        flex-shrink: 0;
+      }
+    }
+
+    .message-avatar-wrapper {
+      display: contents !important;
+    }
+
+    // Hide the arrow between user cell and content
+    .message-userArrow {
+      display: none !important;
+    }
+
+    .message-userDetails {
+      text-align: start !important;
+      display: flex;
+      flex-direction: column;
+      gap: 0.125rem;
+      min-width: 0;
+
+      .username {
+        font-size: 0.9375rem;
+        font-weight: 700;
+      }
+    }
+
+    .message-userTitle,
+    .userTitle {
+      font-size: 0.75rem;
+      color: @xf-textColorMuted;
+    }
+
+    // Hide extra user info (join date, posts count, etc.)
+    .message-userExtras {
+      display: none !important;
+    }
+
+    // Post meta (date, post number) - positioned in header row (left side in RTL)
+    .message-attribution {
+      position: absolute !important;
+      top: 1rem;
+      inset-inline-end: 1.25rem; // Left side in RTL
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: @xf-textColorMuted;
+      z-index: 5;
+
+      .message-attribution-main {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        a {
+          color: @xf-textColorMuted;
+
+          &:hover {
+            color: @xf-linkColor;
+          }
+        }
+      }
+
+      // Post number badge
+      .u-concealed {
+        background: fade(@xf-textColor, 8%);
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.6875rem;
+      }
+    }
+
+    // Main content area
+    .message-cell--main {
+      display: block !important;
+      width: 100% !important;
+      padding: 0 !important;
+    }
+
+    .message-main {
+      padding: 0 !important;
+    }
+
+    .message-content {
+      padding: 0 !important;
+    }
+
+    .message-body {
+      padding: 1.25rem !important;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      border: none !important;
+      background: transparent !important;
+    }
+
+    // Attachments
+    .message-attachments {
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    // Footer - same background as content, dark border separator
+    .message-footer {
+      padding: 0.75rem 1.25rem !important;
+      background: transparent !important;
+      border-top: 1px solid @xf-borderColor !important;
+    }
+
+    .actionBar-action {
+      padding: 0.375rem 0.625rem;
+      border-radius: 0.375rem;
+      font-size: 0.8125rem;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: fade(@xf-textColor, 8%);
+      }
+    }
+
+  }
+
+  // Quick reply form
+  .js-quickReply {
+    background: @xv-card-bg !important;
+    border-radius: @xv-card-radius !important;
+    border: @xv-card-border !important;
+    padding: 1.25rem;
+    margin-top: 1rem;
+  }
+}

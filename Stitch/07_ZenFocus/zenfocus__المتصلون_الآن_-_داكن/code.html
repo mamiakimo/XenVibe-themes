@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus: المتصلون الآن</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                        "surface-dark": "#1c2536", // Slightly lighter than bg for cards/inputs
+                        "surface-hover": "#232f48",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', 'Noto Sans', sans-serif;
+        }
+        /* Custom scrollbar for Zen feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4d6e; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white overflow-x-hidden min-h-screen flex flex-col">
+<!-- Header -->
+<header class="w-full border-b border-[#232f48] bg-[#111722] sticky top-0 z-50">
+<div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo -->
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight">ZenFocus</h2>
+</div>
+<!-- Nav Links (Desktop) -->
+<div class="hidden md:flex items-center gap-8">
+<a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="#">المنتديات</a>
+<a class="text-white text-sm font-medium transition-colors" href="#">الأعضاء</a>
+<a class="text-gray-300 hover:text-white text-sm font-medium transition-colors" href="#">المشاركات الجديدة</a>
+</div>
+<!-- User Profile -->
+<div class="flex items-center gap-4">
+<button class="text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-9 rounded-full bg-cover bg-center border border-gray-700" data-alt="User profile placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKQEnpVl4zhtwWB1lIdYsN-Dj6P8WFFenm8HwKiSWGbkMi2kOUCr1hoGHmqBLgvlhEZNMN3CHRHucwb8-Uvpj1tZAQAwmhu5ntJncinMZT9gJOuMog5lKEJTaQEsx8tO42iGmREbJ1imBIdvly_NjCXMUwIucSWoGPiT4WyIygnT2dMRSqu7JWpM4XDimCPjohFVG-_iE3gracopFVVGjojr0Tl3IYAsqYkECx19P3437-fPx20zoZ6xd7cibskJcVCoFEYXRMzFI");'>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center py-8 px-4 sm:px-6">
+<div class="w-full max-w-[960px] flex flex-col gap-6">
+<!-- Breadcrumbs -->
+<nav class="flex items-center text-sm text-gray-500 gap-2">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+<span class="material-symbols-outlined text-[16px] rtl:rotate-180">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">الأعضاء</a>
+<span class="material-symbols-outlined text-[16px] rtl:rotate-180">chevron_right</span>
+<span class="text-gray-300 font-medium">المتصلون الآن</span>
+</nav>
+<!-- Page Heading -->
+<div class="flex flex-col gap-2">
+<div class="flex items-baseline gap-4">
+<h1 class="text-3xl md:text-4xl font-black tracking-tight text-white">المتصلون الآن</h1>
+<span class="text-primary font-bold text-lg bg-primary/10 px-2 py-0.5 rounded">42</span>
+</div>
+<p class="text-gray-400 text-lg">قائمة هادئة خالية من التشتيت للأعضاء المتواجدين حاليًا في المجتمع.</p>
+</div>
+<!-- Controls: Search & Filters -->
+<div class="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center bg-surface-dark/50 p-1 rounded-xl">
+<!-- Search Bar -->
+<div class="relative w-full md:w-auto md:min-w-[320px] group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-surface-dark border-transparent focus:border-primary/50 focus:ring-0 rounded-lg py-2.5 pr-10 pl-4 text-gray-200 placeholder-gray-500 text-sm transition-all shadow-sm" placeholder="ابحث عن عضو بالاسم..." type="text"/>
+</div>
+<!-- Chips Filters -->
+<div class="flex flex-wrap gap-2 w-full md:w-auto justify-end">
+<button class="px-4 py-1.5 rounded-lg bg-primary text-white text-sm font-medium shadow-lg shadow-primary/20 transition-all hover:bg-primary/90">
+                        الكل
+                    </button>
+<button class="px-4 py-1.5 rounded-lg bg-surface-dark text-gray-400 hover:text-white hover:bg-surface-hover text-sm font-medium transition-colors">
+                        طاقم الإدارة
+                    </button>
+<button class="px-4 py-1.5 rounded-lg bg-surface-dark text-gray-400 hover:text-white hover:bg-surface-hover text-sm font-medium transition-colors">
+                        المسجلين
+                    </button>
+<button class="px-4 py-1.5 rounded-lg bg-surface-dark text-gray-400 hover:text-white hover:bg-surface-hover text-sm font-medium transition-colors">
+                        الزوار
+                    </button>
+</div>
+</div>
+<!-- Alphabetical Filter -->
+<div class="w-full overflow-x-auto pb-2 -mb-2 scrollbar-hide">
+<div class="flex items-center gap-1 min-w-max">
+<button class="size-8 flex items-center justify-center rounded bg-surface-hover text-white text-sm font-bold">#</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">أ</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">ب</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">ت</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">ث</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">ج</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">ح</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">خ</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">د</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">ذ</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">ر</button>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">ز</button>
+<span class="text-gray-700 mx-2">...</span>
+<button class="size-8 flex items-center justify-center rounded hover:bg-surface-dark text-gray-500 hover:text-white text-sm transition-colors">ي</button>
+</div>
+</div>
+<!-- User List Grid -->
+<div class="bg-surface-dark/30 rounded-2xl border border-gray-800 p-6 min-h-[400px]">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-4">
+<!-- Staff Member (Distinguished) -->
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<div class="relative">
+<span class="flex h-2.5 w-2.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-red-400 font-bold text-sm group-hover:text-red-300 leading-none mb-1">المدير العام</span>
+<span class="text-[11px] text-gray-500">مشاهدة لوحة التحكم</span>
+</div>
+</div>
+<!-- Moderator -->
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<div class="relative">
+<span class="flex h-2.5 w-2.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-green-400 font-semibold text-sm group-hover:text-green-300 leading-none mb-1">المشرف سامي</span>
+<span class="text-[11px] text-gray-500">تعديل موضوع</span>
+</div>
+</div>
+<!-- Regular User Loop -->
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">أحمد محمد</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">سارة علي</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">خالد 99</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">نور الهدى</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">المسافر</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">عاشق التقنية</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">زينب</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">CodeMaster</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">يوسف</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">ليلى</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">مطور ويب</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">ShadowRunner</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">عبير</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">النسر الذهبي</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">DesignerPro</span>
+</div>
+<div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-surface-hover cursor-pointer transition-all duration-200">
+<span class="flex h-2 w-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+<span class="text-gray-300 font-medium text-sm group-hover:text-white leading-tight">كريم</span>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-8 pt-6 border-t border-gray-800 flex justify-center">
+<button class="text-sm text-gray-500 hover:text-primary font-medium transition-colors flex items-center gap-2">
+<span>عرض المزيد</span>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Simple Footer Info -->
+<div class="flex justify-between text-xs text-gray-600 mt-4 px-2">
+<p>إجمالي المتصلين: 42 (10 أعضاء و 32 زائر)</p>
+<p>آخر تحديث: منذ دقيقة</p>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-[#232f48] bg-[#111722] py-8 mt-auto">
+<div class="max-w-[960px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-gray-500 text-sm">© 2023 ZenFocus Theme. جميع الحقوق محفوظة.</p>
+<div class="flex gap-6">
+<a class="text-gray-500 hover:text-white text-sm transition-colors" href="#">سياسة الخصوصية</a>
+<a class="text-gray-500 hover:text-white text-sm transition-colors" href="#">الشروط والقوانين</a>
+<a class="text-gray-500 hover:text-white text-sm transition-colors" href="#">اتصل بنا</a>
+</div>
+</div>
+</footer>
+</body></html>

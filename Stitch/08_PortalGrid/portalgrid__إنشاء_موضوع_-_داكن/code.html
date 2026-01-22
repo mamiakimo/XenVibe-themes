@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PortalGrid: Create Thread</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1a2436",
+                        "surface-dark-lighter": "#232f48",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark dashboard feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4d70; 
+        }
+        .portal-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#232f48] bg-white dark:bg-[#111722] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-gray-900 dark:text-white cursor-pointer">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined !text-3xl">grid_view</span>
+</div>
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">PortalGrid</h2>
+</div>
+<label class="flex flex-col min-w-40 !h-10 max-w-64 hidden md:flex">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full group">
+<div class="text-slate-500 dark:text-[#92a4c9] flex border-none bg-slate-100 dark:bg-[#232f48] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg rounded-l-none text-gray-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-[#232f48] focus:border-none h-full placeholder:text-slate-500 dark:placeholder:text-[#92a4c9] px-4 pl-2 text-sm font-normal leading-normal transition-all" placeholder="Search threads..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex gap-3">
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-slate-100 dark:bg-[#232f48] text-gray-900 dark:text-white hover:bg-slate-200 dark:hover:bg-[#324260] transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-slate-100 dark:bg-[#232f48] text-gray-900 dark:text-white hover:bg-slate-200 dark:hover:bg-[#324260] transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-primary/20" data-alt="User profile avatar showing a generic person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwnf-V1fi3BqL9qf-BxbVgck6vm0AhMslyqepJiWcJjs_htFu5nATxb0LOHh9pXhOOG3mYQ24VH8QeEP0zUJUUo6EOovpjkDJQrnGTKh-5LKTR8wG1h8jwn-mgr0C-1-rdqddGTA7aOTbd7XtqjaD1g_jRL_yO369UkafvWUC2T7xwlXSgNoXVhNx64KGUoiArNobNX7eR9iJ2tkcrd7GA6AMbdUVTeYV0cwZb3MKitOU08V4jQLuesRY_q9cuoSMFmDVXOQWxkWc");'></div>
+</div>
+</header>
+<div class="flex flex-1 relative">
+<!-- Side Navigation (Left Sidebar) -->
+<aside class="hidden lg:flex flex-col w-64 border-r border-slate-200 dark:border-[#232f48] bg-white dark:bg-[#111722] p-4 fixed h-full z-40">
+<div class="flex flex-col gap-6">
+<div>
+<h3 class="text-slate-500 dark:text-[#92a4c9] text-xs font-bold uppercase tracking-wider mb-2 px-3">Main Menu</h3>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-[#92a4c9] hover:bg-slate-100 dark:hover:bg-[#232f48] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-sm font-medium">Home</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">forum</span>
+<span class="text-sm font-medium">Forums</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-[#92a4c9] hover:bg-slate-100 dark:hover:bg-[#232f48] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Members</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-[#92a4c9] hover:bg-slate-100 dark:hover:bg-[#232f48] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="text-sm font-medium">Resources</span>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-slate-500 dark:text-[#92a4c9] text-xs font-bold uppercase tracking-wider mb-2 px-3">Trending</h3>
+<div class="flex flex-col gap-3 px-3">
+<div class="bg-slate-100 dark:bg-[#232f48] h-24 rounded-lg bg-cover bg-center relative group overflow-hidden cursor-pointer" data-alt="Abstract neon geometric shapes" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuACNRuJMijrIFB5zprg0noj-JBwPonEuA3ZyyOkdYKvXPTLRXA2OIbfI3WSSok9oUbIj68aUecaE7q12rOaT49UZKqmjyvFizNV7rcT8UJJnwRoMWZ2bPjumWk8eVgTDFHZc_fZRBy3gY2vS19rcssY9Fcv258_m0g_H00cHt6GNB96eL9QnJL-nUS9u5GNNFAE7iN0ihSXPE50B_I20hwEqprS_IkFIRnHzxktm3Mhw3mjKYAi1bgK8ml_auygCjxUVX2EP8aM6Fg');">
+<div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors flex items-end p-3">
+<span class="text-white text-xs font-bold">Cyberpunk Discussions</span>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-[#232f48] h-24 rounded-lg bg-cover bg-center relative group overflow-hidden cursor-pointer" data-alt="Macro shot of a circuit board" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCxZtrojcTvh54Na1hJwGGaF9eXkLaUX8L_wM_3ZTKEj5eu-XgKqtFm-Yx8l7c_Z6pQi-u1ySbI9G56f06yh6L1lcJlbLpC8ccV0_Op10rClhQLytWqUmVOwHHbtV13xFdmWb35eoUkWCgAhlJZrq3Cis9HgH44YKZbQt7atiUJm6MZv6zsqimgSodLfV3R5Z83SLkgcbE4sBzX-bAyIgzUpsisa2nVtD9FEZAlqRtIIglmPWbvqgS3p_vLlXHdTs6ilS_fOV9ZVCo');">
+<div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors flex items-end p-3">
+<span class="text-white text-xs font-bold">Hardware Mods 2024</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 p-4 md:p-8 xl:px-12 xl:py-8 max-w-[1600px] mx-auto w-full">
+<!-- Breadcrumbs -->
+<nav class="flex flex-wrap gap-2 mb-6 text-sm">
+<a class="text-slate-500 dark:text-[#92a4c9] hover:text-primary transition-colors font-medium" href="#">Home</a>
+<span class="text-slate-400 dark:text-[#58647c] font-medium">/</span>
+<a class="text-slate-500 dark:text-[#92a4c9] hover:text-primary transition-colors font-medium" href="#">Technology</a>
+<span class="text-slate-400 dark:text-[#58647c] font-medium">/</span>
+<a class="text-slate-500 dark:text-[#92a4c9] hover:text-primary transition-colors font-medium" href="#">General Discussion</a>
+<span class="text-slate-400 dark:text-[#58647c] font-medium">/</span>
+<span class="text-gray-900 dark:text-white font-medium">Create Thread</span>
+</nav>
+<!-- Grid Layout Container -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Center Column: Main Editor (Span 8) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Title Section -->
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl md:text-4xl font-black tracking-tight text-gray-900 dark:text-white">Create New Thread</h1>
+<p class="text-slate-500 dark:text-[#92a4c9]">Start a discussion in <span class="text-primary font-medium">General Forum</span></p>
+</div>
+<!-- Main Editor Portal -->
+<div class="bg-white dark:bg-[#1a2436] rounded-xl portal-shadow border border-slate-200 dark:border-[#232f48] overflow-hidden flex flex-col">
+<!-- Title Input Area -->
+<div class="p-6 border-b border-slate-100 dark:border-[#232f48]">
+<div class="flex flex-wrap gap-3 mb-4">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/20 text-primary border border-primary/30 cursor-pointer hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="text-sm font-semibold">Discussion</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#232f48] text-slate-600 dark:text-[#92a4c9] hover:bg-slate-200 dark:hover:bg-[#324260] cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[18px]">help</span>
+<span class="text-sm font-medium">Question</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-[#232f48] text-slate-600 dark:text-[#92a4c9] hover:bg-slate-200 dark:hover:bg-[#324260] cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[18px]">article</span>
+<span class="text-sm font-medium">Guide</span>
+</div>
+</div>
+<input class="w-full bg-transparent border-none text-2xl md:text-3xl font-bold text-gray-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-[#3b4d70] focus:ring-0 p-0" placeholder="Thread Title..." type="text"/>
+</div>
+<!-- WYSIWYG Editor Toolbar -->
+<div class="flex items-center gap-1 p-2 bg-slate-50 dark:bg-[#151d2b] border-b border-slate-100 dark:border-[#232f48] overflow-x-auto">
+<button class="p-2 text-slate-500 dark:text-[#92a4c9] hover:text-gray-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#232f48] rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">format_bold</span></button>
+<button class="p-2 text-slate-500 dark:text-[#92a4c9] hover:text-gray-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#232f48] rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">format_italic</span></button>
+<button class="p-2 text-slate-500 dark:text-[#92a4c9] hover:text-gray-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#232f48] rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">format_underlined</span></button>
+<div class="w-px h-6 bg-slate-300 dark:bg-[#232f48] mx-1"></div>
+<button class="p-2 text-slate-500 dark:text-[#92a4c9] hover:text-gray-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#232f48] rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">format_list_bulleted</span></button>
+<button class="p-2 text-slate-500 dark:text-[#92a4c9] hover:text-gray-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#232f48] rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">format_list_numbered</span></button>
+<div class="w-px h-6 bg-slate-300 dark:bg-[#232f48] mx-1"></div>
+<button class="p-2 text-slate-500 dark:text-[#92a4c9] hover:text-gray-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#232f48] rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">link</span></button>
+<button class="p-2 text-slate-500 dark:text-[#92a4c9] hover:text-gray-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#232f48] rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">image</span></button>
+<button class="p-2 text-slate-500 dark:text-[#92a4c9] hover:text-gray-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#232f48] rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">code_blocks</span></button>
+<div class="flex-1"></div>
+<button class="p-2 text-slate-500 dark:text-[#92a4c9] hover:text-gray-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#232f48] rounded-md transition-colors"><span class="material-symbols-outlined text-[20px]">fullscreen</span></button>
+</div>
+<!-- Editor Content Area -->
+<div class="p-6 min-h-[400px]">
+<textarea class="w-full h-full min-h-[350px] bg-transparent border-none focus:ring-0 resize-none text-base text-gray-800 dark:text-slate-200 leading-relaxed placeholder:text-slate-300 dark:placeholder:text-[#3b4d70]" placeholder="Write something amazing..."></textarea>
+</div>
+<!-- Attachment Bar -->
+<div class="px-6 py-4 bg-slate-50 dark:bg-[#151d2b] border-t border-slate-100 dark:border-[#232f48] flex items-center justify-between">
+<span class="text-xs font-medium text-slate-400 dark:text-[#58647c] uppercase tracking-wide">Drag &amp; drop files here</span>
+<span class="text-xs text-slate-400 dark:text-[#58647c]">Markdown supported</span>
+</div>
+</div>
+<!-- Tags Input (Full Width under editor) -->
+<div class="bg-white dark:bg-[#1a2436] rounded-xl p-4 border border-slate-200 dark:border-[#232f48] flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 dark:text-[#58647c]">sell</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full text-gray-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#58647c]" placeholder="Add tags (comma separated)..." type="text"/>
+</div>
+<!-- Action Bar (Mobile/Tablet Bottom) -->
+<div class="flex items-center justify-between mt-2">
+<button class="text-slate-500 dark:text-[#92a4c9] hover:text-gray-900 dark:hover:text-white font-medium text-sm transition-colors">Save Draft</button>
+<div class="flex gap-4">
+<button class="px-6 py-2.5 rounded-lg border border-slate-200 dark:border-[#232f48] text-gray-900 dark:text-white font-semibold text-sm hover:bg-slate-100 dark:hover:bg-[#232f48] transition-colors">Preview</button>
+<button class="px-8 py-2.5 rounded-lg bg-primary text-white font-bold text-sm shadow-lg shadow-primary/30 hover:bg-blue-600 transition-all hover:scale-[1.02]">Post Thread</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Widget Tiles (Span 4) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Media Upload Widget -->
+<div class="bg-white dark:bg-[#1a2436] p-6 rounded-xl border border-slate-200 dark:border-[#232f48] portal-shadow relative overflow-hidden group cursor-pointer transition-all hover:border-primary/50">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined !text-9xl text-primary">image</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 relative z-10">Add Media</h3>
+<p class="text-sm text-slate-500 dark:text-[#92a4c9] mb-6 relative z-10">Upload images or videos to enhance your thread.</p>
+<div class="border-2 border-dashed border-slate-200 dark:border-[#232f48] rounded-lg p-6 flex flex-col items-center justify-center gap-3 group-hover:bg-primary/5 group-hover:border-primary/30 transition-all relative z-10">
+<div class="size-10 rounded-full bg-slate-100 dark:bg-[#232f48] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">add_photo_alternate</span>
+</div>
+<span class="text-xs font-semibold text-primary">Click to upload</span>
+</div>
+</div>
+<!-- Poll Widget -->
+<div class="bg-white dark:bg-[#1a2436] p-6 rounded-xl border border-slate-200 dark:border-[#232f48] portal-shadow transition-all hover:border-primary/50">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">poll</span>
+                                Create Poll
+                            </h3>
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer checked:right-0 right-5" id="poll-toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-slate-200 dark:bg-[#232f48] cursor-pointer" for="poll-toggle"></label>
+</div>
+</div>
+<div class="space-y-3 opacity-50 pointer-events-none filter blur-[1px]">
+<input class="w-full bg-slate-50 dark:bg-[#151d2b] border-none rounded-lg text-sm px-3 py-2.5 text-gray-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#58647c]" disabled="" placeholder="Poll question..." type="text"/>
+<input class="w-full bg-slate-50 dark:bg-[#151d2b] border-none rounded-lg text-sm px-3 py-2.5 text-gray-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#58647c]" disabled="" placeholder="Option 1" type="text"/>
+<input class="w-full bg-slate-50 dark:bg-[#151d2b] border-none rounded-lg text-sm px-3 py-2.5 text-gray-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#58647c]" disabled="" placeholder="Option 2" type="text"/>
+<button class="w-full py-2 border border-dashed border-slate-300 dark:border-[#3b4d70] rounded-lg text-xs font-medium text-slate-500 dark:text-[#92a4c9] flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> Add Option
+                            </button>
+</div>
+</div>
+<!-- Thread Options Widget -->
+<div class="bg-white dark:bg-[#1a2436] p-6 rounded-xl border border-slate-200 dark:border-[#232f48] portal-shadow">
+<h3 class="text-sm font-bold text-slate-500 dark:text-[#92a4c9] uppercase tracking-wider mb-4">Thread Settings</h3>
+<div class="flex flex-col gap-4">
+<label class="flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-slate-100 dark:bg-[#232f48] text-slate-500 dark:text-[#92a4c9] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-gray-900 dark:text-white">Watch this thread</span>
+<span class="text-xs text-slate-500 dark:text-[#92a4c9]">Receive notifications</span>
+</div>
+</div>
+<input checked="" class="rounded border-slate-300 dark:border-[#3b4d70] bg-slate-50 dark:bg-[#151d2b] text-primary focus:ring-0 size-4" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-slate-100 dark:bg-[#232f48] text-slate-500 dark:text-[#92a4c9] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">lock_open</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-gray-900 dark:text-white">Lock thread</span>
+<span class="text-xs text-slate-500 dark:text-[#92a4c9]">Prevent replies</span>
+</div>
+</div>
+<input class="rounded border-slate-300 dark:border-[#3b4d70] bg-slate-50 dark:bg-[#151d2b] text-primary focus:ring-0 size-4" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-slate-100 dark:bg-[#232f48] text-slate-500 dark:text-[#92a4c9] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">push_pin</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-gray-900 dark:text-white">Sticky thread</span>
+<span class="text-xs text-slate-500 dark:text-[#92a4c9]">Pin to top</span>
+</div>
+</div>
+<input class="rounded border-slate-300 dark:border-[#3b4d70] bg-slate-50 dark:bg-[#151d2b] text-primary focus:ring-0 size-4" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Toggle Styles Helper -->
+<style>
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #135bec;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #135bec;
+        }
+    </style>
+</body></html>

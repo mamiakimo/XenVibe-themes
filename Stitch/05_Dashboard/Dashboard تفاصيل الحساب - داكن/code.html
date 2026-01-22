@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>تفاصيل الحساب - لوحة التحكم</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#1d6bf5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161e2e", // Slightly lighter for cards
+                        "surface-border": "#2b3648",
+                        "input-bg": "#0f1521",
+                    },
+                    fontFamily: {
+                        "display": ['"Noto Sans Arabic"', "Inter", "sans-serif"],
+                        "sans": ['"Noto Sans Arabic"', "Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for a cleaner dashboard look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2b3648; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3c4b63; 
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex overflow-hidden selection:bg-primary selection:text-white">
+<!-- Sidebar Navigation (RTL: Starts on Right) -->
+<aside class="w-[280px] bg-surface-dark border-l border-surface-border flex-shrink-0 hidden lg:flex flex-col h-screen sticky top-0 z-20">
+<div class="p-6 flex items-center gap-3 mb-2">
+<div class="h-8 w-8 rounded bg-primary flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary/20">
+                X
+            </div>
+<span class="text-lg font-bold tracking-tight text-white">XenForo Dash</span>
+</div>
+<div class="flex flex-col flex-1 px-4 gap-1 overflow-y-auto">
+<div class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-3 mb-2 mt-2">القائمة الرئيسية</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">dashboard</span>
+<span class="text-sm font-medium">لوحة التحكم</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<div class="relative">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">notifications</span>
+<span class="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-red-500"></span>
+</div>
+<span class="text-sm font-medium">التنبيهات</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">chat</span>
+<span class="text-sm font-medium">المحادثات</span>
+</a>
+<div class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-3 mb-2 mt-6">الإعدادات</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined fill text-[20px]">person</span>
+<span class="text-sm font-medium">تفاصيل الحساب</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">lock</span>
+<span class="text-sm font-medium">كلمة المرور والأمان</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">privacy_tip</span>
+<span class="text-sm font-medium">الخصوصية</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-medium">تفضيلات</span>
+</a>
+</div>
+<div class="p-4 border-t border-surface-border">
+<div class="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/5 cursor-pointer hover:bg-white/10 transition">
+<div class="h-8 w-8 rounded-full bg-cover bg-center" data-alt="User Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvqoWhlzQ7Qh8tgk5nkj1ybFu8Htdjgm981_eDu21n48ArPs7UCer-jLvxHSFy-5VFL2O56BOZ9-GYD2ArWRQVFcmB98N8HgRQZd2j4R-HG7hkbBG0PwT6SuWPAQ-mK_ofN0IjXIBXNcSU44feT6QfHa5U8sGhvF14U52DRybI6CG7Z9FERLIrfHm5xaqKWqIwUKeIitPyUSnGRqo2hko-IYUV_6P0vWEZhlA__fcLyLS_amQy2_I--InET6slQFFUQ-BtUFZSkpk");'></div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-sm font-medium text-white truncate">أحمد محمد</span>
+<span class="text-xs text-slate-400 truncate">مطور ويب</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto relative">
+<!-- Top Navigation / Breadcrumbs -->
+<header class="flex items-center justify-between px-8 py-5 sticky top-0 bg-background-dark/80 backdrop-blur-md z-10 border-b border-surface-border">
+<div class="flex items-center gap-3">
+<!-- Mobile Menu Trigger -->
+<button class="lg:hidden text-slate-400 hover:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<nav class="flex items-center gap-2 text-sm text-slate-500">
+<span class="hover:text-slate-300 transition-colors cursor-pointer">لوحة التحكم</span>
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<span class="text-white font-medium">تفاصيل الحساب</span>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 text-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>معاينة الملف</span>
+</button>
+<button class="bg-primary hover:bg-primary-hover text-white px-4 py-1.5 rounded-md text-sm font-medium transition-colors shadow-lg shadow-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>حفظ التغييرات</span>
+</button>
+</div>
+</header>
+<!-- Content Container -->
+<div class="p-4 md:p-8 max-w-7xl mx-auto w-full flex flex-col gap-6 pb-20">
+<!-- Page Heading -->
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-bold text-white tracking-tight">إعدادات الملف الشخصي</h1>
+<p class="text-slate-400 text-base">قم بإدارة معلومات هويتك العامة، تفاصيل الاتصال، وتفضيلات الأمان.</p>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Widget 1: Identity Card (Span 1) -->
+<div class="bg-surface-dark border border-surface-border rounded-xl p-6 flex flex-col gap-6 relative group overflow-hidden">
+<div class="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-primary to-transparent"></div>
+<div class="flex items-start justify-between">
+<h2 class="text-lg font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">id_card</span>
+                            الهوية
+                        </h2>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-400 border border-green-500/20">نشط</span>
+</div>
+<div class="flex flex-col items-center gap-4 py-4">
+<div class="relative group/avatar cursor-pointer">
+<div class="w-28 h-28 rounded-full bg-cover bg-center border-4 border-background-dark shadow-2xl" data-alt="User Avatar Large" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCI8Vstd_sqcZAm7jbbJSesHq8H21wM3xf2oMwyIAB3Lx5XR7UTVAowBCjJ_SpweB54-UwV9lbEsPCqRd0ym0oDkoS19keZ7wei1gFz4FRZ5i3_ka2rMn0j3LjYZKzJ7vtgEa5plozgIX83MFvuZvickgEB9kcOP80ecHiZGJeC81MQU1db6aWfp_-xk9NI_c7iP177FXDIyl-x85opsNXFWnwcUr8-sfUrJtdlv9MqdRAhgv11mMmhx7bE32Zk5tDfsSHcNQzkMT0");'></div>
+<div class="absolute inset-0 bg-black/50 rounded-full flex items-center justify-center opacity-0 group-hover/avatar:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">edit</span>
+</div>
+</div>
+<div class="text-center">
+<h3 class="text-xl font-bold text-white">أحمد محمد</h3>
+<p class="text-slate-400 text-sm">عضو مميز</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 mt-auto">
+<label class="flex flex-col gap-2">
+<span class="text-xs font-medium text-slate-400 uppercase tracking-wide">المسمى المخصص</span>
+<input class="w-full bg-input-bg border border-surface-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-slate-600" type="text" value="مطور ويب"/>
+</label>
+<label class="flex flex-col gap-2">
+<div class="flex justify-between">
+<span class="text-xs font-medium text-slate-400 uppercase tracking-wide">رسالة الحالة</span>
+<span class="text-[10px] text-slate-500">يظهر للعامة</span>
+</div>
+<div class="relative">
+<span class="absolute left-3 top-2.5 text-slate-500 material-symbols-outlined text-[18px]">sentiment_satisfied</span>
+<input class="w-full bg-input-bg border border-surface-border rounded-lg px-4 pl-10 py-2.5 text-sm text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-slate-600" placeholder="ماذا يدور في ذهنك؟" type="text"/>
+</div>
+</label>
+</div>
+</div>
+<!-- Widget 2: Personal Details (Span 2 on large screens) -->
+<div class="md:col-span-2 bg-surface-dark border border-surface-border rounded-xl p-6 flex flex-col gap-6 relative">
+<div class="flex items-start justify-between border-b border-white/5 pb-4">
+<h2 class="text-lg font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-400">badge</span>
+                            المعلومات الشخصية
+                        </h2>
+<button class="text-slate-400 hover:text-white transition-colors text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">visibility_off</span>
+                             تحكم بالخصوصية
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Email Block -->
+<div class="col-span-1 md:col-span-2 p-4 rounded-lg bg-background-dark/50 border border-surface-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="text-sm text-slate-400">البريد الإلكتروني</p>
+<p class="text-white font-medium">ahmed***@gmail.com</p>
+</div>
+</div>
+<button class="text-primary text-sm font-medium hover:underline">تغيير البريد</button>
+</div>
+<label class="flex flex-col gap-2">
+<span class="text-xs font-medium text-slate-400 uppercase tracking-wide">تاريخ الميلاد</span>
+<div class="flex gap-2">
+<select class="bg-input-bg border border-surface-border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary w-20">
+<option>01</option>
+<option>15</option>
+</select>
+<select class="bg-input-bg border border-surface-border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary flex-1">
+<option>يناير</option>
+<option selected="">مايو</option>
+</select>
+<input class="bg-input-bg border border-surface-border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-primary w-24 text-center" type="text" value="1995"/>
+</div>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-xs font-medium text-slate-400 uppercase tracking-wide">الموقع الإلكتروني</span>
+<div class="relative">
+<span class="absolute right-3 top-2.5 text-slate-500 material-symbols-outlined text-[18px] rotate-90">link</span>
+<input class="w-full bg-input-bg border border-surface-border rounded-lg px-4 pr-10 py-2.5 text-sm text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-slate-600 font-mono text-left" dir="ltr" type="url" value="https://ahmed.dev"/>
+</div>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-xs font-medium text-slate-400 uppercase tracking-wide">الموقع الجغرافي</span>
+<div class="relative">
+<span class="absolute right-3 top-2.5 text-slate-500 material-symbols-outlined text-[18px]">location_on</span>
+<input class="w-full bg-input-bg border border-surface-border rounded-lg px-4 pr-10 py-2.5 text-sm text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-slate-600" type="text" value="الرياض، المملكة العربية السعودية"/>
+</div>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-xs font-medium text-slate-400 uppercase tracking-wide">المهنة</span>
+<input class="w-full bg-input-bg border border-surface-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-slate-600" type="text" value="مهندس برمجيات"/>
+</label>
+</div>
+</div>
+<!-- Widget 3: Bio / About (Full width on Grid) -->
+<div class="xl:col-span-2 bg-surface-dark border border-surface-border rounded-xl p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="text-lg font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-purple-400">edit_note</span>
+                            نبذة عني
+                        </h2>
+<span class="text-xs text-slate-500">يدعم Markdown</span>
+</div>
+<div class="relative h-full min-h-[180px]">
+<textarea class="w-full h-full min-h-[180px] bg-input-bg border border-surface-border rounded-lg p-4 text-sm text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-slate-600 resize-none leading-relaxed" placeholder="أكتب شيئاً عن نفسك..."></textarea>
+<div class="absolute bottom-3 left-3 flex gap-2">
+<button class="p-1 text-slate-500 hover:text-white hover:bg-white/10 rounded transition"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="p-1 text-slate-500 hover:text-white hover:bg-white/10 rounded transition"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<button class="p-1 text-slate-500 hover:text-white hover:bg-white/10 rounded transition"><span class="material-symbols-outlined text-[18px]">link</span></button>
+<button class="p-1 text-slate-500 hover:text-white hover:bg-white/10 rounded transition"><span class="material-symbols-outlined text-[18px]">list</span></button>
+</div>
+</div>
+</div>
+<!-- Widget 4: Security Health (Narrow) -->
+<div class="bg-surface-dark border border-surface-border rounded-xl p-6 flex flex-col gap-5">
+<h2 class="text-lg font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-red-400">shield</span>
+                        الأمان والحماية
+                    </h2>
+<!-- Health Bar -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-xs font-medium">
+<span class="text-slate-400">صحة الحساب</span>
+<span class="text-orange-400">متوسطة (65%)</span>
+</div>
+<div class="h-2 w-full bg-background-dark rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-l from-orange-400 to-yellow-400 w-[65%] rounded-full"></div>
+</div>
+</div>
+<div class="flex flex-col gap-3 mt-2">
+<div class="flex items-center justify-between p-3 rounded-lg bg-background-dark/50 border border-surface-border border-l-4 border-l-green-500">
+<div class="flex flex-col">
+<span class="text-xs text-slate-400">التحقق بخطوتين</span>
+<span class="text-sm font-medium text-white">مفعل</span>
+</div>
+<span class="material-symbols-outlined text-green-500 text-[20px]">check_circle</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-background-dark/50 border border-surface-border border-l-4 border-l-red-500">
+<div class="flex flex-col">
+<span class="text-xs text-slate-400">كلمة المرور</span>
+<span class="text-sm font-medium text-white">قديمة جداً</span>
+</div>
+<button class="text-xs bg-red-500/10 text-red-400 border border-red-500/20 px-2 py-1 rounded hover:bg-red-500/20 transition">تغيير</button>
+</div>
+</div>
+<button class="mt-auto w-full py-2 rounded-lg border border-surface-border text-slate-300 text-sm hover:bg-white/5 transition flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                        سجل الدخول
+                    </button>
+</div>
+<!-- Widget 5: Preferences (Span 3 on Grid - Footer Row) -->
+<div class="md:col-span-2 xl:col-span-3 bg-surface-dark border border-surface-border rounded-xl p-6 flex flex-col gap-4">
+<h2 class="text-lg font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">tune</span>
+                        التفضيلات الإقليمية
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<label class="flex flex-col gap-2">
+<span class="text-xs font-medium text-slate-400 uppercase tracking-wide">اللغة</span>
+<select class="w-full bg-input-bg border border-surface-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-primary">
+<option>العربية (Arabic)</option>
+<option>English (US)</option>
+</select>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-xs font-medium text-slate-400 uppercase tracking-wide">المنطقة الزمنية</span>
+<select class="w-full bg-input-bg border border-surface-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-primary">
+<option>(UTC+03:00) Riyadh</option>
+<option>(UTC+04:00) Dubai</option>
+<option>(UTC+00:00) London</option>
+</select>
+</label>
+<div class="flex items-end">
+<div class="flex items-center gap-3 p-2.5 bg-background-dark rounded-lg w-full border border-surface-border">
+<input class="w-5 h-5 rounded bg-surface-dark border-surface-border text-primary focus:ring-0 focus:ring-offset-0" id="dst" type="checkbox"/>
+<label class="text-sm text-slate-300 cursor-pointer select-none" for="dst">تصحيح التوقيت الصيفي تلقائياً</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action for Mobile (Hidden on Desktop usually, but good for Dashboard feels) -->
+<!-- We have the header button, but a bottom summary is nice -->
+<div class="mt-8 pt-6 border-t border-white/5 text-center text-slate-500 text-sm">
+                آخر تحديث للبيانات: منذ يومين • عنوان IP: 192.168.1.1
+            </div>
+</div>
+</main>
+</body></html>

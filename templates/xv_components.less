@@ -1,0 +1,1058 @@
+// ================================================
+
+// ================================================
+// XENVIBE COMPONENTS
+// ================================================
+// XENVIBE COMPONENTS (xv-* classes)
+// ================================================
+
+// Page Wrapper
+.xv-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: @xf-pageBg;
+}
+
+.xv-body {
+  background: @xf-pageBg;
+  color: @xf-textColor;
+}
+
+// ================================================
+// STAFF BAR
+// ================================================
+.xv-staff-bar {
+  background: fade(@xf-linkColor, 10%);
+  border-bottom: 1px solid fade(@xf-linkColor, 20%);
+  padding: 0.375rem 1.5rem;
+  font-size: 0.75rem;
+}
+
+.xv-staff-bar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.xv-staff-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  color: @xf-linkColor;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  transition: background 0.15s ease;
+
+  .material-symbols-outlined {
+    font-size: 16px;
+  }
+
+  &:hover {
+    background: fade(@xf-linkColor, 15%);
+  }
+
+  &.has-new {
+    color: @xv-attention-color;
+  }
+}
+
+.xv-staff-badge {
+  background: @xf-linkColor;
+  color: contrast(@xf-linkColor);
+  padding: 0.125rem 0.375rem;
+  border-radius: 9999px;
+  font-size: 0.625rem;
+  font-weight: 700;
+}
+
+// ================================================
+// HEADER
+// ================================================
+.xv-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: @xf-contentBg; // Same as footer
+  border-bottom: 1px solid @xf-borderColor;
+  padding: 0.75rem 1.5rem;
+}
+
+.xv-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.xv-header-start {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.xv-header-end {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+// Logo
+.xv-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: @xf-linkColor;
+  text-decoration: none;
+
+  img {
+    max-height: 40px;
+    width: auto;
+  }
+}
+
+.xv-logo-icon {
+  width: 2rem;
+  height: 2rem;
+  background: @xf-linkColor;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: contrast(@xf-linkColor);
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+.xv-logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: @xf-textColor;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+// Mobile Menu Button
+.xv-mobile-menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  border: none;
+  color: @xf-textColor;
+  cursor: pointer;
+
+  &:hover {
+    background: fade(@xf-textColor, 10%);
+  }
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+// Search Box
+.xv-search-box {
+  display: none;
+  flex: 1;
+  max-width: 28rem;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.xv-search-form {
+  position: relative;
+}
+
+.xv-search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .material-symbols-outlined {
+    position: absolute;
+    right: 0.75rem;
+    color: @xf-textColorMuted;
+    pointer-events: none;
+    font-size: 20px;
+  }
+}
+
+.xv-search-input {
+  width: 100%;
+  padding: 0.625rem 2.5rem 0.625rem 1rem;
+  background: @xf-contentBg;
+  border: 1px solid @xf-borderColor;
+  border-radius: 0.75rem;
+  color: @xf-textColor;
+  font-size: 0.875rem;
+
+  &::placeholder {
+    color: @xf-textColorMuted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: @xf-linkColor;
+    background: @xf-contentBg;
+    box-shadow: 0 0 0 3px fade(@xf-linkColor, 20%);
+  }
+}
+
+.xv-search-dropdown {
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: 0 !important;
+  bottom: auto !important;
+  margin-top: 0.5rem;
+  min-width: 100%;
+  width: max-content;
+  max-width: 400px;
+}
+
+// Icon Buttons (Alerts, Messages, etc.)
+.xv-icon-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: @xf-textColorMuted;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: @xf-textColor;
+    background: fade(@xf-textColor, 10%);
+  }
+
+  .material-symbols-outlined {
+    font-size: 22px;
+  }
+}
+
+.xv-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(25%, -25%);
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.25rem;
+  background: @xv-attention-color;
+  color: contrast(@xv-attention-color);
+  font-size: 0.625rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid @xf-pageBg;
+}
+
+.xv-separator {
+  width: 1px;
+  height: 2rem;
+  background: @xf-borderColor;
+  margin: 0 0.25rem;
+}
+
+// Primary Button
+.xv-btn-primary {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: @xf-linkColor;
+  color: contrast(@xf-linkColor);
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px fade(@xf-linkColor, 25%);
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  &:hover {
+    background: darken(@xf-linkColor, 10%);
+    color: contrast(@xf-linkColor);
+  }
+
+  @media (min-width: 640px) {
+    display: inline-flex;
+  }
+}
+
+.xv-btn-text {
+  padding: 0.5rem 1rem;
+  color: @xf-textColor;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: fade(@xf-textColor, 10%);
+  }
+}
+
+// User Avatar
+.xv-avatar {
+  cursor: pointer;
+
+  .avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 2px solid @xf-borderColor;
+    transition: border-color 0.2s ease;
+  }
+
+  &:hover .avatar {
+    border-color: @xf-linkColor;
+  }
+}
+
+// Menu Container
+.xv-menu-container {
+  position: relative;
+}
+
+.xv-menu {
+  min-width: 280px;
+}
+
+// Theme Toggle
+.xv-theme-toggle {
+  .xv-theme-icon {
+    font-size: 20px;
+  }
+}
+
+// ================================================
+// SUB NAVIGATION
+// ================================================
+.xv-sub-nav {
+  background: fade(@xf-contentBg, 50%);
+  border-bottom: 1px solid @xf-borderColor;
+  padding: 0.5rem 1.5rem;
+}
+
+.xv-sub-nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  overflow-x: auto;
+}
+
+.xv-sub-nav-link {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: @xf-textColorMuted;
+  border-radius: 0.375rem;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: @xf-textColor;
+    background: fade(@xf-textColor, 10%);
+  }
+
+  &.is-selected {
+    color: @xf-linkColor;
+    background: fade(@xf-linkColor, 10%);
+  }
+}
+
+// ================================================
+// MAIN LAYOUT
+// ================================================
+.xv-main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  gap: 1.5rem;
+
+  @media (max-width: 1023px) {
+    display: block;
+  }
+}
+
+.xv-sidebar--left {
+  flex: 0 0 16rem;
+  width: 16rem;
+  transition: width 0.3s ease, flex-basis 0.3s ease;
+
+  &.is-collapsed {
+    flex: 0 0 3rem;
+    width: 3rem;
+  }
+}
+
+.xv-content {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.xv-sidebar--right {
+  flex: 0 0 20rem;
+  width: 20rem;
+}
+
+.xv-content-notices {
+  margin-bottom: 1rem;
+}
+
+// ================================================
+// SIDEBAR
+// ================================================
+.xv-sidebar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+
+  &.xv-sidebar--left {
+    position: sticky;
+    top: 6rem;
+    height: fit-content;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+  }
+
+  &.is-collapsed {
+
+    // Hide ALL sidebar content when collapsed
+    .xv-sidebar-section,
+    .xv-sidebar-header,
+    .xv-communities,
+    .xv-cta-box,
+    .block,
+    .widget,
+    >*:not(.xv-sidebar-toggle) {
+      opacity: 0;
+      visibility: hidden;
+      height: 0;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .xv-sidebar-toggle {
+      position: relative;
+      top: 0;
+      right: auto;
+      left: auto;
+      margin: 0 auto;
+      transform: none;
+
+      .material-symbols-outlined {
+        transform: rotate(180deg);
+        transition: transform 0.3s ease;
+      }
+    }
+  }
+}
+
+// RTL arrow direction fix
+[dir="rtl"] {
+  .xv-sidebar-toggle .material-symbols-outlined {
+    transform: rotate(180deg); // In RTL, arrow points right by default
+  }
+
+  .xv-sidebar.is-collapsed .xv-sidebar-toggle .material-symbols-outlined {
+    transform: rotate(0deg); // When collapsed in RTL, arrow points left to expand
+  }
+}
+
+.xv-sidebar-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  transition: all 0.3s ease;
+  height: 28px;
+  background: @xf-contentBg;
+  border: 1px solid @xf-borderColor;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: @xf-textColorMuted;
+  z-index: 10;
+  transition: all 0.15s ease;
+
+  .material-symbols-outlined {
+    font-size: 18px;
+    transition: transform 0.15s ease;
+  }
+
+  &:hover {
+    color: @xf-textColor;
+    border-color: @xf-linkColor;
+  }
+}
+
+// No box around section - clean like Stitch
+.xv-sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: opacity 0.15s ease, visibility 0.15s ease, height 0.2s ease;
+}
+
+.xv-sidebar-header {
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.xv-sidebar-title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: @xf-textColorMuted;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Main navigation links - bold and clear like Stitch
+.xv-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: @xf-textColorMuted;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border-radius: 0.75rem;
+  transition: all 0.15s ease;
+  text-decoration: none;
+
+  .material-symbols-outlined {
+    font-size: 22px;
+  }
+
+  &:hover {
+    color: @xf-textColor;
+    background: fade(@xf-textColor, 5%);
+    text-decoration: none;
+  }
+
+  &.is-active {
+    color: @xf-linkColor;
+    background: fade(@xf-linkColor, 10%);
+    font-weight: 700;
+  }
+}
+
+.xv-sidebar-link-wrap {
+  display: flex;
+  align-items: center;
+
+  .xv-sidebar-link {
+    flex: 1;
+  }
+
+  &.is-active .xv-sidebar-link {
+    color: @xf-linkColor;
+    background: fade(@xf-linkColor, 10%);
+    font-weight: 700;
+  }
+}
+
+.xv-sidebar-dropdown {
+  position: relative;
+}
+
+.xv-sidebar-toggle-btn {
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  color: @xf-textColorMuted;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: fade(@xf-textColor, 10%);
+    color: @xf-textColor;
+  }
+
+  &.is-open .xv-sidebar-arrow {
+    transform: rotate(180deg);
+  }
+}
+
+.xv-sidebar-arrow {
+  font-size: 20px;
+  transition: transform 0.15s ease;
+}
+
+.xv-dropdown-menu {
+  display: none;
+  padding-right: 2.75rem;
+  margin-top: 0.25rem;
+  animation: slideDown 0.15s ease;
+
+  &.is-open {
+    display: block;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.xv-sidebar-sublink {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  padding-left: 2rem; // Indent for LTR
+  color: @xf-textColorMuted;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.15s ease;
+  text-decoration: none;
+
+  &:hover {
+    color: @xf-linkColor;
+    text-decoration: none;
+  }
+}
+
+// RTL submenu indent
+[dir="rtl"] .xv-sidebar-sublink {
+  padding-left: 0.75rem;
+  padding-right: 2rem; // Indent for RTL
+}
+
+// CTA Box
+.xv-cta-box {
+  background: linear-gradient(135deg, fade(@xf-linkColor, 20%) 0%, fade(@xf-linkColor, 5%) 100%);
+  border: 1px solid fade(@xf-linkColor, 10%);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-top: 1rem;
+  transition: opacity 0.15s ease, visibility 0.15s ease, height 0.2s ease;
+}
+
+.xv-cta-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: @xf-textColor;
+  margin-bottom: 0.5rem;
+}
+
+.xv-cta-text {
+  font-size: 0.75rem;
+  color: @xf-textColorMuted;
+  margin-bottom: 1rem;
+}
+
+.xv-cta-btn {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  background: @xf-linkColor;
+  color: contrast(@xf-linkColor);
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: darken(@xf-linkColor, 10%);
+    color: contrast(@xf-linkColor);
+  }
+}
+
+// Sub-Navigation Links (Communities style)
+.xv-communities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 1.5rem;
+}
+
+.xv-communities-title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: @xf-textColorMuted;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.xv-community-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  color: @xf-textColorMuted;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.15s ease;
+  text-decoration: none;
+
+  &:hover {
+    color: @xf-textColor;
+    text-decoration: none;
+  }
+}
+
+.xv-community-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: box-shadow 0.15s ease;
+}
+
+.xv-community-link:hover .xv-community-dot {
+  box-shadow: 0 0 8px currentColor;
+}
+
+// Color variants for dots (0-7 based on loop index)
+// Using defined variables for consistency
+.xv-dot-0 {
+  background: @xv-color-blue;
+}
+
+// blue
+.xv-dot-1 {
+  background: @xv-color-green;
+}
+
+// green
+.xv-dot-2 {
+  background: @xv-color-purple;
+}
+
+// purple
+.xv-dot-3 {
+  background: @xv-color-orange;
+}
+
+// orange
+.xv-dot-4 {
+  background: @xv-color-red;
+}
+
+// red
+.xv-dot-5 {
+  background: @xv-color-yellow;
+}
+
+// yellow
+.xv-dot-6 {
+  background: @xv-color-cyan;
+}
+
+// cyan
+.xv-dot-7 {
+  background: @xv-color-pink;
+}
+
+// pink
+
+// Widgets
+.xv-widgets {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.xv-side-nav-wrap {
+  margin-bottom: 1rem;
+}
+
+// ================================================
+// BREADCRUMBS
+// ================================================
+.xv-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  margin: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+
+  li {
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: '/';
+      margin-left: 0.5rem;
+      color: @xf-textColorMuted;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+
+    a {
+      color: @xf-textColorMuted;
+      transition: color 0.15s ease;
+
+      &:hover {
+        color: @xf-linkColor;
+      }
+    }
+  }
+
+  &.xv-breadcrumb--bottom {
+    border-top: 1px solid @xf-borderColor;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+}
+
+// ================================================
+// PAGE HEADER
+// ================================================
+.xv-page-header-auto {
+  margin-bottom: 1.5rem;
+}
+
+.xv-page-title-auto {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: @xf-textColor;
+  margin: 0 0 0.5rem;
+}
+
+.xv-page-subtitle-auto {
+  font-size: 0.875rem;
+  color: @xf-textColorMuted;
+  margin: 0;
+}
+
+.xv-page-actions-auto {
+  margin-top: 1rem;
+}
+
+.xv-page-content {
+  // Content container - no specific styles needed
+}
+
+// ================================================
+// SCROLLING NOTICES
+// ================================================
+.xv-scrolling-notices {
+  background: fade(@xf-linkColor, 10%);
+  padding: 0.5rem 1.5rem;
+}
+
+// ================================================
+// FOOTER
+// ================================================
+.xv-footer {
+  background: @xf-contentBg;
+  border-top: 1px solid @xf-borderColor;
+  padding: 2rem 1.5rem;
+  margin-top: auto;
+}
+
+.xv-footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.xv-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+
+  a {
+    color: @xf-textColorMuted;
+    font-size: 0.875rem;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: @xf-linkColor;
+    }
+  }
+}
+
+.xv-footer-style {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.xv-style-chooser {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: fade(@xf-textColor, 5%);
+  border-radius: 0.5rem;
+  color: @xf-textColorMuted;
+  font-size: 0.8125rem;
+  transition: all 0.15s ease;
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+
+  &:hover {
+    background: fade(@xf-textColor, 10%);
+    color: @xf-textColor;
+  }
+}
+
+.xv-footer-copy {
+  font-size: 0.75rem;
+  color: @xf-textColorMuted;
+}
+
+// ================================================
+// MOBILE NAVIGATION
+// ================================================
+.xv-mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: @xf-contentBg;
+  border-top: 1px solid @xf-borderColor;
+  padding: 0.5rem 1rem;
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0));
+
+  @media (max-width: 1023px) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  >a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    color: @xf-textColorMuted;
+    font-size: 0.625rem;
+    font-weight: 600;
+    transition: color 0.15s ease;
+
+    .material-symbols-outlined {
+      font-size: 22px;
+    }
+
+    &:hover,
+    &.is-active {
+      color: @xf-linkColor;
+    }
+  }
+}
+
+.xv-fab-wrap {
+  position: relative;
+  top: -1rem;
+}
+
+.xv-fab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: @xf-linkColor;
+  color: contrast(@xf-linkColor);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px fade(@xf-linkColor, 40%);
+  transition: transform 0.2s ease;
+
+  .material-symbols-outlined {
+    font-size: 28px;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    color: contrast(@xf-linkColor);
+  }
+}
+
+// ================================================
+// CUSTOM SCROLLBAR
+// ================================================
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: @xf-pageBg;
+}
+
+::-webkit-scrollbar-thumb {
+  background: fade(@xf-textColor, 20%);
+  border-radius: 4px;
+
+  &:hover {
+    background: fade(@xf-textColor, 30%);
+  }
+}
+
+// Firefox scrollbar
+* {
+  scrollbar-width: thin;
+  scrollbar-color: fade(@xf-textColor, 20%) @xf-pageBg;
+}
+
+// ================================================

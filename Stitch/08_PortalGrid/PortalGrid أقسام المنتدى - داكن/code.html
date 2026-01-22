@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PortalGrid: أقسام المنتدى - داكن</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#1d6bf5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1e2532",
+                        "surface-border": "#2b3548",
+                        "text-secondary": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2b3548;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3e4c63;
+        }
+        .portal-tile {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .portal-tile:hover {
+            transform: translateY(-4px);
+            border-color: #135bec;
+            box-shadow: 0 10px 25px -5px rgba(19, 91, 236, 0.15), 0 8px 10px -6px rgba(19, 91, 236, 0.1);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-surface-border bg-[#111722]/95 backdrop-blur-md">
+<div class="px-4 md:px-8 lg:px-12 flex h-16 items-center justify-between gap-4">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-3 min-w-fit">
+<div class="flex items-center justify-center size-9 rounded-lg bg-gradient-to-br from-primary to-blue-600 text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-2xl">grid_view</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight hidden md:block">PortalGrid</h1>
+</div>
+<!-- Search Bar -->
+<div class="flex-1 max-w-lg hidden md:block px-4">
+<div class="relative group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-text-secondary group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full rounded-xl border border-surface-border bg-surface-dark py-2.5 pr-10 pl-4 text-sm text-white placeholder-text-secondary focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all" placeholder="ابحث في المنتديات، الأعضاء، المشاركات..." type="text"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-2">
+<kbd class="inline-flex items-center border border-surface-border rounded px-2 text-xs font-sans font-medium text-text-secondary">⌘K</kbd>
+</div>
+</div>
+</div>
+<!-- Navigation & Actions -->
+<div class="flex items-center gap-2 md:gap-4">
+<!-- Mobile Search Toggle -->
+<button class="md:hidden flex items-center justify-center size-10 rounded-lg text-text-secondary hover:bg-surface-dark hover:text-white transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<!-- Nav Links (Desktop) -->
+<nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-text-secondary">
+<a class="text-white hover:text-primary transition-colors" href="#">الرئيسية</a>
+<a class="hover:text-white transition-colors" href="#">المنتديات</a>
+<a class="hover:text-white transition-colors" href="#">الجديد</a>
+<a class="hover:text-white transition-colors" href="#">الأعضاء</a>
+</nav>
+<div class="h-6 w-px bg-surface-border hidden lg:block"></div>
+<!-- Notifications -->
+<button class="relative flex items-center justify-center size-10 rounded-lg text-text-secondary hover:bg-surface-dark hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 rounded-full bg-red-500 border border-[#111722]"></span>
+</button>
+<!-- Messages -->
+<button class="flex items-center justify-center size-10 rounded-lg text-text-secondary hover:bg-surface-dark hover:text-white transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<!-- User Profile -->
+<button class="flex items-center gap-2 pl-2 pr-1 py-1 rounded-full hover:bg-surface-dark transition-colors border border-transparent hover:border-surface-border ml-2">
+<div class="size-8 rounded-full bg-cover bg-center ring-2 ring-surface-border" data-alt="User Avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBF0TW9Age0VwVsZDIdLBF5wDMt5o_6m9sZfX7xlJOPU_TwcEeTbvZb7yDcheYt367YGin33J6_OeiEnA2TmcZJ4HC6O6p2T_5FsdBSmUcZXuq3ZIN4zIQZ_GijxBgqp28Z8VcShwjCpSULQ141_tFZlxf_IHmtSQ0f3Z6g7MglfqjuF716RJOTxJa4xSnAmJ9LKdLZkc_OclgDsyAFDv9OY8VpN5k_cLKU9oKSlQtVqQwnHESniUYbUcsH0oDttIsly92ZZcTxWVo');"></div>
+<span class="material-symbols-outlined text-text-secondary text-sm">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex-1 w-full max-w-[1440px] mx-auto p-4 md:p-6 lg:p-8 flex flex-col gap-8">
+<!-- Action / Control Panel -->
+<section class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-surface-dark/50 border border-surface-border rounded-2xl p-4 md:p-5 backdrop-blur-sm">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-primary/10 rounded-xl text-primary">
+<span class="material-symbols-outlined text-2xl">tune</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-white leading-tight">تخصيص الواجهة</h2>
+<p class="text-text-secondary text-sm">قم بترتيب وتغيير حجم المربعات حسب تفضيلك الشخصي</p>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-surface-border bg-background-dark text-text-secondary hover:text-white hover:border-primary/50 transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+<span>استعادة الافتراضي</span>
+</button>
+<label class="relative inline-flex items-center cursor-pointer group">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+<span class="mr-3 text-sm font-medium text-white group-hover:text-primary transition-colors">وضع التحرير</span>
+</label>
+</div>
+</section>
+<!-- Category 1: Main Forums -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-xl font-bold text-white flex items-center gap-2">
+<span class="w-1 h-6 bg-primary rounded-full"></span>
+                    المنتديات الرئيسية
+                </h3>
+<button class="text-text-secondary hover:text-white text-sm flex items-center gap-1 transition-colors">
+<span>طي القسم</span>
+<span class="material-symbols-outlined text-lg">expand_less</span>
+</button>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 auto-rows-[minmax(180px,auto)]">
+<!-- Tile: Announcements (Wide 2x1) -->
+<a class="portal-tile group col-span-1 sm:col-span-2 relative overflow-hidden rounded-2xl bg-surface-dark border border-surface-border p-6 flex flex-col justify-between" href="#">
+<div class="absolute top-0 right-0 w-full h-1 bg-gradient-to-l from-primary to-transparent"></div>
+<div class="flex justify-between items-start">
+<div class="p-3 rounded-xl bg-blue-500/10 text-blue-400">
+<span class="material-symbols-outlined text-2xl">campaign</span>
+</div>
+<span class="px-2.5 py-1 rounded-md bg-surface-border/50 text-xs font-medium text-text-secondary group-hover:bg-primary group-hover:text-white transition-colors">12 جديد</span>
+</div>
+<div class="mt-4">
+<h4 class="text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors">الأخبار والإعلانات</h4>
+<p class="text-text-secondary text-sm line-clamp-2">آخر الأخبار الرسمية، التحديثات، والفعاليات الخاصة بالمنتدى. يرجى الاطلاع عليها بانتظام.</p>
+</div>
+<div class="mt-4 pt-4 border-t border-surface-border flex items-center gap-3">
+<div class="size-6 rounded-full bg-cover bg-center" data-alt="Admin Avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQ2wQZ_F0Yvw-ZNSElwpnBHT4mOUBW_nBhV2RbjN3L8lYEaQdbOl5qvx5yuRwitAcdMxeOFURSKV7Dx6lbPC8z6gvPegJ8-teXmjusgVcHCMRfXzZXEYcRgFpRj3CBE5VTOjLo1rpIYSCIa-ufV2d04LV7sXI-Vcb3mT4bKZsATAwckOgYjCBp-ftPTwjAU5C-FK2JU5LDZp1hlFRJUWq9NAwmXNhJdRlySCJNBw4AfxsTCFlEIUa_8939jKYOwELC6Qzzjm8VCw8');"></div>
+<div class="flex flex-col">
+<span class="text-xs font-medium text-white truncate max-w-[200px]">تحديث سياسة الخصوصية الجديد</span>
+<span class="text-[10px] text-text-secondary">منذ 2 ساعة • المدير العام</span>
+</div>
+</div>
+</a>
+<!-- Tile: General Discussion (Standard 1x1) -->
+<a class="portal-tile group relative rounded-2xl bg-surface-dark border border-surface-border p-5 flex flex-col" href="#">
+<div class="flex justify-between items-start mb-auto">
+<div class="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+<span class="material-symbols-outlined text-xl">forum</span>
+</div>
+<div class="text-right">
+<span class="block text-sm font-bold text-white">14.2k</span>
+<span class="block text-[10px] text-text-secondary">موضوع</span>
+</div>
+</div>
+<h4 class="text-base font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors">النقاش العام</h4>
+<p class="text-text-secondary text-xs line-clamp-2 mb-3">ساحة للنقاشات العامة التي لا تندرج تحت الأقسام الأخرى.</p>
+<div class="flex -space-x-2 space-x-reverse overflow-hidden">
+<div class="inline-block size-6 rounded-full ring-2 ring-surface-dark bg-cover bg-center" data-alt="User 1" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD9-UmPwsIR--7p4RgSYX4417qb1hMtEoFsr2JeL93Hk4DLTg2CxPrigvGsNbWFzqBw8FblUmOXZeGUnBMQ0AtiJP8ZIPPaF8gdo34ezIIC8kmf01BCTfEUeAMyfn9wlOrylBtojefrbPXCOA0LDybKDvJcpoI2Dkrv7UnLc_AuBoPCBU2qvXC8_vi_Ukl5eglhukyCN5IPUy5Z49vCQVR1yETJSG69FKGCSjzQ3WijBHYiryvz8Q-HMHqnhDIqbaPxpaPrztfFgwY');"></div>
+<div class="inline-block size-6 rounded-full ring-2 ring-surface-dark bg-cover bg-center" data-alt="User 2" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDv40--KYTlsO_g7w876KZvkTVpEjHQYEyiLHGokawh7irpbQJ_jkgGYw6YeAU-Ey06rKZldp6BkHNYM1b5AuMeObnazI3nFml54VsbEW5FR5b2zYRiL-nPLj4JzP7stB7KVo0PPSIrQ_3DZttvdKHIMj7no5LN8Hy_EKc8ueCwQWlh5EnRuA1D3ubIeWq65otsUW3wyzRnH1NCRAlJr4B7HWDScUp3oPr6_alcY70UFnlU0nUSOt6ONWz3IdvenZhDEuf6wesw13g');"></div>
+<div class="inline-block size-6 rounded-full ring-2 ring-surface-dark bg-cover bg-center" data-alt="User 3" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzZpALHMI7wn9s21JCHykgn7DLp_FTCpeiHxBMt_nnv19BkOlh-tpwNsBzWA2xdcQgQa0Q-ICJ990jDu6rlWWpNG15WZJ5VqOb3jBVVdz040IUBPGbaX3-PPRU9EOsWW1JKDuVEiHD2NvOAuY2zXEwePuOT9xE3-uEII7qY8VWFv_IC87qJRw6SgN48n9gvOlfn3xWx47ObtZpqVyMKUk2sWkxHmokQ9vGqa_l-6EQo3UyGM1aAoZhcQaOaUgn1ZDgCzZPYEDu3jM');"></div>
+<div class="flex items-center justify-center size-6 rounded-full ring-2 ring-surface-dark bg-surface-border text-[8px] font-bold text-white">+9</div>
+</div>
+</a>
+<!-- Tile: Introductions (Standard 1x1) -->
+<a class="portal-tile group relative rounded-2xl bg-surface-dark border border-surface-border p-5 flex flex-col" href="#">
+<div class="flex justify-between items-start mb-auto">
+<div class="p-2.5 rounded-lg bg-purple-500/10 text-purple-400">
+<span class="material-symbols-outlined text-xl">waving_hand</span>
+</div>
+<div class="text-right">
+<span class="block text-sm font-bold text-white">856</span>
+<span class="block text-[10px] text-text-secondary">عضو</span>
+</div>
+</div>
+<h4 class="text-base font-bold text-white mb-1 group-hover:text-purple-400 transition-colors">الترحيب والتعارف</h4>
+<p class="text-text-secondary text-xs line-clamp-2">هل أنت جديد هنا؟ عرّفنا بنفسك وابدأ رحلتك معنا.</p>
+</a>
+<!-- Tile: Featured/Trending (Tall 1x2 or Standard depending on viewport) -->
+<div class="portal-tile group col-span-1 lg:row-span-2 relative rounded-2xl bg-surface-dark border border-surface-border overflow-hidden flex flex-col">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity" data-alt="Abstract Neon Pattern" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCrBI2V0snWtim56qGhn_udv32cZPDCyRRCdfAheeZdCkGiH-gGSeGGQS48gBae8k4iiCyRqaotQ6YuTKRG-GxSGxX0_iRQb3xhy4XgGhhpGVUH0Dl7KzRJn1zj0NTEcVBCqy9Eb4_uSbL9duaYPCnbY2uhVJFzYlrpjdnfY30-IJoxK3ziyDZVMgTMaxuGkauMuTlIVk7WrS2YdwwxJdD6PMbBPvHLMvIp80UHa4KquyM6tGs90W66EP3Ic1SoNoYIazTQn1UM7Ew');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dark via-surface-dark/80 to-transparent"></div>
+<div class="relative z-10 p-5 h-full flex flex-col justify-end">
+<div class="mb-auto">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-orange-500/20 text-orange-400 text-xs font-bold border border-orange-500/20">
+<span class="material-symbols-outlined text-sm">local_fire_department</span>
+                                رائج الآن
+                            </span>
+</div>
+<h4 class="text-lg font-bold text-white mb-2 leading-snug">أفضل 10 أدوات للذكاء الاصطناعي في 2024</h4>
+<div class="flex flex-col gap-2 mt-2">
+<div class="flex items-center gap-2 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>3.5k مشاهدة</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-sm">chat</span>
+<span>142 رد</span>
+</div>
+</div>
+<button class="mt-4 w-full py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-sm font-medium backdrop-blur-sm transition-colors border border-white/5">
+                            اقرأ الموضوع
+                        </button>
+</div>
+</div>
+<!-- Tile: Stats Widget (Small) -->
+<div class="portal-tile rounded-2xl bg-gradient-to-br from-surface-dark to-[#161b26] border border-surface-border p-5 flex flex-col items-center justify-center text-center">
+<div class="size-16 rounded-full border-4 border-primary/20 border-t-primary flex items-center justify-center mb-2">
+<span class="text-xl font-bold text-white">42</span>
+</div>
+<span class="text-xs font-medium text-text-secondary">متواجدون الآن</span>
+</div>
+<!-- Tile: Complaints (Standard) -->
+<a class="portal-tile group relative rounded-2xl bg-surface-dark border border-surface-border p-5 flex flex-col" href="#">
+<div class="flex justify-between items-start mb-auto">
+<div class="p-2.5 rounded-lg bg-red-500/10 text-red-400">
+<span class="material-symbols-outlined text-xl">report_problem</span>
+</div>
+</div>
+<h4 class="text-base font-bold text-white mb-1 group-hover:text-red-400 transition-colors">الشكاوى والمقترحات</h4>
+<p class="text-text-secondary text-xs line-clamp-2">واجهت مشكلة؟ لديك اقتراح لتطوير المنتدى؟ تفضل هنا.</p>
+</a>
+</div>
+</section>
+<!-- Category 2: Tech & Lifestyle -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-xl font-bold text-white flex items-center gap-2">
+<span class="w-1 h-6 bg-indigo-500 rounded-full"></span>
+                    التكنولوجيا والحياة
+                </h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
+<!-- Programming Tile -->
+<a class="portal-tile group relative rounded-2xl bg-surface-dark border border-surface-border p-5 flex flex-col" href="#">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2.5 rounded-lg bg-indigo-500/10 text-indigo-400">
+<span class="material-symbols-outlined text-xl">terminal</span>
+</div>
+<div class="flex items-center gap-1 text-xs text-text-secondary">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>2د</span>
+</div>
+</div>
+<h4 class="text-base font-bold text-white mb-1 group-hover:text-indigo-400 transition-colors">البرمجة والتطوير</h4>
+<div class="bg-background-dark/50 rounded-lg p-3 mt-auto border border-surface-border/50">
+<p class="text-xs text-text-secondary truncate font-medium text-white mb-1">مشكلة في تنسيق CSS Grid</p>
+<div class="flex items-center gap-2">
+<div class="size-4 rounded-full bg-gray-500 bg-cover" data-alt="User" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHIs4O0288ACrcTyBqLUWXHZgtsDnaBAZy2zo82kwWSfBoDZB_LvFummmvJYtH5_KZBLIWMfZ7-hbqyZ0heTo6bnzvirVVzcgcfqfsYv5hvoAsjuqF86qOVArrvgBtxc0MR8UFDkoVDDjH4TuH-fcO25gg_gOr9GnOp_rgDpF2gTWgnXK_0TBXcdhAr1nMWrmMqKiWbHjFf7YKnGATDdyJm5Nohkl0b2MbAuJiYNR7FjL9ZrWSj0jWVMYQNunUg7i64CPCI8ObI6U');"></div>
+<span class="text-[10px] text-text-secondary">بواسطة: أحمد علي</span>
+</div>
+</div>
+</a>
+<!-- Design Tile -->
+<a class="portal-tile group relative rounded-2xl bg-surface-dark border border-surface-border p-5 flex flex-col" href="#">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2.5 rounded-lg bg-pink-500/10 text-pink-400">
+<span class="material-symbols-outlined text-xl">palette</span>
+</div>
+</div>
+<h4 class="text-base font-bold text-white mb-1 group-hover:text-pink-400 transition-colors">التصميم والجرافيكس</h4>
+<p class="text-text-secondary text-xs mb-3">فوتوشوب، إليستريتور، واجهة المستخدم.</p>
+<div class="flex items-center gap-2 mt-auto">
+<span class="px-2 py-0.5 rounded text-[10px] bg-pink-500/10 text-pink-400 border border-pink-500/20">دروس</span>
+<span class="px-2 py-0.5 rounded text-[10px] bg-surface-border text-text-secondary">معرض</span>
+</div>
+</a>
+<!-- Hardware Tile -->
+<a class="portal-tile group relative rounded-2xl bg-surface-dark border border-surface-border p-5 flex flex-col" href="#">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2.5 rounded-lg bg-cyan-500/10 text-cyan-400">
+<span class="material-symbols-outlined text-xl">memory</span>
+</div>
+</div>
+<h4 class="text-base font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">العتاد والأجهزة</h4>
+<p class="text-text-secondary text-xs line-clamp-2">كل ما يتعلق بقطع الكمبيوتر، التجميعات، ومراجعة الأجهزة الجديدة.</p>
+</a>
+<!-- Market Tile (Wide) -->
+<a class="portal-tile group sm:col-span-2 lg:col-span-1 relative rounded-2xl bg-[#131b29] border border-surface-border overflow-hidden flex flex-row lg:flex-col items-center lg:items-start p-0" href="#">
+<div class="w-1/3 lg:w-full h-full lg:h-32 bg-cover bg-center" data-alt="Marketplace graphic" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCH-GcikD9OqvLMFGY3XHAeVv8Fy2N8CjgNL5AOgR95QKz4YYgSx0TD0ePovwZRjKqOO08pyIzgxygU69yyX9V-mU1t3ahZul_hdADX9PflW_mL7UiwrEZ-NrtMG168ZQzmW9e5x0E5GKaqJFYJZtnNidsKc1VESUYGKKk44XxbeD4AaFTgnRyLzwoGiuLGozhVhOH8zhhDnj5uVtyv8QyzLy8uG73UtNBXKydWVx7M0Z3ppU9BrDJg3FiB01Md-Zv1H_XrHJVh7L0');"></div>
+<div class="flex-1 p-5 flex flex-col justify-center">
+<h4 class="text-base font-bold text-white mb-1 group-hover:text-primary transition-colors">سوق الأعضاء</h4>
+<p class="text-text-secondary text-xs mb-2">بيع وشراء وتبادل الخدمات.</p>
+<span class="text-xs text-green-400 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                            نشاط مرتفع
+                        </span>
+</div>
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-surface-border bg-surface-dark py-8">
+<div class="max-w-[1440px] mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2 text-text-secondary">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+<span class="text-sm font-medium">PortalGrid © 2024</span>
+</div>
+<div class="flex gap-6 text-sm text-text-secondary">
+<a class="hover:text-white transition-colors" href="#">سياسة الخصوصية</a>
+<a class="hover:text-white transition-colors" href="#">شروط الاستخدام</a>
+<a class="hover:text-white transition-colors" href="#">اتصل بنا</a>
+</div>
+<div class="flex items-center gap-3">
+<a class="size-8 rounded-full bg-background-dark flex items-center justify-center text-text-secondary hover:text-white hover:bg-surface-border transition-colors" href="#">
+<svg aria-hidden="true" class="size-4" fill="currentColor" viewbox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+<a class="size-8 rounded-full bg-background-dark flex items-center justify-center text-text-secondary hover:text-white hover:bg-surface-border transition-colors" href="#">
+<svg aria-hidden="true" class="size-4" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465 1.067-.047 1.407-.06 4.123-.06h.08zm-1.63 2h-1.37c-2.553 0-2.85.011-3.856.057-.962.043-1.484.2-1.83.334a2.91 2.91 0 00-1.076.701c-.378.378-.616.719-.701 1.076-.134.346-.29.868-.334 1.83-.046 1.006-.057 1.303-.057 3.856v1.37c0 2.553.011 2.85.057 3.856.043.962.2 1.484.334 1.83.18.468.44.836.818 1.214.378.378.746.638 1.214.818.346.134.868.29 1.83.334 1.006.046 1.303.057 3.856.057h1.37c2.553 0 2.85-.011 3.856-.057.962-.043 1.484-.2 1.83-.334a3.015 3.015 0 001.214-.818c.378-.378.638-.746.818-1.214.134-.346.29-.868.334-1.83.046-1.006.057-1.303.057-3.856v-1.37c0-2.553-.011-2.85-.057-3.856-.043-.962-.2-1.484-.334-1.83a3.015 3.015 0 00-.818-1.214 3.015 3.015 0 00-1.214-.818c-.346-.134-.868-.29-1.83-.334-1.006-.046-1.303-.057-3.856-.057zM12 7.19a4.81 4.81 0 110 9.62 4.81 4.81 0 010-9.62zm0 2a2.81 2.81 0 100 5.62 2.81 2.81 0 000-5.62zM18.15 5.85a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

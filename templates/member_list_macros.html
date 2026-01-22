@@ -1,0 +1,92 @@
+<!-- XenVibe Cards - Member Card Macros -->
+
+<xf:macro id="item" arg-user="!" arg-extraData="" arg-extraDataBig="{{ false }}">
+	<xf:macro id="member_card" arg-user="{$user}" />
+</xf:macro>
+
+<xf:macro id="member_card" arg-user="!">
+	<xf:set var="$isOnline" value="{{ $user.isOnline() }}" />
+	<xf:set var="$isStaff" value="{{ $user.is_staff }}" />
+	<xf:set var="$isModerator" value="{{ $user.is_moderator }}" />
+	<xf:set var="$isAdmin" value="{{ $user.is_admin }}" />
+
+	<article class="xv-member-card {{ $isOnline ? 'xv-member-card--online' : '' }} {{ $isStaff ? 'xv-member-card--staff' : '' }}">
+		<!-- Online Indicator -->
+		<xf:if is="$isOnline">
+			<div class="xv-member-online">
+				<span class="xv-member-online-ping"></span>
+				<span class="xv-member-online-dot"></span>
+			</div>
+		</xf:if>
+
+		<!-- Avatar with gradient border for staff -->
+		<div class="xv-member-avatar-wrap">
+			<div class="xv-member-avatar {{ $isAdmin ? 'xv-member-avatar--admin' : ($isModerator ? 'xv-member-avatar--mod' : ($isStaff ? 'xv-member-avatar--staff' : '')) }}">
+				<xf:avatar user="$user" size="l" notooltip="true" />
+			</div>
+			<xf:if is="$isStaff">
+				<div class="xv-member-verified" title="{{ phrase('staff') }}">
+					<span class="material-symbols-outlined">verified</span>
+				</div>
+			</xf:if>
+		</div>
+
+		<!-- Username -->
+		<h3 class="xv-member-name">
+			<a href="{{ link('members', $user) }}">
+				<xf:username user="$user" rich="true" notooltip="true" />
+			</a>
+		</h3>
+
+		<!-- User Title/Banner -->
+		<xf:if is="$user.custom_title">
+			<span class="xv-member-role {{ $isAdmin ? 'xv-member-role--admin' : ($isModerator ? 'xv-member-role--mod' : ($isStaff ? 'xv-member-role--staff' : '')) }}">{$user.custom_title}</span>
+		<xf:elseif is="$user.user_title" />
+			<span class="xv-member-role {{ $isAdmin ? 'xv-member-role--admin' : ($isModerator ? 'xv-member-role--mod' : ($isStaff ? 'xv-member-role--staff' : '')) }}">{$user.user_title}</span>
+		<xf:else />
+			<span class="xv-member-role">{{ phrase('member') }}</span>
+		</xf:if>
+
+		<!-- Stats -->
+		<div class="xv-member-stats">
+			<div class="xv-member-stat">
+				<span class="xv-member-stat-label">{{ phrase('messages') }}</span>
+				<span class="xv-member-stat-value">{$user.message_count|number_short(1)}</span>
+			</div>
+			<div class="xv-member-stat">
+				<span class="xv-member-stat-label">{{ phrase('reactions') }}</span>
+				<span class="xv-member-stat-value">{$user.reaction_score|number_short(1)}</span>
+			</div>
+			<xf:if is="$xf.options.enableTrophies">
+				<div class="xv-member-stat">
+					<span class="xv-member-stat-label">{{ phrase('points') }}</span>
+					<span class="xv-member-stat-value">{$user.trophy_points|number_short(1)}</span>
+				</div>
+			</xf:if>
+		</div>
+
+		<!-- Follow Button -->
+		<xf:if is="$xf.visitor.user_id AND $xf.visitor.user_id != $user.user_id">
+			<xf:if is="$xf.visitor.isFollowing($user)">
+				<a href="{{ link('members/unfollow', $user) }}"
+				   class="xv-member-btn xv-member-btn--following"
+				   data-xf-click="overlay">
+					<span class="material-symbols-outlined">check</span>
+					{{ phrase('following') }}
+				</a>
+			<xf:else />
+				<a href="{{ link('members/follow', $user) }}"
+				   class="xv-member-btn"
+				   data-xf-click="overlay">
+					<span class="material-symbols-outlined">person_add</span>
+					{{ phrase('follow') }}
+				</a>
+			</xf:if>
+		<xf:else />
+			<a href="{{ link('members', $user) }}" class="xv-member-btn">
+				<span class="material-symbols-outlined">visibility</span>
+				{{ phrase('view') }}
+			</a>
+		</xf:if>
+	</article>
+</xf:macro>

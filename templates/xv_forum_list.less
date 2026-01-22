@@ -1,0 +1,504 @@
+// FORUM LIST PAGE - CARDS GRID LAYOUT
+// ================================================================
+// تاريخ الإضافة: يناير 2026
+// الوصف: تحويل صفحة الأقسام لـ Cards Grid Layout
+// المرجع: Stitch/02_Cards/أقسام المنتدى - داكن
+// Grid: 2 أعمدة (sidebar مفتوح) → 3 أعمدة (sidebar مغلق)
+// للتراجع: احذف هذا القسم بالكامل
+// ================================================================
+
+// GRID VIEW (Default)
+.template-forum_list {
+
+  // ========================================
+  // CATEGORY BLOCK - تنسيق الـ Category
+  // ========================================
+  .block--category {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-bottom: 2rem;
+
+    // Category Header
+    .block-header {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 0 1rem 0;
+      margin-bottom: 0;
+
+      a {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: @xf-textColor;
+
+        &:hover {
+          color: @xf-linkColor;
+        }
+      }
+    }
+
+    // ========================================
+    // FORUMS GRID - شبكة الأقسام
+    // ========================================
+    .block-body {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      background: transparent !important;
+      padding: 0 !important;
+      align-items: stretch !important; // تمديد العناصر
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+
+      // العنصر الأب المباشر للكارد - فقط height بدون display
+      > .node {
+        height: 100% !important;
+      }
+    }
+  }
+
+  // ========================================
+  // FORUM NODE - كل قسم كـ Card (Grid View Only)
+  // ========================================
+  .node--forum {
+    background: @xv-card-bg;
+    border-radius: @xv-card-radius;
+    border: 1px solid @xf-borderColor;
+    box-shadow: none;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    position: relative !important; // للـ absolute positioning
+    padding: 1.25rem;
+    padding-bottom: 5rem !important; // مساحة لـ node-extra
+    height: 100%;
+    box-sizing: border-box !important;
+
+    // إزالة أي borders داخلية
+    &>*,
+    & .node-body,
+    & .node-extra {
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    // ========================================
+    // NODE BODY - إعادة هيكلة
+    // ========================================
+    .node-body {
+      display: block !important; // block للـ float
+      padding: 0;
+      overflow: hidden;
+    }
+
+    // ========================================
+    // NODE ICON - Glass Effect (Stitch Style)
+    // ========================================
+    .node-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.75rem;
+      background: fade(@xf-textColor, 8%);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid fade(@xf-textColor, 10%);
+      float: left;
+      margin-right: 1rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+
+      i,
+      .fa--xf {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: fit-content;
+        height: fit-content;
+        font-size: 1.125rem;
+        color: @xf-textColor;
+        line-height: 1;
+
+        svg {
+          width: 1.125rem;
+          height: 1.125rem;
+          fill: @xf-textColor;
+          display: block;
+        }
+      }
+    }
+
+    // ========================================
+    // NODE MAIN - المحتوى الرئيسي
+    // ========================================
+    .node-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .node-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+
+      a {
+        color: @xf-textColor;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: @xf-linkColor;
+        }
+      }
+    }
+
+    .node-description {
+      font-size: 0.8125rem;
+      color: @xf-textColorMuted;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      flex: 1; // الوصف يأخذ الفراغ المتبقي
+      min-height: 2.5rem; // حد أدنى للارتفاع
+
+      // Always show description, disable tooltip behavior
+      &.node-description--tooltip {
+        display: block !important;
+        position: static !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+    }
+
+    // Hide the tooltip popup for node descriptions
+    .tooltip--node-description,
+    .tooltip:has(.node-description) {
+      display: none !important;
+    }
+
+    .node-meta {
+      margin-top: auto; // يدفع الإحصائيات للأسفل داخل node-main
+    }
+
+    // ========================================
+    // NODE STATS - الإحصائيات (المدمجة)
+    // ========================================
+    .node-statsMeta {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 0.75rem;
+
+      .pairs {
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        font-size: 0.8125rem;
+        color: @xf-textColorMuted;
+
+        dt {
+          display: none; // إخفاء الـ label
+        }
+
+        dd {
+          display: flex;
+          align-items: center;
+          gap: 0.375rem;
+          font-weight: 500;
+          color: @xf-textColorMuted; // لون خافت مثل Stitch
+
+          &::before {
+            font-family: 'Material Symbols Outlined';
+            font-size: 1rem;
+            opacity: 0.7;
+          }
+        }
+
+        &:first-child dd::before {
+          content: "forum";
+        }
+
+        &:last-child dd::before {
+          content: "chat_bubble";
+        }
+      }
+    }
+
+    // Hide the separate stats block (shown inline now)
+    .node-stats {
+      display: none !important;
+    }
+
+    // Sub-forums menu
+    .node-subNodeMenu {
+      margin-top: 0.5rem;
+
+      .menuTrigger {
+        font-size: 0.75rem;
+        color: @xf-linkColor;
+        padding: 0.25rem 0.5rem;
+        background: fade(@xf-linkColor, 10%);
+        border-radius: 0.375rem;
+
+        &:hover {
+          background: fade(@xf-linkColor, 20%);
+        }
+      }
+    }
+
+    // ========================================
+    // NODE EXTRA - آخر مشاركة (دائماً في الأسفل)
+    // ========================================
+    .node-extra {
+      position: absolute !important;
+      bottom: 1.25rem !important;
+      left: 1.25rem !important;
+      right: 1.25rem !important;
+      background: fade(@xf-pageBg, 50%);
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      margin: 0 !important;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .node-extra-icon {
+        display: none; // إخفاء الأفاتار لتوفير مساحة
+      }
+
+      .node-extra-row {
+        min-width: 0;
+        width: 100%;
+
+        &:first-of-type {
+          .node-extra-title {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: @xf-textColor;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            .label {
+              font-size: 0.625rem;
+              padding: 0.125rem 0.375rem;
+              margin-left: 0.25rem;
+            }
+          }
+        }
+
+        &:last-of-type {
+          .listInline {
+            font-size: 0.6875rem;
+            color: @xf-textColorMuted;
+            margin-top: 0;
+
+            // إعادة ترتيب: الاسم أولاً ثم التاريخ
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem 0.5rem;
+          }
+        }
+      }
+
+      // When no last post
+      .node-extra-placeholder {
+        font-size: 0.75rem;
+        color: @xf-textColorMuted;
+        font-style: italic;
+      }
+    }
+  }
+
+  // ========================================
+  // PAGE HEADER - تنسيق عنوان الصفحة
+  // ========================================
+  .xv-page-header-auto {
+    margin-bottom: 1.5rem;
+
+    .xv-page-title-auto {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+  }
+
+}
+
+// ========================================
+// 3 COLUMNS WHEN SIDEBAR COLLAPSED
+// ========================================
+.template-forum_list {
+  .xv-sidebar--left.is-collapsed+.xv-content {
+    .block--category .block-body {
+      grid-template-columns: repeat(3, 1fr);
+
+      @media (max-width: 1200px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+
+// ================================================================
+// HIDE NODE DESCRIPTION TOOLTIP POPUP (Global)
+// ================================================================
+// XenForo creates tooltip outside the node element
+.tooltip.tooltip--basic.js-nodeDescTooltip,
+.tooltip[data-trigger-href*="node-description"],
+body > .tooltip:has(.node-description) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+// ================================================================
+// LIST VIEW MODE - كل المنتديات في كارد واحدة لكل قسم
+// ================================================================
+
+// Block body = الكارد الرئيسية
+.xv-layout-list.template-forum_list .block--category .block-body {
+  display: block !important;
+  background: @xv-card-bg !important;
+  border: 1px solid @xf-borderColor !important;
+  border-radius: @xv-card-radius !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  grid-template-columns: none !important;
+}
+
+// كل منتدى = عنصر شفاف داخل الكارد
+.xv-layout-list.template-forum_list .block--category .node--forum {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 1rem 1.25rem !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 1rem !important;
+  transform: none !important;
+  overflow: visible !important;
+}
+
+// خط فاصل بين المنتديات
+.xv-layout-list.template-forum_list .block--category .node--forum:not(:last-child) {
+  border-bottom: 1px solid fade(@xf-borderColor, 50%) !important;
+}
+
+// إلغاء تأثير الـ hover
+.xv-layout-list.template-forum_list .block--category .node--forum:hover {
+  transform: none !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+// إلغاء تأثير hover على الكارد الرئيسية
+.xv-layout-list.template-forum_list .block--category .block-body:hover {
+  border-color: @xf-borderColor !important;
+  box-shadow: none !important;
+}
+
+// Node body
+.xv-layout-list.template-forum_list .block--category .node--forum .node-body {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  padding: 0 !important;
+  gap: 1rem !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+// الأيقونة - Glass Effect (مثل Grid View)
+.xv-layout-list.template-forum_list .block--category .node--forum .node-icon {
+  width: 2.75rem !important;
+  height: 2.75rem !important;
+  min-width: 2.75rem !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+  border-radius: 0.75rem !important;
+  float: none !important;
+  background: fade(@xf-textColor, 8%) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid fade(@xf-textColor, 10%) !important;
+  position: relative !important;
+  box-shadow: none !important;
+
+  i, .fa--xf {
+    position: absolute !important;
+    inset: 0 !important;
+    margin: auto !important;
+    width: fit-content !important;
+    height: fit-content !important;
+    font-size: 1.125rem !important;
+    color: @xf-textColor !important;
+    line-height: 1 !important;
+
+    svg {
+      width: 1.125rem !important;
+      height: 1.125rem !important;
+      fill: @xf-textColor !important;
+      display: block !important;
+    }
+  }
+}
+
+// المحتوى الرئيسي
+.xv-layout-list.template-forum_list .block--category .node--forum .node-main {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+// العنوان
+.xv-layout-list.template-forum_list .block--category .node--forum .node-title {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+// الوصف
+.xv-layout-list.template-forum_list .block--category .node--forum .node-description {
+  font-size: 0.8125rem !important;
+  margin-bottom: 0.5rem !important;
+  min-height: auto !important;
+  opacity: 0.7 !important;
+}
+
+// الإحصائيات
+.xv-layout-list.template-forum_list .block--category .node--forum .node-statsMeta {
+  margin: 0.5rem 0 0 0 !important;
+}
+
+// آخر مشاركة - تظهر على اليسار مع خلفية
+.xv-layout-list.template-forum_list .block--category .node--forum .node-extra {
+  display: flex !important;
+  flex-direction: column !important;
+  background: fade(@xf-pageBg, 50%) !important;
+  border-radius: 0.5rem !important;
+  padding: 0.75rem !important;
+  margin: 0 !important;
+  min-width: 180px !important;
+  max-width: 220px !important;
+  flex-shrink: 0 !important;
+  align-self: center !important;
+  gap: 0.25rem !important;
+}
+
+// ================================================================
+// GLOBAL LIST MODE - عرض القائمة (يعمل على كل الموقع)
+// ================================================================
+// يُطبق عندما يكون class "xv-layout-list" على عنصر html

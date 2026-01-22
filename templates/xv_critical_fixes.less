@@ -1,0 +1,64 @@
+
+// ===========================================
+// CRITICAL FIXES - Minimal & Targeted
+// ===========================================
+
+// 1. ACTION BUTTONS - Must be horizontal
+.message-footer .actionBar,
+.message-footer .actionBar-set,
+.message-actionBar,
+.actionBar {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+}
+
+.actionBar-action {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+}
+
+// 2. PROFILE POST COMMENTS - Full width, not shifted
+.message--profilePost .message-responseRow {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    float: none !important;
+    clear: both !important;
+}
+
+.message--profilePost .message-response {
+    float: none !important;
+    clear: both !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: auto !important;
+}
+
+// 3. PAGINATION - Simple inline
+.pageNav {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+}
+
+.pageNav-main {
+    display: inline-flex !important;
+    flex-direction: row !important;
+}
+
+.pageNav-page {
+    display: inline-block !important;
+}
+
+.pageNav-jump {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+}

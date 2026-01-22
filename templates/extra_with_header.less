@@ -1,0 +1,403 @@
+// XenVibe Cards - extra.less
+// Using XenForo default styles with custom header styling
+// All colors from @xf-* variables
+
+// ===========================================
+// FONT IMPORT
+// ===========================================
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;700&display=swap');
+
+html, body {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', @xf-fontFamily;
+}
+
+// ===========================================
+// HEADER - Sticky with Blur (Stitch Style)
+// ===========================================
+.p-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: fade(@xf-pageBg, 90%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid @xf-borderColor;
+    transition: all 0.3s ease;
+}
+
+.p-header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+}
+
+.p-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.p-header-logo {
+    flex-shrink: 0;
+
+    img {
+        height: 40px;
+        width: auto;
+    }
+}
+
+// ===========================================
+// NAVIGATION - Modern Tabs Style
+// ===========================================
+.p-nav {
+    background: @xf-contentBg;
+    border-bottom: 1px solid @xf-borderColor;
+}
+
+.p-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.p-nav-smallLogo {
+    display: none;
+}
+
+.p-nav-scroller {
+    flex: 1;
+}
+
+.p-nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.p-navEl {
+    // Keep default display
+}
+
+.p-navEl-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1rem;
+    color: @xf-textColorMuted;
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: @xf-textColor;
+        background: fade(@xf-contentHighlight, 30%);
+    }
+}
+
+.p-navEl.is-selected .p-navEl-link {
+    color: @xf-linkColor;
+    border-bottom-color: @xf-linkColor;
+    font-weight: 600;
+}
+
+// Navigation dropdown menus
+.p-navEl-link.menuTrigger {
+    &::after {
+        margin-left: 0.25rem;
+        opacity: 0.5;
+    }
+}
+
+// ===========================================
+// USER NAV GROUP (Alerts, Messages, Profile)
+// ===========================================
+.p-nav-opposite {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.p-navgroup {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.p-navgroup-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: @xf-textColorMuted;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: @xf-textColor;
+        background: fade(@xf-contentHighlight, 40%);
+    }
+
+    // Icon styles
+    &.p-navgroup-link--iconic {
+        width: 40px;
+        height: 40px;
+
+        i {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+// User avatar in nav
+.p-navgroup-link--user {
+    .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid @xf-borderColor;
+    }
+}
+
+// Badge for notifications
+.badgeContainer {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        min-width: 18px;
+        height: 18px;
+        padding: 0 4px;
+        font-size: 0.6875rem;
+        font-weight: 700;
+        line-height: 18px;
+        text-align: center;
+        border-radius: 9px;
+        background: @xf-borderColor;
+        color: @xf-textColor;
+    }
+}
+
+.badgeContainer--highlighted::after {
+    background: #ef4444;
+    color: #fff;
+}
+
+// Login/Register buttons for guests
+.p-navgroup--guest {
+    .p-navgroup-link--logIn {
+        padding: 0.5rem 1rem;
+        color: @xf-textColor;
+        font-weight: 500;
+    }
+
+    .p-navgroup-link--register {
+        padding: 0.5rem 1rem;
+        background: @xf-linkColor;
+        color: #fff;
+        border-radius: 8px;
+        font-weight: 600;
+
+        &:hover {
+            background: darken(@xf-linkColor, 8%);
+            color: #fff;
+        }
+    }
+}
+
+// ===========================================
+// SUB NAVIGATION (Section Links)
+// ===========================================
+.p-sectionLinks {
+    background: @xf-contentBg;
+    border-bottom: 1px solid @xf-borderColor;
+}
+
+.p-sectionLinks-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.p-sectionLinks-list {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.p-sectionLinks-link {
+    display: block;
+    padding: 0.625rem 1rem;
+    color: @xf-textColorMuted;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: @xf-textColor;
+    }
+
+    &.is-selected {
+        color: @xf-linkColor;
+        font-weight: 600;
+    }
+}
+
+// ===========================================
+// STAFF BAR (Mod/Admin)
+// ===========================================
+.p-staffBar {
+    background: fade(@xf-linkColor, 15%);
+    border-bottom: 1px solid fade(@xf-linkColor, 30%);
+}
+
+.p-staffBar-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.375rem 1rem;
+}
+
+.p-staffBar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    color: @xf-linkColor;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: fade(@xf-linkColor, 15%);
+    }
+}
+
+// ===========================================
+// MENUS & DROPDOWNS
+// ===========================================
+.menu {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.menu-header {
+    padding: 0.75rem 1rem;
+    background: fade(@xf-contentHighlight, 30%);
+    border-bottom: 1px solid @xf-borderColor;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: @xf-textColor;
+}
+
+.menu-content {
+    padding: 0.5rem 0;
+}
+
+.menu-row {
+    padding: 0.5rem 1rem;
+    color: @xf-textColor;
+}
+
+.menu-linkRow {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: @xf-textColor;
+    text-decoration: none;
+    transition: background 0.15s ease;
+
+    &:hover {
+        background: fade(@xf-contentHighlight, 40%);
+        color: @xf-linkColor;
+    }
+}
+
+.menu-footer {
+    padding: 0.5rem 1rem;
+    background: fade(@xf-contentHighlight, 20%);
+    border-top: 1px solid @xf-borderColor;
+}
+
+// ===========================================
+// SEARCH INPUT IN NAV
+// ===========================================
+.menu .input {
+    background: @xf-pageBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 8px;
+    color: @xf-textColor;
+    padding: 0.625rem 1rem;
+
+    &:focus {
+        border-color: @xf-linkColor;
+        box-shadow: 0 0 0 3px fade(@xf-linkColor, 15%);
+    }
+
+    &::placeholder {
+        color: @xf-textColorDimmed;
+    }
+}
+
+// ===========================================
+// STICKY NAV WRAPPER
+// ===========================================
+.p-navSticky {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background: @xf-contentBg;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+// ===========================================
+// RTL SUPPORT
+// ===========================================
+[dir="rtl"] {
+    .p-navEl-link.menuTrigger::after {
+        margin-left: 0;
+        margin-right: 0.25rem;
+    }
+
+    .badgeContainer::after {
+        right: auto;
+        left: 4px;
+    }
+}
+
+// ===========================================
+// RESPONSIVE - Mobile
+// ===========================================
+@media (max-width: 768px) {
+    .p-header-inner {
+        padding: 0.5rem 1rem;
+    }
+
+    .p-header-logo img {
+        height: 32px;
+    }
+
+    .p-nav-inner {
+        padding: 0 0.5rem;
+    }
+
+    .p-navEl-link {
+        padding: 0.75rem 0.75rem;
+        font-size: 0.8125rem;
+    }
+}

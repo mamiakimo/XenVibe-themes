@@ -1,0 +1,44 @@
+{
+    "public/PAGE_CONTAINER.html": {
+        "addon_id": "XF",
+        "version_id": 2030000,
+        "version_string": "2.3.0",
+        "hash": "2b4abe45f590f757857db6a55ca2094c"
+    },
+    "public/xv_cards.less": {
+        "addon_id": "",
+        "version_id": 0,
+        "version_string": "",
+        "hash": "00f5d0b2b73fadc53ea5253542ac1617"
+    },
+    "public/xv_core.less": {
+        "addon_id": "",
+        "version_id": 0,
+        "version_string": "",
+        "hash": "dd545f4d7944e4a04f2b0af3f8011430"
+    },
+    "public/xv_footer.html": {
+        "addon_id": "XenVibe/Core",
+        "version_id": 0,
+        "version_string": "",
+        "hash": "f35320bfada47e887dbcecf0a5c4ed27"
+    },
+    "public/xv_header.html": {
+        "addon_id": "XenVibe/Core",
+        "version_id": 0,
+        "version_string": "",
+        "hash": "1a46efc3406ce5c31440dfaccf59de36"
+    },
+    "public/xv_home.html": {
+        "addon_id": "XenVibe/Core",
+        "version_id": 0,
+        "version_string": "",
+        "hash": "2113f7c54d2f1e6bec3616be51911055"
+    },
+    "public/xv_sidebar_widgets.html": {
+        "addon_id": "XenVibe/Core",
+        "version_id": 0,
+        "version_string": "",
+        "hash": "f4cd8735aad649c50298063d22a31a7e"
+    }
+}

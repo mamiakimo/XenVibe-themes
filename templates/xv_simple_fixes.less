@@ -1,0 +1,230 @@
+
+// ===========================================
+// SIMPLE PAGINATION - NO BOXES
+// ===========================================
+
+.block-outer--after,
+.block-outer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.pageNav {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.pageNav-main {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.125rem !important;
+}
+
+.pageNav-page {
+    display: inline-block !important;
+}
+
+// Simple text-style pagination
+.pageNav-jump {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    padding: 0 0.5rem !important;
+    background: transparent !important;
+    color: var(--xv-text-muted) !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+
+    &:hover {
+        color: var(--xv-accent) !important;
+        background: transparent !important;
+    }
+
+    &.pageNav-jump--current {
+        color: var(--xv-accent) !important;
+        font-weight: 700 !important;
+        background: rgba(19, 91, 236, 0.1) !important;
+        border-radius: 6px !important;
+    }
+
+    &.pageNav-jump--prev,
+    &.pageNav-jump--next {
+        color: var(--xv-text-secondary) !important;
+
+        &:hover {
+            color: var(--xv-accent) !important;
+        }
+    }
+
+    &.pageNav-jump--ellipsis {
+        color: var(--xv-text-muted) !important;
+        min-width: auto !important;
+        padding: 0 0.25rem !important;
+    }
+}
+
+// ===========================================
+// PROFILE COMMENTS - ABOVE ACTIONS (VERTICAL)
+// ===========================================
+
+.message--profilePost {
+    // Main post structure
+    .message-inner {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .message-cell--main {
+        width: 100% !important;
+        display: block !important;
+    }
+
+    // Comments section - MUST be full width block
+    .message-responseRow {
+        display: block !important;
+        width: 100% !important;
+        clear: both !important;
+        float: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+        order: 1 !important;
+    }
+
+    .message-responses {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    // Each comment - simple row
+    .message-response {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
+        padding: 0.75rem 1rem !important;
+        margin: 0 !important;
+        float: none !important;
+        clear: both !important;
+        background: var(--xv-bg-elevated) !important;
+        border: none !important;
+        border-radius: 0 !important;
+        border-bottom: 1px solid var(--xv-border-color) !important;
+        box-sizing: border-box !important;
+
+        &:last-child {
+            border-bottom: none !important;
+        }
+    }
+
+    // Comment content flows inline
+    .message-response-content {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    .message-response-user {
+        font-weight: 600 !important;
+        color: var(--xv-text-primary) !important;
+        font-size: 0.8125rem !important;
+    }
+
+    .message-response-text {
+        color: var(--xv-text-secondary) !important;
+        font-size: 0.8125rem !important;
+        line-height: 1.5 !important;
+    }
+
+    // Actions footer - AFTER comments
+    .message-footer {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+        padding: 0.75rem 1rem !important;
+        background: rgba(0, 0, 0, 0.15) !important;
+        border-top: 1px solid var(--xv-border-color) !important;
+        order: 2 !important;
+    }
+
+    // New comment input
+    .message-newComment {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
+        padding: 0.75rem 1rem !important;
+        background: var(--xv-bg-surface) !important;
+        width: 100% !important;
+
+        input {
+            flex: 1 !important;
+            padding: 0.5rem 1rem !important;
+            background: var(--xv-bg-primary) !important;
+            border: 1px solid var(--xv-border-color) !important;
+            border-radius: 20px !important;
+            color: var(--xv-text-primary) !important;
+            font-size: 0.8125rem !important;
+
+            &::placeholder {
+                color: var(--xv-text-muted) !important;
+            }
+        }
+    }
+}
+
+// Action buttons horizontal
+.actionBar,
+.message-actionBar {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.375rem !important;
+    flex-wrap: wrap !important;
+}
+
+.actionBar-set {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.375rem !important;
+}
+
+.actionBar-action {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+    padding: 0.375rem 0.625rem !important;
+    font-size: 0.75rem !important;
+    color: var(--xv-text-muted) !important;
+    white-space: nowrap !important;
+    border-radius: 4px !important;
+
+    &:hover {
+        color: var(--xv-text-primary) !important;
+        background: var(--xv-bg-elevated) !important;
+    }
+}
+
+// RTL
+[dir="rtl"] {
+    .block-outer--after,
+    .block-outer {
+        flex-direction: row-reverse;
+    }
+}

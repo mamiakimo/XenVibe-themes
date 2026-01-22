@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RichVisual: What's New</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1e2837",
+                        "surface-darker": "#111722",
+                        "border-dark": "#2d3b55"
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark mode feeling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3b55; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #135bec; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-border-dark bg-surface-dark/95 backdrop-blur-md px-4 py-3 lg:px-10">
+<div class="flex items-center gap-4 lg:gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] hidden md:block">RichVisual Forums</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6 lg:gap-9">
+<a class="text-white text-sm font-bold border-b-2 border-primary py-4 leading-normal" href="#">What's New</a>
+<a class="text-[#92a4c9] hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Forums</a>
+<a class="text-[#92a4c9] hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Media</a>
+<a class="text-[#92a4c9] hover:text-white transition-colors text-sm font-medium leading-normal" href="#">Members</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 lg:gap-8 items-center">
+<label class="flex flex-col min-w-40 !h-10 max-w-64 hidden sm:flex group">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full border border-transparent focus-within:border-primary transition-colors">
+<div class="text-[#92a4c9] flex bg-[#111722] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#111722] focus:border-none h-full placeholder:text-[#92a4c9] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex size-10 items-center justify-center rounded-xl bg-[#2d3b55] text-white hover:bg-[#3e4f6e] transition-colors relative">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border border-[#2d3b55]"></span>
+</button>
+<button class="hidden lg:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-600 transition-colors shadow-[0_0_15px_rgba(19,91,236,0.3)]">
+<span class="truncate">New Post</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-10 border border-[#2d3b55] cursor-pointer" data-alt="User profile avatar showing a stylized digital character" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzNbzgjYpqntc0iX5ZbdQCuE6StA1YVptcFHnraPX2HoTVF9z6ssHx1zLLa2gBV1LtBE_tv_bPsFKA6NEyPrIXdaLuOb9U7_or4iwBbNAWuLEwH2bgHEJ2gPVWTrtSYlvkwwarqS0uC3DyDiKxYI2FwvZBQt5V5JfFACkPAo2Et-7Ox3MLgktnpBpGOKGcoeSLnE8Jdya2egolwlPg6yhCuL2v0IHF_WkppDoQW7mA1W_egfpfoO9hjZ1mFzSM-7Su0v4Ipxiz1OM");'></div>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<div class="layout-container flex h-full grow flex-col max-w-[1400px] mx-auto w-full px-4 lg:px-8 py-6">
+<!-- Header & Filters Area -->
+<div class="flex flex-col gap-6 mb-8">
+<div class="flex flex-wrap justify-between items-end gap-3">
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em]">Stream</h1>
+<p class="text-[#92a4c9] text-base font-normal leading-normal">Discover the latest visual updates from the community.</p>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar mask-gradient">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary px-4 hover:bg-blue-600 transition-colors cursor-pointer shadow-lg shadow-blue-900/20">
+<span class="text-white text-sm font-bold leading-normal">All Activity</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-dark border border-border-dark px-4 hover:bg-[#2d3b55] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-[18px] text-[#92a4c9] group-hover:text-white">image</span>
+<span class="text-[#92a4c9] group-hover:text-white text-sm font-medium leading-normal">Media Gallery</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-dark border border-border-dark px-4 hover:bg-[#2d3b55] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-[18px] text-[#92a4c9] group-hover:text-white">forum</span>
+<span class="text-[#92a4c9] group-hover:text-white text-sm font-medium leading-normal">New Threads</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-dark border border-border-dark px-4 hover:bg-[#2d3b55] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-[18px] text-[#92a4c9] group-hover:text-white">campaign</span>
+<span class="text-[#92a4c9] group-hover:text-white text-sm font-medium leading-normal">Announcements</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-dark border border-border-dark px-4 hover:bg-[#2d3b55] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-[18px] text-[#92a4c9] group-hover:text-white">person</span>
+<span class="text-[#92a4c9] group-hover:text-white text-sm font-medium leading-normal">Profile Posts</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Main Feed (Masonry Grid Style) -->
+<div class="lg:col-span-8 xl:col-span-9 flex flex-col gap-6">
+<!-- New Post Quick Input -->
+<div class="bg-surface-dark rounded-xl p-4 flex gap-4 items-center border border-border-dark shadow-sm">
+<div class="size-10 rounded-full bg-cover bg-center shrink-0" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDmOvz8FNNsDw9LQs6LcikJcXfOC7gnlf-us3NMhdnTQMz_12HA8se4u4VJWY1yxtRD_1t0_Dh8n2tqaIjRjZRBzFh0-14zWPwSlSC8reP2F2erxVAKJUyZnomYedjY_ianpS6ZkPDVCw_6IGWbpKhHsmNmWriWXIk8kH9GUDHwM5PrBf_r-y4pM3SOFXQebWGjR9fSEp6VRt1LkE-DxjZ5ELOce1lJ9PvBY5f3iMeDRyUZf2cRchEQ8tRjCJVqrivcqzvzr9CpTzM");'></div>
+<div class="flex-1">
+<input class="w-full bg-[#111722] border-none rounded-lg h-10 px-4 text-white placeholder-[#92a4c9] focus:ring-1 focus:ring-primary" placeholder="Share something cool..." type="text"/>
+</div>
+<div class="flex gap-2 text-[#92a4c9]">
+<button class="p-2 hover:bg-[#2d3b55] rounded-lg transition-colors"><span class="material-symbols-outlined">add_photo_alternate</span></button>
+<button class="p-2 hover:bg-[#2d3b55] rounded-lg transition-colors"><span class="material-symbols-outlined">link</span></button>
+</div>
+</div>
+<!-- Feed Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1: Image Showcase -->
+<article class="group bg-surface-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 flex flex-col h-full">
+<div class="relative aspect-video w-full overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-white text-[14px]">image</span>
+<span class="text-xs font-bold text-white uppercase">Gallery</span>
+</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Cyberpunk city street with neon lights at night" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDIGREt60U0kJ8nvXk1XhJaItWFQTlO2fqnDpQOQL0wnkWArWTASUdjEGdxIYL53MWPdHTG9MadGCivC0NGNE0zpaG6cQYB90vGuGckY4KOOh49u9GSrIJW58cH7JHqL6WdwEkCbZgTz5Ls7PpL4o6lV_5_qrJNqhLd5TDuaIov85UQ7dX6EnQvG_blzZJ2t-vbQM3j6SdfnhtDJQxpStgICxLlPxSJcBZyiSLLZHAppMtqfn6nC74zTfcCdY8GMAkiJT0MA-EOzkk");'></div>
+</div>
+<div class="p-5 flex flex-col gap-3 flex-1">
+<h3 class="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer">Cyberpunk 2077 Night City Screenshot Showcase</h3>
+<p class="text-[#92a4c9] text-sm line-clamp-2">Just took these amazing shots with the new ray-tracing overdrive mode. The lighting is insane!</p>
+<div class="mt-auto pt-4 flex items-center justify-between border-t border-border-dark/50">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-cover" data-alt="User avatar 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBG5WYcDf04f2nq0vD3V22kUlXITaRucYRvKzc3-Fwy1Lbo2NPGnGRkhRCjsbMQ1oaQCPfOWdrXQvXzFDQPcWtfNQfu_O-8Pt8rrTQAe_21oZSva_WH2jHKKADSa12xcqw8_77phvKkg5teN0B-LQTGHNC3uCdn7nfKLwqpfCG6LdDxF95cGMkULmdPgWmk8aMSsNZYzrOzRr2wq0BNRTWqtH1O6P3YsRanEfyZ-eG4caeytN_THru0-5RUw9vw5W_SRSp583gX09k");'></div>
+<span class="text-xs font-bold text-white">NeonRider</span>
+<span class="text-xs text-[#92a4c9]">• 2h ago</span>
+</div>
+<div class="flex items-center gap-4 text-[#92a4c9] text-xs font-medium">
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[16px]">favorite</span> 42</span>
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 8</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Video/Media -->
+<article class="group bg-surface-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 flex flex-col h-full">
+<div class="relative aspect-video w-full overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-red-600/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-white text-[14px]">play_circle</span>
+<span class="text-xs font-bold text-white uppercase">Video</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+<div class="size-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-[32px]">play_arrow</span>
+</div>
+</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Abstract digital art challenge submission" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAoOrHUDrzOPliiticsaH7-97lSe8j1PkwMwQ0N-fo64GCVB7FhvPXDhF0we3_HvMPKmhZeKl0QMt9UKu0t2MPFDm8g4uKFSYxfNMYHIysVW7L8FgzEP1JXrNUsVTXBasf-I3QljKlAC_p1HeQHEPWjk4_jlkK2hFvqt8hwFbd2OfXe_iJH5W52h9dl5dHzM7On0XGWtzkpuknA1XfyjsrmlSpVWJZKCL1ZSWyvtGIHCNE96esUISjFd1Q6ZSbtXcJNomhzV-J3U-M");'></div>
+</div>
+<div class="p-5 flex flex-col gap-3 flex-1">
+<h3 class="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer">Daily Digital Art Challenge #45 - "Void"</h3>
+<p class="text-[#92a4c9] text-sm line-clamp-2">Speedpaint process for today's theme. Used mostly custom brushes in Procreate.</p>
+<div class="mt-auto pt-4 flex items-center justify-between border-t border-border-dark/50">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-cover" data-alt="User avatar 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAA0FD29Nbytm9taB1o-qJy-hJDkOXlmXuBfNoP6dfF1D2JfS1USQB7jHxVlMq6ha773hydFuPYx8xa4F5vKSNWmLQ2km1legTc1JZF3jYLanzvCK8gd178_mlmC4nuQJD6uQXi7UyBPYm3XGqQuL0Y1MkwJph9IUyBgyo60GtsSzEoMYSDxGan-YZpOj8zDPqGh_5N0rix_z6VAWC7eNvt0_S--CqCz6BNUux4WoTYlVHLpyO0XHql-ls0OIRz0yZPNu4q2mWFjqs");'></div>
+<span class="text-xs font-bold text-white">ArtVandelay</span>
+<span class="text-xs text-[#92a4c9]">• 5h ago</span>
+</div>
+<div class="flex items-center gap-4 text-[#92a4c9] text-xs font-medium">
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[16px]">favorite</span> 128</span>
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 24</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Discussion/Thread (No Image) -->
+<article class="group bg-surface-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 flex flex-col h-full md:col-span-2 lg:col-span-1">
+<div class="p-6 flex flex-col gap-3 flex-1 bg-gradient-to-br from-[#1e2837] to-[#111722]">
+<div class="flex items-start justify-between">
+<div class="bg-primary/20 text-primary px-2 py-1 rounded-md flex items-center gap-1 w-fit mb-2">
+<span class="material-symbols-outlined text-[14px]">forum</span>
+<span class="text-xs font-bold uppercase">Discussion</span>
+</div>
+<span class="material-symbols-outlined text-[#92a4c9]">more_horiz</span>
+</div>
+<h3 class="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer">What is your favorite mechanical keyboard switch for long typing sessions?</h3>
+<p class="text-[#92a4c9] text-sm line-clamp-3">I've been using Cherry MX Blues for years but my coworkers are starting to complain about the noise. Looking for something tactile but quieter. Has anyone tried the new Boba U4T switches? I heard they have a great thock sound.</p>
+<!-- Poll preview -->
+<div class="my-2 flex flex-col gap-2 p-3 rounded-lg bg-[#111722] border border-border-dark">
+<div class="flex items-center gap-2">
+<div class="h-2 flex-1 bg-[#2d3b55] rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[70%]"></div>
+</div>
+<span class="text-xs text-white">Browns (70%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="h-2 flex-1 bg-[#2d3b55] rounded-full overflow-hidden">
+<div class="h-full bg-[#92a4c9] w-[30%]"></div>
+</div>
+<span class="text-xs text-white">Reds (30%)</span>
+</div>
+</div>
+<div class="mt-auto pt-4 flex items-center justify-between border-t border-border-dark/50">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-cover" data-alt="User avatar 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSdnI-Bs4mI1w8dOZHHn_flkjLnT1DDmCkBFF7kVhEbaqigP3zHZqOYanaUbH7uuxVqmiJ-_oWJkccX4hJ4H3_gGew6GKIpIvKd1rpndGaq9RfbcE_5eDUMFjBcg4nskxppy_DA6huBPEGq8P1_O442aaOiS7Ksj36zqh58f-aWaeJXf-rC4VO6N-X_IfzH0f4bDZttRdrkP_kaSD2WdS15vDrV3KoEdux2zVr2vQ1jDP9CM8rbcKg4FbdCMAJZ1Jiln4-nTQchjs");'></div>
+<span class="text-xs font-bold text-white">KeyCapKing</span>
+<span class="text-xs text-[#92a4c9]">• 8h ago</span>
+</div>
+<div class="flex items-center gap-4 text-[#92a4c9] text-xs font-medium">
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[16px]">thumb_up</span> 15</span>
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[16px]">chat_bubble</span> 42</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4: Resource Update -->
+<article class="group bg-surface-dark rounded-xl overflow-hidden border border-border-dark hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 flex flex-col h-full md:col-span-1">
+<div class="relative aspect-[2/1] w-full overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-green-600/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-white text-[14px]">download</span>
+<span class="text-xs font-bold text-white uppercase">Resource</span>
+</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Stylized map graphic for a game mod" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQMG4Wk3F10TgEm4fu5p9SH3Q9RpVjliEE7Y1I-f3LwJ3zYJ-H53goT81YHiOiYkTuqgJzIqe9fyoO1KIgjDsmGA4x-iX5YyuuNVVn6R8EDEJhCEkA3c5bHyXfKJy6FkP9Nk5h6thbdOIpiQgHnrqtMj8AyiqPCCFja2lnYwLQ168dkiBv3KDwMoHP4e6CyzE8ofGv6oWyk-upsLGj5UChtHqWfZN69LBp6IlMCIXgoh4bKreIvbXO3vqytkMsMIuiUD5oC6bEPvk");'></div>
+</div>
+<div class="p-5 flex flex-col gap-3 flex-1">
+<div class="flex justify-between items-start">
+<h3 class="text-white text-xl font-bold leading-tight group-hover:text-primary transition-colors cursor-pointer">BetterTextures Pack v2.4</h3>
+<span class="bg-[#111722] text-[#92a4c9] text-[10px] font-bold px-2 py-1 rounded border border-border-dark">UPDATED</span>
+</div>
+<p class="text-[#92a4c9] text-sm line-clamp-2">Complete overhaul of environmental textures. Added 4k support for foliage and water surfaces.</p>
+<div class="mt-auto pt-4 flex items-center justify-between border-t border-border-dark/50">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-cover" data-alt="User avatar 4" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDhMVqmebYGuRAGizou0qcJunFIFCSdu-HrmkOiRyjUmAZijIdBLjz-fDTADakzoMAZ6DbWCWjkb1YxNSfe09K1nro4uVeloKhoLqFpqD--PpsnVbtleV2XPnE5TPEUxPmAjnwh-zpbEa_gr8ktnqB9qnjJTAr5wxKQTiGDLlWzA2KBGC0gvJULGJw6pZ075MTmyYWtnDs9A_RvHnvF74ft4yWIjSavFcU5w8GTLbITOuBUKp7kzlq3DjVYyd0uW82UWc1BHPZqSGI");'></div>
+<span class="text-xs font-bold text-white">ModMaster</span>
+</div>
+<div class="flex items-center gap-4 text-[#92a4c9] text-xs font-medium">
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[16px]">star</span> 4.9</span>
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[16px]">download</span> 2k</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Load More -->
+<div class="flex justify-center mt-6">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#1e2837] border border-border-dark text-white font-bold text-sm hover:bg-[#2d3b55] transition-colors">
+                        Load More Activity
+                        <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Sidebar (Trending) -->
+<div class="lg:col-span-4 xl:col-span-3 flex flex-col gap-8 sticky top-24">
+<!-- Trending Widget -->
+<div class="flex flex-col gap-4 bg-surface-dark rounded-xl p-5 border border-border-dark">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-orange-500">local_fire_department</span>
+<h2 class="text-white text-lg font-bold">Trending Now</h2>
+</div>
+<!-- Item 1 -->
+<div class="flex gap-3 group cursor-pointer">
+<div class="flex flex-col items-center pt-1 min-w-[24px]">
+<span class="text-[#2d3b55] text-2xl font-black leading-none group-hover:text-primary transition-colors">1</span>
+</div>
+<div class="flex flex-col gap-1 pb-4 border-b border-border-dark w-full">
+<h3 class="text-white text-sm font-bold leading-tight group-hover:text-primary transition-colors">Server Update v2.4 Patch Notes</h3>
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="bg-primary/20 text-primary px-1.5 py-0.5 rounded text-[10px] font-bold">NEWS</span>
+<span>• 230 comments</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-3 group cursor-pointer">
+<div class="flex flex-col items-center pt-1 min-w-[24px]">
+<span class="text-[#2d3b55] text-2xl font-black leading-none group-hover:text-primary transition-colors">2</span>
+</div>
+<div class="flex flex-col gap-1 pb-4 border-b border-border-dark w-full">
+<h3 class="text-white text-sm font-bold leading-tight group-hover:text-primary transition-colors">Monthly Art Contest Winners Announced!</h3>
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="bg-purple-500/20 text-purple-400 px-1.5 py-0.5 rounded text-[10px] font-bold">EVENT</span>
+<span>• 89 likes</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex gap-3 group cursor-pointer">
+<div class="flex flex-col items-center pt-1 min-w-[24px]">
+<span class="text-[#2d3b55] text-2xl font-black leading-none group-hover:text-primary transition-colors">3</span>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<h3 class="text-white text-sm font-bold leading-tight group-hover:text-primary transition-colors">LFG: Raid Night Saturday @ 8PM EST</h3>
+<div class="flex items-center gap-2 text-xs text-[#92a4c9]">
+<span class="bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded text-[10px] font-bold">CLAN</span>
+<span>• 45 joining</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Contributors Widget -->
+<div class="flex flex-col gap-4 bg-surface-dark rounded-xl p-5 border border-border-dark">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-500">emoji_events</span>
+<h2 class="text-white text-lg font-bold">Top Members</h2>
+</div>
+<a class="text-xs font-bold text-primary hover:text-white transition-colors" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover relative" data-alt="Top user avatar 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEuzrddvyNmoGACAVVfDPk9HZFDdrUSPfqgz0W7DzQ4QFuVzwNHve8RAvXGTE33okvdTilY_FIGyNZoRVUimLWAloDQXFiDN7E0YzZlJocdhYZzE_XK-Ur9S1BWjoypyKt7Z2SC6wW9QDooVwBk4pqgkHMKZLmXa6aTYkvyakSjm2YKGGaImj_N2atmHz6SqJ5y5LSKItGCVJCGOe-tILfd1dkkSOQGWR-hFWRe88K80iFHs89jmu-rjfSQ77XBcitGMZ7288Otuc");'>
+<div class="absolute -bottom-1 -right-1 bg-[#1e2837] rounded-full p-0.5">
+<span class="material-symbols-outlined text-yellow-500 text-[14px]">military_tech</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-bold">PixelMaster99</span>
+<span class="text-[#92a4c9] text-xs">1,402 points</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover relative" data-alt="Top user avatar 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAM-g3P6nKAf0m36j55Qkwuk99-f5osHlg7uEPjqYaYTFd1fmFP150alAAL29RvaybufkrxuDXc_Xq95MI-ynJ1F6hmca45flq3AAFwVGQy_8t2lK5afybXqr9s0Lo0uIXwrCoJXskoRFipwWcmiMd7fw1kVqoVePBFfitlZvPJjw0mCNc-ElVR46vdw-bHUkFjeh7mCBe3ooIBz5sj2EsHG8nD52llxEnKNLRCUn2pxuMhjPfcO6nJru7bPFL-fMt0x_llJlabq6U");'>
+<div class="absolute -bottom-1 -right-1 bg-[#1e2837] rounded-full p-0.5">
+<span class="material-symbols-outlined text-gray-400 text-[14px]">military_tech</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-bold">SarahDesigns</span>
+<span class="text-[#92a4c9] text-xs">980 points</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover relative" data-alt="Top user avatar 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD0AuY4-iN3pIOSVPPDTP4qvkrB7DGdMG1sJucsuDjhwO3ZVcRAgQINZJvTmKh9Q9TQe0QcpeAPg9cl-KZP9qL_ipltP5cdw_a00FY15ZGmDdfAmWLt2dYaKQ7x7OrglJiDmVsJOIrHAFEafwqtTAXo_E-rkzmoGWxnmHbUbfUKRMzsZv3kBhpc1RJfBOdwqwGRWIhghthtyJO_oZJTfjQsal8_ZKrSPYX7NlwFSitOouJxyeUVkw4PPUJHW5rNV5JlaQGSxE1OlJ0");'>
+<div class="absolute -bottom-1 -right-1 bg-[#1e2837] rounded-full p-0.5">
+<span class="material-symbols-outlined text-orange-700 text-[14px]">military_tech</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-bold">CodeWarrior</span>
+<span class="text-[#92a4c9] text-xs">850 points</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Ad/Promo Space -->
+<div class="rounded-xl bg-gradient-to-br from-primary to-blue-900 p-6 text-center relative overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30"></div>
+<div class="relative z-10 flex flex-col gap-2 items-center">
+<span class="material-symbols-outlined text-white text-[32px] mb-1">diamond</span>
+<h3 class="text-white text-lg font-black leading-tight">Go Premium</h3>
+<p class="text-blue-100 text-xs font-medium">Support the community and get exclusive badges &amp; visual flair.</p>
+<button class="mt-2 bg-white text-primary text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-50 transition-colors">Upgrade Now</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button for Mobile -->
+<div class="fixed bottom-6 right-6 lg:hidden z-50">
+<button class="flex size-14 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/40 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[28px]">edit</span>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,190 @@
+// ====== CARD VARIABLES (Future Style Properties) ======
+// Card Body
+@xv-card-bg: @xf-contentBg;
+@xv-card-radius: 24px;
+@xv-card-border: 1px solid @xf-borderColor;
+@xv-card-shadow: none;
+@xv-card-shadow-hover: none;
+@xv-card-transition: all 0.3s ease;
+
+// Card Header
+@xv-card-header-bg: fade(@xf-textColor, 3%);
+@xv-card-header-border: 1px solid fade(@xf-borderColor, 50%);
+@xv-card-header-padding: 0.875rem 1.25rem;
+@xv-card-header-font-size: 1rem;
+@xv-card-header-font-weight: 700;
+@xv-card-header-color: @xf-textColor;
+
+// Card Footer
+@xv-card-footer-bg: fade(@xf-textColor, 2%);
+@xv-card-footer-border: 1px solid fade(@xf-borderColor, 50%);
+@xv-card-footer-padding: 0.875rem 1.25rem;
+@xv-card-footer-font-size: 0.8125rem;
+@xv-card-footer-color: @xf-textColorMuted;
+
+// ====== CARD MIXINS ======
+
+// Base Card Mixin - USE THIS FOR ALL CARDS
+.xv-card-base() {
+  background: @xv-card-bg;
+  border-radius: @xv-card-radius;
+  border: @xv-card-border;
+  box-shadow: @xv-card-shadow;
+  overflow: hidden;
+  transition: @xv-card-transition;
+
+  &:hover {
+    box-shadow: @xv-card-shadow-hover;
+    border-color: fade(@xf-linkColor, 30%);
+    transform: translateY(-2px);
+  }
+}
+
+// Card Header Mixin
+.xv-card-header() {
+  background: @xv-card-header-bg;
+  border-bottom: @xv-card-header-border;
+  padding: @xv-card-header-padding;
+  font-size: @xv-card-header-font-size;
+  font-weight: @xv-card-header-font-weight;
+  color: @xv-card-header-color;
+}
+
+// Card Footer Mixin
+.xv-card-footer() {
+  background: @xv-card-footer-bg;
+  border-top: @xv-card-footer-border;
+  padding: @xv-card-footer-padding;
+  font-size: @xv-card-footer-font-size;
+  color: @xv-card-footer-color;
+}
+
+// ====== CARD CLASSES ======
+
+// Main Card Class (can be used anywhere)
+.xv-card {
+  .xv-card-base();
+}
+
+.xv-card-header {
+  .xv-card-header();
+}
+
+.xv-card-footer {
+  .xv-card-footer();
+}
+
+// ================================================
+// WHAT'S NEW - CARD GRID LAYOUT
+// ================================================
+// 2 columns with sidebar open, 3 columns when collapsed
+
+.block[data-widget-definition="new_posts"] {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  .block-container {
+    background: transparent;
+    border: none;
+  }
+
+  .block-body {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  // Each card - uses unified mixin
+  .block-row {
+    .xv-card-base();
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    margin: 0;
+  }
+
+  .contentRow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0;
+    border-bottom: none;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  .contentRow-figure {
+    order: -1;
+
+    .avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  .contentRow-main {
+    flex: 1;
+
+    >a {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: @xf-textColor;
+      display: block;
+      margin-bottom: 0.5rem;
+
+      &:hover {
+        color: @xf-linkColor;
+      }
+    }
+  }
+
+  .contentRow-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+
+    a {
+      color: @xf-textColor;
+
+      &:hover {
+        color: @xf-linkColor;
+      }
+    }
+  }
+
+  .contentRow-minor {
+    font-size: 0.8125rem;
+    color: @xf-textColorMuted;
+  }
+}
+
+// When sidebar is collapsed - 3 columns
+.xv-sidebar--left.is-collapsed+.xv-content {
+  .block[data-widget-definition="new_posts"] .block-body {
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

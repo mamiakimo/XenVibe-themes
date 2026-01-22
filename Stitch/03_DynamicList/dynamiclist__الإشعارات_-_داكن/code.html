@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DynamicList: الإشعارات</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161e2d",
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                        "sans": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4d6e; 
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden">
+<div class="relative flex min-h-screen flex-col">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-solid border-border-dark bg-surface-dark/95 backdrop-blur-md px-6 py-3 lg:px-10">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 flex items-center justify-center rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">dynamic_feed</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">DynamicList</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">الرئيسية</a>
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">المنتديات</a>
+<a class="text-white text-sm font-bold leading-normal relative after:content-[''] after:absolute after:-bottom-5 after:right-0 after:w-full after:h-0.5 after:bg-primary" href="#">الإشعارات</a>
+<a class="text-text-secondary hover:text-white transition-colors text-sm font-medium leading-normal" href="#">الأعضاء</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<!-- Search -->
+<div class="hidden md:flex relative group w-full max-w-xs">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-text-secondary group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full rounded-xl border-none bg-border-dark py-2 pr-10 pl-4 text-sm text-white placeholder-text-secondary focus:ring-2 focus:ring-primary/50 transition-all" placeholder="بحث..." type="text"/>
+</div>
+<!-- Icons -->
+<div class="flex gap-2">
+<button class="relative flex items-center justify-center rounded-xl size-10 bg-border-dark hover:bg-primary/20 text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 left-2 size-2.5 bg-red-500 rounded-full border-2 border-surface-dark"></span>
+</button>
+<button class="flex items-center justify-center rounded-xl size-10 bg-border-dark hover:bg-primary/20 text-white hover:text-primary transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+</div>
+<!-- Avatar -->
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-border-dark cursor-pointer" data-alt="User Avatar with abstract gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAUphfchfR6bnmzjCa4pkpgY65jbVHKs86lJBAOqjoUGWFh1NwA_C_vBu8Jinffk1cTcar4kA3u9-d16qHU1cpjglBAPkl0Y0pWYQNqOZLTuoWlzeFBbmYtVENINE9CRniUg4Us0kMgqRedcVXhVwv2KzGyix7KfIHm7ZowgCo1M9F8B0d-i__niC-tSX9jHnBViFs1loI8m1bDQYUhGRT4ia-jGiEDwa_krsVUG6h8AzNns3Q0f8_bELqRLDJgNHOy5P4kk9nnHjM");'></div>
+</div>
+</header>
+<!-- Main Layout -->
+<main class="flex-1 flex justify-center py-8 px-4 sm:px-6">
+<div class="w-full max-w-[960px] flex flex-col gap-6">
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-white text-3xl font-bold leading-tight">الإشعارات</h1>
+<p class="text-text-secondary text-sm">تابع الردود، الإعجابات، والإشارات الجديدة الخاصة بك</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 h-10 rounded-xl bg-surface-dark border border-border-dark hover:border-primary/50 hover:bg-border-dark text-white text-sm font-medium transition-all">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>تخصيص</span>
+</button>
+<button class="flex items-center gap-2 px-4 h-10 rounded-xl bg-primary hover:bg-blue-600 text-white text-sm font-medium transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+<span>تحديد الكل كمقروء</span>
+</button>
+</div>
+</div>
+<!-- Filters & List Container -->
+<div class="flex flex-col rounded-2xl border border-border-dark bg-surface-dark overflow-hidden">
+<!-- Filter Tabs -->
+<div class="flex items-center gap-2 p-4 border-b border-border-dark overflow-x-auto no-scrollbar">
+<button class="flex shrink-0 items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary border border-primary/20 text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-[20px]">inbox</span>
+                            الكل
+                        </button>
+<button class="flex shrink-0 items-center gap-2 px-4 py-2 rounded-lg hover:bg-border-dark text-text-secondary hover:text-white text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[20px]">mark_chat_unread</span>
+                            غير مقروءة
+                            <span class="bg-primary text-white text-xs px-1.5 py-0.5 rounded-md">3</span>
+</button>
+<button class="flex shrink-0 items-center gap-2 px-4 py-2 rounded-lg hover:bg-border-dark text-text-secondary hover:text-white text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[20px]">alternate_email</span>
+                            الإشارات
+                        </button>
+<button class="flex shrink-0 items-center gap-2 px-4 py-2 rounded-lg hover:bg-border-dark text-text-secondary hover:text-white text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+                            الردود
+                        </button>
+<button class="flex shrink-0 items-center gap-2 px-4 py-2 rounded-lg hover:bg-border-dark text-text-secondary hover:text-white text-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span>
+                            الإعجابات
+                        </button>
+</div>
+<!-- Notification List -->
+<div class="flex flex-col">
+<!-- Unread Item 1: Reply -->
+<div class="group relative flex gap-4 p-5 hover:bg-background-dark/50 border-b border-border-dark transition-colors cursor-pointer bg-primary/5">
+<!-- Left Indicator for unread -->
+<div class="absolute right-0 top-0 bottom-0 w-1 bg-primary"></div>
+<!-- Icon -->
+<div class="shrink-0 pt-1">
+<div class="size-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
+<span class="material-symbols-outlined filled-icon text-[20px]">reply</span>
+</div>
+</div>
+<!-- Content -->
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex items-start justify-between gap-4">
+<p class="text-white text-base leading-relaxed">
+<span class="font-bold text-blue-400">أحمد محمد</span> رد على موضوعك <span class="font-bold text-white hover:underline decoration-primary">"أفضل ممارسات CSS في 2024"</span>
+</p>
+<span class="text-text-secondary text-xs whitespace-nowrap">منذ دقيقتين</span>
+</div>
+<p class="text-text-secondary text-sm line-clamp-2">
+                                    اتفق معك تماماً بخصوص استخدام Grid، ولكن ماذا عن التوافق مع المتصفحات القديمة؟ هل لديك حلول مقترحة...
+                                </p>
+</div>
+<!-- Actions -->
+<div class="shrink-0 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-lg hover:bg-border-dark flex items-center justify-center text-text-secondary hover:text-white" title="خيارات">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<button class="size-8 rounded-lg hover:bg-border-dark flex items-center justify-center text-primary hover:text-blue-300" title="تحديد كمقروء">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</button>
+</div>
+</div>
+<!-- Unread Item 2: Mention -->
+<div class="group relative flex gap-4 p-5 hover:bg-background-dark/50 border-b border-border-dark transition-colors cursor-pointer bg-primary/5">
+<div class="absolute right-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="shrink-0 pt-1">
+<div class="size-10 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-400">
+<span class="material-symbols-outlined filled-icon text-[20px]">alternate_email</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex items-start justify-between gap-4">
+<p class="text-white text-base leading-relaxed">
+                                        قام <span class="font-bold text-yellow-400">سارة علي</span> بذكرك في تعليق ضمن <span class="font-bold text-white hover:underline decoration-primary">"مشروع المكتبة المفتوحة"</span>
+</p>
+<span class="text-text-secondary text-xs whitespace-nowrap">منذ 15 دقيقة</span>
+</div>
+<div class="bg-background-dark/50 p-3 rounded-lg border border-border-dark/50 mt-1">
+<p class="text-text-secondary text-sm italic">
+                                        "...كما أشار @Youssef في نقاش سابق، يجب علينا إعادة هيكلة قاعدة البيانات لتتحمل الضغط..."
+                                    </p>
+</div>
+</div>
+<div class="shrink-0 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-lg hover:bg-border-dark flex items-center justify-center text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<button class="size-8 rounded-lg hover:bg-border-dark flex items-center justify-center text-primary hover:text-blue-300">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</button>
+</div>
+</div>
+<!-- Read Item: Like -->
+<div class="group relative flex gap-4 p-5 hover:bg-background-dark/50 border-b border-border-dark transition-colors cursor-pointer">
+<div class="shrink-0 pt-1">
+<div class="size-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-400">
+<span class="material-symbols-outlined filled-icon text-[20px]">favorite</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex items-start justify-between gap-4">
+<p class="text-white text-base leading-relaxed">
+                                        أعجب <span class="font-bold text-white">خالد عمر</span> و <span class="font-bold text-white">3 آخرون</span> بمشاركتك في <span class="font-bold text-white hover:underline decoration-primary">"نقاشات عامة حول البرمجة"</span>
+</p>
+<span class="text-text-secondary text-xs whitespace-nowrap">منذ ساعة</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-lg hover:bg-border-dark flex items-center justify-center text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Read Item: System -->
+<div class="group relative flex gap-4 p-5 hover:bg-background-dark/50 border-b border-border-dark transition-colors cursor-pointer">
+<div class="shrink-0 pt-1">
+<div class="size-10 rounded-full bg-green-500/10 flex items-center justify-center text-green-400">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex items-start justify-between gap-4">
+<p class="text-white text-base leading-relaxed">
+                                        تهانينا! لقد حصلت على وسام <span class="font-bold text-green-400">"كاتب متميز"</span> نظراً لمساهماتك القيمة هذا الشهر.
+                                    </p>
+<span class="text-text-secondary text-xs whitespace-nowrap">أمس في 09:30 م</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-lg hover:bg-border-dark flex items-center justify-center text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Read Item: Reply -->
+<div class="group relative flex gap-4 p-5 hover:bg-background-dark/50 border-b border-border-dark transition-colors cursor-pointer">
+<div class="shrink-0 pt-1">
+<div class="size-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+</div>
+</div>
+<div class="flex flex-1 flex-col gap-1">
+<div class="flex items-start justify-between gap-4">
+<p class="text-white text-base leading-relaxed">
+<span class="font-bold text-white">نورا</span> ردت على استفسارك في قسم <span class="font-bold text-white hover:underline decoration-primary">"الدعم الفني"</span>
+</p>
+<span class="text-text-secondary text-xs whitespace-nowrap">منذ يومين</span>
+</div>
+<p class="text-text-secondary text-sm line-clamp-1">
+                                    يمكنك حل هذه المشكلة عن طريق تحديث الحزمة إلى الإصدار الأخير...
+                                </p>
+</div>
+<div class="shrink-0 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-lg hover:bg-border-dark flex items-center justify-center text-text-secondary hover:text-white">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer / Pagination -->
+<div class="p-4 bg-surface-dark border-t border-border-dark flex justify-center">
+<button class="text-sm font-medium text-text-secondary hover:text-primary transition-colors flex items-center gap-1">
+                            عرض المزيد من الإشعارات القديمة
+                            <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Copyright / Simple Footer -->
+<div class="flex justify-center py-4">
+<p class="text-text-secondary text-xs">DynamicList Forum Design © 2024</p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

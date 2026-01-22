@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="dark" dir="{{ $xf.language.isRtl ? 'rtl' : 'ltr' }}" lang="{{ $xf.language.code }}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><xf:title /></title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+
+    <xf:head />
+</head>
+<body class="xv-body">
+
+<!-- XenVibe Header -->
+<header class="xv-header">
+    <div class="xv-header-inner">
+        <!-- Logo -->
+        <div class="xv-header-logo">
+            <a href="{$xf.options.boardUrl}" class="xv-logo-link">
+                <xf:if is="$xf.options.logoUrl">
+                    <img src="{$xf.options.logoUrl}" alt="{$xf.options.boardTitle}" class="xv-logo-img" />
+                <xf:else />
+                    <div class="xv-logo-icon">
+                        <span class="material-symbols-outlined">forum</span>
+                    </div>
+                    <span class="xv-logo-text">{$xf.options.boardTitle}</span>
+                </xf:if>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="xv-nav-desktop">
+                <xf:foreach loop="$navTree.tree" value="$entry">
+                    <a href="{$entry.href}" class="xv-nav-link {{ $entry.selected ? 'is-selected' : '' }}">{$entry.title}</a>
+                </xf:foreach>
+            </nav>
+        </div>
+
+        <!-- Search -->
+        <div class="xv-search-box">
+            <form action="{xf:link('search/search')}" method="post" class="xv-search-form">
+                <span class="material-symbols-outlined xv-search-icon">search</span>
+                <input type="text" name="keywords" class="xv-search-input" placeholder="{{ phrase('search...') }}" />
+                <xf:csrf />
+            </form>
+        </div>
+
+        <!-- Actions -->
+        <div class="xv-header-actions">
+            <xf:if is="$xf.visitor.user_id">
+                <!-- Notifications -->
+                <a href="{xf:link('account/alerts')}" class="xv-action-btn" data-xf-click="menu" data-menu-pos-ref="< .xv-header">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <xf:if is="$xf.visitor.alerts_unread">
+                        <span class="xv-badge">{$xf.visitor.alerts_unread}</span>
+                    </xf:if>
+                </a>
+
+                <!-- Messages -->
+                <a href="{xf:link('conversations')}" class="xv-action-btn">
+                    <span class="material-symbols-outlined">mail</span>
+                    <xf:if is="$xf.visitor.conversations_unread">
+                        <span class="xv-badge">{$xf.visitor.conversations_unread}</span>
+                    </xf:if>
+                </a>
+
+                <div class="xv-divider"></div>
+
+                <!-- New Thread Button -->
+                <a href="{xf:link('forums/-/create-thread')}" class="xv-new-thread-btn">
+                    <span class="material-symbols-outlined">add</span>
+                    <span>{{ phrase('post_thread') }}</span>
+                </a>
+
+                <!-- User Menu -->
+                <div class="xv-user-menu" data-xf-click="menu" data-menu-pos-ref="< .xv-header">
+                    <xf:avatar user="$xf.visitor" size="s" />
+                    <span class="xv-online-dot"></span>
+                </div>
+                <div class="menu menu--structural" data-menu="menu" aria-hidden="true">
+                    <div class="menu-content">
+                        <a href="{xf:link('members', $xf.visitor)}" class="menu-linkRow">{{ phrase('your_profile') }}</a>
+                        <a href="{xf:link('account')}" class="menu-linkRow">{{ phrase('account_settings') }}</a>
+                        <hr class="menu-separator" />
+                        <a href="{xf:link('logout')}" class="menu-linkRow" data-xf-click="overlay">{{ phrase('log_out') }}</a>
+                    </div>
+                </div>
+            <xf:else />
+                <a href="{xf:link('login')}" class="xv-login-btn">{{ phrase('log_in') }}</a>
+                <a href="{xf:link('register')}" class="xv-register-btn">{{ phrase('register') }}</a>
+            </xf:if>
+        </div>
+    </div>
+</header>
+
+<!-- Notices -->
+<xf:if is="$notices">
+    <div class="xv-notices">
+        <xf:foreach loop="$notices" value="$notice">
+            <div class="xv-notice">
+                {$notice.message|raw}
+            </div>
+        </xf:foreach>
+    </div>
+</xf:if>
+
+<!-- Main Content -->
+<main class="xv-main">
+    <div class="xv-container">
+        <!-- Left Sidebar -->
+        <aside class="xv-sidebar-left">
+            <div class="xv-nav-section">
+                <h3 class="xv-nav-title">{{ phrase('xv_browse') }}</h3>
+                <a class="xv-nav-item {{ $selectedNavTab == 'home' ? 'active' : '' }}" href="{$xf.options.boardUrl}xenvibe/">
+                    <span class="material-symbols-outlined">feed</span>
+                    <span>{{ phrase('xv_news_feed') }}</span>
+                </a>
+                <a class="xv-nav-item" href="{xf:link('whats-new')}">
+                    <span class="material-symbols-outlined">whatshot</span>
+                    <span>{{ phrase('whats_new') }}</span>
+                </a>
+                <a class="xv-nav-item" href="{xf:link('watched/threads')}">
+                    <span class="material-symbols-outlined">star</span>
+                    <span>{{ phrase('watched_threads') }}</span>
+                </a>
+                <a class="xv-nav-item" href="{xf:link('account/bookmarks')}">
+                    <span class="material-symbols-outlined">bookmarks</span>
+                    <span>{{ phrase('bookmarks') }}</span>
+                </a>
+            </div>
+
+            <div class="xv-nav-section">
+                <h3 class="xv-nav-title">{{ phrase('forums') }}</h3>
+                <xf:foreach loop="$xf.nodeTree.tree" value="$node" if="$xf.nodeTree.tree">
+                    <xf:if is="$node.node_type_id == 'Forum' AND $node.depth < 2">
+                        <a class="xv-community-item" href="{xf:link('forums', $node)}">
+                            <span class="xv-community-dot" style="background: hsl({$node.node_id * 40}, 70%, 50%);"></span>
+                            <span>{$node.title}</span>
+                        </a>
+                    </xf:if>
+                </xf:foreach>
+            </div>
+
+            <xf:if is="!$xf.visitor.user_id">
+                <div class="xv-upgrade-banner">
+                    <p class="xv-upgrade-title">{{ phrase('join_now') }}</p>
+                    <p class="xv-upgrade-desc">{{ phrase('register_to_enjoy_features') }}</p>
+                    <a class="xv-upgrade-btn" href="{xf:link('register')}">{{ phrase('register') }}</a>
+                </div>
+            </xf:if>
+        </aside>
+
+        <!-- Main Content Area -->
+        <section class="xv-content">
+            <xf:page />
+        </section>
+
+        <!-- Right Sidebar -->
+        <aside class="xv-sidebar-right">
+            <!-- Online Members Widget -->
+            <div class="xv-widget">
+                <div class="xv-widget-header">
+                    <h3 class="xv-widget-title">{{ phrase('members_online') }}</h3>
+                    <span class="xv-widget-subtitle">{$xf.session.onlineCount}</span>
+                </div>
+                <div class="xv-online-list">
+                    <xf:if is="$xf.session.recentlyOnline">
+                        <xf:foreach loop="$xf.session.recentlyOnline" value="$member" i="$i" if="$i < 5">
+                            <a href="{xf:link('members', $member)}" class="xv-online-member">
+                                <xf:avatar user="$member" size="xs" />
+                            </a>
+                        </xf:foreach>
+                    </xf:if>
+                </div>
+            </div>
+
+            <!-- Statistics Widget -->
+            <div class="xv-widget">
+                <div class="xv-widget-header">
+                    <h3 class="xv-widget-title">{{ phrase('forum_statistics') }}</h3>
+                </div>
+                <div class="xv-stats-list">
+                    <div class="xv-stat-item">
+                        <span class="xv-stat-label">{{ phrase('threads') }}</span>
+                        <span class="xv-stat-value">{$xf.totals.threads|number}</span>
+                    </div>
+                    <div class="xv-stat-item">
+                        <span class="xv-stat-label">{{ phrase('messages') }}</span>
+                        <span class="xv-stat-value">{$xf.totals.messages|number}</span>
+                    </div>
+                    <div class="xv-stat-item">
+                        <span class="xv-stat-label">{{ phrase('members') }}</span>
+                        <span class="xv-stat-value">{$xf.totals.users|number}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- XenForo Widget Position -->
+            <xf:widgetpos id="forum_list_sidebar" position="sidebar" />
+        </aside>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="xv-footer">
+    <div class="xv-footer-inner">
+        <div class="xv-footer-links">
+            <xf:foreach loop="$footerLinks" value="$link">
+                <a href="{$link.href}">{$link.title}</a>
+            </xf:foreach>
+        </div>
+        <div class="xv-footer-copy">
+            <a href="{xf:link('misc/contact')}" rel="nofollow">{{ phrase('contact_us') }}</a>
+            <span>•</span>
+            <a href="{xf:link('help/terms')}">{{ phrase('terms_and_rules') }}</a>
+            <span>•</span>
+            <a href="{xf:link('help/privacy-policy')}">{{ phrase('privacy_policy') }}</a>
+        </div>
+        <div class="xv-footer-copy">
+            {{ phrase('copyright_x', {'year': date('Y'), 'title': $xf.options.boardTitle}) }}
+        </div>
+    </div>
+</footer>
+
+<!-- Mobile Bottom Navigation -->
+<nav class="xv-mobile-nav">
+    <a class="xv-mobile-nav-item {{ $selectedNavTab == 'home' ? 'active' : '' }}" href="{$xf.options.boardUrl}xenvibe/">
+        <span class="material-symbols-outlined">home</span>
+        <span>{{ phrase('home') }}</span>
+    </a>
+    <a class="xv-mobile-nav-item" href="{xf:link('whats-new')}">
+        <span class="material-symbols-outlined">explore</span>
+        <span>{{ phrase('discover') }}</span>
+    </a>
+    <div class="xv-mobile-nav-fab">
+        <a class="xv-fab" href="{xf:link('forums/-/create-thread')}">
+            <span class="material-symbols-outlined">add</span>
+        </a>
+    </div>
+    <a class="xv-mobile-nav-item" href="{xf:link('conversations')}">
+        <span class="material-symbols-outlined">chat</span>
+        <span>{{ phrase('messages') }}</span>
+    </a>
+    <a class="xv-mobile-nav-item" href="{xf:link('account')}">
+        <span class="material-symbols-outlined">person</span>
+        <span>{{ phrase('account') }}</span>
+    </a>
+</nav>
+
+<!-- XenForo JavaScript -->
+<xf:js />
+
+</body>
+</html>

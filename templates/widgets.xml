@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widgets>
+	<widget widget_key="xv_members_online"
+		definition_id="members_online"
+		display_condition=""
+		positions="{}">
+		<title><![CDATA[Members Online]]></title>
+		<options><![CDATA[{"limit":12,"style":"avatars"}]]></options>
+	</widget>
+	<widget widget_key="xv_forum_statistics"
+		definition_id="forum_statistics"
+		display_condition=""
+		positions="{}">
+		<title><![CDATA[Forum Statistics]]></title>
+		<options><![CDATA[{}]]></options>
+	</widget>
+	<widget widget_key="xv_new_posts"
+		definition_id="new_posts"
+		display_condition=""
+		positions="{}">
+		<title><![CDATA[New Posts]]></title>
+		<options><![CDATA[{"limit":5,"style":"simple"}]]></options>
+	</widget>
+	<widget widget_key="xv_new_threads"
+		definition_id="new_threads"
+		display_condition=""
+		positions="{}">
+		<title><![CDATA[New Threads]]></title>
+		<options><![CDATA[{"limit":5,"style":"simple","node_ids":[]}]]></options>
+	</widget>
+</widgets>

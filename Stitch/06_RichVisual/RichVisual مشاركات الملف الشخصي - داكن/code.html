@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RichVisual Profile</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-dark": "#0e45b5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#1e2736",
+                        "surface-light": "#ffffff",
+                        "text-secondary": "#92a4c9",
+                        "border-dark": "#2a364d"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a364d; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3e4c66; 
+        }
+        
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+
+        /* RTL specific adjustments for icons within inputs */
+        [dir="rtl"] .rtl-flip-x {
+            transform: scaleX(-1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display transition-colors duration-200 min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-slate-200 dark:border-border-dark bg-white/80 dark:bg-[#111722]/80 backdrop-blur-md px-4 sm:px-10 py-3">
+<div class="flex items-center justify-between mx-auto max-w-[1400px]">
+<!-- Logo & Search -->
+<div class="flex items-center gap-4 sm:gap-8">
+<div class="flex items-center gap-3 text-slate-900 dark:text-white">
+<div class="size-8 rounded-lg bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<h2 class="text-lg sm:text-xl font-bold leading-tight tracking-tight hidden sm:block">RichVisual</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 h-10 w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-surface-dark border border-transparent focus-within:border-primary transition-all">
+<div class="text-slate-400 dark:text-text-secondary flex items-center justify-center px-3">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none bg-transparent border-none text-slate-900 dark:text-white focus:ring-0 placeholder:text-slate-400 dark:placeholder:text-text-secondary px-0 text-sm font-medium" placeholder="بحث..." value=""/>
+</div>
+</label>
+</div>
+<!-- Nav Links & Profile -->
+<div class="flex flex-1 justify-end items-center gap-4 sm:gap-8">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-500 dark:text-text-secondary hover:text-primary dark:hover:text-white text-sm font-bold transition-colors" href="#">الرئيسية</a>
+<a class="text-primary dark:text-white text-sm font-bold" href="#">المنتديات</a>
+<a class="text-slate-500 dark:text-text-secondary hover:text-primary dark:hover:text-white text-sm font-bold transition-colors" href="#">الأعضاء</a>
+<a class="text-slate-500 dark:text-text-secondary hover:text-primary dark:hover:text-white text-sm font-bold transition-colors" href="#">الألعاب</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-surface-dark text-slate-600 dark:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-100 dark:hover:bg-surface-dark text-slate-600 dark:text-white transition-colors">
+<span class="material-symbols-outlined">forum</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-border-dark mx-1 hidden sm:block"></div>
+<div class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 ring-2 ring-primary/20" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDh9qsAW6iH2VU-XukFBunnKoJ5hBkL-ULSlufk2QCft1BsuHUVtnao0cqQv3p-5erY3XWj4o9sspfu1r-YFtzI7CxIEshCVf5lqcQTVEK-SrCJCF0VneJjx7mI2pUlY_7WUzKJo8D5N4dzzQcw6fk62b_jZvsfO0Pq0zMHJSH0LCpB5VZFi_no9NjQav5Y08boJtGx-c1W6WHhGrXsSb5Ioo8Re5JJiCePtugc_ntnQ1F8xoDDbhMYLYxCgZc80dYjrPG9GkM9N14");'></div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="layout-container flex flex-col items-center w-full grow">
+<div class="w-full max-w-[1200px] px-4 sm:px-6 py-6 flex flex-col gap-6">
+<!-- Profile Header -->
+<div class="w-full rounded-2xl overflow-hidden bg-white dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-border-dark relative group">
+<!-- Cover Image -->
+<div class="h-48 sm:h-64 w-full bg-cover bg-center relative" data-alt="Abstract gaming landscape gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDhLHVYgdjlkT9qAQ9MadXciV4CWVWe5-yJ2kD1Lul9uDIdRD0UlbitFvpUm7hws7D3azWk3EIM4IKp_Y4TTGR7PsCja1sP8ovDSHLOWwolQ4y2oIJLXaZjYgRRwZRMJxoVbXoav_aItacqJpHgow5mG9S8-t_i_Lu5SMr35Dk8GItw68SoNR32hI-pQiz7Zq6RKk2TRp165lrfHRvYK-i_KHRBy1RUXOTtj6phB2h3Wm8vXV8_IpWIz8vqZwh7LBjt_UORtZ8F0yA");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<button class="absolute top-4 left-4 bg-black/40 backdrop-blur-sm p-2 rounded-lg text-white hover:bg-black/60 transition opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+<!-- Info Section -->
+<div class="px-6 pb-6 pt-16 sm:pt-4 relative flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<!-- Avatar (Negative margin to overlap cover) -->
+<div class="absolute -top-16 right-6 sm:static sm:-mt-20 sm:mr-6 flex-shrink-0">
+<div class="size-32 rounded-2xl border-4 border-white dark:border-surface-dark bg-surface-dark bg-cover bg-center shadow-lg" data-alt="User profile picture showing a stylized gamer character" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBcL-OFjCcrZev3q2bg7mxl8RKKQjA6HTY8KXh084VGeq-X_ia6GImj_KTQGlhv9Vo0BJblkID5laksiVaOhgGMtZ9qNHScThEeq2E1fszuZ-5HfQ_3aeL3-ROBu0aKpBDWoOhOOG6GSyT6-dOYosSm6LeTR1P4OjzGW0w6LWENZS7oGrkaEP8p9dJt2pbuYA1g9zQW_wSSSqdR9fZDdYJCJVL2npwEdqysPVrRejBx7O1CQZH6MKgW2U9Ybze0NmLFjbTbes8Kyu8");'></div>
+</div>
+<div class="mt-12 sm:mt-0 flex flex-col sm:flex-row flex-1 justify-between items-start sm:items-end gap-4">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">AhmedGamer99</h1>
+<span class="material-symbols-outlined text-blue-500 text-[24px]" title="Verified">verified</span>
+</div>
+<p class="text-slate-500 dark:text-text-secondary text-base font-medium">لاعب محترف | صانع محتوى | جدة، السعودية</p>
+<div class="flex items-center gap-4 mt-1 text-sm text-slate-400 dark:text-slate-500">
+<span class="flex items-center gap-1"><span class="font-bold text-slate-700 dark:text-slate-200">1.2k</span> متابع</span>
+<span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+<span class="flex items-center gap-1"><span class="font-bold text-slate-700 dark:text-slate-200">500</span> مشاركة</span>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none h-10 px-6 rounded-lg bg-primary hover:bg-primary-dark text-white text-sm font-bold shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>متابعة</span>
+</button>
+<button class="size-10 rounded-lg bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</button>
+<button class="size-10 rounded-lg bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Two Column Layout: Sidebar & Feed -->
+<div class="flex flex-col lg:flex-row gap-6 w-full items-start">
+<!-- Left Column (Sidebar in RTL) -->
+<aside class="w-full lg:w-80 flex flex-col gap-6 order-2 lg:order-1 flex-shrink-0">
+<!-- About Widget -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-border-dark shadow-sm">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+<span>عن العضو</span>
+</h3>
+<p class="text-slate-600 dark:text-text-secondary text-sm leading-relaxed mb-4">
+                            محب للألعاب الاستراتيجية وألعاب التصويب. ألعب عادة في المساء. انضموا إلى الديسكورد الخاص بي!
+                        </p>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 text-sm text-slate-500 dark:text-text-secondary">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+<span>انضم في مارس 2021</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-slate-500 dark:text-text-secondary">
+<span class="material-symbols-outlined text-[20px]">link</span>
+<a class="text-primary hover:underline" href="#">youtube.com/ahmed99</a>
+</div>
+</div>
+</div>
+<!-- Friends / Online Widget -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-green-500">group</span>
+<span>الأصدقاء المتصلين</span>
+</h3>
+<span class="bg-green-500/10 text-green-500 text-xs font-bold px-2 py-1 rounded-full">4</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Friend Item -->
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Friend avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQ8AiTP5iga4XDC6thJb6wCFKcxarXAfz_EiCIVObo9s8vCqP3ukea24QH0uMySC-1OoH0KlaHh7i0vgoSZAjIGpssHo-bBRdtqLcbeegYI67y4pIusLGX1ReVvRqYpglzKTjEZkKK51LHpxfd2GOhfaQ-F-Rr6i871hBsE8q9txYXF-o8W8z47I-RB5kdTe8LXA3g9Ibld_dYb-9XAvhN2n6NommCIg1uMr5AIl3fGg7PNbSSvh0BZ1EYEFcV91EHN_wdm0DtLIg");'></div>
+<div class="absolute bottom-0 left-0 size-3 border-2 border-white dark:border-surface-dark bg-green-500 rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-800 dark:text-white group-hover:text-primary transition-colors">CommanderX</span>
+<span class="text-xs text-slate-500 dark:text-text-secondary">يلعب Valorant</span>
+</div>
+</div>
+<!-- Friend Item -->
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Friend avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDS1HTVWTf-Wz1zgYuSCbslasL9qemI5WYzvJsE_lm0CaVpI17YpkoK0iyOTibQ5PhGYMc5Of-zhddQhzk6ienLHcUi0U8kJmqgObu4tNGks4SPJ2wyOyBWXwRcqi23Rgv3rYUguegf75tcvPkn23IZonedxOaKvHY0GYLfh_B0JQBns4193jjC0-w3EnLhHMKgF_yEjuDhJso_fl9S_-nFrsAXUA7RZGBhXWgGblvxZPdHHhdqqMzo33_AGH4vrX1cYh8d877fKhE");'></div>
+<div class="absolute bottom-0 left-0 size-3 border-2 border-white dark:border-surface-dark bg-green-500 rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-800 dark:text-white group-hover:text-primary transition-colors">SarahSniper</span>
+<span class="text-xs text-slate-500 dark:text-text-secondary">متصلة</span>
+</div>
+</div>
+<!-- Friend Item -->
+<div class="flex items-center gap-3 group cursor-pointer">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Friend avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCO5Ed0-LAwEmYQRzHHsr_nxHq0_O9AWaoXQCjdkVxZyfe_0-0OLL079kE0Oc3VJmul2lXgtZZhiZPy67zbGP065foM5ak3nS3qqusLv9pV1htaRTqmSUg5lfPsY6X3B2018QZ7XzqG6zU7wW_23Y24ZaHN29nO_yypVsB9oiOo7MHLOBG8IdysXeTMLaBw26gZV1Y5LGrAjhfzaGm-Ul19wFUlDlUp8sHDzxzC3wOBCt-emltWHliPYvq8VodpLHABVu5jTyU0sw");'></div>
+<div class="absolute bottom-0 left-0 size-3 border-2 border-white dark:border-surface-dark bg-amber-500 rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-800 dark:text-white group-hover:text-primary transition-colors">RogueOne</span>
+<span class="text-xs text-slate-500 dark:text-text-secondary">خامل منذ 5د</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-400 dark:text-slate-600 px-2">
+<a class="hover:underline" href="#">الشروط والقوانين</a>
+<a class="hover:underline" href="#">الخصوصية</a>
+<a class="hover:underline" href="#">مساعدة</a>
+<span>© 2023 RichVisual</span>
+</div>
+</aside>
+<!-- Right Column (Main Feed in RTL) -->
+<main class="flex-1 w-full order-1 lg:order-2 flex flex-col gap-6">
+<!-- Composer -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex gap-4">
+<div class="shrink-0">
+<div class="size-10 sm:size-12 rounded-full bg-cover bg-center" data-alt="Current user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAvcNWMjZfDzoPtMbMmW1KLLEhKNVxNqJpaUaYoDzWl_9kKkpucXn9pwwgRj7L3-YmPdBr_whNQq7S-AAGBl9hT8bC7mE7jZnGA_pFygHG4kjcxfB4w4idhU3yHAZQn-KihfWgfzUofuNI2AbkI6S7rWEOid5uTclelTlupBRxVMRTOvvsxsJAJHL1a_fGBrhjZhyohie474v0mtY-O9CrYCVuopR7addSPBmU7jMHOdHLU8JJXH-PulNW6Ps8pudjLqErE6MrNmnU");'></div>
+</div>
+<div class="flex-1">
+<textarea class="w-full bg-slate-50 dark:bg-[#111722] border-none rounded-lg p-3 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-text-secondary focus:ring-1 focus:ring-primary min-h-[80px] resize-none" placeholder="شارك لقطة شاشة، فيديو، أو تحديث جديد..."></textarea>
+<div class="flex justify-between items-center mt-3">
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#111722] text-slate-500 dark:text-text-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px] text-green-500">image</span>
+<span class="text-sm font-medium hidden sm:inline">صورة</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#111722] text-slate-500 dark:text-text-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px] text-red-500">videocam</span>
+<span class="text-sm font-medium hidden sm:inline">فيديو</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-[#111722] text-slate-500 dark:text-text-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px] text-yellow-500">gif_box</span>
+</button>
+</div>
+<button class="bg-primary hover:bg-primary-dark text-white text-sm font-bold px-5 py-2 rounded-lg shadow-lg shadow-primary/20 transition-all">
+                                        نشر
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Tabs Filter -->
+<div class="border-b border-slate-200 dark:border-border-dark pb-1 px-2">
+<div class="flex gap-8 overflow-x-auto no-scrollbar">
+<a class="flex flex-col items-center pb-3 border-b-[3px] border-primary text-primary dark:text-white font-bold text-sm whitespace-nowrap" href="#">
+                                الكل
+                            </a>
+<a class="flex flex-col items-center pb-3 border-b-[3px] border-transparent text-slate-500 dark:text-text-secondary hover:text-slate-800 dark:hover:text-white font-bold text-sm transition-colors whitespace-nowrap" href="#">
+                                الوسائط
+                            </a>
+<a class="flex flex-col items-center pb-3 border-b-[3px] border-transparent text-slate-500 dark:text-text-secondary hover:text-slate-800 dark:hover:text-white font-bold text-sm transition-colors whitespace-nowrap" href="#">
+                                التحديثات
+                            </a>
+<a class="flex flex-col items-center pb-3 border-b-[3px] border-transparent text-slate-500 dark:text-text-secondary hover:text-slate-800 dark:hover:text-white font-bold text-sm transition-colors whitespace-nowrap" href="#">
+                                الإشارات
+                            </a>
+</div>
+</div>
+<!-- Masonry Feed -->
+<div class="masonry-grid">
+<!-- Post Card 1: Image -->
+<div class="masonry-item relative group bg-white dark:bg-surface-dark rounded-xl overflow-hidden border border-slate-200 dark:border-border-dark shadow-sm hover:shadow-md transition-shadow">
+<!-- Header -->
+<div class="flex items-center justify-between p-3">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKT05crwGtJ1YKL46YJFkRRZOLfLCfr-7R9SbYoYI8N262jK2tFfXexS6pTYs0ljphDhSmX1HTH9OTPcCr3IVN4gVYaHBUvdLSavBlE6lMcqRRdjCJTrGmV6qiLhgN3XF58Q_wLx802dMf2JhFlwJeF1iFB8TMu_H4j1TXXdQeopRpW8zWWTJhkX38eXumpouZTDbggs7VWnUiv04fyn5rH6xWxGbUgCYBoYhAWS5kq1eRk5rmxGEALrde-X5XOOawoB5EPLuIaKE");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-900 dark:text-white">AhmedGamer99</span>
+<span class="text-[10px] text-slate-400">منذ ساعتين</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-white"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</div>
+<!-- Media -->
+<div class="w-full aspect-[4/3] bg-cover bg-center cursor-pointer" data-alt="Gaming setup showing monitors and rgb lights" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAggCNrqENAt3OHicg3-AC8o1IzvUR-O_s2ce3zuinCLISysWMxWXC0_M6Wq9LnQf4TfyCU2Qyf9_MvwEnKxx_WcVZ6vD3TYwwlIKm5A_oF68yLvkNFjkNOb_6ZdntaVrOPK7ZFR1c-6CZdUGDwFM2sWxKp2xGYYwyXWGs56Ao8_9T2udjP9FWjsmsRWBPkzP7WzY652VJVmft2839qnKjA5eEioe-cvsa96vevRLJcodib8LRo22z7uHIxh-B21mtHQo-eeKczBg8");'></div>
+<!-- Content -->
+<div class="p-4">
+<p class="text-slate-800 dark:text-slate-200 text-sm font-medium leading-relaxed mb-3">وأخيراً اكتمل السيت أب الجديد! 🖥️✨ رأيكم يا شباب؟ #GamingSetup #PCMasterRace</p>
+<div class="flex items-center justify-between border-t border-slate-100 dark:border-border-dark pt-3">
+<div class="flex gap-4">
+<button class="flex items-center gap-1.5 text-slate-500 dark:text-text-secondary hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="text-xs font-bold">124</span>
+</button>
+<button class="flex items-center gap-1.5 text-slate-500 dark:text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+<span class="text-xs font-bold">42</span>
+</button>
+</div>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-[18px]">share</span></button>
+</div>
+</div>
+</div>
+<!-- Post Card 2: Vertical Video (Simulated) -->
+<div class="masonry-item relative group bg-white dark:bg-surface-dark rounded-xl overflow-hidden border border-slate-200 dark:border-border-dark shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between p-3">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuClMm2wq5Xj4-k7x81PAXVxZzrvt1-_kVG533yX7c_cbzPZGFnJuq8XGR1EYMce5v_526PfTDu0_GjrefETVcR-eYZ5rOs0s4PvxdvBTgOEpPwTlhnaqA-mTnKnGG8uvsGuD83wq-O2yvqiIZWKZkUygysS-TscjoaywvlwKylyUtlU0EtRpVjoTQcKQcGD8HEoYYtpLF8BsJJcf2bJbDFSw1IObeueg0dANzryQHcjmfFI71KJEKWty9hJ7AM0Z-JgPDdVMDtHlkI");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-900 dark:text-white">AhmedGamer99</span>
+<span class="text-[10px] text-slate-400">أمس في 4:00 م</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-white"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</div>
+<div class="w-full aspect-[9/16] bg-cover bg-center relative group cursor-pointer" data-alt="Mobile gameplay screenshot with action elements" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAnN57Y391BoZtkV7OX0IJDlUcaxUSAdp6X8hABt_PtHFG-9zA7P467jW2VlNHtaX7_3FSeiB3BSxZR_ou5I_oXQPBY80jkXwuPxA5x0k5pLtxN3HdexGwJJSFrWOiptiH1pyWSk_E8OgC6PzjKTBPt2WQT21pA8JraIcBbkKUungBLbYoLr0ngmfSir4ItNbIlnr8upfTrxlaU5WVRW-2-K4kd3kME8aWn_GTN1CYNrlSsqwmXATL4f-PlLy2AGCuK6w7I5oPAL-g");'>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+<div class="size-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-[28px]">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 left-2 bg-black/60 px-2 py-1 rounded text-white text-[10px] font-bold">0:45</div>
+</div>
+<div class="p-4">
+<p class="text-slate-800 dark:text-slate-200 text-sm font-medium leading-relaxed mb-3">لقطة الكلاتش من بطولة البارحة 🔥 لا يفوتكم الدقيقة 0:30!</p>
+<div class="flex items-center justify-between border-t border-slate-100 dark:border-border-dark pt-3">
+<div class="flex gap-4">
+<button class="flex items-center gap-1.5 text-slate-500 dark:text-text-secondary hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="text-xs font-bold">856</span>
+</button>
+<button class="flex items-center gap-1.5 text-slate-500 dark:text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+<span class="text-xs font-bold">112</span>
+</button>
+</div>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-[18px]">share</span></button>
+</div>
+</div>
+</div>
+<!-- Post Card 3: Text Only / Status -->
+<div class="masonry-item relative group bg-gradient-to-br from-indigo-900 to-[#111722] rounded-xl overflow-hidden border border-slate-200 dark:border-border-dark shadow-sm hover:shadow-md transition-shadow">
+<div class="p-6 flex flex-col h-full justify-between min-h-[200px]">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<div class="size-8 rounded-full bg-cover bg-center border border-white/20" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAAybi1UOtxwg-PB_uDztCZ61dETvR1Z5atuKFpwC1lPpppUo52I62JsOU2tukGIb6jaNvB5tfDOqTybpsBpOaoatKvGziKkl2uhSCivsa-N8ttCiOCYm-dSDf4PpbjLphDrctLSeBj8_ZcHoplUw5U4Pwy_pVGXhMB53VRW9yMQgYOBB5o7aktQQ4IT30PndSpJwa6bng2VNAoXtlxi1JDedeKMNyGpo6lDHHR1HNXkbvzwbGullwcd3II209JoKjqd-XAc_VQMYo");'></div>
+<span class="text-xs font-bold text-white/80">AhmedGamer99</span>
+</div>
+<p class="text-white text-lg font-bold leading-snug">"النجاح في الألعاب ليس مجرد مهارة، بل هو صبر وتخطيط." 🎮💪</p>
+</div>
+<div class="flex items-center justify-between pt-4 mt-2 border-t border-white/10">
+<span class="text-[10px] text-white/50">منذ 5 ساعات</span>
+<div class="flex gap-3">
+<button class="text-white/60 hover:text-red-400"><span class="material-symbols-outlined text-[18px]">favorite</span></button>
+<button class="text-white/60 hover:text-white"><span class="material-symbols-outlined text-[18px]">chat_bubble</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Post Card 4: Another Image -->
+<div class="masonry-item relative group bg-white dark:bg-surface-dark rounded-xl overflow-hidden border border-slate-200 dark:border-border-dark shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between p-3">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwOjS2JaaMzG2YVsmxhjeHjVfm4_TilPhDV3E5dCEtdGNnah446CQnz9D-EG5TqB2fmUf2z2ngrg2VWaPez5gxtGGmsK-dm3wp8a03yVaZRnHEGkMMMpqyoSkj016X-2WJBgCbdwLwKqYa3mkKUd733cVe7iawuk90Rj4r0MXh1g1LQIqeoH0VqUZ2X8spRhv0zjhUPkFOhcEDPHa7hkia4bvxyAxkTpZvebIn-dXXZaVlxeIkXhvOSg0YhIlzGYE5flccJgPZzWc");'></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-900 dark:text-white">AhmedGamer99</span>
+<span class="text-[10px] text-slate-400">منذ يوم</span>
+</div>
+</div>
+<button class="text-slate-400 hover:text-white"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</div>
+<div class="w-full aspect-square bg-cover bg-center cursor-pointer" data-alt="Abstract neon lights background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDLmYzM0QcKPManrhEhy_JXFCIgkc5Kt5yvClVVQUQ95JECwyz4tLSYbCxoSR25up60DURNp_dXzXpEUvNLXfEMhn9TDs1vsNc6vbhAtd4CdtZ29HDomGKks-VsQdfLIYa7ubMb0WYWY9CU0WbZPWhwbGPzwaqTL3ePgRrvLVVhCWw2_TAMuN17BodNs7ujiQ3egnmWWL5v9SfLhCoZbPhMrEBwmUsHPuVTX13uErPvq_Pxf8vMeNpysR_sN8tIqPvEWwYns1QIIPo");'></div>
+<div class="p-4">
+<p class="text-slate-800 dark:text-slate-200 text-sm font-medium leading-relaxed mb-3">خلف الكواليس لحدث التقنية القادم! 🚀</p>
+<div class="flex items-center justify-between border-t border-slate-100 dark:border-border-dark pt-3">
+<div class="flex gap-4">
+<button class="flex items-center gap-1.5 text-slate-500 dark:text-text-secondary hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="text-xs font-bold">203</span>
+</button>
+<button class="flex items-center gap-1.5 text-slate-500 dark:text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+<span class="text-xs font-bold">15</span>
+</button>
+</div>
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined text-[18px]">share</span></button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</body></html>

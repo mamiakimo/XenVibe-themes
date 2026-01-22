@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus: تسجيل الدخول</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722", /* Matching the provided snippet hex */
+                        "surface-dark": "#192233",
+                        "border-dark": "#324467",
+                        "text-muted": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for Zen feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #324467; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5d82; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display min-h-screen flex flex-col overflow-x-hidden antialiased selection:bg-primary/30 selection:text-white">
+<!-- Navbar -->
+<header class="w-full flex items-center justify-between border-b border-solid border-[#232f48] px-6 py-4 lg:px-40 bg-[#111722]/90 backdrop-blur-sm sticky top-0 z-50">
+<div class="flex items-center gap-3 text-white cursor-pointer hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary text-3xl">spa</span>
+<h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">ZenFocus</h2>
+</div>
+<div class="flex items-center gap-4">
+<a class="text-text-muted hover:text-white text-sm font-medium transition-colors hidden sm:block" href="#">المساعدة</a>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-[#192233] border border-[#324467] text-white text-sm font-bold hover:bg-[#232f48] transition-colors">
+<span class="truncate">إنشاء حساب</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col justify-center items-center p-4 relative">
+<!-- Abstract Background Decoration -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl mix-blend-screen opacity-30 animate-pulse" style="animation-duration: 4s;"></div>
+<div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl mix-blend-screen opacity-30"></div>
+</div>
+<!-- Login Card -->
+<div class="relative z-10 w-full max-w-[480px] flex flex-col gap-6">
+<!-- Heading Section -->
+<div class="text-center mb-4">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-4 text-primary">
+<span class="material-symbols-outlined text-[32px]">lock</span>
+</div>
+<h1 class="text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] mb-2">تسجيل الدخول</h1>
+<p class="text-text-muted text-base font-normal leading-normal">مرحباً بعودتك، يرجى إدخال بياناتك للمتابعة</p>
+</div>
+<!-- Form Container -->
+<div class="bg-surface-dark border border-[#232f48] rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/20">
+<form action="#" class="flex flex-col gap-5">
+<!-- Username Field -->
+<label class="flex flex-col gap-2">
+<span class="text-white text-sm font-medium leading-normal">اسم المستخدم أو البريد الإلكتروني</span>
+<div class="relative group">
+<span class="material-symbols-outlined absolute top-1/2 -translate-y-1/2 right-4 text-text-muted group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-dark bg-[#111722] focus:border-primary h-12 placeholder:text-text-muted/50 pr-11 pl-4 text-base font-normal leading-normal transition-all" placeholder="الاسم أو البريد الإلكتروني" type="text"/>
+</div>
+</label>
+<!-- Password Field -->
+<label class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-white text-sm font-medium leading-normal">كلمة المرور</span>
+<a class="text-xs text-primary font-medium hover:text-primary/80 transition-colors" href="#">نسيت كلمة المرور؟</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute top-1/2 -translate-y-1/2 right-4 text-text-muted group-focus-within:text-primary transition-colors">key</span>
+<input class="w-full flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-dark bg-[#111722] focus:border-primary h-12 placeholder:text-text-muted/50 pr-11 pl-4 text-base font-normal leading-normal transition-all" placeholder="أدخل كلمة المرور" type="password"/>
+</div>
+</label>
+<!-- Remember Me Checkbox -->
+<div class="flex items-center gap-3">
+<label class="flex items-center gap-3 cursor-pointer group select-none">
+<div class="relative flex items-center">
+<input class="peer h-5 w-5 rounded border-border-dark border-2 bg-[#111722] text-primary checked:bg-primary checked:border-primary focus:ring-0 focus:ring-offset-0 transition-all cursor-pointer" type="checkbox"/>
+</div>
+<span class="text-text-muted group-hover:text-white transition-colors text-sm font-normal leading-normal">تذكرني على هذا الجهاز</span>
+</label>
+</div>
+<!-- Submit Button -->
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary hover:bg-blue-600 text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/20 transition-all active:scale-[0.98] mt-2">
+<span class="truncate">تسجيل الدخول</span>
+</button>
+<!-- Divider -->
+<div class="relative flex py-2 items-center">
+<div class="flex-grow border-t border-[#232f48]"></div>
+<span class="flex-shrink-0 mx-4 text-text-muted text-xs">أو المتابعة عبر</span>
+<div class="flex-grow border-t border-[#232f48]"></div>
+</div>
+<!-- Social Login (Visual Placeholder) -->
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 h-10 rounded-lg bg-[#111722] border border-border-dark hover:bg-[#232f48] text-white text-sm font-medium transition-colors" type="button">
+<span class="w-5 h-5 flex items-center justify-center" data-alt="Google G logo generic">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"></path></svg>
+</span>
+                            Google
+                        </button>
+<button class="flex items-center justify-center gap-2 h-10 rounded-lg bg-[#111722] border border-border-dark hover:bg-[#232f48] text-white text-sm font-medium transition-colors" type="button">
+<span class="w-5 h-5 flex items-center justify-center" data-alt="Twitter X logo generic">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</span>
+                            Twitter
+                        </button>
+</div>
+</form>
+</div>
+<!-- Footer Links -->
+<div class="text-center">
+<p class="text-text-muted text-sm">
+                    ليس لديك حساب؟
+                    <a class="text-primary font-bold hover:text-white transition-colors mr-1" href="#">إنشاء حساب جديد</a>
+</p>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="w-full py-6 text-center border-t border-[#232f48] bg-[#111722]">
+<div class="flex flex-col gap-2 items-center justify-center text-text-muted text-xs">
+<div class="flex gap-4">
+<a class="hover:text-white transition-colors" href="#">الشروط والأحكام</a>
+<span class="w-1 h-1 rounded-full bg-[#232f48] self-center"></span>
+<a class="hover:text-white transition-colors" href="#">سياسة الخصوصية</a>
+<span class="w-1 h-1 rounded-full bg-[#232f48] self-center"></span>
+<a class="hover:text-white transition-colors" href="#">اتصل بنا</a>
+</div>
+<p class="opacity-50" dir="ltr">© 2024 ZenFocus Forum. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

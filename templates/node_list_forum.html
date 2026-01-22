@@ -1,0 +1,153 @@
+<!-- XenVibe Cards - Forum Template -->
+
+<xf:macro id="depth1" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<!-- Standalone forum (not in category) -->
+	<div class="xv-category xv-category--standalone">
+		<div class="xv-forums-grid xv-forums-grid--single">
+			<xf:macro id="forum"
+				arg-node="{$node}"
+				arg-extras="{$extras}"
+				arg-children="{$children}"
+				arg-childExtras="{$childExtras}"
+				arg-depth="{$depth}" />
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro id="depth2" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<xf:macro id="forum"
+		arg-node="{$node}"
+		arg-extras="{$extras}"
+		arg-children="{$children}"
+		arg-childExtras="{$childExtras}"
+		arg-depth="{$depth}" />
+</xf:macro>
+
+<xf:macro id="depthN" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<li>
+		<a href="{{ link('forums', $node) }}" class="subNodeLink subNodeLink--forum {{ $extras.hasNew ? 'subNodeLink--unread' : '' }}">
+			<xf:fa icon="{{ $node.Data.TypeHandler.getTypeIconClass() ?: 'fa-comments' }}" class="subNodeLink-icon" />{$node.title}
+		</a>
+		<xf:macro id="forum_list::sub_node_list"
+			arg-children="{$children}"
+			arg-childExtras="{$childExtras}"
+			arg-depth="{{ $depth + 1 }}" />
+	</li>
+</xf:macro>
+
+<xf:macro id="forum"
+	arg-node="!"
+	arg-extras="!"
+	arg-children="!"
+	arg-childExtras="!"
+	arg-depth="!"
+	arg-chooseName=""
+	arg-bonusInfo="">
+
+	<xf:set var="$forumType" value="{{ $node.Data.forum_type_id ?: 'discussion' }}" />
+	<xf:set var="$iconClass" value="{{ $node.Data.TypeHandler.getTypeIconClass() ?: 'fa-comments' }}" />
+
+	<article class="xv-forum-card xv-forum-card--{$forumType} {{ $extras.hasNew ? 'xv-forum-card--unread' : '' }}">
+		<!-- Card Icon -->
+		<div class="xv-forum-card-icon xv-forum-card-icon--{$forumType}">
+			<xf:fa icon="{$iconClass}" />
+		</div>
+
+		<!-- Card Content -->
+		<div class="xv-forum-card-content">
+			<h3 class="xv-forum-card-title">
+				<a href="{{ link('forums', $node) }}">{$node.title}</a>
+			</h3>
+			<xf:if is="{$node.description}">
+				<p class="xv-forum-card-desc">{$node.description|raw}</p>
+			</xf:if>
+
+			<!-- Sub Forums -->
+			<xf:if is="$depth == 2 AND property('nodeListSubDisplay') == 'flat'">
+				<xf:macro id="forum_list::sub_nodes_flat"
+					arg-children="{$children}"
+					arg-childExtras="{$childExtras}"
+					arg-depth="{{ $depth + 1 }}" />
+			</xf:if>
+			<xf:if is="$depth == 2 AND property('nodeListSubDisplay') == 'menu'">
+				<xf:macro id="forum_list::sub_nodes_menu"
+					arg-children="{$children}"
+					arg-childExtras="{$childExtras}"
+					arg-depth="{{ $depth + 1 }}" />
+			</xf:if>
+		</div>
+
+		<!-- Card Footer -->
+		<div class="xv-forum-card-footer">
+			<!-- Stats -->
+			<xf:if is="!{$extras.privateInfo}">
+				<div class="xv-forum-card-stats">
+					<span class="xv-forum-stat" title="{{ phrase('threads') }}">
+						<span class="material-symbols-outlined">forum</span>
+						{$extras.discussion_count|number_short(1)}
+					</span>
+					<span class="xv-forum-stat" title="{{ phrase('messages') }}">
+						<span class="material-symbols-outlined">chat_bubble</span>
+						{$extras.message_count|number_short(1)}
+					</span>
+					<xf:if is="{$extras.hasNew}">
+						<span class="xv-forum-stat xv-forum-stat--active" title="{{ phrase('new') }}">
+							<span class="material-symbols-outlined">trending_up</span>
+							{{ phrase('new') }}
+						</span>
+					</xf:if>
+				</div>
+			</xf:if>
+
+			<!-- Last Post -->
+			<xf:if is="{$extras.privateInfo}">
+				<div class="xv-forum-card-lastpost xv-forum-card-lastpost--private">
+					<span class="material-symbols-outlined">lock</span>
+					<span>{{ phrase('private') }}</span>
+				</div>
+			<xf:elseif is="{$extras.LastThread}" />
+				<div class="xv-forum-card-lastpost">
+					<div class="xv-lastpost-avatar">
+						<xf:if is="$xf.visitor.isIgnoring($extras.last_post_user_id)">
+							<xf:avatar user="{{ null }}" size="xs" />
+						<xf:else />
+							<xf:avatar user="{$extras.LastPostUser}" defaultname="{$extras.last_post_username}" size="xs" />
+						</xf:if>
+					</div>
+					<div class="xv-lastpost-info">
+						<xf:if is="$extras.LastThread.isUnread()">
+							<a href="{{ link('threads/unread', $extras.LastThread) }}" class="xv-lastpost-title" title="{$extras.LastThread.title}">
+								{{ prefix('thread', $extras.LastThread) }}{$extras.LastThread.title}
+							</a>
+						<xf:else />
+							<a href="{{ link('threads/post', $extras.LastThread, {'post_id': $extras.last_post_id}) }}" class="xv-lastpost-title" title="{$extras.LastThread.title}">
+								{{ prefix('thread', $extras.LastThread) }}{$extras.LastThread.title}
+							</a>
+						</xf:if>
+						<div class="xv-lastpost-meta">
+							<xf:date time="{$extras.last_post_date}" />
+							<span class="xv-lastpost-separator">&bull;</span>
+							<xf:if is="$xf.visitor.isIgnoring($extras.last_post_user_id)">
+								<span>{{ phrase('ignored_member') }}</span>
+							<xf:else />
+								<xf:username user="{$extras.LastPostUser}" defaultname="{$extras.last_post_username}" class="xv-lastpost-user" />
+							</xf:if>
+						</div>
+					</div>
+				</div>
+			<xf:else />
+				<div class="xv-forum-card-lastpost xv-forum-card-lastpost--empty">
+					<span class="material-symbols-outlined">inbox</span>
+					<span>{{ phrase('none') }}</span>
+				</div>
+			</xf:if>
+		</div>
+	</article>
+
+	<xf:if is="{$depth} == 1">
+		<xf:macro id="forum_list::node_list"
+			arg-children="{$children}"
+			arg-extras="{$childExtras}"
+			arg-depth="{{ $depth + 1 }}" />
+	</xf:if>
+</xf:macro>

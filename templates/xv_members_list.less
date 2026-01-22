@@ -1,0 +1,484 @@
+// ================================================
+// MEMBERS LIST PAGE - Stitch Cards Design
+// ================================================
+// URL: /members/
+// Two Tab Groups Layout
+// ================================================
+
+.template-member_notable {
+
+  // ========================================
+  // 1. MEMBER SECTIONS (Two Groups)
+  // ========================================
+  .xv-member-section {
+    margin-bottom: 2.5rem;
+
+    &:not(:first-of-type) {
+      padding-top: 2rem;
+      border-top: 1px solid fade(@xf-borderColor, 30%);
+    }
+  }
+
+  // ========================================
+  // 2. FILTER CHIPS CONTAINER
+  // ========================================
+  .xv-filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    background: @xv-card-bg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+
+    @media (max-width: 768px) {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  // Individual Filter Chip
+  .xv-filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 2.25rem;
+    padding: 0 1rem;
+    background: fade(@xf-textColor, 8%);
+    border: none;
+    border-radius: 0.5rem;
+    color: @xf-textColor;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-decoration: none;
+
+    .material-symbols-outlined {
+      font-size: 1.125rem;
+      color: @xf-textColorMuted;
+      transition: color 0.2s ease;
+    }
+
+    &:hover {
+      background: fade(@xf-textColor, 12%);
+      color: @xf-textColor;
+
+      .material-symbols-outlined {
+        color: @xf-linkColor;
+      }
+    }
+
+    &.is-active {
+      background: @xf-linkColor;
+      color: #fff;
+      box-shadow: 0 4px 12px fade(@xf-linkColor, 25%);
+
+      .material-symbols-outlined {
+        color: #fff;
+      }
+    }
+  }
+
+  // ========================================
+  // 3. REMOVE CONTAINERS STYLING
+  // ========================================
+  .p-body-content>.block,
+  .p-body-main>.block,
+  .block:has(.memberOverviewBlocks) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    >.block-container {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+
+      >.block-body {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+    }
+  }
+
+  // ========================================
+  // 4. TAB PANES (Member Blocks)
+  // ========================================
+  .memberOverviewBlocks {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .memberOverviewBlock {
+    display: none !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+
+    &.is-active {
+      display: block !important;
+    }
+  }
+
+  .memberOverviewBlock-seeMore {
+    display: none !important;
+  }
+
+  // ========================================
+  // 5. MEMBER CARDS GRID
+  // ========================================
+  .xv-members-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.5rem !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  // Remove default li styling
+  .xv-members-grid>* {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+  }
+
+  // ========================================
+  // 6. STITCH-STYLE MEMBER CARD
+  // ========================================
+  .xv-member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: @xv-card-bg !important;
+    border: 1px solid @xf-borderColor !important;
+    border-radius: 1rem;
+    padding: 1.5rem !important;
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &:hover {
+      border-color: fade(@xf-linkColor, 50%);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px fade(#000, 15%);
+    }
+  }
+
+  // Online Indicator
+  .xv-member-online {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .xv-member-online-ping {
+    position: absolute;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: #22c55e;
+    opacity: 0.75;
+    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .xv-member-online-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: #22c55e;
+  }
+
+  @keyframes ping {
+
+    75%,
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  // Avatar
+  .xv-member-avatar-wrap {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .xv-member-avatar {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    padding: 0.25rem;
+    background: fade(@xf-borderColor, 50%);
+
+    &--admin {
+      background: linear-gradient(135deg, #f59e0b, #ef4444, @xf-linkColor);
+    }
+
+    &--mod {
+      background: linear-gradient(135deg, #22c55e, #3b82f6);
+    }
+
+    &--staff {
+      background: linear-gradient(135deg, @xf-linkColor, #8b5cf6);
+    }
+
+    .avatar {
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 50% !important;
+      border: 3px solid @xv-card-bg !important;
+
+      img,
+      span {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+      }
+
+      span {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.75rem !important;
+        font-weight: 700 !important;
+      }
+    }
+  }
+
+  // Verified Badge
+  .xv-member-verified {
+    position: absolute;
+    bottom: -0.25rem;
+    right: -0.25rem;
+    background: @xf-linkColor;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0.25rem;
+    border: 2px solid @xv-card-bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .material-symbols-outlined {
+      font-size: 0.875rem;
+    }
+  }
+
+  // Username
+  .xv-member-name {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+
+    a,
+    .username {
+      color: @xf-textColor !important;
+      text-decoration: none !important;
+
+      &:hover {
+        color: @xf-linkColor !important;
+      }
+    }
+  }
+
+  // Role Badge
+  .xv-member-role {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: fade(@xf-linkColor, 10%);
+    border: 1px solid fade(@xf-linkColor, 20%);
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: @xf-linkColor;
+    margin-bottom: 1rem;
+
+    &--admin {
+      background: fade(#ef4444, 10%);
+      border-color: fade(#ef4444, 20%);
+      color: #ef4444;
+    }
+
+    &--mod {
+      background: fade(#22c55e, 10%);
+      border-color: fade(#22c55e, 20%);
+      color: #22c55e;
+    }
+
+    &--staff {
+      background: fade(#8b5cf6, 10%);
+      border-color: fade(#8b5cf6, 20%);
+      color: #8b5cf6;
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  // Stats Grid with vertical dividers (RTL)
+  .xv-member-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 100%;
+    margin-top: auto; // Push stats and button to bottom
+    margin-bottom: 1rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid fade(@xf-borderColor, 50%);
+    border-bottom: 1px solid fade(@xf-borderColor, 50%);
+  }
+
+  .xv-member-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 0.5rem;
+
+    // Vertical divider for RTL
+    &:not(:last-child) {
+      border-left: 1px solid fade(@xf-borderColor, 50%);
+    }
+  }
+
+  .xv-member-stat-label {
+    font-size: 0.7rem;
+    color: @xf-textColorMuted;
+    margin-bottom: 0.25rem;
+  }
+
+  .xv-member-stat-value {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: @xf-textColor;
+  }
+
+  // Follow/Action Button
+  .xv-member-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    background: fade(@xf-textColor, 8%);
+    border: none;
+    border-radius: 0.5rem;
+    color: @xf-textColor;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    .material-symbols-outlined {
+      font-size: 1.125rem;
+    }
+
+    &:hover {
+      background: @xf-linkColor;
+      color: #fff;
+    }
+
+    &--following {
+      background: fade(@xf-linkColor, 15%);
+      color: @xf-linkColor;
+
+      &:hover {
+        background: #dc3545;
+        color: #fff;
+      }
+    }
+  }
+
+  // Follow button with CSS icons (for XenForo switch behavior)
+  .xv-member-btn[data-xf-click="switch"] {
+    &::before {
+      font-family: 'Material Symbols Outlined';
+      font-size: 1.125rem;
+      content: 'person_add';
+    }
+
+    &.xv-member-btn--following::before {
+      content: 'person_remove';
+    }
+
+    // Hide the inline icon span when XenForo replaces content
+    .material-symbols-outlined {
+      display: none;
+    }
+  }
+
+  // ========================================
+  // 7. PAGINATION
+  // ========================================
+  .block-outer-main {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+
+    .pageNav {
+      background: @xv-card-bg;
+      border: 1px solid @xf-borderColor;
+      border-radius: 0.75rem;
+      padding: 0.5rem;
+    }
+  }
+}
+
+// ========================================
+// RESPONSIVE GRID
+// ========================================
+body.xv-sidebar-collapsed .template-member_notable .xv-members-grid {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+@media (max-width: 1200px) {
+  .template-member_notable .xv-members-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .template-member_notable .xv-members-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .template-member_notable .xv-members-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

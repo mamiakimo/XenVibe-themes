@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StreamFeed: تسجيل الدخول</title>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "Noto Sans Arabic", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased min-h-screen flex flex-col">
+<!-- Navbar (Minimal for Login Page) -->
+<header class="w-full border-b border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-[#111722]/50 backdrop-blur-md sticky top-0 z-50">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3 text-primary dark:text-white cursor-pointer select-none">
+<div class="size-8 bg-primary text-white rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">StreamFeed</h2>
+</div>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                العودة للرئيسية
+            </a>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+<!-- Abstract Background Decoration -->
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-purple-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="w-full max-w-md space-y-8 relative z-10">
+<!-- Login Card -->
+<div class="bg-white dark:bg-[#1c2333] p-8 rounded-xl shadow-2xl border border-gray-100 dark:border-gray-800">
+<!-- Header -->
+<div class="text-center mb-8">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">مرحباً بعودتك</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">أدخل بياناتك للدخول إلى حسابك</p>
+</div>
+<form action="#" class="space-y-6" method="POST">
+<!-- Username / Email Field -->
+<div>
+<label class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200 mb-2" for="email">
+                            البريد الإلكتروني أو اسم المستخدم
+                        </label>
+<div class="relative mt-2 rounded-md shadow-sm">
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+<span class="material-symbols-outlined text-slate-400 text-[20px]">person</span>
+</div>
+<input class="block w-full rounded-lg border-0 py-3 pr-10 pl-4 text-slate-900 dark:text-white bg-slate-50 dark:bg-[#111722] ring-1 ring-inset ring-slate-300 dark:ring-slate-700 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 transition-all" id="email" name="email" placeholder="user@example.com" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="block text-sm font-medium leading-6 text-slate-900 dark:text-slate-200" for="password">
+                                كلمة المرور
+                            </label>
+<div class="text-sm">
+<a class="font-medium text-primary hover:text-primary/80 transition-colors" href="#">نسيت كلمة المرور؟</a>
+</div>
+</div>
+<div class="relative mt-2 rounded-md shadow-sm">
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+<span class="material-symbols-outlined text-slate-400 text-[20px]">lock</span>
+</div>
+<input class="block w-full rounded-lg border-0 py-3 pr-10 pl-10 text-slate-900 dark:text-white bg-slate-50 dark:bg-[#111722] ring-1 ring-inset ring-slate-300 dark:ring-slate-700 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 transition-all" id="password" name="password" placeholder="••••••••" type="password"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 cursor-pointer group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-slate-300 text-[20px]">visibility</span>
+</div>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<input class="h-4 w-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-primary bg-slate-50 dark:bg-[#111722] checked:bg-primary" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="block text-sm text-slate-700 dark:text-slate-300" for="remember-me">
+                                تذكرني في المرة القادمة
+                            </label>
+</div>
+</div>
+<!-- Submit Button -->
+<div>
+<button class="flex w-full justify-center rounded-lg bg-primary px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all shadow-[0_0_15px_rgba(19,91,236,0.3)]" type="submit">
+                            تسجيل الدخول
+                        </button>
+</div>
+</form>
+<!-- Divider -->
+<div class="relative mt-8">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
+</div>
+<div class="relative flex justify-center text-sm font-medium leading-6">
+<span class="bg-white dark:bg-[#1c2333] px-4 text-slate-500 dark:text-slate-400">أو تابع باستخدام</span>
+</div>
+</div>
+<!-- Social Login -->
+<div class="mt-6 grid grid-cols-2 gap-4">
+<a class="flex w-full items-center justify-center gap-3 rounded-lg bg-slate-50 dark:bg-[#111722] px-3 py-2 text-sm font-medium text-slate-900 dark:text-white shadow-sm ring-1 ring-inset ring-slate-300 dark:ring-slate-700 hover:bg-slate-100 dark:hover:bg-[#252f40] transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" viewbox="0 0 24 24">
+<path d="M12.0003 20.45c-4.6667 0-8.4501-3.7834-8.4501-8.4501 0-4.6667 3.7834-8.45 8.4501-8.45 4.6667 0 8.45 3.7833 8.45 8.45 0 4.6667-3.7833 8.4501-8.45 8.4501z" fill="white" fill-opacity="0.01"></path>
+<path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z" fill="#FFFFFF"></path>
+</svg>
+<span class="text-sm font-semibold">Google</span>
+</a>
+<a class="flex w-full items-center justify-center gap-3 rounded-lg bg-[#1877F2] px-3 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#1877F2]/90 transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+<span class="text-sm font-semibold">Facebook</span>
+</a>
+</div>
+</div>
+<!-- Footer Link -->
+<p class="text-center text-sm text-slate-500 dark:text-slate-400">
+                ليس لديك حساب بعد؟
+                <a class="font-semibold leading-6 text-primary hover:text-primary/80 transition-colors mr-1" href="#">سجل الآن مجاناً</a>
+</p>
+</div>
+</main>
+</body></html>

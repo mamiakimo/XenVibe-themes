@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NanoPro - المواضيع المراقبة</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                        "surface-dark": "#1e2736",
+                        "surface-hover": "#252e3f",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col font-body">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e5e7eb] dark:border-[#232f48] px-4 md:px-10 py-3 bg-white dark:bg-[#111722] sticky top-0 z-50">
+<div class="flex items-center gap-4 md:gap-8 flex-1">
+<!-- Logo -->
+<div class="flex items-center gap-3 text-slate-900 dark:text-white cursor-pointer group">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-[32px]">bolt</span>
+</div>
+<h2 class="hidden md:block text-lg font-bold leading-tight tracking-tight group-hover:text-primary transition-colors">NanoPro</h2>
+</div>
+<!-- Search Bar -->
+<label class="hidden md:flex flex-col min-w-40 h-10 w-full max-w-[400px]">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-[#f3f4f6] dark:bg-[#232f48] overflow-hidden group-focus-within:ring-2 ring-primary/50 transition-all">
+<div class="text-slate-400 dark:text-[#92a4c9] flex items-center justify-center pr-4 pl-2">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none bg-transparent border-none focus:ring-0 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-[#92a4c9] px-2 text-sm font-normal leading-normal h-full" placeholder="بحث..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-end gap-3 md:gap-6">
+<!-- Notifications -->
+<button class="relative flex items-center justify-center rounded-full size-10 hover:bg-[#f3f4f6] dark:hover:bg-[#232f48] text-slate-600 dark:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 left-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-[#111722]"></span>
+</button>
+<!-- User Avatar -->
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-transparent hover:ring-primary cursor-pointer transition-all" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBstS1mAtfyCw1HkxNqMAqN-QMfINfYeC19FyJqcvwgMY9Lb5NDat2Xuvcxmi5MwtRJY_XQJrlC24TOGz7xS5zLm52-PLBGolgDm8Yk999oGt493QNlOzSAvG5Vt-ViH8VTzSiCO1ROk5nD4tdmZH8mD6LqL5Eu96UyjdbhTMXxUpYJite2nL71a5WQgL0b_jMEne5Uj_xe6ZogZDXAJ67qwhCVJTTygSs6-c3HA4Lq3rN9qmo0tyPVw7GUViyQOO-CRNgfYJxqquM");'></div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-[1000px] mx-auto px-4 md:px-8 py-8 flex flex-col gap-6">
+<!-- Page Heading & Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl md:text-[32px] font-bold tracking-tight text-slate-900 dark:text-white mb-2">المواضيع المراقبة</h1>
+<p class="text-slate-500 dark:text-text-secondary text-sm">إدارة المواضيع التي تتابعها وتحديثاتها الأخيرة.</p>
+</div>
+<!-- Action Button -->
+<button class="flex items-center gap-2 bg-primary hover:bg-blue-600 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">mark_email_read</span>
+<span>تحديد الكل كمقروء</span>
+</button>
+</div>
+<!-- Filters (Chips) -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide select-none">
+<button class="flex shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-4 py-2 text-sm font-medium transition-colors">
+<span>غير مقروء</span>
+<span class="bg-white/20 px-1.5 py-0.5 rounded text-xs">3</span>
+</button>
+<button class="flex shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#e5e7eb] dark:bg-[#232f48] hover:bg-[#d1d5db] dark:hover:bg-[#2f3e5e] text-slate-700 dark:text-text-secondary px-4 py-2 text-sm font-medium transition-colors">
+<span>الكل</span>
+</button>
+<button class="flex shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#e5e7eb] dark:bg-[#232f48] hover:bg-[#d1d5db] dark:hover:bg-[#2f3e5e] text-slate-700 dark:text-text-secondary px-4 py-2 text-sm font-medium transition-colors">
+<span>مع تنبيه بريدي</span>
+</button>
+<button class="flex shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#e5e7eb] dark:bg-[#232f48] hover:bg-[#d1d5db] dark:hover:bg-[#2f3e5e] text-slate-700 dark:text-text-secondary px-4 py-2 text-sm font-medium transition-colors">
+<span>أرشيف</span>
+</button>
+</div>
+<!-- List Container -->
+<div class="flex flex-col gap-3">
+<!-- List Item 1: Unread High Priority -->
+<div class="group flex flex-col md:flex-row md:items-center gap-4 bg-white dark:bg-surface-dark hover:bg-slate-50 dark:hover:bg-surface-hover p-4 rounded-xl border border-[#e5e7eb] dark:border-transparent transition-all shadow-sm">
+<!-- Status Indicator (Mobile: Top Right, Desktop: Left side of content) -->
+<div class="flex items-start gap-4 flex-1">
+<!-- Icon/Avatar -->
+<div class="relative shrink-0">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 size-12">
+<span class="material-symbols-outlined text-[24px]">forum</span>
+</div>
+<span class="absolute -top-1 -right-1 flex size-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full size-3 bg-primary"></span>
+</span>
+</div>
+<!-- Content -->
+<div class="flex flex-col justify-center gap-1">
+<div class="flex items-center gap-2 flex-wrap">
+<a class="text-slate-900 dark:text-white text-base md:text-lg font-semibold leading-tight hover:text-primary transition-colors line-clamp-1" href="#">
+                                استفسار بخصوص التحديث الجديد للوحة التحكم
+                            </a>
+<span class="bg-red-500/10 text-red-500 text-xs px-2 py-0.5 rounded font-medium border border-red-500/20">مهم</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-xs md:text-sm font-normal line-clamp-1">
+<span class="flex items-center gap-1 text-primary hover:underline cursor-pointer">
+<span class="material-symbols-outlined text-[14px]">folder</span>
+                                قسم الدعم الفني
+                            </span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">reply</span>
+                                آخر رد: <span class="font-medium text-slate-700 dark:text-slate-300">Admin</span>
+</span>
+<span>•</span>
+<span class="text-slate-400">منذ 5 دقائق</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center justify-end md:justify-center gap-2 mt-2 md:mt-0 pl-0 md:pl-2 shrink-0 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-400 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white transition-colors" title="إلغاء المراقبة">
+<span class="material-symbols-outlined text-[20px]">notifications_off</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-400 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white transition-colors" title="خيارات">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- List Item 2: Unread -->
+<div class="group flex flex-col md:flex-row md:items-center gap-4 bg-white dark:bg-surface-dark hover:bg-slate-50 dark:hover:bg-surface-hover p-4 rounded-xl border border-[#e5e7eb] dark:border-transparent transition-all shadow-sm">
+<div class="flex items-start gap-4 flex-1">
+<div class="relative shrink-0">
+<div class="flex items-center justify-center rounded-lg bg-[#f3f4f6] dark:bg-[#232f48] text-slate-500 dark:text-text-secondary shrink-0 size-12">
+<span class="material-symbols-outlined text-[24px] fill-1">code</span>
+</div>
+<span class="absolute -top-1 -right-1 relative inline-flex rounded-full size-3 bg-primary border-2 border-white dark:border-surface-dark"></span>
+</div>
+<div class="flex flex-col justify-center gap-1">
+<a class="text-slate-900 dark:text-white text-base md:text-lg font-semibold leading-tight hover:text-primary transition-colors line-clamp-1" href="#">
+                            شرح شامل لبرمجة إضافات XenForo 2.3
+                        </a>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-xs md:text-sm font-normal line-clamp-1">
+<span class="flex items-center gap-1 hover:text-slate-300 cursor-pointer">
+<span class="material-symbols-outlined text-[14px]">folder</span>
+                                ركن التطوير
+                            </span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">reply</span>
+                                آخر رد: <span class="font-medium text-slate-700 dark:text-slate-300">DevUser</span>
+</span>
+<span>•</span>
+<span class="text-slate-400">أمس</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end md:justify-center gap-2 mt-2 md:mt-0 pl-0 md:pl-2 shrink-0 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-400 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white transition-colors" title="إلغاء المراقبة">
+<span class="material-symbols-outlined text-[20px]">notifications_off</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-400 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white transition-colors" title="خيارات">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- List Item 3: Read -->
+<div class="group flex flex-col md:flex-row md:items-center gap-4 bg-white dark:bg-surface-dark hover:bg-slate-50 dark:hover:bg-surface-hover p-4 rounded-xl border border-[#e5e7eb] dark:border-transparent transition-all shadow-sm opacity-90 hover:opacity-100">
+<div class="flex items-start gap-4 flex-1">
+<div class="relative shrink-0">
+<div class="flex items-center justify-center rounded-lg bg-[#f3f4f6] dark:bg-[#232f48] text-slate-400 dark:text-slate-600 shrink-0 size-12">
+<span class="material-symbols-outlined text-[24px]">palette</span>
+</div>
+</div>
+<div class="flex flex-col justify-center gap-1">
+<a class="text-slate-700 dark:text-slate-300 text-base md:text-lg font-medium leading-tight hover:text-primary transition-colors line-clamp-1" href="#">
+                            مسابقة التصميم الشهرية - شهر يوليو 2024
+                        </a>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-xs md:text-sm font-normal line-clamp-1">
+<span class="flex items-center gap-1 hover:text-slate-300 cursor-pointer">
+<span class="material-symbols-outlined text-[14px]">folder</span>
+                                قسم التصميم
+                            </span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">reply</span>
+                                آخر رد: <span class="font-medium text-slate-700 dark:text-slate-300">DesignerX</span>
+</span>
+<span>•</span>
+<span class="text-slate-400">الثلاثاء</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end md:justify-center gap-2 mt-2 md:mt-0 pl-0 md:pl-2 shrink-0 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-400 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white transition-colors" title="إلغاء المراقبة">
+<span class="material-symbols-outlined text-[20px]">notifications_off</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-400 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white transition-colors" title="خيارات">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- List Item 4: Read -->
+<div class="group flex flex-col md:flex-row md:items-center gap-4 bg-white dark:bg-surface-dark hover:bg-slate-50 dark:hover:bg-surface-hover p-4 rounded-xl border border-[#e5e7eb] dark:border-transparent transition-all shadow-sm opacity-90 hover:opacity-100">
+<div class="flex items-start gap-4 flex-1">
+<div class="relative shrink-0">
+<div class="flex items-center justify-center rounded-lg bg-[#f3f4f6] dark:bg-[#232f48] text-slate-400 dark:text-slate-600 shrink-0 size-12">
+<span class="material-symbols-outlined text-[24px]">bug_report</span>
+</div>
+</div>
+<div class="flex flex-col justify-center gap-1">
+<a class="text-slate-700 dark:text-slate-300 text-base md:text-lg font-medium leading-tight hover:text-primary transition-colors line-clamp-1" href="#">
+                            الإبلاغ عن مشكلة في تسجيل الدخول
+                        </a>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-xs md:text-sm font-normal line-clamp-1">
+<span class="flex items-center gap-1 hover:text-slate-300 cursor-pointer">
+<span class="material-symbols-outlined text-[14px]">folder</span>
+                                قسم الشكاوي
+                            </span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">reply</span>
+                                آخر رد: <span class="font-medium text-slate-700 dark:text-slate-300">SupportTeam</span>
+</span>
+<span>•</span>
+<span class="text-slate-400">12 أكتوبر</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end md:justify-center gap-2 mt-2 md:mt-0 pl-0 md:pl-2 shrink-0 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-400 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white transition-colors" title="إلغاء المراقبة">
+<span class="material-symbols-outlined text-[20px]">notifications_off</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-400 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white transition-colors" title="خيارات">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- List Item 5: Read with Avatar -->
+<div class="group flex flex-col md:flex-row md:items-center gap-4 bg-white dark:bg-surface-dark hover:bg-slate-50 dark:hover:bg-surface-hover p-4 rounded-xl border border-[#e5e7eb] dark:border-transparent transition-all shadow-sm opacity-90 hover:opacity-100">
+<div class="flex items-start gap-4 flex-1">
+<div class="relative shrink-0">
+<div class="size-12 rounded-lg bg-cover bg-center grayscale opacity-70" data-alt="User avatar for thread starter" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrz5mm5jSkug4DrfAhwylfee6URKWyXWCyuBi1kcIh11ncvd08khbcfILW3oJOEMl7f09YPJ5kIUxLMha9lDixPEWlAQnG_8TRmSfu7lzdtjZ2rEuIjpm_drfm8Y3GRtTsjohog8NTRuIJEBgKsSKT-hJFhlkTO3598IDJTeM_VJN0rQICJaUklDf6fZOOFm5AdhFNDi6TywuksBGpbvugy7YdEyWylDnJix38h6O0uvMGlIN-QrQTqow-XN0w_FwaDeHCO19g8X0");'></div>
+</div>
+<div class="flex flex-col justify-center gap-1">
+<a class="text-slate-700 dark:text-slate-300 text-base md:text-lg font-medium leading-tight hover:text-primary transition-colors line-clamp-1" href="#">
+                            نقاش عام حول مستقبل المنتديات العربية
+                        </a>
+<div class="flex items-center gap-2 text-slate-500 dark:text-text-secondary text-xs md:text-sm font-normal line-clamp-1">
+<span class="flex items-center gap-1 hover:text-slate-300 cursor-pointer">
+<span class="material-symbols-outlined text-[14px]">folder</span>
+                                العام
+                            </span>
+<span>•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">reply</span>
+                                آخر رد: <span class="font-medium text-slate-700 dark:text-slate-300">Ahmed_K</span>
+</span>
+<span>•</span>
+<span class="text-slate-400">10 أكتوبر</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end md:justify-center gap-2 mt-2 md:mt-0 pl-0 md:pl-2 shrink-0 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-400 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white transition-colors" title="إلغاء المراقبة">
+<span class="material-symbols-outlined text-[20px]">notifications_off</span>
+</button>
+<button class="size-9 flex items-center justify-center rounded-lg hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-400 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white transition-colors" title="خيارات">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer / Pagination -->
+<div class="flex justify-center pt-6">
+<button class="flex items-center gap-2 bg-[#f3f4f6] dark:bg-[#232f48] hover:bg-[#e5e7eb] dark:hover:bg-[#2f3e5e] text-slate-700 dark:text-white px-8 py-3 rounded-xl text-sm font-medium transition-colors w-full md:w-auto justify-center">
+<span>تحميل المزيد</span>
+<span class="material-symbols-outlined text-[18px] animate-bounce mt-1">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Floating Mobile Actions (Optional for Mobile) -->
+<div class="fixed bottom-6 left-6 md:hidden">
+<button class="flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-xl shadow-primary/40">
+<span class="material-symbols-outlined text-[28px]">mark_email_read</span>
+</button>
+</div>
+</body></html>

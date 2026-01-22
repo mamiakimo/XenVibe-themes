@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard: الإشعارات</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#111722",
+                        "surface-darker": "#0b0f16",
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9"
+                    },
+                    fontFamily: {
+                        "display": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                        "sans": ["Noto Sans Arabic", "Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for modern feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f16; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #324467; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden h-screen flex">
+<!-- Sidebar Navigation -->
+<aside class="w-[280px] bg-surface-darker flex flex-col border-l border-border-dark shrink-0 z-20 hidden md:flex">
+<div class="p-6 pb-2">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl size-10 shadow-lg shadow-primary/20" data-alt="Abstract geometric logo with blue gradients" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBDL7odV2G-f3X4Z0e95CYHPQ9JlfJ66KwdTMiHOs9e2AoMFb2wLSlflvfTWptK1QD2mKIgpZe4thy9vl2TsDbdNTrxg6aeUbwb23CdUpOjES38s0ceje9IIZEenfKYugVv6_SroAwcLuUYlVZaAUJgmyvqvzu71ixhXQ3sS2REf4sUYQxcsDvHML2V-dsJnOUggNPsGgDUaVbztLFnWecgUk2y9HTzI0LtGLjwyKmPJ-pbvDLumW0crnJhVyKUWx-CfQ4CW8ZwsIE");'></div>
+<h1 class="text-white text-xl font-bold tracking-tight">المنتدى</h1>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto py-6 px-4 flex flex-col gap-8">
+<!-- Main Group -->
+<div class="flex flex-col gap-1">
+<div class="px-3 py-2 text-xs font-bold text-text-secondary uppercase tracking-wider mb-1">القائمة</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-white/5 hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">cottage</span>
+<span class="text-sm font-medium">الرئيسية</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-white/5 hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">forum</span>
+<span class="text-sm font-medium">المنتديات</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-white/5 hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">chat_bubble</span>
+<span class="text-sm font-medium">المحادثات</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center justify-between gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-all" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] font-variation-settings-'FILL'1">notifications</span>
+<span class="text-sm font-bold">الإشعارات</span>
+</div>
+<span class="flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[10px] font-bold text-white">5</span>
+</a>
+</div>
+<!-- Library Group -->
+<div class="flex flex-col gap-1">
+<div class="px-3 py-2 text-xs font-bold text-text-secondary uppercase tracking-wider mb-1">المكتبة</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-white/5 hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">bookmark</span>
+<span class="text-sm font-medium">المحفوظات</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-white/5 hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">history</span>
+<span class="text-sm font-medium">السجل</span>
+</a>
+</div>
+</nav>
+<div class="p-4 border-t border-border-dark">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors" href="#">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 border border-border-dark" data-alt="User profile picture placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAWQ1Dihj-egyecW8ag71XU-w4brTyyeFrNfgH6hT8LORjqeHjVvTLQovakQk1VP5SwPSXENs7tGcvoOQokD9ghm9LydluNibxwd3jfxeXfa0hBi5SNkHH5eoF9QxC8DxmuFGEHlHP2Ut0i25vnOGp3SrxzAxvQQDoitN5JOMx9dYqj6zYc-51Zx2jSnnbm0nRIkHbUzGig4afO5QKtgM77mQwafxPruq1d39TAl2Iys9VVdDiOOgundBYKzI2z9LJuKdeMs3pbs3M");'></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium leading-none">خالد محمد</span>
+<span class="text-text-secondary text-xs mt-1">متصل الآن</span>
+</div>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full relative overflow-hidden bg-background-dark">
+<!-- Header Sticky -->
+<header class="sticky top-0 z-10 bg-background-dark/95 backdrop-blur-sm border-b border-border-dark">
+<!-- Top Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 p-6 pb-2">
+<div class="flex flex-col gap-1">
+<h2 class="text-white text-2xl font-bold tracking-tight">الإشعارات</h2>
+<p class="text-text-secondary text-sm">لديك 5 إشعارات جديدة غير مقروءة</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex h-9 items-center justify-center gap-2 rounded-lg border border-border-dark bg-surface-dark px-4 text-xs font-medium text-white hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+<span>تحديد الكل كمقروء</span>
+</button>
+<button class="md:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-border-dark text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+<!-- Tabs Navigation -->
+<div class="px-6 mt-2">
+<div class="flex gap-8 border-b border-border-dark">
+<a class="relative flex flex-col items-center justify-center pb-3 text-white" href="#">
+<p class="text-sm font-bold">الكل</p>
+<div class="absolute bottom-0 h-[3px] w-full rounded-t-full bg-primary"></div>
+</a>
+<a class="relative flex flex-col items-center justify-center pb-3 text-text-secondary hover:text-white transition-colors" href="#">
+<div class="flex items-center gap-2">
+<p class="text-sm font-medium">غير مقروء</p>
+<span class="flex h-4 min-w-4 items-center justify-center rounded-full bg-primary/20 text-[10px] font-bold text-primary px-1">5</span>
+</div>
+<div class="absolute bottom-0 h-[3px] w-full rounded-t-full bg-transparent"></div>
+</a>
+<a class="relative flex flex-col items-center justify-center pb-3 text-text-secondary hover:text-white transition-colors" href="#">
+<p class="text-sm font-medium">إشارات</p>
+<div class="absolute bottom-0 h-[3px] w-full rounded-t-full bg-transparent"></div>
+</a>
+</div>
+</div>
+<!-- Filters Chips -->
+<div class="px-6 py-3 flex gap-2 overflow-x-auto no-scrollbar">
+<button class="flex h-7 items-center justify-center gap-2 rounded-full bg-primary text-white px-3 hover:bg-primary/90 transition-colors">
+<span class="text-xs font-medium">الكل</span>
+</button>
+<button class="flex h-7 items-center justify-center gap-2 rounded-full bg-border-dark text-text-secondary px-3 hover:bg-white/10 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">favorite</span>
+<span class="text-xs font-medium">الإعجابات</span>
+</button>
+<button class="flex h-7 items-center justify-center gap-2 rounded-full bg-border-dark text-text-secondary px-3 hover:bg-white/10 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">reply</span>
+<span class="text-xs font-medium">الردود</span>
+</button>
+<button class="flex h-7 items-center justify-center gap-2 rounded-full bg-border-dark text-text-secondary px-3 hover:bg-white/10 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[14px]">settings</span>
+<span class="text-xs font-medium">النظام</span>
+</button>
+</div>
+</header>
+<!-- Notification List (Scrollable) -->
+<div class="flex-1 overflow-y-auto p-6 pt-2">
+<!-- Section: Today -->
+<div class="mb-8">
+<h3 class="text-white text-sm font-bold px-2 mb-3 flex items-center gap-2">
+                    اليوم
+                    <span class="h-px flex-1 bg-border-dark"></span>
+</h3>
+<div class="flex flex-col rounded-xl border border-border-dark bg-surface-dark overflow-hidden divide-y divide-border-dark shadow-sm">
+<!-- Notification Item 1: Reply (Unread) -->
+<div class="group relative flex gap-4 p-4 hover:bg-white/5 transition-all cursor-pointer bg-primary/5">
+<div class="absolute right-0 top-0 bottom-0 w-[3px] bg-primary"></div>
+<!-- Avatar -->
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Portrait of a young man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB-DumlOPXd2lVNXQSV__ABoVerv0J_Mm4HFzNfwCV_6WJf6qFEPmCAjbb-C_CT3cdVJTrYoyb6TIlFUcRsaOQlm-lzTMdgdJQGYITHAWNd0Q2_BUwfl4cMw6qH4c1ObiHkE0Cukdfw3zdludDUJ1isUDiXwMe6LjldWORQ5sGhNO4rhTZZFxauTSzdWuXFCu84599j86XbDXmC7LazGPxNJI3MweJhFcBCvcEiYt66HZPqyxe6oEHJAVfzfQMuukxnM6FzDhJqOP8");'></div>
+<div class="absolute -bottom-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-surface-dark ring-2 ring-surface-dark">
+<span class="material-symbols-outlined text-[14px] text-green-500 font-bold">reply</span>
+</div>
+</div>
+<!-- Content -->
+<div class="flex flex-col flex-1 min-w-0 gap-1">
+<div class="flex items-center justify-between gap-2">
+<p class="text-sm text-white font-medium">
+<span class="font-bold hover:underline">أحمد سالم</span>
+                                    رد على موضوعك
+                                    <span class="text-text-secondary">تحديثات واجهة المستخدم الجديدة</span>
+</p>
+<span class="text-xs text-text-secondary shrink-0">منذ 15 دقيقة</span>
+</div>
+<p class="text-sm text-text-secondary line-clamp-2 pl-4 border-r-2 border-border-dark pr-3 py-0.5 bg-black/20 rounded-r-sm">
+                                أعتقد أن التغييرات الأخيرة ممتازة جداً، خصوصاً فيما يتعلق بالوضع الداكن. هل يمكننا إضافة خيار لتخصيص الألوان؟
+                            </p>
+<div class="flex gap-3 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-xs font-medium text-primary hover:text-white transition-colors">رد سريع</button>
+<button class="text-xs font-medium text-text-secondary hover:text-white transition-colors">تحديد كمقروء</button>
+</div>
+</div>
+</div>
+<!-- Notification Item 2: Reaction (Unread) -->
+<div class="group relative flex gap-4 p-4 hover:bg-white/5 transition-all cursor-pointer bg-primary/5">
+<div class="absolute right-0 top-0 bottom-0 w-[3px] bg-primary"></div>
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Portrait of a woman smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBcfeilR-ldBdM9T63c2uqBTK2fUQgW9ZCmZOS5cby5K1tynVo5iZ0rl3ZTNoPEXBQNi49TQspbjJHx1YAbWxe2nWP85-TZ-uX6y1KKVr3TFUvR4tpqlyddhxuxpUy58g1aXqI5jirrOfrYxe_7-xmnX4NrXntRqMYbcpcXT_ZZeby1kyRHYqDyu8W1tL4dP0uXk8Ra17-FRFmQIj58rp0qO_S1GPuCtGUPpWo9PPRBgvIOZEUko_KhCn0pkiHIHEDLqKK0RaxfsVU");'></div>
+<div class="absolute -bottom-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-surface-dark ring-2 ring-surface-dark">
+<span class="material-symbols-outlined text-[14px] text-red-500 font-variation-settings-'FILL'1">favorite</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0 gap-1">
+<div class="flex items-center justify-between gap-2">
+<p class="text-sm text-white font-medium">
+<span class="font-bold hover:underline">سارة علي</span>
+                                    أعجبت بتعليقك في
+                                    <span class="text-text-secondary">مناقشات التصميم العام</span>
+</p>
+<span class="text-xs text-text-secondary shrink-0">منذ ساعتين</span>
+</div>
+<p class="text-sm text-text-secondary italic">"أتفق معك تماماً في هذه النقطة..."</p>
+</div>
+</div>
+<!-- Notification Item 3: Mention (Unread) -->
+<div class="group relative flex gap-4 p-4 hover:bg-white/5 transition-all cursor-pointer bg-primary/5">
+<div class="absolute right-0 top-0 bottom-0 w-[3px] bg-primary"></div>
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Portrait of a man with glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDlY-WJMo2Ej6mXHy_q_78d_TUqhTw5-qxwvqYnD4s9rPlT4SbXVP3wiKqE-7KXX67KF0-qHc4Mt7MLDLrXrXI7-j19uCagBv0a6IG4WX7odjymVkyW44KGG2Sg17H6ucsgCKVY3Tw05-0PBIAd8jtYcqINbepMdqCpNwy5xOpQo1DwoE7vtCY1AsgtXturWw4gKo7fYfuZa4H-_xg08Ov4jYnxOefUvhLBsL4t-76r2GjQnRvtYRYK4Ubq0HquPUBezgBb4VqeMlw");'></div>
+<div class="absolute -bottom-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-surface-dark ring-2 ring-surface-dark">
+<span class="text-xs font-bold text-primary">@</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0 gap-1">
+<div class="flex items-center justify-between gap-2">
+<p class="text-sm text-white font-medium">
+<span class="font-bold hover:underline">محمد حسن</span>
+                                    أشار إليك في
+                                    <span class="text-text-secondary">مشكلة في تسجيل الدخول</span>
+</p>
+<span class="text-xs text-text-secondary shrink-0">منذ 3 ساعات</span>
+</div>
+<p class="text-sm text-text-secondary line-clamp-1">
+                                يمكننا سؤال @خالد محمد عن هذه المشكلة التقنية، ربما لديه الحل.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Yesterday -->
+<div class="mb-8">
+<h3 class="text-white text-sm font-bold px-2 mb-3 flex items-center gap-2">
+                    أمس
+                    <span class="h-px flex-1 bg-border-dark"></span>
+</h3>
+<div class="flex flex-col rounded-xl border border-border-dark bg-surface-dark overflow-hidden divide-y divide-border-dark">
+<!-- Notification Item 4: System (Read) -->
+<div class="group relative flex gap-4 p-4 hover:bg-white/5 transition-all cursor-pointer opacity-75 hover:opacity-100">
+<div class="relative shrink-0">
+<div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 border border-primary/20 text-primary">
+<span class="material-symbols-outlined text-[20px] font-variation-settings-'FILL'1">emoji_events</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0 gap-1">
+<div class="flex items-center justify-between gap-2">
+<p class="text-sm text-white font-medium">
+                                    تهانينا! لقد حصلت على وسام جديد
+                                </p>
+<span class="text-xs text-text-secondary shrink-0">أمس 9:30 م</span>
+</div>
+<p class="text-sm text-text-secondary">
+                                لقد حصلت على وسام "عضو نشيط" لوصولك إلى 100 مشاركة.
+                            </p>
+</div>
+</div>
+<!-- Notification Item 5: Quote (Read) -->
+<div class="group relative flex gap-4 p-4 hover:bg-white/5 transition-all cursor-pointer opacity-75 hover:opacity-100">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Portrait of a serious man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD1PpHPp5S6gCYztnqHDRVd8zpml55VjO0--S2oFo5eYu2mECs0YzdchAjyEmq2tcTwVrS8MvBriEQoAlrN98mruRoRH7_e3JNX4ltHjyqMSH61hYnI_-u13qc8hNcISOjKDfgW8cPDJKK9j6SkVnZ-azpv3CShXdCaQrICkETdJEqpvKuKHOckqJlldzZZ0uh1ecN1h_rTZ5t6Ufnj8t1uwy-xuFo6Pz8fDzmr3V3nS_QmmB98-dOtq7BolOm9bXGc7cNkHdEQxGg");'></div>
+<div class="absolute -bottom-1 -left-1 flex h-5 w-5 items-center justify-center rounded-full bg-surface-dark ring-2 ring-surface-dark">
+<span class="material-symbols-outlined text-[14px] text-orange-400">format_quote</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0 gap-1">
+<div class="flex items-center justify-between gap-2">
+<p class="text-sm text-white font-medium">
+<span class="font-bold hover:underline">كريم عبد الله</span>
+                                    اقتبس مشاركتك في
+                                    <span class="text-text-secondary">ورشة البرمجة بلغة بايثون</span>
+</p>
+<span class="text-xs text-text-secondary shrink-0">أمس 2:15 م</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Illustration Placeholder (Hidden if content exists, displayed for demo idea) -->
+<!-- 
+            <div class="flex flex-col items-center justify-center py-20 text-center">
+                <div class="bg-border-dark/50 rounded-full p-6 mb-4">
+                    <span class="material-symbols-outlined text-[48px] text-text-secondary opacity-50">inbox</span>
+                </div>
+                <h3 class="text-white font-bold text-lg">لا توجد إشعارات جديدة</h3>
+                <p class="text-text-secondary text-sm max-w-xs mt-2">لقد قمت بقراءة جميع الإشعارات. عد لاحقاً للمزيد من التحديثات.</p>
+            </div> 
+            -->
+<div class="flex justify-center py-6 pb-20">
+<p class="text-xs text-text-secondary opacity-50">نهاية الإشعارات</p>
+</div>
+</div>
+</main>
+</body></html>

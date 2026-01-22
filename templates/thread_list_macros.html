@@ -1,0 +1,234 @@
+<!-- XenVibe Cards - Thread Card Macros -->
+
+<xf:css src="structured_list.less" />
+
+<xf:macro id="item"
+	arg-thread="!"
+	arg-forum=""
+	arg-forceRead="{{ false }}"
+	arg-showWatched="{{ true }}"
+	arg-allowInlineMod="{{ true }}"
+	arg-chooseName=""
+	arg-extraInfo=""
+	arg-allowEdit="{{ true }}">
+
+	<xf:set var="$isUnread" value="{{ $thread.isUnread() AND !$forceRead }}" />
+	<xf:set var="$hasPrefix" value="{{ $thread.prefix_id ? true : false }}" />
+
+	<article class="xv-thread-card {{ $isUnread ? 'xv-thread-card--unread' : '' }} {{ $thread.sticky ? 'xv-thread-card--sticky' : '' }} {{ $thread.featured ? 'xv-thread-card--featured' : '' }} js-inlineModContainer js-threadListItem-{$thread.thread_id}">
+
+		<!-- Card Image/Header -->
+		<div class="xv-thread-card-header">
+			<!-- Gradient Background -->
+			<div class="xv-thread-card-bg"></div>
+
+			<!-- Sticky Badge -->
+			<xf:if is="$thread.sticky">
+				<div class="xv-thread-badge xv-thread-badge--sticky">
+					<span class="material-symbols-outlined">push_pin</span>
+					{{ phrase('sticky') }}
+				</div>
+			</xf:if>
+
+			<!-- Featured Badge -->
+			<xf:if is="$thread.featured AND !$thread.sticky">
+				<div class="xv-thread-badge xv-thread-badge--featured">
+					<span class="material-symbols-outlined">star</span>
+					{{ phrase('featured') }}
+				</div>
+			</xf:if>
+
+			<!-- Prefix Tag -->
+			<xf:if is="$hasPrefix">
+				<div class="xv-thread-prefix">
+					{{ prefix('thread', $thread, 'html', '') }}
+				</div>
+			</xf:if>
+
+			<!-- Thread Type Icon (center) -->
+			<div class="xv-thread-type-icon">
+				<xf:if is="$thread.discussion_type == 'question'">
+					<span class="material-symbols-outlined">help</span>
+				<xf:elseif is="$thread.discussion_type == 'article'" />
+					<span class="material-symbols-outlined">article</span>
+				<xf:elseif is="$thread.discussion_type == 'suggestion'" />
+					<span class="material-symbols-outlined">lightbulb</span>
+				<xf:elseif is="$thread.discussion_type == 'poll'" />
+					<span class="material-symbols-outlined">bar_chart</span>
+				<xf:else />
+					<span class="material-symbols-outlined">forum</span>
+				</xf:if>
+			</div>
+		</div>
+
+		<!-- Card Content -->
+		<div class="xv-thread-card-content">
+			<!-- Title -->
+			<h3 class="xv-thread-card-title">
+				<a href="{{ link('threads' . ($isUnread ? '/unread' : ''), $thread) }}"
+				   data-xf-init="{{ $thread.canPreview() ? 'preview-tooltip' : '' }}"
+				   data-preview-url="{{ $thread.canPreview() ? link('threads/preview', $thread) : '' }}">
+					{$thread.title}
+				</a>
+			</h3>
+
+			<!-- Status Icons (if needed) -->
+			<xf:if is="!$thread.discussion_open OR $thread.discussion_state != 'visible'">
+				<div class="xv-thread-statuses">
+					<xf:if is="!$thread.discussion_open">
+						<span class="xv-thread-status xv-thread-status--locked" title="{{ phrase('locked') }}">
+							<span class="material-symbols-outlined">lock</span>
+						</span>
+					</xf:if>
+					<xf:if is="$thread.discussion_state == 'moderated'">
+						<span class="xv-thread-status xv-thread-status--moderated" title="{{ phrase('awaiting_approval') }}">
+							<span class="material-symbols-outlined">pending</span>
+						</span>
+					</xf:if>
+					<xf:if is="$thread.discussion_state == 'deleted'">
+						<span class="xv-thread-status xv-thread-status--deleted" title="{{ phrase('deleted') }}">
+							<span class="material-symbols-outlined">delete</span>
+						</span>
+					</xf:if>
+				</div>
+			</xf:if>
+		</div>
+
+		<!-- Card Footer -->
+		<div class="xv-thread-card-footer">
+			<!-- Author Info -->
+			<div class="xv-thread-author">
+				<div class="xv-thread-avatars">
+					<xf:avatar user="$thread.User" size="xs" defaultname="{$thread.username}" />
+					<xf:if is="$thread.reply_count > 0 AND $thread.last_post_user_id != $thread.user_id">
+						<xf:if is="!$xf.visitor.isIgnoring($thread.last_post_user_id)">
+							<xf:avatar user="{$thread.LastPoster}" size="xs" defaultname="{$thread.last_post_username}" class="xv-thread-avatar-reply" />
+						</xf:if>
+					</xf:if>
+				</div>
+				<div class="xv-thread-author-info">
+					<span class="xv-thread-author-name">
+						<xf:username user="$thread.User" defaultname="{$thread.username}" />
+					</span>
+					<span class="xv-thread-date">
+						<xf:date time="{$thread.last_post_date}" />
+					</span>
+				</div>
+			</div>
+
+			<!-- Stats -->
+			<div class="xv-thread-stats">
+				<div class="xv-thread-stat" title="{{ phrase('views') }}">
+					<span class="material-symbols-outlined">visibility</span>
+					{$thread.view_count|number_short}
+				</div>
+				<div class="xv-thread-stat" title="{{ phrase('replies') }}">
+					<span class="material-symbols-outlined">chat_bubble</span>
+					{$thread.reply_count|number_short}
+				</div>
+			</div>
+		</div>
+
+		<!-- Inline Mod Checkbox (hidden, for functionality) -->
+		<xf:if is="$allowInlineMod AND $thread.canUseInlineModeration()">
+			<div class="xv-thread-mod">
+				<xf:checkbox standalone="true">
+					<xf:option value="{$thread.thread_id}" class="js-inlineModToggle" />
+				</xf:checkbox>
+			</div>
+		</xf:if>
+	</article>
+</xf:macro>
+
+<!-- Original XenForo macros (kept for compatibility) -->
+<xf:macro id="item_new_posts" arg-thread="!">
+	<div class="contentRow">
+		<div class="contentRow-figure">
+			<xf:avatar user="$thread.LastPoster" size="xxs" defaultname="{$thread.last_post_username}" />
+		</div>
+		<div class="contentRow-main contentRow-main--close">
+			<xf:if is="$thread.isUnread()">
+				<a href="{{ link('threads/unread', $thread) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
+			<xf:else />
+				<a href="{{ link('threads/post', $thread, {'post_id': $thread.last_post_id}) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
+			</xf:if>
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				<ul class="listInline listInline--bullet">
+					<li>{{ phrase('latest_x', {'name': $thread.last_post_cache.username}) }}</li>
+					<li><xf:date time="{$thread.last_post_date}" /></li>
+				</ul>
+			</div>
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				<a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro id="item_new_threads" arg-thread="!">
+	<div class="contentRow">
+		<div class="contentRow-figure">
+			<xf:avatar user="$thread.User" size="xxs" defaultname="{$thread.username}" />
+		</div>
+		<div class="contentRow-main contentRow-main--close">
+			<a href="{{ link('threads', $thread) }}">{{ prefix('thread', $thread) }}{$thread.title}</a>
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				<ul class="listInline listInline--bullet">
+					<li>{{ phrase('started_by_x', {'name': $thread.username}) }}</li>
+					<li><xf:date time="{$thread.post_date}" /></li>
+					<li>{{ phrase('replies:') }} {$thread.reply_count|number_short}</li>
+				</ul>
+			</div>
+			<div class="contentRow-minor contentRow-minor--hideLinks">
+				<a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a>
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro id="quick_thread"
+	arg-forum="!"
+	arg-page="1"
+	arg-order="last_post_date"
+	arg-direction="desc"
+	arg-prefixes="{{ [] }}">
+
+	<xf:css src="structured_list.less" />
+
+	<xf:if is="$xf.cookieConsent.isCaptchaConsented() && ($forum.canCreateThread() OR $forum.canCreateThreadPreReg())">
+		<xf:js src="xf/thread.js" min="1" />
+		<xf:set var="$inlineMode" value="{{ ($page == 1 && $order == 'last_post_date' && $direction == 'desc') ? true : false }}" />
+
+		<xf:form action="{{ link('forums/post-thread', $forum, {'inline-mode': $inlineMode}) }}" ajax="true"
+			class="xv-quick-thread"
+			draft="{{ link('forums/draft', $forum) }}"
+			data-xf-init="quick-thread"
+			data-focus-activate=".js-titleInput"
+			data-focus-activate-href="{{ link('forums/post-thread', $forum, {'inline-mode': true}) }}"
+			data-focus-activate-target=".js-quickThreadFields"
+			data-insert-target=".js-threadList"
+			data-replace-target=".js-emptyThreadList">
+
+			<div class="xv-quick-thread-inner js-prefixListenContainer">
+				<div class="xv-quick-thread-avatar">
+					<xf:avatar user="$xf.visitor" size="s" />
+				</div>
+				<div class="xv-quick-thread-input">
+					<xf:formrow rowtype="noGutter noLabel fullWidth noPadding mergeNext" label="{{ phrase('title') }}">
+						<xf:prefixinput maxlength="{{ max_length('XF:Thread', 'title') }}"
+							placeholder="{$forum.thread_prompt}"
+							title="{{ phrase('post_new_thread_in_this_forum') }}"
+							prefix-value="{$forum.default_prefix_id}"
+							type="thread"
+							prefixes="{$prefixes}"
+							data-xf-init="tooltip"
+							rows="1"
+							help-href="{{ link('forums/prefix-help', $forum) }}"
+							help-skip-initial="{{ true }}" />
+					</xf:formrow>
+					<div class="js-quickThreadFields inserter-container is-hidden"></div>
+				</div>
+			</div>
+		</xf:form>
+	</xf:if>
+</xf:macro>

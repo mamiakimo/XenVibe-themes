@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DynamicList: تسجيل الدخول</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#1d66f5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0d1117", /* GitHub-like dark bg */
+                        "card-dark": "#161b22", /* Card bg */
+                        "border-dark": "#30363d", /* Border color */
+                        "input-bg": "#0d1117",
+                        "text-secondary": "#8b949e",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'glow': '0 0 0 2px rgba(19, 91, 236, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col text-slate-900 dark:text-white transition-colors duration-200">
+<!-- Top Navigation -->
+<header class="w-full border-b border-gray-200 dark:border-border-dark bg-white/50 dark:bg-card-dark/50 backdrop-blur-sm sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo Area -->
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-2xl">dataset</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-gray-900 dark:text-white font-display">DynamicList</span>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-4">
+<span class="hidden md:inline-block text-sm text-gray-500 dark:text-text-secondary">ليس لديك حساب؟</span>
+<button class="flex items-center justify-center h-9 px-4 rounded-lg bg-primary hover:bg-primary-hover text-white text-sm font-bold transition-all duration-200 shadow-lg shadow-primary/20">
+                        تسجيل جديد
+                    </button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
+<!-- Decorative Background Elements -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/5 blur-[100px]" data-alt="Soft blue gradient glow in top left corner"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-500/5 blur-[100px]" data-alt="Soft purple gradient glow in bottom right corner"></div>
+</div>
+<!-- Login Card -->
+<div class="w-full max-w-[440px] z-10">
+<div class="bg-white dark:bg-card-dark border border-gray-200 dark:border-border-dark rounded-2xl shadow-xl overflow-hidden">
+<!-- Card Header -->
+<div class="pt-8 pb-4 px-8 text-center">
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 font-display">تسجيل الدخول</h1>
+<p class="text-gray-500 dark:text-text-secondary text-sm">مرحباً بك مجدداً في مجتمع المطورين</p>
+</div>
+<!-- Form -->
+<div class="px-8 pb-8 pt-2">
+<form action="#" class="flex flex-col gap-5" method="POST" onsubmit="event.preventDefault();">
+<!-- Username Field -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-white" for="email">
+                                البريد الإلكتروني أو اسم المستخدم
+                            </label>
+<div class="relative group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<input class="block w-full h-11 pr-10 pl-3 rounded-xl border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-input-bg text-gray-900 dark:text-white placeholder-gray-400 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all text-sm font-normal shadow-sm" id="email" placeholder="أدخل بريدك الإلكتروني" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<label class="block text-sm font-medium text-gray-700 dark:text-white" for="password">
+                                    كلمة المرور
+                                </label>
+<a class="text-xs font-medium text-primary hover:text-primary-hover transition-colors" href="#">
+                                    نسيت كلمة المرور؟
+                                </a>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="block w-full h-11 pr-10 pl-3 rounded-xl border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-input-bg text-gray-900 dark:text-white placeholder-gray-400 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all text-sm font-normal shadow-sm" id="password" placeholder="أدخل كلمة المرور" type="password"/>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full flex items-center justify-center h-11 rounded-xl bg-primary hover:bg-primary-hover text-white font-bold text-sm transition-all duration-200 shadow-lg shadow-primary/25 mt-2 group" type="submit">
+<span class="ml-2">دخول</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-hover:-translate-x-1">arrow_back</span>
+</button>
+<!-- Divider -->
+<div class="relative flex py-1 items-center">
+<div class="flex-grow border-t border-gray-200 dark:border-border-dark"></div>
+<span class="flex-shrink-0 mx-4 text-gray-400 dark:text-gray-600 text-xs font-medium">أو تابع باستخدام</span>
+<div class="flex-grow border-t border-gray-200 dark:border-border-dark"></div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 h-10 px-4 rounded-lg border border-gray-200 dark:border-border-dark bg-white dark:bg-input-bg hover:bg-gray-50 dark:hover:bg-[#21262d] text-gray-700 dark:text-gray-300 transition-all" type="button">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"></path>
+</svg>
+<span class="text-sm font-medium">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 px-4 rounded-lg border border-gray-200 dark:border-border-dark bg-white dark:bg-input-bg hover:bg-gray-50 dark:hover:bg-[#21262d] text-gray-700 dark:text-gray-300 transition-all" type="button">
+<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
+</svg>
+<span class="text-sm font-medium">GitHub</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Footer area of card -->
+<div class="px-8 py-4 bg-gray-50 dark:bg-[#13171e] border-t border-gray-200 dark:border-border-dark flex justify-center">
+<p class="text-sm text-gray-500 dark:text-text-secondary">
+                        تواجه مشكلة؟ 
+                        <a class="text-primary hover:text-primary-hover font-medium" href="#">اتصل بالدعم</a>
+</p>
+</div>
+</div>
+<!-- Bottom Helper -->
+<div class="mt-8 text-center">
+<p class="text-xs text-gray-400 dark:text-gray-600">
+                    © 2024 DynamicList. جميع الحقوق محفوظة.
+                </p>
+<div class="mt-2 flex justify-center gap-4 text-xs text-gray-400 dark:text-gray-600">
+<a class="hover:text-gray-300" href="#">الشروط</a>
+<span>•</span>
+<a class="hover:text-gray-300" href="#">الخصوصية</a>
+</div>
+</div>
+</div>
+</main>
+</body></html>

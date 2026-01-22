@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DynamicList: تفاصيل الحساب</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0d1117", /* GitHub-like dark base */
+                        "surface-dark": "#161b22",     /* Card background */
+                        "border-dark": "#30363d",      /* Borders */
+                        "text-secondary": "#8b949e",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.375rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d1117; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30363d; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #58a6ff; 
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-body min-h-screen flex flex-col">
+<!-- Navbar Placeholder (Top Bar) -->
+<nav class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-border-dark bg-white dark:bg-surface-dark px-4 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="h-8 w-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">D</div>
+<span class="text-lg font-bold tracking-tight hidden sm:block">DynamicList</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-text-secondary">search</span>
+</div>
+<div class="h-8 w-8 rounded-full bg-cover bg-center border border-border-dark" data-alt="User avatar small" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBMrZOUb4HAtX7wU6Myn_GZVR8J-OYlqjf62S3y67dDkmGXa-Tvqz124Q-gU3quKlDU4DnwbvhT4xgcFEtd11okcKk55uZgfD-79r41oMn6VyzNQAj84mC6y7sE0uxp6zV25V1i4Hramzlg98jwl5KJrJrwBgY0sevouDMdqySHfzWEoF2VOpe6nvYaeSRaOcGthU2HGItRSmrTfxl4I_7nWw4HOa5yBXnGyn2mJl_wZeGnQhiFDdXya1kyaKEfmHgmucR9eLQN0ws')"></div>
+</div>
+</div>
+</nav>
+<div class="flex-1 max-w-7xl mx-auto w-full p-4 md:p-6 lg:p-8">
+<!-- Breadcrumbs -->
+<div class="mb-6">
+<nav aria-label="Breadcrumb" class="flex text-sm text-text-secondary">
+<ol class="inline-flex items-center gap-2">
+<li class="inline-flex items-center">
+<a class="hover:text-primary transition-colors" href="#">الرئيسية</a>
+</li>
+<li class="flex items-center">
+<span class="material-symbols-outlined text-[16px] mx-1">chevron_left</span>
+<a class="hover:text-primary transition-colors" href="#">حسابي</a>
+</li>
+<li class="flex items-center">
+<span class="material-symbols-outlined text-[16px] mx-1">chevron_left</span>
+<span class="text-white font-medium">تفاصيل الحساب</span>
+</li>
+</ol>
+</nav>
+</div>
+<div class="flex flex-col lg:flex-row gap-8 items-start">
+<!-- Sidebar Navigation (Right side in RTL) -->
+<aside class="w-full lg:w-64 shrink-0 space-y-1">
+<div class="mb-6 flex items-center gap-3 px-2">
+<div class="size-10 rounded-full bg-cover bg-center border border-border-dark shadow-sm" data-alt="User profile picture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA4cADgbKpF8Qz5c6H89p3mq58Iz6hTUnBoaAkcF9vseWCZXX9m5sJjCjDgl8YHW642HVJUU1bOnpxI68d72JO5frKe1xWNF1oNzHRE4nIIfwNmI4y2TSiqcZhdTdFvJ9LRQMWDondNX3Ree2bgq2CErjndc-MTX179IFLJjrC_9ZeB1J-0CjHMC1RUtqoIGNY596FMjmMz7xgwEMjx_GV0TxBcDqFtQ58sqDdqSXPdI9xCacp06E88FD4jrh6yQGHhXzEo_K3v09M');"></div>
+<div class="flex flex-col">
+<span class="font-bold text-sm">أحمد محمد</span>
+<span class="text-xs text-text-secondary">عضو نشط</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-white shadow-md shadow-primary/20 group transition-all" href="#">
+<span class="material-symbols-outlined icon-filled text-[20px]">person</span>
+<span class="text-sm font-bold">تفاصيل الحساب</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-secondary hover:bg-surface-dark hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">security</span>
+<span class="text-sm font-medium">كلمة المرور والأمان</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-secondary hover:bg-surface-dark hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">lock</span>
+<span class="text-sm font-medium">الخصوصية</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-secondary hover:bg-surface-dark hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">tune</span>
+<span class="text-sm font-medium">التفضيلات</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-secondary hover:bg-surface-dark hover:text-white transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary transition-colors">link</span>
+<span class="text-sm font-medium">الحسابات المتصلة</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 w-full min-w-0">
+<!-- Page Header -->
+<div class="border-b border-border-dark pb-6 mb-6">
+<h1 class="text-3xl font-bold tracking-tight text-white mb-2">تفاصيل الحساب</h1>
+<p class="text-text-secondary text-base">إدارة معلومات ملفك الشخصي والتحكم في ما يراه الآخرون.</p>
+</div>
+<!-- Avatar Section (Card) -->
+<div class="bg-surface-dark border border-border-dark rounded-lg p-6 mb-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative shrink-0">
+<div class="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-cover bg-center border-4 border-background-dark shadow-xl" data-alt="Large profile avatar preview" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBsTDsCb7-M0bsRKnNkP_MBfJeKsaqZXzTqAhE924cpVYdEpzrldk73kKwQQkaNzz1UerX3mV4L8WVrCHiQkcV_Hffet9rqFOjPEtlcGVnLQEZe5gzoaYRclO1J4xPlZGQTt_-j0QQ91VRGsbc0XTbIf9gaQIYbn6Guo9BbUTEgsGha58sufpDhnwGBHNRaf3_MVdgCTuBsiwp6egHYGrszTaFC0Ezmwfg6yQW6yPLEWyt6xNL9REusBIs-vytAANdgQ41FZPRQUv0');"></div>
+<button aria-label="Edit Avatar" class="absolute bottom-1 right-1 p-2 bg-surface-dark border border-border-dark rounded-full text-text-secondary hover:text-primary hover:border-primary transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[18px] block">edit</span>
+</button>
+</div>
+<div class="flex-1 text-center sm:text-right">
+<h2 class="text-xl font-bold text-white mb-1">الصورة الرمزية</h2>
+<p class="text-sm text-text-secondary mb-4 max-w-md">يسمح بالصور بصيغة JPG أو PNG. يفضل أن تكون الصورة مربعة وبحجم لا يتجاوز 2 ميجابايت.</p>
+<div class="flex gap-3 justify-center sm:justify-start">
+<button class="px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm font-bold rounded-md transition-colors shadow-lg shadow-primary/20">رفع صورة جديدة</button>
+<button class="px-4 py-2 bg-transparent border border-border-dark text-text-secondary hover:text-red-400 hover:border-red-900/50 text-sm font-bold rounded-md transition-colors">حذف</button>
+</div>
+</div>
+</div>
+<!-- Dynamic List Container: Identity -->
+<div class="mb-8">
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-lg font-bold text-white">الهوية</h3>
+</div>
+<div class="bg-surface-dark border border-border-dark rounded-lg overflow-hidden flex flex-col divide-y divide-border-dark">
+<!-- Row 1: Username (Read Only) -->
+<div class="group flex flex-col md:flex-row md:items-center justify-between p-4 hover:bg-[#1c2128] transition-colors">
+<div class="flex flex-col md:w-1/3 mb-2 md:mb-0">
+<span class="text-sm font-semibold text-white">اسم المستخدم</span>
+<span class="text-xs text-text-secondary">الاسم الذي يظهر للعامة</span>
+</div>
+<div class="md:w-2/3 flex items-center justify-between gap-4">
+<span class="font-mono text-sm text-text-secondary bg-[#0d1117] px-2 py-1 rounded border border-border-dark">ahmed_dev</span>
+<span class="material-symbols-outlined text-text-secondary/30 text-[20px]" title="لا يمكن تغييره">lock</span>
+</div>
+</div>
+<!-- Row 2: Email (Editable) -->
+<div class="group flex flex-col md:flex-row md:items-center justify-between p-4 hover:bg-[#1c2128] transition-colors relative">
+<div class="flex flex-col md:w-1/3 mb-2 md:mb-0">
+<span class="text-sm font-semibold text-white">البريد الإلكتروني</span>
+</div>
+<div class="md:w-2/3 flex items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="text-sm text-text-secondary">ahmed@example.com</span>
+<span class="px-2 py-0.5 rounded-full bg-green-900/30 text-green-400 border border-green-900/50 text-[10px] font-bold tracking-wide">تم التحقق</span>
+</div>
+<button class="text-sm font-medium text-primary hover:underline opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100">تغيير</button>
+</div>
+</div>
+<!-- Row 3: Custom Title -->
+<div class="group flex flex-col md:flex-row md:items-center justify-between p-4 hover:bg-[#1c2128] transition-colors">
+<div class="flex flex-col md:w-1/3 mb-2 md:mb-0">
+<span class="text-sm font-semibold text-white">اللقب المخصص</span>
+</div>
+<div class="md:w-2/3 flex items-center justify-between gap-4">
+<span class="text-sm text-text-secondary italic">مطور واجهات محترف</span>
+<button class="text-sm font-medium text-primary hover:underline opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100">تعديل</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic List Container: Personal Details -->
+<div class="mb-8">
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-lg font-bold text-white">التفاصيل الشخصية</h3>
+</div>
+<div class="bg-surface-dark border border-border-dark rounded-lg overflow-hidden flex flex-col divide-y divide-border-dark">
+<!-- Row 1: Location (Active Edit State Example) -->
+<div class="flex flex-col p-4 bg-[#1c2128] border-l-2 border-l-primary relative">
+<div class="flex flex-col md:flex-row justify-between mb-3">
+<div class="flex flex-col md:w-1/3 mb-2 md:mb-0">
+<label class="text-sm font-semibold text-white" for="location">الموقع الجغرافي</label>
+<span class="text-xs text-text-secondary">يظهر في ملفك الشخصي</span>
+</div>
+<div class="md:w-2/3">
+<div class="relative">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+<span class="material-symbols-outlined text-text-secondary text-[18px]">location_on</span>
+</div>
+<input class="bg-background-dark border border-primary text-white text-sm rounded-lg focus:ring-primary focus:border-primary block w-full pr-10 p-2.5 placeholder-gray-500 shadow-sm" id="location" type="text" value="الرياض، المملكة العربية السعودية"/>
+</div>
+</div>
+</div>
+<!-- Action Footer for Edit Mode -->
+<div class="flex justify-end gap-3 mt-1 pt-3 border-t border-border-dark border-dashed">
+<button class="text-sm font-medium text-text-secondary hover:text-white px-3 py-1.5 rounded transition-colors">إلغاء</button>
+<button class="text-sm font-bold text-white bg-primary hover:bg-blue-600 px-4 py-1.5 rounded shadow-sm shadow-blue-900/20 transition-colors">حفظ التغييرات</button>
+</div>
+</div>
+<!-- Row 2: Website -->
+<div class="group flex flex-col md:flex-row md:items-center justify-between p-4 hover:bg-[#1c2128] transition-colors">
+<div class="flex flex-col md:w-1/3 mb-2 md:mb-0">
+<span class="text-sm font-semibold text-white">الموقع الإلكتروني</span>
+</div>
+<div class="md:w-2/3 flex items-center justify-between gap-4">
+<a class="text-sm text-primary hover:underline flex items-center gap-1 dir-ltr" href="#">
+                                    https://ahmed.dev
+                                    <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+<button class="text-sm font-medium text-primary hover:underline opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100">تعديل</button>
+</div>
+</div>
+<!-- Row 3: Date of Birth -->
+<div class="group flex flex-col md:flex-row md:items-center justify-between p-4 hover:bg-[#1c2128] transition-colors">
+<div class="flex flex-col md:w-1/3 mb-2 md:mb-0">
+<span class="text-sm font-semibold text-white">تاريخ الميلاد</span>
+</div>
+<div class="md:w-2/3 flex items-center justify-between gap-4">
+<span class="text-sm text-text-secondary">15 يناير 1995</span>
+<button class="text-sm font-medium text-primary hover:underline opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100">تعديل</button>
+</div>
+</div>
+<!-- Row 4: Bio / About -->
+<div class="group flex flex-col md:flex-row md:items-start justify-between p-4 hover:bg-[#1c2128] transition-colors">
+<div class="flex flex-col md:w-1/3 mb-2 md:mb-0 pt-1">
+<span class="text-sm font-semibold text-white">نبذة عنك</span>
+</div>
+<div class="md:w-2/3 flex items-start justify-between gap-4">
+<p class="text-sm text-text-secondary leading-relaxed line-clamp-2">
+                                    مطور واجهات أمامية شغوف بتقنيات الويب الحديثة. أعمل حالياً على مشاريع مفتوحة المصدر وأحب مشاركة المعرفة مع المجتمع.
+                                </p>
+<button class="text-sm font-medium text-primary hover:underline opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100 shrink-0 mt-1">تعديل</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic List Container: Preferences -->
+<div class="mb-12">
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-lg font-bold text-white">التفضيلات</h3>
+</div>
+<div class="bg-surface-dark border border-border-dark rounded-lg overflow-hidden flex flex-col divide-y divide-border-dark">
+<!-- Row 1: Timezone -->
+<div class="group flex flex-col md:flex-row md:items-center justify-between p-4 hover:bg-[#1c2128] transition-colors">
+<div class="flex flex-col md:w-1/3 mb-2 md:mb-0">
+<span class="text-sm font-semibold text-white">المنطقة الزمنية</span>
+</div>
+<div class="md:w-2/3 flex items-center justify-between gap-4">
+<span class="text-sm text-text-secondary">(UTC+03:00) الرياض</span>
+<button class="text-sm font-medium text-primary hover:underline opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100">تعديل</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

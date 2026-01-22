@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard: Members List</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3713ec",
+                        "primary-hover": "#2c0fb9",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                        "surface-dark": "#1e1b2e",
+                        "surface-dark-lighter": "#292348",
+                        "border-dark": "#3b3267",
+                        "text-secondary": "#9b92c9"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "sans": ["Inter", "Noto Sans Arabic", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for dashboard feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3b3267; 
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f4385; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display h-screen overflow-hidden flex selection:bg-primary selection:text-white">
+<!-- Sidebar (Right side in RTL) -->
+<aside class="w-72 bg-surface-dark border-l border-border-dark flex flex-col h-full shrink-0 z-20 transition-all duration-300">
+<!-- User Profile Header in Sidebar -->
+<div class="p-6 border-b border-border-dark">
+<div class="flex items-center gap-4">
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 ring-2 ring-primary/50" data-alt="User profile avatar showing a smiling face" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbchwOSe5jziso5TbeyM2sSpwWjjYiRkRolKEIest-6t83bwMvo2fWYQqiXgsbCUo09OExIQfmlarPH74hO2iTBre-tHeIKbjTzuah5Fil84eCTj_b_h2L2LVc-4A9uuJRCislbHvBhX_49yU4CTLJqqor3ZiFCu9fgTe-rgxBeA3TNOL3bawk8s4rEIisseW9DFD8BTJi22GfvfTsTOU03l87KaqffvEjZukfiBp41B07YpXIWqfMIt36iExGXNaTKCXxWbfy5Yg");'>
+</div>
+<div class="absolute bottom-0 right-0 size-3 bg-green-500 border-2 border-surface-dark rounded-full"></div>
+</div>
+<div class="flex flex-col overflow-hidden">
+<h1 class="text-white text-base font-bold leading-tight truncate">أحمد محمد</h1>
+<p class="text-text-secondary text-xs font-normal leading-normal truncate">مدير المنتدى</p>
+</div>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex-1 overflow-y-auto py-6 px-3 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform" data-weight="regular">dashboard</span>
+<span class="text-sm font-medium">نظرة عامة</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform" data-weight="regular">forum</span>
+<span class="text-sm font-medium">المناقشات</span>
+</a>
+<!-- Active Item -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/20 text-primary border border-primary/20 shadow-sm shadow-primary/10" href="#">
+<span class="material-symbols-outlined text-[24px] fill-current" data-weight="fill">group</span>
+<span class="text-sm font-bold">الأعضاء</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform" data-weight="regular">bar_chart</span>
+<span class="text-sm font-medium">التحليلات</span>
+</a>
+<div class="my-2 border-t border-border-dark mx-3"></div>
+<p class="px-3 text-xs font-semibold text-text-secondary/50 uppercase tracking-wider mb-1">الإدارة</p>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform" data-weight="regular">shield</span>
+<span class="text-sm font-medium">المشرفين</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform" data-weight="regular">settings</span>
+<span class="text-sm font-medium">الإعدادات</span>
+</a>
+</nav>
+<!-- Bottom Actions -->
+<div class="p-4 border-t border-border-dark">
+<button class="flex w-full items-center gap-3 px-3 py-2 rounded-lg text-text-secondary hover:text-red-400 hover:bg-red-400/10 transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-weight="regular">logout</span>
+<span class="text-sm font-medium">تسجيل الخروج</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-background-dark relative">
+<!-- Top Gradient Overlay -->
+<div class="absolute top-0 w-full h-64 bg-gradient-to-b from-[#1e1b2e]/50 to-transparent pointer-events-none z-0"></div>
+<!-- Header Section -->
+<header class="flex flex-col gap-6 px-8 pt-8 pb-4 z-10 shrink-0">
+<!-- Breadcrumbs / Top Actions -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-text-secondary text-sm">
+<span>لوحة التحكم</span>
+<span class="material-symbols-outlined text-[16px] text-text-secondary/50">chevron_left</span>
+<span class="text-white">الأعضاء</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="size-8 flex items-center justify-center rounded-lg hover:bg-surface-dark-lighter text-text-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="size-8 flex items-center justify-center rounded-lg hover:bg-surface-dark-lighter text-text-secondary transition-colors">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</button>
+</div>
+</div>
+<!-- Page Title & CTA -->
+<div class="flex flex-wrap items-end justify-between gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-bold text-white tracking-tight">قائمة الأعضاء</h1>
+<p class="text-text-secondary text-sm">إدارة وعرض الأعضاء المسجلين في المنتدى (12,450 عضو)</p>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded-xl font-medium transition-all shadow-lg shadow-primary/20 active:scale-95">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span>دعوة عضو جديد</span>
+</button>
+</div>
+</header>
+<!-- Toolbar (Search & Filter) -->
+<div class="px-8 py-2 z-10 shrink-0">
+<div class="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between bg-surface-dark/50 p-2 rounded-2xl border border-border-dark backdrop-blur-sm">
+<!-- Search -->
+<div class="relative flex-1 min-w-[280px]">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary text-[20px]">search</span>
+<input class="w-full h-12 bg-surface-dark-lighter/50 border-none rounded-xl pr-11 pl-4 text-white placeholder-text-secondary/70 focus:ring-2 focus:ring-primary/50 text-sm font-medium transition-all" placeholder="بحث عن عضو بالاسم أو البريد..." type="text"/>
+</div>
+<!-- Filters -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 no-scrollbar">
+<div class="h-8 w-[1px] bg-border-dark mx-1 hidden lg:block"></div>
+<button class="group flex items-center gap-2 h-10 px-4 rounded-xl bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20 transition-all shrink-0">
+<span class="text-sm font-medium">الكل</span>
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+<button class="group flex items-center gap-2 h-10 px-4 rounded-xl bg-surface-dark-lighter border border-transparent hover:border-border-dark text-text-secondary hover:text-white transition-all shrink-0">
+<span class="text-sm font-medium">المشرفين</span>
+<span class="bg-surface-dark px-1.5 py-0.5 rounded text-[10px] font-bold">12</span>
+</button>
+<button class="group flex items-center gap-2 h-10 px-4 rounded-xl bg-surface-dark-lighter border border-transparent hover:border-border-dark text-text-secondary hover:text-white transition-all shrink-0">
+<span class="text-sm font-medium">المتصلون</span>
+<span class="size-2 rounded-full bg-green-500"></span>
+</button>
+<button class="group flex items-center gap-2 h-10 px-4 rounded-xl bg-surface-dark-lighter border border-transparent hover:border-border-dark text-text-secondary hover:text-white transition-all shrink-0">
+<span class="text-sm font-medium">ترتيب حسب</span>
+<span class="material-symbols-outlined text-[18px]">sort</span>
+</button>
+<div class="h-8 w-[1px] bg-border-dark mx-1 hidden lg:block"></div>
+<div class="flex bg-surface-dark-lighter rounded-lg p-1 shrink-0">
+<button class="p-1.5 rounded-md bg-surface-dark shadow text-white">
+<span class="material-symbols-outlined text-[20px]">table_rows</span>
+</button>
+<button class="p-1.5 rounded-md text-text-secondary hover:text-white">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Table Content -->
+<div class="flex-1 overflow-auto px-8 pb-8 pt-4 z-0">
+<div class="w-full rounded-2xl border border-border-dark bg-surface-dark overflow-hidden shadow-xl">
+<table class="w-full text-right">
+<thead>
+<tr class="bg-surface-dark-lighter border-b border-border-dark">
+<th class="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">العضو</th>
+<th class="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">الرتبة</th>
+<th class="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider hidden md:table-cell">تاريخ الانضمام</th>
+<th class="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider text-center">المشاركات</th>
+<th class="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider text-center hidden sm:table-cell">التفاعلات</th>
+<th class="px-6 py-4 text-xs font-semibold text-text-secondary uppercase tracking-wider">آخر نشاط</th>
+<th class="px-4 py-4 w-12"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-dark">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-dark-lighter/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center ring-1 ring-border-dark" data-alt="Avatar of user Ahmed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDox9vdiW-lsMjuXZhypP-pgwwVkWnVhzs5LWYx2QuTjtLgSOmelxtx68WaNPzRE92Gg8BHmfu31QkDURdQe94nLQ4sGo7qWhE7Lnv-azMjuI37usTYTof93uhqTVeV2tqx4aYYWYkeXAEuhvVAwd2t2RByNr1BiqsT-GQzlCJ6_c5_yVvADsV2w_n0Xyh7HGnbnzkv_JI8gl6Daie8wMuysEP5BvyA6B5Q_Oz9V5qziliSYAx9_m_ZHgYYEUI95WOsx3zUjk0TJqg");'>
+</div>
+<div class="absolute -bottom-0.5 -right-0.5 size-3 bg-green-500 border-2 border-surface-dark rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-white">أحمد المحمدي</span>
+<span class="text-xs text-text-secondary">@ahmed_m</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+                                    مشرف عام
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary hidden md:table-cell">
+                                12 يناير 2023
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white text-center tabular-nums">
+                                5,230
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary text-center tabular-nums hidden sm:table-cell">
+                                12.5k
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+<span class="flex items-center gap-1.5">
+<span class="size-1.5 rounded-full bg-green-500"></span>
+                                    منذ دقيقتين
+                                </span>
+</td>
+<td class="px-4 py-4 whitespace-nowrap text-right">
+<button class="size-8 rounded-lg flex items-center justify-center text-text-secondary hover:text-white hover:bg-surface-dark-lighter transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-dark-lighter/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center ring-1 ring-border-dark" data-alt="Avatar of user Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALcm5KQJZAmLv4zbrfmJnnXE1pVWurPCdeeWuZmyHEaT5jnopl0I0e_bT7pZHPSqTmha6RR6h8WctMmlwmdZGlhmGUKRfG0lQ6vjGuMNZFBmUvk7i7jDZZHqQynutsFtfSAoJ22ds_r0QWfR2r85IXWgsF3Z03QvAEs0_KjB-gHBov8NBBhs-TOSo7aeBuC_aLOcf2sky-tqgWHpd4TOcvl56Bx1FO3CaULd94ViuVtEph8XkkDGLk8iHN4Ucx5y3ENJL4rfpWhzM");'>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-white">سارة علي</span>
+<span class="text-xs text-text-secondary">@sarah_ali</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
+<span class="material-symbols-outlined text-[14px]">star</span>
+                                    عضو مميز
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary hidden md:table-cell">
+                                05 مارس 2023
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white text-center tabular-nums">
+                                1,102
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary text-center tabular-nums hidden sm:table-cell">
+                                3.5k
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                منذ 5 ساعات
+                            </td>
+<td class="px-4 py-4 whitespace-nowrap text-right">
+<button class="size-8 rounded-lg flex items-center justify-center text-text-secondary hover:text-white hover:bg-surface-dark-lighter transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-dark-lighter/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center ring-1 ring-border-dark" data-alt="Avatar of user Omar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuChY4alryFcpcvaZ04yTFjOxztXl0OSA3kAc5WwpTeoSmwl5pKNA3ZLMMJZ617wb3m4okezBgANnC0BKs6jVjea4UDknlTUx92cZjrgAlNWmRyWVvHJE7j30npfiNeBty6DUTiSbysIGAK1wr95vYRlciw7WXnjhTtcMTNs9z8CgrNux4uQlPX431o1iX9G2ezjkAQIByFsB0oNqs_xnHU-1rHZip1_QQDGyiuQNO3o7ic5ubCY16V_QLHm8280eRpjq-TUkf1XJ9Q");'>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-white">عمر خالد</span>
+<span class="text-xs text-text-secondary">@omar_k</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-surface-dark-lighter text-text-secondary border border-border-dark">
+                                    عضو جديد
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary hidden md:table-cell">
+                                أمس
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white text-center tabular-nums">
+                                45
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary text-center tabular-nums hidden sm:table-cell">
+                                120
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                منذ يومين
+                            </td>
+<td class="px-4 py-4 whitespace-nowrap text-right">
+<button class="size-8 rounded-lg flex items-center justify-center text-text-secondary hover:text-white hover:bg-surface-dark-lighter transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-surface-dark-lighter/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center ring-1 ring-border-dark grayscale opacity-70" data-alt="Avatar of banned user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC4ig0IAZpCv_LQSTIlXRNC6-ovd82GvCmFh1wmq9K7x3-dO9kC_rGCkVuqU-0d51LoHGkHpIoyDkIbuvczJLTgOSCsJrGyK303fbziykr6Exg0hDTYIb9pi-a-I9nTNuFiQmgNww8s0y-h2UXGNs7eqCD2rQb3EQqHr88F1J4AU9QdFIC2Ixu2FQSK7w-dONJCqnsNSdjoQIQ69xibEo-uk5zW1f7Zng0gh_P-jFygL_CwoplKHCJQXZ34oKn9rtm_F4U4ZgoN18k");'>
+</div>
+<div class="absolute -bottom-0.5 -right-0.5 size-3 bg-red-500 border-2 border-surface-dark rounded-full flex items-center justify-center">
+<div class="w-1.5 h-0.5 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-text-secondary line-through">كريم جابر</span>
+<span class="text-xs text-text-secondary">@karim_banned</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-red-500 text-white shadow-sm shadow-red-500/20">
+<span class="material-symbols-outlined text-[14px]">block</span>
+                                    محظور
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary hidden md:table-cell">
+                                10 نوفمبر 2022
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-text-secondary text-center tabular-nums">
+                                890
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary text-center tabular-nums hidden sm:table-cell">
+                                1.2k
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                غير معروف
+                            </td>
+<td class="px-4 py-4 whitespace-nowrap text-right">
+<button class="size-8 rounded-lg flex items-center justify-center text-text-secondary hover:text-white hover:bg-surface-dark-lighter transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="group hover:bg-surface-dark-lighter/30 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover bg-center ring-1 ring-border-dark" data-alt="Avatar of user Layla" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDjKdUngf3HX6ePUdl5OV336rEJJbNJ5k0sRn-vWm2XjqOouJFrOx3JX01saqpWgu-H2ZHjhHEi0VuJN9dRJMkUsGAalbn7LRVaoFVzThyIczyFXd06x86R4imTLY1zOqxibfASlRJJSCn5AnudTFMjxtu41U0IH0GmImLxGFnAe-02ZoRYeINRWpj-p5CvBHU_B6r78md4I0o2BFJiazzNxHZ1oQSc7kfMOBqpTwciB3yT9NQ_UOZ2npgxVQlX-QUPdnsSuKoncxY");'>
+</div>
+<div class="absolute -bottom-0.5 -right-0.5 size-3 bg-green-500 border-2 border-surface-dark rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-white">ليلى محمود</span>
+<span class="text-xs text-text-secondary">@layla_m</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
+<span class="material-symbols-outlined text-[14px]">edit_note</span>
+                                    كاتب محتوى
+                                </span>
+</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary hidden md:table-cell">
+                                01 فبراير 2023
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white text-center tabular-nums">
+                                3,421
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary text-center tabular-nums hidden sm:table-cell">
+                                8k
+                            </td>
+<td class="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
+                                منذ 10 دقائق
+                            </td>
+<td class="px-4 py-4 whitespace-nowrap text-right">
+<button class="size-8 rounded-lg flex items-center justify-center text-text-secondary hover:text-white hover:bg-surface-dark-lighter transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<div class="bg-surface-dark-lighter/50 px-6 py-4 border-t border-border-dark flex items-center justify-between">
+<p class="text-sm text-text-secondary">عرض <span class="font-medium text-white">1</span> إلى <span class="font-medium text-white">5</span> من أصل <span class="font-medium text-white">12,450</span> عضو</p>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-8 rounded-lg border border-border-dark bg-surface-dark text-text-secondary opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+<button class="flex items-center justify-center size-8 rounded-lg border border-primary bg-primary text-white font-medium text-sm">1</button>
+<button class="flex items-center justify-center size-8 rounded-lg border border-border-dark bg-surface-dark text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-colors text-sm">2</button>
+<button class="flex items-center justify-center size-8 rounded-lg border border-border-dark bg-surface-dark text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-colors text-sm">3</button>
+<span class="text-text-secondary">...</span>
+<button class="flex items-center justify-center size-8 rounded-lg border border-border-dark bg-surface-dark text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-colors text-sm">24</button>
+<button class="flex items-center justify-center size-8 rounded-lg border border-border-dark bg-surface-dark text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

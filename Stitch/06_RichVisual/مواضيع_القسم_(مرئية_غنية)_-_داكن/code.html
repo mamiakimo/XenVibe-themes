@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>XenForo Social - Rich Visual Feed</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-dark": "#192233", // Custom card color from example
+                        "card-border": "#232f48",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #34425e; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased overflow-x-hidden">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-card-border bg-[#111722]/95 backdrop-blur-md px-4 py-3 md:px-10">
+<div class="flex items-center gap-4 text-white">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-[20px]">hub</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">XenForo Social</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8 items-center">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-[#232f48] group focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+<div class="text-[#92a4c9] flex border-none items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-transparent focus:border-none h-full placeholder:text-[#92a4c9] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search topics..." value=""/>
+</div>
+</label>
+<div class="flex gap-4 items-center">
+<button class="text-[#92a4c9] hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-[#92a4c9] hover:text-white transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-card-border cursor-pointer" data-alt="User profile picture placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1teTgy1jdO9cvRkrmmq6BMP3QErZZ6qekKywiJhMmle1Qc8JMMBcCzbRGlFJJGSiucPnt3PyYVajU8ypXYvFh-Dvu_Caio7fhZG17CgY3PnMQzpOJvLco6y9pkuF9Ur_Ae03PGqStzayF_-wwr27X4LhDAYapqYiLTEDja14lAvht0GQYB4gzChuAchQsxZPeIFZBsjEp60SqT1ed7SGtarWlJ2rByCkGWMfKWrtkN6eHo3BlomZT_XVwauo0NlXApEo5OhZhLHM");'></div>
+</div>
+</div>
+</header>
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1280px] flex-1 w-full">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 px-0 py-2 mb-2 items-center">
+<a class="text-[#92a4c9] hover:text-primary transition-colors text-sm font-medium leading-normal flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">home</span>
+                            Home
+                        </a>
+<span class="text-[#92a4c9] text-sm font-medium leading-normal">/</span>
+<a class="text-[#92a4c9] hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Forums</a>
+<span class="text-[#92a4c9] text-sm font-medium leading-normal">/</span>
+<span class="text-white text-sm font-medium leading-normal">Photography &amp; Travel</span>
+</div>
+<!-- Header Hero -->
+<div class="@container mb-8">
+<div class="relative bg-cover bg-center flex flex-col justify-end overflow-hidden bg-[#111722] rounded-xl min-h-[240px] shadow-lg group" data-alt="Scenic landscape background for photography section" style='background-image: linear-gradient(0deg, rgba(16, 22, 34, 0.9) 0%, rgba(16, 22, 34, 0.4) 50%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDV7fxQYmVVt_-4thv9FzSElWx9UKJOKF_mMsqqtR4-OTsc24Gmw-C4PjoTiP62Bbb1DWfw92AkPBhEsI5kcbS0O_0CxjnXI7c0tydW2mZwl_060GDiyj04ewAADgPBjZx3lCIea8tCzE35q32F6KxSFufGbooWQJxifMnJ7H9QkYf2wOj9IJxbVL6gxyZXHVbZYjYfmMdkmnjemA5y22ijqh4lb8HCjxuhL3w_eQKBI1013IoVTFRmVsvZhzUvpaNNqXbQCXASdNk");'>
+<div class="absolute top-4 right-4">
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+                                    Follow Section
+                                </button>
+</div>
+<div class="flex flex-col p-6 md:p-8 z-10">
+<h1 class="text-white tracking-tight text-[32px] md:text-[40px] font-bold leading-tight mb-2">Photography &amp; Travel</h1>
+<p class="text-[#92a4c9] max-w-2xl text-base md:text-lg">Share your best shots, discuss gear, and explore the world through the lens of our community.</p>
+<div class="flex gap-4 mt-4 text-sm text-[#92a4c9]">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">forum</span> 12.5k Threads</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">group</span> 450 Viewing</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Layout: Grid + Sidebar -->
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Left Content Column -->
+<div class="flex-1 w-full min-w-0">
+<!-- Filter Chips -->
+<div class="flex gap-3 pb-6 overflow-x-auto no-scrollbar mask-gradient">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white pl-4 pr-4 shadow-lg shadow-primary/20 transition-transform hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<p class="text-sm font-medium leading-normal">Trending</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-card-dark border border-card-border hover:border-primary/50 hover:bg-[#1e2736] pl-4 pr-4 transition-all">
+<p class="text-[#92a4c9] text-sm font-medium leading-normal">Newest</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-card-dark border border-card-border hover:border-primary/50 hover:bg-[#1e2736] pl-4 pr-4 transition-all">
+<span class="material-symbols-outlined text-[18px] text-[#92a4c9]">image</span>
+<p class="text-[#92a4c9] text-sm font-medium leading-normal">Media Only</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-card-dark border border-card-border hover:border-primary/50 hover:bg-[#1e2736] pl-4 pr-4 transition-all">
+<p class="text-[#92a4c9] text-sm font-medium leading-normal">Unread</p>
+<span class="bg-primary text-[10px] h-4 min-w-4 px-1 rounded-full flex items-center justify-center text-white">3</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-card-dark border border-card-border hover:border-primary/50 hover:bg-[#1e2736] pl-4 pr-4 transition-all">
+<p class="text-[#92a4c9] text-sm font-medium leading-normal">My Threads</p>
+</button>
+</div>
+<!-- Masonry/Grid Feed -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1: Rich Media (Image Focus) -->
+<article class="flex flex-col bg-card-dark rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group border border-transparent hover:border-card-border">
+<div class="relative w-full aspect-[4/3] bg-gray-800 overflow-hidden">
+<div class="absolute top-3 left-3 z-10 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-2 py-1 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">push_pin</span> Sticky
+                                        </div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Detailed close-up shot of Petra treasury" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnjWgV7xtEz4P3LNIwtq1CtTzccv0m_Q-HW80ujWvXmGYeexW3-E3D8x2rZ2AiS9ddpjcOTYhgrOmmMPkA01mU4kpI-8OGNyrhyc9SmSnd5j55JpdgfsK4kULvLfgLYVkb4HufhtinptHG9-C9hEjIz4Fk4ZxT8TTPbTP0Cl3A9tVhjwNAAZocib211BnpOKVoUSGdoq9vCsUyQTAA4pjH9jvnbyIDrcDAsDjWnvoO1I9AGxfTkqWUr7sbw8-rYHFmcdXA6nMpp7E");'></div>
+<div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+<div class="flex items-center gap-2">
+<div class="size-6 rounded-full bg-cover border border-white/20" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJ_Z66WTdq1lzSUdXFrYGcDuenRrHIL6fg22FkIJF3yRaatR9d67KfUXB6ui9C0WXVUAPTg_a1UaK1rahHW_zuD9BgY5AAvOQ3J8T70N5LBl7kMjFP9RBDUxyZdWQ5W3NgSgqjnT5wlf2_ZDg4qXDw4RO8CZpTIdXkiuASSXGXI1PNA21YxqVKQ4UaPEgEUeEBcpq5_AnJcenR_LuPvlThYnOkF3QlHe-qkvh92PetYFM--hAFn1gw-jxUF8NECltWv6D6QbSwk0k");'></div>
+<span class="text-white/90 text-sm font-medium">@traveler_99</span>
+</div>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<h3 class="text-white text-lg font-bold leading-snug cursor-pointer hover:text-primary transition-colors">My Trip to Petra [25 Photos]</h3>
+</div>
+<p class="text-[#92a4c9] text-sm line-clamp-2">Just returned from an amazing week in Jordan. The colors of the rocks at sunset are unbelievable. Here is a curated album...</p>
+<div class="mt-2 pt-3 border-t border-[#232f48] flex items-center justify-between text-[#92a4c9] text-sm">
+<div class="flex gap-4">
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[18px]">favorite</span> 124</span>
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[18px]">chat_bubble</span> 42</span>
+</div>
+<span class="text-xs">2h ago</span>
+</div>
+</div>
+</article>
+<!-- Card 2: Video Focus -->
+<article class="flex flex-col bg-card-dark rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group border border-transparent hover:border-card-border">
+<div class="relative w-full aspect-video bg-gray-800 overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+<div class="size-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-[32px]">play_arrow</span>
+</div>
+</div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Video thumbnail of camera gear review" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZ5jiN0RxRL_IaVCbhjfjMcrjuRvSupm0rRpbxcaDlE8mf-Z9eR2ZowsGBuJKMtlZWghsieeE179D_ilPbL2AvgWjbDT32KsC_nwtfE7PbFBlBprd2ci97hrwXy4CbbRFco9eYtD1xKuDip5xt9JSgnJja7Ev2EMjLz7sYT2DAn5SE_banzq2kzTz04SLRqm1ErBBcxnl-koE9kZUsN6bjJ_PdzaCCyS99JVco9fjTOLl69HkDQLPMqh4C9vA_VAyovRCDyaKcTiY");'></div>
+<div class="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded font-mono">12:04</div>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<h3 class="text-white text-lg font-bold leading-snug cursor-pointer hover:text-primary transition-colors">Sony A7IV - One Month Later Review</h3>
+<div class="flex flex-wrap gap-2 mt-1">
+<span class="bg-[#232f48] text-[#92a4c9] text-xs px-2 py-1 rounded hover:bg-[#2d3b55] cursor-pointer">#GearReview</span>
+<span class="bg-[#232f48] text-[#92a4c9] text-xs px-2 py-1 rounded hover:bg-[#2d3b55] cursor-pointer">#Sony</span>
+</div>
+<div class="mt-2 pt-3 border-t border-[#232f48] flex items-center justify-between text-[#92a4c9] text-sm">
+<div class="flex gap-4">
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[18px]">favorite</span> 89</span>
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[18px]">chat_bubble</span> 15</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAv1xlle_i0cCw5kNcxf5n92TlmWqEtmFHHukqNhbUZ5mT7ioG7cyhi6JZrSy6SJ1eUVyLUdb_ZuCAINkw6YRthd40VNSzRpg6pbFNZYbuSaXSzlwu2L1Ntdd0e7FKxvT4gF4CgofXWVq2PfWLDZqvkV4N5N4DeimeSIR8sRfo2aiL3Pkr8_ewrSeCw_kssK5ZDX--wBzrmlWVVNfVogFYprNZDLPOTNlScAzKcII_3LPFKfwNj0MWwRmUYPThBH9INDPhf_4YE3rE");'></div>
+<span class="text-xs">@tech_cam</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Text Based (Simplified) -->
+<article class="flex flex-col bg-card-dark rounded-xl p-5 shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 border border-card-border hover:border-primary/30 h-fit">
+<div class="flex items-start gap-3 mb-2">
+<div class="mt-1 min-w-[32px] h-[32px] rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</div>
+<div>
+<h3 class="text-white text-base font-bold leading-snug cursor-pointer hover:text-primary transition-colors">Best lightweight tripod for hiking?</h3>
+<p class="text-[#92a4c9] text-sm mt-1 line-clamp-3">I'm planning a 5-day hike in the Alps and need something sturdy but under 1.5kg. Currently looking at the Peak Design Travel Tripod but it's pricey. Any alternatives?</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between text-[#92a4c9] text-xs">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 5h ago</span>
+<span class="flex items-center gap-1 text-primary bg-primary/10 px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">chat</span> 8 Replies</span>
+</div>
+</article>
+<!-- Card 4: Gallery Style -->
+<article class="flex flex-col bg-card-dark rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group border border-transparent hover:border-card-border md:col-span-2">
+<div class="grid grid-cols-3 h-48 md:h-64 gap-0.5 bg-gray-900">
+<div class="bg-cover bg-center h-full hover:opacity-90 transition-opacity cursor-pointer" data-alt="Street photography shot 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARLj2V1LS0AV6rN0lw-SVnURPZFaDA4bCdGpwAlafQCV3xEO1DT4IBdm-R0prfy4KG9ChZE7H41I4-cydIonHdrsAa4STZgzSQRkLzuuSybdhmqh2C6lO1yRKs2yx2i7Sxh1IDt2UK2nF-N2goYknn9T7XzuAXQvH41nOfi1FrIwcdaP_fe1VKnFlRG5ZAAIwqhHZAASNuxv6AhekFWieo528NaxcIWrvOAAaybl5THr8cMfGzMfxU7jthB40vZnSbQMElexU3DB4");'></div>
+<div class="bg-cover bg-center h-full hover:opacity-90 transition-opacity cursor-pointer" data-alt="Street photography shot 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7AzM6oq5A3dlecN9jKSGQlJh6lDEqZDP2wt19xK2Wj63NkdtBIhrnBToB_TmBqNvFMz4BeLfaC2swiI23cJkMrIqzcYHsb8b6j5cCdcpAWQj0rbn7kiZPNWw7vXpIfFGmPJbLNXOXtviBkqC7IWM_L6QRz58EhSvrelDG1K2mnBTXipc56ywfIYcfJD5abz5D8eC2NyYeXHwHONWozObui2dfgPWjahzXvcq17ZJBFNGybF29qeiz_RvRcXMQCCZj2VYOdR2Qz90");'></div>
+<div class="relative bg-cover bg-center h-full hover:opacity-90 transition-opacity cursor-pointer" data-alt="Street photography shot 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPsiPuiIIxD-wg7t82bMMcXAO0X4ybTBdOH85Qg3PBTsHhUppw5ItDJ-_Hxe-0osZVGs4wE5thJ1Y-jonDwpcTsaBw4PDhAISQLamdEr7KfF_jHWzaic-CbCuETk5zFE6KUcv9hElkL0W28ZheuyAz1uOdgijbxs1ShwYABuExhtO6CgGFrznl3-oC35ZgQi2jHqU-e9nI2Xgh_k7Taj9tWVUpUl78JyfcXgs11H4GZjNKFW9McFvFE3-uN2yemaBUKD2N9r0mXlc");'>
+<div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+<span class="text-white font-bold text-xl">+8 More</span>
+</div>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h3 class="text-white text-lg font-bold leading-snug cursor-pointer hover:text-primary transition-colors">Tokyo Street Photography - Night Series</h3>
+<p class="text-[#92a4c9] text-sm mt-1">Shot on Fujifilm X100V • Classic Neg</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="size-8 rounded-full bg-[#232f48] flex items-center justify-center text-[#92a4c9] hover:text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+</button>
+<button class="size-8 rounded-full bg-[#232f48] flex items-center justify-center text-[#92a4c9] hover:text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 5: Text Discussion -->
+<article class="flex flex-col bg-card-dark rounded-xl p-5 shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 border border-card-border hover:border-primary/30 h-fit">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-cover border border-[#232f48]" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2CI67OsmBibIyoLVI568gis39zqIJcEY_ghbxwXxin4LrkJ4cvsSZW_cl4tKXrdrksbIIuwUS3br515PIlPd7EM8fLOAmt5i7UZvME4k0bo9pUEUxLta7EzH4poplpm-diBSDdw1yvOMUo-dojWTOL1Y_XB1XH-R1lUS8IWcRkFo29KiA6LDe4XKEr7XE2ihRkwrxxxYeJYalcXAWbYuXYnX66fjKKILxktWe8Wazc7dM1Kgg14vdpiuuXAewl8zQja9fwzD7If4");'></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-bold">@shutterbug_mike</span>
+<span class="text-[#92a4c9] text-xs">Admin • Yesterday</span>
+</div>
+</div>
+<span class="bg-red-500/10 text-red-400 border border-red-500/20 text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wider">Hot</span>
+</div>
+<h3 class="text-white text-lg font-bold leading-snug cursor-pointer hover:text-primary transition-colors mt-2">Monthly Challenge: "Reflections" - Submission Thread</h3>
+<p class="text-[#92a4c9] text-sm mt-2 line-clamp-2">This month's theme is reflections. Water, glass, mirrors, or eyes. Post your best single shot below. Winner gets a pinned feature!</p>
+<div class="mt-4 pt-3 border-t border-[#232f48] flex items-center gap-4 text-[#92a4c9] text-sm">
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[18px]">group</span> 234 Participants</span>
+<span class="flex items-center gap-1 hover:text-white cursor-pointer"><span class="material-symbols-outlined text-[18px]">chat_bubble</span> 89 Replies</span>
+</div>
+</article>
+<!-- Card 6: Standard Image -->
+<article class="flex flex-col bg-card-dark rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group border border-transparent hover:border-card-border">
+<div class="relative w-full aspect-[16/10] bg-gray-800 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Macro photography of an insect eye" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDpLLyw5oYvy2L9xtrdfsuoCTUSifuxXBGo7lPFUjWqQEvP5KXRgRTvuCUJUqW3v1_XoATydC5s4d0v5pnF9Sw0kpO-UYtWS9-hqGiA9jwJz-6F5el9afE0cWLaHARiIAhoQZlJR7UBvB8mjwEdMYfnb41mg_tKNHMfPJsYLL5-qSjD8e1T51jYh3vqR1LGR9s5AlN_-gkz6-fRsHSwRyDoKzI7Q3SD3bjkaKXcPAVAskbRJeDQwjrS1RB-jaaIzfomcOLeh-_lF9M");'></div>
+</div>
+<div class="p-4 flex flex-col gap-1">
+<h3 class="text-white text-base font-bold leading-snug cursor-pointer hover:text-primary transition-colors">Macro World: Jumping Spider</h3>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOVDGwL8fHWi_Dq-VgYy3u6FznkwbTWLH3wkkglHeAbw1OoHHyCvhLQnYjgO-mBtYRLzZmxBPXGvhVu9jvJCHWZaxC5Zqax8wAgfjJ5yfed3kKHoXjFjXjnXjFj5SYuIcW8rlSpCRa4f_MRkR9XBFOFSRvICXglqbdrW3N77GqYa-x3_mFOX4A4aQrO0KJeKC3UtrhLrL7HFXyqPF2wzfGl1kr57lzMbwgeGrTo1gn9UtywBBhfR4VcilOt6wqIXu2s-1TDLp3lik");'></div>
+<span class="text-[#92a4c9] text-xs">@macro_king</span>
+</div>
+<div class="text-[#92a4c9] text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">favorite</span> 45
+                                            </div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="flex justify-center mt-8">
+<button class="flex items-center gap-2 bg-[#232f48] hover:bg-[#2d3b55] text-white px-6 py-3 rounded-xl transition-all font-medium">
+                                    Load More Content
+                                    <span class="material-symbols-outlined animate-bounce">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Right Sidebar (Sticky) -->
+<aside class="w-full lg:w-80 shrink-0 flex flex-col gap-6">
+<!-- Create Button -->
+<button class="w-full bg-primary hover:bg-blue-600 text-white font-bold text-lg h-12 rounded-xl shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2 transition-transform active:scale-95">
+<span class="material-symbols-outlined">add_circle</span>
+                                Post New Thread
+                            </button>
+<!-- Top Contributors Widget -->
+<div class="bg-card-dark rounded-xl border border-card-border p-5">
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-white font-bold text-base">Top Contributors</h4>
+<a class="text-primary text-xs hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-3">
+<!-- User 1 -->
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover" data-alt="Top contributor avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALcrQQ-1iLrKdtHWB9U4MDr-XCQrXf9T6RDwEwC1IcovkoGvVBTFHiB4iHfUTHR1q9EfbCpm-mkTLCSnFP76GKgErhmBsvav_ITa5V9hxes2FTKj0B1X0yRFXGdffxTfPJWe3-mSW48eZh01gLe9qALmSJGUEDotc5pQD8AhVEdHuKhRxAZWq04bxsqDpJykYxDdmjzapxIwENwSOeLeiyROqnHJK11MUpITKdG878FfIMNP2avW3dEXjrAi8UT-iJBt6y4ngWejY");'></div>
+<div class="absolute -bottom-1 -right-1 bg-yellow-500 text-black text-[10px] font-bold size-4 flex items-center justify-center rounded-full border border-card-dark">1</div>
+</div>
+<div class="flex flex-col flex-1">
+<span class="text-white text-sm font-medium hover:text-primary cursor-pointer">@traveler_99</span>
+<span class="text-[#92a4c9] text-xs">1,240 Likes</span>
+</div>
+<button class="text-[#92a4c9] hover:text-white"><span class="material-symbols-outlined text-[20px]">person_add</span></button>
+</div>
+<!-- User 2 -->
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover" data-alt="Top contributor avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZqfniBL7-xsvKZaSrLRBuUlZRMuldGx723CibTJgXrDhZjNQYh6T9PGLYtOe9zjIcJbONr1OpXFX_b3NKddwDnoPUzRgmUmxBONi1vvbO9_j-t_xnIIb9eiPMzuExH88UJvBslk21FhHc6oCjcRdEUMBn55XGMFjOiMwXNWcGJFVYQaMhDDaBi8tYbXyu0XSJa3Yk10isPSOQduX_k7pbAg_fCp5r-TSkm74YYBf3fX_ANG5XvicciCop0glx9CBGo3UrfUxVjC8");'></div>
+<div class="absolute -bottom-1 -right-1 bg-gray-400 text-black text-[10px] font-bold size-4 flex items-center justify-center rounded-full border border-card-dark">2</div>
+</div>
+<div class="flex flex-col flex-1">
+<span class="text-white text-sm font-medium hover:text-primary cursor-pointer">@lens_master</span>
+<span class="text-[#92a4c9] text-xs">980 Likes</span>
+</div>
+<button class="text-[#92a4c9] hover:text-white"><span class="material-symbols-outlined text-[20px]">person_add</span></button>
+</div>
+<!-- User 3 -->
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="size-10 rounded-full bg-cover" data-alt="Top contributor avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBDE6dc1tkV_eJuKHVPTNPepprQ0Dqe8_VWQqAaRy4YlSXQJGklT1rNbauIdX_nREVg3LqGdnswiDf6j40Rc8ZeaJL6yXr4x3_HYtcCqO3DP70MEGGugJuXQk6uWvQPUdFMU8SFDcubjWy4GErbUZ6xZyJrYmZvnNQk_-FkDtej5_9Qq0nvfYMu5--v_Mtyp1_yzXHalOrIo9_fx042-QDAqmNEmc1455JZwLVPUIp_Xfp2nx2l6EbTH1RsTFLPcAA__ir6lgr6pKo");'></div>
+<div class="absolute -bottom-1 -right-1 bg-orange-700 text-white text-[10px] font-bold size-4 flex items-center justify-center rounded-full border border-card-dark">3</div>
+</div>
+<div class="flex flex-col flex-1">
+<span class="text-white text-sm font-medium hover:text-primary cursor-pointer">@pixel_peeper</span>
+<span class="text-[#92a4c9] text-xs">845 Likes</span>
+</div>
+<button class="text-[#92a4c9] hover:text-white"><span class="material-symbols-outlined text-[20px]">person_add</span></button>
+</div>
+</div>
+</div>
+<!-- Popular Tags Widget -->
+<div class="bg-card-dark rounded-xl border border-card-border p-5">
+<h4 class="text-white font-bold text-base mb-4">Popular Tags</h4>
+<div class="flex flex-wrap gap-2">
+<a class="px-3 py-1.5 rounded-lg bg-[#232f48] text-[#92a4c9] text-sm hover:bg-primary hover:text-white transition-colors" href="#">#Landscape</a>
+<a class="px-3 py-1.5 rounded-lg bg-[#232f48] text-[#92a4c9] text-sm hover:bg-primary hover:text-white transition-colors" href="#">#Canon</a>
+<a class="px-3 py-1.5 rounded-lg bg-[#232f48] text-[#92a4c9] text-sm hover:bg-primary hover:text-white transition-colors" href="#">#Portrait</a>
+<a class="px-3 py-1.5 rounded-lg bg-[#232f48] text-[#92a4c9] text-sm hover:bg-primary hover:text-white transition-colors" href="#">#Editing</a>
+<a class="px-3 py-1.5 rounded-lg bg-[#232f48] text-[#92a4c9] text-sm hover:bg-primary hover:text-white transition-colors" href="#">#TravelTips</a>
+<a class="px-3 py-1.5 rounded-lg bg-[#232f48] text-[#92a4c9] text-sm hover:bg-primary hover:text-white transition-colors" href="#">#NightSky</a>
+</div>
+</div>
+<!-- Ad / Promo Placeholder -->
+<div class="bg-[#1e2736] rounded-xl flex items-center justify-center h-60 relative overflow-hidden group cursor-pointer" data-alt="Promotional banner placeholder" style="background-image: radial-gradient(circle, rgba(19,91,236,0.2) 0%, rgba(16,22,34,1) 100%);">
+<div class="text-center z-10 p-4">
+<span class="text-xs uppercase tracking-widest text-primary font-bold mb-2 block">Sponsor</span>
+<h3 class="text-white text-xl font-bold">Upgrade to Premium</h3>
+<p class="text-[#92a4c9] text-sm mt-2">Remove ads and unlock exclusive editing tutorials.</p>
+</div>
+<div class="absolute -bottom-10 -right-10 size-40 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition-colors"></div>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

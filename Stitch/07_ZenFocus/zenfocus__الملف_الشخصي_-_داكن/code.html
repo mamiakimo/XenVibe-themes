@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZenFocus Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161e2e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/30">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e5e7eb] dark:border-b-[#232f48] bg-background-light dark:bg-background-dark/95 backdrop-blur-sm px-6 lg:px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_535)">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_535"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">ZenFocus</h2>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-[#637588] dark:text-[#92a4c9] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Forums</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal" href="#">Members</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64 group">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-[#f0f2f4] dark:bg-[#232f48] focus-within:ring-1 focus-within:ring-primary/50 transition-all">
+<div class="text-[#637588] dark:text-[#92a4c9] flex items-center justify-center pl-4 pr-2">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg bg-transparent text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border-none h-full placeholder:text-[#637588] dark:placeholder:text-[#92a4c9] px-0 text-sm font-normal leading-normal" placeholder="Search discussions..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg size-10 text-[#637588] dark:text-[#92a4c9] hover:bg-[#f0f2f4] dark:hover:bg-[#232f48] transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8 ring-2 ring-transparent hover:ring-primary/50 cursor-pointer transition-all ml-2" data-alt="User avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNtaDJMRhHwAYQPL7jOdIwqhVHpc6t4g-879OKqWQVX6TN8fgwCAzzfKbHfHKQ03t334KZOQOARu2sP9Al9Blz9X4EkpUXPXEqRJAKfopqwA1g2P0A3NpsIjGfPXA2pdVazBqZAXrXmMxBCwDYN8pZ_917a906LM8rwa2m056BVuCGTuO2e3G-SPpIExC1Zrg3W-vO6gWgk1ugsGOvkUWIVb7fOmZFoA-QJBYmyzmhiq9WmBnXD2bLIkZHBqZQEi6VWgD50CWCKvA");'></div>
+</div>
+</div>
+</header>
+<div class="flex-1 flex justify-center py-8 px-4 sm:px-6">
+<div class="max-w-[720px] w-full flex flex-col gap-8">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 text-sm">
+<a class="text-[#637588] dark:text-[#92a4c9] hover:underline" href="#">Home</a>
+<span class="text-[#637588] dark:text-[#92a4c9]">/</span>
+<a class="text-[#637588] dark:text-[#92a4c9] hover:underline" href="#">Members</a>
+<span class="text-[#637588] dark:text-[#92a4c9]">/</span>
+<span class="text-[#111418] dark:text-white font-medium">Ahmed Ali</span>
+</div>
+<!-- Minimal Profile Header -->
+<div class="flex flex-col items-center gap-6 pt-4 pb-2">
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-24 shadow-lg ring-4 ring-[#e5e7eb] dark:ring-[#232f48]" data-alt="Ahmed Ali Profile Picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCoGcn7cgSj2tNZSsxHhiS0N5Y0ySvQDkN9F5Q5OTcf7FtQ8z2gmawsKN0A6dG7A0HT1DSxz8yvPQer4rwfy9R_Nsi9poE2s-FQC55FFPEGjs3JLCSYHpZWg4tEr6kCuVpCRAu0ZNnGoKe-Y_y2n30iAICR3WZPiyZj5okoNKULIXPrmsKoi5dcLczMiW2_5sGgrH7YbDfGfQ_SgbDmHCVQko-qZbvgZ4wcR12jxtys8zk8-eIHQbZxyk2QW2S5-2m4MFd484fSawQ");'></div>
+<div class="absolute bottom-0 right-0 bg-[#22c55e] border-2 border-[#f6f6f8] dark:border-[#101622] size-5 rounded-full"></div>
+</div>
+<div class="flex flex-col items-center text-center max-w-md">
+<h1 class="text-[#111418] dark:text-white text-3xl font-bold tracking-tight mb-2">Ahmed Ali</h1>
+<div class="flex items-center gap-2 mb-4">
+<span class="px-2 py-0.5 rounded text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Contributor</span>
+<span class="px-2 py-0.5 rounded text-xs font-medium bg-[#f0f2f4] dark:bg-[#232f48] text-[#637588] dark:text-[#92a4c9]">Developer</span>
+</div>
+<p class="text-[#4b5563] dark:text-[#a1a1aa] text-base leading-relaxed">
+                        Passionate about minimalism, clean code, and digital wellbeing. Building tools for focused thinking.
+                    </p>
+</div>
+<div class="flex gap-3 w-full justify-center">
+<button class="flex items-center justify-center rounded-lg h-9 px-6 bg-primary hover:bg-primary/90 text-white text-sm font-medium transition-colors shadow-sm">
+                        Start Conversation
+                    </button>
+<button class="flex items-center justify-center rounded-lg h-9 px-6 bg-[#e5e7eb] dark:bg-[#232f48] hover:bg-[#d1d5db] dark:hover:bg-[#324467] text-[#111418] dark:text-white text-sm font-medium transition-colors">
+                        Follow
+                    </button>
+<button class="flex items-center justify-center rounded-lg size-9 bg-transparent hover:bg-[#e5e7eb] dark:hover:bg-[#232f48] text-[#637588] dark:text-[#92a4c9] transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Text-based Stats Strip -->
+<div class="flex justify-center border-y border-[#e5e7eb] dark:border-[#232f48] py-4">
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-[#637588] dark:text-[#92a4c9]">
+<div class="flex items-center gap-2">
+<span class="font-bold text-[#111418] dark:text-white">542</span> Messages
+                    </div>
+<div class="hidden sm:block text-[#e5e7eb] dark:text-[#232f48]">•</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-[#111418] dark:text-white">120</span> Reactions
+                    </div>
+<div class="hidden sm:block text-[#e5e7eb] dark:text-[#232f48]">•</div>
+<div class="flex items-center gap-2">
+<span>Joined</span> <span class="font-medium text-[#111418] dark:text-white">Nov 2023</span>
+</div>
+<div class="hidden sm:block text-[#e5e7eb] dark:text-[#232f48]">•</div>
+<div class="flex items-center gap-2">
+<span>Last seen</span> <span class="font-medium text-[#111418] dark:text-white">2m ago</span>
+</div>
+</div>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-[#e5e7eb] dark:border-[#232f48]">
+<a class="relative px-4 py-3 text-sm font-medium text-primary" href="#">
+                    Latest Activity
+                    <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"></div>
+</a>
+<a class="px-4 py-3 text-sm font-medium text-[#637588] dark:text-[#92a4c9] hover:text-[#111418] dark:hover:text-white transition-colors" href="#">
+                    Postings
+                </a>
+<a class="px-4 py-3 text-sm font-medium text-[#637588] dark:text-[#92a4c9] hover:text-[#111418] dark:hover:text-white transition-colors" href="#">
+                    About
+                </a>
+</div>
+<!-- Content Stream -->
+<div class="flex flex-col gap-6">
+<!-- Activity Item 1 -->
+<div class="flex flex-col gap-2 group">
+<div class="flex items-center gap-2 text-xs text-[#637588] dark:text-[#8899ac] mb-1">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>Replied to a thread</span>
+<span>•</span>
+<span>2 hours ago</span>
+<span>•</span>
+<a class="hover:text-primary hover:underline" href="#">General Discussion</a>
+</div>
+<a class="block" href="#">
+<h3 class="text-lg font-bold text-[#111418] dark:text-[#e4e4e7] group-hover:text-primary transition-colors leading-snug">
+                            The importance of negative space in UI design
+                        </h3>
+</a>
+<p class="text-sm text-[#4b5563] dark:text-[#a1a1aa] leading-relaxed line-clamp-2">
+                        I completely agree. When we crowd the interface, the user loses focus. Negative space isn't just empty space; it's an active design element that guides the eye and provides breathing room for the content.
+                    </p>
+</div>
+<div class="h-px bg-[#e5e7eb] dark:bg-[#232f48]"></div>
+<!-- Activity Item 2 -->
+<div class="flex flex-col gap-2 group">
+<div class="flex items-center gap-2 text-xs text-[#637588] dark:text-[#8899ac] mb-1">
+<span class="material-symbols-outlined text-[16px]">edit_document</span>
+<span>Posted a new thread</span>
+<span>•</span>
+<span>Yesterday at 4:30 PM</span>
+<span>•</span>
+<a class="hover:text-primary hover:underline" href="#">Code &amp; Coffee</a>
+</div>
+<a class="block" href="#">
+<h3 class="text-lg font-bold text-[#111418] dark:text-[#e4e4e7] group-hover:text-primary transition-colors leading-snug">
+                            Switching to a minimalist IDE setup
+                        </h3>
+</a>
+<p class="text-sm text-[#4b5563] dark:text-[#a1a1aa] leading-relaxed line-clamp-2">
+                        I've recently stripped down my VS Code setup to the bare essentials. No minimap, no activity bar, just the code and a simple status line. It's surprisingly refreshing...
+                    </p>
+</div>
+<div class="h-px bg-[#e5e7eb] dark:bg-[#232f48]"></div>
+<!-- Activity Item 3 -->
+<div class="flex flex-col gap-2 group">
+<div class="flex items-center gap-2 text-xs text-[#637588] dark:text-[#8899ac] mb-1">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+<span>Liked a post</span>
+<span>•</span>
+<span>Nov 12</span>
+<span>•</span>
+<a class="hover:text-primary hover:underline" href="#">Showcase</a>
+</div>
+<div class="bg-[#f0f2f4] dark:bg-[#1c2533] p-3 rounded-lg border border-transparent dark:border-[#2d3b54]">
+<p class="text-sm text-[#4b5563] dark:text-[#a1a1aa] italic">
+                            "Dark mode isn't just a preference anymore, it's an accessibility requirement for many users working late hours."
+                        </p>
+<div class="mt-2 text-xs text-[#637588] dark:text-[#8899ac]">
+                            — by <a class="font-medium hover:text-primary" href="#">Sarah Jenkins</a>
+</div>
+</div>
+</div>
+<div class="h-px bg-[#e5e7eb] dark:bg-[#232f48]"></div>
+<!-- Activity Item 4 -->
+<div class="flex flex-col gap-2 group">
+<div class="flex items-center gap-2 text-xs text-[#637588] dark:text-[#8899ac] mb-1">
+<span class="material-symbols-outlined text-[16px]">reply</span>
+<span>Replied to a thread</span>
+<span>•</span>
+<span>Nov 10</span>
+<span>•</span>
+<a class="hover:text-primary hover:underline" href="#">Introductions</a>
+</div>
+<a class="block" href="#">
+<h3 class="text-lg font-bold text-[#111418] dark:text-[#e4e4e7] group-hover:text-primary transition-colors leading-snug">
+                            Hello everyone! New here.
+                        </h3>
+</a>
+<p class="text-sm text-[#4b5563] dark:text-[#a1a1aa] leading-relaxed line-clamp-2">
+                        Welcome to the community! Great to have another developer on board. Check out the resources section when you have a moment.
+                    </p>
+</div>
+<!-- Loading / Pagination -->
+<div class="pt-4 flex justify-center">
+<button class="text-sm font-medium text-[#637588] dark:text-[#92a4c9] hover:text-[#111418] dark:hover:text-white transition-colors flex items-center gap-2">
+                        Load more activity
+                        <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NanoPro: الإعدادات - داكن</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622", // Deep charcoal/near-black base
+                        "surface-dark": "#1e293b", // Slightly lighter for cards/inputs
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Inter", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', 'Noto Sans Arabic', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col font-body selection:bg-primary/30 selection:text-primary">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between gap-4">
+<!-- Logo & Brand -->
+<div class="flex items-center gap-2">
+<div class="text-primary">
+<span class="material-symbols-outlined !text-[32px]">hub</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white hidden sm:block">NanoPro</h1>
+</div>
+<!-- Search Bar -->
+<div class="flex-1 max-w-md hidden md:block px-4">
+<div class="relative group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined !text-[20px]">search</span>
+</div>
+<input class="block w-full rounded-xl border-none bg-slate-200/50 dark:bg-[#1e293b] py-2 pr-10 pl-4 text-sm text-slate-900 dark:text-white placeholder-slate-500 focus:ring-2 focus:ring-primary focus:bg-white dark:focus:bg-[#1e293b] transition-all" placeholder="بحث في المنتدى..." type="text"/>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">المنتديات</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">الأعضاء</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">المساعدة</a>
+</nav>
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 hidden md:block"></div>
+<div class="flex items-center gap-3">
+<button class="relative p-1 rounded-full text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined !text-[24px]">notifications</span>
+<span class="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-[#101622]"></span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-9 w-9 ring-2 ring-slate-100 dark:ring-slate-800 cursor-pointer" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7tXvP0KQR52jWOA2pz5B0rSTHJ6Lc83jA_rXdzrkW9PVlgJFRBkmxAeBR_vA_2kaGr6ZZfIGWiXZXppMcXCKHtKXGi5c06KF5fYM5MJlHb-Pnhd7vmfp50Iee9hfOidAIE3gjnSpyTtORoOPmnlXlchtjsD8cUjK1JPiwz7tIQh9nqMkHRi-gluF3yv9BFBAgDcV9wXftPVJWSEVBBglCCiW52o2wgTggOKsxP4O7MoUrtcQWBR0oSoxEi3jDPUJ_gIQMmdcDpOM");'></div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Layout -->
+<div class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Breadcrumbs -->
+<nav class="flex mb-8 text-sm font-medium text-slate-500 dark:text-slate-400">
+<ol class="flex items-center gap-2">
+<li><a class="hover:text-primary transition-colors" href="#">الرئيسية</a></li>
+<li><span class="material-symbols-outlined !text-[16px] text-slate-400 rtl:rotate-180">chevron_right</span></li>
+<li><a class="hover:text-primary transition-colors" href="#">لوحة التحكم</a></li>
+<li><span class="material-symbols-outlined !text-[16px] text-slate-400 rtl:rotate-180">chevron_right</span></li>
+<li class="text-slate-900 dark:text-white">الإعدادات</li>
+</ol>
+</nav>
+<div class="flex flex-col lg:flex-row gap-10">
+<!-- Sidebar Navigation -->
+<aside class="w-full lg:w-64 flex-shrink-0">
+<nav class="sticky top-24 space-y-1">
+<div class="px-3 mb-2">
+<h2 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">إدارة الحساب</h2>
+</div>
+<a class="group flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined !text-[22px]" style="font-variation-settings: 'FILL' 1;">person</span>
+                        الملف الشخصي
+                    </a>
+<a class="group flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined !text-[22px]">security</span>
+                        أمان الحساب
+                    </a>
+<a class="group flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined !text-[22px]">lock</span>
+                        الخصوصية
+                    </a>
+<a class="group flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined !text-[22px]">tune</span>
+                        التفضيلات
+                    </a>
+<div class="my-4 border-t border-slate-200 dark:border-slate-800"></div>
+<div class="px-3 mb-2">
+<h2 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">التخصيص</h2>
+</div>
+<a class="group flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined !text-[22px]">palette</span>
+                        مظهر نانو
+                    </a>
+<a class="group flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined !text-[22px]">notifications_active</span>
+                        الإشعارات
+                    </a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 min-w-0">
+<div class="mb-8">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">إعدادات عامة</h1>
+<p class="text-slate-500 dark:text-slate-400">قم بتحديث معلومات ملفك الشخصي وكيفية ظهورك للآخرين في المنتدى.</p>
+</div>
+<!-- Form Section -->
+<form class="space-y-8">
+<!-- Avatar & Cover Section -->
+<div class="bg-white dark:bg-[#151c2a] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">الصورة الشخصية</h3>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<div class="h-24 w-24 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center ring-4 ring-white dark:ring-[#151c2a]" data-alt="Large user profile avatar for editing" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDYO91FhId0zdCyUaLr2fqdaWU6qC1h5vQN-nPmLtLbZFfzHAs3mcBTMG9MujTZI2dupaO2dztOYIobkmBSIJnqJFX1ZkMtHevoqmo6Qr93SGhYxOWhpnzPIgIoequqTbjxsAcwOyB5_uKBGmLhfJjt5JFbxJtjsdNDLPtip3S7Yp_zRjOiPsKQ6C0MfkyYOmNT3t1ifGXqeDAMmHF_3xGt37jv6gsYM_gBJzgeSBwRfiahpjqlEsVH92yp2h80D1ed1Wf6TjPRPtg");'>
+</div>
+<button class="absolute bottom-0 right-0 p-1.5 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition-colors" title="تغيير الصورة" type="button">
+<span class="material-symbols-outlined !text-[18px]">edit</span>
+</button>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-sm font-medium text-slate-900 dark:text-white">صورة الملف الشخصي</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">JPG أو PNG أو GIF. الحجم الأقصى 2 ميجابايت.</span>
+<div class="flex gap-3 mt-1">
+<button class="text-sm font-medium text-primary hover:text-primary/80" type="button">رفع صورة جديدة</button>
+<button class="text-sm font-medium text-red-500 hover:text-red-600" type="button">حذف</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Basic Info Section -->
+<div class="bg-white dark:bg-[#151c2a] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Username -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300" for="username">اسم المستخدم</label>
+<div class="relative">
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-[#1e293b] text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm h-12 px-4" id="username" name="username" type="text" value="Ahmed_Design"/>
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<span class="material-symbols-outlined text-green-500 !text-[20px]">check_circle</span>
+</div>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">يمكنك تغيير اسم المستخدم مرة واحدة كل 30 يوماً.</p>
+</div>
+<!-- User Title -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300" for="usertitle">المسمى المخصص</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-[#1e293b] text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm h-12 px-4" id="usertitle" name="usertitle" placeholder="عضو مميز" type="text"/>
+</div>
+<!-- Email -->
+<div class="space-y-2 md:col-span-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300" for="email">البريد الإلكتروني</label>
+<div class="flex gap-4">
+<input class="block w-full flex-1 rounded-lg border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-[#101622] text-slate-500 dark:text-slate-400 shadow-sm sm:text-sm h-12 px-4 cursor-not-allowed" disabled="" id="email" name="email" type="email" value="ahmed@example.com"/>
+<button class="shrink-0 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-[#1e293b] px-4 py-2 text-sm font-medium text-slate-700 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#151c2a]" type="button">
+                                        تغيير البريد
+                                    </button>
+</div>
+</div>
+<!-- Location -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300" for="location">الموقع</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-[#1e293b] text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm h-12 px-4" id="location" name="location" placeholder="الرياض، المملكة العربية السعودية" type="text"/>
+</div>
+<!-- Website -->
+<div class="space-y-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300" for="website">الموقع الإلكتروني</label>
+<input class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-[#1e293b] text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm h-12 px-4" id="website" name="website" placeholder="https://mysite.com" type="url"/>
+</div>
+<!-- Bio -->
+<div class="space-y-2 md:col-span-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300" for="about">نبذة عني</label>
+<textarea class="block w-full rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-[#1e293b] text-slate-900 dark:text-white shadow-sm focus:border-primary focus:ring-primary sm:text-sm p-4" id="about" name="about" placeholder="اكتب نبذة مختصرة عن نفسك..." rows="3"></textarea>
+</div>
+</div>
+</div>
+<!-- Preferences Section -->
+<div class="bg-white dark:bg-[#151c2a] rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">خيارات العرض</h3>
+<div class="space-y-5">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">عرض حالة الاتصال</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">السماح للأعضاء برؤية حالتك عندما تكون متصلاً.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 dark:peer-focus:ring-primary/20 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">عرض تاريخ الميلاد</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">عرض اليوم والشهر في ملفك الشخصي.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 dark:peer-focus:ring-primary/20 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<hr class="border-slate-200 dark:border-slate-800"/>
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">تلقي رسائل من الإدارة</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">استلام التنبيهات والأخبار الهامة على البريد الإلكتروني.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 dark:peer-focus:ring-primary/20 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Action Bar (Sticky Bottom on Mobile, Fixed area on Desktop) -->
+<div class="sticky bottom-4 z-40 bg-background-light/95 dark:bg-[#101622]/95 backdrop-blur border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex items-center justify-between shadow-lg">
+<span class="text-sm text-slate-500 dark:text-slate-400 hidden sm:block">آخر حفظ: اليوم 10:30 ص</span>
+<div class="flex gap-4 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none justify-center rounded-lg border border-slate-300 dark:border-slate-600 bg-transparent px-6 py-2.5 text-sm font-medium text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-500 transition-colors" type="button">
+                                إلغاء
+                            </button>
+<button class="flex-1 sm:flex-none justify-center rounded-lg bg-primary px-8 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-[#101622] transition-colors" type="submit">
+                                حفظ التغييرات
+                            </button>
+</div>
+</div>
+</form>
+</main>
+</div>
+</div>
+</body></html>

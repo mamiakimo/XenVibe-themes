@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search &amp; Explore - XenSocial</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1a2235",
+                        "text-main-light": "#0d121b",
+                        "text-main-dark": "#ffffff",
+                        "text-sec-light": "#4c669a",
+                        "text-sec-dark": "#94a3b8",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark font-display antialiased">
+<div class="relative flex h-full min-h-screen w-full bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Layout Container -->
+<div class="flex h-full w-full max-w-[1440px] mx-auto">
+<!-- Left Sidebar (Navigation) -->
+<aside class="hidden lg:flex flex-col w-[280px] shrink-0 h-screen sticky top-0 border-r border-gray-200 dark:border-gray-800 bg-background-light dark:bg-background-dark p-6">
+<div class="flex items-center gap-3 mb-8 px-2">
+<div class="bg-primary aspect-square rounded-full size-10 flex items-center justify-center text-white font-bold text-xl">
+                    X
+                </div>
+<h1 class="text-xl font-bold tracking-tight">XenSocial</h1>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-text-sec-light dark:text-text-sec-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">home</span>
+<span class="font-medium">Home</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl bg-primary/10 text-primary dark:bg-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary fill-1">explore</span>
+<span class="font-medium">Explore</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-text-sec-light dark:text-text-sec-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">notifications</span>
+<span class="font-medium">Notifications</span>
+<span class="ml-auto bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-text-sec-light dark:text-text-sec-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">chat_bubble</span>
+<span class="font-medium">Messages</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-xl text-text-sec-light dark:text-text-sec-dark hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">person</span>
+<span class="font-medium">Profile</span>
+</a>
+<div class="my-2 border-t border-gray-200 dark:border-gray-800"></div>
+<div class="px-4 py-2">
+<p class="text-xs font-semibold text-text-sec-light dark:text-text-sec-dark uppercase tracking-wider mb-4">My Groups</p>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-cover bg-center" data-alt="Microchip circuit board close up" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCkbSG94doYoVn_rnwiVS7NKYdkedOsDcMaCFeP8BUxg5KPLpfawA_TVpP24k3HJWZ3HCuc_R9T9V_6TF62SqLH7Anrfp-dSxlnun_GdgFVYa5P5GX1EwWDBcAVspQtWdCPblQdTm26ncJo5AJo5YcusNvZFvPJ89YQNMSoSqHNak-eJT0AespaBnez3vBCgoGXBcZUXlqJa69k2UCMuB1K6Y6ifV-00FHRMjwrYeR66weWBo-hGNE3O8Q64rUnuQaI6BFtKY4hbPw");'></div>
+<p class="text-sm font-medium truncate">Tech Insider</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-cover bg-center" data-alt="Mountain landscape with sun" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADtbrgYCKfiMF_8fIL1xt7YwHchH30ppkVSXEJG0ivgNA88MprrrBBot75-xpNbDLsCXrZUzWdI52-T-mLcRCC1NI2sNrBQeSNoJKgN9FwuDOmn7w6k_dl7jih9I2rzGQHx--onK5TCKWndjWcBsv6IcegX1Yg2FnQOCqll4uQOGnPdAv5T_PVMDeh_F2YGtvJAxyAL2tE32HT6laeYaF2clem5b5LMGPkX8tbq6N6v42HdsUEb_qsIgaDTqS2oZFgLtUB_LXg0Tk");'></div>
+<p class="text-sm font-medium truncate">Outdoor Adventures</p>
+</div>
+</div>
+</div>
+</nav>
+<div class="mt-auto flex items-center gap-3 px-2 py-3">
+<div class="bg-cover bg-center aspect-square rounded-full size-10 border-2 border-white dark:border-gray-700" data-alt="Portrait of current user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSEE_WpbmPoO0vCyASzFcmVNio7b5yWgSr6wDhyrwxDKPOvNWw053wrW5pbFE-IL9rZa2mnE17aCXZs46WeIlfTczIm0wSCTPliClwR34Ewg8FxEbI3AdMfEOpoe6idheAALQrkiOO6YkE9xTbKEjWBzbIMzSLixEcdxeWAZ5cwRX41iHKqXRFvKCb9nwe7ASxqQ8G1btqo9Z46Wr-SY2DqOPdYd8rBBXcLT8NApXNjd7TcVDkVfwT8lH7O0H6ZPLzsPqkj6wZ86s");'></div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-sm font-bold truncate">Alex Morgan</p>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark truncate">@alexmorgan</p>
+</div>
+<button class="ml-auto text-text-sec-light dark:text-text-sec-dark hover:text-primary">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- Header & Search Sticky -->
+<div class="sticky top-0 z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 px-6 py-4">
+<div class="max-w-3xl mx-auto w-full flex flex-col gap-4">
+<div class="flex justify-between items-end">
+<h2 class="text-2xl font-black tracking-tight">Search &amp; Explore</h2>
+</div>
+<!-- Search Bar -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-text-sec-light dark:text-text-sec-dark group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-3.5 bg-card-light dark:bg-card-dark border-none rounded-xl text-base shadow-sm ring-1 ring-gray-200 dark:ring-gray-800 placeholder:text-gray-400 focus:ring-2 focus:ring-primary focus:outline-none transition-all" placeholder="Search for topics, members, or groups..." type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-primary text-white text-sm font-medium shadow-sm shadow-primary/30 transition-all hover:bg-primary/90">
+                            All
+                        </button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white dark:bg-card-dark text-text-sec-light dark:text-text-sec-dark border border-gray-200 dark:border-gray-700 text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                            Discussions
+                        </button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white dark:bg-card-dark text-text-sec-light dark:text-text-sec-dark border border-gray-200 dark:border-gray-700 text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                            People
+                        </button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white dark:bg-card-dark text-text-sec-light dark:text-text-sec-dark border border-gray-200 dark:border-gray-700 text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                            Groups
+                        </button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-white dark:bg-card-dark text-text-sec-light dark:text-text-sec-dark border border-gray-200 dark:border-gray-700 text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                            Tags
+                        </button>
+</div>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="p-6 max-w-3xl mx-auto w-full flex flex-col gap-8">
+<!-- Section: Trending Now -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+                            Trending Now
+                        </h3>
+<a class="text-sm text-primary font-medium hover:underline" href="#">View all</a>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Topic Card 1 -->
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow cursor-pointer group">
+<div class="flex gap-4">
+<div class="shrink-0 flex flex-col items-center gap-1 min-w-[50px]">
+<span class="material-symbols-outlined text-text-sec-light dark:text-text-sec-dark">expand_less</span>
+<span class="font-bold text-lg">248</span>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-5 h-5 rounded-full bg-cover bg-center" data-alt="User avatar male smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBzCun4d6n7nhuJjOhPiBsTNssHjryXnuAPXv3r7GRbf-WxlG4PJkPm1levEwqH1iXruXpUNdQklAyONDXNqp7WNVAwxEPg4IkjTWgzTDNy1MqQ-Tel9xGSvhfl1l7a9bvXSM0yyo1AEMEDr0dxpyMLMNeHDjXBmMytEk5Q9tDVRA76V7AAo1-suHZMPkh4VZCUrMdW_hpJojCwa7_dmxQ1gjBqHGvCgipUny232wUOtz3zQYF4rSEjDWwGqSZiIbNsAciAjHhbnUs");'></div>
+<span class="text-xs font-medium text-text-sec-light dark:text-text-sec-dark">Marcus_Dev • 2h ago</span>
+<span class="px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wide">Technology</span>
+</div>
+<h4 class="font-bold text-lg leading-tight group-hover:text-primary transition-colors">The future of WebAssembly: Is it replacing JS anytime soon?</h4>
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark line-clamp-2">I've been experimenting with Rust and Wasm lately, and the performance gains are undeniable for heavy computation tasks. However, the ecosystem...</p>
+<div class="flex items-center gap-6 mt-3">
+<button class="flex items-center gap-1.5 text-xs font-medium text-text-sec-light dark:text-text-sec-dark hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span>
+                                            42 Comments
+                                        </button>
+<button class="flex items-center gap-1.5 text-xs font-medium text-text-sec-light dark:text-text-sec-dark hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                                            Share
+                                        </button>
+</div>
+</div>
+<div class="hidden sm:block shrink-0">
+<div class="w-24 h-24 rounded-lg bg-cover bg-center" data-alt="Coding on a laptop screen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFXu8uOB___qnpeX_AZbYyClIl5B4FG86JlOz4IDOU5YrwHPAbeDXhRoupXXUoBOoN6yg7LaSqJNPClVJCSeV7fDarvgXjXt4Ko35N-WVqMmj5cb-Xay0CaV2kZs8RuDCaRSBbmejkdeR-MiD2nfiCqkrwh5e59qAajaB930lYm1fAPFKc9Gpa6Swwu4VnNEOwxbrGUH-We1KXKdzpEoN3wY0-gLr4XC_PGTe_2ujlgXrAaVI7ORucKA3mmyzbvU0wGEZdTDS0LWs");'></div>
+</div>
+</div>
+</div>
+<!-- Topic Card 2 -->
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow cursor-pointer group">
+<div class="flex gap-4">
+<div class="shrink-0 flex flex-col items-center gap-1 min-w-[50px]">
+<span class="material-symbols-outlined text-text-sec-light dark:text-text-sec-dark">expand_less</span>
+<span class="font-bold text-lg">112</span>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<div class="w-5 h-5 rounded-full bg-cover bg-center" data-alt="User avatar female smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDaIhdSulzt9-Yqr_GLGj4CxPsc04WaB8y4ZPQmF1lilUv_Jc6VrgQLm2aEldZmpMkfsAuGCXvZP3FORTFMLl6ZINueDQcsH7LaWZiw0ibKjOmzy6t2o7lGF9igV6ad1lP1UUColSenPZtZTMEO6obWyiH4ReTe1jmps3XVmb8Y9sFsG9BbCqTNevBVVXD-hNvgoc9sshyKn2U-QEFIxneRo45ySztM-9dpKRmvg6yT3ugHYmEo3J2lPcveX6WHf8l7PwpvSje3pRM");'></div>
+<span class="text-xs font-medium text-text-sec-light dark:text-text-sec-dark">SarahDesign • 5h ago</span>
+<span class="px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-[10px] font-bold uppercase tracking-wide">Design</span>
+</div>
+<h4 class="font-bold text-lg leading-tight group-hover:text-primary transition-colors">Minimalist UI trends for 2025</h4>
+<p class="text-sm text-text-sec-light dark:text-text-sec-dark line-clamp-2">Are we finally moving away from flat design? Neomorphism seems to be making a subtle comeback mixed with glassmorphism.</p>
+<div class="flex items-center gap-6 mt-3">
+<button class="flex items-center gap-1.5 text-xs font-medium text-text-sec-light dark:text-text-sec-dark hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span>
+                                            28 Comments
+                                        </button>
+<button class="flex items-center gap-1.5 text-xs font-medium text-text-sec-light dark:text-text-sec-dark hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                                            Share
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Suggested Groups -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">groups</span>
+                            Suggested Groups
+                        </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Group Card 1 -->
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-cover bg-center shrink-0 shadow-inner" data-alt="Cybersecurity lock concept" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOe2EdLbO25A0mxj9yQ_KeHvSV_nED9ZwOm6pBGQ_tunFwnQcQexkhj5Iel_tuBCG8YrLPs25LmF4axA23mA4bJbSOQPTgKEjjSfTxBhi_DwuTUtyRTT_9uycra-fp-N85e15qdsLBOJy91NZe5YxwbCy5gGH9PJHxzsU8CqUy4P7WvVvIJ104m6FclygKe5VJiUfk9lmJqVGzjqG2FpIJmYMUt3N2jDp1Zoi0gMnQBB7wMf_-TBTdJ7tEuYTu8S2h2ZMFc4NzaB0");'></div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-base truncate">Cyber Security Pro</h4>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark mb-2">12.5K Members</p>
+<button class="text-xs font-semibold bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1.5 rounded-lg transition-colors">Join Group</button>
+</div>
+</div>
+<!-- Group Card 2 -->
+<div class="bg-card-light dark:bg-card-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-cover bg-center shrink-0 shadow-inner" data-alt="Social media apps collage" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6KBmPGJ2Q5G_HKIesba3uWNAXbID78Hh2rvhzekgtEVMlL_NJIXdDl7amDqqkrGCK7fcMoA25t6DIAKHqMvHKp-4j_mseIRAoG0ybhrSbqMxk_3MC1c000o5qlUSIZfcBAjCFsffWiEImGlMNyxQGuNQ_DHLI2MFqkwoqlgemK1wF_qvbias-umuVqY9CSEEgcBJ3kwsAfWl3qVLOzdI_FxniMYyGxEDgSIdRbzEgV1KPtKNAqW5sTCQAHh_vEMstqrfRq2EaIfE");'></div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-base truncate">Digital Marketing</h4>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark mb-2">8.2K Members</p>
+<button class="text-xs font-semibold bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1.5 rounded-lg transition-colors">Join Group</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: New Members -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person_add</span>
+                            New Members
+                        </h3>
+</div>
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800">
+<!-- Member Item 1 -->
+<div class="flex items-center gap-4 p-4">
+<div class="w-12 h-12 rounded-full bg-cover bg-center border-2 border-white dark:border-gray-700 shadow-sm" data-alt="Portrait of a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqjORGY6i-ch7F-8FuFbnTfDSuYwf0SCWjlACs_tSNhQQr756sKUm2K9rV21IAY0ZwUXS5pzUNH3LFPvxVcJNCz6crHNzZXBrDjpAEPVQdFi8DmgZ0z5Hd6Kk_2qEd-MLhdbBFVQEPcv0NQRaegUJKFDVagtmHGWVCcM-SQJy-MvsgUMz14sE6O05oBJeigj1eifOBlP1Dm30CUxKRJGln3QfgbdcdaKSxQ4foy1IkYd0JMBW76h9PTerK7QlYmKjyJBKuC90KBlo");'></div>
+<div class="flex-1 min-w-0">
+<h5 class="font-bold text-sm truncate">James Wilson</h5>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark truncate">Software Engineer @ TechCorp</p>
+</div>
+<button class="shrink-0 bg-primary hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors shadow-sm shadow-blue-500/30">
+                                Follow
+                            </button>
+</div>
+<!-- Member Item 2 -->
+<div class="flex items-center gap-4 p-4">
+<div class="w-12 h-12 rounded-full bg-cover bg-center border-2 border-white dark:border-gray-700 shadow-sm" data-alt="Portrait of a smiling woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBqgn-N4iEDtH90ggBMc6lDM0JLEOpn4_d7LNmwt0GhacRe6-awr-zzQ7AoJyAr2Z7ToPBeorexZbP-uKiczzVKN3wEaKk0TZ9ZsFG2VJRukjRBzP3B3OYZqewJaWbezw2fKoKAocOmTONTnpfPktAvPDtocaULVBgRCBH5PSzay-5yg0rUZ6xVDBeRqAdNPYJNIO4QuDY0a_FL-Rs5blgJkp-ysGsi-JK-DXSovAIFeraILoWk8bnV1QhhlZ87CAxa0XvgDjJqr5g");'></div>
+<div class="flex-1 min-w-0">
+<h5 class="font-bold text-sm truncate">Emily Clarke</h5>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark truncate">Digital Artist &amp; UI Designer</p>
+</div>
+<button class="shrink-0 bg-background-light dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-text-main-light dark:text-text-main-dark text-xs font-semibold px-4 py-2 rounded-lg transition-colors">
+                                Profile
+                            </button>
+</div>
+<!-- Member Item 3 -->
+<div class="flex items-center gap-4 p-4">
+<div class="w-12 h-12 rounded-full bg-cover bg-center border-2 border-white dark:border-gray-700 shadow-sm" data-alt="Portrait of a man looking away" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCgolrV4o4P51FjGLm7RWJQaaPm2J--kYo-BqJo_I3U4V0LH0p4MZtaJd1g-vDk_XO-GNFlDYATGr0AzgoOX3dRV1a4y-lOvk6hE4eFjviiECXk4XjpGbM_z6b3j8cKpHhyiyjOBpxbmhcTrKYJxLb7Ld5lp26baNzcvknPv_yesacD8BcUDuy4O0sKKNjqkoyYJxWZYojbEpkuQ4lM3VyuGJwcDPeuEVfXLfUqbh6-NcNeXbPFuO3UNJMIj7dGMRTibcxH3VOzPlE");'></div>
+<div class="flex-1 min-w-0">
+<h5 class="font-bold text-sm truncate">David Chen</h5>
+<p class="text-xs text-text-sec-light dark:text-text-sec-dark truncate">Looking for startup partners</p>
+</div>
+<button class="shrink-0 bg-primary hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors shadow-sm shadow-blue-500/30">
+                                Follow
+                            </button>
+</div>
+</div>
+</section>
+<!-- Load More -->
+<div class="flex justify-center py-4">
+<button class="text-sm font-semibold text-text-sec-light dark:text-text-sec-dark hover:text-primary transition-colors flex items-center gap-2">
+                        Show more results
+                        <span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

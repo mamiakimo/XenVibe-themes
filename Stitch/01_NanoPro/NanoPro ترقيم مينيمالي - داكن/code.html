@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NanoPro: Minimalist Pagination - Dark</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161e2d",
+                        "surface-hover": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom styles for Nano Pagination animations */
+        .nano-dot {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .group:hover .nano-dot-tooltip {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nano-dot-tooltip {
+            opacity: 0;
+            transform: translateY(4px);
+            transition: all 0.2s ease-out;
+            pointer-events: none;
+        }
+
+        /* Dash animation pulse */
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .active-dash {
+            animation: pulse-soft 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark font-display overflow-x-hidden text-slate-200">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-800 bg-surface-dark px-10 py-4 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 rounded bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">hub</span>
+</div>
+<h2 class="text-white text-xl font-bold leading-tight tracking-tight">XenVibe <span class="text-slate-500 font-normal text-sm ml-2">NanoPro</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-6 ml-4">
+<a class="text-white text-sm font-medium hover:text-primary transition-colors" href="#">Forums</a>
+<a class="text-slate-400 text-sm font-medium hover:text-white transition-colors" href="#">Members</a>
+<a class="text-slate-400 text-sm font-medium hover:text-white transition-colors" href="#">Activity</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer">search</span>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 ring-2 ring-slate-800" data-alt="User avatar with abstract blue gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDqjNEQvcyLuhMn5kLTGqFWvR9aKcudGaFQShw1OC0Spa2_sJ_okjUqAWlKBv4HCXh1XhigoEbw3H50wIfoZC22D-FDLcu9MA9KEwZrI4nU6Tgf6eR3KFiI348si8t4WNV9SX-r3nk08tc-R1qYMB2EfXJQDaejTp4gIWKSR7vc8eW1KqavWBsAC4Q0HaNYYpAGAuP5_aY0qUl5HG9Z82EZs75W0I884GisAiqDBESLevXVWGOVwpHwKBTHNusLo8S6dermd6fUNcI");'></div>
+</div>
+</header>
+<div class="px-4 md:px-12 lg:px-40 flex flex-1 justify-center py-8">
+<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1 gap-6">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 items-center text-sm">
+<a class="text-slate-500 hover:text-primary font-medium" href="#">Forums</a>
+<span class="material-symbols-outlined text-slate-700 text-sm">chevron_right</span>
+<a class="text-slate-500 hover:text-primary font-medium" href="#">Category</a>
+<span class="material-symbols-outlined text-slate-700 text-sm">chevron_right</span>
+<span class="text-white font-medium">General Discussion</span>
+</div>
+<!-- Page Header -->
+<div class="flex justify-between items-end pb-2 border-b border-slate-800/50">
+<div>
+<h1 class="text-white text-3xl font-bold tracking-tight mb-2">General Discussion</h1>
+<p class="text-slate-400 text-sm">Talk about anything and everything related to the community.</p>
+</div>
+<button class="hidden sm:flex bg-primary hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium items-center gap-2 transition-all shadow-lg shadow-blue-900/20">
+<span class="material-symbols-outlined text-lg">edit_square</span>
+                        New Thread
+                    </button>
+</div>
+<!-- Thread List Container -->
+<div class="bg-surface-dark border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+<!-- Pinned Thread -->
+<div class="flex items-center gap-4 px-6 py-4 border-b border-slate-800 hover:bg-surface-hover transition-colors group cursor-pointer bg-slate-800/20">
+<div class="shrink-0 relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-slate-700" data-alt="Avatar of admin user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNFA0BcyN5beo-B1aWDjAdIhh2J3jUizEq1eiB3D3uXLuROo0qQFkU4FRDoP8_P4K66uzmEOXgWdTv-gyLgNKd1__-bU0-4WsbklWunao7uAUu0aO4XpK8TsSI7Zy1rI57njq1yfDc9Yeg0NwKtoxS3aVvuxBpQN92smYJgK-6EYGpSk2oc193gaeadyaMoTaSvMqI3fJILaTOxtatMLvFCmXxOUQKuRt8MCatk2diDwdTNAwEaK0M826u_1DOWrDZf7Bv-lELnts");'></div>
+<div class="absolute -bottom-1 -right-1 bg-green-500 size-3 rounded-full border-2 border-surface-dark"></div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="material-symbols-outlined text-primary text-sm filled" style="font-variation-settings: 'FILL' 1;">keep</span>
+<h3 class="text-white text-base font-medium truncate group-hover:text-primary transition-colors">Welcome to NanoPro Design System</h3>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span class="text-slate-300 font-medium">Administrator</span>
+<span>•</span>
+<span>Pinned locally</span>
+<span>•</span>
+<span>Tuesday at 9:41 PM</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end gap-1 shrink-0 text-right min-w-[80px]">
+<span class="text-slate-400 text-sm font-medium">1.2k views</span>
+<span class="text-slate-600 text-xs">48 replies</span>
+</div>
+</div>
+<!-- Thread Item 1 -->
+<div class="flex items-center gap-4 px-6 py-4 border-b border-slate-800 hover:bg-surface-hover transition-colors group cursor-pointer">
+<div class="shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Avatar of user 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9vu9WfG6EjCbBYgK_gabEaPt5xdSCOpvifYzOIwW1F60yNztZx3TJ1oIyu12ibItQ-LhYkNFIzEgx2rwZjAoHJcGpD8LePTWGT09f6_Iy9wUuF4EFab8-w70HW0fhST8uC9mit9tLbj5CsyriVLl3scPmGqAUDZ3d5XQ5nC3YEoF0B9RW6D1GrP68BpwsNApLXFYDuUw5gScWWfmWMcAm7a_3st00j1HTKovFSQPWwtE-nzQmW5d27EFSUVx3ZATPRze0gDOKTcw");'></div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<h3 class="text-slate-200 text-base font-medium truncate group-hover:text-primary transition-colors mb-0.5">Feedback on the new Dark Mode implementation</h3>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span>PixelMaster</span>
+<span>•</span>
+<span>2 mins ago</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end gap-1 shrink-0 text-right min-w-[80px]">
+<span class="text-slate-400 text-sm font-medium">342 views</span>
+<span class="text-slate-600 text-xs">12 replies</span>
+</div>
+</div>
+<!-- Thread Item 2 -->
+<div class="flex items-center gap-4 px-6 py-4 border-b border-slate-800 hover:bg-surface-hover transition-colors group cursor-pointer">
+<div class="shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Avatar of user 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZwDtQxxa4AINswMs3L_3bOY6WqLFcBqwo3qbk3m8slMELc1fbYxn5rU27WtpPvORV7ptpBTRXzux2sNZy7-Jr2WxTeLOlnVcr9Hp4g8sDpbVCv0dT4GB_fn5OyD7UXJPDS2XhzPy8snPY_PZSRq4fW6Bky5-xEUwelqeTYRlvJ5oulmKL2lEja5ZnSK0MiZz4_YHn21Vdp1A-8rwazOz6DNAJYXJ966gYnT8TVN4lAlW8bcBs7CMABqx12wrNeqBvH-hdwgqgv-Q");'></div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<h3 class="text-slate-200 text-base font-medium truncate group-hover:text-primary transition-colors mb-0.5">Weekly Community Showcase: June Edition</h3>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span>CommunityLead</span>
+<span>•</span>
+<span>45 mins ago</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end gap-1 shrink-0 text-right min-w-[80px]">
+<span class="text-slate-400 text-sm font-medium">89 views</span>
+<span class="text-slate-600 text-xs">5 replies</span>
+</div>
+</div>
+<!-- Thread Item 3 -->
+<div class="flex items-center gap-4 px-6 py-4 border-b border-slate-800 hover:bg-surface-hover transition-colors group cursor-pointer">
+<div class="shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Avatar of user 3" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAZnwVnv3S-h6Kyw-VvGF5c8v1VQlxDxQTMRJ-Wl6tfte0ODoWQN1hBUbKbemGawaHJHVhhDl2x9jeZv4A81J5TtFY_SlzazLuGR9f9I48_GoawHAPtepqLcmMiL0ud0SG4KXRR6AsceMjxbblRehtw64Ab9qv3Ju4Vheza0lizJH3exCupQkKfYgCoCTOkon6RL6mgR5R0u7HRm0LXuhkNGrJLpTzpV3l9wulXvctsC8VXfHuoXp6VAge6KyEflvyDslnEQKIBU08");'></div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<h3 class="text-slate-200 text-base font-medium truncate group-hover:text-primary transition-colors mb-0.5">Bug Report: Mobile navigation glitched on iOS</h3>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span>SwiftDev</span>
+<span>•</span>
+<span>3 hours ago</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end gap-1 shrink-0 text-right min-w-[80px]">
+<span class="text-slate-400 text-sm font-medium">156 views</span>
+<span class="text-slate-600 text-xs">8 replies</span>
+</div>
+</div>
+<!-- Thread Item 4 -->
+<div class="flex items-center gap-4 px-6 py-4 hover:bg-surface-hover transition-colors group cursor-pointer">
+<div class="shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Avatar of user 4" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8Yq3VccOmlOI_3OXuSKMTOH41oCFa1K061hr-KloOBcw7miYZTPqUvCLI1NgHhZzd_nUefbp3_8pEaSEWSeCe3YhqZSzLqvPwI9Hadxzy4q4odNcYkvr9J_D4sH9pjxEV935rNgpYZ5-cUOnsEhGryx3SWiJFS5TagbBnVvQ3_vrPwdqWSE5LXeMUFgpB45dzSicVCMHmKPjFK4ErfDh00JbK-I9JvKCx7T76bzG6ALleQvAKSOamrWyPDBcWnQ7N8gSdYPEROKM");'></div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<h3 class="text-slate-200 text-base font-medium truncate group-hover:text-primary transition-colors mb-0.5">Off-Topic: Best mechanical keyboards for coding?</h3>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span>ClickyClack</span>
+<span>•</span>
+<span>5 hours ago</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end gap-1 shrink-0 text-right min-w-[80px]">
+<span class="text-slate-400 text-sm font-medium">892 views</span>
+<span class="text-slate-600 text-xs">104 replies</span>
+</div>
+</div>
+</div>
+<!-- NanoPro Pagination - The Hero Component -->
+<div class="flex justify-center items-center py-8">
+<nav aria-label="Pagination" class="group flex items-center gap-4 px-6 py-3 rounded-full hover:bg-surface-dark/50 transition-colors duration-500">
+<!-- Prev Arrow (Subtle) -->
+<a class="text-slate-600 hover:text-white transition-colors opacity-0 group-hover:opacity-100 duration-300 transform translate-x-2 group-hover:translate-x-0" href="#">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</a>
+<!-- Nano Dots Container -->
+<div class="flex items-center gap-3 relative h-8 px-2">
+<!-- Page 1 -->
+<a class="group/dot relative flex flex-col items-center justify-center w-2 h-full cursor-pointer" href="#">
+<span class="nano-dot-tooltip absolute -top-5 text-[10px] font-bold text-slate-400">1</span>
+<div class="nano-dot size-1 rounded-full bg-slate-600 group-hover/dot:bg-slate-300 group-hover/dot:scale-125"></div>
+</a>
+<!-- Page 2 -->
+<a class="group/dot relative flex flex-col items-center justify-center w-2 h-full cursor-pointer" href="#">
+<span class="nano-dot-tooltip absolute -top-5 text-[10px] font-bold text-slate-400">2</span>
+<div class="nano-dot size-1 rounded-full bg-slate-600 group-hover/dot:bg-slate-300 group-hover/dot:scale-125"></div>
+</a>
+<!-- Current Page (3) - The Dash -->
+<div class="relative flex flex-col items-center justify-center w-6 h-full cursor-default">
+<div class="active-dash w-5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_rgba(19,91,236,0.5)]"></div>
+</div>
+<!-- Page 4 -->
+<a class="group/dot relative flex flex-col items-center justify-center w-2 h-full cursor-pointer" href="#">
+<span class="nano-dot-tooltip absolute -top-5 text-[10px] font-bold text-slate-400">4</span>
+<div class="nano-dot size-1 rounded-full bg-slate-600 group-hover/dot:bg-slate-300 group-hover/dot:scale-125"></div>
+</a>
+<!-- Ellipsis / Spacer -->
+<div class="relative flex flex-col items-center justify-center w-2 h-full cursor-default">
+<div class="size-0.5 rounded-full bg-slate-700"></div>
+</div>
+<!-- Last Page (12) -->
+<a class="group/dot relative flex flex-col items-center justify-center w-2 h-full cursor-pointer" href="#">
+<span class="nano-dot-tooltip absolute -top-5 text-[10px] font-bold text-slate-400">12</span>
+<div class="nano-dot size-1 rounded-full bg-slate-600 group-hover/dot:bg-slate-300 group-hover/dot:scale-125"></div>
+</a>
+</div>
+<!-- Next Arrow (Subtle) -->
+<a class="text-slate-600 hover:text-white transition-colors opacity-0 group-hover:opacity-100 duration-300 transform -translate-x-2 group-hover:translate-x-0" href="#">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</a>
+</nav>
+</div>
+<!-- Footer area info -->
+<div class="flex justify-between items-center text-xs text-slate-600 px-2 mt-[-10px]">
+<span>Showing 20 of 234 threads</span>
+<div class="flex gap-4">
+<a class="hover:text-slate-400" href="#">Privacy Policy</a>
+<a class="hover:text-slate-400" href="#">Terms</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button (Mobile) -->
+<button class="md:hidden fixed bottom-6 right-6 bg-primary text-white rounded-full p-4 shadow-lg shadow-blue-900/40 z-50 flex items-center justify-center">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</body></html>

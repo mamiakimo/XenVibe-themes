@@ -1,0 +1,656 @@
+
+// ===========================================
+// CREATE THREAD PAGE
+// ===========================================
+
+.formSubmitRow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--xv-border-color);
+    border-radius: 0 0 16px 16px;
+}
+
+.formSubmitRow-controls {
+    display: flex;
+    gap: 0.75rem;
+}
+
+// Thread creation form
+.block--thread-create,
+.block--reply {
+    background: var(--xv-bg-surface) !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--xv-border-color) !important;
+    overflow: hidden;
+}
+
+// Editor styling
+.fr-box {
+    background: var(--xv-bg-primary) !important;
+    border: 1px solid var(--xv-border-color) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+.fr-wrapper {
+    background: var(--xv-bg-primary) !important;
+}
+
+.fr-element {
+    background: var(--xv-bg-primary) !important;
+    color: var(--xv-text-primary) !important;
+    padding: 1rem !important;
+    min-height: 200px;
+}
+
+.fr-toolbar {
+    background: var(--xv-bg-elevated) !important;
+    border-bottom: 1px solid var(--xv-border-color) !important;
+    padding: 0.5rem !important;
+}
+
+.fr-btn {
+    color: var(--xv-text-muted) !important;
+    border-radius: 6px !important;
+    margin: 0 2px !important;
+
+    &:hover {
+        background: var(--xv-bg-primary) !important;
+        color: var(--xv-text-primary) !important;
+    }
+
+    &.fr-active {
+        background: var(--xv-accent) !important;
+        color: white !important;
+    }
+}
+
+.fr-separator {
+    background: var(--xv-border-color) !important;
+}
+
+// Attachment area
+.attachment-manager {
+    background: var(--xv-bg-elevated);
+    border: 2px dashed var(--xv-border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: var(--xv-accent);
+        background: rgba(19, 91, 236, 0.05);
+    }
+}
+
+// Tag input
+.tagInput {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--xv-bg-primary);
+    border: 1px solid var(--xv-border-color);
+    border-radius: 10px;
+
+    &:focus-within {
+        border-color: var(--xv-accent);
+        box-shadow: 0 0 0 3px rgba(19, 91, 236, 0.1);
+    }
+}
+
+.tagItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.375rem 0.625rem;
+    background: rgba(19, 91, 236, 0.15);
+    color: var(--xv-accent);
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+
+    .tagItem-remove {
+        cursor: pointer;
+        opacity: 0.7;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+// ===========================================
+// SETTINGS PAGE
+// ===========================================
+
+// Settings sidebar
+.p-body-sidebar--account {
+    background: var(--xv-bg-surface);
+    border-radius: 16px;
+    border: 1px solid var(--xv-border-color);
+    padding: 1rem;
+
+    .block {
+        background: transparent !important;
+        border: none !important;
+    }
+}
+
+.block--account {
+    background: transparent !important;
+
+    .block-body {
+        padding: 0;
+    }
+}
+
+// Settings menu items
+.menu-linkRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    border-radius: 10px;
+    color: var(--xv-text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-bottom: 0.25rem;
+
+    &:hover {
+        background: var(--xv-bg-elevated);
+        color: var(--xv-text-primary);
+    }
+
+    &.is-selected,
+    &.is-active {
+        background: rgba(19, 91, 236, 0.1);
+        border: 1px solid rgba(19, 91, 236, 0.2);
+        color: var(--xv-accent);
+        font-weight: 600;
+    }
+}
+
+// Settings card grid
+.settingsGroup {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.settingsGroup-item {
+    background: var(--xv-bg-surface);
+    border: 1px solid var(--xv-border-color);
+    border-radius: 16px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--xv-accent);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    &:hover {
+        border-color: rgba(19, 91, 236, 0.3);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+
+        &::before {
+            opacity: 1;
+        }
+    }
+}
+
+.settingsGroup-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--xv-bg-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--xv-accent);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+
+    .settingsGroup-item:hover & {
+        background: var(--xv-accent);
+        color: white;
+    }
+}
+
+.settingsGroup-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--xv-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.settingsGroup-description {
+    font-size: 0.8125rem;
+    color: var(--xv-text-muted);
+    line-height: 1.5;
+}
+
+// Toggle switches
+.inputGroup--toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--xv-border-color);
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.toggle-label {
+    font-size: 0.875rem;
+    color: var(--xv-text-secondary);
+}
+
+.toggle {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: var(--xv-bg-elevated);
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &.is-on {
+        background: var(--xv-accent);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        transition: transform 0.2s ease;
+    }
+
+    &.is-on::after {
+        transform: translateX(20px);
+    }
+}
+
+// ===========================================
+// ONLINE USERS PAGE
+// ===========================================
+
+// Online users grid
+.onlineList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+// Staff section header
+.onlineList-staff {
+    margin-bottom: 2rem;
+}
+
+.onlineList-sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--xv-border-color);
+
+    h3 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--xv-text-primary);
+    }
+}
+
+// Staff card (fancy)
+.onlineList-staffCard {
+    background: var(--xv-bg-surface);
+    border-radius: 16px;
+    border: 1px solid var(--xv-border-color);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        border-color: rgba(19, 91, 236, 0.3);
+    }
+}
+
+.onlineList-staffBanner {
+    height: 80px;
+    background: linear-gradient(135deg, var(--xv-accent), #6366f1);
+}
+
+.onlineList-staffContent {
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.onlineList-staffAvatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 4px solid var(--xv-bg-surface);
+    margin: -52px auto 0.75rem;
+    position: relative;
+    z-index: 10;
+}
+
+.onlineList-userName {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--xv-text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.onlineList-userRole {
+    display: inline-flex;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.onlineList-userRole--admin {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+}
+
+.onlineList-userRole--mod {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+}
+
+.onlineList-userActivity {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: var(--xv-bg-primary);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    color: var(--xv-text-muted);
+}
+
+// Member card (simple)
+.onlineList-memberCard {
+    background: var(--xv-bg-surface);
+    border: 1px solid var(--xv-border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: var(--xv-bg-elevated);
+        border-color: rgba(19, 91, 236, 0.3);
+    }
+}
+
+.onlineList-memberAvatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--xv-border-color);
+    margin: 0 auto 0.75rem;
+    position: relative;
+
+    .onlineIndicator {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid var(--xv-bg-surface);
+    }
+
+    .onlineIndicator--online {
+        background: #22c55e;
+    }
+
+    .onlineIndicator--away {
+        background: #eab308;
+    }
+
+    .onlineIndicator--offline {
+        background: #6b7280;
+    }
+}
+
+.onlineList-memberName {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--xv-text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.onlineList-memberTitle {
+    font-size: 0.6875rem;
+    color: var(--xv-text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.onlineList-memberActivity {
+    font-size: 0.6875rem;
+    color: var(--xv-text-muted);
+    padding: 0.5rem;
+    background: var(--xv-bg-primary);
+    border-radius: 6px;
+}
+
+// ===========================================
+// WATCHED THREADS PAGE
+// ===========================================
+
+.structItem--watched {
+    background: var(--xv-bg-surface);
+    border-radius: 12px;
+    border: 1px solid var(--xv-border-color);
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: var(--xv-bg-elevated);
+        border-color: var(--xv-accent);
+    }
+
+    &.is-unread {
+        border-left: 3px solid var(--xv-accent);
+    }
+}
+
+// ===========================================
+// HELP PAGE
+// ===========================================
+
+.help-toc {
+    background: var(--xv-bg-surface);
+    border-radius: 16px;
+    border: 1px solid var(--xv-border-color);
+    padding: 1.5rem;
+}
+
+.help-toc-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--xv-text-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--xv-border-color);
+}
+
+.help-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1rem;
+        border-radius: 8px;
+        color: var(--xv-text-secondary);
+        font-size: 0.875rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: var(--xv-bg-elevated);
+            color: var(--xv-text-primary);
+        }
+
+        &.is-active {
+            background: rgba(19, 91, 236, 0.1);
+            color: var(--xv-accent);
+            font-weight: 600;
+        }
+    }
+}
+
+.help-content {
+    background: var(--xv-bg-surface);
+    border-radius: 16px;
+    border: 1px solid var(--xv-border-color);
+    padding: 2rem;
+
+    h1, h2, h3, h4 {
+        color: var(--xv-text-primary);
+        margin-bottom: 1rem;
+    }
+
+    p {
+        color: var(--xv-text-secondary);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+    }
+
+    ul, ol {
+        color: var(--xv-text-secondary);
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    code {
+        background: var(--xv-bg-primary);
+        padding: 0.125rem 0.375rem;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.875em;
+        color: var(--xv-accent);
+    }
+}
+
+// ===========================================
+// POST EDIT PAGE
+// ===========================================
+
+.block--edit {
+    background: var(--xv-bg-surface) !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--xv-border-color) !important;
+}
+
+.formRow--edit {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--xv-border-color);
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+// ===========================================
+// RTL SUPPORT
+// ===========================================
+
+[dir="rtl"] {
+    .menu-linkRow.is-selected,
+    .menu-linkRow.is-active {
+        border-right: 3px solid var(--xv-accent);
+        border-left: none;
+    }
+
+    .structItem--watched.is-unread {
+        border-left: none;
+        border-right: 3px solid var(--xv-accent);
+    }
+
+    .toggle.is-on::after {
+        transform: translateX(-20px);
+    }
+
+    .settingsGroup-item::before {
+        left: auto;
+        right: 0;
+    }
+}
+
+// ===========================================
+// RESPONSIVE
+// ===========================================
+
+@media (max-width: 768px) {
+    .onlineList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .settingsGroup {
+        grid-template-columns: 1fr;
+    }
+
+    .formSubmitRow {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .formSubmitRow-controls {
+        width: 100%;
+        flex-direction: column;
+
+        .button {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .onlineList {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NanoPro: Featured Content</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#1d6bf5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622", // Deep charcoal/black
+                        "card-dark": "#161b26", // Slightly lighter for elements
+                        "card-border": "#232f48",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4d6e; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-white">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-slate-200 dark:border-[#232f48] bg-white dark:bg-[#111722]/90 backdrop-blur-md">
+<div class="px-4 lg:px-8 xl:px-40 flex h-16 items-center justify-between">
+<div class="flex items-center gap-8">
+<!-- Logo -->
+<div class="flex items-center gap-3 text-slate-900 dark:text-white cursor-pointer group">
+<div class="size-8 text-primary transition-transform group-hover:scale-110">
+<svg class="size-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 30.5736C16.7203 29.8826 20.2244 29.4783 24 29.4783C27.7756 29.4783 31.2797 29.8826 34.1739 30.5736C36.9144 31.2278 39.9967 32.7669 41.3563 33.8352L24.8486 7.36089C24.4571 6.73303 23.5429 6.73303 23.1514 7.36089L6.64374 33.8352C8.00331 32.7669 11.0856 31.2278 13.8261 30.5736Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 35.764C39.9944 35.7463 39.9875 35.7155 39.9748 35.6706C39.9436 35.5601 39.8949 35.4259 39.8346 35.2825C39.8168 35.2403 39.7989 35.1993 39.7813 35.1602C38.5103 34.2887 35.9788 33.0607 33.7095 32.5189C30.9875 31.8691 27.6413 31.4783 24 31.4783C20.3587 31.4783 17.0125 31.8691 14.2905 32.5189C12.0012 33.0654 9.44505 34.3104 8.18538 35.1832C8.17384 35.2075 8.16216 35.233 8.15052 35.2592C8.09919 35.3751 8.05721 35.4886 8.02977 35.589C8.00356 35.6848 8.00039 35.7333 8.00004 35.7388C8.00004 35.739 8 35.7393 8.00004 35.7388C8.00004 35.7641 8.0104 36.0767 8.68485 36.6314C9.34546 37.1746 10.4222 37.7531 11.9291 38.2772C14.9242 39.319 19.1919 40 24 40C28.8081 40 33.0758 39.319 36.0709 38.2772C37.5778 37.7531 38.6545 37.1746 39.3151 36.6314C39.9006 36.1499 39.9857 35.8511 39.998 35.764ZM4.95178 32.7688L21.4543 6.30267C22.6288 4.4191 25.3712 4.41909 26.5457 6.30267L43.0534 32.777C43.0709 32.8052 43.0878 32.8338 43.104 32.8629L41.3563 33.8352C43.104 32.8629 43.1038 32.8626 43.104 32.8629L43.1051 32.865L43.1065 32.8675L43.1101 32.8739L43.1199 32.8918C43.1276 32.906 43.1377 32.9246 43.1497 32.9473C43.1738 32.9925 43.2062 33.0545 43.244 33.1299C43.319 33.2792 43.4196 33.489 43.5217 33.7317C43.6901 34.1321 44 34.9311 44 35.7391C44 37.4427 43.003 38.7775 41.8558 39.7209C40.6947 40.6757 39.1354 41.4464 37.385 42.0552C33.8654 43.2794 29.133 44 24 44C18.867 44 14.1346 43.2794 10.615 42.0552C8.86463 41.4464 7.30529 40.6757 6.14419 39.7209C4.99695 38.7775 3.99999 37.4427 3.99999 35.7391C3.99999 34.8725 4.29264 34.0922 4.49321 33.6393C4.60375 33.3898 4.71348 33.1804 4.79687 33.0311C4.83898 32.9556 4.87547 32.8935 4.9035 32.8471C4.91754 32.8238 4.92954 32.8043 4.93916 32.7889L4.94662 32.777L4.95178 32.7688ZM35.9868 29.004L24 9.77997L12.0131 29.004C12.4661 28.8609 12.9179 28.7342 13.3617 28.6282C16.4281 27.8961 20.0901 27.4783 24 27.4783C27.9099 27.4783 31.5719 27.8961 34.6383 28.6282C35.082 28.7342 35.5339 28.8609 35.9868 29.004Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">NanoPro</h2>
+</div>
+<!-- Nav Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-500 dark:text-text-secondary text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-slate-900 dark:text-white text-sm font-medium border-b-2 border-primary pb-0.5" href="#">Featured</a>
+<a class="text-slate-500 dark:text-text-secondary text-sm font-medium hover:text-primary transition-colors" href="#">Forums</a>
+<a class="text-slate-500 dark:text-text-secondary text-sm font-medium hover:text-primary transition-colors" href="#">Members</a>
+</nav>
+</div>
+<!-- Right Actions -->
+<div class="flex flex-1 justify-end gap-4">
+<!-- Search -->
+<div class="hidden sm:flex relative max-w-xs w-full">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-500 dark:text-text-secondary">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="block w-full p-2 pl-10 text-sm text-slate-900 dark:text-white border border-slate-300 dark:border-[#232f48] rounded-lg bg-slate-50 dark:bg-[#232f48] focus:ring-primary focus:border-primary placeholder-slate-400 dark:placeholder-slate-500" placeholder="Search topics..." type="text"/>
+</div>
+<!-- Auth Buttons -->
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-9 px-4 bg-primary hover:bg-primary-hover text-white text-sm font-bold shadow-lg shadow-primary/20 transition-all">
+                        Log In
+                    </button>
+<button class="hidden sm:flex items-center justify-center rounded-lg h-9 px-4 bg-slate-200 dark:bg-[#232f48] hover:bg-slate-300 dark:hover:bg-[#324160] text-slate-900 dark:text-white text-sm font-bold transition-all">
+                        Register
+                    </button>
+<!-- Mobile Menu Button -->
+<button class="md:hidden flex items-center justify-center size-9 rounded-lg bg-slate-200 dark:bg-[#232f48] text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Layout -->
+<main class="flex-1 w-full max-w-[1440px] mx-auto px-4 lg:px-8 xl:px-40 py-8">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Main Content Column -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Featured Content</h1>
+<p class="text-slate-500 dark:text-text-secondary text-sm">Curated updates and top discussions from the community.</p>
+</div>
+<button class="flex items-center gap-2 rounded-lg h-9 px-4 bg-[#232f48] hover:bg-[#2e3b55] text-white text-sm font-medium transition-colors border border-[#354360]">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>New Topic</span>
+</button>
+</div>
+<!-- Chips/Filters -->
+<div class="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex items-center justify-center h-8 px-4 rounded-lg bg-primary text-white text-sm font-medium whitespace-nowrap shadow-md shadow-primary/10">
+                        All
+                    </button>
+<button class="flex items-center justify-center h-8 px-4 rounded-lg bg-slate-200 dark:bg-[#232f48] hover:bg-slate-300 dark:hover:bg-[#324160] text-slate-700 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white text-sm font-medium whitespace-nowrap transition-colors">
+                        Announcements
+                    </button>
+<button class="flex items-center justify-center h-8 px-4 rounded-lg bg-slate-200 dark:bg-[#232f48] hover:bg-slate-300 dark:hover:bg-[#324160] text-slate-700 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white text-sm font-medium whitespace-nowrap transition-colors">
+                        Updates
+                    </button>
+<button class="flex items-center justify-center h-8 px-4 rounded-lg bg-slate-200 dark:bg-[#232f48] hover:bg-slate-300 dark:hover:bg-[#324160] text-slate-700 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white text-sm font-medium whitespace-nowrap transition-colors">
+                        Tutorials
+                    </button>
+<button class="flex items-center justify-center h-8 px-4 rounded-lg bg-slate-200 dark:bg-[#232f48] hover:bg-slate-300 dark:hover:bg-[#324160] text-slate-700 dark:text-text-secondary hover:text-slate-900 dark:hover:text-white text-sm font-medium whitespace-nowrap transition-colors">
+                        Resources
+                    </button>
+</div>
+<!-- Content List -->
+<div class="flex flex-col gap-4">
+<!-- Item 1 (Card Style with Image) -->
+<article class="group relative flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200 shadow-sm hover:shadow-md">
+<div class="absolute left-0 top-4 bottom-4 w-1 bg-primary rounded-r-full"></div>
+<!-- Image thumbnail -->
+<div class="shrink-0 w-full sm:w-32 h-32 sm:h-auto">
+<div class="w-full h-full rounded-lg bg-cover bg-center" data-alt="Abstract blue digital pattern representing forum rules" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAx0LpoXANFiadspIpUZQ-7u8TxhK0gPUpa6rexj71iudubBN0Kq6Udz1tcsEfCSOgaHD7CXLZ2J910mTjTKNhrHmDve4Pb2uDRs8LCW0KL2OJMjXWTCXcWGaJrBpW-uXafozeejQW_YKyOwv0pFTD3krWnxFyYoZtqfEWMwNQv2To8V4xROHixR4zn6mHve4mmRGSp_Ll593fb_GnQ6KQ06Zfx2gp0M_Qv-gtyfCo7p2xm38PPyoASRTbNkZWjYXRIl6ptlDJz-ws");'></div>
+</div>
+<!-- Content -->
+<div class="flex flex-1 flex-col justify-center gap-2 pl-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-primary/20 text-primary text-[10px] uppercase font-bold px-2 py-0.5 rounded tracking-wider">Pinned</span>
+<span class="text-xs text-text-secondary">Admin • 2 hours ago</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
+<a class="focus:outline-none" href="#">
+<span aria-hidden="true" class="absolute inset-0"></span>
+                                    Official Forum Rules and Guidelines
+                                </a>
+</h3>
+<p class="text-slate-500 dark:text-text-secondary text-sm line-clamp-2">
+                                Please read the following rules carefully before posting on the forum. We aim to maintain a high-quality discussion environment for all professionals.
+                            </p>
+<div class="flex items-center gap-4 mt-1">
+<div class="flex items-center gap-1 text-slate-400 dark:text-slate-600 text-xs">
+<span class="material-symbols-outlined text-[14px]">visibility</span>
+<span>2.4k</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400 dark:text-slate-600 text-xs">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>48</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Item 2 (Compact/No Image) -->
+<article class="group relative flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200 shadow-sm hover:shadow-md">
+<div class="absolute left-0 top-4 bottom-4 w-1 bg-green-500 rounded-r-full"></div>
+<div class="flex flex-1 flex-col justify-center gap-1 pl-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="bg-green-500/20 text-green-500 text-[10px] uppercase font-bold px-2 py-0.5 rounded tracking-wider">Update</span>
+<span class="text-xs text-text-secondary">Developer • 5 hours ago</span>
+</div>
+<!-- Avatar bubble -->
+<div class="hidden sm:block size-6 rounded-full bg-slate-700 border border-slate-600 overflow-hidden" data-alt="Developer Avatar">
+<img alt="User avatar" class="size-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGZMfItwb4-8cjDZLYrKAT2YPeyK1JPigym-0mgj6rJkrMH6ckHM655rn9xn4L6Xzl8T-FCJpAXKSulc5pj_vA6i2UhiFySdOHPPtqj8mgudP8y3XYqxEwq3EwG8KswncXzJE-kYuv5OmyWO-JuUjwVBufmnorYKzP-hTNjRPierw8EhHRgfJDl0Nr1S7pwXG_7jlwY1jrV3eVVZ4JnhGiI5bhWQSk7Oo3slPdn_Mtchc9PTa-FZNYWu69Gvi2OmM05wPjkVEmt-U"/>
+</div>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight mt-1 group-hover:text-green-400 transition-colors">
+<a class="focus:outline-none" href="#">
+<span aria-hidden="true" class="absolute inset-0"></span>
+                                     Community Update: Version 2.0 Released
+                                 </a>
+</h3>
+<p class="text-slate-500 dark:text-text-secondary text-sm line-clamp-1">
+                                 We are excited to announce the release of NanoPro v2.0 with improved dark mode, faster loading times, and new moderation tools.
+                             </p>
+</div>
+</article>
+<!-- Item 3 -->
+<article class="group relative flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200 shadow-sm hover:shadow-md">
+<div class="absolute left-0 top-4 bottom-4 w-1 bg-purple-500 rounded-r-full"></div>
+<div class="shrink-0 w-full sm:w-24 h-24 sm:h-24">
+<div class="w-full h-full rounded-lg bg-cover bg-center" data-alt="Minimalist purple gradient abstract art" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBNy1cY1POQgpAKbu0LHYoGhn3OyBo3pS_oELWUvf0himHCyVIOKhD_bETD60pBtTUmpaRXFW-24Jyd7QfNovo4hEjqfQWXjGh0ZrFS_MhvENPOAkM1ggry_gs7wyrKNkWZubiDOVuro-Uiatadh66WzC-ST6NlVq6r-n0t-5YnzIxuLPkC-fooFDOTzxebLXNlo_ffMa21tbqe430bx6hX4XjTSgBVbecnU7aR9QsLsdnkiFT7hswrDx7Wg863ZsH4Z4nU8C1GJ8o");'></div>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1 pl-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-purple-500/20 text-purple-400 text-[10px] uppercase font-bold px-2 py-0.5 rounded tracking-wider">Tutorial</span>
+<span class="text-xs text-text-secondary">Moderator • 1 day ago</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight group-hover:text-purple-400 transition-colors">
+<a class="focus:outline-none" href="#">
+<span aria-hidden="true" class="absolute inset-0"></span>
+                                    How to optimize your profile for better visibility
+                                </a>
+</h3>
+<p class="text-slate-500 dark:text-text-secondary text-sm line-clamp-2">
+                                A complete guide on setting up your NanoPro profile, linking your portfolio, and earning trust badges in the community.
+                            </p>
+</div>
+</article>
+<!-- Item 4 -->
+<article class="group relative flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-200 shadow-sm hover:shadow-md">
+<div class="absolute left-0 top-4 bottom-4 w-1 bg-slate-600 rounded-r-full"></div>
+<div class="flex flex-1 flex-col justify-center gap-1 pl-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-slate-700 text-slate-300 text-[10px] uppercase font-bold px-2 py-0.5 rounded tracking-wider">Discussion</span>
+<span class="text-xs text-text-secondary">Member • 3 days ago</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors">
+<a class="focus:outline-none" href="#">
+<span aria-hidden="true" class="absolute inset-0"></span>
+                                    The future of minimalist web design in 2024
+                                </a>
+</h3>
+<p class="text-slate-500 dark:text-text-secondary text-sm line-clamp-1">
+                                Let's discuss the trends moving away from heavy animations towards clean, type-driven interfaces.
+                            </p>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex items-center gap-1 text-slate-400 dark:text-slate-600 text-xs">
+<span class="material-symbols-outlined text-[14px]">thumb_up</span>
+<span>156</span>
+</div>
+<div class="flex items-center gap-1 text-slate-400 dark:text-slate-600 text-xs">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+<span>32</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-8 flex justify-center">
+<button class="flex items-center justify-center h-10 px-6 rounded-lg bg-[#232f48] hover:bg-[#2e3b55] text-white text-sm font-bold transition-all shadow-lg">
+                        Load More Content
+                    </button>
+</div>
+</div>
+<!-- Sidebar (Desktop Only) -->
+<aside class="hidden lg:flex flex-col w-80 shrink-0 gap-6">
+<!-- Trending Widget -->
+<div class="p-5 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border">
+<h3 class="text-slate-900 dark:text-white font-bold text-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+                        Trending Tags
+                    </h3>
+<div class="flex flex-wrap gap-2">
+<a class="px-3 py-1.5 rounded bg-slate-100 dark:bg-[#111722] text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-white hover:bg-primary transition-colors" href="#">#design</a>
+<a class="px-3 py-1.5 rounded bg-slate-100 dark:bg-[#111722] text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-white hover:bg-primary transition-colors" href="#">#development</a>
+<a class="px-3 py-1.5 rounded bg-slate-100 dark:bg-[#111722] text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-white hover:bg-primary transition-colors" href="#">#uiux</a>
+<a class="px-3 py-1.5 rounded bg-slate-100 dark:bg-[#111722] text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-white hover:bg-primary transition-colors" href="#">#minimalism</a>
+<a class="px-3 py-1.5 rounded bg-slate-100 dark:bg-[#111722] text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-white hover:bg-primary transition-colors" href="#">#darkmode</a>
+</div>
+</div>
+<!-- Mini Profile Widget -->
+<div class="p-5 rounded-xl bg-white dark:bg-card-dark border border-slate-200 dark:border-card-border">
+<div class="flex items-center gap-3 mb-4">
+<div class="size-10 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center text-white font-bold">G</div>
+<div>
+<p class="text-slate-900 dark:text-white text-sm font-bold">Guest User</p>
+<p class="text-slate-500 dark:text-text-secondary text-xs">Join the conversation</p>
+</div>
+</div>
+<button class="w-full flex items-center justify-center rounded-lg h-9 bg-primary/10 hover:bg-primary/20 text-primary text-sm font-bold transition-colors">
+                        Sign In / Register
+                    </button>
+</div>
+<!-- Footer Links -->
+<div class="px-2">
+<div class="flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-500 dark:text-[#4b5563]">
+<a class="hover:text-slate-400" href="#">Privacy</a>
+<a class="hover:text-slate-400" href="#">Terms</a>
+<a class="hover:text-slate-400" href="#">Contact</a>
+<span>© 2024 NanoPro</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

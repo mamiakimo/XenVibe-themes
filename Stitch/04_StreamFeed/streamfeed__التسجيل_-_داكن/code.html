@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StreamFeed: التسجيل - داكن</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;family=Noto+Sans+Arabic:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#1d6bf5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                        "surface-dark": "#192233",
+                        "border-dark": "#232f48",
+                        "input-bg": "#0d121c",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Spline Sans", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Spline Sans', 'Noto Sans Arabic', sans-serif;
+        }
+        /* Custom scrollbar for better dark mode feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #324467; 
+        }
+    </style>
+</head>
+<body class="relative flex h-full min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden text-slate-900 dark:text-white">
+<!-- Background Pattern -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+<div class="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute top-[40%] -left-[10%] w-[40%] h-[40%] rounded-full bg-blue-600/5 blur-[100px]"></div>
+</div>
+<div class="layout-container relative z-10 flex h-full grow flex-col justify-center items-center py-10 px-4 sm:px-6 lg:px-8">
+<!-- Logo Section -->
+<div class="mb-8 flex items-center justify-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[24px]">stream</span>
+</div>
+<h1 class="text-2xl font-bold tracking-tight text-white">StreamFeed</h1>
+</div>
+<!-- Main Card -->
+<div class="w-full max-w-[520px] rounded-2xl border border-border-dark bg-surface-dark p-6 shadow-2xl sm:p-10">
+<!-- Header -->
+<div class="mb-8 text-center">
+<h2 class="text-3xl font-black leading-tight tracking-tight text-white mb-2">إنشاء حساب جديد</h2>
+<p class="text-slate-400 text-sm font-normal">انضم إلى مجتمع StreamFeed اليوم وشارك اهتماماتك</p>
+</div>
+<!-- Social Login -->
+<div class="flex flex-col gap-3 mb-6">
+<button class="relative flex w-full items-center justify-center gap-3 rounded-xl bg-[#232f48] hover:bg-[#2c3b59] transition-colors h-12 px-4 text-white text-sm font-bold border border-transparent hover:border-slate-600">
+<img alt="Google Logo" class="w-5 h-5" data-alt="Google G logo in colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYGR0NJfWAsRgM1oEMVc2Gl9p8nZR0h3S4rUULT-qo-LyQYBlSI4iRfDP7y0mpNuktllbwkCDF-UmoLsUNFIUrqjd9u9NOlneTjdQpn41xEEio5uq5sfIPSLOoClee_ioeUZtnrHvJIcNEAovwq2WYSasFeNObSbNaiF8pNFFWU5TJMlTEvm7fWoiNQPFuV-e3d0oirn25aYuWk5r-pVgxQlNl6crYLCRpX0viO70JmXJXD3TJtK2JWV88_d82zlDk92C5tKxJD2k"/>
+<span>المتابعة باستخدام Google</span>
+</button>
+</div>
+<!-- Divider -->
+<div class="relative flex items-center py-2 mb-6">
+<div class="flex-grow border-t border-border-dark"></div>
+<span class="flex-shrink-0 mx-4 text-slate-500 text-xs font-medium uppercase">أو التسجيل بالبريد</span>
+<div class="flex-grow border-t border-border-dark"></div>
+</div>
+<!-- Registration Form -->
+<form action="#" class="flex flex-col gap-5">
+<!-- Username -->
+<div class="flex flex-col gap-1.5">
+<label class="text-slate-300 text-sm font-medium" for="username">اسم المستخدم</label>
+<div class="relative group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-500 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<input class="w-full rounded-xl border border-border-dark bg-input-bg pr-11 pl-4 h-12 text-white placeholder:text-slate-600 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-right" id="username" placeholder="أدخل اسم مستخدم فريد" type="text"/>
+<!-- Validation Icon (Hidden by default, shown for example) -->
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-green-500 hidden">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-1.5">
+<label class="text-slate-300 text-sm font-medium" for="email">البريد الإلكتروني</label>
+<div class="relative group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-500 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<input class="w-full rounded-xl border border-border-dark bg-input-bg pr-11 pl-4 h-12 text-white placeholder:text-slate-600 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-right" id="email" placeholder="example@email.com" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="flex flex-col gap-1.5">
+<label class="text-slate-300 text-sm font-medium" for="password">كلمة المرور</label>
+<div class="relative group">
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none text-slate-500 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="w-full rounded-xl border border-border-dark bg-input-bg pr-11 pl-12 h-12 text-white placeholder:text-slate-600 focus:border-primary focus:ring-1 focus:ring-primary transition-all text-right" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-500 hover:text-slate-300 transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+<p class="text-xs text-slate-500 mt-0.5">يجب أن تتكون من 8 أحرف على الأقل.</p>
+</div>
+<!-- Date of Birth -->
+<div class="flex flex-col gap-1.5">
+<label class="text-slate-300 text-sm font-medium">تاريخ الميلاد</label>
+<div class="grid grid-cols-3 gap-3">
+<div class="relative">
+<select class="w-full appearance-none rounded-xl border border-border-dark bg-input-bg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary transition-all text-right cursor-pointer">
+<option disabled="" selected="" value="">اليوم</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<!-- ... -->
+</select>
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-slate-500">
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="relative">
+<select class="w-full appearance-none rounded-xl border border-border-dark bg-input-bg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary transition-all text-right cursor-pointer">
+<option disabled="" selected="" value="">الشهر</option>
+<option value="1">يناير</option>
+<option value="2">فبراير</option>
+<option value="3">مارس</option>
+<!-- ... -->
+</select>
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-slate-500">
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="relative">
+<select class="w-full appearance-none rounded-xl border border-border-dark bg-input-bg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary transition-all text-right cursor-pointer">
+<option disabled="" selected="" value="">السنة</option>
+<option value="2005">2005</option>
+<option value="2004">2004</option>
+<option value="2003">2003</option>
+<!-- ... -->
+</select>
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-slate-500">
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 mt-2">
+<div class="flex h-6 items-center">
+<input class="h-5 w-5 rounded-md border-border-dark bg-input-bg text-primary focus:ring-primary focus:ring-offset-0 focus:ring-offset-transparent cursor-pointer" id="terms" type="checkbox"/>
+</div>
+<label class="text-sm leading-6 text-slate-400" for="terms">
+                        أوافق على <a class="font-semibold text-primary hover:text-primary-hover hover:underline" href="#">شروط الخدمة</a> و <a class="font-semibold text-primary hover:text-primary-hover hover:underline" href="#">سياسة الخصوصية</a>.
+                    </label>
+</div>
+<!-- Submit Button -->
+<button class="mt-2 flex w-full cursor-pointer items-center justify-center rounded-xl bg-primary hover:bg-primary-hover h-12 px-8 text-white text-base font-bold shadow-lg shadow-primary/25 transition-all transform active:scale-[0.98]" type="submit">
+                    إنشاء حساب
+                </button>
+</form>
+<!-- Footer Link -->
+<div class="mt-8 text-center">
+<p class="text-sm text-slate-400">
+                    هل لديك حساب بالفعل؟ 
+                    <a class="font-bold text-white hover:text-primary transition-colors" href="#">تسجيل الدخول</a>
+</p>
+</div>
+</div>
+<!-- Additional Links (Footer of page) -->
+<div class="mt-10 flex gap-6 text-sm text-slate-500">
+<a class="hover:text-slate-300 transition-colors" href="#">المساعدة</a>
+<a class="hover:text-slate-300 transition-colors" href="#">القوانين</a>
+<a class="hover:text-slate-300 transition-colors" href="#">اتصل بنا</a>
+</div>
+</div>
+</body></html>

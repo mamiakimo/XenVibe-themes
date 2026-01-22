@@ -1,0 +1,1386 @@
+
+// ================================================
+// FEATURED CONTENT - CARD GRID LAYOUT
+// ================================================
+// Grid layout like What's New + unified card styling
+
+// Featured page container - transparent background
+.block--articles,
+.block--previews {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  &:hover {
+    box-shadow: none !important;
+  }
+
+  .block-container {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  // Grid layout for article cards
+  .block-body {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    background: transparent !important;
+    padding: 0 !important;
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+}
+
+// When sidebar is collapsed - 3 columns for Featured
+.xv-sidebar--left.is-collapsed+.xv-content {
+
+  .block--articles .block-body,
+  .block--previews .block-body {
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Each article card - Direct styling with !important
+.message--article,
+.message--articlePreview {
+  background: @xv-card-bg !important;
+  border-radius: @xv-card-radius !important;
+  border: @xv-card-border !important;
+  box-shadow: @xv-card-shadow !important;
+  overflow: hidden !important;
+  transition: @xv-card-transition !important;
+  margin-bottom: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+
+  &:hover {
+    box-shadow: @xv-card-shadow-hover !important;
+    border-color: fade(@xf-linkColor, 30%) !important;
+    transform: translateY(-2px);
+  }
+}
+
+// Article Preview Image - Fixed height for uniform cards
+.articlePreview-image {
+  position: relative;
+  overflow: hidden;
+  height: 180px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .message--articlePreview:hover & img {
+    transform: scale(1.05);
+  }
+}
+
+// Article Preview Content
+.articlePreview-text {
+  padding: 1.25rem;
+}
+
+.articlePreview-headline {
+  margin-bottom: 0.5rem;
+}
+
+.articlePreview-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 0.5rem;
+
+  a {
+    color: @xf-textColor;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: @xf-linkColor;
+    }
+  }
+}
+
+.articlePreview-content {
+  margin-bottom: 0.75rem;
+
+  .message-body {
+    padding: 0;
+  }
+
+  .bbWrapper {
+    font-size: 0.875rem;
+    color: @xf-textColorMuted;
+    line-height: 1.6;
+  }
+}
+
+.articlePreview-links {
+  margin-top: 0.75rem;
+
+  a {
+    color: @xf-linkColor;
+    font-weight: 600;
+    font-size: 0.875rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.articlePreview-footer {
+  padding: 0.875rem 1.25rem;
+  border-top: 1px solid fade(@xf-borderColor, 50%);
+  background: fade(@xf-textColor, 2%);
+}
+
+.articlePreview-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  color: @xf-textColorMuted;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  .avatar--xxs {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+  }
+
+  .articlePreview-by {
+    margin-left: 0.375rem;
+  }
+
+  .articlePreview-replies {
+    margin-right: auto;
+
+    i {
+      margin-left: 0.25rem;
+    }
+  }
+}
+
+// ================================================
+// WHAT'S NEW POSTS PAGE - CARD GRID LAYOUT
+// ================================================
+// Convert thread list to card grid (like Featured page)
+
+// Block container - transparent background
+.block[data-xf-init="inline-mod"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  &:hover {
+    box-shadow: none !important;
+  }
+
+  .block-container {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .block-body {
+    background: transparent !important;
+    padding: 0 !important;
+  }
+}
+
+// Container - Grid layout
+.structItemContainer {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+// When sidebar is collapsed - 3 columns
+.xv-sidebar--left.is-collapsed+.xv-content {
+  .structItemContainer {
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Each thread card
+.structItem--thread {
+  background: @xv-card-bg !important;
+  border-radius: @xv-card-radius !important;
+  border: @xv-card-border !important;
+  box-shadow: @xv-card-shadow !important;
+  overflow: hidden !important;
+  transition: @xv-card-transition !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  padding: 1.25rem !important;
+
+  &:hover {
+    box-shadow: @xv-card-shadow-hover !important;
+    border-color: fade(@xf-linkColor, 30%) !important;
+    transform: translateY(-2px);
+  }
+
+  // Reset default structItem layout
+  .structItem-cell {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  // Avatar/Icon cell - float to start (right in RTL)
+  .structItem-cell--icon {
+    width: auto !important;
+    float: inline-start;
+    margin-inline-end: 0.75rem;
+    margin-bottom: 0.5rem;
+
+    .structItem-iconContainer {
+      display: block;
+      position: relative;
+    }
+
+    // Main author avatar
+    .avatar {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+    }
+
+    // "You participated" small avatar - overlay at bottom-left
+    .structItem-secondaryIcon,
+    .avatar--separated {
+      width: 1.25rem !important;
+      height: 1.25rem !important;
+      position: absolute !important;
+      bottom: -2px;
+      inset-inline-end: -4px; // Left in RTL, Right in LTR
+      border: 2px solid @xv-card-bg !important;
+      border-radius: 50% !important;
+
+      img {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }
+
+  // Last replier avatar - right of name/date, group pushed to left in RTL
+  .structItem-cell--iconEnd {
+    display: flex !important;
+    align-items: center;
+    width: auto !important;
+    order: 11;
+    margin-top: auto;
+    padding-top: 0.75rem !important;
+    margin-inline-start: auto; // Push group to end (left in RTL)
+
+    .avatar {
+      width: 1.75rem !important;
+      height: 1.75rem !important;
+    }
+  }
+
+  // Main content
+  .structItem-cell--main {
+    flex: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  // Thread title
+  .structItem-title {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+
+    a {
+      color: @xf-textColor;
+
+      &:hover {
+        color: @xf-linkColor;
+      }
+    }
+  }
+
+  // Labels/Prefixes
+  .label {
+    font-size: 0.75rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+  }
+
+  // Status icons
+  .structItem-statuses {
+    margin-bottom: 0.5rem;
+  }
+
+  // Minor info (author, date, forum)
+  .structItem-minor {
+    font-size: 0.8125rem;
+    color: @xf-textColorMuted;
+  }
+
+  .structItem-parts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      &::after {
+        content: "•";
+        margin-left: 0.5rem;
+        color: @xf-textColorMuted;
+      }
+
+      &:last-child::after {
+        display: none;
+      }
+    }
+  }
+
+  // Page jump links
+  .structItem-pageJump {
+    margin-top: 0.5rem;
+
+    a {
+      display: inline-block;
+      padding: 0.125rem 0.375rem;
+      font-size: 0.75rem;
+      background: fade(@xf-textColor, 5%);
+      border-radius: 0.25rem;
+      margin-right: 0.25rem;
+
+      &:hover {
+        background: fade(@xf-textColor, 10%);
+      }
+    }
+  }
+
+  // Footer: Latest activity text (username + date) - left of avatar in RTL
+  .structItem-cell--latest {
+    display: flex !important;
+    flex-direction: column-reverse;
+    width: auto !important;
+    order: 12; // After avatar in DOM = left of avatar in RTL
+    margin-top: auto;
+    padding-top: 0.75rem !important;
+    text-align: start; // Right in RTL, left in LTR
+
+    // Date (bottom - reversed from HTML order)
+    >a {
+      font-size: 0.625rem;
+      color: @xf-textColorMuted;
+      line-height: 1.3;
+    }
+
+    // Username (top - reversed from HTML order)
+    .structItem-minor {
+      a {
+        font-size: 0.75rem;
+        color: @xf-textColor;
+        font-weight: 500;
+        line-height: 1.3;
+      }
+    }
+  }
+
+  // Meta info (replies, views) - right side in RTL (stays at start)
+  .structItem-cell--meta {
+    display: flex !important;
+    gap: 0.75rem;
+    width: auto !important;
+    order: 10;
+    margin-top: auto;
+    padding-top: 0.75rem !important;
+
+    .pairs {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+      color: @xf-textColorMuted;
+
+      // Hide the label text, show icon instead
+      dt {
+        font-size: 0;
+        line-height: 0;
+        display: flex;
+        align-items: center;
+
+        &::before {
+          font-family: 'Material Symbols Outlined';
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 1;
+          color: @xf-textColorMuted;
+        }
+      }
+
+      // Replies icon (chat_bubble)
+      &:first-child dt::before {
+        content: '\e0cb'; // chat_bubble
+      }
+
+      // Views icon (visibility)
+      &:last-child dt::before {
+        content: '\e8f4'; // visibility
+      }
+
+      dd {
+        color: @xf-textColorMuted;
+        font-weight: 500;
+      }
+    }
+  }
+
+  // Footer border - full width
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    order: 9;
+    margin-top: auto;
+    height: 1px;
+    background: fade(@xf-borderColor, 50%);
+  }
+
+  // Extra info (edit link, moderation)
+  .structItem-extraInfo {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+// Note row (full width)
+.structItem--note {
+  grid-column: 1 / -1;
+  background: fade(@xf-textColor, 3%);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+
+  .structItem-cell {
+    font-size: 0.875rem;
+    color: @xf-textColorMuted;
+  }
+}
+
+// ================================================
+// NEW PROFILE POSTS PAGE - CARD GRID LAYOUT
+// ================================================
+// Clean implementation - avatar + username inline, content below
+
+// Profile Posts page - fix avatar layout
+.template-whats_new_profile_posts {
+
+  // Block container - transparent background (only in main content, not sidebar)
+  .xv-content .block,
+  .block[data-xf-init*="lightbox"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    &:hover {
+      box-shadow: none !important;
+    }
+
+    .block-container {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+
+      // Grid layout for cards - 2 columns
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+
+      @media (max-width: 991px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .block-body {
+      background: transparent !important;
+      padding: 0 !important;
+    }
+  }
+
+  // Filter bar - full width, not a card
+  .block-filterBar {
+    grid-column: 1 / -1;
+    background: @xf-contentBg !important;
+    border: 1px solid @xf-borderColor !important;
+    border-radius: 0.5rem !important;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  // Each profile post card
+  .message.message--simple {
+    background: @xv-card-bg !important;
+    border-radius: @xv-card-radius !important;
+    border: @xv-card-border !important;
+    box-shadow: @xv-card-shadow !important;
+    overflow: hidden !important;
+    transition: @xv-card-transition !important;
+    padding: 1rem !important; // Reduced from 1.25rem
+    margin-bottom: 0 !important;
+
+    &:hover {
+      box-shadow: @xv-card-shadow-hover !important;
+      border-color: fade(@xf-linkColor, 30%) !important;
+      transform: translateY(-2px);
+    }
+
+    // Change message-inner from row to column layout
+    .message-inner {
+      display: flex !important;
+      flex-direction: column !important; // Stack vertically instead of side-by-side
+      padding: 0 !important; // Remove inner padding
+    }
+
+    // Hide the sidebar user cell (the one that creates the empty column)
+    .message-cell--user {
+      display: none !important;
+    }
+
+    // Main content area takes full width
+    .message-cell--main {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 !important; // Remove cell padding
+    }
+
+    // Message content - remove extra padding
+    .message-content {
+      padding: 0 !important;
+    }
+
+    // Attribution (avatar + username + date) - make inline
+    .message-attribution {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      padding: 0 !important;
+
+      // Force avatar visible in attribution
+      .avatar {
+        display: inline-block !important;
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        flex-shrink: 0;
+      }
+    }
+
+    // Content flows naturally below
+    .message-body {
+      width: 100%;
+      padding: 0 !important;
+    }
+
+    // Footer - action bar (appears OUTSIDE comment block visually)
+    .message-footer {
+      background: transparent !important; // Not part of dark comments
+      padding: 0.75rem 0 !important;
+      margin-top: 0.75rem;
+      margin-bottom: 0; // Space before comments block
+    }
+
+    // Reactions row - also outside comments
+    .message-responseRow {
+      background: transparent !important;
+      padding: 0.5rem 0 !important;
+    }
+
+    // Comments section - separate dark block
+    .message-responses {
+      background: fade(@xf-textColor, 5%) !important; // Dark background only for comments
+      border-radius: 0.5rem;
+      padding: 0.75rem !important;
+      margin-top: 0.75rem;
+    }
+  }
+
+  // Comments - keep avatar inline with username
+  .comment {
+    .comment-inner {
+      display: flex !important;
+      flex-direction: row !important; // Keep horizontal (avatar | content)
+      align-items: flex-start !important;
+      gap: 0.75rem;
+    }
+
+    // Avatar - keep visible, small size
+    .comment-avatar {
+      display: block !important;
+      flex-shrink: 0;
+
+      .avatar {
+        width: 2rem !important;
+        height: 2rem !important;
+      }
+    }
+
+    // Content takes remaining space
+    .comment-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    // Comment content wrapper - flex column to stack header and body
+    .comment-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    // Username, date and body - reorganize layout
+    .comment-content .comment-contentWrapper {
+
+      // Username inline with body
+      .comment-user {
+        display: inline;
+        font-weight: 600;
+        margin-inline-end: 0.5rem;
+      }
+
+      // Date next to username (added via template modification)
+      .comment-date {
+        display: inline;
+        color: @xf-textColorMuted;
+        font-size: 0.75rem;
+        margin-inline-end: 0.5rem;
+
+        &::before {
+          content: "·";
+          margin-inline-end: 0.25rem;
+        }
+      }
+
+      .comment-body {
+        display: inline;
+      }
+    }
+
+    // Comment footer - hide original date (moved to next to username)
+    .comment-footer {
+      margin-top: 0.5rem;
+
+      .actionBar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      // Hide the original date in footer (first action item containing time)
+      .actionBar-action:first-child {
+        display: none !important;
+      }
+    }
+  }
+}
+
+// When sidebar is collapsed - 3 columns
+.template-whats_new_profile_posts {
+  .xv-sidebar--left.is-collapsed+.xv-content {
+    .block-container {
+      grid-template-columns: repeat(3, 1fr);
+
+      @media (max-width: 1200px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+
+// ================================================
+// FIX REACTIONS VISIBILITY AFTER AJAX
+// ================================================
+// Ensure reaction names don't disappear after Like/Unlike
+
+.reactionsBar {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.reactionSummary {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: inline-flex !important;
+    visibility: visible !important;
+  }
+
+  .reaction {
+    display: inline-flex !important;
+    visibility: visible !important;
+
+    .reaction-image {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+}
+
+// The link with user names - MUST stay visible after AJAX
+.reactionsBar-link {
+  display: inline !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-size: 0.8125rem;
+  color: @xf-textColorMuted;
+
+  // All text and names inside - force visible
+  bdi,
+  span,
+  a,
+  .username {
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  &:hover {
+    color: @xf-linkColor;
+  }
+}
+
+// Response rows containing reactions
+.message-responseRow--reactions {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+
+// Comment reactions
+.comment-reactions {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  .reactionsBar,
+  .reactionsBar-link,
+  .reactionSummary,
+  .reactionSummary li {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .reactionsBar-link {
+    display: inline !important;
+  }
+}
+
+/* ================================================
+   OLD PROFILE POSTS CODE - KEPT FOR REFERENCE
+   ================================================
+   
+.template-whats_new_profile_posts {
+
+  // Main block - transparent background
+  .block[data-xf-init*="lightbox"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    &:hover {
+      box-shadow: none !important;
+    }
+
+    .block-container {
+      background: transparent !important;
+      border: none !important;
+    }
+  }
+
+  // Block outer (pagination, filters) - keep visible
+  .block-outer {
+    margin-bottom: 1.5rem;
+  }
+
+  // Filter bar styling
+  .block-filterBar {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  // Messages margins
+  .block-body,
+  .block-container {
+    > .message.message--simple {
+      .xv-card-base();
+    }
+  }
+}
+
+// ================================================
+// PROFILE POST CARD STYLING
+// ================================================
+// Each profile post as a card (like New Posts page)
+
+.message.message--simple {
+  // Card styling for profile posts page
+  .template-whats_new_profile_posts & {
+    background: @xv-card-bg !important;
+    border-radius: @xv-card-radius !important;
+    border: @xv-card-border !important;
+    box-shadow: @xv-card-shadow !important;
+    overflow: hidden !important;
+    transition: @xv-card-transition !important;
+    margin-bottom: 1.5rem;
+    display: flex !important;
+    flex-direction: column !important;
+
+    &:hover {
+      box-shadow: @xv-card-shadow-hover !important;
+      border-color: fade(@xf-linkColor, 30%) !important;
+      transform: translateY(-2px);
+    }
+
+    // Message inner layout - vertical stack
+    .message-inner {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    // HIDE the sidebar user cell completely
+    .message-cell--user {
+      display: none !important;
+    }
+
+    // Main content cell
+    .message-cell--main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    // Message main wrapper
+    .message-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    // Message content
+    .message-content {
+      flex: 1;
+      padding: 1.25rem;
+    }
+
+    // Attribution header (avatar + username + date) - TOP OF CARD
+    .message-attribution {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid fade(@xf-borderColor, 50%);
+
+      .listInline {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          display: flex;
+          align-items: center;
+        }
+
+        // Bullet separator
+        &.listInline--bullet > li + li::before {
+          content: "•";
+          margin-right: 0.5rem;
+          color: @xf-textColorMuted;
+        }
+      }
+
+      .message-attribution-user {
+        display: flex !important;
+        align-items: center;
+        gap: 0.5rem;
+
+        // Avatar in header - FORCE visible
+        > .avatar,
+        > a.avatar,
+        .avatar.avatar--xxs {
+          display: inline-block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          width: 2.5rem !important;
+          height: 2.5rem !important;
+          min-width: 2.5rem !important;
+          min-height: 2.5rem !important;
+          border-radius: 50% !important;
+          border: 2px solid @xf-borderColor !important;
+          transition: border-color 0.2s ease;
+          flex-shrink: 0;
+          overflow: hidden;
+
+          img {
+            display: block !important;
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 50% !important;
+            object-fit: cover;
+          }
+
+          &:hover {
+            border-color: @xf-linkColor !important;
+          }
+        }
+
+        .attribution {
+          margin: 0;
+          font-size: 0.9375rem;
+        }
+
+        .username {
+          font-weight: 700;
+          color: @xf-textColor;
+
+          &:hover {
+            color: @xf-linkColor;
+          }
+        }
+      }
+
+      // Date link
+      time, .u-dt {
+        font-size: 0.8125rem;
+        color: @xf-textColorMuted;
+      }
+    }
+
+    // Message body content
+    .message-body {
+      padding: 0;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      color: @xf-textColor;
+
+      .bbWrapper {
+        word-wrap: break-word;
+      }
+    }
+
+    // Message footer (action buttons)
+    .message-footer {
+      padding: 0.875rem 1.25rem;
+      background: fade(@xf-textColor, 2%);
+      border-top: 1px solid fade(@xf-borderColor, 50%);
+      margin-top: auto;
+    }
+
+    // Action bar - Fixed layout for RTL/LTR
+    // RTL: internal (Report etc) on RIGHT (start), external (Like) on LEFT (end)
+    // LTR: internal (Report etc) on LEFT (start), external (Like) on RIGHT (end)
+    .message-actionBar.actionBar {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      width: 100% !important;
+      padding: 0 !important;
+    }
+
+    // Report/Edit/Delete/IP (internal) - at start
+    .actionBar-set.actionBar-set--internal {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.25rem !important;
+      order: 1 !important;
+      flex-shrink: 0;
+    }
+
+    // Like button (external) - pushed to end with margin-inline-start: auto
+    .actionBar-set.actionBar-set--external {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.25rem !important;
+      order: 2 !important;
+      margin-inline-start: auto !important;
+      flex-shrink: 0;
+    }
+
+    .actionBar .actionBar-action {
+      padding: 0.375rem 0.625rem;
+      font-size: 0.8125rem;
+      color: @xf-textColorMuted;
+      border-radius: 0.375rem;
+      transition: all 0.15s ease;
+
+      &:hover {
+        color: @xf-textColor;
+        background: fade(@xf-textColor, 5%);
+      }
+    }
+
+    // Reaction button
+    .actionBar .actionBar-action--reaction {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+
+      .reaction-image {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    // Reactions list - ensure visibility after AJAX updates
+    .message-responseRow--reactions {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      padding: 0.5rem 1.25rem;
+      border-top: 1px solid fade(@xf-borderColor, 30%);
+      overflow: visible !important;
+
+      // Reactions bar container
+      .reactionsBar {
+        display: inline-flex !important;
+        visibility: visible !important;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+      }
+
+      .reactionSummary {
+        display: inline-flex !important;
+        visibility: visible !important;
+        align-items: center;
+        gap: 0.25rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        vertical-align: middle;
+
+        li {
+          display: inline-flex !important;
+          visibility: visible !important;
+        }
+
+        .reaction {
+          display: inline-flex !important;
+          visibility: visible !important;
+
+          .reaction-image {
+            width: 1.25rem;
+            height: 1.25rem;
+          }
+        }
+      }
+
+      // Link with names - MUST be visible after AJAX
+      .reactionsBar-link {
+        display: inline !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        font-size: 0.8125rem;
+        color: @xf-textColorMuted;
+        margin-inline-start: 0.5rem;
+
+        // All text and names inside
+        bdi, span, a {
+          display: inline !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+
+        &:hover {
+          color: @xf-linkColor;
+        }
+      }
+
+      // Force visibility on all children after AJAX
+      * {
+        visibility: visible !important;
+      }
+
+      // Only hide screen-reader-only elements
+      .u-srOnly {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        border: 0 !important;
+        visibility: hidden !important;
+      }
+    }
+
+    // Comments section
+    .message-responses {
+      border-top: 1px solid fade(@xf-borderColor, 50%);
+    }
+
+    // Individual comment
+    .message-responseRow {
+      padding: 0;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid fade(@xf-borderColor, 30%);
+      }
+    }
+
+    .comment {
+      padding: 1rem 1.25rem;
+
+      // Comment layout - horizontal (avatar + content)
+      .comment-inner {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 0.75rem;
+        align-items: flex-start;
+      }
+
+      // Avatar on side
+      .comment-avatar {
+        flex-shrink: 0;
+
+        .avatar--xxs {
+          width: 2rem !important;
+          height: 2rem !important;
+        }
+      }
+
+      // Main content area
+      .comment-main {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .comment-content {
+        margin-bottom: 0.5rem;
+      }
+
+      .comment-contentWrapper {
+        // Username inline
+        .comment-user {
+          font-weight: 700;
+          font-size: 0.875rem;
+          margin-inline-end: 0.5rem;
+          display: inline;
+        }
+
+        // Comment body inline
+        .comment-body {
+          display: inline;
+          font-size: 0.875rem;
+          line-height: 1.6;
+
+          .bbWrapper {
+            display: inline;
+          }
+        }
+      }
+
+      // Footer: Date on line 1, Report etc on line 2, Like at end
+      .comment-footer {
+        margin-top: 0.5rem;
+
+        .comment-actionBar.actionBar {
+          display: grid !important;
+          grid-template-columns: 1fr auto;
+          grid-template-rows: auto auto;
+          gap: 0.25rem 0.5rem !important;
+          width: 100% !important;
+          align-items: center;
+
+          // Internal set - spans both rows in first column
+          .actionBar-set.actionBar-set--internal {
+            grid-column: 1;
+            grid-row: 1 / 3;
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: flex-start !important;
+            gap: 0.375rem !important;
+
+            // Date - full width to force line break
+            > .actionBar-action:first-child {
+              flex-basis: 100% !important;
+              width: 100% !important;
+            }
+          }
+
+          // Like button - at end, spanning rows
+          .actionBar-set.actionBar-set--external {
+            grid-column: 2;
+            grid-row: 1 / 3;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.25rem !important;
+            align-self: center;
+          }
+
+          .actionBar-action {
+            font-size: 0.75rem !important;
+            padding: 0.25rem 0.5rem !important;
+          }
+        }
+
+        .comment-reactions {
+          margin-top: 0.375rem;
+          font-size: 0.75rem;
+        }
+      }
+    }
+
+    // Quick reply form in comments
+    .comment form {
+      .comment-inner {
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .editorPlaceholder {
+        flex: 1;
+      }
+    }
+  }
+}
+
+// ================================================
+// PROFILE POSTS - GRID LAYOUT (2 columns)
+// ================================================
+// Grid for profile posts like other pages
+
+.template-whats_new_profile_posts {
+
+  // Create wrapper for grid layout using pseudo-class
+  .block-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  // Filter bar - full width, not a card
+  .block-filterBar {
+    grid-column: 1 / -1;
+    background: @xf-contentBg !important;
+    border: 1px solid @xf-borderColor !important;
+    border-radius: 0.5rem !important;
+    box-shadow: none !important;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+
+    // Reset card hover effects
+    &:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  // Messages in grid
+  .message.message--simple {
+    margin-bottom: 0 !important;
+  }
+}
+
+// When sidebar is collapsed - 3 columns for Profile Posts
+.template-whats_new_profile_posts {
+  .xv-sidebar--left.is-collapsed + .xv-content {
+    .block-container {
+      grid-template-columns: repeat(3, 1fr);
+
+      @media (max-width: 1200px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+
+   END OF OLD PROFILE POSTS CODE
+   ================================================ */
+
+
+// ================================================

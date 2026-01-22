@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TimelinePulse - Post Edit</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#192233",
+                        "border-dark": "#232f48",
+                        "text-secondary": "#92a4c9"
+                    },
+                    fontFamily: {
+                        "display": ['"Noto Sans Arabic"', "Inter", "sans-serif"],
+                        "sans": ['"Noto Sans Arabic"', "Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for textarea */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #324467; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-[#111722]/95 backdrop-blur-md border-b border-border-dark w-full">
+<div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<!-- Logo / Title -->
+<div class="flex items-center gap-3">
+<div class="text-primary p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-[24px]">timeline</span>
+</div>
+<h1 class="text-white text-xl font-bold tracking-tight">TimelinePulse</h1>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center justify-center h-9 px-4 rounded-lg bg-surface-dark border border-border-dark text-text-secondary text-sm font-medium hover:text-white hover:bg-[#232f48] transition-colors">
+                        إلغاء
+                    </button>
+<button class="flex items-center justify-center h-9 px-6 rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-primary/25 hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-[18px] ml-2">save</span>
+                        حفظ التعديلات
+                    </button>
+<!-- User Avatar -->
+<div class="mr-4 w-9 h-9 rounded-full bg-cover bg-center ring-2 ring-border-dark" data-alt="User profile picture showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdfUfhK89hJR-YiPYARs5UaVtJP3PvU1_OvaLzMPWr_3j2TdVwxaSuY8cH1w6cayUD-RwqBylag2FteQ6HBU3TGrFmfolLhXXxF8Dt9lXkVBiIBokFZNpMFoN3O-QOv11B6VcDO26akrPh4dSpDLw5PP40DymYEWqbS9VijlS4SqPaS51QqV_UOY0vb_y_JwRFiHk5ZR1-o6wZo48hDfzuWRoJZCI4OEiyqfRfMZvPj8TJr-gbtYAwhdYrYQH71EmMJuvnbizFuyA");'></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex justify-center py-8 px-4 sm:px-6">
+<div class="w-full max-w-[800px] flex flex-col gap-8">
+<!-- Page Heading & Context -->
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-border-dark pb-6">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-primary mb-1">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span class="text-xs font-bold uppercase tracking-wider">نمط التعديل</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-bold text-white leading-tight">تعديل المنشور #294</h2>
+<p class="text-text-secondary text-sm">
+                        في الموضوع: <span class="text-white font-medium hover:underline cursor-pointer">تحديثات المشروع Q4 - أكتوبر</span>
+</p>
+</div>
+<button class="flex items-center gap-2 text-text-secondary hover:text-white transition-colors text-sm font-medium bg-surface-dark/50 px-3 py-2 rounded-lg border border-transparent hover:border-border-dark">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                    عرض سجل التغييرات
+                </button>
+</div>
+<!-- Timeline Edit Form Wrapper -->
+<div class="relative pr-8 sm:pr-12">
+<!-- The Vertical Timeline Line -->
+<div class="absolute top-0 bottom-0 right-3 sm:right-4 w-px bg-gradient-to-b from-primary via-border-dark to-transparent"></div>
+<!-- SECTION 1: Event Date -->
+<div class="relative mb-10 group">
+<!-- Timeline Node -->
+<div class="absolute right-[-41px] sm:right-[-57px] top-4 w-5 h-5 rounded-full border-4 border-[#111722] bg-primary shadow-[0_0_0_1px_rgba(19,91,236,0.5)] z-10 group-focus-within:scale-110 transition-transform"></div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            تاريخ ووقت الحدث (المنشور الأصلي)
+                        </label>
+<div class="flex items-center bg-surface-dark border border-border-dark rounded-xl overflow-hidden focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/50 transition-all">
+<input class="w-full bg-transparent border-none text-white placeholder-text-secondary px-4 py-3 focus:ring-0 text-base" placeholder="حدد التاريخ" type="text" value="12 أكتوبر 2023 - 04:30 م"/>
+<div class="px-4 text-text-secondary cursor-pointer hover:text-white">
+<span class="material-symbols-outlined">edit_calendar</span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: Composer (Main Content) -->
+<div class="relative mb-10 group">
+<!-- Timeline Node (Avatar) -->
+<div class="absolute right-[-48px] sm:right-[-65px] top-0 z-10">
+<div class="w-9 h-9 rounded-full bg-cover bg-center border-2 border-[#111722] shadow-sm" data-alt="Author avatar showing an abstract geometric pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsoZkokO2h5nT_G1TMbt3sbK645tDcvFNDLjpnEHUK9zho0UMR8y1fcdtI3sD1mH4nWwo5rguxpiFj948af578RUvfqeNXaEIYZX_bBvr_LfinTTVn1YWEDwD-HK_aFERJjuL1b9IVBT0rx0Aik70Hcfme5Sn0MJzjb3f3y70OLD50eCkV_t6OueY862fwTGPu4DwKmvi3EX7kDt0-yE812lprA_XXZQJynQhB5VrBG5TMGCaRaOv77WN5_fbiE0fIX2tt3Wjx6rY");'></div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">article</span>
+                            محتوى المنشور
+                        </label>
+<!-- Editor Box -->
+<div class="flex flex-col w-full bg-surface-dark border border-border-dark rounded-xl overflow-hidden shadow-sm focus-within:border-primary/50 transition-colors">
+<!-- Toolbar -->
+<div class="flex items-center gap-1 p-2 border-b border-border-dark bg-[#151c2a]">
+<button class="p-2 rounded hover:bg-white/5 text-text-secondary hover:text-white transition-colors" title="Bold">
+<span class="material-symbols-outlined text-[20px]">format_bold</span>
+</button>
+<button class="p-2 rounded hover:bg-white/5 text-text-secondary hover:text-white transition-colors" title="Italic">
+<span class="material-symbols-outlined text-[20px]">format_italic</span>
+</button>
+<button class="p-2 rounded hover:bg-white/5 text-text-secondary hover:text-white transition-colors" title="Underline">
+<span class="material-symbols-outlined text-[20px]">format_underlined</span>
+</button>
+<div class="w-px h-5 bg-border-dark mx-1"></div>
+<button class="p-2 rounded hover:bg-white/5 text-text-secondary hover:text-white transition-colors" title="Link">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+<button class="p-2 rounded hover:bg-white/5 text-text-secondary hover:text-white transition-colors" title="Image">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-2 rounded hover:bg-white/5 text-text-secondary hover:text-white transition-colors" title="Code Block">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</button>
+<div class="flex-1"></div>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded bg-primary/10 text-primary text-xs font-bold hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-[16px]">auto_fix_high</span>
+                                    تحسين النص
+                                </button>
+</div>
+<!-- Text Area -->
+<textarea class="w-full h-64 bg-transparent border-none text-white p-4 focus:ring-0 text-base leading-relaxed resize-y placeholder-text-secondary/50" placeholder="اكتب محتوى المنشور هنا...">تم الانتهاء من المرحلة الأولى من تطوير الواجهة الخلفية. نحن الآن بصدد الانتقال إلى مرحلة التصميم وتجربة المستخدم.
+
+يرجى مراجعة الملفات المرفقة للحصول على التفاصيل الكاملة حول التغييرات في بنية قاعدة البيانات.</textarea>
+<!-- Editor Footer -->
+<div class="bg-[#151c2a] px-4 py-2 border-t border-border-dark flex justify-between items-center text-xs text-text-secondary">
+<span>عدد الكلمات: 34</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span>تم الحفظ تلقائياً</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 3: Edit Reason -->
+<div class="relative group">
+<!-- Timeline Node (Sub-node) -->
+<div class="absolute right-[-37px] sm:right-[-53px] top-4 w-3 h-3 rounded-full bg-border-dark group-focus-within:bg-primary transition-colors"></div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                            سبب التعديل (اختياري)
+                        </label>
+<input class="w-full bg-surface-dark border border-border-dark rounded-xl text-white placeholder-text-secondary px-4 py-3 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all" placeholder="لماذا تقوم بتعديل هذا المنشور؟ مثال: تصحيح إملائي، تحديث معلومات..." value=""/>
+<p class="text-xs text-text-secondary/60 mt-1 mr-1">سيظهر هذا السبب في سجل تعديلات المنشور.</p>
+</div>
+</div>
+</div>
+<!-- Mobile Action Bar (Sticky Bottom) -->
+<div class="sm:hidden fixed bottom-0 left-0 right-0 bg-[#111722] border-t border-border-dark p-4 flex gap-3 z-40">
+<button class="flex-1 h-11 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-base">
+                    حفظ التعديلات
+                </button>
+<button class="h-11 w-11 flex items-center justify-center rounded-lg bg-surface-dark border border-border-dark text-text-secondary">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

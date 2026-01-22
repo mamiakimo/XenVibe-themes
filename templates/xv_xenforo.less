@@ -1,0 +1,852 @@
+// XENFORO BLOCKS STYLING
+// ================================================
+.block {
+  background: @xf-contentBg;
+  border-radius: 1rem;
+  border: 1px solid @xf-borderColor;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px fade(@xf-textColor, 5%);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px fade(@xf-textColor, 10%);
+  }
+}
+
+.block-container {
+  background: transparent;
+  border: none;
+}
+
+.block-header {
+  background: transparent;
+  border-bottom: 1px solid @xf-borderColor;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: @xf-textColor;
+
+  a {
+    color: @xf-textColor;
+
+    &:hover {
+      color: @xf-linkColor;
+    }
+  }
+}
+
+.block-minorHeader {
+  background: transparent;
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: @xf-textColor;
+  border-bottom: none;
+}
+
+.block-body {
+  padding: 0;
+}
+
+.block-row {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid fade(@xf-borderColor, 50%);
+  transition: background 0.15s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: fade(@xf-textColor, 3%);
+  }
+}
+
+.block-footer {
+  background: transparent;
+  padding: 0.75rem 1.25rem;
+  border-top: none;
+}
+
+// ================================================
+// STRUCT ITEMS (Thread List, etc.)
+// ================================================
+.structItem {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid fade(@xf-borderColor, 50%);
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: fade(@xf-textColor, 3%);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.structItem-cell--icon {
+  .avatar {
+    border-radius: 0.75rem;
+    border: 2px solid @xf-borderColor;
+  }
+}
+
+.structItem-title {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+
+  a {
+    color: @xf-textColor;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: @xf-linkColor;
+    }
+  }
+}
+
+.structItem-minor {
+  font-size: 0.75rem;
+  color: @xf-textColorMuted;
+}
+
+// ================================================
+// TABS STYLING
+// ================================================
+.tabs {
+  border-bottom: 1px solid @xf-borderColor;
+  margin-bottom: 1.5rem;
+}
+
+.tabs-tab {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: @xf-textColorMuted;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s ease;
+  margin-bottom: -1px;
+
+  &:hover {
+    color: @xf-textColor;
+  }
+
+  &.is-active {
+    color: @xf-linkColor;
+    border-bottom-color: @xf-linkColor;
+  }
+}
+
+.tabs--standalone {
+  background: @xf-contentBg;
+  border-radius: 1rem 1rem 0 0;
+  border: 1px solid @xf-borderColor;
+  border-bottom: none;
+  padding: 0 0.5rem;
+}
+
+// ================================================
+// BUTTONS STYLING
+// ================================================
+.button {
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  transition: all 0.15s ease;
+}
+
+.button--primary {
+  background: @xf-linkColor;
+  border-color: @xf-linkColor;
+  color: #fff;
+  box-shadow: 0 2px 8px fade(@xf-linkColor, 25%);
+
+  &:hover {
+    background: darken(@xf-linkColor, 8%);
+    border-color: darken(@xf-linkColor, 8%);
+    box-shadow: 0 4px 12px fade(@xf-linkColor, 35%);
+  }
+}
+
+.button--secondary {
+  background: fade(@xf-textColor, 8%);
+  border-color: @xf-borderColor;
+
+  &:hover {
+    background: fade(@xf-textColor, 12%);
+  }
+}
+
+// ================================================
+// INPUT STYLING
+// ================================================
+.input {
+  border-radius: 0.75rem;
+  border: 1px solid @xf-borderColor;
+  background: @xf-inputBg;
+  padding: 0.625rem 1rem;
+  transition: all 0.15s ease;
+
+  &:focus {
+    border-color: @xf-linkColor;
+    box-shadow: 0 0 0 3px fade(@xf-linkColor, 15%);
+    outline: none;
+  }
+}
+
+textarea.input {
+  border-radius: 0.75rem;
+}
+
+// ================================================
+// WIDGET STYLING (Right Sidebar)
+// ================================================
+.xv-sidebar--right {
+  .block {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .block-header {
+    font-size: 1rem;
+    padding: 1.25rem;
+  }
+
+  .block-body {
+    padding: 0;
+  }
+
+  .block-row {
+    padding: 1rem 1.25rem;
+  }
+}
+
+// Widget: Online Users
+.block[data-widget-key*="online"],
+.block[data-widget-definition="online_statistics"] {
+  .pairs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pairs dt {
+    font-weight: 500;
+    color: @xf-textColorMuted;
+  }
+
+  .pairs dd {
+    font-weight: 700;
+    color: @xf-textColor;
+  }
+}
+
+// Widget: New Posts
+.block[data-widget-key*="new_posts"],
+.block[data-widget-definition="new_posts"] {
+  .contentRow {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid fade(@xf-borderColor, 50%);
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: fade(@xf-textColor, 3%);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .contentRow-title {
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+
+    a {
+      color: @xf-textColor;
+
+      &:hover {
+        color: @xf-linkColor;
+      }
+    }
+  }
+
+  .contentRow-minor {
+    font-size: 0.75rem;
+    color: @xf-textColorMuted;
+  }
+}
+
+// Widget: Members
+.block[data-widget-key*="members"],
+.block[data-widget-definition="members_online"] {
+  .avatar {
+    border-radius: 50%;
+    border: 2px solid @xf-borderColor;
+  }
+}
+
+// ================================================
+// AVATARS
+// ================================================
+.avatar {
+  border-radius: 50%;
+  overflow: hidden;
+
+  &.avatar--s {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &.avatar--m {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &.avatar--l {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+// ================================================
+// MESSAGE / POST STYLING
+// ================================================
+.message {
+  background: @xf-contentBg;
+  border-radius: 1rem;
+  border: 1px solid @xf-borderColor;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.message-inner {
+  padding: 1.25rem;
+}
+
+.message-user {
+  padding: 1rem;
+  background: fade(@xf-textColor, 3%);
+  border-left: 1px solid @xf-borderColor;
+}
+
+.message-userDetails {
+  text-align: center;
+
+  .username {
+    font-weight: 700;
+    font-size: 0.9375rem;
+  }
+}
+
+.message-body {
+  padding: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.message-footer {
+  padding: 0.75rem 1.25rem;
+  background: fade(@xf-textColor, 3%);
+  border-top: 1px solid @xf-borderColor;
+}
+
+// ================================================
+// OVERLAY / MODAL STYLING
+// ================================================
+.overlay-container {
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px fade(@xf-textColor, 25%);
+}
+
+.overlay-title {
+  padding: 1.25rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border-bottom: 1px solid @xf-borderColor;
+}
+
+.overlay-content {
+  padding: 1.25rem;
+}
+
+// ================================================
+// MENU STYLING
+// ================================================
+.menu {
+  border-radius: 0.75rem;
+  border: 1px solid @xf-borderColor;
+  box-shadow: 0 10px 40px -10px fade(@xf-textColor, 20%);
+  overflow: hidden;
+}
+
+.menu-header {
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  border-bottom: 1px solid @xf-borderColor;
+  background: fade(@xf-textColor, 3%);
+}
+
+.menu-content {
+  padding: 0.5rem 0;
+}
+
+.menu-row {
+  padding: 0.75rem 1.25rem;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: fade(@xf-textColor, 5%);
+  }
+}
+
+.menu-linkRow {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: @xf-textColor;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: fade(@xf-linkColor, 10%);
+    color: @xf-linkColor;
+  }
+}
+
+.menu-footer {
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid @xf-borderColor;
+  background: fade(@xf-textColor, 3%);
+}
+
+// Menu checkboxes - visible borders (uses XenForo variables)
+.menu .iconic>i::before {
+  border: 2px solid @xf-textColorMuted !important;
+  border-radius: 0.25rem;
+}
+
+.menu .iconic:hover>i::before {
+  border-color: @xf-textColor !important;
+}
+
+.menu .iconic input:checked+i::before {
+  border-color: @xf-linkColor !important;
+  background: @xf-linkColor !important;
+  box-shadow: inset 0 0 0 10px @xf-linkColor !important;
+}
+
+.menu .iconic input:checked+i::after {
+  color: #fff !important;
+}
+
+// ================================================
+// PAGINATION
+// ================================================
+.pageNav-main {
+  display: flex;
+}
+
+.pageNav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.pageNav-page {
+  min-width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: @xf-textColorMuted;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: fade(@xf-textColor, 10%);
+    color: @xf-textColor;
+  }
+
+  &.pageNav-page--current {
+    background: @xf-linkColor;
+    color: #fff;
+  }
+}
+
+.pageNav-jump {
+  border-radius: 0.5rem;
+}
+
+// ================================================
+// ALERTS / NOTICES
+// ================================================
+.blockMessage {
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+
+  &.blockMessage--important {
+    background: fade(@xf-textColorAttention, 10%);
+    border: 1px solid fade(@xf-textColorAttention, 20%);
+    color: @xf-textColorAttention;
+  }
+
+  &.blockMessage--success {
+    background: fade(@xf-textColorFeature, 10%);
+    border: 1px solid fade(@xf-textColorFeature, 20%);
+    color: @xf-textColorFeature;
+  }
+}
+
+// ================================================
+// FORUM NODE LIST
+// ================================================
+.node {
+  margin-bottom: 0.5rem;
+}
+
+.node-body {
+  padding: 1rem 1.25rem;
+  background: @xf-contentBg;
+  border-radius: 0.75rem;
+  border: 1px solid @xf-borderColor;
+  transition: all 0.15s ease;
+
+  &:hover {
+    border-color: @xf-linkColor;
+    box-shadow: 0 4px 12px fade(@xf-linkColor, 10%);
+  }
+}
+
+.node-title {
+  font-weight: 700;
+  font-size: 1rem;
+
+  a {
+    color: @xf-textColor;
+
+    &:hover {
+      color: @xf-linkColor;
+    }
+  }
+}
+
+.node-description {
+  font-size: 0.8125rem;
+  color: @xf-textColorMuted;
+  margin-top: 0.25rem;
+}
+
+.node-stats {
+  font-size: 0.75rem;
+  color: @xf-textColorMuted;
+}
+
+.node-icon {
+  .avatar {
+    border-radius: 0.75rem;
+  }
+}
+
+// ================================================
+// RESPONSIVE ADJUSTMENTS
+// ================================================
+@media (max-width: 767px) {
+  .xv-header {
+    padding: 0.5rem 1rem;
+  }
+
+  .xv-main {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .block {
+    border-radius: 0.75rem;
+  }
+
+  .block-header,
+  .block-row {
+    padding: 0.875rem 1rem;
+  }
+
+  .message {
+    border-radius: 0.75rem;
+  }
+
+  .message-inner,
+  .message-body {
+    padding: 1rem;
+  }
+}
+
+// ================================================
+// WHAT'S NEW - TABS PILLS STYLE (Stitch Design)
+// ================================================
+// Tabs with container background like Stitch Filters/Toolbar
+
+.p-body-content>.tabs,
+.block>.tabs,
+.tabs--standalone {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.375rem;
+  background: @xf-contentBg;
+  border: 1px solid @xf-borderColor;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+// TEMP DISABLED FOR DEBUGGING - tabs styling causing animation issue
+// .tabs-tab {
+//   padding: 0.375rem 1rem;
+//   font-size: 0.875rem;
+//   font-weight: 500;
+//   color: @xf-textColorMuted;
+//   background: transparent;
+//   border: none;
+//   border-radius: 0.25rem;
+//   margin-bottom: 0;
+//   transition: all 0.2s ease;
+//
+//   &:hover {
+//     color: @xf-textColor;
+//     background: @xf-contentHighlightBg;
+//   }
+//
+//   &.is-active {
+//     color: #fff;
+//     background: @xf-linkColor;
+//     font-weight: 600;
+//     box-shadow: 0 2px 8px fade(@xf-linkColor, 30%);
+//   }
+// }
+//
+// // Remove default tab underline
+// .tabs-tab.is-active::after,
+// .tabs-tab::after {
+//   display: none !important;
+// }
+
+// ================================================
+// PAGINATION STYLING (Stitch Floating Card Design)
+// ================================================
+
+// Main pagination container - compact floating card style
+.pageNav {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.125rem !important;
+  padding: 0.25rem !important;
+  background: @xf-contentBg !important;
+  border: 1px solid @xf-borderColor !important;
+  border-radius: 0.5rem !important;
+
+  .pageNav-main {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.125rem !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+// Each page LI element - NO background
+.pageNav .pageNav-page,
+.pageNav-page {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+// Each page number link - NO background (transparent on bar)
+.pageNav .pageNav-page>a,
+.pageNav-page>a {
+  min-width: 2rem !important;
+  height: 2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 0.5rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  color: @xf-textColorMuted !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.pageNav .pageNav-page>a:hover,
+.pageNav-page>a:hover {
+  color: @xf-textColor !important;
+  background: @xf-contentHighlightBg !important;
+  background-color: @xf-contentHighlightBg !important;
+  border-radius: 0.5rem !important;
+}
+
+// Current/Active page LI - keep transparent
+.pageNav .pageNav-page--current,
+.pageNav-page--current {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+// Current/Active page link - Stitch style (rounded blue pill with ring)
+.pageNav .pageNav-page--current>a,
+.pageNav-page--current>a {
+  color: #fff !important;
+  background: @xf-linkColor !important;
+  background-color: @xf-linkColor !important;
+  font-weight: 600 !important;
+  border-radius: 0.5rem !important;
+  // Ring effect: inner glow + 2px gap + 2px outer ring
+  box-shadow:
+    0 4px 12px fade(@xf-linkColor, 40%),
+    0 0 0 2px fade(@xf-pageBg, 100%),
+    0 0 0 4px @xf-linkColor !important;
+}
+
+// Prevent hover changing active page style
+.pageNav .pageNav-page--current>a:hover,
+.pageNav-page--current>a:hover {
+  color: #fff !important;
+  background: @xf-linkColor !important;
+  background-color: @xf-linkColor !important;
+  box-shadow:
+    0 4px 12px fade(@xf-linkColor, 40%),
+    0 0 0 2px fade(@xf-pageBg, 100%),
+    0 0 0 4px @xf-linkColor !important;
+}
+
+// Prev/Next buttons - NO background like page numbers
+.pageNav .pageNav-jump,
+.pageNav-jump {
+  height: 2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 0.5rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 500 !important;
+  color: @xf-textColorMuted !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  padding: 0 0.5rem !important;
+}
+
+.pageNav .pageNav-jump:hover,
+.pageNav-jump:hover {
+  color: @xf-textColor !important;
+  background: @xf-contentHighlightBg !important;
+  background-color: @xf-contentHighlightBg !important;
+}
+
+// Wrapper for mixed pagination
+.pageNavWrapper--mixed {
+  .pageNav {
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Simple pagination style (1 of 2)
+.pageNavSimple {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem;
+  background: @xf-contentBg;
+  border: 1px solid fade(@xf-borderColor, 50%);
+  border-radius: 0.5rem;
+
+  .pageNavSimple-el {
+    min-width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.375rem;
+    font-size: 0.8125rem;
+    color: @xf-textColorMuted;
+    background: transparent;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    padding: 0 0.5rem;
+
+    &:hover {
+      color: @xf-textColor;
+      background: fade(@xf-textColor, 5%);
+    }
+  }
+
+  .pageNavSimple-el--current {
+    color: @xf-textColor;
+    font-weight: 600;
+  }
+}
+
+// ================================================
+// LABELS (بادئات المواضيع) - Stitch Style
+// ================================================
+// CSS only: overlay لتخفيف الخلفية + نص أبيض
+
+.label,
+.iconic-label,
+.labelLink {
+  position: relative;
+
+  // Reset XenForo defaults
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+
+  // Stitch Style
+  font-weight: 700 !important;
+  font-size: 10px !important;
+  padding: 0.125rem 0.5rem !important;
+  border-radius: 0.25rem !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  overflow: hidden;
+
+  // Overlay لتخفيف حدة الخلفية (20% شفافية)
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: @xf-pageBg;
+    opacity: 0.2;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
+
+// ================================================
+// XV-CARD - UNIFIED CARD STYLING
+// ================================================
+// Single card class for consistent styling across the site
+// Move these to Style Properties for user customization
+

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nano Pro - Topic View</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161e2c",
+                        "card-dark": "#1c2536",
+                        "border-dark": "#2d3748",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for dashboard feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white overflow-hidden h-screen flex selection:bg-primary selection:text-white">
+<!-- Global Navigation Sidebar (Slim) -->
+<nav class="w-[72px] flex-none bg-background-dark border-r border-border-dark flex flex-col items-center py-6 gap-8 z-20">
+<!-- Logo Icon -->
+<div class="size-10 text-primary flex items-center justify-center">
+<svg class="w-8 h-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<!-- Nav Icons -->
+<div class="flex flex-col gap-6 w-full items-center">
+<button class="size-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-surface-dark transition-colors group relative" title="Home">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="size-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-surface-dark transition-colors" title="Trending">
+<span class="material-symbols-outlined">trending_up</span>
+</button>
+<button class="size-10 rounded-xl flex items-center justify-center bg-primary/20 text-primary shadow-inner shadow-primary/10" title="Forums">
+<span class="material-symbols-outlined">forum</span>
+</button>
+<button class="size-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-surface-dark transition-colors" title="Messages">
+<span class="material-symbols-outlined">mail</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full"></span>
+</button>
+<button class="size-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-surface-dark transition-colors" title="Members">
+<span class="material-symbols-outlined">group</span>
+</button>
+</div>
+<!-- Bottom Actions -->
+<div class="mt-auto flex flex-col gap-6 items-center">
+<button class="size-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-surface-dark transition-colors" title="Settings">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-surface-dark cursor-pointer" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuButMGn0cmDTxMRhByMx19xQRBv4b3ZUzQXU2at4p2zZ37fm40BmbwKT93OHqrpUpuVhGRxf3jfPoLy2Mc0mcW2Oc55vQJgaYuMtXLjy4TcgSQCFeAZPzcB3iLSrKbUpaNNoBOpSJeEICV2JqsUf3EvPfLeAKqc5ADxU_AV-Pwhde5CJfM4QraAzaKjhkx-Mys73KGq64yAJGbTBW9mUseKf2a4P5pCVuxA_KxFRETH72UaSfjl-yrrIgyIL19kxY7QOE7ZvxMvdAA");'></div>
+</div>
+</nav>
+<!-- Context Sidebar (Navigation Tree) -->
+<aside class="w-64 flex-none bg-background-dark border-r border-border-dark hidden md:flex flex-col">
+<div class="p-5 border-b border-border-dark">
+<h2 class="text-lg font-bold text-white tracking-tight">Server Admin</h2>
+<p class="text-xs text-slate-400 mt-1">Managed by @sysadmin</p>
+</div>
+<div class="flex-1 overflow-y-auto p-3 space-y-6">
+<!-- Section 1 -->
+<div>
+<h3 class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Navigation</h3>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-surface-dark hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dns</span>
+<span class="text-sm font-medium">Server Config</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-dark text-white border border-border-dark shadow-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary">speed</span>
+<span class="text-sm font-medium">Performance</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-surface-dark hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">security</span>
+<span class="text-sm font-medium">Security</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Section 2 -->
+<div>
+<h3 class="px-3 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Pinned Threads</h3>
+<ul class="space-y-1">
+<li>
+<a class="flex items-start gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-surface-dark hover:text-slate-200 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-500 group-hover:text-primary mt-0.5">push_pin</span>
+<span class="text-sm line-clamp-2 leading-snug">Beginner's Guide to Nginx caching</span>
+</a>
+</li>
+<li>
+<a class="flex items-start gap-3 px-3 py-2 rounded-lg text-slate-400 hover:bg-surface-dark hover:text-slate-200 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] text-slate-500 group-hover:text-primary mt-0.5">push_pin</span>
+<span class="text-sm line-clamp-2 leading-snug">Weekly Maintenance Checklist 2023</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Context Action -->
+<div class="p-4 border-t border-border-dark">
+<button class="w-full flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white py-2.5 px-4 rounded-lg text-sm font-bold transition-colors shadow-lg shadow-primary/25">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>New Topic</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-dark relative">
+<!-- Sticky Header -->
+<header class="flex-none bg-background-dark/95 backdrop-blur-md border-b border-border-dark z-10 sticky top-0 px-6 py-4">
+<div class="max-w-4xl mx-auto w-full">
+<!-- Breadcrumbs -->
+<div class="flex items-center flex-wrap gap-2 text-sm text-slate-400 mb-3">
+<a class="hover:text-primary transition-colors" href="#">Forums</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Server Administration</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-white font-medium">Performance Tuning</span>
+</div>
+<!-- Title & Meta -->
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<h1 class="text-2xl md:text-3xl font-bold text-white leading-tight">Optimizing Server Load for XenForo</h1>
+<span class="bg-green-500/10 text-green-400 text-xs font-bold px-2.5 py-1 rounded-md border border-green-500/20">SOLVED</span>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="flex gap-2">
+<span class="bg-card-dark text-slate-300 text-xs font-medium px-2.5 py-1 rounded-lg border border-border-dark">Technical</span>
+<span class="bg-card-dark text-slate-300 text-xs font-medium px-2.5 py-1 rounded-lg border border-border-dark">Help Needed</span>
+</div>
+<span class="text-slate-500 text-sm">• Posted by <a class="text-slate-300 hover:text-white" href="#">@sysadmin</a></span>
+<span class="text-slate-500 text-sm">• Oct 24, 2023</span>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-dark text-slate-300 border border-border-dark hover:border-slate-500 transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+                            Watch
+                        </button>
+<button class="flex items-center gap-2 px-3 py-2 rounded-lg bg-surface-dark text-slate-300 border border-border-dark hover:border-slate-500 transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Scrollable Thread Content -->
+<div class="flex-1 overflow-y-auto p-6" id="thread-scroll">
+<div class="max-w-4xl mx-auto w-full flex flex-col gap-6 pb-24">
+<!-- Original Post (OP) -->
+<article class="bg-card-dark rounded-xl border border-border-dark overflow-hidden relative group">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary/50"></div>
+<div class="p-6">
+<!-- Post Header -->
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12" data-alt="Avatar of user sysadmin" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA6KWokIEGTiMxE00sXMRFMBGfId0bm7jt69SlyjZzJxF14EJy1OSKGAm-ewzRwC66xqlS2fEv-yBf4U-JIZzp3AfhpUvLBx2ghJYDZNWJr1CunFc-jq7FWudgOF0Fa0byM5XRzERvoOyTLkB9qm0-GsG4FDteKlYqNx8tyuFTUXwTO6kIDXL7WFKLwfB5HZ26kQbu9g0HYBXuXsP9H9ySDAI-uS47yYrESgbGLjEI6qYXYvfz3VjvuV9JUmsev7LzS7Ao73-Hyjow");'></div>
+<span class="absolute -bottom-1 -right-1 bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded border border-card-dark">OP</span>
+</div>
+<div>
+<h3 class="text-white font-semibold text-base">System Administrator</h3>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<span>@sysadmin</span>
+<span class="size-1 bg-slate-600 rounded-full"></span>
+<span>Level 50</span>
+</div>
+</div>
+</div>
+<span class="text-slate-500 text-xs font-mono">#1</span>
+</div>
+<!-- Post Body -->
+<div class="prose prose-invert max-w-none prose-p:text-slate-300 prose-headings:text-white prose-a:text-primary">
+<p>Hi everyone, I'm trying to fine-tune our XenForo instance running on Nginx + PHP-FPM. We've been seeing some high load averages during peak times.</p>
+<p>Here is my current <code>nginx.conf</code> snippet for the PHP location block. Does anyone spot any obvious issues or missing optimizations?</p>
+<div class="bg-background-dark rounded-lg p-4 border border-border-dark font-mono text-sm text-slate-300 overflow-x-auto my-4">
+<span class="text-purple-400">location</span> ~ \.php$ {<br/>
+                                  <span class="text-blue-400">fastcgi_pass</span> unix:/var/run/php/php8.1-fpm.sock;<br/>
+                                  <span class="text-blue-400">fastcgi_index</span> index.php;<br/>
+                                  <span class="text-blue-400">include</span> fastcgi_params;<br/>
+                                  <span class="text-blue-400">fastcgi_param</span> SCRIPT_FILENAME $document_root$fastcgi_script_name;<br/>
+                                  <span class="text-gray-500"># Is this buffer size enough?</span><br/>
+                                  <span class="text-blue-400">fastcgi_buffers</span> 16 16k;<br/>
+                                  <span class="text-blue-400">fastcgi_buffer_size</span> 32k;<br/>
+                                }
+                            </div>
+<p>Any help would be appreciated!</p>
+</div>
+<!-- Post Footer -->
+<div class="mt-8 pt-4 border-t border-border-dark flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 text-slate-400 hover:text-primary transition-colors text-sm group">
+<span class="material-symbols-outlined text-[20px] group-hover:fill-current">thumb_up</span>
+<span>12</span>
+</button>
+<button class="flex items-center gap-1.5 text-slate-400 hover:text-red-400 transition-colors text-sm group">
+<span class="material-symbols-outlined text-[20px] group-hover:fill-current">favorite</span>
+<span>5</span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-slate-400 hover:text-white text-sm font-medium">Quote</button>
+<button class="bg-surface-dark hover:bg-border-dark text-white px-4 py-1.5 rounded-lg text-sm font-medium transition-colors border border-border-dark">Reply</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Divider -->
+<div class="flex items-center gap-4 text-xs text-slate-500 px-2">
+<span class="h-px bg-border-dark flex-1"></span>
+<span>3 Replies</span>
+<span class="h-px bg-border-dark flex-1"></span>
+</div>
+<!-- Reply 1 -->
+<article class="bg-card-dark rounded-xl border border-border-dark overflow-hidden ml-0 md:ml-8">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Avatar of user devops_guru" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFbjVZTcKf_EOOh_wuwfM_9ss53HDBKwVxyUNpspXnt_JIc2p4SIuI6PYFF0rn8pw7wpxb-SE7z4TzP0WlqJ9k-_FlMUkDIidOfEjY6NctzGVG350DSyxVtIoeCD-LyN4Fo2vjTFCavvReMzUTdziChSP_jiUfv0jgQpNmlhPjQReou3Vn1rBw8qURI-XGOCWfHuHrxqjFlkv5pUNaVaHJa9mcyu6Zq1kJJSNkYvT6WptldoPt0MEbDAggC7N9YNjPbxvQEgWBwJk");'></div>
+<div>
+<h3 class="text-white font-semibold text-sm">DevOps Guru</h3>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<span>@devops_guru</span>
+<span>• 2 hours ago</span>
+</div>
+</div>
+</div>
+<span class="text-slate-500 text-xs font-mono">#2</span>
+</div>
+<div class="text-slate-300 text-sm leading-relaxed mb-4">
+<p>You definitely want to increase those buffers if you are serving large pages. Also, make sure you have <code>opcache</code> enabled in your php.ini. That usually gives the biggest performance boost for XenForo.</p>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">thumb_up</span>
+<span>3</span>
+</button>
+</div>
+<button class="text-slate-400 hover:text-white font-medium">Reply</button>
+</div>
+</div>
+</article>
+<!-- Reply 2 (Solution) -->
+<article class="bg-card-dark/50 rounded-xl border border-green-500/30 overflow-hidden ml-0 md:ml-8 relative">
+<div class="absolute top-0 right-0 p-2">
+<div class="flex items-center gap-1 bg-green-500/10 text-green-400 text-xs font-bold px-2 py-1 rounded border border-green-500/20">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                            SOLUTION
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-4">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10" data-alt="Avatar of user nginx_master" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBkv4rd3IBaxo0eoWiSqYb9Q7GQHezw9ahUVEV6g3UzzUWwIvAFu0t1aJzhPVzK151V_PkFNiSqCZ50pdC4dJbPzzZQbeBWSwBkzQz32t2nIVMQfx1UumsrvVh8b6J09ESGGvVT_6tiDocACarq7fDot9JVvBK0Qfmcpm9idQaENcgtibXSr_xnKe9k6kkBkNyy0TcIWUiw75WeKcgfZj_xou5IYP6_g_xEnp496NGYV3vU1GJnp4GZSQF3u6-Y3LEvGEsyoVj0ejE");'></div>
+<div>
+<h3 class="text-white font-semibold text-sm">Nginx Master</h3>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<span>@nginx_master</span>
+<span>• 45 mins ago</span>
+</div>
+</div>
+</div>
+<span class="text-slate-500 text-xs font-mono">#3</span>
+</div>
+<div class="text-slate-300 text-sm leading-relaxed mb-4">
+<p>The buffers look okay for standard requests, but I'd suggest adding:</p>
+<code class="bg-background-dark px-1.5 py-0.5 rounded text-red-300 text-xs">fastcgi_busy_buffers_size 64k;</code>
+<p class="mt-2">Also, check your <code>pm.max_children</code> settings. If that's hitting the limit, Nginx will throw 502 errors regardless of your buffer settings.</p>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">thumb_up</span>
+<span>8</span>
+</button>
+</div>
+<button class="text-slate-400 hover:text-white font-medium">Reply</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- Floating Action Bar (Quick Reply) -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-full max-w-3xl px-6 z-30">
+<div class="bg-surface-dark border border-border-dark rounded-2xl shadow-2xl p-2 flex items-end gap-2 backdrop-blur-sm">
+<button class="p-2 text-slate-400 hover:text-white hover:bg-card-dark rounded-xl transition-colors shrink-0">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<div class="flex-1 min-h-[44px] relative">
+<textarea class="w-full bg-transparent border-0 text-white placeholder-slate-500 focus:ring-0 resize-none py-2.5 max-h-32 text-sm" placeholder="Type a reply to @nginx_master..." rows="1"></textarea>
+</div>
+<div class="flex items-center gap-1 pb-1">
+<button class="p-2 text-slate-400 hover:text-white hover:bg-card-dark rounded-xl transition-colors shrink-0" title="Attach Image">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-white hover:bg-card-dark rounded-xl transition-colors shrink-0" title="Code Block">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</button>
+<button class="bg-primary hover:bg-blue-600 text-white rounded-xl p-2 ml-1 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px] rotate-[-45deg] relative left-[1px] top-[-1px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Utility Sidebar -->
+<aside class="w-80 flex-none bg-background-dark border-l border-border-dark hidden xl:flex flex-col overflow-y-auto">
+<!-- Search Widget -->
+<div class="p-5 border-b border-border-dark sticky top-0 bg-background-dark z-10">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-500 group-focus-within:text-primary">search</span>
+<input class="w-full bg-surface-dark text-white text-sm border border-border-dark rounded-xl py-2.5 pl-10 pr-4 focus:ring-1 focus:ring-primary focus:border-primary placeholder-slate-500 transition-all" placeholder="Search in this thread..." type="text"/>
+</div>
+</div>
+<!-- Participants Widget -->
+<div class="p-5 border-b border-border-dark">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">Participants (12)</h3>
+<div class="flex -space-x-2 overflow-hidden py-1">
+<img alt="Participant 1" class="inline-block size-9 rounded-full ring-2 ring-background-dark bg-surface-dark" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCOaMbU6_UJO_vlqC9X-ue9YKW0oWtJXzZKRx85eLPjNLXLxKDsg9JSfTkSbmiqQP5OANfGV1YAdmscOSw7gPbjA7w0JwuHbSbUczN_0C4EvnoNmuxU1d2VwD3Z3aoURc9jRfb9WvofQoP_-udAW20o48sByYFBX7JcKvyt92r4zXZxv30CQgPW89_mUYMvI-OOhpUzH2Pggaa-ZEQFzK07sIEPBFYkZHsNphRGNNDYeDimBfrCxmcrX3YzXQQwCL4AOOnlwLQuiw"/>
+<img alt="Participant 2" class="inline-block size-9 rounded-full ring-2 ring-background-dark bg-surface-dark" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDTXWrHjEzWw02Md5pS4yVJKt8ns1fHfDvq3NXFSDhkzSmTnsWx3QSubg3-R9Cu4lDlSnqmNJeCnOKfg1dQ8gCApPFXZInmN2-oIa-oi61SvOIb6qGBvvzErxAa6jKCzlHPYsSDVq3f3mHYyXTwPwKYg2bG2fglChUIi5qgTmxh-HilnXRDVlGaCpQqqdEPl0Jx6LlecVt2L5TqV6fFvLPC8I2iRpNsSwjwser7nZk6XWLdJFO8sv6WhBd6h55bGcvbaIS8wkF0W4"/>
+<img alt="Participant 3" class="inline-block size-9 rounded-full ring-2 ring-background-dark bg-surface-dark" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASZhc6Pj2ZWonR9HsqO2c47HLPeBpe5j4dEUASnaTWexrcTS9FRKWN3cVrb8aT6WVwQ9jPOnd1pPMNSSIz9LhE8xgQfRztbK4o4L6gE1q0RUhvfbIM8fMcE6jCdoJoen7shh14TdOJ6sbOpTtn1sS3OltNKl9AcCYwNTTR2wy0m3Ci2MjsE25WHHOkar2MX-K9i-wDMNao_180BkizPH2RoDm6D3PzsL4K-HHAB7XJfq4hOX4rRm4qIx7vwAJ33wpRkB06OSxFKOA"/>
+<img alt="Participant 4" class="inline-block size-9 rounded-full ring-2 ring-background-dark bg-surface-dark" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPDA1YOlCBJ3w1deghQE4QeQHhCw5nUyqjGaRn1aC2ztWC_ZnwW62JJCJPbEo7H3jqvN7tdssY1lkl9uBy9rKyfUR2wb6iqO1xvhrqaw7qXqk2JzPbLPZolWYSvYRkih_0j-exNEWFw24XM-PyfqWWfmXQyzztNqw03G2Yr2XuBoUFVocO5PJ0edArxiuGNmgL-8WRpvpNldJJlFvRvbrseXJNVmJupYbRuBFuUYPeJiFGCmXYdowH5TGtMxWQDHJDkr0-vGLcXL4"/>
+<div class="flex items-center justify-center size-9 rounded-full ring-2 ring-background-dark bg-surface-dark text-xs text-slate-400 font-medium">
+                    +8
+                </div>
+</div>
+</div>
+<!-- Thread Stats -->
+<div class="p-5 border-b border-border-dark">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">Thread Statistics</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-card-dark rounded-lg p-3 border border-border-dark">
+<p class="text-slate-400 text-xs mb-1">Views</p>
+<p class="text-white text-lg font-bold">1.2k</p>
+</div>
+<div class="bg-card-dark rounded-lg p-3 border border-border-dark">
+<p class="text-slate-400 text-xs mb-1">Replies</p>
+<p class="text-white text-lg font-bold">42</p>
+</div>
+<div class="bg-card-dark rounded-lg p-3 border border-border-dark col-span-2">
+<p class="text-slate-400 text-xs mb-2">Activity</p>
+<div class="flex items-end gap-1 h-8">
+<div class="flex-1 bg-primary/20 rounded-sm h-[30%]"></div>
+<div class="flex-1 bg-primary/40 rounded-sm h-[60%]"></div>
+<div class="flex-1 bg-primary rounded-sm h-[100%]"></div>
+<div class="flex-1 bg-primary/60 rounded-sm h-[80%]"></div>
+<div class="flex-1 bg-primary/30 rounded-sm h-[40%]"></div>
+<div class="flex-1 bg-primary/10 rounded-sm h-[20%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Related Topics -->
+<div class="p-5">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">Related Topics</h3>
+<div class="flex flex-col gap-4">
+<a class="group" href="#">
+<p class="text-sm font-medium text-slate-300 group-hover:text-primary transition-colors line-clamp-2">Nginx 502 Bad Gateway with PHP-FPM</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs text-slate-500">12 replies</span>
+<span class="text-xs text-slate-500">•</span>
+<span class="text-xs text-slate-500">Yesterday</span>
+</div>
+</a>
+<a class="group" href="#">
+<p class="text-sm font-medium text-slate-300 group-hover:text-primary transition-colors line-clamp-2">Optimizing MySQL 8.0 for large forums</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs text-slate-500">45 replies</span>
+<span class="text-xs text-slate-500">•</span>
+<span class="text-xs text-slate-500">Oct 20</span>
+</div>
+</a>
+<a class="group" href="#">
+<p class="text-sm font-medium text-slate-300 group-hover:text-primary transition-colors line-clamp-2">Best caching strategy for XenForo 2.x</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs text-slate-500">8 replies</span>
+<span class="text-xs text-slate-500">•</span>
+<span class="text-xs text-slate-500">Oct 18</span>
+</div>
+</a>
+</div>
+</div>
+</aside>
+</body></html>

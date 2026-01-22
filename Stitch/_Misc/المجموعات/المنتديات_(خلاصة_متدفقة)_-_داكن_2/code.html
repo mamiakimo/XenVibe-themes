@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>المجموعات - خلاصة متدفقة</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                        "surface-dark": "#192233",
+                        "surface-highlight": "#232f48",
+                        "text-secondary": "#92a4c9",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111722; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #232f48; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b4d6e; 
+        }
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-white min-h-screen overflow-x-hidden selection:bg-primary selection:text-white">
+<div class="flex h-screen overflow-hidden">
+<!-- Right Sidebar (Navigation) -->
+<aside class="hidden lg:flex w-64 flex-col bg-[#111722] border-l border-[#232f48] h-full shrink-0">
+<div class="p-6">
+<div class="flex flex-col gap-1 mb-8">
+<h1 class="text-white text-2xl font-bold leading-normal tracking-tight">مجتمعي</h1>
+<p class="text-text-secondary text-sm font-normal">منصة التواصل</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-white transition-colors" data-icon="home">home</span>
+<p class="text-[#92a4c9] group-hover:text-white text-base font-medium transition-colors">الرئيسية</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined text-primary" data-icon="groups">groups</span>
+<p class="text-primary text-base font-medium">المجموعات</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-white transition-colors" data-icon="trending_up">trending_up</span>
+<p class="text-[#92a4c9] group-hover:text-white text-base font-medium transition-colors">الرائج</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-white transition-colors" data-icon="bookmarks">bookmarks</span>
+<p class="text-[#92a4c9] group-hover:text-white text-base font-medium transition-colors">المحفوظات</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#232f48] transition-colors group" href="#">
+<span class="material-symbols-outlined text-[#92a4c9] group-hover:text-white transition-colors" data-icon="settings">settings</span>
+<p class="text-[#92a4c9] group-hover:text-white text-base font-medium transition-colors">الإعدادات</p>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 px-4 text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="font-bold text-sm">إنشاء مجموعة</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex justify-center h-full overflow-y-auto scroll-smooth relative" id="main-scroll">
+<div class="flex w-full max-w-[1000px] gap-6 px-4 py-6 md:px-8">
+<!-- Center Feed -->
+<div class="flex flex-col flex-1 min-w-0 gap-6">
+<!-- Header -->
+<header class="flex flex-col gap-4">
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-1">
+<h2 class="text-white text-3xl font-black leading-tight">اكتشف المجتمعات</h2>
+<p class="text-text-secondary text-base">استكشف أحدث المجموعات والنقاشات الجارية في الوقت الفعلي.</p>
+</div>
+<!-- Mobile Menu Trigger -->
+<button class="lg:hidden p-2 text-white bg-surface-highlight rounded-lg">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="relative w-full">
+<label class="flex items-center w-full h-14 bg-surface-highlight rounded-2xl overflow-hidden focus-within:ring-2 focus-within:ring-primary transition-all">
+<div class="flex items-center justify-center h-full px-4 text-text-secondary">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-full bg-transparent border-none text-white placeholder-text-secondary focus:ring-0 text-base" placeholder="ابحث عن مجموعة، موضوع، أو هاشتاج..." type="text"/>
+</label>
+</div>
+<!-- Filters -->
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-white px-5 shadow-lg shadow-primary/25 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill">star</span>
+<span class="text-sm font-bold">موصى به</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-surface-highlight hover:bg-[#2f3e5e] text-text-secondary hover:text-white px-5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<span class="text-sm font-medium">الأحدث</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-surface-highlight hover:bg-[#2f3e5e] text-text-secondary hover:text-white px-5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">local_fire_department</span>
+<span class="text-sm font-medium">الأكثر نشاطاً</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-surface-highlight hover:bg-[#2f3e5e] text-text-secondary hover:text-white px-5 transition-colors">
+<span class="material-symbols-outlined text-[20px]">event</span>
+<span class="text-sm font-medium">الفعاليات</span>
+</button>
+</div>
+</header>
+<!-- Feed Stream -->
+<div class="flex flex-col gap-6 pb-10">
+<!-- Card 1: Tech Group (Rich Media) -->
+<article class="bg-surface-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-[#232f48]/50">
+<!-- Card Header -->
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white shadow-lg" data-alt="Gradient background for AI group icon">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-white text-lg font-bold hover:text-primary cursor-pointer transition-colors">عشاق الذكاء الاصطناعي</h3>
+<div class="flex items-center gap-1 text-xs text-text-secondary">
+<span>منذ 3 ساعات</span>
+<span>•</span>
+<span class="text-green-400 font-medium">نشط جداً</span>
+</div>
+</div>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                                    انضمام
+                                </button>
+</div>
+<!-- Card Body -->
+<div class="px-4 pb-2">
+<p class="text-gray-300 text-base leading-relaxed mb-3">
+                                    هل تعتقد أن نماذج اللغة الكبيرة ستستبدل المبرمجين قريباً؟ شاركنا رأيك في النقاش المفتوح لهذا الأسبوع! 🤖👨‍💻
+                                </p>
+</div>
+<!-- Hero Image -->
+<div class="w-full h-64 bg-[#0f1520] relative group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Abstract visualization of artificial intelligence neural networks" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-0UM01xuOXaXPD3kchpKSK_1CX9Ha-c1LbIttc13JWVnuAvbyMuur3vH_xooCNCrxSfJej3xJWxCmqy23Hv0ZLPwd7Fz5OxKGSuUfRJb0p1sZazs0pP2GxR8kKuxltxL3Jwm_7ETWp7VRtnw66smqezRcqdaHVlCiKp5s2-hO1yc3FtsLcFihtlIPtuQtU7Wi1lOygMhaggHCFLw8UnFCiVKjc_uMyeSFlFA30dBvItUYw4skoqtN-fKusdjNFchwJSsxLW-a6Gk');">
+</div>
+<div class="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs text-white flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">image</span>
+<span>3 صور</span>
+</div>
+</div>
+<!-- Stats Footer -->
+<div class="px-4 py-3 flex items-center justify-between border-t border-[#232f48]">
+<div class="flex -space-x-2 space-x-reverse overflow-hidden">
+<img alt="User avatar" class="inline-block h-6 w-6 rounded-full ring-2 ring-surface-dark object-cover" data-alt="User avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgcGmvnMdTYBu4Uw0kw7bhXVo67D7GK_frvMVz67V1BVMedMJofxt7gWzPCoS07KvLa36cz30jp3qAhNxXD48f1fylmcaQKorUfhWziJ3bm0n07u6_a3LWVLuGMrtuzN4L8V5V5L1knYbZsTeIbrmzBiAv4hnueEiiRKNOqYEorcmCjKh9k6tz7khfLpmCMCFMUCEc6j55uzlDCY5bIm27qaRhHZYtfWqZh51LDkKADqIC8MRzpbi_19jOFV-9A1gw_zdtLZewE3U"/>
+<img alt="User avatar" class="inline-block h-6 w-6 rounded-full ring-2 ring-surface-dark object-cover" data-alt="User avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwI_mNDjfrgB_02oOCR3aOU_vsgwb-VETz5ip9dVjlu4zhdZAxgkDn7sUtcFFQYrlvZRO4DAe6fyxzAwmgoQBmuZaWAXXQ3okaK5Pfxm51HHS6b3JgYBZy6M2u1hgrKrlaaiqmphTDrNDEICzRYz2d1NOd5Yn4bTk-2hoTS5mFYOvCo4Qz4yItErC6Doent2Vk4xANhMBp244A0aUuTAVy1pwJ_iTeQVltPI89HJW2uJo3p2bPel6JGgdM1zSkiBrD-zGZPbm5UXY"/>
+<div class="flex items-center justify-center w-6 h-6 rounded-full ring-2 ring-surface-dark bg-surface-highlight text-[10px] font-bold text-text-secondary">+5k</div>
+<span class="text-text-secondary text-sm mr-2 self-center">عضو</span>
+</div>
+<div class="flex items-center gap-4 text-text-secondary">
+<div class="flex items-center gap-1 hover:text-white cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+<span class="text-sm font-medium">124</span>
+</div>
+<div class="flex items-center gap-1 hover:text-white cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Photography (Visual Heavy) -->
+<article class="bg-surface-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-[#232f48]/50">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white shadow-lg" data-alt="Gradient background for Photography group icon">
+<span class="material-symbols-outlined">photo_camera</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-white text-lg font-bold hover:text-primary cursor-pointer transition-colors">عدسة المحترفين</h3>
+<div class="flex items-center gap-1 text-xs text-text-secondary">
+<span>منذ 5 ساعات</span>
+<span>•</span>
+<span class="text-yellow-500 font-medium">تحدي أسبوعي</span>
+</div>
+</div>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm font-bold transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[18px]">check</span>
+                                    متابع
+                                </button>
+</div>
+<div class="px-4 pb-4">
+<p class="text-gray-300 text-base mb-3">
+                                    أفضل اللقطات من تحدي "الظل والنور" لهذا الأسبوع. صوتوا للصورة الأفضل في التعليقات! 📸🌑
+                                </p>
+<div class="grid grid-cols-2 gap-2 h-64 rounded-xl overflow-hidden">
+<div class="bg-cover bg-center h-full hover:scale-105 transition-transform duration-500 cursor-pointer" data-alt="Black and white photography of a camera lens" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD5ffP_VjJI5byXANU9CU8iWqSX6VdRkP6HnNEfKatNC6Pmk8SEmTAhpb0v_SKVhLH0C1wnhU_G0MOY7YM-dCSJrtDHQxfD-2TlgsmZSmuFum3Yfv_JlJNqcLA7Uqkd-vjY0NHEsKq88A7i3bpweyV-Kuz-eqoFd2Gfi1FwcveNT0G3apfEE8G2za6knQ2hbU5AWENRuxhZ0iyzlReGGB80-ZQu8ubNkjamjGcZw2F2dz7GCtI72BqGAwzKD-HZBOS9oEFoNVcj07U');"></div>
+<div class="flex flex-col gap-2 h-full">
+<div class="bg-cover bg-center flex-1 hover:scale-105 transition-transform duration-500 cursor-pointer" data-alt="Man standing on a mountain peak at sunset" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDTk1DT9LeDxPI9XNlWUAglVZlKsYmdUvnBXd7u8SEA_9dcu-1H0oebq0DSKwr7PzdhpL8MCobN8CIb-HcG_bNnS1PpXN65P2Q8hxrp9HoX4DAjVdU-7nNWopUv0JbUxE0tS1XD8-B2f7F2OxZ82kLBz1cHfDe9wyo7QfQFgv7kjOVjnb1hFa4Dhp59k6btwA_68-hlGv4u4ESuj0g_7tpOAQHh1QFiGubfww-wxOwrQV7Y1LvcrIlPRwz8gjEbVcR0qXj1-utp86I');"></div>
+<div class="bg-cover bg-center flex-1 hover:scale-105 transition-transform duration-500 cursor-pointer relative" data-alt="Creative light painting photography" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZbYHXXPYgx6dgCtTti7fOChRQWw7KV6dFrPvq4iep6fjKdYP-OszKhafngYwq8gWYJDWONqTqUt73vGWj-8mCM13dEHGxy4LXqtzBL4hTWsb4ETG6aAWes15iQ8AlnLHJX-8LxETYaQnk0EoGJX7hFNcJ6egupIbjadbCwgZvEmVTaqGsUOHO_dKdrWGzQYkCn0FOr0PeHVbkHcrq28LFXLeDImzxGxnoFsi_1ErCWjyc1focptq9z8U-HzGjOpqayRzze1Mc1qc');">
+<div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+<span class="text-white font-bold text-lg">+12</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-4 py-3 flex items-center justify-between border-t border-[#232f48]">
+<div class="text-text-secondary text-sm">
+<span class="font-bold text-white">8.2k</span> عضو مشارك
+                                </div>
+<div class="flex items-center gap-4 text-text-secondary">
+<div class="flex items-center gap-1 hover:text-white cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+<span class="text-sm font-medium">540</span>
+</div>
+<div class="flex items-center gap-1 hover:text-white cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+<span class="text-sm font-medium">89</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Discussion Only (Text Based) -->
+<article class="bg-surface-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-[#232f48]/50">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white shadow-lg" data-alt="Gradient background for Startup group icon">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-white text-lg font-bold hover:text-primary cursor-pointer transition-colors">رواد الأعمال العرب</h3>
+<div class="flex items-center gap-1 text-xs text-text-secondary">
+<span>منذ يوم واحد</span>
+<span>•</span>
+<span class="text-text-secondary font-medium">نقاش ساخن</span>
+</div>
+</div>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                                    انضمام
+                                </button>
+</div>
+<div class="px-4 pb-4">
+<div class="bg-surface-highlight/50 p-4 rounded-xl border-r-4 border-primary">
+<h4 class="text-white font-bold mb-2 text-lg">كيف تبدأ مشروعك التقني بميزانية صفرية؟</h4>
+<p class="text-text-secondary text-sm line-clamp-3">
+                                        الكثير يظن أن المال هو العائق الأول، لكن الحقيقة هي أن المهارة والوقت أهم بكثير. في هذا الموضوع سنناقش أدوات مجانية بالكامل تساعدك على إطلاق MVP الخاص بك في أقل من أسبوع...
+                                    </p>
+</div>
+</div>
+<div class="px-4 py-3 flex items-center justify-between border-t border-[#232f48]">
+<div class="flex -space-x-2 space-x-reverse overflow-hidden">
+<img alt="User" class="inline-block h-6 w-6 rounded-full ring-2 ring-surface-dark object-cover" data-alt="User avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6EtMz1nROjH_QRaRCSUV807HGwtn8QC4HDpztplxuwevHEzAnuMtJp2quUwRem2evRvs4bbUL_JsYEeogMe2M3ZHDeQ4NF6ZHUN9YoK-q6xw4nR2JoDqlTTxtkdw587NJSFpUTpGHfcOeOKCZkuW7VK87nu4q0tz2CWaKtNV95OJspc9VKgIwwJmqmk92WGpXEUh4YOt3ZRnWHyeZ-qWtAr4LsEYOD-i0Omz8YEyl7tBgd5E6-_Ty5EGz8qTutv54ry-cYOMAplc"/>
+<span class="text-text-secondary text-xs mr-2 self-center">أحمد و 45 آخرون يكتبون الآن...</span>
+</div>
+<div class="flex items-center gap-4 text-text-secondary">
+<div class="flex items-center gap-1 hover:text-white cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+<span class="text-sm font-medium">230</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Loading State -->
+<div class="flex justify-center py-8">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined animate-spin">progress_activity</span>
+<span class="text-sm font-medium">جاري تحميل المزيد من المجموعات...</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Left Sidebar (Context) - Hidden on mobile/tablet -->
+<aside class="hidden xl:flex w-80 flex-col gap-6 shrink-0 pt-[72px]">
+<!-- Suggestion Block -->
+<div class="bg-surface-dark rounded-2xl p-5 border border-[#232f48]/50">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-white font-bold text-base">مجموعات مقترحة لك</h3>
+<button class="text-primary text-xs font-medium hover:underline">عرض الكل</button>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Item 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="w-10 h-10 rounded-lg bg-surface-highlight shrink-0 flex items-center justify-center text-white" data-alt="Icon for Design group">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+</div>
+<div class="flex flex-col truncate">
+<span class="text-white text-sm font-bold truncate">مصممي الواجهات</span>
+<span class="text-text-secondary text-xs truncate">1.2k عضو</span>
+</div>
+</div>
+<button class="p-1.5 rounded-lg bg-surface-highlight hover:bg-primary hover:text-white text-text-secondary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="w-10 h-10 rounded-lg bg-surface-highlight shrink-0 flex items-center justify-center text-white" data-alt="Icon for Gaming group">
+<span class="material-symbols-outlined text-[20px]">sports_esports</span>
+</div>
+<div class="flex flex-col truncate">
+<span class="text-white text-sm font-bold truncate">مجتمع اللاعبين</span>
+<span class="text-text-secondary text-xs truncate">15k عضو</span>
+</div>
+</div>
+<button class="p-1.5 rounded-lg bg-surface-highlight hover:bg-primary hover:text-white text-text-secondary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="w-10 h-10 rounded-lg bg-surface-highlight shrink-0 flex items-center justify-center text-white" data-alt="Icon for Books group">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+</div>
+<div class="flex flex-col truncate">
+<span class="text-white text-sm font-bold truncate">نادي القراءة</span>
+<span class="text-text-secondary text-xs truncate">800 عضو</span>
+</div>
+</div>
+<button class="p-1.5 rounded-lg bg-surface-highlight hover:bg-primary hover:text-white text-text-secondary transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Trending Discussions -->
+<div class="bg-surface-dark rounded-2xl p-5 border border-[#232f48]/50">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+<h3 class="text-white font-bold text-base">نقاشات رائجة</h3>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-1 cursor-pointer group">
+<span class="text-text-secondary text-xs bg-surface-highlight self-start px-2 py-0.5 rounded-md">تقنية</span>
+<p class="text-white text-sm font-medium leading-snug group-hover:text-primary transition-colors">إطلاق الإصدار الجديد من إطار العمل React 19</p>
+<span class="text-text-secondary text-xs">منذ ساعتين • 54 تعليق</span>
+</div>
+<hr class="border-[#232f48]"/>
+<div class="flex flex-col gap-1 cursor-pointer group">
+<span class="text-text-secondary text-xs bg-surface-highlight self-start px-2 py-0.5 rounded-md">رياضة</span>
+<p class="text-white text-sm font-medium leading-snug group-hover:text-primary transition-colors">توقعات نهائي دوري الأبطال</p>
+<span class="text-text-secondary text-xs">منذ 4 ساعات • 120 تعليق</span>
+</div>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="flex flex-wrap gap-x-4 gap-y-2 px-2">
+<a class="text-xs text-text-secondary hover:underline" href="#">عن المنصة</a>
+<a class="text-xs text-text-secondary hover:underline" href="#">الخصوصية</a>
+<a class="text-xs text-text-secondary hover:underline" href="#">الشروط</a>
+<a class="text-xs text-text-secondary hover:underline" href="#">المساعدة</a>
+<p class="text-xs text-[#546b91] w-full mt-2">© 2023 مجتمعي. جميع الحقوق محفوظة.</p>
+</div>
+</aside>
+</div>
+</main>
+</div>
+<!-- Floating Action Button (Mobile) -->
+<button class="lg:hidden fixed bottom-6 left-6 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 transition-transform z-50">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+</body></html>
