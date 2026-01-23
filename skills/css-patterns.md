@@ -242,7 +242,7 @@ When XenForo styles override your custom styles:
 // Increase specificity
 .template-forum_list .block--category .node--forum .element {
   property: value !important;
-}
+  }
 
 // Or use multiple classes
 .node.node--forum.node--unread {
@@ -308,3 +308,189 @@ color: @xf-textColor;
 backdrop-filter: blur(8px);
 -webkit-backdrop-filter: blur(8px); // Required for Safari
 ```
+
+---
+
+## Badge Container Pattern
+
+Used for notification badges (alerts, inbox, reports).
+
+```less
+.badgeContainer {
+  position: relative;
+  
+  &::after {
+    content: attr(data-badge);
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: @xf-paletteColor1; // Red/Attention color
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s ease;
+  }
+}
+
+.badgeContainer--highlighted::after {
+  opacity: 1;
+  transform: scale(1);
+}
+```
+
+---
+
+## Staff Bar Layout
+
+Top bar for admins/moderators.
+
+```less
+.p-staffBar {
+  background: @xf-paletteColor5; // Dark bar
+  color: white;
+  font-size: 13px;
+  
+  &-inner {
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  a {
+    color: inherit;
+    opacity: 0.8;
+    &:hover { opacity: 1; }
+  }
+}
+```
+
+---
+
+## Off-Canvas Navigation
+
+Robust mobile/mega-menu drawer pattern.
+
+```less
+.offCanvasMenu {
+  // Base styles provided by XF, enhanced by XenVibe
+  &-content {
+    background: @xf-contentBg;
+  }
+  
+  &-header {
+    background: @xf-majorHeadingBg;
+    border-bottom: 1px solid @xf-borderColor;
+  }
+}
+```
+
+---
+
+## Micro-Animations
+
+Subtle animations for polished UX.
+
+```less
+// Fade-in on load
+@keyframes xv-fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.xv-card {
+  animation: xv-fadeIn 0.3s ease-out;
+}
+
+// Staggered children animation
+.xv-cards-grid > * {
+  animation: xv-fadeIn 0.3s ease-out backwards;
+  
+  @for $i from 1 through 12 {
+    &:nth-child(@{i}) {
+      animation-delay: (@i * 0.05s);
+    }
+  }
+}
+```
+
+---
+
+## Focus States (Accessibility)
+
+Ensure keyboard navigation is visible.
+
+```less
+// Custom focus ring
+:focus-visible {
+  outline: 2px solid @xf-linkColor !important;
+  outline-offset: 2px !important;
+}
+
+// Remove default outline for mouse users
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Card focus state
+.xv-card:focus-within {
+  box-shadow: 0 0 0 2px @xf-linkColor;
+}
+```
+
+---
+
+## Custom Scrollbar Styling
+
+```less
+// Thin scrollbar for sidebars and menus
+.xv-sidebar {
+  scrollbar-width: thin; // Firefox
+  scrollbar-color: fade(@xf-textColor, 20%) transparent;
+  
+  // WebKit browsers
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: fade(@xf-textColor, 20%);
+    border-radius: 3px;
+    
+    &:hover {
+      background: fade(@xf-textColor, 40%);
+    }
+  }
+}
+```
+
+---
+
+## Skeleton Loading State
+
+```less
+// Placeholder shimmer effect
+@keyframes xv-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.xv-skeleton {
+  background: linear-gradient(
+    90deg,
+    fade(@xf-textColor, 5%) 25%,
+    fade(@xf-textColor, 10%) 50%,
+    fade(@xf-textColor, 5%) 75%
+  );
+  background-size: 200% 100%;
+  animation: xv-shimmer 1.5s infinite;
+  border-radius: 0.25rem;
+}
+```
+

@@ -153,6 +153,26 @@ background: fade(@xf-pageBg, 50%);
 }
 ```
 
+### Additional Template Classes
+```html
+<html class="template-register">      <!-- Registration page -->
+<html class="template-login">         <!-- Login page -->
+<html class="template-conversation_view"> <!-- Private message view -->
+<html class="template-search_results">  <!-- Search results -->
+<html class="template-account">       <!-- Account settings pages -->
+<html class="template-help">          <!-- Help pages -->
+```
+
+### Body State Classes
+```html
+<body class="
+  has-no-js            <!-- JS not yet initialized -->
+  is-logged-in         <!-- User is logged in -->
+  is-guest             <!-- User is guest -->
+  has-sidebar          <!-- Page has sidebar -->
+  sidebar-collapsed    <!-- Sidebar is collapsed (if feature enabled) -->
+">
+
 ---
 
 ## Common HTML Structure
