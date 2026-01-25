@@ -1,4 +1,16 @@
-html.template-thread_view {
+html[class*="template-thread_view"] {
+
+  // Remove background from outer block container
+  .block.block--messages {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    .block-container {
+      background: transparent !important;
+      border: none !important;
+    }
+  }
 
   // Thread action buttons (Watch, Manage, More options)
   .block-outer-opposite {
@@ -42,7 +54,6 @@ html.template-thread_view {
     overflow: hidden !important;
     margin-bottom: 1.5rem;
 
-    // Remove default table/row layout
     display: block !important;
 
     .message-inner {
@@ -196,6 +207,12 @@ html.template-thread_view {
       }
     }
 
+    .reactionsBar {
+      background: transparent !important;
+      border: none !important;
+      padding: 0.5rem 1.25rem !important;
+    }
+
   }
 
   // Quick reply form
@@ -205,5 +222,45 @@ html.template-thread_view {
     border: @xv-card-border !important;
     padding: 1.25rem;
     margin-top: 1rem;
+  }
+}
+
+// Vote column - ONLY for question thread answers
+html[class*="template-thread_view_type_question"] {
+  // Target only answer posts (inside the inline-mod block, not the first question block)
+  .block--messages[data-xf-init*="inline-mod"] .message--post {
+    .message-inner {
+      padding-right: 3.5rem !important;
+    }
+
+    // Push attribution away from vote column
+    .message-attribution {
+      inset-inline-end: 4.75rem !important;
+    }
+
+    .message-cell--vote {
+      position: absolute !important;
+      right: 0 !important;
+      left: auto !important;
+      top: 0 !important;
+      bottom: 0 !important;
+      width: 3.5rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border-right: none !important;
+      border-left: 1px solid fade(@xf-borderColor, 50%) !important;
+      background: fade(@xf-textColor, 2%) !important;
+      padding: 0 !important;
+      border-radius: 0 0 @xv-card-radius 0 !important;
+
+      .message-column {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem;
+        padding: 0.5rem !important;
+      }
+    }
   }
 }

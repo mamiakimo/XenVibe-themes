@@ -121,7 +121,126 @@ html.xv-layout-list {
 // ================================================================
 // FORUM VIEW - إصلاحات الـ Grid
 // ================================================================
-html.template-forum_view {
+html[class*="template-forum_view"] {
+
+  // Sub-forum node - إخفاء البوردر والهوفر
+  .node--forum .node-body {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .node--forum:hover {
+    background: transparent !important;
+    border-color: transparent !important;
+  }
+
+  // ========================================
+  // FILTER TABS - Stitch Pill Style
+  // ========================================
+
+  // Block Outer (إدارة / التعيين كمقروء / متابعة)
+  .block-outer {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1rem !important;
+    padding: 0 !important;
+
+    .block-outer-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    // buttonGroup - MOVED TO: xv_xenforo.less (global)
+  }
+
+  // Tab Header (Question-type forums)
+  .block-tabHeader.tabs {
+    background: fade(@xf-textColor, 6%) !important;
+    border: 1px solid @xf-borderColor !important;
+    border-radius: 0.5rem !important;
+    padding: 0.375rem !important;
+    margin-bottom: 0 !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    overflow: hidden !important;
+
+    .hScroller {
+      flex: 1 !important;
+      min-width: 0 !important;
+      overflow: hidden !important;
+      height: auto !important;
+    }
+
+    .hScroller-scroll {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      gap: 0.25rem !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow-x: auto !important;
+      scrollbar-width: none !important;
+
+      &::-webkit-scrollbar {
+        display: none !important;
+        height: 0 !important;
+      }
+    }
+
+    // Hide scroll arrows
+    .hScroller-action {
+      display: none !important;
+    }
+
+    .tabs-tab {
+      padding: 0.375rem 1rem !important;
+      border-radius: 0.375rem !important;
+      font-size: 0.8125rem !important;
+      font-weight: 500 !important;
+      color: @xf-textColorMuted !important;
+      background: transparent !important;
+      border: none !important;
+      transition: all 0.2s ease !important;
+      white-space: nowrap !important;
+
+      &:hover {
+        background: fade(@xf-textColor, 8%) !important;
+        color: @xf-textColor !important;
+      }
+
+      &.is-active {
+        background: @xf-linkColor !important;
+        color: white !important;
+        font-weight: 600 !important;
+        box-shadow: 0 1px 3px fade(@xf-linkColor, 30%) !important;
+      }
+    }
+
+    // Filter button at end (left in RTL)
+    .tabs-extra {
+      margin-inline-start: auto !important;
+      padding-inline-start: 0.5rem !important;
+      border-inline-start: 1px solid fade(@xf-borderColor, 50%) !important;
+      flex-shrink: 0 !important;
+
+      .menuTrigger {
+        padding: 0.375rem 0.75rem !important;
+        border-radius: 0.375rem !important;
+        font-size: 0.8125rem !important;
+        color: @xf-textColorMuted !important;
+
+        &:hover {
+          background: fade(@xf-textColor, 8%) !important;
+          color: @xf-textColor !important;
+        }
+      }
+    }
+  }
+
+  // filterBar - MOVED TO: xv_xenforo.less (global)
 
   // Quick Thread Form - يمتد على كل الأعمدة
   .structItem--quickCreate {
@@ -157,14 +276,347 @@ html.template-forum_view {
   }
 }
 
-// List Mode - Forum View (يشمل الـ container والـ groups)
-html.xv-layout-list.template-forum_view {
+// ================================================================
+// LIST VIEW MODE - كل المواضيع في كارد واحدة
+// ================================================================
+// معطل مؤقتاً - للتفعيل أزل التعليقات
+// html.xv-layout-list[class*="template-forum_view"] {
+//
+//   // الحاوية الرئيسية = كارد واحدة
+//   .structItemContainer {
+//     display: block !important;
+//     background: @xv-card-bg !important;
+//     border: 1px solid @xf-borderColor !important;
+//     border-radius: @xv-card-radius !important;
+//     padding: 0 !important;
+//     grid-template-columns: none !important;
+//   }
+//
+//   // مجموعة المواضيع المثبتة = كارد منفصلة
+//   .structItemContainer-group {
+//     display: block !important;
+//     background: @xv-card-bg !important;
+//     border: 1px solid @xf-borderColor !important;
+//     border-radius: @xv-card-radius !important;
+//     padding: 0 !important;
+//     margin-bottom: 1.5rem !important;
+//     grid-template-columns: none !important;
+//
+//     // عنوان المجموعة
+//     .structItemContainer-group-title {
+//       padding: 1rem 1.25rem !important;
+//       border-bottom: 1px solid fade(@xf-borderColor, 50%) !important;
+//       font-weight: 700 !important;
+//       font-size: 0.875rem !important;
+//       color: @xf-textColorMuted !important;
+//       text-transform: uppercase !important;
+//       letter-spacing: 0.05em !important;
+//     }
+//   }
+//
+//   // كل موضوع = صف داخل الكارد
+//   .structItem--thread {
+//     background: transparent !important;
+//     border: none !important;
+//     border-radius: 0 !important;
+//     box-shadow: none !important;
+//     padding: 1rem 1.25rem !important;
+//     margin: 0 !important;
+//     display: flex !important;
+//     flex-direction: row !important;
+//     align-items: center !important;
+//     gap: 1rem !important;
+//
+//     // خط فاصل بين المواضيع
+//     &:not(:last-child) {
+//       border-bottom: 1px solid fade(@xf-borderColor, 50%) !important;
+//     }
+//
+//     // إلغاء hover effect
+//     &:hover {
+//       transform: none !important;
+//       background: fade(@xf-textColor, 3%) !important;
+//     }
+//   }
+//
+//   // الأيقونة
+//   .structItem-cell--icon {
+//     width: 2.5rem !important;
+//     min-width: 2.5rem !important;
+//     flex-shrink: 0 !important;
+//
+//     .structItem-iconContainer {
+//       width: 2.5rem !important;
+//       height: 2.5rem !important;
+//     }
+//   }
+//
+//   // المحتوى الرئيسي
+//   .structItem-cell--main {
+//     flex: 1 !important;
+//     min-width: 0 !important;
+//     padding: 0 !important;
+//   }
+//
+//   // العنوان
+//   .structItem-title {
+//     font-size: 1rem !important;
+//     margin-bottom: 0.25rem !important;
+//   }
+//
+//   // البيانات الفرعية
+//   .structItem-minor {
+//     font-size: 0.8125rem !important;
+//   }
+//
+//   // الإحصائيات
+//   .structItem-cell--meta {
+//     display: flex !important;
+//     align-items: center !important;
+//     gap: 1rem !important;
+//     padding: 0 1rem !important;
+//     flex-shrink: 0 !important;
+//   }
+//
+//   // آخر مشاركة
+//   .structItem-cell--latest {
+//     min-width: 180px !important;
+//     max-width: 220px !important;
+//     flex-shrink: 0 !important;
+//     background: fade(@xf-pageBg, 50%) !important;
+//     border-radius: 0.5rem !important;
+//     padding: 0.75rem !important;
+//   }
+//
+//   // Quick Thread Form
+//   .structItem--quickCreate {
+//     border-bottom: none !important;
+//     padding: 1.5rem 1.25rem !important;
+//     background: fade(@xf-textColor, 3%) !important;
+//     border-radius: 0 0 @xv-card-radius @xv-card-radius !important;
+//   }
+// }
+
+// List Mode - Forum View (العرض الأصلي لـ XenForo - صف واحد)
+// Reset ALL card styling to show original XenForo row layout
+html.xv-layout-list[class*="template-forum_view"] {
   .structItemContainer {
-    grid-template-columns: 1fr !important;
+    display: block !important;
+    grid-template-columns: none !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
   }
 
   .structItemContainer-group {
-    grid-template-columns: 1fr !important;
+    display: block !important;
+    grid-template-columns: none !important;
+    background: @xv-card-bg !important;
+    border: 1px solid @xf-borderColor !important;
+    border-radius: @xv-card-radius !important;
+    padding: 0.5rem 1rem !important;
+    margin-bottom: 1.5rem !important;
+
+    // عنوان المجموعة (Sticky Threads)
+    .structItemContainer-group-title {
+      padding: 0.75rem 0 !important;
+      margin-bottom: 0.5rem !important;
+      border-bottom: 1px solid fade(@xf-borderColor, 50%) !important;
+      font-weight: 700 !important;
+      font-size: 0.875rem !important;
+      color: @xf-textColorMuted !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.03em !important;
+    }
+  }
+
+  // Reset thread card styling to original XenForo row
+  .structItem--thread {
+    background: transparent !important;
+    border-radius: 0 !important;
+    border: none !important;
+    border-bottom: 1px solid @xf-borderColor !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    transition: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    padding: 0.75rem 0 !important;
+    transform: none !important;
+
+    &:hover {
+      box-shadow: none !important;
+      border-color: @xf-borderColor !important;
+      transform: none !important;
+      background: fade(@xf-textColor, 3%) !important;
+    }
+
+    &:last-child {
+      border-bottom: none !important;
+    }
+
+    // Remove the footer border pseudo-element
+    &::after {
+      display: none !important;
+    }
+
+    // Reset cell styling to original XenForo layout
+    .structItem-cell {
+      display: table-cell !important;
+      width: auto !important;
+      padding: 0.5rem !important;
+      border: none !important;
+      vertical-align: middle !important;
+    }
+
+    // Avatar/Icon cell - fixed width at start (right in RTL)
+    .structItem-cell--icon {
+      width: 50px !important;
+      float: none !important;
+      margin: 0 !important;
+      text-align: center !important;
+
+      .structItem-iconContainer {
+        display: inline-block;
+        position: relative;
+      }
+
+      .avatar {
+        width: 36px !important;
+        height: 36px !important;
+      }
+
+      .structItem-secondaryIcon,
+      .avatar--separated {
+        width: 18px !important;
+        height: 18px !important;
+        position: absolute !important;
+        bottom: -2px;
+        inset-inline-end: -4px;
+        border: 2px solid @xv-card-bg !important;
+        border-radius: 50% !important;
+      }
+    }
+
+    // Main content - flexible width
+    .structItem-cell--main {
+      flex: 1 !important;
+      min-width: 0 !important;
+      margin-bottom: 0 !important;
+      padding-inline-end: 1rem !important;
+    }
+
+    .structItem-title {
+      font-size: 0.9375rem !important;
+      font-weight: 600 !important;
+      margin-bottom: 0.25rem !important;
+    }
+
+    .structItem-minor {
+      font-size: 0.8125rem !important;
+    }
+
+    // Meta (replies, views) - two columns side by side
+    .structItem-cell--meta {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 1.5rem !important;
+      width: auto !important;
+      min-width: 140px !important;
+      order: unset !important;
+      margin: 0 !important;
+      padding: 0.5rem 1rem !important;
+
+      .pairs {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.125rem !important;
+        font-size: 0.75rem !important;
+
+        dt {
+          font-size: 0.6875rem !important;
+          line-height: 1.2 !important;
+          display: block !important;
+          color: @xf-textColorMuted !important;
+          text-transform: uppercase !important;
+
+          &::before {
+            display: none !important;
+          }
+        }
+
+        dd {
+          display: block !important;
+          font-size: 0.9375rem !important;
+          font-weight: 600 !important;
+          color: @xf-textColor !important;
+        }
+      }
+    }
+
+    // Last reply info - with avatar
+    .structItem-cell--latest {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      width: auto !important;
+      min-width: 180px !important;
+      order: unset !important;
+      margin: 0 !important;
+      padding: 0.5rem !important;
+      text-align: start !important;
+
+      > a {
+        font-size: 0.8125rem !important;
+        display: block !important;
+      }
+
+      .structItem-minor {
+        a {
+          font-size: 0.75rem !important;
+          font-weight: normal !important;
+        }
+      }
+    }
+
+    // Last replier avatar - show it
+    .structItem-cell--iconEnd {
+      display: flex !important;
+      align-items: center !important;
+      width: auto !important;
+      padding: 0.5rem !important;
+      order: unset !important;
+      margin: 0 !important;
+
+      .avatar {
+        width: 32px !important;
+        height: 32px !important;
+      }
+    }
+
+    // Page jump
+    .structItem-pageJump {
+      margin-top: 0.25rem !important;
+
+      a {
+        font-size: 0.6875rem !important;
+        padding: 0.125rem 0.25rem !important;
+      }
+    }
+  }
+
+  // Note row
+  .structItem--note {
+    background: fade(@xf-textColor, 3%) !important;
+    border-radius: 0 !important;
+    padding: 0.5rem 0.75rem !important;
+    margin: 0.5rem 0 !important;
   }
 }
 

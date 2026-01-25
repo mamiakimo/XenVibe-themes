@@ -382,7 +382,7 @@ body > .tooltip:has(.node-description) {
   border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 1rem 1.25rem !important;
+  padding: 1rem 1.25rem !important; // إلغاء padding-bottom: 5rem من Grid
   margin: 0 !important;
   display: flex !important;
   flex-direction: row !important;
@@ -390,6 +390,8 @@ body > .tooltip:has(.node-description) {
   gap: 1rem !important;
   transform: none !important;
   overflow: visible !important;
+  position: static !important; // إلغاء position: relative من Grid
+  height: auto !important; // إلغاء height: 100% من Grid
 }
 
 // خط فاصل بين المنتديات
@@ -485,6 +487,10 @@ body > .tooltip:has(.node-description) {
 
 // آخر مشاركة - تظهر على اليسار مع خلفية
 .xv-layout-list.template-forum_list .block--category .node--forum .node-extra {
+  position: static !important; // إلغاء position: absolute من Grid
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
   display: flex !important;
   flex-direction: column !important;
   background: fade(@xf-pageBg, 50%) !important;

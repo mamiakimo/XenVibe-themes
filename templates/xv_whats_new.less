@@ -1,4 +1,3 @@
-
 // ================================================
 // FEATURED CONTENT - CARD GRID LAYOUT
 // ================================================
@@ -212,7 +211,7 @@
   }
 }
 
-// Container - Grid layout
+// Container - Grid layout (default)
 .structItemContainer {
   display: grid !important;
   grid-template-columns: repeat(2, 1fr);
@@ -239,7 +238,7 @@
   }
 }
 
-// Each thread card
+// Each thread card (grid view)
 .structItem--thread {
   background: @xv-card-bg !important;
   border-radius: @xv-card-radius !important;
@@ -372,7 +371,7 @@
       align-items: center;
 
       &::after {
-        content: "•";
+        content: "\2022";
         margin-left: 0.5rem;
         color: @xf-textColorMuted;
       }
@@ -509,6 +508,213 @@
   .structItem-cell {
     font-size: 0.875rem;
     color: @xf-textColorMuted;
+  }
+}
+
+// ================================================
+// LIST VIEW OVERRIDE (when user toggles to list)
+// Same row layout as Forum View list mode
+// ================================================
+html.xv-layout-list {
+  .structItemContainer {
+    display: block !important;
+    background: @xv-card-bg !important;
+    border-radius: @xv-card-radius !important;
+    border: @xv-card-border !important;
+    box-shadow: @xv-card-shadow !important;
+    overflow: hidden !important;
+  }
+
+  .structItem--thread {
+    background: transparent !important;
+    border-radius: 0 !important;
+    border: none !important;
+    border-bottom: 1px solid fade(@xf-borderColor, 40%) !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    transition: background 0.15s ease !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    padding: 0.75rem 1.25rem !important;
+    transform: none !important;
+
+    &:last-child {
+      border-bottom: none !important;
+    }
+
+    &:hover {
+      background: fade(@xf-textColor, 3%) !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    // Remove the footer border pseudo-element
+    &::after {
+      display: none !important;
+    }
+
+    // Reset cell styling to row layout
+    .structItem-cell {
+      display: flex !important;
+      width: auto !important;
+      padding: 0.25rem 0.5rem !important;
+      border: none !important;
+    }
+
+    // Avatar/Icon cell - fixed width
+    .structItem-cell--icon {
+      width: 50px !important;
+      min-width: 50px !important;
+      flex-shrink: 0 !important;
+      float: none !important;
+      margin: 0 !important;
+      justify-content: center !important;
+      align-items: center !important;
+
+      .structItem-iconContainer {
+        display: inline-block;
+        position: relative;
+      }
+
+      .avatar {
+        width: 36px !important;
+        height: 36px !important;
+      }
+
+      .structItem-secondaryIcon,
+      .avatar--separated {
+        width: 18px !important;
+        height: 18px !important;
+        position: absolute !important;
+        bottom: -2px;
+        inset-inline-end: -4px;
+        border: 2px solid @xv-card-bg !important;
+        border-radius: 50% !important;
+      }
+    }
+
+    // Main content - flexible width
+    .structItem-cell--main {
+      flex: 1 !important;
+      min-width: 0 !important;
+      margin-bottom: 0 !important;
+      padding-inline-end: 1rem !important;
+    }
+
+    .structItem-title {
+      font-size: 0.9375rem !important;
+      font-weight: 600 !important;
+      margin-bottom: 0.25rem !important;
+    }
+
+    .structItem-minor {
+      font-size: 0.8125rem !important;
+    }
+
+    // Meta (replies, views) - horizontal
+    .structItem-cell--meta {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 1.5rem !important;
+      width: auto !important;
+      min-width: 140px !important;
+      order: unset !important;
+      margin: 0 !important;
+      padding: 0.5rem 1rem !important;
+
+      .pairs {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.125rem !important;
+        font-size: 0.75rem !important;
+
+        dt {
+          font-size: 0.6875rem !important;
+          line-height: 1.2 !important;
+          display: block !important;
+          color: @xf-textColorMuted !important;
+          text-transform: uppercase !important;
+
+          &::before {
+            display: none !important;
+          }
+        }
+
+        dd {
+          display: block !important;
+          font-size: 0.9375rem !important;
+          font-weight: 600 !important;
+          color: @xf-textColor !important;
+        }
+      }
+    }
+
+    // Last reply info
+    .structItem-cell--latest {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      width: auto !important;
+      min-width: 160px !important;
+      order: unset !important;
+      margin: 0 !important;
+      padding: 0.5rem !important;
+      text-align: start !important;
+
+      > a {
+        font-size: 0.8125rem !important;
+        display: block !important;
+        line-height: 1.4 !important;
+      }
+
+      .structItem-minor {
+        a {
+          font-size: 0.75rem !important;
+          font-weight: normal !important;
+        }
+      }
+    }
+
+    // Last replier avatar
+    .structItem-cell--iconEnd {
+      display: flex !important;
+      align-items: center !important;
+      width: auto !important;
+      padding: 0.5rem !important;
+      order: unset !important;
+      margin: 0 !important;
+
+      .avatar {
+        width: 32px !important;
+        height: 32px !important;
+      }
+    }
+
+    // Page jump
+    .structItem-pageJump {
+      margin-top: 0.25rem !important;
+
+      a {
+        font-size: 0.6875rem !important;
+        padding: 0.125rem 0.25rem !important;
+      }
+    }
+  }
+
+  .structItem--note {
+    background: fade(@xf-textColor, 3%) !important;
+    border-radius: 0 !important;
+    padding: 0.5rem 1.25rem !important;
+    border-bottom: 1px solid fade(@xf-borderColor, 40%);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 
@@ -700,7 +906,7 @@
         margin-inline-end: 0.5rem;
 
         &::before {
-          content: "·";
+          content: "\00B7";
           margin-inline-end: 0.25rem;
         }
       }
@@ -837,488 +1043,7 @@
   }
 }
 
-/* ================================================
-   OLD PROFILE POSTS CODE - KEPT FOR REFERENCE
-   ================================================
-   
-.template-whats_new_profile_posts {
 
-  // Main block - transparent background
-  .block[data-xf-init*="lightbox"] {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-
-    &:hover {
-      box-shadow: none !important;
-    }
-
-    .block-container {
-      background: transparent !important;
-      border: none !important;
-    }
-  }
-
-  // Block outer (pagination, filters) - keep visible
-  .block-outer {
-    margin-bottom: 1.5rem;
-  }
-
-  // Filter bar styling
-  .block-filterBar {
-    background: @xf-contentBg;
-    border: 1px solid @xf-borderColor;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-  }
-
-  // Messages margins
-  .block-body,
-  .block-container {
-    > .message.message--simple {
-      .xv-card-base();
-    }
-  }
-}
-
-// ================================================
-// PROFILE POST CARD STYLING
-// ================================================
-// Each profile post as a card (like New Posts page)
-
-.message.message--simple {
-  // Card styling for profile posts page
-  .template-whats_new_profile_posts & {
-    background: @xv-card-bg !important;
-    border-radius: @xv-card-radius !important;
-    border: @xv-card-border !important;
-    box-shadow: @xv-card-shadow !important;
-    overflow: hidden !important;
-    transition: @xv-card-transition !important;
-    margin-bottom: 1.5rem;
-    display: flex !important;
-    flex-direction: column !important;
-
-    &:hover {
-      box-shadow: @xv-card-shadow-hover !important;
-      border-color: fade(@xf-linkColor, 30%) !important;
-      transform: translateY(-2px);
-    }
-
-    // Message inner layout - vertical stack
-    .message-inner {
-      display: flex;
-      flex-direction: column;
-      padding: 0;
-    }
-
-    // HIDE the sidebar user cell completely
-    .message-cell--user {
-      display: none !important;
-    }
-
-    // Main content cell
-    .message-cell--main {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    // Message main wrapper
-    .message-main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    // Message content
-    .message-content {
-      flex: 1;
-      padding: 1.25rem;
-    }
-
-    // Attribution header (avatar + username + date) - TOP OF CARD
-    .message-attribution {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid fade(@xf-borderColor, 50%);
-
-      .listInline {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.5rem;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-
-        li {
-          display: flex;
-          align-items: center;
-        }
-
-        // Bullet separator
-        &.listInline--bullet > li + li::before {
-          content: "•";
-          margin-right: 0.5rem;
-          color: @xf-textColorMuted;
-        }
-      }
-
-      .message-attribution-user {
-        display: flex !important;
-        align-items: center;
-        gap: 0.5rem;
-
-        // Avatar in header - FORCE visible
-        > .avatar,
-        > a.avatar,
-        .avatar.avatar--xxs {
-          display: inline-block !important;
-          visibility: visible !important;
-          opacity: 1 !important;
-          width: 2.5rem !important;
-          height: 2.5rem !important;
-          min-width: 2.5rem !important;
-          min-height: 2.5rem !important;
-          border-radius: 50% !important;
-          border: 2px solid @xf-borderColor !important;
-          transition: border-color 0.2s ease;
-          flex-shrink: 0;
-          overflow: hidden;
-
-          img {
-            display: block !important;
-            width: 100% !important;
-            height: 100% !important;
-            border-radius: 50% !important;
-            object-fit: cover;
-          }
-
-          &:hover {
-            border-color: @xf-linkColor !important;
-          }
-        }
-
-        .attribution {
-          margin: 0;
-          font-size: 0.9375rem;
-        }
-
-        .username {
-          font-weight: 700;
-          color: @xf-textColor;
-
-          &:hover {
-            color: @xf-linkColor;
-          }
-        }
-      }
-
-      // Date link
-      time, .u-dt {
-        font-size: 0.8125rem;
-        color: @xf-textColorMuted;
-      }
-    }
-
-    // Message body content
-    .message-body {
-      padding: 0;
-      font-size: 0.9375rem;
-      line-height: 1.7;
-      color: @xf-textColor;
-
-      .bbWrapper {
-        word-wrap: break-word;
-      }
-    }
-
-    // Message footer (action buttons)
-    .message-footer {
-      padding: 0.875rem 1.25rem;
-      background: fade(@xf-textColor, 2%);
-      border-top: 1px solid fade(@xf-borderColor, 50%);
-      margin-top: auto;
-    }
-
-    // Action bar - Fixed layout for RTL/LTR
-    // RTL: internal (Report etc) on RIGHT (start), external (Like) on LEFT (end)
-    // LTR: internal (Report etc) on LEFT (start), external (Like) on RIGHT (end)
-    .message-actionBar.actionBar {
-      display: flex !important;
-      flex-direction: row !important;
-      flex-wrap: nowrap !important;
-      justify-content: flex-start !important;
-      align-items: center !important;
-      gap: 0.5rem !important;
-      width: 100% !important;
-      padding: 0 !important;
-    }
-
-    // Report/Edit/Delete/IP (internal) - at start
-    .actionBar-set.actionBar-set--internal {
-      display: flex !important;
-      align-items: center !important;
-      gap: 0.25rem !important;
-      order: 1 !important;
-      flex-shrink: 0;
-    }
-
-    // Like button (external) - pushed to end with margin-inline-start: auto
-    .actionBar-set.actionBar-set--external {
-      display: flex !important;
-      align-items: center !important;
-      gap: 0.25rem !important;
-      order: 2 !important;
-      margin-inline-start: auto !important;
-      flex-shrink: 0;
-    }
-
-    .actionBar .actionBar-action {
-      padding: 0.375rem 0.625rem;
-      font-size: 0.8125rem;
-      color: @xf-textColorMuted;
-      border-radius: 0.375rem;
-      transition: all 0.15s ease;
-
-      &:hover {
-        color: @xf-textColor;
-        background: fade(@xf-textColor, 5%);
-      }
-    }
-
-    // Reaction button
-    .actionBar .actionBar-action--reaction {
-      display: flex;
-      align-items: center;
-      gap: 0.375rem;
-
-      .reaction-image {
-        width: 1rem;
-        height: 1rem;
-      }
-    }
-
-    // Reactions list - ensure visibility after AJAX updates
-    .message-responseRow--reactions {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      padding: 0.5rem 1.25rem;
-      border-top: 1px solid fade(@xf-borderColor, 30%);
-      overflow: visible !important;
-
-      // Reactions bar container
-      .reactionsBar {
-        display: inline-flex !important;
-        visibility: visible !important;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 0.25rem;
-      }
-
-      .reactionSummary {
-        display: inline-flex !important;
-        visibility: visible !important;
-        align-items: center;
-        gap: 0.25rem;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        vertical-align: middle;
-
-        li {
-          display: inline-flex !important;
-          visibility: visible !important;
-        }
-
-        .reaction {
-          display: inline-flex !important;
-          visibility: visible !important;
-
-          .reaction-image {
-            width: 1.25rem;
-            height: 1.25rem;
-          }
-        }
-      }
-
-      // Link with names - MUST be visible after AJAX
-      .reactionsBar-link {
-        display: inline !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        font-size: 0.8125rem;
-        color: @xf-textColorMuted;
-        margin-inline-start: 0.5rem;
-
-        // All text and names inside
-        bdi, span, a {
-          display: inline !important;
-          visibility: visible !important;
-          opacity: 1 !important;
-        }
-
-        &:hover {
-          color: @xf-linkColor;
-        }
-      }
-
-      // Force visibility on all children after AJAX
-      * {
-        visibility: visible !important;
-      }
-
-      // Only hide screen-reader-only elements
-      .u-srOnly {
-        position: absolute !important;
-        width: 1px !important;
-        height: 1px !important;
-        padding: 0 !important;
-        margin: -1px !important;
-        overflow: hidden !important;
-        clip: rect(0, 0, 0, 0) !important;
-        border: 0 !important;
-        visibility: hidden !important;
-      }
-    }
-
-    // Comments section
-    .message-responses {
-      border-top: 1px solid fade(@xf-borderColor, 50%);
-    }
-
-    // Individual comment
-    .message-responseRow {
-      padding: 0;
-
-      &:not(:last-child) {
-        border-bottom: 1px solid fade(@xf-borderColor, 30%);
-      }
-    }
-
-    .comment {
-      padding: 1rem 1.25rem;
-
-      // Comment layout - horizontal (avatar + content)
-      .comment-inner {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 0.75rem;
-        align-items: flex-start;
-      }
-
-      // Avatar on side
-      .comment-avatar {
-        flex-shrink: 0;
-
-        .avatar--xxs {
-          width: 2rem !important;
-          height: 2rem !important;
-        }
-      }
-
-      // Main content area
-      .comment-main {
-        flex: 1;
-        min-width: 0;
-      }
-
-      .comment-content {
-        margin-bottom: 0.5rem;
-      }
-
-      .comment-contentWrapper {
-        // Username inline
-        .comment-user {
-          font-weight: 700;
-          font-size: 0.875rem;
-          margin-inline-end: 0.5rem;
-          display: inline;
-        }
-
-        // Comment body inline
-        .comment-body {
-          display: inline;
-          font-size: 0.875rem;
-          line-height: 1.6;
-
-          .bbWrapper {
-            display: inline;
-          }
-        }
-      }
-
-      // Footer: Date on line 1, Report etc on line 2, Like at end
-      .comment-footer {
-        margin-top: 0.5rem;
-
-        .comment-actionBar.actionBar {
-          display: grid !important;
-          grid-template-columns: 1fr auto;
-          grid-template-rows: auto auto;
-          gap: 0.25rem 0.5rem !important;
-          width: 100% !important;
-          align-items: center;
-
-          // Internal set - spans both rows in first column
-          .actionBar-set.actionBar-set--internal {
-            grid-column: 1;
-            grid-row: 1 / 3;
-            display: flex !important;
-            flex-wrap: wrap !important;
-            align-items: flex-start !important;
-            gap: 0.375rem !important;
-
-            // Date - full width to force line break
-            > .actionBar-action:first-child {
-              flex-basis: 100% !important;
-              width: 100% !important;
-            }
-          }
-
-          // Like button - at end, spanning rows
-          .actionBar-set.actionBar-set--external {
-            grid-column: 2;
-            grid-row: 1 / 3;
-            display: flex !important;
-            align-items: center !important;
-            gap: 0.25rem !important;
-            align-self: center;
-          }
-
-          .actionBar-action {
-            font-size: 0.75rem !important;
-            padding: 0.25rem 0.5rem !important;
-          }
-        }
-
-        .comment-reactions {
-          margin-top: 0.375rem;
-          font-size: 0.75rem;
-        }
-      }
-    }
-
-    // Quick reply form in comments
-    .comment form {
-      .comment-inner {
-        display: flex;
-        gap: 0.75rem;
-      }
-
-      .editorPlaceholder {
-        flex: 1;
-      }
-    }
-  }
-}
 
 // ================================================
 // PROFILE POSTS - GRID LAYOUT (2 columns)
@@ -1379,8 +1104,10 @@
   }
 }
 
-   END OF OLD PROFILE POSTS CODE
-   ================================================ */
-
-
 // ================================================
+// WHAT'S NEW OVERVIEW PAGE (template-whats_new)
+// DISABLED - using XenForo default layout
+// ================================================
+
+// WHAT'S NEW POSTS PAGE - FILTER BAR & BUTTONS
+// MOVED TO: xv_xenforo.less (global styling)
