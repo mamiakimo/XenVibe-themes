@@ -37,18 +37,9 @@
 
 // When sidebar is collapsed - 3 columns for Featured
 .xv-sidebar--left.is-collapsed+.xv-content {
-
   .block--articles .block-body,
   .block--previews .block-body {
-    grid-template-columns: repeat(3, 1fr);
-
-    @media (max-width: 1200px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 767px) {
-      grid-template-columns: 1fr;
-    }
+    .xv-grid-3col-responsive();
   }
 }
 
@@ -226,15 +217,7 @@
 // When sidebar is collapsed - 3 columns
 .xv-sidebar--left.is-collapsed+.xv-content {
   .structItemContainer {
-    grid-template-columns: repeat(3, 1fr);
-
-    @media (max-width: 1200px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: 767px) {
-      grid-template-columns: 1fr;
-    }
+    .xv-grid-3col-responsive();
   }
 }
 
@@ -939,15 +922,7 @@ html.xv-layout-list {
 .template-whats_new_profile_posts {
   .xv-sidebar--left.is-collapsed+.xv-content {
     .block-container {
-      grid-template-columns: repeat(3, 1fr);
-
-      @media (max-width: 1200px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      @media (max-width: 767px) {
-        grid-template-columns: 1fr;
-      }
+      .xv-grid-3col-responsive();
     }
   }
 }
@@ -1088,18 +1063,11 @@ html.xv-layout-list {
 }
 
 // When sidebar is collapsed - 3 columns for Profile Posts
+// NOTE: This is a duplicate of the rule above - keeping for now as it may have different context
 .template-whats_new_profile_posts {
   .xv-sidebar--left.is-collapsed + .xv-content {
     .block-container {
-      grid-template-columns: repeat(3, 1fr);
-
-      @media (max-width: 1200px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      @media (max-width: 767px) {
-        grid-template-columns: 1fr;
-      }
+      .xv-grid-3col-responsive();
     }
   }
 }

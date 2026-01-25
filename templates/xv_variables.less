@@ -44,3 +44,40 @@ body {
   font-family: 'Plus Jakarta Sans', 'Noto Sans Arabic', @xf-fontFamily;
 }
 
+// ================================================
+// REUSABLE MIXINS
+// ================================================
+
+// Grid: 3 columns → 2 columns → 1 column (responsive)
+// Use inside collapsed sidebar selectors
+.xv-grid-3col-responsive() {
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Grid: 2 columns → 1 column (default with sidebar open)
+.xv-grid-2col-responsive() {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+// Card hover effect
+.xv-card-hover() {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: fade(@xf-linkColor, 30%);
+  transform: translateY(-2px);
+}
+

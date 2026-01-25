@@ -263,15 +263,7 @@ html[class*="template-forum_view"] {
   // عند إغلاق السايدبار - 3 أعمدة
   .xv-sidebar--left.is-collapsed+.xv-content {
     .structItemContainer-group {
-      grid-template-columns: repeat(3, 1fr);
-
-      @media (max-width: 1200px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      @media (max-width: 767px) {
-        grid-template-columns: 1fr;
-      }
+      .xv-grid-3col-responsive();
     }
   }
 }
