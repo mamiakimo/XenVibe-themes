@@ -91,7 +91,7 @@ Full support for XenForo 2.3 Style Variations:
 
 | File | Purpose | Priority |
 |------|---------|----------|
-| `xv_variables.less` | Custom colors/sizing | 1 - Load first |
+| `xv_variables.less` | Custom colors, sizing & reusable mixins | 1 - Load first |
 | `xv_xenforo.less` | Core XF overrides (blocks, menus) | 2 |
 | `xv_components.less` | Header, Sidebar, Footer | 3 |
 | `xv_cards.less` | Base card system | 4 |

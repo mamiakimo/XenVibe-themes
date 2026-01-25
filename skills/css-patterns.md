@@ -1,5 +1,58 @@
 # XenForo CSS Patterns & Solutions
 
+## Reusable Mixins (xv_variables.less)
+
+XenVibe provides reusable LESS mixins to avoid code duplication:
+
+### Grid Layouts
+
+```less
+// 3 → 2 → 1 columns (for collapsed sidebar)
+.xv-grid-3col-responsive() {
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// 2 → 1 columns (default with sidebar open)
+.xv-grid-2col-responsive() {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+```
+
+### Card Hover Effect
+
+```less
+// Simple transform-only hover
+.xv-card-hover() {
+  transform: translateY(-2px);
+}
+
+// Usage:
+.my-card {
+  transition: transform 0.2s ease;
+
+  &:hover {
+    .xv-card-hover();
+  }
+}
+```
+
+---
+
 ## Common Layout Patterns
 
 ---
