@@ -73,7 +73,9 @@
     padding: 1.25rem;
     padding-bottom: 5rem !important; // مساحة لـ node-extra
     height: 100%;
+    min-height: 180px; // Prevent CLS
     box-sizing: border-box !important;
+    contain: layout style; // Isolate layout shifts
 
     // إزالة أي borders داخلية
     &>*,
@@ -140,6 +142,7 @@
       flex: 1;
       display: flex;
       flex-direction: column;
+      contain: layout style; // Prevent CLS
     }
 
     .node-title {

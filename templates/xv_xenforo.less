@@ -114,6 +114,30 @@
 }
 
 // ================================================
+// NOTICES - Prevent CLS
+// ================================================
+.notice {
+  contain: layout style;
+}
+
+.p-body-pageContent > .notice,
+.xv-content > .notice {
+  // Make notices not shift content
+  animation: xv-notice-in 0.3s ease;
+}
+
+@keyframes xv-notice-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ================================================
 // TABS STYLING
 // ================================================
 .tabs {
@@ -607,6 +631,25 @@ textarea.input {
   &::before,
   &::after {
     display: none;
+  }
+
+  // Mobile: horizontal scroll instead of wrap
+  @media (max-width: 767px) {
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; // Firefox
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome/Safari
+    }
+
+    .tabs-tab {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
   }
 }
 

@@ -24,6 +24,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
+	<!-- Prevent CLS: Apply layout classes before render -->
+	<script>
+	(function(){
+		var d=document.documentElement;
+		// Apply saved layout (grid/list)
+		if(localStorage.getItem('xv_layout')==='list'){
+			d.classList.add('xv-layout-list');
+		}
+		// Apply saved sidebar state
+		// Note: sidebar element doesn't exist yet, will be handled later
+	})();
+	</script>
+
 	<!-- Preconnect to Google Fonts for faster loading -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

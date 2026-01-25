@@ -14,9 +14,17 @@
 
 	if (!sidebar || !toggle) return;
 
+	// Restore sidebar state immediately (before transitions enabled)
 	if (localStorage.getItem(storageKey) === 'true') {
 		sidebar.classList.add('is-collapsed');
 	}
+
+	// Enable transitions after initial layout is complete (prevents CLS)
+	requestAnimationFrame(function() {
+		requestAnimationFrame(function() {
+			document.body.classList.add('xv-transitions-ready');
+		});
+	});
 
 	toggle.addEventListener('click', function() {
 		sidebar.classList.toggle('is-collapsed');

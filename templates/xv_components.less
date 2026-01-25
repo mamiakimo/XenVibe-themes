@@ -399,16 +399,22 @@
   margin: 0 auto;
   padding: 1.5rem;
   gap: 1.5rem;
+  min-height: 80vh; // Prevent CLS
+  contain: layout style; // Isolate layout shifts
 
   @media (max-width: 1023px) {
     display: block;
+    min-height: auto;
   }
 }
 
 .xv-sidebar--left {
   flex: 0 0 16rem;
   width: 16rem;
-  transition: width 0.3s ease, flex-basis 0.3s ease;
+  // Transition only after user interaction (via JS class)
+  .xv-transitions-ready & {
+    transition: width 0.3s ease, flex-basis 0.3s ease;
+  }
 
   &.is-collapsed {
     flex: 0 0 3rem;
@@ -419,6 +425,7 @@
 .xv-content {
   flex: 1 1 0%;
   min-width: 0;
+  contain: layout style; // Isolate layout shifts
 }
 
 .xv-sidebar--right {
@@ -427,7 +434,14 @@
 }
 
 .xv-content-notices {
+  // Reserve fixed height for notices to prevent CLS
+  min-height: 60px; // Approximate height of one notice
   margin-bottom: 1rem;
+
+  &:empty {
+    min-height: 0;
+    margin-bottom: 0;
+  }
 }
 
 // ================================================
@@ -858,6 +872,7 @@
 // ================================================
 .xv-page-header-auto {
   margin-bottom: 1.5rem;
+  contain: layout style; // Prevent CLS
 }
 
 .xv-page-title-auto {
