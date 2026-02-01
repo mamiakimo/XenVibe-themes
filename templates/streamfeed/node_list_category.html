@@ -1,0 +1,41 @@
+<!-- StreamFeed - Category Node Template -->
+
+<xf:macro id="depth1" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<div class="sf-category">
+		<!-- Category Header with colored bar -->
+		<div class="sf-category-header">
+			<h2 class="sf-category-title">
+				<a href="{{ link('forums', $node) }}">{$node.title}</a>
+			</h2>
+		</div>
+
+		<!-- Forums List -->
+		<div class="sf-forums-list">
+			<xf:macro id="forum_list::node_list"
+				arg-children="{$children}"
+				arg-extras="{$childExtras}"
+				arg-depth="{{ $depth + 1 }}" />
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro id="depth2" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<xf:macro id="depth1"
+		arg-node="{$node}"
+		arg-extras="{$extras}"
+		arg-children="{$children}"
+		arg-childExtras="{$childExtras}"
+		arg-depth="{$depth}" />
+</xf:macro>
+
+<xf:macro id="depthN" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<li>
+		<a href="{{ link('forums', $node) }}" class="subNodeLink subNodeLink--category">
+			<span class="material-symbols-outlined sf-subnode-icon">folder</span>{$node.title}
+		</a>
+		<xf:macro id="forum_list::sub_node_list"
+			arg-children="{$children}"
+			arg-childExtras="{$childExtras}"
+			arg-depth="{{ $depth + 1 }}" />
+	</li>
+</xf:macro>

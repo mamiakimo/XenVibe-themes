@@ -97,11 +97,12 @@
 	});
 })();
 
-// Member Tab Groups - Independent switching
+// Member Tab Groups - Independent switching with View More link update
 (function() {
 	document.querySelectorAll('.xv-member-section').forEach(function(section) {
 		var chips = section.querySelectorAll('.xv-filter-chip');
 		var panes = section.querySelectorAll('.memberOverviewBlock');
+		var viewMoreBtn = section.querySelector('.xv-view-more-btn');
 
 		chips.forEach(function(chip, index) {
 			chip.addEventListener('click', function(e) {
@@ -116,8 +117,25 @@
 				if (panes[index]) {
 					panes[index].classList.add('is-active');
 				}
+
+				// Update View More button href
+				if (viewMoreBtn) {
+					var newHref = this.getAttribute('data-href');
+					if (newHref) {
+						viewMoreBtn.setAttribute('href', newHref);
+					}
+				}
 			});
 		});
+
+		// Initialize View More button with first active chip's href
+		var activeChip = section.querySelector('.xv-filter-chip.is-active');
+		if (viewMoreBtn && activeChip) {
+			var initialHref = activeChip.getAttribute('data-href');
+			if (initialHref) {
+				viewMoreBtn.setAttribute('href', initialHref);
+			}
+		}
 	});
 })();
 
@@ -127,6 +145,58 @@
 		var btn = e.target.closest('.xv-member-btn[data-xf-click="switch"]');
 		if (btn) {
 			btn.classList.toggle('xv-member-btn--following');
+		}
+	});
+})();
+
+// Right Sidebar Drawer (Mobile/Tablet)
+(function() {
+	var sidebar = document.getElementById('xv-right-sidebar');
+	var toggleBtn = document.getElementById('xv-right-drawer-toggle');
+	var closeBtn = document.getElementById('xv-right-drawer-close');
+	var backdrop = document.getElementById('xv-right-drawer-backdrop');
+
+	if (!sidebar || !toggleBtn) return;
+
+	function openDrawer() {
+		sidebar.classList.add('is-drawer-open');
+		toggleBtn.classList.add('is-active');
+		if (backdrop) backdrop.classList.add('is-visible');
+		document.body.style.overflow = 'hidden';
+	}
+
+	function closeDrawer() {
+		sidebar.classList.remove('is-drawer-open');
+		toggleBtn.classList.remove('is-active');
+		if (backdrop) backdrop.classList.remove('is-visible');
+		document.body.style.overflow = '';
+	}
+
+	function toggleDrawer() {
+		if (sidebar.classList.contains('is-drawer-open')) {
+			closeDrawer();
+		} else {
+			openDrawer();
+		}
+	}
+
+	// Toggle button click
+	toggleBtn.addEventListener('click', toggleDrawer);
+
+	// Close button click
+	if (closeBtn) {
+		closeBtn.addEventListener('click', closeDrawer);
+	}
+
+	// Backdrop click
+	if (backdrop) {
+		backdrop.addEventListener('click', closeDrawer);
+	}
+
+	// Close on escape key
+	document.addEventListener('keydown', function(e) {
+		if (e.key === 'Escape' && sidebar.classList.contains('is-drawer-open')) {
+			closeDrawer();
 		}
 	});
 })();

@@ -1,0 +1,690 @@
+// ================================================
+// STREAMFEED - THREAD VIEW PAGE
+// ================================================
+// Timeline/feed style posts with:
+// - Vertical connection line
+// - OP with larger avatar and special styling
+// - Chat bubble content with arrow
+// - Sticky quick reply
+// Based on Stitch StreamFeed design
+// ================================================
+
+html.template-thread_view {
+
+  // Thread title styling
+  .p-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .p-title-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.3;
+    color: @xf-textColor;
+
+    @media (min-width: 768px) {
+      font-size: 1.875rem;
+    }
+
+    // Thread prefix badge
+    .label, .labelLink {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.625rem;
+      margin-inline-end: 0.5rem;
+      border-radius: @sf-radius;
+      font-size: 0.75rem;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+  }
+
+  // Thread meta (started by, date, views)
+  .p-description {
+    font-size: 0.875rem;
+    color: @xf-textColorMuted;
+    margin-bottom: 1rem;
+
+    a {
+      color: @xf-linkColor;
+      font-weight: 600;
+    }
+  }
+
+  // Thread action buttons (Watch, Reply, etc.)
+  .block-outer-opposite {
+    margin-bottom: 1.5rem;
+
+    .buttonGroup {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      .button {
+        border-radius: @sf-radius-lg;
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        background: @xf-contentHighlightBg;
+        border: 1px solid @xf-borderColor;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: @xf-borderColor;
+          border-color: @xf-textColorMuted;
+        }
+      }
+
+      .button--primary {
+        background: @xf-linkColor;
+        border-color: @xf-linkColor;
+        color: #fff;
+
+        &:hover {
+          background: darken(@xf-linkColor, 10%);
+        }
+      }
+    }
+  }
+
+  // Remove default block styling
+  .block--messages {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: hidden; // Clip the timeline lines
+
+    .block-container {
+      background: transparent !important;
+      border: none !important;
+    }
+
+    .block-body {
+      background: transparent !important;
+      padding: 0 !important;
+      position: relative;
+    }
+  }
+
+  // ============================================
+  // POST/MESSAGE - TIMELINE BUBBLE STYLE
+  // ============================================
+  .message--post {
+    display: flex !important;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: relative;
+    z-index: 1;
+
+    .message-inner {
+      display: contents !important;
+    }
+
+    // ============================================
+    // AVATAR COLUMN (Outside bubble)
+    // ============================================
+    .message-cell--user {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0.5rem;
+      width: 4rem !important;
+      min-width: 4rem !important;
+      padding: 0 !important;
+      padding-top: 0.5rem;
+      border: none !important;
+      background: transparent !important;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+
+      // Timeline connector line (below avatar, extends to next post)
+      &::after {
+        content: '';
+        position: absolute;
+        top: 3rem; // Just below avatar
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 200vh; // Very long to ensure continuous line
+        background: fade(@xf-borderColor, 50%);
+        z-index: -1;
+        pointer-events: none;
+
+        @media (max-width: 767px) {
+          display: none;
+        }
+      }
+    }
+
+    // Hide line on last post
+    &:last-child .message-cell--user::after {
+      display: none;
+    }
+
+    .message-avatar-wrapper {
+      display: block !important;
+    }
+
+    .message-avatar {
+      .avatar {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        border-radius: 50% !important;
+        border: 2px solid @xf-borderColor;
+        transition: all 0.3s ease;
+      }
+    }
+
+    // Hide user info in avatar column
+    .message-userDetails,
+    .message-userExtras,
+    .message-userTitle,
+    .userTitle {
+      display: none !important;
+    }
+
+    .message-userArrow {
+      display: none !important;
+    }
+
+    // ============================================
+    // CONTENT BUBBLE
+    // ============================================
+    .message-cell--main {
+      flex: 1 !important;
+      min-width: 0 !important;
+      position: relative;
+    }
+
+    .message-main {
+      background: @xf-contentBg;
+      border: 1px solid @xf-borderColor;
+      border-radius: @sf-radius-xl;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.2s ease;
+
+      &:hover {
+        border-color: fade(@xf-textColor, 25%);
+      }
+
+      // Triangle arrow pointing to avatar
+      &::before {
+        content: '';
+        position: absolute;
+        top: 1.25rem;
+        inset-inline-start: -8px;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-inline-end: 8px solid @xf-contentBg;
+        z-index: 2;
+
+        @media (max-width: 767px) {
+          display: none;
+        }
+      }
+
+      // Border for the triangle
+      &::after {
+        content: '';
+        position: absolute;
+        top: 1.25rem;
+        inset-inline-start: -9px;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-inline-end: 8px solid @xf-borderColor;
+        z-index: 1;
+
+        @media (max-width: 767px) {
+          display: none;
+        }
+      }
+    }
+
+    // ============================================
+    // BUBBLE HEADER
+    // ============================================
+    .message-attribution {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid fade(@xf-borderColor, 50%);
+      background: transparent;
+
+      .message-attribution-main {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex: 1;
+        flex-wrap: wrap;
+      }
+
+      // Username
+      .message-attribution-user {
+        font-size: 0.9375rem;
+        font-weight: 700;
+        color: @xf-textColor;
+
+        a {
+          color: inherit;
+          text-decoration: none;
+
+          &:hover {
+            color: @xf-linkColor;
+          }
+        }
+      }
+
+      // User title badge in header
+      .userTitle,
+      .message-userTitle {
+        display: inline-flex !important;
+        font-size: 0.625rem;
+        font-weight: 700;
+        padding: 0.125rem 0.5rem;
+        border-radius: @sf-radius;
+        background: fade(@xf-linkColor, 10%);
+        color: @xf-linkColor;
+        border: 1px solid fade(@xf-linkColor, 20%);
+      }
+
+      // Date/time
+      time, .u-dt {
+        font-size: 0.75rem;
+        color: @xf-textColorMuted;
+      }
+
+      // Post number
+      .message-attribution-opposite {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        a {
+          font-size: 0.6875rem;
+          color: @xf-textColorMuted;
+          padding: 0.25rem 0.5rem;
+          background: fade(@xf-textColor, 5%);
+          border-radius: @sf-radius;
+
+          &:hover {
+            color: @xf-textColor;
+            background: fade(@xf-textColor, 10%);
+          }
+        }
+      }
+    }
+
+    // ============================================
+    // MESSAGE BODY
+    // ============================================
+    .message-content {
+      padding: 0 !important;
+    }
+
+    .message-body {
+      padding: 1.25rem !important;
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: @xf-textColor;
+      border: none !important;
+      background: transparent !important;
+
+      // Quotes
+      .bbCodeBlock--quote {
+        background: fade(@xf-pageBg, 60%);
+        border-inline-start: 3px solid @xf-linkColor;
+        border-radius: @sf-radius;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-size: 0.875rem;
+
+        .bbCodeBlock-title {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: @xf-textColorMuted;
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      // Code blocks
+      pre, code {
+        background: fade(@xf-pageBg, 80%);
+        border: 1px solid @xf-borderColor;
+        border-radius: @sf-radius;
+      }
+
+      code {
+        padding: 0.125rem 0.375rem;
+        font-size: 0.875em;
+      }
+
+      pre {
+        padding: 1rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+
+        code {
+          padding: 0;
+          border: none;
+          background: transparent;
+        }
+      }
+
+      // Images
+      img {
+        max-width: 100%;
+        border-radius: @sf-radius-lg;
+      }
+
+      // Links
+      a {
+        color: @xf-linkColor;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    // Attachments
+    .message-attachments {
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    // Reactions bar
+    .reactionsBar {
+      padding: 0.5rem 1.25rem;
+      background: transparent !important;
+      border: none !important;
+    }
+
+    // ============================================
+    // MESSAGE FOOTER (Actions)
+    // ============================================
+    .message-footer {
+      padding: 0.75rem 1rem !important;
+      background: transparent !important;
+      border-top: 1px solid fade(@xf-borderColor, 50%) !important;
+
+      .actionBar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .actionBar-set {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .actionBar-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.375rem 0.75rem;
+        border-radius: @sf-radius;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: @xf-textColorMuted;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: fade(@xf-textColor, 8%);
+          color: @xf-textColor;
+        }
+
+        // Like button
+        &[data-xf-click="react"] {
+          &:hover {
+            color: #ef4444;
+          }
+        }
+
+        // Quote button
+        &.actionBar-action--quote {
+          &:hover {
+            color: @xf-linkColor;
+          }
+        }
+
+        i, .fa {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    // Signature
+    .message-signature {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid fade(@xf-borderColor, 50%);
+      font-size: 0.8125rem;
+      color: @xf-textColorMuted;
+    }
+  }
+
+  // ============================================
+  // FIRST POST (Thread Starter) - HERO STYLE
+  // ============================================
+  .message--post:first-child {
+    .message-avatar .avatar {
+      width: 3.5rem !important;
+      height: 3.5rem !important;
+      border-radius: @sf-radius-xl !important;
+      border-color: @xf-linkColor;
+      box-shadow: 0 4px 16px fade(@xf-linkColor, 25%);
+    }
+
+    .message-cell--user {
+      width: 4.5rem !important;
+      min-width: 4.5rem !important;
+    }
+
+    .message-main {
+      border-color: fade(@xf-linkColor, 30%);
+      box-shadow: 0 4px 20px fade(@xf-linkColor, 10%);
+
+      &::after {
+        border-inline-end-color: fade(@xf-linkColor, 30%);
+      }
+    }
+
+    // OP Badge
+    .message-attribution-user::after {
+      content: 'OP';
+      display: inline-flex;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      padding: 0.125rem 0.375rem;
+      margin-inline-start: 0.5rem;
+      border-radius: @sf-radius;
+      background: fade(@xf-linkColor, 15%);
+      color: @xf-linkColor;
+      white-space: nowrap;
+    }
+  }
+
+  // ============================================
+  // STAFF/MOD POSTS - HIGHLIGHTED
+  // ============================================
+  .message--post.message--staff,
+  .message--post[data-author-type="staff"] {
+    .message-main {
+      background: @xf-contentHighlightBg;
+      border-color: fade(@xf-linkColor, 30%);
+
+      &::before {
+        border-inline-end-color: @xf-contentHighlightBg;
+      }
+    }
+
+    .message-avatar .avatar {
+      border-color: @xf-linkColor;
+    }
+  }
+
+  // ============================================
+  // QUICK REPLY BOX - STICKY
+  // ============================================
+  .js-quickReply {
+    position: sticky;
+    bottom: 1rem;
+    z-index: 10;
+    margin-top: 2rem;
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: @sf-radius-xl;
+    padding: 1rem;
+    box-shadow: 0 -4px 20px fade(#000, 20%);
+
+    .formRow {
+      margin: 0;
+      padding: 0;
+    }
+
+    .input, textarea {
+      background: @xf-pageBg;
+      border: 1px solid @xf-borderColor;
+      border-radius: @sf-radius-lg;
+      padding: 0.75rem 1rem;
+      color: @xf-textColor;
+      resize: none;
+
+      &:focus {
+        border-color: @xf-linkColor;
+        box-shadow: 0 0 0 2px fade(@xf-linkColor, 20%);
+      }
+    }
+
+    .fr-toolbar {
+      background: @xf-contentHighlightBg;
+      border: none;
+      border-radius: @sf-radius-lg @sf-radius-lg 0 0;
+      padding: 0.5rem;
+
+      .fr-btn {
+        color: @xf-textColorMuted;
+        border-radius: @sf-radius;
+
+        &:hover {
+          background: fade(@xf-textColor, 10%);
+          color: @xf-textColor;
+        }
+      }
+    }
+
+    .formSubmitRow {
+      margin-top: 0.75rem;
+      padding: 0;
+      border: none;
+      background: transparent;
+
+      .button--primary {
+        width: auto;
+        margin-inline-start: auto;
+        padding: 0.5rem 1.5rem;
+        border-radius: @sf-radius-lg;
+      }
+    }
+  }
+
+  // ============================================
+  // PAGINATION
+  // ============================================
+  .pageNav {
+    margin: 1.5rem 0;
+
+    .pageNav-main {
+      gap: 0.25rem;
+    }
+
+    .pageNav-page {
+      a, span {
+        padding: 0.5rem 0.875rem;
+        border-radius: @sf-radius-lg;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+    }
+
+    .pageNav-page--current {
+      a, span {
+        background: @xf-linkColor;
+        color: #fff;
+      }
+    }
+  }
+
+  // ============================================
+  // MOBILE RESPONSIVE
+  // ============================================
+  @media (max-width: 767px) {
+    .message--post {
+      gap: 0.75rem;
+
+      .message-cell--user {
+        width: 3rem !important;
+        min-width: 3rem !important;
+      }
+
+      .message-avatar .avatar {
+        width: 2.25rem !important;
+        height: 2.25rem !important;
+      }
+
+      .message-main {
+        border-radius: @sf-radius-lg;
+      }
+
+      .message-attribution {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.625rem 0.75rem;
+
+        .message-attribution-user::after {
+          display: none; // Hide OP badge on mobile
+        }
+      }
+
+      .message-body {
+        padding: 0.875rem !important;
+        font-size: 0.875rem;
+      }
+
+      .message-footer {
+        padding: 0.5rem 0.75rem !important;
+      }
+
+      .actionBar-action {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.6875rem;
+      }
+    }
+
+    .message--post:first-child {
+      .message-avatar .avatar {
+        width: 2.75rem !important;
+        height: 2.75rem !important;
+        border-radius: @sf-radius-lg !important;
+      }
+    }
+
+    .js-quickReply {
+      position: relative;
+      bottom: auto;
+      margin-top: 1.5rem;
+      padding: 0.75rem;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" fill="none">
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield Icon -->
+  <g transform="translate(5, 5) scale(0.9)">
+    <!-- Shield shape -->
+    <path d="M50 2C50 2 20 8 8 12C6 45 8 62 15 74C22 86 35 95 50 98C65 95 78 86 85 74C92 62 94 45 92 12C80 8 50 2 50 2Z" fill="url(#brandGrad)" opacity="0.85"/>
+    <!-- X letter - upper strokes -->
+    <path d="M28 22L48 48" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+    <path d="M72 22L52 48" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+    <!-- Wave/eye shape - lower part -->
+    <path d="M28 55C28 55 38 72 50 72C62 72 72 55 72 55" stroke="white" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.9"/>
+    <path d="M35 60C35 60 42 68 50 68C58 68 65 60 65 60" stroke="white" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+    <!-- Eye dot -->
+    <circle cx="50" cy="62" r="3.5" fill="white" opacity="0.9"/>
+  </g>
+
+  <!-- Text: Xen (white) -->
+  <text x="105" y="67" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="44" font-weight="700" fill="#ffffff" letter-spacing="-1">Xen</text>
+  <!-- Text: Vibe (purple) -->
+  <text x="228" y="67" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="44" font-weight="700" fill="#6366f1" letter-spacing="-1">Vibe</text>
+</svg>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html id="XF" lang="{$xf.language.language_code}" dir="{$xf.language.text_direction}"
+	data-xf="{$xf.versionVisible}"
+	data-app="public"
+	{{ ($xf.style.isVariationsEnabled() && $xf.visitor.style_variation) ? 'data-variation="' . $xf.visitor.style_variation . '"' : '' }}
+	{{ ($xf.style.isVariationsEnabled() && $xf.visitor.style_variation) ? 'data-color-scheme="' . property_variation('styleType', $xf.visitor.style_variation) . '"' : '' }}
+	data-template="{$template}"
+	data-container-key="{$containerKey}"
+	data-content-key="{$contentKey}"
+	data-logged-in="{{ $xf.visitor.user_id ? 'true' : 'false' }}"
+	data-cookie-prefix="{$xf.cookie.prefix}"
+	data-csrf="{{ csrf_token()|escape('js') }}"
+	class="has-no-js np-style {{ $template ? 'template-' . $template : '' }}"
+	{{ $xf.runJobs ? ' data-run-jobs=""' : '' }}>
+<head>
+	<xf:set var="$siteName" value="{$xf.options.boardTitle}" />
+	<xf:set var="$h1"><xf:h1 fallback="{$siteName}" /></xf:set>
+	<xf:set var="$description"><xf:description /></xf:set>
+
+	<meta charset="utf-8" />
+	<title><xf:title formatter="%s | %s" fallback="{$xf.options.boardTitle}" page="{$pageNumber}" /></title>
+	<link rel="manifest" href="{{ base_url('webmanifest.php') }}">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+	<xf:if is="$xf.style.isVariationsEnabled()">
+		<xf:if is="$xf.visitor.style_variation">
+			<meta name="theme-color" content="{{ parse_less_color(property_variation('metaThemeColor', $xf.visitor.style_variation)) }}" />
+		<xf:else />
+			<xf:if is="$xf.style.hasAlternateStyleTypeVariation()">
+				<meta name="theme-color" media="(prefers-color-scheme: {{ $xf.style.getDefaultStyleType() }})" content="{{ parse_less_color(property_variation('metaThemeColor', 'default')) }}" />
+				<meta name="theme-color" media="(prefers-color-scheme: {{ $xf.style.getAlternateStyleType() }})" content="{{ parse_less_color(property_variation('metaThemeColor', $xf.style.getAlternateStyleTypeVariation())) }}" />
+			<xf:else />
+				<meta name="theme-color" content="{{ parse_less_color(property_variation('metaThemeColor', 'default')) }}" />
+			</xf:if>
+		</xf:if>
+	<xf:else />
+		<meta name="theme-color" content="{{ parse_less_color(property_variation('metaThemeColor', 'default')) }}" />
+	</xf:if>
+
+	<meta name="apple-mobile-web-app-title" content="{{ $xf.options.boardShortTitle ?: $xf.options.boardTitle }}">
+	<xf:if is="property('publicIconUrl')">
+		<link rel="apple-touch-icon" href="{{ base_url(property('publicIconUrl', true)) }}">
+	<xf:elseif is="property('publicMetadataLogoUrl')" />
+		<link rel="apple-touch-icon" href="{{ base_url(property('publicMetadataLogoUrl')) }}" />
+	</xf:if>
+
+	<xf:foreach loop="$head" value="$headTag">
+		{$headTag}
+	</xf:foreach>
+
+	<xf:if is="!$head.meta_site_name && $siteName is not empty">
+		<xf:macro id="metadata_macros::site_name" arg-siteName="{$siteName}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_type">
+		<xf:macro id="metadata_macros::type" arg-type="website" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_title">
+		<xf:macro id="metadata_macros::title" arg-title="{{ page_title() ?: $siteName }}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_description && $description is not empty && $pageDescriptionMeta">
+		<xf:macro id="metadata_macros::description" arg-description="{$description}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_share_url">
+		<xf:macro id="metadata_macros::share_url" arg-shareUrl="{$xf.fullUri}" arg-output="{{ true }}" />
+	</xf:if>
+	<xf:if is="!$head.meta_image_url && property('publicMetadataLogoUrl')">
+		<xf:macro id="metadata_macros::image_url"
+			arg-imageUrl="{{ base_url(property('publicMetadataLogoUrl'), true) }}"
+			arg-output="{{ true }}" />
+	</xf:if>
+
+	<xf:macro id="helper_js_global::head" arg-app="public" arg-jsState="{$jsState}" />
+
+	<xf:if is="property('publicFaviconUrl')">
+		<link rel="icon" type="image/png" href="{{ base_url(property('publicFaviconUrl'), true) }}" sizes="32x32" />
+	</xf:if>
+
+	<xf:include template="google_analytics" />
+
+	<!-- NanoPro: Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+</head>
+<body class="np-body" data-template="{$template}">
+
+<div class="np-page" id="top">
+
+	<!-- NanoPro: Sticky Header -->
+	<header class="np-header">
+		<div class="np-header-inner">
+			<!-- Logo & Nav -->
+			<div class="np-header-start">
+				<a href="{{ ($xf.options.logoLink && $xf.homePageUrl) ? $xf.homePageUrl : link('index') }}" class="np-logo">
+					<xf:if is="property('publicLogoUrl')">
+						<xf:macro id="style_variation_macros::picture"
+							arg-property="publicLogoUrl"
+							arg-propertyRetina="publicLogoUrl2x"
+							arg-width="{{ property('publicLogoWidth') }}"
+							arg-height="{{ property('publicLogoHeight') }}"
+							arg-alt="{$xf.options.boardTitle}" />
+					<xf:else />
+						<div class="np-logo-icon">
+							<span class="material-symbols-outlined">bolt</span>
+						</div>
+						<span class="np-logo-text">{$xf.options.boardTitle}</span>
+					</xf:if>
+				</a>
+
+				<!-- Navigation - XenForo Native with Dropdowns -->
+				<nav class="np-nav p-nav-inner">
+					<xf:foreach loop="$navTree" key="$navKey" value="$navEntry">
+						<!-- Skip default/placeholder tabs -->
+						<xf:if is="$navKey != 'default' AND $navEntry.title != 'Default (no selected tab)'">
+							<xf:set var="$isActive" value="{{ $pageSection == $navKey OR $selectedTab == $navKey OR $navEntry.selected }}" />
+							<xf:if is="$navEntry.children">
+								<div class="np-nav-item">
+									<a href="{$navEntry.href}" class="np-nav-link{{ $isActive ? ' is-active' : '' }}"
+										data-xf-click="menu" aria-expanded="false" aria-haspopup="true">
+										{$navEntry.title}
+										<span class="material-symbols-outlined np-nav-arrow">expand_more</span>
+									</a>
+									<div class="menu menu--structural" data-menu="menu" aria-hidden="true">
+										<div class="menu-content">
+											<xf:foreach loop="$navEntry.children" key="$childKey" value="$childEntry">
+												<a href="{$childEntry.href}" class="menu-linkRow{{ $childEntry.selected ? ' is-selected' : '' }}">
+													{$childEntry.title}
+												</a>
+											</xf:foreach>
+										</div>
+									</div>
+								</div>
+							<xf:else />
+								<a href="{$navEntry.href}" class="np-nav-link{{ $isActive ? ' is-active' : '' }}">
+									{$navEntry.title}
+								</a>
+							</xf:if>
+						</xf:if>
+					</xf:foreach>
+				</nav>
+			</div>
+
+			<!-- Search (Desktop) - XenForo Native -->
+			<xf:if is="$xf.visitor.canSearch()">
+				<div class="np-search">
+					<a href="{{ link('search') }}" class="np-search-trigger"
+						data-xf-click="menu" aria-expanded="false" aria-haspopup="true">
+						<span class="material-symbols-outlined">search</span>
+						<span class="np-search-text">{{ phrase('search...') }}</span>
+					</a>
+					<div class="menu menu--structural menu--wide" data-menu="menu" aria-hidden="true">
+						<div class="menu-content">
+							<h3 class="menu-header">{{ phrase('search') }}</h3>
+							<xf:form action="{{ link('search/search') }}" class="block">
+								<div class="block-body">
+									<xf:textbox name="keywords" ac="off" placeholder="{{ phrase('search...') }}" autofocus="true" />
+								</div>
+								<div class="block-footer">
+									<xf:submitrow icon="search" submit="{{ phrase('search') }}" />
+								</div>
+							</xf:form>
+							<a href="{{ link('search') }}" class="menu-linkRow">{{ phrase('advanced_search...') }}</a>
+						</div>
+					</div>
+				</div>
+			</xf:if>
+
+			<!-- Right Actions -->
+			<div class="np-header-end">
+				<xf:if is="$xf.visitor.user_id">
+					<!-- Notifications -->
+					<a href="{{ link('account/alerts') }}"
+						class="np-icon-btn"
+						data-xf-click="menu"
+						title="{{ phrase('alerts') }}">
+						<span class="material-symbols-outlined">notifications</span>
+						<xf:if is="$xf.visitor.alerts_unviewed">
+							<span class="np-badge"></span>
+						</xf:if>
+					</a>
+					<div class="menu menu--structural menu--medium" data-menu="menu" aria-hidden="true"
+						data-href="{{ link('account/alerts-popup') }}"
+						data-nocache="true"
+						data-load-target=".js-alertsMenuBody">
+						<div class="menu-content">
+							<h3 class="menu-header">{{ phrase('alerts') }}</h3>
+							<div class="js-alertsMenuBody">
+								<div class="menu-row">{{ phrase('loading...') }}</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Conversations -->
+					<a href="{{ link('conversations') }}"
+						class="np-icon-btn"
+						data-xf-click="menu"
+						title="{{ phrase('conversations') }}">
+						<span class="material-symbols-outlined">chat</span>
+						<xf:if is="$xf.visitor.conversations_unread">
+							<span class="np-badge"></span>
+						</xf:if>
+					</a>
+					<div class="menu menu--structural menu--medium" data-menu="menu" aria-hidden="true"
+						data-href="{{ link('conversations/popup') }}"
+						data-nocache="true"
+						data-load-target=".js-conversationsMenuBody">
+						<div class="menu-content">
+							<h3 class="menu-header">{{ phrase('conversations') }}</h3>
+							<div class="js-conversationsMenuBody">
+								<div class="menu-row">{{ phrase('loading...') }}</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="np-divider"></div>
+
+					<!-- User Avatar -->
+					<div class="np-avatar-wrap" data-xf-click="menu">
+						<xf:avatar user="$xf.visitor" size="s" href="" />
+					</div>
+					<div class="menu menu--structural menu--wide menu--account" data-menu="menu" aria-hidden="true"
+						data-href="{{ link('account/visitor-menu') }}"
+						data-load-target=".js-visitorMenuBody">
+						<div class="menu-content js-visitorMenuBody">
+							<div class="menu-row">{{ phrase('loading...') }}</div>
+						</div>
+					</div>
+				<xf:else />
+					<a href="{{ link('login') }}" class="np-btn-text" data-xf-click="overlay">{{ phrase('log_in') }}</a>
+					<xf:if is="$xf.options.registrationSetup.enabled">
+						<a href="{{ link('register') }}" class="np-btn-primary" data-xf-click="overlay">{{ phrase('register') }}</a>
+					</xf:if>
+				</xf:if>
+			</div>
+		</div>
+	</header>
+
+	<!-- Scrolling Notices -->
+	<xf:if is="$notices.scrolling">
+		<div class="np-notices">
+			<xf:macro id="notice_macros::notice_list" arg-type="scrolling" arg-notices="{$notices.scrolling}" />
+		</div>
+	</xf:if>
+
+	<!-- Main Content -->
+	<main class="np-main">
+		<!--XF:EXTRA_OUTPUT-->
+
+		<xf:macro id="browser_warning_macros::javascript" />
+		<xf:macro id="browser_warning_macros::browser" />
+
+		<!-- Block Notices -->
+		<xf:if is="$notices.block">
+			<div class="np-block-notices" style="margin-bottom: 1.5rem;">
+				<xf:macro id="notice_macros::notice_list" arg-type="block" arg-notices="{$notices.block}" />
+			</div>
+		</xf:if>
+
+		<!-- Breadcrumbs & Page Header -->
+		<div class="np-page-top">
+			<div>
+				<xf:ad position="container_breadcrumb_top_above" />
+				<xf:if is="$breadcrumbs is not empty">
+					<nav class="np-breadcrumb">
+						<xf:foreach loop="$breadcrumbs" value="$breadcrumb">
+							<a href="{$breadcrumb.href}">{$breadcrumb.value}</a>
+							<span class="np-breadcrumb-sep">/</span>
+						</xf:foreach>
+					</nav>
+				</xf:if>
+				<xf:ad position="container_breadcrumb_top_below" />
+
+				<xf:if is="$h1 is not empty AND !$noH1">
+					<h1 class="np-page-title">{$h1}</h1>
+				</xf:if>
+				<xf:if is="$description is not empty">
+					<p class="np-page-desc">{$description}</p>
+				</xf:if>
+			</div>
+			<xf:if contentcheck="true">
+				<div class="np-page-actions">
+					<xf:contentcheck><xf:pageaction /></xf:contentcheck>
+				</div>
+			</xf:if>
+		</div>
+
+		<!-- Two-Column Layout -->
+		<div class="np-layout">
+			<!-- Main Content Area -->
+			<div class="np-layout-main">
+				<xf:ad position="container_content_above" />
+				<div class="np-content">{$content|raw}</div>
+				<xf:ad position="container_content_below" />
+
+				<!-- Bottom Breadcrumbs -->
+				<xf:ad position="container_breadcrumb_bottom_above" />
+				<xf:if is="$breadcrumbs is not empty AND property('publicShowBottomBreadcrumb')">
+					<nav class="np-breadcrumb np-breadcrumb--bottom">
+						<xf:foreach loop="$breadcrumbs" value="$breadcrumb">
+							<a href="{$breadcrumb.href}">{$breadcrumb.value}</a>
+							<span class="np-breadcrumb-sep">/</span>
+						</xf:foreach>
+					</nav>
+				</xf:if>
+				<xf:ad position="container_breadcrumb_bottom_below" />
+			</div>
+
+			<!-- Right Sidebar -->
+			<aside class="np-sidebar">
+				<xf:if is="$sideNav">
+					<xf:foreach loop="$sideNav" value="$sideNavHtml">
+						{$sideNavHtml}
+					</xf:foreach>
+				</xf:if>
+				<xf:if is="$sidebar">
+					<xf:foreach loop="$sidebar" value="$sidebarHtml">
+						{$sidebarHtml}
+					</xf:foreach>
+				</xf:if>
+				<xf:widgetpos id="sidenav" />
+			</aside>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="np-footer">
+		<div class="np-footer-inner">
+			<!-- Left: Copyright -->
+			<p class="np-footer-copy">
+				<xf:copyright />
+				<span class="np-footer-divider">|</span>
+				<span>Style by <a href="https://xenvibe.com" target="_blank" rel="noopener">XenVibe</a></span>
+			</p>
+
+			<!-- Center: Style & Language Choosers -->
+			<div class="np-footer-choosers">
+				<xf:if is="$xf.visitor.canChangeStyle()">
+					<a href="{{ link('misc/style') }}" class="np-footer-chooser" data-xf-click="overlay" rel="nofollow">
+						<span class="material-symbols-outlined">palette</span>
+						<span>{$xf.style.title}</span>
+					</a>
+				</xf:if>
+				<xf:if is="$xf.visitor.canChangeStyleVariation($xf.style)">
+					<a href="{{ link('misc/style-variation') }}" class="np-footer-chooser js-styleVariationsLink"
+						data-xf-click="menu" data-z-index-ref=".u-bottomFixer" role="button" rel="nofollow">
+						<span class="material-symbols-outlined">{{ $xf.style.getVariationIcon($xf.visitor.style_variation) == 'fa-sun' ? 'light_mode' : ($xf.style.getVariationIcon($xf.visitor.style_variation) == 'fa-moon' ? 'dark_mode' : 'contrast') }}</span>
+					</a>
+					<div class="menu" data-menu="menu" aria-hidden="true">
+						<div class="menu-content js-styleVariationsMenu">
+							<xf:macro name="style_variation_macros::variation_menu"
+								arg-style="{$xf.style}"
+								arg-live="{{ true }}" />
+						</div>
+					</div>
+				</xf:if>
+				<xf:if is="$xf.visitor.canChangeLanguage()">
+					<a href="{{ link('misc/language') }}" class="np-footer-chooser" data-xf-click="overlay" rel="nofollow">
+						<span class="material-symbols-outlined">language</span>
+						<span>{$xf.language.title}</span>
+					</a>
+				</xf:if>
+			</div>
+
+			<!-- Right: Links -->
+			<div class="np-footer-links">
+				<xf:if is="$xf.tosUrl">
+					<a href="{$xf.tosUrl}">{{ phrase('terms_and_rules') }}</a>
+				</xf:if>
+				<xf:if is="$xf.privacyPolicyUrl">
+					<a href="{$xf.privacyPolicyUrl}">{{ phrase('privacy_policy') }}</a>
+				</xf:if>
+				<xf:if is="$xf.visitor.canUseContactForm() AND $xf.contactUrl">
+					<a href="{$xf.contactUrl}" data-xf-click="{{ ($xf.options.contactUrl.overlay OR $xf.options.contactUrl.type == 'default') ? 'overlay' : '' }}">{{ phrase('contact_us') }}</a>
+				</xf:if>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Mobile FAB -->
+	<xf:if is="$xf.visitor.user_id">
+		<a href="{{ link('forums/-/create-thread') }}" class="np-fab">
+			<span class="material-symbols-outlined">add</span>
+		</a>
+	</xf:if>
+
+	<!-- Off-Canvas Menu (Mobile) -->
+	<div class="offCanvasMenu offCanvasMenu--nav" id="np-offcanvas-menu" data-menu="menu" aria-hidden="true">
+		<div class="offCanvasMenu-backdrop" data-menu-close="true"></div>
+		<div class="offCanvasMenu-content">
+			<div class="offCanvasMenu-header">
+				{{ phrase('menu') }}
+				<a class="offCanvasMenu-closer" data-menu-close="true" role="button" tabindex="0" aria-label="{{ phrase('close') }}"></a>
+			</div>
+
+			<xf:if is="$xf.visitor.user_id">
+				<div class="offCanvasMenu-linkHolder">
+					<a href="{{ link('account') }}" class="offCanvasMenu-link">
+						<xf:avatar user="$xf.visitor" size="xxs" href="" />
+						{$xf.visitor.username}
+					</a>
+				</div>
+				<hr class="offCanvasMenu-separator" />
+			</xf:if>
+
+			<xf:foreach loop="$navTree" key="$navSection" value="$navEntry">
+				<xf:if is="$navSection != '_default'">
+					<div class="offCanvasMenu-linkHolder">
+						<a href="{$navEntry.href}" class="offCanvasMenu-link">{$navEntry.title}</a>
+					</div>
+				</xf:if>
+			</xf:foreach>
+		</div>
+	</div>
+
+</div>
+
+<!-- Bottom Fixer for floating notices and menus -->
+<div class="u-bottomFixer js-bottomFixTarget">
+	<xf:if is="$notices.floating">
+		<xf:macro id="notice_macros::notice_list" arg-type="floating" arg-notices="{$notices.floating}" />
+	</xf:if>
+	<xf:if is="$notices.bottom_fixer">
+		<xf:macro id="notice_macros::notice_list" arg-type="bottom_fixer" arg-notices="{$notices.bottom_fixer}" />
+	</xf:if>
+</div>
+
+<xf:macro id="helper_js_global::body" arg-app="public" arg-jsState="{$jsState}" />
+
+</body>
+</html>

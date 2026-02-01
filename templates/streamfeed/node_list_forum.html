@@ -1,0 +1,173 @@
+<!-- StreamFeed - Forum Node Template -->
+
+<xf:macro id="depth1" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<!-- Standalone forum (not in category) -->
+	<div class="sf-forums-list">
+		<xf:macro id="forum"
+			arg-node="{$node}"
+			arg-extras="{$extras}"
+			arg-children="{$children}"
+			arg-childExtras="{$childExtras}"
+			arg-depth="{$depth}" />
+	</div>
+</xf:macro>
+
+<xf:macro id="depth2" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<xf:macro id="forum"
+		arg-node="{$node}"
+		arg-extras="{$extras}"
+		arg-children="{$children}"
+		arg-childExtras="{$childExtras}"
+		arg-depth="{$depth}" />
+</xf:macro>
+
+<xf:macro id="depthN" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<li>
+		<a href="{{ link('forums', $node) }}" class="subNodeLink subNodeLink--forum {{ $extras.hasNew ? 'subNodeLink--unread' : '' }}">
+			<span class="material-symbols-outlined sf-subnode-icon">tag</span>{$node.title}
+		</a>
+		<xf:macro id="forum_list::sub_node_list"
+			arg-children="{$children}"
+			arg-childExtras="{$childExtras}"
+			arg-depth="{{ $depth + 1 }}" />
+	</li>
+</xf:macro>
+
+<xf:macro id="forum"
+	arg-node="!"
+	arg-extras="!"
+	arg-children="!"
+	arg-childExtras="!"
+	arg-depth="!"
+	arg-chooseName=""
+	arg-bonusInfo="">
+
+	<xf:set var="$forumType" value="{{ $node.Data.forum_type_id ?: 'discussion' }}" />
+
+	<article class="sf-forum-card {{ $extras.hasNew ? 'sf-forum-card--unread' : '' }}" data-node-id="{$node.node_id}">
+		<div class="sf-forum-card-inner">
+		<!-- Main Row: Icon + Info + Follow Button -->
+		<div class="sf-forum-card-main">
+			<div class="sf-forum-card-content">
+				<!-- Icon Balloon -->
+				<div class="sf-forum-icon">
+					<span class="material-symbols-outlined">forum</span>
+				</div>
+
+				<!-- Info Section -->
+				<div class="sf-forum-info">
+					<!-- Title -->
+					<div class="sf-forum-title-row">
+						<h3 class="sf-forum-title">
+							<a href="{{ link('forums', $node) }}">{$node.title}</a>
+						</h3>
+						<xf:if is="{$extras.hasNew}">
+							<span class="sf-forum-badge sf-forum-badge--hot">{{ phrase('new') }}</span>
+						</xf:if>
+					</div>
+
+					<!-- Description -->
+					<xf:if is="{$node.description}">
+						<p class="sf-forum-desc">{$node.description|raw}</p>
+					</xf:if>
+
+					<!-- Stats -->
+					<xf:if is="!{$extras.privateInfo}">
+						<div class="sf-forum-stats">
+							<span class="sf-forum-stat" title="{{ phrase('threads') }}">
+								<span class="material-symbols-outlined">topic</span>
+								<span>{$extras.discussion_count|number_short(1)}</span>
+							</span>
+							<span class="sf-forum-stat" title="{{ phrase('messages') }}">
+								<span class="material-symbols-outlined">chat</span>
+								<span>{$extras.message_count|number_short(1)}</span>
+							</span>
+						</div>
+					</xf:if>
+
+					<!-- Sub Forums -->
+					<xf:if is="$depth == 2 AND property('nodeListSubDisplay') == 'flat'">
+						<xf:macro id="forum_list::sub_nodes_flat"
+							arg-children="{$children}"
+							arg-childExtras="{$childExtras}"
+							arg-depth="{{ $depth + 1 }}" />
+					</xf:if>
+				</div>
+			</div>
+
+			<!-- Follow Button -->
+			<xf:if is="$xf.visitor.user_id AND !{$extras.privateInfo}">
+				<xf:set var="$isWatched" value="{$node.Data.Watch.{$xf.visitor.user_id}}" />
+				<div class="sf-forum-action">
+					<a href="{{ link('forums/watch', $node) }}"
+					   class="sf-follow-btn {{ $isWatched ? 'sf-follow-btn--active' : '' }}"
+					   data-xf-click="overlay">
+						<xf:if is="$isWatched">
+							{{ phrase('unwatch') }}
+						<xf:else />
+							{{ phrase('watch') }}
+						</xf:if>
+					</a>
+				</div>
+			</xf:if>
+		</div>
+
+		<!-- Latest Activity Bubble -->
+		<xf:if is="{$extras.privateInfo}">
+			<div class="sf-latest-activity sf-latest-activity--private">
+				<span class="material-symbols-outlined">lock</span>
+				<span>{{ phrase('private') }}</span>
+			</div>
+		<xf:elseif is="{$extras.LastThread}" />
+			<div class="sf-latest-activity">
+				<div class="sf-latest-avatar">
+					<xf:if is="$xf.visitor.isIgnoring($extras.last_post_user_id) OR !$extras.LastPostUser">
+						<span class="avatar avatar--xs">
+							<span class="avatar-u0-s avatar-u0-s--default avatar-u0-s--default--dynamic">
+								<span class="material-symbols-outlined">person</span>
+							</span>
+						</span>
+					<xf:else />
+						<img src="{{ $extras.LastPostUser.getAvatarUrl('s') }}"
+							 srcset="{{ $extras.LastPostUser.getAvatarUrl('m') }} 2x"
+							 alt="{$extras.last_post_username}"
+							 class="avatar avatar--xs"
+							 loading="lazy" />
+					</xf:if>
+					<span class="sf-latest-badge">
+						<span class="material-symbols-outlined">reply</span>
+					</span>
+				</div>
+				<div class="sf-latest-content">
+					<a href="{{ $extras.LastThread.isUnread() ? link('threads/unread', $extras.LastThread) : link('threads/post', $extras.LastThread, {'post_id': $extras.last_post_id}) }}" class="sf-latest-title">
+						{{ prefix('thread', $extras.LastThread) }}{$extras.LastThread.title}
+					</a>
+					<div class="sf-latest-meta">
+						<xf:if is="$xf.visitor.isIgnoring($extras.last_post_user_id)">
+							<span class="sf-latest-user">{{ phrase('ignored_member') }}</span>
+						<xf:elseif is="$extras.LastPostUser" />
+							<a href="{{ link('members', $extras.LastPostUser) }}" class="sf-latest-user">{$extras.last_post_username}</a>
+						<xf:else />
+							<span class="sf-latest-user">{$extras.last_post_username}</span>
+						</xf:if>
+						<span class="sf-latest-dot">&bull;</span>
+						<xf:date time="{$extras.last_post_date}" />
+					</div>
+				</div>
+			</div>
+		<xf:else />
+			<div class="sf-latest-activity sf-latest-activity--empty">
+				<span class="material-symbols-outlined">inbox</span>
+				<span>{{ phrase('no_posts_yet') }}</span>
+			</div>
+		</xf:if>
+		</div><!-- /.sf-forum-card-inner -->
+	</article>
+
+	<xf:if is="{$depth} == 1">
+		<xf:macro id="forum_list::node_list"
+			arg-children="{$children}"
+			arg-extras="{$childExtras}"
+			arg-depth="{{ $depth + 1 }}" />
+	</xf:if>
+</xf:macro>

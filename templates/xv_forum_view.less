@@ -1,66 +1,74 @@
+// List mode styles - only apply on screens wider than 500px
+// On mobile (<500px), always use grid view regardless of user preference
 html.xv-layout-list {
 
   // Forum List Page - List Mode
   // ملاحظة: template-forum_list على html نفسه لذا نستخدم &
   &.template-forum_list {
-    .block--category .block-body {
-      grid-template-columns: 1fr !important;
-    }
+    // Only apply list mode on screens wider than 500px
+    @media (min-width: 500px) {
+      .block--category .block-body {
+        grid-template-columns: 1fr !important;
+      }
 
-    .node--forum {
-      flex-direction: row;
-      align-items: center;
-      padding: 1rem 1.25rem;
-
-      .node-body {
+      .node--forum {
         flex-direction: row;
         align-items: center;
-        gap: 1rem;
-        padding: 0;
-      }
+        padding: 1rem 1.25rem;
 
-      .node-icon {
-        margin-bottom: 0;
-        flex-shrink: 0;
-      }
+        .node-body {
+          flex-direction: row;
+          align-items: center;
+          gap: 1rem;
+          padding: 0;
+        }
 
-      .node-main {
-        flex: 1;
-        min-width: 0;
-      }
+        .node-icon {
+          margin-bottom: 0;
+          flex-shrink: 0;
+        }
 
-      .node-title {
-        margin-bottom: 0.25rem;
-      }
+        .node-main {
+          flex: 1;
+          min-width: 0;
+        }
 
-      .node-description {
-        flex: none;
-        min-height: auto;
-        margin-bottom: 0;
-      }
+        .node-title {
+          margin-bottom: 0.25rem;
+        }
 
-      .node-meta {
-        margin-top: 0.5rem;
-      }
+        .node-description {
+          flex: none;
+          min-height: auto;
+          margin-bottom: 0;
+        }
 
-      .node-statsMeta {
-        margin-bottom: 0;
-      }
+        .node-meta {
+          margin-top: 0.5rem;
+        }
 
-      .node-extra {
-        margin-top: 0;
-        margin-inline-start: auto;
-        flex-shrink: 0;
-        width: 280px;
-        max-width: 280px;
+        .node-statsMeta {
+          margin-bottom: 0;
+        }
+
+        .node-extra {
+          margin-top: 0;
+          margin-inline-start: auto;
+          flex-shrink: 0;
+          width: 280px;
+          max-width: 280px;
+        }
       }
     }
   }
 
   // What's New Pages - List Mode (تحويل الـ grid لعمود واحد)
-  .structItemContainer--withReadIndicator,
-  .structItemContainer--profilePost {
-    grid-template-columns: 1fr !important;
+  // Only apply on screens wider than 500px
+  @media (min-width: 500px) {
+    .structItemContainer--withReadIndicator,
+    .structItemContainer--profilePost {
+      grid-template-columns: 1fr !important;
+    }
   }
 }
 
@@ -68,7 +76,13 @@ html.xv-layout-list {
 // LAYOUT TOGGLE BUTTON - زر تبديل العرض
 // ================================================================
 .xv-layout-toggle {
-  display: inline-flex;
+  display: none; // Hidden by default
+
+  // Only show on screens wider than 500px
+  @media (min-width: 500px) {
+    display: inline-flex;
+  }
+
   align-items: center;
   background: fade(@xf-textColor, 8%);
   border: none !important;
@@ -391,6 +405,8 @@ html[class*="template-forum_view"] {
 
 // List Mode - Forum View (العرض الأصلي لـ XenForo - صف واحد)
 // Reset ALL card styling to show original XenForo row layout
+// Only apply on screens wider than 500px - on mobile always use grid/cards
+@media (min-width: 500px) {
 html.xv-layout-list[class*="template-forum_view"] {
   .structItemContainer {
     display: block !important;
@@ -611,6 +627,7 @@ html.xv-layout-list[class*="template-forum_view"] {
     margin: 0.5rem 0 !important;
   }
 }
+} // End @media (min-width: 500px) for list mode
 
 // ================================================================
 // THREAD VIEW - Card Style Posts (Stitch Design)

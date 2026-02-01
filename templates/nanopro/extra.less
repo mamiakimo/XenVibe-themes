@@ -1,0 +1,2807 @@
+// ================================================
+// NANOPRO STYLE - Minimal/Compact Design
+// ================================================
+// Design: Single-column centered layout (max-width: 960px)
+// No sidebar, sticky header with blur, simple footer
+// Based on Stitch NanoPro design
+// ================================================
+
+// ================================================
+// VARIABLES (XenForo native - NO hardcoded colors)
+// ================================================
+@np-max-width: 1200px;
+@np-radius: 0.25rem;
+@np-radius-lg: 0.5rem;
+@np-radius-xl: 0.75rem;
+@np-radius-2xl: 1rem;
+
+// ================================================
+// BODY & PAGE STRUCTURE
+// ================================================
+html.np-style {
+  scroll-behavior: smooth;
+}
+
+.np-body {
+  background: @xf-pageBg;
+  color: @xf-textColor;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.np-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// ================================================
+// HEADER - Sticky with blur effect
+// ================================================
+.np-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  border-bottom: 1px solid @xf-borderColor;
+  background: fade(@xf-pageBg, 90%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.np-header-inner {
+  max-width: @np-max-width;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.np-header-start {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+// ================================================
+// PAGE TOP (Breadcrumbs + Title + Actions)
+// ================================================
+.np-page-top {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+// ================================================
+// LOGO
+// ================================================
+.np-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.np-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: @np-radius-lg;
+  background: linear-gradient(135deg, @xf-linkColor, darken(@xf-linkColor, 10%));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 4px 12px fade(@xf-linkColor, 20%);
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+.np-logo-text {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: @xf-textColor;
+}
+
+// ================================================
+// SEARCH - Desktop only
+// ================================================
+.np-search {
+  display: none;
+  position: relative;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.np-search-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: @xf-contentBg;
+  border: 1px solid @xf-borderColor;
+  border-radius: @np-radius-xl;
+  color: @xf-textColorMuted;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-width: 200px;
+
+  &:hover {
+    border-color: @xf-linkColor;
+    color: @xf-textColor;
+  }
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+.np-search-text {
+  font-size: 0.875rem;
+}
+
+// XenForo search menu styling
+.np-search .menu {
+  min-width: 320px;
+}
+
+// ================================================
+// HEADER RIGHT ACTIONS
+// ================================================
+.np-header-end {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.np-icon-btn {
+  position: relative;
+  padding: 0.5rem;
+  color: @xf-textColorMuted;
+  border-radius: @np-radius-lg;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: @xf-contentBg;
+    color: @xf-textColor;
+  }
+
+  .material-symbols-outlined {
+    font-size: 24px;
+  }
+}
+
+.np-badge {
+  position: absolute;
+  top: 6px;
+  inset-inline-end: 6px;
+  width: 8px;
+  height: 8px;
+  background: @xf-textColorAttention;
+  border-radius: 50%;
+  border: 2px solid @xf-pageBg;
+}
+
+.np-divider {
+  width: 1px;
+  height: 32px;
+  background: @xf-borderColor;
+  margin: 0 0.25rem;
+}
+
+.np-avatar-wrap {
+  cursor: pointer;
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 0 0 2px @xf-linkColor;
+    }
+  }
+}
+
+// ================================================
+// BUTTONS
+// ================================================
+.np-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: @xf-linkColor;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: @np-radius-xl;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px fade(@xf-linkColor, 25%);
+
+  &:hover {
+    background: darken(@xf-linkColor, 8%);
+    transform: translateY(-1px);
+    color: #fff;
+  }
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+.np-btn-text {
+  padding: 0.5rem 1rem;
+  color: @xf-textColor;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: @xf-linkColor;
+  }
+}
+
+.np-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: @xf-textColorMuted;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid @xf-borderColor;
+  border-radius: @np-radius-xl;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: @xf-contentBg;
+    color: @xf-linkColor;
+    border-color: @xf-linkColor;
+  }
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+// ================================================
+// MAIN CONTENT AREA
+// ================================================
+.np-main {
+  flex-grow: 1;
+  width: 100%;
+  max-width: @np-max-width;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.np-notices {
+  max-width: @np-max-width;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+// ================================================
+// WELCOME PANEL (Action Box)
+// ================================================
+.np-welcome-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background: @xf-contentBg;
+  border: 1px solid @xf-borderColor;
+  border-radius: @np-radius-2xl;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.np-welcome-content {
+  space-y: 0.5rem;
+}
+
+.np-welcome-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: @xf-textColor;
+  line-height: 1.25;
+  margin: 0 0 0.5rem 0;
+}
+
+.np-welcome-desc {
+  color: @xf-textColorMuted;
+  max-width: 32rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+// ================================================
+// FILTER TABS (Pill Buttons)
+// ================================================
+.np-filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.np-filter-tab {
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  background: transparent;
+  color: @xf-textColorMuted;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: @xf-contentBg;
+    border-color: @xf-borderColor;
+  }
+
+  &.is-active {
+    background: fade(@xf-linkColor, 10%);
+    color: @xf-linkColor;
+    border-color: fade(@xf-linkColor, 20%);
+    font-weight: 600;
+  }
+}
+
+// ================================================
+// SECTION HEADER
+// ================================================
+.np-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.np-section-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: @xf-textColor;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+
+  .material-symbols-outlined {
+    color: @xf-linkColor;
+  }
+}
+
+// ================================================
+// THREAD CARDS
+// ================================================
+.np-thread-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.np-thread-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: @xf-contentBg;
+  border: 1px solid @xf-borderColor;
+  border-radius: @np-radius-2xl;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: @xf-contentHighlightBg;
+    box-shadow: 0 4px 12px fade(#000, 10%);
+  }
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    gap: 1.25rem;
+  }
+
+  // Pinned thread
+  &.is-pinned {
+    border-color: fade(@xf-linkColor, 30%);
+  }
+}
+
+.np-thread-thumb {
+  display: none;
+  width: 128px;
+  height: 96px;
+  flex-shrink: 0;
+  border-radius: @np-radius-lg;
+  background-size: cover;
+  background-position: center;
+  background-color: @xf-contentHighlightBg;
+
+  @media (min-width: 640px) {
+    display: block;
+  }
+}
+
+.np-thread-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.np-thread-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.np-thread-prefix {
+  padding: 0.125rem 0.5rem;
+  border-radius: @np-radius;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.np-thread-category {
+  color: @xf-linkColor;
+}
+
+.np-thread-time {
+  color: @xf-textColorMuted;
+}
+
+.np-thread-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: @xf-textColor;
+  line-height: 1.4;
+  margin: 0;
+  transition: color 0.2s ease;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: @xf-linkColor;
+    }
+  }
+}
+
+.np-thread-snippet {
+  font-size: 0.875rem;
+  color: @xf-textColorMuted;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+.np-thread-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  margin-top: auto;
+  border-top: 1px solid @xf-borderColor;
+}
+
+.np-thread-author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: @xf-textColorMuted;
+  }
+}
+
+.np-thread-stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.np-thread-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: @xf-textColorMuted;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: @xf-linkColor;
+  }
+
+  .material-symbols-outlined {
+    font-size: 16px;
+  }
+}
+
+.np-thread-replies {
+  background: @xf-contentHighlightBg;
+  padding: 0.25rem 0.5rem;
+  border-radius: @np-radius;
+}
+
+// ================================================
+// LOAD MORE
+// ================================================
+.np-load-more {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5rem;
+}
+
+// ================================================
+// BREADCRUMBS
+// ================================================
+.np-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+
+  a {
+    color: @xf-textColorMuted;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: @xf-linkColor;
+    }
+  }
+
+  &--bottom {
+    margin-top: 2rem;
+    margin-bottom: 0;
+  }
+}
+
+.np-breadcrumb-sep {
+  color: @xf-textColorMuted;
+  opacity: 0.5;
+}
+
+// ================================================
+// PAGE HEADER
+// ================================================
+.np-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background: @xf-contentBg;
+  border: 1px solid @xf-borderColor;
+  border-radius: @np-radius-2xl;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.np-page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: @xf-textColor;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.np-page-desc {
+  color: @xf-textColorMuted;
+  max-width: 32rem;
+  margin: 0;
+}
+
+.np-page-actions {
+  flex-shrink: 0;
+}
+
+// ================================================
+// CONTENT (XenForo Blocks)
+// ================================================
+.np-content {
+  .block {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: @np-radius-2xl;
+    overflow: hidden;
+    margin-bottom: 1rem;
+
+    &-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid @xf-borderColor;
+      font-weight: 600;
+    }
+
+    &-body {
+      padding: 1.25rem;
+    }
+
+    &-footer {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid @xf-borderColor;
+      background: @xf-contentHighlightBg;
+    }
+  }
+}
+
+// ================================================
+// SIDEBAR (when shown - bottom on mobile)
+// ================================================
+.np-sidebar {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid @xf-borderColor;
+}
+
+// ================================================
+// FOOTER
+// ================================================
+.np-footer {
+  border-top: 1px solid @xf-borderColor;
+  padding: 2rem 0;
+  margin-top: 2rem;
+  background: @xf-pageBg;
+}
+
+.np-footer-inner {
+  max-width: @np-max-width;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: start;
+  }
+}
+
+.np-footer-copy {
+  font-size: 0.875rem;
+  color: @xf-textColorMuted;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  a {
+    color: @xf-linkColor;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.np-footer-divider {
+  opacity: 0.5;
+}
+
+.np-footer-choosers {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.np-footer-chooser {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: @xf-textColorMuted;
+  background: @xf-contentBg;
+  border: 1px solid @xf-borderColor;
+  border-radius: @np-radius-xl;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: @xf-linkColor;
+    border-color: @xf-linkColor;
+    background: @xf-contentHighlightBg;
+  }
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+}
+
+.np-footer-links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  a {
+    color: @xf-textColorMuted;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: @xf-linkColor;
+    }
+  }
+}
+
+// ================================================
+// MOBILE FAB (Floating Action Button)
+// ================================================
+.np-fab {
+  display: none;
+  position: fixed;
+  bottom: 1.5rem;
+  inset-inline-start: 1.5rem;
+  z-index: 40;
+  width: 56px;
+  height: 56px;
+  background: @xf-linkColor;
+  color: #fff;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px fade(@xf-linkColor, 40%);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  border: none;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  .material-symbols-outlined {
+    font-size: 28px;
+  }
+}
+
+// ================================================
+// RESPONSIVE
+// ================================================
+@media (max-width: 640px) {
+  .np-header-inner {
+    padding: 0 1rem;
+    height: 56px;
+  }
+
+  .np-main {
+    padding: 1.5rem 1rem;
+  }
+
+  .np-page-header,
+  .np-welcome-panel {
+    padding: 1rem;
+  }
+
+  .np-page-title,
+  .np-welcome-title {
+    font-size: 1.25rem;
+  }
+
+  .np-thread-card {
+    padding: 1rem;
+  }
+
+  .np-thread-title {
+    font-size: 1rem;
+  }
+}
+
+// ================================================
+// XENFORO OVERRIDES
+// ================================================
+// Hide default XenForo elements we're replacing
+.p-nav,
+.p-header,
+.p-sectionLinks,
+.p-footer {
+  display: none !important;
+}
+
+// Make main content full width
+.p-body {
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+.p-body-inner {
+  max-width: none !important;
+  padding: 0 !important;
+}
+
+.p-body-main {
+  padding: 0 !important;
+}
+
+// Remove default body padding
+body.np-body {
+  padding: 0 !important;
+}
+
+// ================================================
+// MAIN LAYOUT WITH SIDEBAR
+// ================================================
+.np-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media (min-width: 1024px) {
+    // Use minmax so sidebar collapses if empty
+    grid-template-columns: 1fr minmax(0, 300px);
+  }
+
+  // ================================================
+  // CONDITIONAL: Single column when sidebar is empty
+  // ================================================
+  // CSS :has() - hide sidebar when no .block children
+  &:has(.np-sidebar:empty),
+  &:has(.np-sidebar:not(:has(.block))) {
+    grid-template-columns: 1fr !important;
+    max-width: 80rem; // 1280px when full width
+  }
+
+  // JavaScript fallback class for empty sidebar
+  &.np-layout--no-sidebar {
+    grid-template-columns: 1fr !important;
+    max-width: 80rem; // 1280px when full width
+  }
+}
+
+.np-layout-main {
+  min-width: 0;
+}
+
+// ================================================
+// RIGHT SIDEBAR
+// ================================================
+.np-sidebar {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+
+  // Hide sidebar when it has no .block children
+  // This handles whitespace and empty widget positions
+  &:not(:has(.block)) {
+    display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  // Style XenForo blocks as widgets
+  .block {
+    background: @xf-contentBg;
+    border: 1px solid @xf-borderColor;
+    border-radius: @np-radius-xl;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+
+    .block-container {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+    }
+
+    .block-header {
+      padding: 1rem 1.25rem;
+      border-bottom: none;
+      font-size: 0.875rem;
+      font-weight: 700;
+      background: transparent;
+    }
+
+    .block-body {
+      padding: 1.25rem;
+      overflow: hidden;
+    }
+
+    // If header exists, reduce gap between header and body
+    .block-header+.block-body {
+      padding-top: 0;
+    }
+
+    .block-footer {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid @xf-borderColor;
+      background: transparent;
+    }
+
+    // Block rows inside widget - keep consistent padding
+    .block-row {
+      border: none;
+      padding: 0.5rem 0;
+    }
+  }
+}
+
+.np-widget {
+  background: @xf-contentBg;
+  border: 1px solid @xf-borderColor;
+  border-radius: @np-radius-xl;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.np-widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.np-widget-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: @xf-textColor;
+  margin: 0;
+}
+
+.np-widget-badge {
+  background: fade(@xf-linkColor, 20%);
+  color: @xf-linkColor;
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.125rem 0.375rem;
+  border-radius: @np-radius;
+}
+
+// ================================================
+// HEADER NAVIGATION
+// ================================================
+.np-nav {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.np-nav-item {
+  position: relative;
+}
+
+.np-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: @xf-textColor;
+  text-decoration: none !important;
+  padding: 0.5rem 0.75rem;
+  border-radius: @np-radius-lg;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: @xf-linkColor !important;
+    background: fade(@xf-linkColor, 10%);
+    text-decoration: none !important;
+  }
+
+  &.is-active,
+  &.is-selected {
+    color: @xf-linkColor !important;
+  }
+}
+
+.np-nav-arrow {
+  font-size: 18px;
+  opacity: 0.7;
+  transition: transform 0.2s ease;
+
+  [aria-expanded="true"] & {
+    transform: rotate(180deg);
+  }
+}
+
+// Navigation dropdown menu styling
+.np-nav-item .menu {
+  min-width: 180px;
+}
+
+// ================================================
+// FORUM LIST
+// ================================================
+.np-forum-category {
+  margin-bottom: 2rem;
+}
+
+.np-category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.np-category-title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: @xf-textColorMuted;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.np-category-toggle {
+  color: @xf-textColorMuted;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: @xf-textColor;
+  }
+
+  .material-symbols-outlined {
+    font-size: 18px;
+  }
+}
+
+.np-forum-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.np-forum-node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: @xf-contentBg;
+  border: 1px solid transparent;
+  border-radius: @np-radius-lg;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: @xf-contentHighlightBg;
+    border-color: @xf-borderColor;
+  }
+
+  // Left accent line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    bottom: 0.75rem;
+    width: 3px;
+    background: @xf-linkColor;
+    border-radius: 0 2px 2px 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover::before,
+  &.has-unread::before {
+    opacity: 1;
+  }
+}
+
+.np-forum-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.np-forum-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: @xf-pageBg;
+  border: 1px solid fade(@xf-borderColor, 50%);
+  border-radius: @np-radius-lg;
+  color: @xf-textColorMuted;
+  transition: color 0.2s ease;
+
+  .np-forum-node:hover & {
+    color: @xf-textColor;
+  }
+
+  .np-forum-node.has-unread & {
+    color: @xf-linkColor;
+  }
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+.np-forum-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.np-forum-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: @xf-textColor;
+  margin: 0;
+  transition: color 0.2s ease;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .np-forum-node:hover & {
+    color: @xf-linkColor;
+  }
+}
+
+.np-forum-desc {
+  font-size: 0.75rem;
+  color: @xf-textColorMuted;
+  margin: 0.125rem 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.np-forum-meta {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: 1rem;
+  flex-shrink: 0;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.np-forum-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 5rem;
+}
+
+.np-forum-stat-value {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: @xf-textColor;
+}
+
+.np-forum-stat-label {
+  font-size: 0.625rem;
+  color: @xf-textColorMuted;
+  text-transform: uppercase;
+}
+
+.np-forum-divider {
+  width: 1px;
+  height: 2rem;
+  background: @xf-borderColor;
+}
+
+.np-forum-last {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 12rem;
+  justify-content: flex-end;
+}
+
+.np-forum-last-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 0;
+}
+
+.np-forum-last-title {
+  font-size: 0.75rem;
+  color: @xf-textColor;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.np-forum-last-date {
+  font-size: 0.625rem;
+  color: @xf-textColorMuted;
+}
+
+.np-forum-last-avatar {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  border-radius: @np-radius;
+  background-size: cover;
+  background-position: center;
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+  }
+}
+
+// ================================================
+// ONLINE MEMBERS WIDGET
+// ================================================
+.np-members-online {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.np-online-avatar {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: @np-radius;
+    border: 1px solid @xf-borderColor;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 0.625rem;
+    height: 0.625rem;
+    background: #22c55e;
+    border: 2px solid @xf-contentBg;
+    border-radius: 50%;
+  }
+}
+
+.np-online-more {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: @xf-contentHighlightBg;
+  border: 1px dashed @xf-borderColor;
+  border-radius: @np-radius;
+  font-size: 0.75rem;
+  color: @xf-textColorMuted;
+  cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: @xf-textColor;
+  }
+}
+
+.np-widget-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid @xf-borderColor;
+
+  p {
+    font-size: 0.75rem;
+    color: @xf-textColorMuted;
+    margin: 0;
+  }
+}
+
+// ================================================
+// XENFORO FORUM LIST - NANOPRO STYLE
+// ================================================
+// Matches Stitch NanoPro Forum List design:
+// - No big block background
+// - Categories with small header
+// - Each forum node as individual card
+// ================================================
+
+// Forum list page
+.template-forum_list {
+
+  // Remove main block styling - ONLY in main content area
+  .np-layout-main {
+
+    >.np-content>.block,
+    >.np-content .block-container {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    // Only remove padding from forum list block-body, not widgets
+    >.np-content>.block>.block-container>.block-body {
+      background: transparent !important;
+      padding: 0 !important;
+    }
+  }
+
+  // Category container
+  .block--category {
+    background: transparent !important;
+    border: none !important;
+    margin-bottom: 2rem;
+
+    // Category header - LEFT aligned with description
+    .block-header {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0 0.5rem;
+      margin-bottom: 0.75rem;
+      background: transparent !important;
+      border: none !important;
+
+      // Category title
+      a,
+      .block-header-title {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        color: @xf-textColorMuted;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: @xf-linkColor;
+        }
+      }
+
+      // Category description
+      .block-desc,
+      .node-description {
+        font-size: 0.75rem;
+        color: @xf-textColorMuted;
+        font-weight: 400;
+        text-transform: none;
+        letter-spacing: normal;
+      }
+
+      // Collapse button - absolute position
+      .block-header-toggle {
+        position: absolute;
+        right: 0.5rem;
+        top: 0;
+        color: @xf-textColorMuted;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: @xf-textColor;
+        }
+      }
+    }
+
+    // Category body (forum nodes container)
+    .block-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+
+  // Forum node (each forum)
+  .node {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: @xf-contentBg;
+    border: 1px solid transparent;
+    border-radius: @np-radius-lg;
+    transition: all 0.2s ease;
+    margin: 0 !important;
+
+    &:hover {
+      background: @xf-contentHighlightBg;
+      border-color: @xf-borderColor;
+    }
+
+    // Left accent line
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.75rem;
+      bottom: 0.75rem;
+      width: 3px;
+      background: @xf-linkColor;
+      border-radius: 0 2px 2px 0;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+
+    // Unread state
+    &.node--unread::before {
+      opacity: 1;
+    }
+  }
+
+  // Forum icon - CENTERED in container
+  .node-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    flex-shrink: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: @xf-pageBg;
+    border: 1px solid fade(@xf-borderColor, 50%);
+    border-radius: @np-radius-lg;
+    margin-inline-end: 1rem;
+    text-align: center;
+    padding: 0 !important;
+
+    // Reset any link wrapper inside
+    a {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100%;
+      height: 100%;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    i,
+    .fa,
+    .fas,
+    .far,
+    .fal,
+    .fab {
+      font-size: 1rem;
+      color: @xf-textColorMuted;
+      transition: color 0.2s ease;
+      width: auto !important;
+      height: auto !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: 1;
+    }
+
+    .node:hover & i,
+    .node:hover & .fa,
+    .node:hover & .fas,
+    .node:hover & .far {
+      color: @xf-textColor;
+    }
+
+    .node--unread & i,
+    .node--unread & .fa,
+    .node--unread & .fas,
+    .node--unread & .far {
+      color: @xf-linkColor;
+    }
+  }
+
+  // Forum main content
+  .node-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .node-main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  // Forum title
+  .node-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: @xf-textColor;
+    margin: 0;
+    transition: color 0.2s ease;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .node:hover & {
+      color: @xf-linkColor;
+    }
+  }
+
+  // Forum description
+  .node-description {
+    font-size: 0.75rem;
+    color: @xf-textColorMuted;
+    margin: 0.125rem 0 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // Sub-forums list
+  .node-subNodeList {
+    margin-top: 0.5rem;
+
+    .node-subNodeLink {
+      font-size: 0.75rem;
+      color: @xf-textColorMuted;
+
+      &:hover {
+        color: @xf-linkColor;
+      }
+    }
+  }
+
+  // Forum stats (threads/messages)
+  .node-stats {
+    display: none;
+    align-items: center;
+    gap: 1.5rem;
+    margin-inline-start: 1rem;
+    flex-shrink: 0;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+
+    dl {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 5rem;
+      margin: 0;
+    }
+
+    dd {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: @xf-textColor;
+      margin: 0;
+    }
+
+    dt {
+      font-size: 0.625rem;
+      color: @xf-textColorMuted;
+      text-transform: uppercase;
+      margin: 0;
+    }
+  }
+
+  // Divider between stats and last post
+  .node-stats::after {
+    content: '';
+    width: 1px;
+    height: 2rem;
+    background: @xf-borderColor;
+    margin-inline-start: 1.5rem;
+  }
+
+  // Last post info
+  .node-extra {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    width: 12rem;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    margin-inline-start: 1.5rem;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+  }
+
+  .node-extra-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 0;
+  }
+
+  .node-extra-title {
+    font-size: 0.75rem;
+    color: @xf-textColor;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  .node-extra-date,
+  .node-extra-user {
+    font-size: 0.625rem;
+    color: @xf-textColorMuted;
+  }
+
+  .node-extra-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+
+    .avatar {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: @np-radius;
+      object-fit: cover;
+    }
+
+    // Fix for XenForo avatar wrapper
+    img {
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+      object-fit: cover;
+      border-radius: @np-radius;
+    }
+  }
+
+  // Hide default separators
+  .block-outer,
+  .block-minorHeader {
+    display: none;
+  }
+
+  // Pagination styling
+  .block-outer-main {
+    display: block;
+    margin-top: 1.5rem;
+  }
+}
+
+// ================================================
+// XENFORO BUTTONS - PRIMARY BLUE STYLE
+// ================================================
+// Using @xf-linkColor for primary button color
+// ================================================
+
+// Primary buttons (Post thread, New posts, etc.)
+.button--primary,
+.button.button--primary,
+.button--cta {
+  background: @xf-linkColor !important;
+  border-color: @xf-linkColor !important;
+  color: #fff !important;
+  border-radius: @np-radius-lg;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px fade(@xf-linkColor, 25%);
+
+  &:hover {
+    background: darken(@xf-linkColor, 8%) !important;
+    border-color: darken(@xf-linkColor, 8%) !important;
+    color: #fff !important;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Secondary/Link buttons
+.button--link,
+.button.button--link {
+  background: transparent !important;
+  border: 1px solid @xf-borderColor !important;
+  color: @xf-textColor !important;
+  border-radius: @np-radius-lg;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: @xf-contentBg !important;
+    border-color: @xf-linkColor !important;
+    color: @xf-linkColor !important;
+  }
+}
+
+// Icon buttons in header area
+.p-navgroup-link--iconic,
+.p-navgroup-linkText {
+  color: @xf-textColorMuted;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: @xf-textColor;
+  }
+}
+
+// ================================================
+// FIX #1: Header links - no underline, BLUE hover
+// ================================================
+.np-header a,
+.np-search a,
+.menu a {
+  text-decoration: none !important;
+
+  &:hover {
+    text-decoration: none !important;
+    color: @xf-linkColor !important;
+  }
+}
+
+// Force ALL navigation links to have BLUE hover - HARDCODED COLOR TEST
+html body .np-page .np-header .np-nav a:hover,
+html body .np-page .np-header .np-nav .np-nav-link:hover,
+html body .np-page .np-header .np-nav .np-nav-item a:hover,
+html body .np-page .np-header nav a:hover,
+.np-body .np-header .np-nav a:hover,
+.np-nav a:hover,
+.np-nav-link:hover {
+  color: #135bec !important;
+  text-decoration: none !important;
+}
+
+// Active navigation link
+html body .np-page .np-header .np-nav a.is-active,
+html body .np-page .np-header .np-nav .np-nav-link.is-active,
+.np-nav a.is-active,
+.np-nav-link.is-active {
+  color: #135bec !important;
+}
+
+// ================================================
+// FIX #2: Forum name hover should be BLUE
+// ================================================
+.template-forum_list {
+  .node-title a:hover {
+    color: @xf-linkColor !important;
+  }
+}
+
+// ================================================
+// FIX #3: Members widget avatars - proper size (2rem = 32px)
+// ================================================
+.np-sidebar .block {
+
+  // Ensure block-body has proper padding
+  .block-body {
+    padding: 1rem !important;
+    overflow: hidden;
+
+    // Ensure avatars don't overflow - 2rem (32px)
+    .avatarList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      overflow: hidden;
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+
+      .avatar,
+      .avatar img,
+      img {
+        width: 2rem !important;
+        height: 2rem !important;
+        min-width: 2rem;
+        max-width: 2rem;
+        border-radius: @np-radius;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+    }
+
+    // Members list in widget (.listPlain)
+    .listPlain {
+      padding: 0;
+      margin: 0;
+
+      .avatar,
+      .avatar img {
+        width: 2rem !important;
+        height: 2rem !important;
+        border-radius: @np-radius;
+        object-fit: cover;
+      }
+    }
+
+    // Members heap list (.listHeap) - 2rem avatars
+    .listHeap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow: hidden;
+      max-width: 100%;
+
+      li {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .avatar,
+      .avatar--s,
+      a.avatar {
+        width: 2rem !important;
+        height: 2rem !important;
+        min-width: 2rem;
+        max-width: 2rem;
+        display: block;
+
+        img {
+          width: 2rem !important;
+          height: 2rem !important;
+          border-radius: @np-radius;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  // Fix block-row padding - don't remove all padding
+  .block-row {
+    padding: 0.5rem 0 !important;
+  }
+}
+
+// ================================================
+// FIX #4: Widget links - WHITE text, BLUE on hover
+// ================================================
+.np-sidebar .block {
+
+  // All links inside widgets should be white by default
+  .block-body a,
+  .block-row a,
+  .contentRow-title a,
+  .contentRow-minor a {
+    color: @xf-textColor;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: @xf-linkColor;
+    }
+  }
+
+  // Thread titles in latest threads widget
+  .contentRow-title {
+    a {
+      color: @xf-textColor;
+
+      &:hover {
+        color: @xf-linkColor;
+      }
+    }
+  }
+
+  // Minor text (dates, usernames)
+  .contentRow-minor,
+  .contentRow-meta {
+    color: @xf-textColorMuted;
+
+    a {
+      color: @xf-textColorMuted;
+
+      &:hover {
+        color: @xf-linkColor;
+      }
+    }
+  }
+}
+
+// ================================================
+// NANOPRO - THREAD VIEW PAGE
+// ================================================
+// Matches Stitch NanoPro Thread View design:
+// - Chat bubble posts with avatar outside
+// - Triangle arrow pointing to avatar
+// - Highlighted admin/mod replies
+// - Sticky quick reply box
+// ================================================
+
+// Custom colors from Stitch (using variables where possible)
+@np-surface-dark: #1e2330;
+@np-surface-lighter: #2a3142;
+@np-border-dark: #232f48;
+@np-border-hover: #34415e;
+
+// ================================================
+// THREAD VIEW - RESPONSIVE LAYOUT
+// ================================================
+// - Full width (1280px) when sidebar is empty
+// - Two-column layout when sidebar has widgets
+// - Admin bar remains visible
+
+// Target thread view page
+html.template-thread_view,
+body.template-thread_view {
+
+  // Reset body-level constraints
+  .p-body {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .p-body-inner {
+    max-width: 80rem !important; // 1280px
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 1.5rem 1rem !important;
+
+    @media (min-width: 640px) {
+      padding: 1.5rem 1.5rem !important;
+    }
+
+    @media (min-width: 1024px) {
+      padding: 1.5rem 2rem !important;
+    }
+  }
+
+  // Main content expands when sidebar is empty
+  .p-body-main {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  // ================================================
+  // CONDITIONAL SIDEBAR - HIDE WHEN EMPTY
+  // ================================================
+  // Hide sidebar ONLY if it has no blocks
+  .p-body-sidebar:empty,
+  .p-body-sidebar:not(:has(.block)),
+  .np-sidebar:empty,
+  .np-sidebar:not(:has(.block)) {
+    display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+  }
+
+  // ================================================
+  // CONDITIONAL GRID - Single column when sidebar empty
+  // ================================================
+  // Default: constrained width for two-column
+  .np-layout {
+    max-width: 80rem !important; // 1280px
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  // CRITICAL: Override grid to single column when sidebar is empty
+  .np-layout:has(.np-sidebar:empty),
+  .np-layout:has(.np-sidebar:not(:has(.block))) {
+    grid-template-columns: 1fr !important; // Single column
+    display: grid !important;
+  }
+
+  // Also handle XenForo's p-body-sidebar
+  .p-body-content:has(.p-body-sidebar:empty),
+  .p-body-content:has(.p-body-sidebar:not(:has(.block))) {
+    display: block !important;
+  }
+
+  // Main content spans full width when sidebar hidden
+  .np-layout:has(.np-sidebar:empty) .np-layout-main,
+  .np-layout:has(.np-sidebar:not(:has(.block))) .np-layout-main {
+    grid-column: 1 / -1 !important;
+    max-width: 100% !important;
+  }
+
+  // Override parent container max-width
+  .np-main {
+    max-width: 80rem !important;
+    width: 100% !important;
+  }
+
+  // Ensure main content expands
+  .np-layout-main,
+  .np-layout-content,
+  .np-container,
+  .np-page-content {
+    max-width: none !important;
+    width: 100% !important;
+  }
+}
+
+.template-thread_view {
+
+  // ================================================
+  // REMOVE DEFAULT BLOCK STYLING
+  // ================================================
+  .block--messages {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    .block-container {
+      background: transparent !important;
+      border: none !important;
+    }
+
+    .block-body {
+      background: transparent !important;
+      padding: 0 !important;
+    }
+  }
+
+  // ================================================
+  // THREAD HEADER
+  // ================================================
+  .p-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .p-title-value {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: @xf-textColor;
+    line-height: 1.3;
+
+    @media (min-width: 768px) {
+      font-size: 1.875rem;
+    }
+  }
+
+  // Thread prefix badge
+  .label,
+  .labelLink {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    margin-inline-end: 0.5rem;
+    border-radius: @np-radius;
+    font-size: 0.75rem;
+    font-weight: 700;
+    vertical-align: middle;
+  }
+
+  // Thread action buttons (Watch, Reply, etc.)
+  .block-outer-opposite {
+    margin-bottom: 1.5rem;
+
+    .buttonGroup {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      .button {
+        border-radius: @np-radius-xl;
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        transition: all 0.2s ease;
+      }
+    }
+  }
+
+  // ================================================
+  // POST/MESSAGE - CHAT BUBBLE STYLE
+  // ================================================
+  .message--post {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1rem !important; // Exactly 16px gap like Stitch gap-4
+    align-items: flex-start;
+    margin: 0 0 1.5rem 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+
+    // Reset XenForo default structure
+    .message-inner {
+      display: contents !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    // ============================================
+    // AVATAR COLUMN (Outside bubble)
+    // ============================================
+    .message-cell--user {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0.5rem;
+      width: auto !important;
+      min-width: auto !important;
+      max-width: 3rem !important; // Lock width to avatar size
+      padding: 0 !important;
+      margin: 0 !important;
+      padding-top: 0.5rem;
+      border: none !important;
+      background: transparent !important;
+      flex-shrink: 0 !important;
+      flex-grow: 0 !important;
+      order: -1; // Ensure avatar comes first
+    }
+
+    .message-avatar-wrapper {
+      display: block !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .message-avatar {
+      margin: 0 !important;
+      padding: 0 !important;
+
+      .avatar {
+        width: 3rem !important;
+        height: 3rem !important;
+        border-radius: 50% !important;
+        border: 2px solid @np-border-dark;
+        box-shadow: 0 4px 12px fade(#000, 20%);
+        margin: 0 !important;
+      }
+    }
+
+    // Hide extra user info in avatar column
+    .message-userDetails,
+    .message-userExtras,
+    .message-userTitle,
+    .userTitle {
+      display: none !important;
+    }
+
+    // Hide default arrow
+    .message-userArrow {
+      display: none !important;
+    }
+
+    // ============================================
+    // CONTENT BUBBLE
+    // ============================================
+    .message-cell--main {
+      flex: 1 !important;
+      min-width: 0 !important;
+      position: relative;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .message-main {
+      background: @np-surface-dark;
+      border: 1px solid @np-border-dark;
+      border-radius: @np-radius-2xl;
+      overflow: visible; // Allow triangle to show
+      position: relative;
+      transition: border-color 0.2s ease;
+
+      &:hover {
+        border-color: @np-border-hover;
+      }
+
+      // ========================================
+      // TRIANGLE DECORATION (pointing to avatar)
+      // ========================================
+      &::before {
+        content: '';
+        position: absolute;
+        top: 1.25rem;
+        inset-inline-start: -10px;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-inline-end: 10px solid @np-surface-dark;
+        z-index: 2;
+      }
+
+      // Border for the triangle
+      &::after {
+        content: '';
+        position: absolute;
+        top: 1.25rem;
+        inset-inline-start: -11px;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-inline-end: 10px solid @np-border-dark;
+        z-index: 1;
+      }
+    }
+
+    // ============================================
+    // BUBBLE HEADER (Username, badge, time)
+    // ============================================
+    .message-attribution {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid fade(@np-border-hover, 50%);
+      background: transparent;
+
+      .message-attribution-main {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex: 1;
+      }
+
+      // Username
+      .message-attribution-user {
+        font-size: 1rem;
+        font-weight: 700;
+        color: @xf-textColor;
+
+        a {
+          color: inherit;
+          text-decoration: none;
+
+          &:hover {
+            color: @xf-linkColor;
+          }
+        }
+      }
+
+      // User title badge (show in header)
+      .userTitle,
+      .userBanner {
+        display: inline-flex !important;
+        font-size: 0.625rem;
+        font-weight: 700;
+        padding: 0.125rem 0.5rem;
+        border-radius: @np-radius;
+        background: fade(#22c55e, 10%);
+        color: #4ade80;
+        border: 1px solid fade(#22c55e, 20%);
+      }
+
+      // Date/time
+      time,
+      .u-dt {
+        font-size: 0.75rem;
+        color: @xf-textColorMuted;
+      }
+
+      // Post number
+      .message-attribution-opposite {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        a {
+          font-size: 0.75rem;
+          color: @xf-textColorMuted;
+          padding: 0.25rem 0.5rem;
+          background: fade(@xf-textColor, 5%);
+          border-radius: @np-radius;
+
+          &:hover {
+            color: @xf-textColor;
+            background: fade(@xf-textColor, 10%);
+          }
+        }
+      }
+    }
+
+    // ============================================
+    // MESSAGE BODY (Content)
+    // ============================================
+    .message-content {
+      padding: 0 !important;
+    }
+
+    .message-body {
+      padding: 1.25rem !important;
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: @xf-textColor;
+      border: none !important;
+      background: transparent !important;
+
+      // Code blocks
+      pre,
+      code {
+        background: fade(@xf-pageBg, 80%);
+        border: 1px solid @np-border-hover;
+        border-radius: @np-radius;
+        font-family: 'Monaco', 'Consolas', monospace;
+      }
+
+      code {
+        padding: 0.125rem 0.375rem;
+        font-size: 0.875em;
+      }
+
+      pre {
+        padding: 1rem;
+        overflow-x: auto;
+        margin: 1rem 0;
+
+        code {
+          padding: 0;
+          border: none;
+          background: transparent;
+        }
+      }
+
+      // Quotes
+      .bbCodeBlock--quote {
+        background: fade(@xf-pageBg, 50%);
+        border-inline-start: 3px solid @xf-linkColor;
+        border-radius: @np-radius;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      // Links
+      a {
+        color: @xf-linkColor;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      // Lists
+      ul,
+      ol {
+        padding-inline-start: 1.5rem;
+        margin: 0.5rem 0;
+
+        li {
+          margin: 0.25rem 0;
+        }
+      }
+
+      ul {
+        list-style-type: disc;
+
+        li::marker {
+          color: @xf-linkColor;
+        }
+      }
+    }
+
+    // Attachments
+    .message-attachments {
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    // Reactions bar
+    .reactionsBar {
+      padding: 0.5rem 1.25rem;
+      background: transparent !important;
+      border: none !important;
+    }
+
+    // ============================================
+    // MESSAGE FOOTER (Interaction buttons)
+    // ============================================
+    .message-footer {
+      padding: 0.75rem 1.25rem !important;
+      background: transparent !important;
+      border-top: 1px solid fade(@np-border-hover, 50%) !important;
+
+      .actionBar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .actionBar-set {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .actionBar-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.375rem 0.75rem;
+        border-radius: @np-radius-lg;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: @xf-textColorMuted;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: @np-border-hover;
+          color: @xf-textColor;
+        }
+
+        // Like button
+        &[data-xf-click="react"] {
+          &:hover {
+            color: #ef4444;
+          }
+        }
+
+        // Quote button
+        &.actionBar-action--quote {
+          &:hover {
+            color: @xf-linkColor;
+          }
+        }
+
+        i,
+        .fa {
+          font-size: 1.125rem;
+        }
+      }
+
+      // Report link
+      .actionBar-action--report {
+        font-size: 0.6875rem;
+        color: @xf-textColorMuted;
+        opacity: 0.7;
+
+        &:hover {
+          opacity: 1;
+          color: @xf-textColor;
+        }
+      }
+    }
+
+    // ============================================
+    // SIGNATURE
+    // ============================================
+    .message-signature {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid fade(@np-border-hover, 50%);
+      font-size: 0.8125rem;
+      color: @xf-textColorMuted;
+    }
+  }
+
+  // ================================================
+  // HIGHLIGHTED POST (Admin/Mod/Staff)
+  // ================================================
+  .message--post.message--staff,
+  .message--post[data-author-type="staff"],
+  .message--post.is-answer {
+    .message-main {
+      background: @np-surface-lighter;
+      border-color: fade(@xf-linkColor, 30%);
+      box-shadow: 0 4px 16px fade(@xf-linkColor, 10%);
+
+      // Update triangle color for highlighted
+      &::before {
+        border-inline-end-color: @np-surface-lighter;
+      }
+    }
+
+    .message-avatar .avatar {
+      border-color: @xf-linkColor;
+      box-shadow: 0 0 12px fade(@xf-linkColor, 30%);
+    }
+
+    // Verified badge after username
+    .message-attribution-user::after {
+      content: 'verified';
+      font-family: 'Material Symbols Outlined';
+      color: @xf-linkColor;
+      margin-inline-start: 0.375rem;
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+  }
+
+  // ================================================
+  // FIRST POST (Thread Starter - larger avatar)
+  // ================================================
+  .message--post:first-child {
+    .message-avatar .avatar {
+      width: 3.5rem !important;
+      height: 3.5rem !important;
+    }
+  }
+
+  // ================================================
+  // QUICK REPLY BOX
+  // ================================================
+  .js-quickReply {
+    position: sticky;
+    bottom: 1rem;
+    z-index: 10;
+    margin-top: 2rem;
+    background: @xf-contentBg;
+    border: 1px solid @np-border-dark;
+    border-radius: @np-radius-2xl;
+    padding: 1rem;
+    box-shadow: 0 -4px 20px fade(#000, 20%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    .formRow {
+      margin: 0;
+      padding: 0;
+    }
+
+    .input,
+    textarea {
+      background: @xf-pageBg;
+      border: 1px solid @np-border-dark;
+      border-radius: @np-radius-xl;
+      padding: 0.75rem 1rem;
+      color: @xf-textColor;
+      resize: none;
+
+      &:focus {
+        border-color: @xf-linkColor;
+        box-shadow: 0 0 0 2px fade(@xf-linkColor, 20%);
+      }
+    }
+
+    .fr-toolbar {
+      background: @np-surface-lighter;
+      border: none;
+      border-radius: @np-radius-lg @np-radius-lg 0 0;
+      padding: 0.5rem;
+
+      .fr-btn {
+        color: @xf-textColorMuted;
+        border-radius: @np-radius;
+
+        &:hover {
+          background: fade(@xf-textColor, 10%);
+          color: @xf-textColor;
+        }
+      }
+    }
+
+    .formSubmitRow {
+      margin-top: 0.75rem;
+      padding: 0;
+      border: none;
+      background: transparent;
+
+      .button--primary {
+        width: auto;
+        margin-inline-start: auto;
+      }
+    }
+
+    .js-draftStatus {
+      font-size: 0.75rem;
+      color: @xf-textColorMuted;
+    }
+  }
+
+  // ================================================
+  // PAGINATION
+  // ================================================
+  .pageNav {
+    margin: 1.5rem 0;
+
+    .pageNav-main {
+      gap: 0.25rem;
+    }
+
+    .pageNav-page {
+
+      a,
+      span {
+        padding: 0.5rem 0.875rem;
+        border-radius: @np-radius-lg;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+    }
+
+    .pageNav-page--current {
+
+      a,
+      span {
+        background: @xf-linkColor;
+        color: #fff;
+      }
+    }
+  }
+
+  // ================================================
+  // MOBILE RESPONSIVE
+  // ================================================
+  @media (max-width: 767px) {
+    .message--post {
+      gap: 0.75rem;
+
+      .message-avatar .avatar {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+      }
+
+      .message-main {
+        border-radius: @np-radius-xl;
+
+        // Hide triangle on mobile
+        &::before,
+        &::after {
+          display: none;
+        }
+      }
+
+      .message-attribution {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.625rem 1rem;
+      }
+
+      .message-body {
+        padding: 1rem !important;
+        font-size: 0.875rem;
+      }
+
+      .message-footer {
+        padding: 0.625rem 1rem !important;
+      }
+
+      .actionBar-action {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.6875rem;
+      }
+    }
+
+    .js-quickReply {
+      position: relative;
+      bottom: auto;
+      margin-top: 1.5rem;
+      padding: 0.75rem;
+    }
+  }
+}
+
+// ================================================
+// THREAD VIEW SIDEBAR WIDGETS
+// ================================================
+.template-thread_view {
+
+  // Author info widget
+  .np-sidebar .block--authorInfo,
+  .block[data-widget-key*="author"] {
+    .block-body {
+      text-align: center;
+    }
+
+    .contentRow-figure {
+      margin: 0 auto 1rem;
+
+      .avatar {
+        width: 3.5rem !important;
+        height: 3.5rem !important;
+      }
+    }
+
+    .contentRow-main {
+      text-align: center;
+    }
+  }
+
+  // Similar threads widget
+  .block[data-widget-key*="similar"],
+  .block--similarThreads {
+    .contentRow {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid fade(@np-border-dark, 50%);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .contentRow-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.4;
+
+      a {
+        color: @xf-textColor;
+
+        &:hover {
+          color: @xf-linkColor;
+        }
+      }
+    }
+
+    .contentRow-minor {
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+    }
+  }
+}

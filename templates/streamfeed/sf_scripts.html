@@ -1,0 +1,89 @@
+<xf:comment>
+/**
+ * StreamFeed Scripts
+ * Sidebar toggle and right drawer functionality
+ */
+</xf:comment>
+
+<script>
+// Navigation Sidebar Toggle
+(function() {
+	var sidebar = document.getElementById('sf-nav-sidebar');
+	var toggle = document.getElementById('sf-sidebar-toggle');
+	var storageKey = 'sf_sidebar_collapsed';
+
+	if (!sidebar || !toggle) return;
+
+	// Restore sidebar state immediately (before transitions enabled)
+	if (localStorage.getItem(storageKey) === 'true') {
+		sidebar.classList.add('is-collapsed');
+		document.documentElement.classList.add('sf-sidebar-collapsed');
+	}
+
+	// Enable transitions after initial layout is complete (prevents CLS)
+	requestAnimationFrame(function() {
+		requestAnimationFrame(function() {
+			document.body.classList.add('sf-transitions-ready');
+		});
+	});
+
+	toggle.addEventListener('click', function() {
+		sidebar.classList.toggle('is-collapsed');
+		document.documentElement.classList.toggle('sf-sidebar-collapsed');
+		localStorage.setItem(storageKey, sidebar.classList.contains('is-collapsed'));
+	});
+})();
+
+// Right Sidebar Drawer (Mobile/Tablet)
+(function() {
+	var sidebar = document.getElementById('sf-widgets-sidebar');
+	var toggleBtn = document.getElementById('sf-right-drawer-toggle');
+	var closeBtn = document.getElementById('sf-right-drawer-close');
+	var backdrop = document.getElementById('sf-right-drawer-backdrop');
+
+	if (!sidebar || !toggleBtn) return;
+
+	function openDrawer() {
+		sidebar.classList.add('is-drawer-open');
+		toggleBtn.classList.add('is-active');
+		if (backdrop) backdrop.classList.add('is-visible');
+		document.body.style.overflow = 'hidden';
+	}
+
+	function closeDrawer() {
+		sidebar.classList.remove('is-drawer-open');
+		toggleBtn.classList.remove('is-active');
+		if (backdrop) backdrop.classList.remove('is-visible');
+		document.body.style.overflow = '';
+	}
+
+	function toggleDrawer() {
+		if (sidebar.classList.contains('is-drawer-open')) {
+			closeDrawer();
+		} else {
+			openDrawer();
+		}
+	}
+
+	// Toggle button click
+	toggleBtn.addEventListener('click', toggleDrawer);
+
+	// Close button click
+	if (closeBtn) {
+		closeBtn.addEventListener('click', closeDrawer);
+	}
+
+	// Backdrop click
+	if (backdrop) {
+		backdrop.addEventListener('click', closeDrawer);
+	}
+
+	// Close on escape key
+	document.addEventListener('keydown', function(e) {
+		if (e.key === 'Escape' && sidebar.classList.contains('is-drawer-open')) {
+			closeDrawer();
+		}
+	});
+})();
+
+</script>

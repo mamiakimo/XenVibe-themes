@@ -229,8 +229,12 @@ html[class*="template-thread_view"] {
 html[class*="template-thread_view_type_question"] {
   // Target only answer posts (inside the inline-mod block, not the first question block)
   .block--messages[data-xf-init*="inline-mod"] .message--post {
+    // Allow vote column to be fully visible
+    overflow: visible !important;
+
     .message-inner {
-      padding-right: 3.5rem !important;
+      padding-inline-end: 3.5rem !important;
+      overflow: visible !important;
     }
 
     // Push attribution away from vote column
@@ -240,26 +244,184 @@ html[class*="template-thread_view_type_question"] {
 
     .message-cell--vote {
       position: absolute !important;
-      right: 0 !important;
-      left: auto !important;
+      inset-inline-end: 0 !important;
+      inset-inline-start: auto !important;
       top: 0 !important;
       bottom: 0 !important;
       width: 3.5rem !important;
+      min-height: 100% !important;
       display: flex !important;
+      flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      border-right: none !important;
-      border-left: 1px solid fade(@xf-borderColor, 50%) !important;
+      border-inline-end: none !important;
+      border-inline-start: 1px solid fade(@xf-borderColor, 50%) !important;
       background: fade(@xf-textColor, 2%) !important;
-      padding: 0 !important;
-      border-radius: 0 0 @xv-card-radius 0 !important;
+      padding: 0.5rem 0 !important;
+      overflow: visible !important;
 
       .message-column {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        gap: 0.5rem;
-        padding: 0.5rem !important;
+        justify-content: center !important;
+        gap: 0.25rem !important;
+        padding: 0.5rem 0.25rem !important;
+        width: 100% !important;
+      }
+
+      // Vote buttons (up/down arrows)
+      .message-actionBarItem {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        &::before {
+          font-size: 1.25rem !important;
+        }
+      }
+
+      // Vote count
+      .message-votes {
+        font-size: 0.875rem !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+      }
+    }
+
+    // Mobile: wider vote column
+    @media (max-width: 767px) {
+      .message-inner {
+        padding-inline-end: 3rem !important;
+      }
+
+      .message-attribution {
+        inset-inline-end: 4rem !important;
+      }
+
+      .message-cell--vote {
+        width: 3rem !important;
+
+        .message-column {
+          gap: 0.125rem !important;
+          padding: 0.25rem !important;
+        }
+
+        .message-actionBarItem {
+          width: 2rem !important;
+          height: 2rem !important;
+
+          &::before {
+            font-size: 1rem !important;
+          }
+        }
+
+        .message-votes {
+          font-size: 0.75rem !important;
+        }
+      }
+    }
+  }
+}
+
+// Vote buttons global fix for question threads
+html[class*="template-thread_view_type_question"] {
+  .message-cell--vote {
+    // Ensure vote buttons are visible
+    .actionBar,
+    .message-column {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.375rem !important;
+      width: 100% !important;
+      height: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .actionBar-set {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0.375rem !important;
+      width: 100% !important;
+    }
+
+    // Hide text labels, show only icons
+    .actionBar-action span:not(.fa):not([class*="fa-"]):not(.material-symbols-outlined) {
+      display: none !important;
+    }
+
+    // Up/Down vote links
+    .actionBar-action {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+      min-width: 2.5rem !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border-radius: 0.5rem !important;
+      background: fade(@xf-textColor, 5%) !important;
+      transition: all 0.2s ease !important;
+
+      &:hover {
+        background: fade(@xf-linkColor, 15%) !important;
+        color: @xf-linkColor !important;
+      }
+
+      // Icon inside
+      i, .fa, [class*="fa-"] {
+        font-size: 1rem !important;
+        line-height: 1 !important;
+      }
+    }
+
+    // Vote count between arrows
+    .js-voteCount,
+    .message-votes,
+    .vote-count {
+      font-size: 0.875rem !important;
+      font-weight: 700 !important;
+      color: @xf-textColor !important;
+      padding: 0.25rem 0 !important;
+      text-align: center !important;
+    }
+
+    // Best answer indicator
+    .actionBar-action--answer,
+    [data-xf-click*="answer"],
+    .is-answer {
+      color: @xf-textColorFeature !important;
+
+      &:hover {
+        background: fade(@xf-textColorFeature, 15%) !important;
+      }
+    }
+
+    // Mobile adjustments
+    @media (max-width: 767px) {
+      .actionBar-action {
+        width: 2rem !important;
+        height: 2rem !important;
+        min-width: 2rem !important;
+
+        i, .fa, [class*="fa-"] {
+          font-size: 0.875rem !important;
+        }
+      }
+
+      .js-voteCount,
+      .message-votes,
+      .vote-count {
+        font-size: 0.75rem !important;
       }
     }
   }

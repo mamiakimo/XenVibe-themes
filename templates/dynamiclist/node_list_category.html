@@ -1,0 +1,71 @@
+<!-- DynamicList Style - Category Template with Collapsible -->
+
+<xf:macro id="depth1" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<div class="block block--category block--collapsible"
+		 data-storage-key="node_{$node.node_id}"
+		 id="{$node.Data.getCategoryAnchor()}">
+		<div class="block-container">
+			<!-- Category Header with Toggle -->
+			<h3 class="block-header">
+				<a href="{{ link('categories', $node) }}" class="block-header-title">
+					<span class="material-symbols-outlined dl-category-icon">public</span>
+					{$node.title}
+				</a>
+				<button class="block-header-toggle"
+						type="button"
+						aria-label="{{ phrase('toggle') }}">
+					<span class="material-symbols-outlined dl-toggle-icon">expand_less</span>
+				</button>
+			</h3>
+
+			<!-- Category Body (Collapsible) -->
+			<div class="block-body">
+				<xf:macro id="forum_list::node_list"
+					arg-children="{$children}"
+					arg-extras="{$childExtras}"
+					arg-depth="{{ $depth + 1 }}" />
+			</div>
+		</div>
+	</div>
+</xf:macro>
+
+<xf:macro id="depth2" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<!-- Nested category rendered as a node row -->
+	<div class="node node--category {{ $extras.hasNew ? 'node--unread' : '' }}">
+		<div class="node-body">
+			<span class="node-icon">
+				<i class="fa fa-folder{{ $extras.hasNew ? '' : '-o' }}" aria-hidden="true"></i>
+			</span>
+			<div class="node-main">
+				<h4 class="node-title">
+					<a href="{{ link('categories', $node) }}">{$node.title}</a>
+				</h4>
+				<xf:if is="{$node.description}">
+					<div class="node-description">{$node.description|raw}</div>
+				</xf:if>
+			</div>
+		</div>
+		<xf:if is="!{$extras.privateInfo}">
+			<div class="node-stats">
+				<dl>
+					<dd>{$extras.discussion_count|number_short(1)}</dd>
+					<dt>{{ phrase('threads') }}</dt>
+				</dl>
+				<dl>
+					<dd>{$extras.message_count|number_short(1)}</dd>
+					<dt>{{ phrase('messages') }}</dt>
+				</dl>
+			</div>
+		</xf:if>
+	</div>
+</xf:macro>
+
+<xf:macro id="depthN" arg-node="!" arg-extras="!" arg-children="!" arg-childExtras="!" arg-depth="1">
+	<li>
+		<a href="{{ link('categories', $node) }}" class="node-subNodeLink node-subNodeLink--category {{ $extras.hasNew ? 'node-subNodeLink--unread' : '' }}">{$node.title}</a>
+		<xf:macro id="forum_list::sub_node_list"
+			arg-children="{$children}"
+			arg-childExtras="{$childExtras}"
+			arg-depth="{{ $depth + 1 }}" />
+	</li>
+</xf:macro>
