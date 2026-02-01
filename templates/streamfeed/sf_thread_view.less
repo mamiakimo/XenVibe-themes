@@ -13,7 +13,7 @@ html.template-thread_view {
 
   // Thread title styling
   .p-title {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.25rem;
   }
 
   .p-title-value {
@@ -43,7 +43,7 @@ html.template-thread_view {
   .p-description {
     font-size: 0.875rem;
     color: @xf-textColorMuted;
-    margin-bottom: 1rem;
+    margin-bottom: 0.25rem;
 
     a {
       color: @xf-linkColor;
@@ -51,9 +51,15 @@ html.template-thread_view {
     }
   }
 
+  // Block outer (contains action buttons)
+  .block-outer {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
   // Thread action buttons (Watch, Reply, etc.)
   .block-outer-opposite {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem !important;
 
     .buttonGroup {
       display: flex;
@@ -92,18 +98,48 @@ html.template-thread_view {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    overflow: hidden; // Clip the timeline lines
+    margin-top: 0 !important;
 
     .block-container {
       background: transparent !important;
       border: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     .block-body {
       background: transparent !important;
       padding: 0 !important;
+      margin: 0 !important;
       position: relative;
+
+      // ONE continuous timeline line for all posts
+      &::before {
+        content: '';
+        position: absolute;
+        top: 2rem; // Start below first avatar (accounting for padding)
+        bottom: 1rem; // End above last avatar bottom
+        left: 1.25rem; // Center of 2.5rem avatar column
+        width: 2px;
+        background: fade(@xf-borderColor, 50%);
+        z-index: 0;
+        pointer-events: none;
+
+        @media (max-width: 767px) {
+          display: none;
+        }
+      }
     }
+
+    // First message - no top margin
+    .message--post:first-child {
+      margin-top: 0 !important;
+    }
+  }
+
+  // Reset any block margins
+  .block {
+    margin-bottom: 0 !important;
   }
 
   // ============================================
@@ -111,9 +147,9 @@ html.template-thread_view {
   // ============================================
   .message--post {
     display: flex !important;
-    gap: 1rem;
+    gap: 0.75rem;
     align-items: flex-start;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
@@ -128,42 +164,24 @@ html.template-thread_view {
     // AVATAR COLUMN (Outside bubble)
     // ============================================
     .message-cell--user {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 0.5rem;
-      width: 4rem !important;
-      min-width: 4rem !important;
+      display: block !important;
+      width: 2.5rem !important;
+      min-width: 2.5rem !important;
+      max-width: 2.5rem !important;
       padding: 0 !important;
-      padding-top: 0.5rem;
+      padding-top: 0.75rem !important; // Align with message bubble
       border: none !important;
       background: transparent !important;
       flex-shrink: 0;
       position: relative;
       z-index: 2;
-
-      // Timeline connector line (below avatar, extends to next post)
-      &::after {
-        content: '';
-        position: absolute;
-        top: 3rem; // Just below avatar
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2px;
-        height: 200vh; // Very long to ensure continuous line
-        background: fade(@xf-borderColor, 50%);
-        z-index: -1;
-        pointer-events: none;
-
-        @media (max-width: 767px) {
-          display: none;
-        }
-      }
     }
 
-    // Hide line on last post
-    &:last-child .message-cell--user::after {
-      display: none;
+    // User info section - only show avatar
+    .message-user {
+      display: block !important;
+      width: 100% !important;
+      padding: 0 !important;
     }
 
     .message-avatar-wrapper {
@@ -171,25 +189,34 @@ html.template-thread_view {
     }
 
     .message-avatar {
+      display: block !important;
+      position: relative;
+      z-index: 3; // Above the timeline line
+
       .avatar {
         width: 2.5rem !important;
         height: 2.5rem !important;
         border-radius: 50% !important;
-        border: 2px solid @xf-borderColor;
+        border: 3px solid @xf-pageBg; // Solid border to cover the line
+        box-shadow: 0 0 0 1px @xf-borderColor; // Outer border
         transition: all 0.3s ease;
+        background: @xf-pageBg; // Ensure background covers line
       }
     }
 
-    // Hide user info in avatar column
+    // Hide ALL user info except avatar
     .message-userDetails,
     .message-userExtras,
     .message-userTitle,
-    .userTitle {
-      display: none !important;
-    }
-
+    .message-name,
+    .username,
+    .userTitle,
     .message-userArrow {
       display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden !important;
     }
 
     // ============================================
@@ -205,7 +232,7 @@ html.template-thread_view {
       background: @xf-contentBg;
       border: 1px solid @xf-borderColor;
       border-radius: @sf-radius-xl;
-      overflow: hidden;
+      overflow: visible; // Allow arrow to show
       position: relative;
       transition: border-color 0.2s ease;
 
@@ -478,26 +505,27 @@ html.template-thread_view {
   // FIRST POST (Thread Starter) - HERO STYLE
   // ============================================
   .message--post:first-child {
+    gap: 1rem;
+
+    .message-cell--user {
+      width: 3.5rem !important;
+      min-width: 3.5rem !important;
+      max-width: 3.5rem !important;
+    }
+
     .message-avatar .avatar {
       width: 3.5rem !important;
       height: 3.5rem !important;
-      border-radius: @sf-radius-xl !important;
-      border-color: @xf-linkColor;
-      box-shadow: 0 4px 16px fade(@xf-linkColor, 25%);
-    }
-
-    .message-cell--user {
-      width: 4.5rem !important;
-      min-width: 4.5rem !important;
+      border-radius: @sf-radius-lg !important; // Square with rounded corners
+      border: 3px solid @xf-linkColor;
+      box-shadow: 0 4px 16px fade(@xf-linkColor, 30%);
+      background: @xf-pageBg;
     }
 
     .message-main {
       border-color: fade(@xf-linkColor, 30%);
       box-shadow: 0 4px 20px fade(@xf-linkColor, 10%);
-
-      &::after {
-        border-inline-end-color: fade(@xf-linkColor, 30%);
-      }
+      overflow: visible !important; // Allow arrow to show
     }
 
     // OP Badge
